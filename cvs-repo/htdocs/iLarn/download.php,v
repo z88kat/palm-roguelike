@@ -1,0 +1,331 @@
+head	1.6;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.4
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2006.08.13.05.47.22;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2006.08.13.04.47.24;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2006.08.08.03.46.43;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2002.03.30.00.18.21;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.07.02.06.08.41;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.36;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.36;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>Download iLarn</title>
+
+<style type="text/css" media="screen">@@import "../3col.css";</style>
+
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>Download iLarn</h1>
+</div>
+
+<div class="content">
+      <p> The latest version of iLarn is: 0.25 (alpha).
+<a href="http://prdownloads.sourceforge.net/roguelike-palm/iLarn-0.25.zip?download">Download it here.</a> </p>
+      <p> The latest version that was called "stable" (instead of alpha/beta) was 0.20.  If you'd rather have that one, you can get it on the <a href="http://sourceforge.net/project/showfiles.php?group_id=6932&amp;package_id=10233">file releases</a> page on SourceForge.</p>
+
+<p> Download either version, unzip it, and follow the installation
+instructions (below, or in the README file).  You might also like to
+read about how to <a href="play.php">play</a>. </p>
+
+</div>
+
+<div class="content">
+      <h2>System requirements</h2>
+
+      <p> Memory: about 160K when no game is in progress; up to 180K,
+       total, when a game has saved some dungeon levels.<br>
+       OS: 2 or higher.  iLarn will not work on a Pilot 1000 or a Pilot 5000.  Sorry.</p>
+
+</div>      
+<div class="content">
+
+      <h2>Installation</h2>
+
+      <p> 1. You'll see two .prc files, iLarn.prc and iLarnOS2.prc.
+        <br>    If you have OS 3.*, install iLarn.prc.
+        <br>    If you have OS 2.*, install iLarnOS2.prc.
+	<br> (If you install the wrong one, you will not be able to
+	use the small font.)
+</p>
+      <p> 2. You must also install iLarnDB.pdb.
+        <br> (only if you have not already installed an earlier version.)
+</p>      
+      <h3>What if I delete a database?</h3>
+
+      <p> iLarn will not run without iLarnDB.pdb (which you installed above).
+         If you reinstall a clean copy of iLarnDB.pdb, you will wipe out
+	 your top ten list (but it will not hurt your current character).
+	    iLarn also creates a database iLarnSaveDB.pdb.
+         If you delete iLarnSaveDB.pdb, you will lose your
+	 current character (but it will not affect your top ten list).
+</p>
+</div>
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+</body>
+</html>
+@
+
+
+1.5
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+@
+
+
+1.4
+log
+@commit everything before massive style change
+@
+text
+@d1 3
+a3 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+d7 4
+a10 4
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+d14 17
+a30 86
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">iLarn: where to download</h3>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      
+      <!-- -->
+      <tr><td class="sidehead">
+	iLarn Stuff </td></tr>
+      <tr><td class="side"> <a href="index.php">
+	  What is iLarn?</a> </td></tr>
+      <tr><td class="side"> <a href="whatsnew.php">
+	  What's new</a> </td></tr>
+      <tr><td class="side">
+	  <b>Download iLarn</b> </td></tr>
+      <tr><td class="side"> <a href="play.php">How to play</a>;
+	  <a href="town.php">town</a></td></tr>
+      <tr><td class="side"> <a href="source.php">
+	  How to get source</a> </td></tr>
+      <?php include ("../hostedby.txt") ?>
+      <?php include ("../activesurveys.txt") ?>
+      <?php include ("../roguelikegames.txt") ?>
+</table>
+</td>
+
+<!-- main area table -->
+<td valign=top>
+      <!-- ----- this is the interesting part of the page ----- -->
+      <h3>Where can I download iLarn?</h3>
+      <P> The latest version of iLarn is: 0.25 (alpha).
+<a href="http://sourceforge.net/project/showfiles.php?group_id=6932&release_id=22173">[download alpha/beta versions here]</a>
+<br> The previous "stable" version is 0.20.
+
+   <P> <a href="http://download.sourceforge.net/roguelike-palm/iLarn-0.20.zip">
+      Download iLarn</a>
+(0.20)
+
+      <P> Unzip and follow the installation instructions (below, or in
+      the README file).  You might also like to read the <a
+      href="play.php">instructions</a> for how to play.
+
+      <h3>System requirements</h3>
+      <h4>Memory</h4>
+
+      <P> When you do not have a game in progress, iLarn will take
+      about 160K (executable plus more-or-less constant data.)
+
+      <P> The database that stores information about your character and
+      the dungeon levels you have visited (iLarnSaveDB) may take up to
+      20K or so.
+
+      <P> This means that you should expect iLarn to occupy around
+      <b>180K</b>.  Do not install and play iLarn if you do not have
+      at least that much space.  It might not fail gracefully (you get
+      what you pay for).
+
+
+<!--      <i>(Memo to self: make sure that nothing gruesome happens when
+      people accidentally run out of memory.  My guess is that it will just
+      silently fail to save levels and characters, which is upsetting but
+      non-fatal.)</i> -->
+
+      <!-- It looks like the town level takes 382 bytes unless you leave
+      stuff sitting around there; easy levels take up to 800 bytes;
+      one volcano level took 1344, others more like 1100-1300. -->
+      <!-- Right now the character save takes 1902. -->
+      <!-- (/ (+ 382 (* 15 800) (* 5 1300) 1902) 1024.0)
+      home, dungeon, volcano, character-save -->
+
+      <h4>Operating system</h4>
+
+      <P> Your OS must be 2.* or higher.  iLarn will not work on a
+      Pilot 1000 or a Pilot 5000.
+      
+      <h3>Installation</h3>
+d32 10
+a41 1
+      <P> 1. You'll see two .prc files, iLarn.prc and iLarnOS2.prc.
+d44 6
+a49 5
+        <br> (What happens if you get it wrong?  You will not be able to
+        use the small font.)
+      <P> 2. You must also install iLarnDB.pdb.
+        <br> (if you have not already installed an earlier version.)
+      
+d52 3
+a54 2
+      <P> You installed iLarnDB.pdb; iLarn will not run if it does
+	    not have this database.
+d56 13
+a68 19
+      <P> If you delete iLarnSaveDB.pdb, you will lose your
+	 current character (but it will not affect your top ten list).  If
+	 you reinstall a clean copy of iLarnDB.pdb, you will wipe out
+	 your top ten list (but it will not hurt your current character).
+
+<P>
+<img src="../images/iLarn/Acast3.gif" alt="[regular font]">
+<img src="../images/iLarn/Acast4.gif" alt="[flyspeck font]">
+
+      
+      <!-- ----- end of the interesting part of the page ----- -->
+
+</td>
+</tr>
+</table>
+
+<!-- footer table -->
+<?php include ("../footer.txt") ?>
+<!-- end footer table -->
+a69 1
+<address>i0lanthe@@users.sourceforge.net</address>
+a70 1
+Last modified: Sat Jun 16 18:11:18 EDT 2001
+d72 1
+a72 1
+<?php $hitsfile = "download.hits"; include ("../counter.php")?>
+@
+
+
+1.3
+log
+@checkpointing web before kMoria 0.15 update
+@
+text
+@d7 2
+@
+
+
+1.2
+log
+@in the middle of release/update
+@
+text
+@d14 1
+a14 1
+    <h3>iLarn: where to download</h3>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d50 2
+a51 2
+      <P> The latest version of iLarn is: 0.22 (beta).
+<a href="http://sourceforge.net/project/showfiles.php?group_id=6932&release_id=22173">[download beta versions here]</a>
+d132 1
+a132 1
+Last modified: Sun Jan 28 20:18:35 EST 2001
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

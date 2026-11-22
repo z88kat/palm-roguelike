@@ -1,0 +1,2183 @@
+head	1.46;
+access;
+symbols
+	Release-2002_03_29:1.46
+	Release-2002_01_12:1.46
+	Release-2002_01_02:1.35
+	Release-2002_01_01:1.35
+	Release-2001_12_19:1.35
+	Release-2001_08_04:1.29
+	Release-2001_07_02:1.27
+	Release-2001_06_16:1.23
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.46
+date	2002.01.11.20.53.24;	author i0lanthe;	state Exp;
+branches;
+next	1.45;
+
+1.45
+date	2002.01.11.17.24.59;	author i0lanthe;	state Exp;
+branches;
+next	1.44;
+
+1.44
+date	2002.01.11.02.20.20;	author i0lanthe;	state Exp;
+branches;
+next	1.43;
+
+1.43
+date	2002.01.10.01.33.49;	author i0lanthe;	state Exp;
+branches;
+next	1.42;
+
+1.42
+date	2002.01.08.19.32.55;	author i0lanthe;	state Exp;
+branches;
+next	1.41;
+
+1.41
+date	2002.01.06.20.45.21;	author i0lanthe;	state Exp;
+branches;
+next	1.40;
+
+1.40
+date	2002.01.05.18.46.50;	author i0lanthe;	state Exp;
+branches;
+next	1.39;
+
+1.39
+date	2002.01.04.21.52.52;	author i0lanthe;	state Exp;
+branches;
+next	1.38;
+
+1.38
+date	2002.01.04.03.45.44;	author i0lanthe;	state Exp;
+branches;
+next	1.37;
+
+1.37
+date	2002.01.04.00.01.26;	author i0lanthe;	state Exp;
+branches;
+next	1.36;
+
+1.36
+date	2002.01.03.18.47.15;	author i0lanthe;	state Exp;
+branches;
+next	1.35;
+
+1.35
+date	2001.12.15.21.03.17;	author i0lanthe;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2001.12.10.01.20.07;	author i0lanthe;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2001.12.08.19.37.56;	author i0lanthe;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2001.11.30.23.44.42;	author i0lanthe;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2001.11.30.05.06.17;	author i0lanthe;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2001.07.26.02.38.39;	author i0lanthe;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2001.07.25.07.37.27;	author i0lanthe;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2001.06.28.01.33.54;	author i0lanthe;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2001.06.22.05.56.03;	author i0lanthe;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2001.03.30.04.05.28;	author i0lanthe;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2001.03.30.03.36.51;	author i0lanthe;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2001.03.27.06.30.43;	author i0lanthe;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2001.03.10.05.07.20;	author i0lanthe;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2001.01.12.18.28.28;	author i0lanthe;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2001.01.11.01.46.03;	author i0lanthe;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2001.01.09.17.19.22;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2001.01.08.03.13.30;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2001.01.08.01.51.39;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2001.01.07.21.46.51;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2001.01.06.18.24.38;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2000.12.31.03.57.57;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2000.12.06.23.53.14;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2000.11.12.03.30.03;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2000.11.04.02.13.39;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2000.10.20.04.45.36;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2000.10.20.03.38.35;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.10.10.04.53.43;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.10.03.04.29.42;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.01.18.31.37;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.09.30.04.45.36;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.45.24;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.45.24;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.46
+log
+@take out debugging printfs, fix store so fixed-price messages aren't overwritten
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+#include "kMoria.h"
+// why is IsDigit (CharAttr.h) not working for 3.1??
+
+
+extern owner_type owners[MAX_OWNERS]; // lock.c
+
+Short STORE_LINES = 10;
+#define MAX_STORE_LINES 14 /* xxx If screen height increases, check on this */
+// for multiplication of current-tens:
+#define Five_Or_Ten (my_prefs.store_is_compacted ? STORE_LINES : STORE_LINES/2)
+// for division of list row index:
+#define Two_Or_One  (my_prefs.store_is_compacted ? 1 : 2)
+
+static void store_draw() SEC_6;
+
+Short in_store; // Need to know which store we are in!
+Short store_item; // so that Haggle knows what we're bidding on
+Short store_current_tens;
+Boolean store_youbuying; // so Haggle knows why we're bidding
+Short test = -1;
+static Boolean isgold = false;
+static void store_gold_owner(Boolean forcegold)
+{
+  Char buf[40];
+
+  if (forcegold || isgold) {
+    StrPrintF(buf, "(You have: %ld gold pieces)", pymisc.au);
+    isgold = false;
+  } else {
+    StrPrintF(buf, "%s", owners[store[in_store].owner].owner_name);
+    isgold = true;
+  }
+  show_brief_comment(buf);
+}
+// show weight of cur. selected store item (if in range) -- dan_van 19 Jul 2001
+static void show_store_item_weight()
+{
+  FormPtr frm;
+  ListPtr lst;
+  Short store_item, total_weight;
+  inven_record *storeinv;
+  inven_type sold_obj;
+  Char buf[40];
+  //get the selected item:
+  frm = FrmGetActiveForm();
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_st));
+  store_item = LstGetSelection(lst) / Two_Or_One;
+  // make sure it's in range
+  if (store_item >= 0 && store_item < STORE_LINES) {
+    storeinv = store_inven[in_store];
+    store_item += Five_Or_Ten * store_current_tens;
+    take_one_item(&sold_obj, &storeinv[store_item].sitem); // 1-count item
+    total_weight = sold_obj.weight * sold_obj.number;
+
+    StrPrintF(buf, "Weight: %d.%d lb", total_weight / 10, total_weight % 10);
+    show_brief_comment(buf);
+  } else {
+    isgold = !isgold; // kludge; don't toggle this time.
+    store_gold_owner(false);
+  }
+}
+
+
+#define STORE_NONE -1
+extern Boolean in_a_store; 
+
+Char *store_display[MAX_STORE_LINES];
+extern Boolean Version_GE_OS35;
+Boolean Store_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  ListPtr lst;
+  //  CharPtr label;
+  Short objid, i;
+    // CALLBACK_PROLOGUE
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* ...init form... */
+#ifndef I_AM_OS_2
+    if (IsVGA) PrvMoveForm(false);
+#endif
+    FrmDrawForm(frm);
+    /* this must be AFTER draw form */
+    // [draw stuff]
+    isgold = true;//false;
+    store_current_tens = 0; // first screen
+    store_display[0] = NULL; // to let store_list_tens know not to free it
+    store_list_tens(0);
+    FrmCopyTitle(frm, owners[store[in_store].owner].store_name);
+    store_gold_owner(false); // this is done by store_list_tens now!
+    //    store_btns(frm);
+    // if there are <= 1 screen full of items in the store, DISABLE BUTTONS
+    handled = true;
+    break;
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) PrvMoveForm(true);
+    return true;
+#endif
+
+#ifdef I_AM_COLOR
+  case menuCmdBarOpenEvent:
+    // this will only work if we are on an OS3.5 or greater device.
+    if (Version_GE_OS35) {
+      MenuCmdBarAddButton(2, bmp_cmd_compact, menuCmdBarResultMenuItem,
+			  menu_stoCompact, NULL);
+      MenuCmdBarAddButton(1, (my_prefs.store_is_haggling ? bmp_cmd_hglOff :
+			                                   bmp_cmd_hgl),
+			  menuCmdBarResultMenuItem,
+			  menu_stoHaggle, NULL);
+    }
+    return false;
+#endif
+
+  case menuEvent:
+    MenuEraseStatus(NULL); /* clear menu status from display */
+    switch(e->data.menu.itemID) {
+    case menu_stoCompact:
+      if (my_prefs.store_is_compacted)
+	store_current_tens *= 2; // the item on ith page moves to 2*ith page
+      else
+	store_current_tens /= 2; // the item on ith page moves to i/2th page
+      my_prefs.store_is_compacted = !my_prefs.store_is_compacted;
+      writeMoriaPrefs();
+      // need to redraw! ....
+      store_list_tens(0);
+      break;
+    case menu_stoHaggle:
+      my_prefs.store_is_haggling = !my_prefs.store_is_haggling;
+      writeMoriaPrefs();
+      break;
+    }
+
+  case penDownEvent:
+    if (in_brief_comment(e->screenX, e->screenY)) {
+      store_gold_owner(false);
+      handled = true;
+      break;
+    }
+    break;
+
+  case lstSelectEvent:
+    show_store_item_weight();
+    handled = true;
+    break;
+
+  case keyDownEvent:
+    // hardware button -- or else graffiti.
+    frm = FrmGetActiveForm();
+    objid = -1;
+    switch(e->data.keyDown.chr) {
+    case pageUpChr: case '<':
+      store_list_tens(-1);
+      handled = true;
+      break;
+    case pageDownChr: case '>':
+      store_list_tens(1);
+      handled = true;
+      break;
+    case ' ':
+      lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_st));
+      i = LstGetSelection(lst);
+      if (i == -1) i = 0;
+      else i += Two_Or_One;
+      if (i >= STORE_LINES) {
+	store_list_tens(1);
+	i = i % STORE_LINES;
+      }
+      LstSetSelection(lst, i);
+      show_store_item_weight(); // hm.. this duplicates the getselection work..
+      handled = true;
+      break;
+    case 'b': case 'B': objid = btn_st_buy;  break;
+    case 's': case 'S': objid = btn_st_sell; break;
+    case 'x': case 'X': case '9': case '0': case 27: objid=btn_st_exit; break;
+    }
+    if (objid != -1) {
+      hit_button_if_usable(frm, objid);
+      handled = true;
+    }
+    break;
+
+  case ctlSelectEvent:
+    switch(e->data.ctlSelect.controlID) {
+    case btn_st_buy:
+      frm = FrmGetActiveForm();
+      lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_st));
+      store_item = LstGetSelection(lst) / Two_Or_One;
+      // make sure it's in range
+      if (store_item >= 0 && store_item < STORE_LINES) {
+	store_item += Five_Or_Ten * store_current_tens;
+	if (store_item < store[in_store].store_ctr) {
+	  store_youbuying = true;
+	  if (store_purchase_init(in_store, store_item))
+	    FrmPopupForm(HaggleForm);
+	}
+      }
+      handled = true;
+      break;
+    case btn_st_prev:
+      store_list_tens(-1);
+      handled = true;
+      break;
+    case btn_st_next:
+      store_list_tens(1);
+      handled = true;
+      break;
+    case btn_st_sell:
+      //      frm = FrmGetActiveForm();
+      //      lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_st));
+      //      store_item = LstGetSelection(lst);
+      //      if (store_item >= 0 && store_item < STORE_LINES) {
+      store_youbuying = false;
+      if (inven_ctr != 0)
+	FrmPopupForm(InvForm);
+      else if (equip_ctr != 0)
+	FrmPopupForm(EquForm);
+      // The rest will be in exiting the InvForm, I guess.
+      //      }
+      handled = true;
+      break;
+    case btn_st_exit:
+      free_store_list(FrmGetActiveForm());
+      LeaveForm();
+      in_store = STORE_NONE;
+      in_a_store = false;
+      handled = true;
+      // Need to REDRAW our gold!
+      print_stats(STATS_GOLD);
+      show_messages(); // to redraw stats.
+      break;
+    }
+    break;
+
+  default:
+    break;
+  }
+
+    // CALLBACK_EPILOGUE
+
+  return handled;
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////
+static void store_draw() // call this after drawing the store list.
+{
+  FormPtr frm = FrmGetActiveForm();
+  Char buf[10];
+  Short i, iitem, j, len, list_edge, x, y = ROW_1, five = FntCharWidth('0');
+  Long v;
+  RectangleType r;
+  inven_record *storeinv;
+
+ // print digit between < - and + > buttons
+  StrPrintF(buf, "%d", store_current_tens);
+  FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, btn_st_prev), &r);
+  x = r.topLeft.x + r.extent.x;
+  FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, btn_st_next), &r);
+  WinDrawChars_ctr(buf, 1, (x + r.topLeft.x)/2, r.topLeft.y);
+
+  // figure out where the right edge of the list is
+  FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, list_st), &r);
+  list_edge = r.topLeft.x + r.extent.x + 1; // = 126;
+
+  // erase the rectangle (126,15) to (156,15+110) // 126, 15, 30, 110.
+  RctSetRectangle(&r, list_edge, ROW_1, 6*five, STORE_LINES*LINE_HEIGHT);
+  WinEraseRectangle(&r, 0);
+
+  storeinv = store_inven[in_store];
+  for (i = 0, j = 0 ; i < Five_Or_Ten ; i++, j++) {
+    iitem = i + store_current_tens * Five_Or_Ten;
+    // Print the price.
+    if (iitem < store[in_store].store_ctr) {
+      v = storeinv[iitem].scost;
+      if (v <= 0) {
+	Long value = -v;
+	value = value * chr_adj() / 100;
+	if (value <= 0)
+	  value = 1;
+	StrPrintF(buf, "%ld", value);
+	len = StrLen(buf);
+	WinDrawChars(buf, len, list_edge + (6-len)*five, y);
+      } else {
+	StrPrintF(buf, "%ld", v);
+	len = StrLen(buf);
+	WinDrawInvertedChars(buf, len, list_edge + (6-len)*five, y);
+      }
+    }
+    y += LINE_HEIGHT;
+    if (!my_prefs.store_is_compacted)
+      y += LINE_HEIGHT; // don't print a price on next line.
+  }
+
+  // There is no selection in the list now, so make sure no Weight is shown.
+  /*
+  isgold = !isgold; // (kludge; don't toggle this time.)
+  store_gold_owner(false);
+  */
+
+  // Also, let the user know when the store is full, if on the last page.
+  if (store[in_store].store_ctr >= STORE_INVEN_MAX)
+    // Store is full!
+    if (store_current_tens == (store[in_store].store_ctr - 1) / Five_Or_Ten)
+      // We are on the last page!
+      WinDrawChars("*** store is full ***", 21, 2,
+		   ROW_1 + (STORE_LINES-1)*LINE_HEIGHT);
+}
+void store_list_tens(Short plus)
+{
+  Short i, j, iitem, uncut_len;
+  Char tmp_val[160], ctmp=' ';
+  // length_str gets set to the # of chars that will fit in 124 pixels
+  // width_str gets set to the # of pixels that those chars will use
+  Int width_str, length_str;
+  Boolean fits;
+  ListPtr lst;
+  FormPtr frm = FrmGetActiveForm();
+  inven_type *i_ptr;
+  inven_record *storeinv;
+  RectangleType r;
+  Short list_width;
+  ControlPtr btn;
+
+  storeinv = store_inven[in_store];
+
+  // store_ctr == #items in store.  we're trying to scroll but nothing happens:
+  if (plus != 0 && store[in_store].store_ctr <= Five_Or_Ten)
+    return; 
+
+  FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, list_st), &r);
+  list_width = r.extent.x; // = 126;
+
+  store_current_tens += plus;
+  // if we overflow or underflow, wrap-around.
+  if (store_current_tens * Five_Or_Ten >= store[in_store].store_ctr) // "..."
+    store_current_tens = 0; // go to first screen
+  else if (store_current_tens < 0) // go to last screen
+    //store_current_tens = store[in_store].store_ctr / Five_Or_Ten; // Nope,
+    store_current_tens = (store[in_store].store_ctr - 1) / Five_Or_Ten; // Yep
+
+  // Also, decide whether we can free the old store_display[i]'s.
+  if (store_display[0] != NULL)
+    free_store_list(frm);
+
+  for (i = 0, j = 0 ; i < Five_Or_Ten ; i++, j++) {
+    //    c = i + 'a';
+    //    StrPrintF(tmp_val, "%c) ", c);
+    iitem = i + store_current_tens * Five_Or_Ten;
+    i_ptr = &storeinv[iitem].sitem;
+    if (iitem >= store[in_store].store_ctr) { // yes, I really do mean >=
+      if (store[in_store].store_ctr < STORE_INVEN_MAX)
+	StrPrintF(tmp_val, "..."); // because store_ctr is "first empty space"
+      else StrPrintF(tmp_val, "   ");
+      uncut_len = length_str = StrLen(tmp_val); // max chars to allow
+    } else {
+      objdes(tmp_val, i_ptr, true); // was tmpval+3
+      uncut_len = length_str = StrLen(tmp_val); // max chars to allow
+      // Truncate if too wide for the screen..... we only have 124 pixels...
+      width_str = list_width-2; //124-2;
+      FntCharsInWidth(tmp_val, &width_str, &length_str, &fits);
+      ctmp = tmp_val[length_str];
+      tmp_val[length_str] = '\0';
+    }
+    // ok, now like put it somewhere.
+    // XXXX  MEMORY LEAK  MEMORY LEAK  MEMORY LEAK  MEMORY LEAK:
+    store_display[j] = (Char *) md_malloc(1 + length_str);
+    StrCopy(store_display[j], tmp_val);
+    // ok, and if we're not compact, print the leftovers
+    if (!my_prefs.store_is_compacted) {
+      j++;
+      if (uncut_len > length_str) {
+	Char *p;
+	tmp_val[length_str] = ctmp;
+	p = &tmp_val[length_str];
+	store_display[j] = (Char *) md_malloc(1 + StrLen(p));
+	StrCopy(store_display[j], p);	
+      } else {
+	store_display[j] = (Char *) md_malloc(2);
+	StrPrintF(store_display[j], " ");
+      }
+    }
+    // ok, all done (compacted or otherwise).
+  }
+
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_st));
+  LstSetListChoices(lst, store_display, STORE_LINES);
+  LstSetSelection(lst, -1);
+  LstDrawList(lst);
+
+  // Also, if you have nothing to sell, disable the sell button.
+  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_st_sell));
+  if (inven_ctr > 0 || equip_ctr > 0) CtlShowControl(btn);
+  else CtlHideControl(btn);
+
+  store_draw(); // print the prices!!!
+}
+
+/*
+ *  Free some space that we used in the inventory-selection form
+ */
+void free_store_list(FormPtr frm)
+{
+  ListPtr lst;
+  Short i;
+  VoidHand h;
+  if (store_display[0] == NULL) return;
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_st));
+  LstSetListChoices(lst, NULL, 0);
+  for (i = 0 ; i < STORE_LINES ; i++) {
+    h = MemPtrRecoverHandle(store_display[i]);
+    if (h) 
+      MemHandleFree(h);
+    store_display[i] = NULL;
+  }
+}
+
+
+// store_item should never be -1 in haggle
+static void haggle_print_obj()
+{
+  Char buf[160], *p;
+  Word wwlen, wwpixels= SCR_WIDTH-8;//156-2-2;
+  Short x, y, lines = 0;
+  inven_type sold_obj; //, *i_ptr;
+  inven_record *storeinv;
+  RectangleType r;
+  FormPtr frm = FrmGetActiveForm();
+  FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, field_hag), &r);
+
+  if (store_youbuying) {
+    StrPrintF(buf, "Your offer:  "); // was drawn at 25,80 for 160x160...
+    WinDrawChars_rj(buf, StrLen(buf), r.topLeft.x, r.topLeft.y);
+    StrPrintF(buf, "Buying: ");
+    p = buf + StrLen(buf);
+    storeinv = store_inven[in_store];
+    take_one_item(&sold_obj, &storeinv[store_item].sitem); // 1-count item
+    objdes(p, &sold_obj, true);
+  } else {
+    StrPrintF(buf, "Asking price:  ");
+    WinDrawChars_rj(buf, StrLen(buf), r.topLeft.x, r.topLeft.y);
+    StrPrintF(buf, "Selling: ");
+    take_one_item(&sold_obj, &inventory[store_item]); // copy item, set count=1
+    p = buf + StrLen(buf);
+    objdes(p, &sold_obj, true);
+  }
+  // All the News that Fits, We Print.
+  // Actually I don't expect there to be more than two lines.
+  x = y = 2;
+  p = buf;
+  wwlen = 0;
+  while (lines < 3 && StrLen(p) > 0) {
+    wwlen = FntWordWrap(p, wwpixels);
+    WinDrawChars(p, wwlen, x, y);
+    p += wwlen;
+    y += LINE_HEIGHT;
+    lines++;
+  }
+  StrPrintF(buf, "You have: %ld gold pieces", pymisc.au);
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += LINE_HEIGHT + 2;
+  WinDrawGrayLine(0, y, SCR_WIDTH, y);
+}
+
+void haggle_form_enable_autoinc(Short incr)
+{
+  Char tmp[10];
+  FormPtr frm;
+  ControlPtr btn;
+  frm = FrmGetActiveForm();
+  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_hag_incr));
+
+  if (incr == 0) {
+    CtlHideControl(btn);
+    return;
+  }
+
+  if (incr > 0)
+    StrPrintF(tmp, "[+%d]", incr);
+  else
+    StrPrintF(tmp, "[-%d]", 0 - incr);
+  CtlSetLabel(btn, tmp);
+  CtlShowControl(btn);
+}
+
+void store_form_boot()
+{
+  FormPtr frm;
+  ControlPtr btn;
+  frm = FrmGetActiveForm();
+  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_st_buy));
+  CtlHideControl(btn);
+  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_st_sell));
+  CtlHideControl(btn);
+  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_st_prev));
+  CtlHideControl(btn);
+  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_st_next));
+  CtlHideControl(btn);
+  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_st_exit));
+  CtlSetLabel(btn, "OUT!!");
+  CtlShowControl(btn);
+}
+void haggle_form_boot(Boolean kick_out, Char *done)
+{
+  FormPtr frm;
+  ControlPtr btn;
+  frm = FrmGetActiveForm();
+  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_hag_ok));
+  CtlHideControl(btn);
+  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_hag_exit));
+  if (kick_out) {
+    CtlHideControl(btn);
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_hag_boot));
+    CtlShowControl(btn);
+    return;
+  } else {
+    CtlSetLabel(btn, done);
+    CtlShowControl(btn);
+  }
+}
+
+void haggle_form_setfield(Long amt)
+{
+  FormPtr frm;
+  FieldPtr fld;
+  VoidHand h;
+  VoidPtr p;
+  Char buf[20];
+
+  buf[0] = '\0';
+  if (amt) StrPrintF(buf, "%ld", amt);
+  frm = FrmGetActiveForm();
+  fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_hag));
+  h = (VoidHand) FldGetTextHandle(fld);
+  if (!h)
+    h = MemHandleNew(12 * sizeof(Char));
+  FldSetTextHandle(fld, (Handle) 0);
+  p = MemHandleLock(h);
+  StrNCopy(p, buf, 12);
+  MemHandleUnlock(h);
+  FldSetTextHandle(fld, (Handle) h);
+  FldDrawField(fld);
+
+}
+
+void haggle_draw()
+{
+#ifndef I_AM_OS_2
+  if (IsVGA) {
+    FormPtr frm = FrmGetActiveForm();
+    RectangleType r;
+    FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, field_hag), &r);
+    HAG_Y = r.topLeft.y; // y pos of the haggle field
+  }
+#endif
+  // print the name of the thing being haggled
+  haggle_print_obj();
+}
+
+Boolean Haggle_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  FieldPtr fld;
+  FieldAttrType fieldattr;
+  Word chr;
+  VoidHand h;
+  VoidPtr p;
+  CharPtr textp;
+  //  Char buf[20];
+  Long gold, autobid;
+  //  Boolean ok = true;
+  Short outcome;
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* ...init form... */
+    // allocate memory for field
+    h = MemHandleNew(sizeof(Char) * 12);
+    p = MemHandleLock(h);
+    ((Char *)p)[0] = '\0';
+    MemPtrUnlock(p);
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_hag));
+    FldSetTextHandle(fld, (Handle) h);
+    // also set title
+    //    if (store_youbuying) FrmCopyTitle(frm, "Your offer?");
+    //    else FrmCopyTitle(frm, "Asking price?");
+#ifndef I_AM_OS_2
+    if (IsVGA) PrvMoveForm(false);
+#endif
+    FrmDrawForm(frm);
+    FrmSetFocus(frm, FrmGetObjectIndex(frm, field_hag));
+    haggle_draw();
+    if (store_youbuying)
+      purchase_haggle_init();
+    else
+      sell_haggle_init();
+    // haggle_form_enable_autoinc(0); // it starts out unusable anyway.
+    handled = true;
+    break;
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) PrvMoveForm(true);
+    return true;
+#endif
+
+  case keyDownEvent:
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_hag));
+    FldGetAttributes(fld, &fieldattr);
+    // Now, either !fieldattr.hasFocus OR chr == '\n'...
+    chr = e->data.keyDown.chr;
+    switch(chr) {
+    case '\n':
+      if (fieldattr.hasFocus) FldReleaseFocus(fld);
+      // If submit is enabled, do that, else try ok, else boot.
+      if (hit_button_if_usable(frm, btn_hag_ok)) {
+	handled = true;
+	break;
+      } // else FALL THROUGH to try the exit button!!
+    case 'x': case 'X':
+      if (fieldattr.hasFocus) FldReleaseFocus(fld);
+      if (!hit_button_if_usable(frm, btn_hag_exit))
+	hit_button_if_usable(frm, btn_hag_boot);
+      handled = true;
+      break;
+    case '=':
+      if (fieldattr.hasFocus) FldReleaseFocus(fld);
+      hit_button_if_usable(frm, btn_hag_all);
+      handled = true;
+      break;
+    case '+': case '-':
+      if (fieldattr.hasFocus) FldReleaseFocus(fld);
+      hit_button_if_usable(frm, btn_hag_incr);
+      handled = true;
+      break;
+    default:
+      if (fieldattr.hasFocus) {
+	// filter out all non-handled, i.e. non-numeric, characters.
+	handled = true;
+	chr = e->data.keyDown.chr;
+	if ( IsDigit(GetCharAttr(), chr) || (chr == backspaceChr)       ||
+	     (chr == leftArrowChr)       || (chr == rightArrowChr) )
+	  handled = false;
+      } else {
+	// automatically grab focus when numbers are typed
+	if ( IsDigit(GetCharAttr(), chr) )
+	  FrmSetFocus(frm, FrmGetObjectIndex(frm, field_hag));
+      }
+    }
+    break;
+
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_hag));
+    autobid = 0;
+    switch(e->data.ctlSelect.controlID) {
+    case btn_hag_incr:
+      // increment the current offer
+      autobid = haggle_get_incr();
+      handled = true;
+      // fall through
+    case btn_hag_all:
+      // match the current offer
+      if (!handled)
+	autobid = haggle_get_ask();
+      haggle_form_setfield(autobid);
+      // I think that will do the right thing.
+      //      FrmDrawForm(frm);
+      handled = true;
+      break;
+    case btn_hag_ok:
+      textp = FldGetTextPtr(fld); // if (textP) ...
+      // Well, the only problem with StrAToI is that I want StrAToL !!
+      // If the string has length greater than 4, I may have to get funky.
+      gold = StrAToI(textp);
+      haggle_form_setfield(0);
+      if (store_youbuying)
+	outcome = purchase_haggle_endturn(gold);
+      else
+	outcome = sell_haggle_endturn(gold);
+      switch (outcome) {
+      case HAG_ONGOING:
+	break;
+      case HAG_BOUGHT:
+	// need the agreed-on price
+	if (store_youbuying)
+	  store_purchase_end(true);
+	else
+	  store_sell_end(true);
+	break;
+      case HAG_REJECTED:
+	haggle_form_setfield(0);
+	haggle_form_boot(false, "Quit");
+	break;
+      case HAG_BOOTED:
+	haggle_form_setfield(0);
+	haggle_form_boot(true, "blah");
+	break;
+      }
+      handled = true;
+      break;
+    case btn_hag_exit: // cancelled the haggle or succeeded in purchase
+      FldReleaseFocus(fld);
+      FldSetSelection(fld, 0, 0);
+      FldFreeMemory(fld);
+      LeaveForm();
+#ifndef I_AM_OS_2
+      if (IsVGA) PrvMoveForm(true);
+      else
+#endif
+	// also reprint items!  only needed if you succeed in buying something.
+	store_list_tens(0);
+      store_gold_owner(true); // reprint what gold you have
+      reset_haggle_foo(); // clear globals
+      handled = true;
+      break;
+    case btn_hag_boot: // got kicked out
+      FldReleaseFocus(fld);
+      FldSetSelection(fld, 0, 0);
+      FldFreeMemory(fld);
+      LeaveForm();
+      // now leave the store form too!
+      free_store_list(FrmGetActiveForm());
+      LeaveForm();
+      in_store = STORE_NONE;
+      in_a_store = false;
+      reset_haggle_foo(); // clear globals
+      handled = true;
+      // Need to REDRAW our gold!
+      print_stats(STATS_GOLD);
+      show_messages(); // to redraw stats.
+      break;
+    }
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+@
+
+
+1.45
+log
+@redraw store form when you are above it and exit (handera)
+@
+text
+@d106 1
+a106 1
+    /*store_gold_owner(false);*/ // this is done by store_list_tens now!
+d316 1
+d319 1
+a623 2
+    /* // I am disallowing this to maybe save myself some pain.
+       // It's on top of another form that doesn't know to resize.
+a628 1
+    */
+@
+
+
+1.44
+log
+@prevent graffiti-retracting for inv/equ/haggle when over the store form; fix various other things
+@
+text
+@d732 6
+a738 2
+      // also reprint items!  only needed if you succeeded in buying something.
+      store_list_tens(0);
+@
+
+
+1.43
+log
+@fixing bugs (handera display tweaks; store list crash; --more--ing for show-invis...
+@
+text
+@d622 2
+d629 1
+@
+
+
+1.42
+log
+@handera support is mostly working, for some value of mostly
+@
+text
+@d26 2
+a75 1
+static void free_store_list(FormPtr frm);
+d137 1
+a137 1
+	store_current_tens *=2; // the item on ith page moves to 2*ith page
+d139 1
+a139 1
+	store_current_tens /=2; // the item on ith page moves to i/2th page
+d266 1
+a266 1
+void store_draw() // call this after drawing the store list.
+d284 1
+a284 1
+  list_edge = r.topLeft.x + r.extent.x; // = 126;
+d420 1
+a420 1
+static void free_store_list(FormPtr frm)
+d425 1
+a442 1
+  Short btn_edge = 25; // xxxx Just to the right of the [=] button....
+d445 4
+a448 1
+  x = 2; y = 2;
+d450 2
+a451 2
+    StrPrintF(buf, "Your offer:");
+    WinDrawChars(buf, StrLen(buf), btn_edge, SCR_HEIGHT/2);// 25, 80 out of 160
+a452 3
+    //    WinDrawChars(buf, StrLen(buf), x, y);
+    //    y += LINE_HEIGHT;
+    //    StrPrintF(buf, "test %d", store_item);
+a454 2
+    //    i_ptr = &storeinv[store_item].sitem;
+    //    objdes(p, i_ptr, true);
+d458 2
+a459 3
+    StrPrintF(buf, "Asking price:");
+    // "Asking price:" wants to be just to the right of the [=] button....
+    WinDrawChars(buf, StrLen(buf), btn_edge, SCR_HEIGHT/2);// 25, 80 out of 160
+a460 1
+    //    WinDrawChars(buf, StrLen(buf), x, y);  y += LINE_HEIGHT;
+d467 1
+@
+
+
+1.41
+log
+@changing magic #define's to calculations (for handera)
+@
+text
+@d19 2
+a20 1
+#define STORE_LINES 10
+d22 1
+a22 1
+#define Five_Or_Ten (my_prefs.store_is_compacted ? 10 : 5)
+d59 1
+a59 1
+  if (store_item >= 0 && store_item <= 9) {
+d78 1
+a78 1
+Char *store_display[STORE_LINES];
+d181 1
+a181 1
+      if (i >= 10) {
+d183 1
+a183 1
+	i = i % 10;
+d206 1
+a206 1
+      if (store_item >= 0 && store_item <= 9) {
+d228 1
+a228 1
+      //      if (store_item >= 0 && store_item <= 9) {
+d265 61
+d329 1
+a329 1
+  Char tmp_val[160], buf[10], ctmp=' ';
+a337 2
+  Long v;
+  Short len, y = ROW_1, five = FntCharWidth('0');
+d339 1
+a339 1
+  Short list_width, list_edge;// = 126; // fix for handera
+a347 1
+  // figure out where the right edge of the list is
+a348 1
+  list_edge = r.topLeft.x + r.extent.x; // = 126;
+a350 3
+  // erase the rectangle (126,15) to (156,15+110) // 126, 15, 30, 110.
+  RctSetRectangle(&r, list_edge, ROW_1, 6*five, 10*LINE_HEIGHT);
+  WinEraseRectangle(&r, 0);
+a357 2
+  StrPrintF(buf, "%d", store_current_tens);
+  WinDrawChars(buf, 1, 88, 141); // print digit between < - and + > buttons
+a385 18
+    // Also print the price.
+    if (iitem < store[in_store].store_ctr) {
+      v = storeinv[iitem].scost;
+      if (v <= 0) {
+	Long value = -v;
+	value = value * chr_adj() / 100;
+	if (value <= 0)
+	  value = 1;
+	StrPrintF(buf, "%ld", value);
+	len = StrLen(buf);
+	WinDrawChars(buf, len, list_edge + (6-len)*five, y);
+      } else {
+	StrPrintF(buf, "%ld", v);
+	len = StrLen(buf);
+	WinDrawInvertedChars(buf, len, list_edge + (6-len)*five, y);
+      }
+    }
+    y += LINE_HEIGHT;
+d388 1
+a388 1
+      j++; y += LINE_HEIGHT; // don't print a price on this line.
+a406 4
+  // There is no selection in the list now, so make sure no Weight is shown.
+  isgold = !isgold; // (kludge; don't toggle this time.)
+  store_gold_owner(false);
+
+d413 1
+a413 7
+  // Also, let the user know when the store is full, if on the last page.
+  if (store[in_store].store_ctr >= STORE_INVEN_MAX)
+    // Store is full!
+    if (store_current_tens == (store[in_store].store_ctr - 1) / Five_Or_Ten)
+      // We are on the last page!
+      WinDrawChars("*** store is full ***", 21, 2, ROW_1 + (10-1)*LINE_HEIGHT);
+
+d566 14
+a613 7
+#ifndef I_AM_OS_2
+    if (IsVGA) {
+      RectangleType r;
+      FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, field_hag), &r);
+      HAG_Y = r.topLeft.y; // y pos of the haggle field
+    }
+#endif
+d615 1
+a615 2
+    // also print the name of the thing being haggled
+    haggle_print_obj();
+@
+
+
+1.40
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@d277 1
+a277 2
+  Short len, y = 15, five = FntCharsWidth("0", 1);
+  Short list_edge = 126; // xxx handera xxx 160
+d279 1
+d288 5
+d324 1
+a324 1
+      width_str = 122; //124;
+d350 1
+a350 1
+    y += 11;
+d353 1
+a353 1
+      j++; y += 11; // don't print a price on this line.
+d575 7
+@
+
+
+1.39
+log
+@still working on hiding magic constants
+@
+text
+@d93 3
+d110 5
+d566 3
+d580 6
+@
+
+
+1.38
+log
+@just tidying up
+@
+text
+@d270 1
+d280 2
+a281 2
+  // erase the rectangle (126,15) to (156,15+110)
+  RctSetRectangle(&r, 126, 15, 30, 110);
+d330 1
+a330 1
+	WinDrawChars(buf, len, 126 + (6-len)*five, y);
+d334 1
+a334 1
+	WinDrawInvertedChars(buf, len, 126 + (6-len)*five, y);
+d374 1
+a374 1
+      WinDrawChars("*** store is full ***", 21, 2, 15+110-LINE_HEIGHT);
+d403 1
+d409 1
+a409 2
+    // "Your offer:" wants to be just to the right of the [=] button....
+    WinDrawChars(buf, StrLen(buf), 25, SCR_HEIGHT/2); // 25, 80 out of 160
+d423 1
+a423 1
+    WinDrawChars(buf, StrLen(buf), 25, SCR_HEIGHT/2); // 25, 80 out of 160
+@
+
+
+1.37
+log
+@hiding magic numbers
+@
+text
+@a52 1
+  RectangleType r;
+@
+
+
+1.36
+log
+@beginning handerification
+@
+text
+@d34 1
+a34 3
+  RectangleType r;
+  RctSetRectangle(&r, 0, 128, 156, 11);
+  WinEraseRectangle(&r, 0);
+d42 1
+a42 1
+  WinDrawChars(buf, StrLen(buf), 2, 128);
+d64 1
+a64 2
+    RctSetRectangle(&r, 0, 128, 156, 11); // size of the text box above the store buttons
+    WinEraseRectangle(&r, 0);
+d66 1
+a66 1
+    WinDrawChars(buf, StrLen(buf), 2, 128);
+d143 1
+a143 1
+    if (e->screenY > 128 && e->screenY < 128+11) {
+d270 1
+a270 1
+  Short tmp, y = 15; 
+d281 1
+a281 1
+  RctSetRectangle(&r, 126,15, 30, 110);
+d329 2
+a330 3
+	tmp = 6 - StrLen(buf); // lame attempt at right-justification...
+	// it happens that all numbers are 5 pixels wide.
+	WinDrawChars(buf, StrLen(buf), 126 + tmp*5, y);
+d333 2
+a334 3
+	tmp = 6 - StrLen(buf); // lame attempt at right-justification...
+	// it happens that all numbers are 5 pixels wide.
+	WinDrawInvertedChars(buf, StrLen(buf), 126 + tmp*5, y);
+d374 1
+a374 1
+      WinDrawChars("*** store is full ***", 21, 2, 15+110-11);
+a701 84
+
+
+/*
+
+1. Enter shop .....................................................
+
+         Oglign Dragon-Slayer   (Dwarf)      Weaponsmith
+   Item                                                     Asking Price
+a) a Broadsword (2d5) (+0,+0).                                   588
+b) a Small Sword (1d6) (+0,+0).                                  110
+c) a Bastard Sword (3d4) (+0,+0).                                806
+d) a Mace (2d4) (+0,+0).                                         298
+e) a Mace (2d4) (+0,+1).                                         529
+f) a Mace (2d4) (+0,+0).                                         298
+g) a Morningstar (2d6) (+0,+0).                                  913
+h) a War Hammer (3d3) (+0,+0).                                   518
+i) a Mace (2d4) (+0,+0).                                         298
+j) a Light Crossbow (x3) (+0,+0).                                322
+k) a Light Crossbow (x3) (+0,+0).                                322
+l) a Sling (x2) (+0,+0).                                           9
+                                                            - cont. -
+                 Gold Remaining : 721
+
+You may:
+ p) Purchase an item.           b) Browse store's inventory.
+ s) Sell an item.               i/e/t/w/x) Inventory/Equipment Lists.
+ESC) Exit from Building.        ^R) Redraw the screen.
+
+
+2. Purchase .....................................................
+
+What do you offer?
+Asking :  9
+
+What do you offer? 1
+Asking :  9
+
+Hah!  Try again.  -more-
+Asking :  9
+
+Thou knave!  No less than 8 gold pieces.  -more-
+Asking :  8                            Your last offer : 1
+
+What do you offer? 2
+Asking :  9
+
+2 for such a fine item?  HA!  No less than 7.  -more-
+Asking :  7                            Your last offer : 2
+
+May your chickens grow lips.  I want 6 in gold!  -more-
+Asking :  6                            Your last offer : 3
+
+4?!?  You would rob my poor starving children?  -more-
+Asking :  5                            Your last offer : 4
+
+5 is my final offer; take it or leave it.  -more-
+Final Offer :  5                       Your last offer : 4
+
+What do you offer? [+1] 
+Final Offer :  5                       Your last offer : 4
+
+Accepted!  -more-
+Final Offer :  5                       Your last offer : 4
+
+You have a Sling (x2) (+0,+0). (d)
+
+
+... Note you can exit bargaining at any time [you press ESCAPE]
+... Note if you piss off the shopkeeper, you get kicked out & locked out
+
+
+3. Sell .....................................................
+
+
+Selling a Sling (x2) (+0,+0). (d)  -more-
+Offer :  1
+
+What price do you ask? 
+Offer :  1
+
+... Basically like buying.  The item is added to (or removed from) store list.
+
+
+*/
+@
+
+
+1.35
+log
+@tweaking
+@
+text
+@d406 1
+a406 1
+  Word wwlen, wwpixels=156-2-2;
+d413 2
+a414 1
+    WinDrawChars(buf, StrLen(buf), 25, 80);
+d417 1
+a417 1
+    //    y += 11;
+d427 2
+a428 1
+    WinDrawChars(buf, StrLen(buf), 25, 80);
+d430 1
+a430 1
+    //    WinDrawChars(buf, StrLen(buf), x, y);  y += 11;
+d443 1
+a443 1
+    y += 11;
+d448 2
+a449 2
+  y += 11 + 2;
+  WinDrawGrayLine(0, y, 160, y);
+@
+
+
+1.34
+log
+@trying to get 'beam cash' working
+@
+text
+@d186 1
+a186 1
+    case 'x': case 'X': case '9': case '0': objid = btn_st_exit; break;
+@
+
+
+1.33
+log
+@made fields more keyboard-friendly...
+@
+text
+@d551 1
+a551 1
+    // allocate memory for field, I hope.
+d562 1
+@
+
+
+1.32
+log
+@better msgs on floor-change; sped up repeated delay; fewer keypress in spellbk
+@
+text
+@d536 1
+d575 8
+a582 23
+    if (fld->attr.hasFocus) {
+      // filter out all non-handled, i.e. non-numeric, characters.
+      handled = true;
+      chr = e->data.keyDown.chr;
+      if ( IsDigit(GetCharAttr(), chr) ||
+	   (chr == backspaceChr)       ||
+	   (chr == leftArrowChr)       ||
+	   (chr == rightArrowChr) )
+	handled = false;
+    } else {
+      // so, either I need to unfocus the field at some point, or
+      // put this outside the else and see what happens.
+      chr = e->data.keyDown.chr;
+      switch(chr) {
+      case '\n':
+	// If submit is enabled, do that, else try ok, else boot.
+	if (hit_button_if_usable(frm, btn_hag_ok)) {
+	  handled = true;
+	  break;
+	} // else FALL THROUGH to try the other two ok-like buttons
+      case 'x': case 'X':
+	if (!hit_button_if_usable(frm, btn_hag_exit))
+	  hit_button_if_usable(frm, btn_hag_boot);
+d585 20
+a604 2
+      case '=':
+	hit_button_if_usable(frm, btn_hag_all);
+d606 8
+a613 5
+	break;
+      case '+': case '-':
+	hit_button_if_usable(frm, btn_hag_incr);
+	handled = true;
+	break;
+@
+
+
+1.31
+log
+@moving extern decls around
+@
+text
+@d189 1
+a189 3
+      ControlPtr btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, objid));
+      if (btn->attr.usable) 
+	CtlHitControl(btn);
+a585 1
+      ControlPtr btn;
+d590 1
+a590 3
+	btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_hag_ok));
+	if (btn->attr.usable) {
+	  CtlHitControl(btn);
+d595 2
+a596 6
+	btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_hag_exit));
+	if (btn->attr.usable) CtlHitControl(btn);
+	else {
+	  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_hag_boot));
+	  if (btn->attr.usable) CtlHitControl(btn);
+	}
+d600 1
+a600 3
+	btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_hag_all));
+	if (btn->attr.usable)
+	  CtlHitControl(btn);
+d604 1
+a604 3
+	btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_hag_incr));
+	if (btn->attr.usable)
+	  CtlHitControl(btn);
+@
+
+
+1.30
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@a15 1
+extern MoriaPreferenceType my_prefs;
+@
+
+
+1.29
+log
+@tweaking, tinkering; adding /T to show current time and voltage..
+@
+text
+@a12 2
+#include "palm.h"
+//#include "kMoriaRsc.h"
+d14 1
+a14 3
+#include "lock-externs.h"
+#include "kMoriaRsc.h"
+#include <CharAttr.h> /* for IsDigit */ // why is this not working for 3.1??
+@
+
+
+1.28
+log
+@added the dan_van store-item-weight-display patch
+@
+text
+@d105 1
+a105 1
+    isgold = false;
+@
+
+
+1.27
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d51 30
+d105 1
+d110 1
+a110 2
+    isgold = false;
+    store_gold_owner(false);
+d159 1
+d186 1
+d265 2
+d371 4
+@
+
+
+1.26
+log
+@revised stats-redrawing so that it (hopefully) redraws only what has changed
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000,2001 Bridget Spitznagel                        *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+@
+
+
+1.25
+log
+@added teeny little command bar icons
+@
+text
+@d226 1
+a226 1
+      print_stats(STATS_GOLD_AC);
+d676 1
+a676 1
+      print_stats(STATS_GOLD_AC);
+@
+
+
+1.24
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d68 1
+a68 1
+
+d96 15
+@
+
+
+1.23
+log
+@this might fix the memory leak in Store list widget.
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d24 1
+a24 1
+#include <Pilot.h>
+@
+
+
+1.22
+log
+@made store-is-full state less misleading; word wrapped sold item
+@
+text
+@d67 2
+d87 1
+a228 1
+Char *store_display[STORE_LINES];
+d265 4
+d283 1
+a283 1
+      width_str = 123; //124;
+d362 1
+@
+
+
+1.21
+log
+@fixed sell-unknown-item-to-store bug.  most forms navigable via keyboard now.
+@
+text
+@d269 3
+a271 1
+      StrPrintF(tmp_val, "..."); // because store_ctr is "first empty space"
+d332 7
+@
+
+
+1.20
+log
+@fixed some bugs:
+directional commands redraw properly
+event queue is flushed before entering new level
+going back a screen in shops is ok for boundary case now
+made hw buttons which are bound stay bound (disabled) in all forms
+@
+text
+@d73 1
+a73 1
+    
+d127 2
+d130 1
+a130 1
+    case pageUpChr:
+d134 1
+a134 1
+    case pageDownChr:
+d138 21
+d521 48
+a568 8
+    // filter out all non-handled, i.e. non-numeric, characters.
+    handled = true;
+    chr = e->data.keyDown.chr;
+    if ( IsDigit(GetCharAttr(), chr) ||
+	 (chr == backspaceChr)       ||
+	 (chr == leftArrowChr)       ||
+	 (chr == rightArrowChr) )
+      handled = false;
+@
+
+
+1.19
+log
+@tweaked notice
+@
+text
+@d233 4
+a236 3
+    store_current_tens = 0; // first screen
+  else if (store_current_tens < 0)
+    store_current_tens = store[in_store].store_ctr / Five_Or_Ten;// last screen
+d258 1
+@
+
+
+1.18
+log
+@mumble
+@
+text
+@d5 1
+a5 1
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+@
+
+
+1.17
+log
+@fixed store/inv/equ bug
+@
+text
+@d431 24
+d464 1
+a464 1
+  Char buf[20];
+a467 2
+    
+    // CALLBACK_PROLOGUE
+d520 1
+a520 9
+      StrPrintF(buf, "%ld", autobid);
+      h = (VoidHand) FldGetTextHandle(fld);
+      if (!h)
+	h = MemHandleNew(12 * sizeof(Char));
+      FldSetTextHandle(fld, (Handle) 0);
+      p = MemHandleLock(h);
+      StrNCopy(p, buf, 12);
+      MemHandleUnlock(h);
+      FldSetTextHandle(fld, (Handle) h);
+a522 1
+      FldDrawField(fld);
+d530 1
+d536 2
+a537 1
+      case HAG_ONGOING: break;
+d539 1
+d546 1
+d550 1
+a588 2
+
+    // CALLBACK_EPILOGUE
+@
+
+
+1.16
+log
+@rearranged menus, fixed search-mode
+@
+text
+@d170 4
+a173 1
+      FrmPopupForm(InvForm);
+d219 1
+d300 6
+@
+
+
+1.15
+log
+@added non-compact view for stores
+@
+text
+@d181 3
+a183 1
+      // XXX Need to REDRAW our gold!
+a542 1
+      // XXXX Also need to reset globals/statics
+d544 1
+a544 1
+      // now leave the store form too!  better test this, sometime.
+d551 3
+a553 1
+      // XXX Need to REDRAW our gold!
+@
+
+
+1.14
+log
+@added some preferences
+@
+text
+@d35 6
+d84 1
+d98 4
+d105 1
+d144 1
+a144 1
+      store_item = LstGetSelection(lst);
+d147 1
+a147 1
+	store_item += 10*store_current_tens;
+d181 1
+d198 1
+a198 1
+Char *store_display[10];
+d201 4
+a204 2
+  Short i, iitem;
+  Char tmp_val[160], buf[10]; //, c;
+d217 3
+a219 2
+  if (plus != 0 && store[in_store].store_ctr <= 10)//store_ctr==#items in store
+    return;// we're trying to scroll but nothing happens
+d226 2
+a227 2
+  if (store_current_tens*10 >= store[in_store].store_ctr) // "..."
+    store_current_tens = 0;
+d229 1
+a229 1
+    store_current_tens = store[in_store].store_ctr / 10;// I think it will work
+d233 1
+a233 1
+  for (i = 0 ; i < 10 ; i++) {
+d236 1
+a236 1
+    iitem = i+store_current_tens*10;
+d238 1
+a238 1
+    if (iitem >= store[in_store].store_ctr) // yes, I really do mean >=
+d240 2
+a241 1
+    else {
+d243 1
+a244 2
+      // length_str gets set to the # of chars that will fit in 124
+      // width_str gets set to the # of pixels that those chars will use
+a245 1
+      length_str = StrLen(tmp_val); // max chars to allow
+d247 1
+d251 2
+a252 2
+    store_display[i] = (Char *) md_malloc(1 + length_str);
+    StrCopy(store_display[i], tmp_val);
+d273 15
+d291 1
+a291 1
+  LstSetListChoices(lst, store_display, 10);
+d306 1
+a306 1
+  for (i = 0 ; i < 10 ; i++) {
+d550 1
+@
+
+
+1.13
+log
+@added menu option in store to turn off haggling (for a fixed% markup)
+@
+text
+@d31 2
+a34 4
+Boolean store_is_compacted = true; // this needs to be saved!!! xxxx
+Boolean store_is_haggling  = true; // this needs to be saved!!! xxxx
+// is-haggling is checked in noneedtobargain.
+
+d91 2
+a92 1
+      store_is_compacted = !store_is_compacted;
+d96 2
+a97 1
+      store_is_haggling = !store_is_haggling;
+@
+
+
+1.12
+log
+@fixed ring-wearing
+@
+text
+@d33 3
+d88 12
+@
+
+
+1.11
+log
+@scrolls enabled, spells direction selector added
+@
+text
+@d488 1
+d495 1
+d502 1
+@
+
+
+1.10
+log
+@fixed in haggling: name-of-item bug (must get the singular item)
+@
+text
+@d274 1
+a274 1
+  inven_type sold_obj, *i_ptr;
+@
+
+
+1.9
+log
+@fixed the buy-out-an-item store bug, maybe
+@
+text
+@d286 4
+a289 2
+    i_ptr = &storeinv[store_item].sitem;
+    objdes(p, i_ptr, true);
+@
+
+
+1.8
+log
+@adding GPL comment
+@
+text
+@a71 2
+    // This is just for debugging purposes - it will let me
+    // examine the various stores without moving the rogue.
+@
+
+
+1.7
+log
+@spellbooks / holy books can be browsed
+@
+text
+@d1 23
+@
+
+
+1.6
+log
+@mages can gain spells now
+(note: there is a tiny memory leak in learn_the_spell, form_spell.c)
+@
+text
+@d361 1
+a361 1
+  Boolean ok = true;
+@
+
+
+1.5
+log
+@adding spell/prayer selection forms
+@
+text
+@d129 1
+a129 1
+      LeaveForm(true);
+d461 1
+a461 1
+      LeaveForm(true);
+d471 1
+a471 1
+      LeaveForm(true);
+d474 1
+a474 1
+      LeaveForm(true);
+@
+
+
+1.4
+log
+@store: selling implemented
+@
+text
+@d32 1
+d36 1
+a50 2
+    test = 1; //    test = (test+1) % MAX_STORES;
+    in_store = 0;
+a60 1
+    in_a_store = true;
+@
+
+
+1.3
+log
+@Haggling in the purchase direction is mostly working (don't try sell though)
+@
+text
+@d124 1
+d315 17
+d385 5
+a389 2
+    purchase_haggle_init();
+    haggle_form_enable_autoinc(0);
+d437 4
+a440 1
+      outcome = purchase_haggle_endturn(gold);
+d444 4
+a447 1
+	store_purchase_end(true);
+@
+
+
+1.2
+log
+@fixed store scrolling, minor bugs
+@
+text
+@a15 1
+static void store_list_tens(Short dir);
+d33 1
+a33 1
+#define STORE_NONE 0
+d49 2
+a50 2
+    test = (test+1) % MAX_STORES;
+    in_store = test;
+d103 2
+a104 1
+	  FrmPopupForm(HaggleForm);
+d131 1
+d150 1
+a150 1
+static void store_list_tens(Short plus)
+d287 1
+a287 1
+  StrPrintF(buf, "(You have: %ld gold pieces)", pymisc.au);
+d289 42
+d343 1
+a343 1
+  Long gold;
+d345 1
+d367 2
+d386 1
+d388 5
+d395 3
+a397 2
+      handled = true;
+      StrPrintF(buf, "%ld", 10L); // or whatever the current offer is
+d416 12
+a427 9
+      // hm.. if buying, make sure 'gold' is not more than you have
+      //      ok = store_make_offer(gold, ...);
+      if (0) {
+	FldReleaseFocus(fld);
+	FldSetSelection(fld, 0, 0);
+	FldFreeMemory(fld);
+	LeaveForm(true);
+	store_list_tens(0);
+	store_gold_owner(true); // reprint what gold you have
+d431 1
+a431 1
+    case btn_hag_exit:
+d437 14
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d13 1
+a31 1
+  
+d48 4
+d63 1
+d99 1
+d101 5
+a105 2
+	store_youbuying = true;
+	FrmPopupForm(HaggleForm);
+d118 7
+a124 7
+      frm = FrmGetActiveForm();
+      lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_st));
+      store_item = LstGetSelection(lst);
+      if (store_item >= 0 && store_item <= 9) {
+	store_youbuying = false;
+	FrmPopupForm(InvForm);
+      }
+a148 1
+Short store_current_tens;
+d151 1
+a151 1
+  Short i;
+d163 1
+a163 2
+  test = (test+1) % MAX_STORES;
+  in_store = test;
+d165 2
+a166 1
+  storeinv = store_inven[in_store];
+d171 8
+a178 1
+  store_current_tens += plus; // this needs to be mod-something...
+d183 4
+a186 3
+    i_ptr = &storeinv[i].sitem;
+    if (i >= store[in_store].store_ctr)
+      StrPrintF(tmp_val, "...");
+d192 1
+a192 1
+      width_str = 124;
+d201 2
+a202 2
+    if (i < store[in_store].store_ctr) {
+      v = storeinv[i].scost;
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

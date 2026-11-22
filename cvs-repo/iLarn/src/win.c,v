@@ -1,0 +1,98 @@
+head	1.3;
+access;
+symbols
+	Release-2001_08_06:1.3
+	Release-2001_06_15:1.2;
+locks; strict;
+comment	@ * @;
+
+
+1.3
+date	2001.08.05.03.25.14;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.05.05.20.26.20;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.03.01.06.34;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@moved scores into saveDB; unique ids no longer used in iLarnDB; next, beaming
+@
+text
+@#include "palm.h"
+#include "sections.h"
+#include "defines.h"
+#include "types.h"
+#include "win.h"
+
+extern LarnPreferenceType my_prefs;
+
+// except for "erase_stuff", which is mysteriously SEC_3,
+// these are all called by SEC_5 things.
+
+void qWinEraseRectangle(RectanglePtr r, Word cornerDiam)
+{
+  if (my_prefs.black_bg)
+    WinDrawRectangle(r, cornerDiam);
+  else
+    WinEraseRectangle(r, cornerDiam);
+}
+void qWinDrawLine(short x1, short y1, short x2, short y2)
+{
+  if (my_prefs.black_bg)
+    WinEraseLine(x1, y1, x2, y2);
+  else
+    WinDrawLine(x1, y1, x2, y2);
+}
+void qWinEraseLine(short x1, short y1, short x2, short y2)
+{
+  if (my_prefs.black_bg)
+    WinDrawLine(x1, y1, x2, y2);
+  else
+    WinEraseLine(x1, y1, x2, y2);
+}
+void qWinDrawChars(CharPtr chars, Word len, SWord x, SWord y)
+{
+  if (my_prefs.black_bg)
+    WinDrawInvertedChars(chars, len, x, y);
+  else
+    WinDrawChars(chars, len, x, y);
+}
+@
+
+
+1.2
+log
+@tinkering with map.  fixed keyboard running bug
+@
+text
+@d10 1
+a10 1
+// these are all called by SEC_L things.
+@
+
+
+1.1
+log
+@inverted-screen (black background) possible but 4-button popup is still white
+@
+text
+@d5 1
+d9 4
+a12 1
+void qWinEraseRectangle(RectanglePtr r, Word cornerDiam) //
+@
+

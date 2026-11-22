@@ -1,0 +1,228 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.05.31.00.23.00;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.23.00;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>iRogue (etc) Color Survey</title>
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="http://roguelike-palm.sourceforge.net/green.css" media="screen">
+  </head>
+
+  <body>
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3>iRogue (etc) Color Survey</h3>
+<P> <i>This <a href="http://roguelike-palm.sourceforge.net/survey/index.php">survey</a> is about the PalmOS games
+(such as <a href="http://roguelike-palm.sourceforge.net/iRogue/index.php">iRogue</a>) that are
+part of the <a href="http://roguelike-palm.sourceforge.net/index.php">Roguelikes for PalmOS</a> project
+hosted at <a href="http://sourceforge.net">SourceForge</a>.</i>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table>
+<!-- -->
+<tr>
+	<td colspan="3"><b>Have a color PalmOS device?</b></td>
+</tr>
+<tr>
+	<td><font>No, and I never plan to get one!</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif" height=10 width=$%a1;>&nbsp;$%a1;%</td>
+ <td>$a1;</td>
+</tr>
+<tr>
+	<td><font>No, but I want to get one soon.</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif" height=10 width=$%a2;>&nbsp;$%a2;%</td>
+ <td>$a2;</td>
+</tr>
+<tr>
+	<td><font>I take the 5th. </font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif" height=10 width=$%a3;>&nbsp;$%a3;%</td>
+ <td>$a3;</td>
+</tr>
+<tr>
+	<td><font>Yes, but I'm getting rid of it.</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif" height=10 width=$%a4;>&nbsp;$%a4;%</td>
+ <td>$a4;</td>
+</tr>
+<tr>
+	<td><font>Yes, and I'll be sticking with color!</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif" height=10 width=$%a5;>&nbsp;$%a5;%</td>
+ <td>$a5;</td>
+</tr>
+
+
+<!-- -->
+<tr>
+  <td colspan="3"><b>Want a color version of iRogue / iLarn / kMoria /
+whatever?</b></td>
+</tr>
+<tr>
+	<td><font>No; I don't see the point!</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif" height=10 width=$%b1;>&nbsp;$%b1;%</td>
+ <td>$b1;</td>
+</tr>
+<tr>
+	<td><font>Maybe, if it were done My Way</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif" height=10 width=$%b2;>&nbsp;$%b2;%</td>
+ <td>$b2;</td>
+</tr>
+<tr>
+	<td><font>Yes, any color would be neat</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif" height=10 width=$%b3;>&nbsp;$%b3;%</td>
+ <td>$b3;</td>
+</tr>
+<tr>
+	<td><font>Santa bring me 256-color and a pony!</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif" height=10 width=$%b4;>&nbsp;$%b4;%</td>
+ <td>$b4;</td>
+</tr>
+
+
+<!-- -->
+<tr>
+	<td colspan="3"><b>How many colors would be useful?</b></td>
+</tr>
+<tr>
+	<td><font>Don't want color / don't care</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif" height=10 width=$%c1;>&nbsp;$%c1;%</td>
+ <td>$c1;</td>
+</tr>
+<tr>
+	<td><font>1 (plus "black" and "white") </font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif" height=10 width=$%c2;>&nbsp;$%c2;%</td>
+ <td>$c2;</td>
+</tr>
+<tr>
+	<td><font>2 (plus "black" and "white") </font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif" height=10 width=$%c3;>&nbsp;$%c3;%</td>
+ <td>$c3;</td>
+</tr>
+<tr>
+	<td><font>4 (plus "black" and "white") </font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif" height=10 width=$%c4;>&nbsp;$%c4;%</td>
+ <td>$c4;</td>
+</tr>
+<tr>
+	<td><font>16 (plus "black" and "white") </font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif" height=10 width=$%c5;>&nbsp;$%c5;%</td>
+ <td>$c5;</td>
+</tr>
+<tr>
+	<td><font>256 (plus "black" and "white") </font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif" height=10 width=$%c6;>&nbsp;$%c6;%</td>
+ <td>$c6;</td>
+</tr>
+<tr>
+	<td><font>Bring it on, I want them all</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif" height=10 width=$%c7;>&nbsp;$%c7;%</td>
+ <td>$c7;</td>
+</tr>
+
+<!-- -->
+<tr>
+	<td colspan="3"><b>I want to set the colors for</b></td>
+</tr>
+<tr>
+	<td><font>Don't want color / don't care </font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif" height=10 width=$%d1;>&nbsp;$%d1;%</td>
+ <td>$d1;</td>
+</tr>
+<tr>
+	<td><font>Turn color "on" or "off" overall</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif" height=10 width=$%d2;>&nbsp;$%d2;%</td>
+ <td>$d2;</td>
+</tr>
+<tr>
+  <td><font>Objects - all objects 1 color</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif" height=10 width=$%d3;>&nbsp;$%d3;%</td>
+ <td>$d3;</td>
+</tr>
+<tr>
+  <td><font>Monsters - all monsters 1 color</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif" height=10 width=$%d4;>&nbsp;$%d4;%</td>
+ <td>$d4;</td>
+</tr>
+<tr>
+  <td><font>Objects 1 color, monsters 1 color </font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif" height=10 width=$%d5;>&nbsp;$%d5;%</td>
+ <td>$d5;</td>
+</tr>
+<tr>
+  <td><font>Kinds of objects</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif" height=10 width=$%d6;>&nbsp;$%d6;%</td>
+ <td>$d6;</td>
+</tr>
+<tr>
+  <td><font>Kinds of monsters</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif" height=10 width=$%d7;>&nbsp;$%d7;%</td>
+ <td>$d7;</td>
+</tr>
+<tr>
+  <td><font>As much control as possible</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif" height=10 width=$%d8;>&nbsp;$%d8;%</td>
+ <td>$d8;</td>
+</tr>
+
+
+<!-- -->
+<tr>
+	<td colspan="2" align="CENTER">Total:&nbsp;$tot;</td>
+</tr>
+</table>
+
+<P> If you have some thoughts that are not covered in this survey you can
+send email, or write your idea on the
+<a href="http://roguelike-palm.sourceforge.net/wiki/">WikiWiki</a> (a set of
+web pages that anyone can modify without knowing any html).
+    <hr>
+    <address><a href="mailto:i0lanthe@@users.sourceforge.net">email</a></address>
+<!-- Created: Wed Aug  2 17:13:41 EDT 2000 -->
+<!-- hhmts start -->
+Last modified: Tue Dec 12 01:31:09 EST 2000
+<!-- hhmts end -->
+  </body>
+</html>
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

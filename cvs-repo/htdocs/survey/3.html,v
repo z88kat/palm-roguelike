@@ -1,0 +1,177 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.05.31.00.22.59;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.59;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>iRogue (etc) Color Survey</title>
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+  </head>
+
+  <body>
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3>iRogue (etc) Color Survey</h3>
+<P> <i>This <a href="index.php">survey</a> is about the PalmOS games
+(such as <a href="../iRogue/index.php">iRogue</a>) that are
+part of the <a href="../index.php">Roguelikes for PalmOS</a> project
+hosted at <a href="http://sourceforge.net">SourceForge</a>.</i>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<form action="http://roguelike-palm.sourceforge.net/cgi-bin/vote.pl" method=get>
+<!-- 'value' must be the name of a section in the config file -->
+<input type="hidden" name="name" value="color">
+
+<P> A few people have been asking whether there will be a future color
+version.  This depends a great deal on user demand.  I don't have a
+color device to test on, and don't plan to get one in the foreseeable
+future, thus I will not attempt color unless I hear some wild
+impassioned pleas.
+
+<br> (Of course I wouldn't object if someone wanted to give me a
+Prism.  Yeah, right.)
+<hr>
+<P>
+(Yo, if you don't have color, we still want to hear from you.  Even if
+you just mark "don't care" on all the other questions.)
+<P>
+<b>Have a color PalmOS device?</b><br>
+<input type="Radio" name="a" value="1">
+No, and I never plan to get one! <br>
+<input type="Radio" name="a" value="2">
+No, but I want to get one soon. <br>
+<input type="Radio" name="a" value="3">
+I take the 5th. <br>
+<input type="Radio" name="a" value="4">
+Yes, but I'm getting rid of it. <br>
+<input type="Radio" name="a" value="5">
+Yes, and I'll be sticking with color!
+<P>
+Most probably,
+a color version would be made available in parallel with the regular
+b/w version (as the OS 2.x version is, for different reasons)
+so that non-color people would not see an increase in program size.
+<P>
+<b>Want a color version of iRogue / iLarn / kMoria / whatever?</b><br>
+<input type="Radio" name="b" value="1">
+No; even if I have color I don't see the point! <br>
+<input type="Radio" name="b" value="2">
+Maybe, but only if it were done in the way that I particularly want it <br>
+<input type="Radio" name="b" value="3">
+Yes, any addition of color would be neat, I'm not picky <br>
+<input type="Radio" name="b" value="4">
+Santa please bring me 256-color iRogue and a pony!
+<P>
+<b>How many colors would be distinct and useful?</b><br>
+<input type="Radio" name="c" value="1">
+Don't want color / don't care <br>
+<input type="Radio" name="c" value="2">
+1 (plus "black" and "white") <br>
+<input type="Radio" name="c" value="3">
+2 (plus "black" and "white") <br>
+<input type="Radio" name="c" value="4">
+4 (plus "black" and "white") <br>
+<input type="Radio" name="c" value="5">
+16 (plus "black" and "white") <br>
+<input type="Radio" name="c" value="6">
+256 (plus "black" and "white") <br>
+<input type="Radio" name="c" value="7">
+Bring it on, I can distinguish as many colors as you care to use
+
+<P> Colors could be either pre-set (e.g. monsters are always red), or
+user-configurable (you decide whether all monsters are red, orange,
+yellow,..or violet; or maybe you can set different types of monster to
+different colors).  Too much of this would be a pain in the butt for
+both of us, if you ask me.
+
+<P>
+<b>I want to be able to set the colors for</b><br>
+<input type="Radio" name="d" value="1">
+Don't want color / don't care <br>
+<input type="Radio" name="d" value="2">
+Hey, I just want to be able to turn color "on" and "off". <br>
+<input type="Radio" name="d" value="3">
+Objects (meaning non-animate things) - so I can make all objects be khaki <br>
+<input type="Radio" name="d" value="4">
+Monsters - so I can make all monsters be chartreuse <br>
+<input type="Radio" name="d" value="5">
+Objects and monsters - I can make objects orange and monsters maroon<br>
+<input type="Radio" name="d" value="6">
+<b>Kinds of</b> objects - I can make walls blue, scrolls red, armors green;
+if it has its own symbol (#?[) it gets its own color <br>
+<input type="Radio" name="d" value="7">
+<b>Kinds of</b> monsters - I can make goblins green, kobolds red, hobgoblins
+blue; if it has its own letter (GKH) it gets its own color <br>
+<input type="Radio" name="d" value="8">
+Kinds of objects, kinds of monsters, however fine a degree of control you can think of - I want it<br>
+
+<P> If you have some thoughts that are not covered in this survey you can
+send email, or write your idea on the
+<a href="http://roguelike-palm.sourceforge.net/wiki/">WikiWiki</a> (a set of
+web pages that anyone can modify without knowing any html).
+(But submit this survey first - these links are on the next page too.)
+
+<P>
+
+<br>
+<input type=submit value="Submit">
+<input type=reset value="Reset">
+<a href="http://roguelike-palm.sourceforge.net/cgi-bin/vote.pl?name=color&action=view">
+Result</a>
+
+
+</form>
+
+    <hr>
+    <address><a href="mailto:i0lanthe@@users.sourceforge.net">email</a></address>
+<!-- Created: Wed Aug  2 17:13:41 EDT 2000 -->
+<!-- hhmts start -->
+Last modified: Tue Dec 12 01:18:01 EST 2000
+<!-- hhmts end -->
+  </body>
+</html>
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

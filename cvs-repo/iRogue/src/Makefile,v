@@ -1,0 +1,764 @@
+head	1.10;
+access;
+symbols
+	pre-internationalization_20040113:1.10.2.7
+	Release-2002_05_10-on-Handera-branch:1.10.2.2
+	Release-2001_07_01-on-Handera-branch:1.10.2.2
+	Release-2001_04_26-Handera-branch:1.10.0.2
+	Release-2001_04_26:1.10
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.10
+date	2001.04.25.03.48.32;	author i0lanthe;	state Exp;
+branches
+	1.10.2.1;
+next	1.9;
+
+1.9
+date	2001.02.27.06.08.43;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2001.02.25.00.37.11;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.02.24.05.53.58;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.02.24.05.28.19;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.02.24.03.25.02;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.08.24.03.26.17;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.08.21.04.32.35;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.08.16.01.38.39;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.06.15.21.16.38;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.06.15.21.16.38;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+1.10.2.1
+date	2001.07.02.03.14.01;	author i0lanthe;	state Exp;
+branches;
+next	1.10.2.2;
+
+1.10.2.2
+date	2001.07.02.03.15.42;	author i0lanthe;	state Exp;
+branches;
+next	1.10.2.3;
+
+1.10.2.3
+date	2003.11.04.16.02.06;	author i0lanthe;	state Exp;
+branches;
+next	1.10.2.4;
+
+1.10.2.4
+date	2003.11.04.16.13.15;	author i0lanthe;	state Exp;
+branches;
+next	1.10.2.5;
+
+1.10.2.5
+date	2003.11.04.16.31.58;	author i0lanthe;	state Exp;
+branches;
+next	1.10.2.6;
+
+1.10.2.6
+date	2003.11.04.17.02.49;	author i0lanthe;	state Exp;
+branches;
+next	1.10.2.7;
+
+1.10.2.7
+date	2004.01.12.06.32.34;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.10
+log
+@Revised color *again*, maybe black-backgroudn will work for color folks now?
+@
+text
+@TARGET = iRogue
+APPNAME = "iRogue"
+APPID = "RoGe"
+
+OBJS = Globals.o chuvmey_nolib.o color.o dead.o display.o hit.o \
+	inventory.o level.o lib_md.o lib_monster.o lib_object.o main.o \
+	message.o monster.o move.o my_object.o object.o pack.o random.o \
+	ring.o room.o save.o spec_hit.o throw.o trap.o use.o win.o zap.o \
+	$(TARGET).o $(TARGET)-sections.o
+
+INCS = Globals.h rogue.h rogue_defines.h rogue_prototypes.h librogue.h
+
+CC = m68k-palmos-gcc
+#CFLAGS = -Wall -g -O2 -palmos2 -DI_AM_OS_2
+# can compile without color, but it doesn't really save any space
+CFLAGS = -Wall -g -O2 -palmos3.5 -DNON_INTERNATIONAL -DI_AM_COLOR
+##CFLAGS = -Wall -g -O2 -palmos3.1 -DNON_INTERNATIONAL
+
+PILRC = pilrc
+#OBJRES = m68k-palmos-obj-res
+BUILDPRC = build-prc
+PILOTXFER = pilot-xfer
+MULTILINK = multilink
+
+all: iRogue.prc
+
+.S.o:
+	$(CC) $(TARGETFLAGS) -c $<
+
+.c.s:
+	$(CC) $(CSFLAGS) $<
+
+$(TARGET).prc: $(TARGET) bin.stamp
+#	$(BUILDPRC) $(TARGET).prc $(APPNAME) $(APPID) $(TARGET) *.bin
+	$(BUILDPRC) $(TARGET).def $(TARGET) *.bin
+
+$(TARGET): $(OBJS) $(TARGET)-sections.ld
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(TARGET)-sections.ld
+
+bin.stamp: $(TARGET).rcp $(TARGET).pbm Font56.txt
+	$(PILRC) $(TARGET).rcp .
+	touch bin.stamp
+
+$(TARGET)-sections.o: $(TARGET)-sections.s
+	$(CC) -c $(TARGET)-sections.s
+
+$(TARGET)-sections.s $(TARGET)-sections.ld: $(TARGET).def
+	multigen $(TARGET).def
+
+
+
+depend:
+#	makedepend -Y -I/usr/local/pilot/m68k-palmos/include/ *.c
+	makedepend -Y  *.c
+
+dingy:
+	-rm -f *.[oa] $(TARGET)
+
+clean:
+	-rm -f *.[oa] $(TARGET) *.bin bin.stamp *.grc Makefile.bak
+
+veryclean: clean
+	-rm -f $(TARGET).prc pilot.ram pilot.scratch
+
+# DO NOT DELETE
+
+Globals.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+Globals.o: rogue_prototypes.h sections.h librogue.h
+dead.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+dead.o: rogue_prototypes.h sections.h librogue.h
+chuvmey_nolib.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+chuvmey_nolib.o: rogue_prototypes.h sections.h librogue.h
+color.o: palm.h rogue.h rogue_defines.h rogue_prototypes.h sections.h
+color.o: librogue.h
+display.o: palm.h librogue.h sections.h rogue_defines.h
+hit.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+hit.o: rogue_prototypes.h sections.h librogue.h
+iRogue.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+iRogue.o: rogue_prototypes.h sections.h librogue.h
+inventory.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+inventory.o: rogue_prototypes.h sections.h librogue.h
+level.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+level.o: rogue_prototypes.h sections.h librogue.h
+lib_md.o: palm.h librogue.h sections.h rogue_defines.h
+lib_monster.o: palm.h librogue.h sections.h rogue_defines.h
+lib_object.o: palm.h librogue.h sections.h rogue_defines.h iRogueRsc.h
+main.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+main.o: rogue_prototypes.h sections.h librogue.h
+message.o: palm.h librogue.h sections.h rogue_defines.h
+monster.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+monster.o: rogue_prototypes.h sections.h librogue.h
+move.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+move.o: rogue_prototypes.h sections.h librogue.h
+my_object.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+my_object.o: rogue_prototypes.h sections.h librogue.h
+object.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+object.o: rogue_prototypes.h sections.h librogue.h
+pack.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+pack.o: rogue_prototypes.h sections.h librogue.h
+random.o: palm.h librogue.h sections.h rogue_defines.h
+ring.o: palm.h librogue.h sections.h rogue_defines.h
+room.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+room.o: rogue_prototypes.h sections.h librogue.h
+save.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+save.o: rogue_prototypes.h sections.h librogue.h
+spec_hit.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+spec_hit.o: rogue_prototypes.h sections.h librogue.h
+throw.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+throw.o: rogue_prototypes.h sections.h librogue.h
+trap.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+trap.o: rogue_prototypes.h sections.h librogue.h
+use.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+use.o: rogue_prototypes.h sections.h librogue.h
+zap.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+zap.o: rogue_prototypes.h sections.h librogue.h
+@
+
+
+1.10.2.1
+log
+@fixup to make sure still compiles for OS2 (compiles, yes, tested, no)
+@
+text
+@d14 1
+a14 1
+CFLAGS = -Wall -g -O2 -palmos2 -DI_AM_OS_2
+d16 1
+a16 1
+#CFLAGS = -Wall -g -O2 -palmos3.5 -DNON_INTERNATIONAL -DI_AM_COLOR
+@
+
+
+1.10.2.2
+log
+@oops
+@
+text
+@d14 1
+a14 1
+#CFLAGS = -Wall -g -O2 -palmos2 -DI_AM_OS_2
+d16 1
+a16 1
+CFLAGS = -Wall -g -O2 -palmos3.5 -DNON_INTERNATIONAL -DI_AM_COLOR
+@
+
+
+1.10.2.3
+log
+@reorganization continues...
+@
+text
+@d6 1
+a6 1
+	inventory.o level.o lib_monster.o lib_object.o main.o \
+a8 1
+	util.o \
+d11 1
+a11 3
+#INCS = Globals.h rogue.h rogue_defines.h rogue_prototypes.h librogue.h
+INCS = constant.h globals.h handera.h iRogue.h iRogueRsc.h palm.h \
+	prototypes.h sections.h types.h
+d67 49
+a115 58
+Globals.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+Globals.o: prototypes.h globals.h
+chuvmey_nolib.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+chuvmey_nolib.o: prototypes.h globals.h
+color.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+color.o: prototypes.h globals.h
+dead.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+dead.o: prototypes.h globals.h
+display.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+display.o: prototypes.h globals.h handera.h
+hit.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h prototypes.h
+hit.o: globals.h
+iRogue.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+iRogue.o: prototypes.h globals.h handera.h
+inventory.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+inventory.o: prototypes.h globals.h handera.h
+level.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+level.o: prototypes.h globals.h
+lib_md.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+lib_md.o: prototypes.h globals.h
+lib_monster.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+lib_monster.o: prototypes.h globals.h
+lib_object.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+lib_object.o: prototypes.h globals.h
+main.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+main.o: prototypes.h globals.h handera.h
+message.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+message.o: prototypes.h globals.h handera.h
+monster.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+monster.o: prototypes.h globals.h
+move.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+move.o: prototypes.h globals.h
+my_object.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+my_object.o: prototypes.h globals.h
+object.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+object.o: prototypes.h globals.h
+pack.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+pack.o: prototypes.h globals.h
+random.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+random.o: prototypes.h globals.h
+ring.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+ring.o: prototypes.h globals.h
+room.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+room.o: prototypes.h globals.h
+save.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+save.o: prototypes.h globals.h
+spec_hit.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+spec_hit.o: prototypes.h globals.h
+throw.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+throw.o: prototypes.h globals.h
+trap.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+trap.o: prototypes.h globals.h
+use.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h prototypes.h
+use.o: globals.h
+win.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h prototypes.h
+win.o: globals.h
+zap.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h prototypes.h
+zap.o: globals.h
+@
+
+
+1.10.2.4
+log
+@merge lib_monster back into monster
+@
+text
+@d5 2
+a6 2
+OBJS = Globals.o color.o dead.o display.o hit.o \
+	inventory.o level.o lib_object.o main.o \
+d72 2
+d88 4
+a123 2
+util.o: iRogue.h palm.h iRogueRsc.h sections.h constant.h types.h
+util.o: prototypes.h globals.h
+@
+
+
+1.10.2.5
+log
+@more rearranging
+@
+text
+@d6 1
+a6 1
+	inventory.o level.o main.o \
+@
+
+
+1.10.2.6
+log
+@splitting iRogue.c into form_[blah].c
+@
+text
+@d5 2
+a6 1
+OBJS = Globals.o color.o dead.o display.o hit.o inventory.o level.o main.o \
+a9 2
+	form_about.o form_hwbuttons.o form_map.o form_messagelog.o \
+	form_prefs.o form_revivify.o form_save.o form_topscores.o form_wiz.o \
+d70 3
+a72 3
+Globals.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+Globals.o: types.h prototypes.h globals.h
+color.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+d74 1
+a74 1
+dead.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+d76 9
+a84 27
+display.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+display.o: types.h prototypes.h globals.h
+form_about.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+form_about.o: types.h prototypes.h globals.h
+form_hwbuttons.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+form_hwbuttons.o: types.h prototypes.h globals.h
+form_map.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+form_map.o: types.h prototypes.h globals.h
+form_messagelog.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h
+form_messagelog.o: constant.h types.h prototypes.h globals.h
+form_prefs.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+form_prefs.o: types.h prototypes.h globals.h
+form_revivify.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+form_revivify.o: types.h prototypes.h globals.h
+form_save.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+form_save.o: types.h prototypes.h globals.h
+form_topscores.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+form_topscores.o: types.h prototypes.h globals.h
+form_wiz.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+form_wiz.o: types.h prototypes.h globals.h
+hit.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+hit.o: prototypes.h globals.h
+iRogue.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+iRogue.o: prototypes.h globals.h
+inventory.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+inventory.o: types.h prototypes.h globals.h
+level.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+d86 9
+a94 7
+main.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+main.o: prototypes.h globals.h
+message.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+message.o: types.h prototypes.h globals.h
+monster.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+monster.o: types.h prototypes.h globals.h
+move.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+d96 3
+a98 3
+my_object.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+my_object.o: types.h prototypes.h globals.h
+object.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+d100 1
+a100 1
+pack.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+d102 1
+a102 1
+random.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+d104 1
+a104 1
+ring.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+d106 1
+a106 1
+room.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+d108 1
+a108 1
+save.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+d110 3
+a112 3
+spec_hit.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h
+spec_hit.o: types.h prototypes.h globals.h
+throw.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+d114 1
+a114 1
+trap.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+d116 3
+a118 3
+use.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+use.o: prototypes.h globals.h
+util.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+d120 4
+a123 4
+win.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+win.o: prototypes.h globals.h
+zap.o: iRogue.h palm.h handera.h iRogueRsc.h sections.h constant.h types.h
+zap.o: prototypes.h globals.h
+@
+
+
+1.10.2.7
+log
+@added 'c' calling (via inventory)
+@
+text
+@d9 1
+a9 2
+	form_about.o form_call.o form_hwbuttons.o \
+        form_map.o form_messagelog.o \
+@
+
+
+1.9
+log
+@fixed SOME of the pie-slices-not-redrawing-properly issues
+@
+text
+@d8 1
+a8 1
+	ring.o room.o save.o spec_hit.o throw.o trap.o use.o zap.o \
+@
+
+
+1.8
+log
+@bug fixes, hw-scrolling in object creation, can view top score list anytime
+@
+text
+@a10 9
+#OBJS1 = my_object.o chuvmey_nolib.o Globals.o inventory.o monster.o pack.o \
+#	trap.o object.o move.o spec_hit.o
+#OBJS2 = hit.o use.o zap.o throw.o $(TARGET).o main.o level.o chuvmey.o
+#OBJS3 = random.o lib_hit.o lib_level.o lib_curses.o \
+#	lib_monster.o lib_room.o lib_move.o lib_object.o lib_pack.o \
+#	lib_spechit.o lib_md.o lib_traps.o lib_use.o lib_zap.o \
+#	lib_ring.o  lib_message.o  save.o   color.o
+#OBJS = $(OBJS1) $(OBJS2) $(OBJS3) $(TARGET)-sections.o
+
+@
+
+
+1.7
+log
+@housecleaning
+@
+text
+@d5 1
+a5 1
+OBJS = Globals.o chuvmey.o chuvmey_nolib.o color.o display.o hit.o \
+d78 2
+a79 2
+chuvmey.o: palm.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+chuvmey.o: rogue_prototypes.h sections.h librogue.h
+@
+
+
+1.6
+log
+@moving code around.. tweaking..
+@
+text
+@a21 3
+# Yo.  When I get all the color 'working', do a size compare of 
+# 3.1 and 3.5 compilations.  Is it worth building separate 3.1 and 3.5.  doubt.
+#
+d24 1
+a24 1
+#CFLAGS = -Wall -g -O2 -palmos3.1 -DNON_INTERNATIONAL
+d26 1
+@
+
+
+1.5
+log
+@compiles with sdk3.5; user-configurable color
+@
+text
+@d5 14
+a18 8
+OBJS1 = my_object.o chuvmey_nolib.o Globals.o inventory.o monster.o pack.o \
+	trap.o object.o move.o spec_hit.o
+OBJS2 = hit.o use.o zap.o throw.o $(TARGET).o main.o level.o chuvmey.o
+OBJS3 = random.o lib_hit.o lib_level.o lib_curses.o \
+	lib_monster.o lib_room.o lib_move.o lib_object.o lib_pack.o \
+	lib_spechit.o lib_md.o lib_traps.o lib_use.o lib_zap.o \
+	lib_ring.o  lib_message.o  save.o   color.o
+OBJS = $(OBJS1) $(OBJS2) $(OBJS3) $(TARGET)-sections.o
+d78 1
+a78 1
+Globals.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d80 1
+a80 1
+chuvmey.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d82 1
+a82 1
+chuvmey_nolib.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d84 4
+a87 1
+hit.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d89 1
+a89 1
+iRogue.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d91 1
+a91 1
+inventory.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d93 1
+a93 1
+level.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d95 4
+a98 16
+lib_curses.o: librogue.h sections.h rogue_defines.h
+lib_hit.o: librogue.h sections.h rogue_defines.h
+lib_level.o: librogue.h sections.h rogue_defines.h
+lib_md.o: librogue.h sections.h rogue_defines.h
+lib_message.o: librogue.h sections.h rogue_defines.h
+lib_monster.o: librogue.h sections.h rogue_defines.h
+lib_move.o: librogue.h sections.h rogue_defines.h
+lib_object.o: librogue.h sections.h rogue_defines.h iRogueRsc.h
+lib_pack.o: librogue.h sections.h rogue_defines.h
+lib_ring.o: librogue.h sections.h rogue_defines.h
+lib_room.o: librogue.h sections.h rogue_defines.h
+lib_spechit.o: librogue.h sections.h rogue_defines.h
+lib_traps.o: librogue.h sections.h rogue_defines.h
+lib_use.o: librogue.h sections.h rogue_defines.h
+lib_zap.o: librogue.h sections.h rogue_defines.h
+main.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d100 2
+a101 1
+monster.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d103 1
+a103 1
+move.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d105 1
+a105 1
+my_object.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d107 1
+a107 1
+object.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d109 1
+a109 1
+pack.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d111 3
+a113 2
+random.o: librogue.h sections.h rogue_defines.h
+room.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d115 1
+a115 1
+save.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d117 1
+a117 1
+spec_hit.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d119 1
+a119 1
+throw.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d121 1
+a121 1
+trap.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d123 1
+a123 1
+use.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+d125 1
+a125 1
+zap.o: callback.h iRogueRsc.h Globals.h rogue.h rogue_defines.h
+@
+
+
+1.4
+log
+@minor vampire tweaks
+@
+text
+@d11 1
+a11 1
+	lib_ring.o  lib_message.o  save.o
+d16 3
+d21 2
+a22 1
+CFLAGS = -Wall -g -O2 -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.3
+log
+@still working on save/restore
+@
+text
+@d17 2
+a18 2
+CFLAGS = -Wall -g -O2 -palmos2 -DI_AM_OS_2
+#CFLAGS = -Wall -g -O2 -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.2
+log
+@added: Small font option (like iLarn)
+@
+text
+@d11 1
+a11 1
+	lib_ring.o  lib_message.o
+d69 1
+a69 1
+Globals.o: rogue_prototypes.h
+d71 1
+a71 1
+chuvmey.o: rogue_prototypes.h
+d73 1
+a73 1
+chuvmey_nolib.o: rogue_prototypes.h
+d75 1
+a75 1
+hit.o: rogue_prototypes.h
+d77 1
+a77 1
+iRogue.o: rogue_prototypes.h
+d79 1
+a79 1
+inventory.o: rogue_prototypes.h
+d81 16
+a96 16
+level.o: rogue_prototypes.h
+lib_curses.o: librogue.h
+lib_hit.o: librogue.h
+lib_level.o: librogue.h
+lib_md.o: librogue.h
+lib_message.o: librogue.h
+lib_monster.o: librogue.h
+lib_move.o: librogue.h
+lib_object.o: librogue.h
+lib_pack.o: librogue.h
+lib_ring.o: librogue.h
+lib_room.o: librogue.h
+lib_spechit.o: librogue.h
+lib_traps.o: librogue.h
+lib_use.o: librogue.h
+lib_zap.o: librogue.h
+d98 1
+a98 1
+main.o: rogue_prototypes.h
+d100 1
+a100 1
+monster.o: rogue_prototypes.h
+d102 1
+a102 1
+move.o: rogue_prototypes.h
+d104 1
+a104 1
+my_object.o: rogue_prototypes.h
+d106 1
+a106 1
+object.o: rogue_prototypes.h
+d108 2
+a109 2
+pack.o: rogue_prototypes.h
+random.o: librogue.h
+d111 3
+a113 1
+room.o: rogue_prototypes.h
+d115 1
+a115 1
+spec_hit.o: rogue_prototypes.h
+d117 1
+a117 1
+throw.o: rogue_prototypes.h
+d119 1
+a119 1
+trap.o: rogue_prototypes.h
+d121 1
+a121 1
+use.o: rogue_prototypes.h
+d123 1
+a123 1
+zap.o: rogue_prototypes.h
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d17 2
+a18 1
+CFLAGS = -Wall -g -O2 -palmos2
+d41 1
+a41 1
+bin.stamp: $(TARGET).rcp $(TARGET).pbm
+@
+
+
+1.1.1.1
+log
+@iRogue import
+@
+text
+@@

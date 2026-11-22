@@ -1,0 +1,4826 @@
+head	1.116;
+access;
+symbols
+	Release-2002_03_29:1.116
+	Release-2002_01_12:1.108
+	Release-2002_01_02:1.95
+	Release-2002_01_01:1.93
+	Release-2001_12_19:1.90
+	Release-2001_08_04:1.79
+	Release-2001_07_02:1.69
+	Release-2001_06_16:1.59
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.116
+date	2002.03.29.00.54.19;	author i0lanthe;	state Exp;
+branches;
+next	1.115;
+
+1.115
+date	2002.03.27.05.09.03;	author i0lanthe;	state Exp;
+branches;
+next	1.114;
+
+1.114
+date	2002.03.27.04.21.06;	author i0lanthe;	state Exp;
+branches;
+next	1.113;
+
+1.113
+date	2002.03.26.01.54.39;	author i0lanthe;	state Exp;
+branches;
+next	1.112;
+
+1.112
+date	2002.03.25.23.30.57;	author i0lanthe;	state Exp;
+branches;
+next	1.111;
+
+1.111
+date	2002.03.25.23.13.34;	author i0lanthe;	state Exp;
+branches;
+next	1.110;
+
+1.110
+date	2002.03.25.21.15.25;	author i0lanthe;	state Exp;
+branches;
+next	1.109;
+
+1.109
+date	2002.01.17.01.24.12;	author i0lanthe;	state Exp;
+branches;
+next	1.108;
+
+1.108
+date	2002.01.12.22.53.50;	author i0lanthe;	state Exp;
+branches;
+next	1.107;
+
+1.107
+date	2002.01.12.21.13.14;	author i0lanthe;	state Exp;
+branches;
+next	1.106;
+
+1.106
+date	2002.01.12.01.38.09;	author i0lanthe;	state Exp;
+branches;
+next	1.105;
+
+1.105
+date	2002.01.11.02.20.20;	author i0lanthe;	state Exp;
+branches;
+next	1.104;
+
+1.104
+date	2002.01.10.02.55.48;	author i0lanthe;	state Exp;
+branches;
+next	1.103;
+
+1.103
+date	2002.01.10.01.33.49;	author i0lanthe;	state Exp;
+branches;
+next	1.102;
+
+1.102
+date	2002.01.08.19.32.55;	author i0lanthe;	state Exp;
+branches;
+next	1.101;
+
+1.101
+date	2002.01.08.02.10.46;	author i0lanthe;	state Exp;
+branches;
+next	1.100;
+
+1.100
+date	2002.01.06.20.45.21;	author i0lanthe;	state Exp;
+branches;
+next	1.99;
+
+1.99
+date	2002.01.05.18.46.50;	author i0lanthe;	state Exp;
+branches;
+next	1.98;
+
+1.98
+date	2002.01.04.20.41.07;	author i0lanthe;	state Exp;
+branches;
+next	1.97;
+
+1.97
+date	2002.01.04.03.45.44;	author i0lanthe;	state Exp;
+branches;
+next	1.96;
+
+1.96
+date	2002.01.04.00.01.26;	author i0lanthe;	state Exp;
+branches;
+next	1.95;
+
+1.95
+date	2002.01.03.17.42.41;	author i0lanthe;	state Exp;
+branches;
+next	1.94;
+
+1.94
+date	2002.01.02.20.15.47;	author i0lanthe;	state Exp;
+branches;
+next	1.93;
+
+1.93
+date	2002.01.01.21.14.15;	author i0lanthe;	state Exp;
+branches;
+next	1.92;
+
+1.92
+date	2002.01.01.19.53.59;	author i0lanthe;	state Exp;
+branches;
+next	1.91;
+
+1.91
+date	2002.01.01.01.37.09;	author i0lanthe;	state Exp;
+branches;
+next	1.90;
+
+1.90
+date	2001.12.16.19.17.30;	author i0lanthe;	state Exp;
+branches;
+next	1.89;
+
+1.89
+date	2001.12.16.00.08.40;	author i0lanthe;	state Exp;
+branches;
+next	1.88;
+
+1.88
+date	2001.12.16.00.02.07;	author i0lanthe;	state Exp;
+branches;
+next	1.87;
+
+1.87
+date	2001.12.10.01.20.07;	author i0lanthe;	state Exp;
+branches;
+next	1.86;
+
+1.86
+date	2001.12.09.19.05.27;	author i0lanthe;	state Exp;
+branches;
+next	1.85;
+
+1.85
+date	2001.12.08.19.38.32;	author i0lanthe;	state Exp;
+branches;
+next	1.84;
+
+1.84
+date	2001.11.30.23.44.42;	author i0lanthe;	state Exp;
+branches;
+next	1.83;
+
+1.83
+date	2001.11.30.05.30.44;	author i0lanthe;	state Exp;
+branches;
+next	1.82;
+
+1.82
+date	2001.11.30.02.58.38;	author i0lanthe;	state Exp;
+branches;
+next	1.81;
+
+1.81
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.80;
+
+1.80
+date	2001.10.20.18.14.59;	author i0lanthe;	state Exp;
+branches;
+next	1.79;
+
+1.79
+date	2001.08.04.16.56.17;	author i0lanthe;	state Exp;
+branches;
+next	1.78;
+
+1.78
+date	2001.08.03.03.52.52;	author i0lanthe;	state Exp;
+branches;
+next	1.77;
+
+1.77
+date	2001.08.03.01.36.05;	author i0lanthe;	state Exp;
+branches;
+next	1.76;
+
+1.76
+date	2001.08.02.06.50.36;	author i0lanthe;	state Exp;
+branches;
+next	1.75;
+
+1.75
+date	2001.08.01.02.59.13;	author i0lanthe;	state Exp;
+branches;
+next	1.74;
+
+1.74
+date	2001.07.31.00.30.34;	author i0lanthe;	state Exp;
+branches;
+next	1.73;
+
+1.73
+date	2001.07.27.15.41.31;	author i0lanthe;	state Exp;
+branches;
+next	1.72;
+
+1.72
+date	2001.07.27.01.17.38;	author i0lanthe;	state Exp;
+branches;
+next	1.71;
+
+1.71
+date	2001.07.26.02.38.39;	author i0lanthe;	state Exp;
+branches;
+next	1.70;
+
+1.70
+date	2001.07.25.06.16.45;	author i0lanthe;	state Exp;
+branches;
+next	1.69;
+
+1.69
+date	2001.06.30.17.32.46;	author i0lanthe;	state Exp;
+branches;
+next	1.68;
+
+1.68
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.67;
+
+1.67
+date	2001.06.28.01.33.54;	author i0lanthe;	state Exp;
+branches;
+next	1.66;
+
+1.66
+date	2001.06.26.04.43.12;	author i0lanthe;	state Exp;
+branches;
+next	1.65;
+
+1.65
+date	2001.06.26.02.42.37;	author i0lanthe;	state Exp;
+branches;
+next	1.64;
+
+1.64
+date	2001.06.22.05.56.03;	author i0lanthe;	state Exp;
+branches;
+next	1.63;
+
+1.63
+date	2001.06.20.05.02.38;	author i0lanthe;	state Exp;
+branches;
+next	1.62;
+
+1.62
+date	2001.06.20.03.58.41;	author i0lanthe;	state Exp;
+branches;
+next	1.61;
+
+1.61
+date	2001.06.20.01.56.43;	author i0lanthe;	state Exp;
+branches;
+next	1.60;
+
+1.60
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.59;
+
+1.59
+date	2001.06.16.20.20.22;	author i0lanthe;	state Exp;
+branches;
+next	1.58;
+
+1.58
+date	2001.06.16.18.55.05;	author i0lanthe;	state Exp;
+branches;
+next	1.57;
+
+1.57
+date	2001.05.24.04.24.15;	author i0lanthe;	state Exp;
+branches;
+next	1.56;
+
+1.56
+date	2001.05.22.03.01.54;	author i0lanthe;	state Exp;
+branches;
+next	1.55;
+
+1.55
+date	2001.05.22.00.59.32;	author i0lanthe;	state Exp;
+branches;
+next	1.54;
+
+1.54
+date	2001.05.21.00.22.01;	author i0lanthe;	state Exp;
+branches;
+next	1.53;
+
+1.53
+date	2001.04.02.05.45.34;	author i0lanthe;	state Exp;
+branches;
+next	1.52;
+
+1.52
+date	2001.04.01.18.49.31;	author i0lanthe;	state Exp;
+branches;
+next	1.51;
+
+1.51
+date	2001.03.31.21.06.19;	author i0lanthe;	state Exp;
+branches;
+next	1.50;
+
+1.50
+date	2001.03.31.03.33.08;	author i0lanthe;	state Exp;
+branches;
+next	1.49;
+
+1.49
+date	2001.03.27.06.30.43;	author i0lanthe;	state Exp;
+branches;
+next	1.48;
+
+1.48
+date	2001.03.10.05.46.57;	author i0lanthe;	state Exp;
+branches;
+next	1.47;
+
+1.47
+date	2001.03.10.05.07.20;	author i0lanthe;	state Exp;
+branches;
+next	1.46;
+
+1.46
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.45;
+
+1.45
+date	2001.01.27.00.53.03;	author i0lanthe;	state Exp;
+branches;
+next	1.44;
+
+1.44
+date	2001.01.26.06.49.41;	author i0lanthe;	state Exp;
+branches;
+next	1.43;
+
+1.43
+date	2001.01.23.17.49.56;	author i0lanthe;	state Exp;
+branches;
+next	1.42;
+
+1.42
+date	2001.01.19.05.24.19;	author i0lanthe;	state Exp;
+branches;
+next	1.41;
+
+1.41
+date	2001.01.12.18.28.28;	author i0lanthe;	state Exp;
+branches;
+next	1.40;
+
+1.40
+date	2001.01.11.06.27.08;	author i0lanthe;	state Exp;
+branches;
+next	1.39;
+
+1.39
+date	2001.01.10.23.40.25;	author i0lanthe;	state Exp;
+branches;
+next	1.38;
+
+1.38
+date	2001.01.09.23.07.47;	author i0lanthe;	state Exp;
+branches;
+next	1.37;
+
+1.37
+date	2001.01.09.21.12.02;	author i0lanthe;	state Exp;
+branches;
+next	1.36;
+
+1.36
+date	2001.01.09.17.19.22;	author i0lanthe;	state Exp;
+branches;
+next	1.35;
+
+1.35
+date	2001.01.08.01.51.39;	author i0lanthe;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2001.01.06.18.24.38;	author i0lanthe;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2001.01.05.22.43.25;	author i0lanthe;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2001.01.05.20.09.31;	author i0lanthe;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2001.01.05.04.12.36;	author i0lanthe;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2001.01.03.22.24.31;	author i0lanthe;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2001.01.03.18.23.48;	author i0lanthe;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2001.01.01.06.59.10;	author i0lanthe;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2000.12.23.04.03.40;	author i0lanthe;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2000.12.21.21.24.43;	author i0lanthe;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2000.12.07.00.12.33;	author i0lanthe;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2000.11.13.05.58.33;	author i0lanthe;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2000.11.11.18.20.40;	author i0lanthe;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2000.11.11.03.00.35;	author i0lanthe;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2000.11.09.06.18.44;	author i0lanthe;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2000.11.06.05.25.23;	author i0lanthe;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2000.11.05.20.24.48;	author i0lanthe;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2000.11.04.02.13.40;	author i0lanthe;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2000.11.04.01.46.47;	author i0lanthe;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2000.11.03.05.48.04;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2000.11.03.04.48.23;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2000.11.01.05.01.33;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2000.10.28.22.28.55;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2000.10.28.17.03.40;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2000.10.28.02.57.55;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2000.10.28.01.31.08;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2000.10.26.05.49.38;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2000.10.26.04.25.25;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2000.10.25.04.29.06;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2000.10.24.03.05.20;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.10.21.03.31.07;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.10.20.03.38.35;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.10.04.53.43;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.10.06.06.32.36;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.43.57;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.43.57;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.116
+log
+@add 'RUN' (capslock toggle) keybinding
+@
+text
+@/**********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                          *
+ * This file is                                                       *
+ * copyright (C) 1985-2001 Robert A. Koeneke, Jimmey Wayne Todd,      *
+ * James E. Wilson, Bridget Spitznagel. (see BELOW for full credits)  *
+ *                                                                    *
+ * This program is freeware.  You can redistribute it and/or modify   *
+ * it (provided that this notice and the full credits are retained),  *
+ * but it CANNOT be distributed for profit.                           *
+ **********************************************************************/
+
+// the following notice is not to be removed:
+//
+/*********************************************************************
+ *  FULL CREDITS for Moria:                                          *
+ *                                                                   *
+ *       Designer and Programmer : Robert Alan Koeneke               *
+ *                                 University of Oklahoma            *
+ *                                                                   *
+ *       Assistant Programmers   : Jimmey Wayne Todd                 *
+ *                                 University of Oklahoma            *
+ *                                                                   *
+ *                                 Gary D. McAdoo                    *
+ *                                 University of Oklahoma            *
+ *                                                                   *
+ *       UNIX Port               : James E. Wilson                   *
+ *                                 UC Berkeley                       *
+ *                                 wilson@@kithrup.com                *
+ *                                                                   *
+ *       MSDOS Port              : Don Kneller                       *
+ *                                 1349 - 10th ave                   *
+ *                                 San Francisco, CA 94122           *
+ *                                 kneller@@cgl.ucsf.EDU              *
+ *                                 ...ucbvax!ucsfcgl!kneller         *
+ *                                 kneller@@ucsf-cgl.BITNET           *
+ *                                                                   *
+ *       BRUCE Moria             : Christopher Stuart                *
+ *                                 Monash University                 *
+ *                                 Melbourne, Victoria, AUSTRALIA    *
+ *                                 cjs@@moncsbruce.oz                 *
+ *                                                                   *
+ *       Amiga Port              : Corey Gehman                      *
+ *                                 Clemson University                *
+ *                                 cg377170@@eng.clemson.edu          *
+ *                                                                   *
+ *       Version 5.5             : David Grabiner                    *
+ *                                 Harvard University                *
+ *                                 grabiner@@math.harvard.edu         *
+ *                                                                   *
+ *       PalmOS Port             : Bridget Spitznagel                *
+ *                                 Carnegie Mellon University        *
+ *                                 i0lanthe@@yahoo.com                *
+ *                                                                   *
+ *   Moria may be copied and modified freely as long as the above    *
+ *   credits are retained.  No one who-so-ever may sell or market    *
+ *   this software in any form without the expressed written consent *
+ *   of the author Robert Alan Koeneke.                              *
+ *                                                                   *
+ *********************************************************************/
+
+#include "kMoria.h"
+
+DmOpenRef MoriaDB = NULL;
+DmOpenRef MoriaSaveDB = NULL;
+DmOpenRef MoriaScoreDB = NULL;
+
+Boolean Version_GE_OS35 = false; // (is OS version >= 3.5)
+
+MoriaPreferenceType my_prefs = {
+  6, // run_walk_border
+  2, // walk_center_border
+  // I may eliminate some of these.
+  true,  // big font
+  false, // rel move
+  false, // circles
+  true,  // sound
+  true,  // run
+  true,  // cut
+  true,  // examine
+  true, // sector
+  false, // doors
+  false, // prompt
+  false, // weights
+  false, // minerals
+  false, // stats at top
+  // menu thingies
+  false, // inv is compact
+  false, // inv shows individual weights
+  false, // store is compact
+  true, // store is haggling
+  // Hardware buttons
+  false,
+  false,
+  { 0,0,0,0,0,0,0,0 },
+  // Default character name
+  "my name",
+  false, // invert on
+  false, // color on
+  0x0, // what commands to auto-repeat
+  { 0,0,0,0,0,0,0,0,0,0 }, // what spells to bind on buttons
+  false,
+  false,
+  RESTORE_DEFAULT
+};
+
+/*****************************************************************************
+ *                                                                           *
+ *                  thrilling event handlers                                 *
+ *                                                                           *
+ *****************************************************************************/
+Boolean do_pickup = true;
+Boolean found_my_character = false;
+extern Char last_command;
+extern Boolean just_throwing;
+extern Short WalkMagic;
+
+static void reset_state(previous_state *ps) SEC_7;
+void bump_state() SEC_7; // form_invselect needs it for zap. sigh
+static void end_turn_start_turn();
+static Boolean count_handler(Char c);
+static void un_more();
+//static void un_showinvis();
+static void handle_main_menu(EventPtr e);
+static Boolean rest_btnsHandleEvent(Short btn_num);
+static Boolean buttonsHandleEvent(EventPtr e);
+static Boolean OpenDatabase(void);
+static LocalID most_recent_savedb();
+static Boolean ApplicationHandleEvent(EventPtr e);
+static void readMoriaPrefs();
+static Word StartApplication(void);
+static void StopApplication(void);
+static void EventLoop(void);
+
+//Short command_count = 0;
+/*
+static void game_init()
+{
+
+  //#if (COST_ADJ != 100)
+  //  price_adjust();
+  //#endif
+
+  / Grab a random seed from the clock		/
+  //  init_seeds(seed);
+
+  / Init monster and treasure levels for allocate /
+  //  init_m_level();
+  //  init_t_level();
+
+  / Init the store inventories			/
+  // No!  Only if you are a new character!
+  //  store_init();
+
+  // do this if the old character dies, too.
+  last_command = -1;
+}
+*/
+previous_state prev_state;
+previous_state curr_state;
+static void reset_state(previous_state *ps)
+{
+  ps->mode = MODE_DEFAULT;
+  ps->cmd = -1;
+  ps->dir_cmd = DIR_NONE;
+  ps->dir = 5;
+  ps->item = -1;
+  ps->count = 0;
+  ps->spell = -1;
+}
+void bump_state()
+{
+  previous_state *ps = &curr_state;
+  ps->mode = MODE_AGAIN;
+  if (curr_state.cmd != -1)
+    prev_state = curr_state;
+  // reset_state:
+  ps->mode = MODE_DEFAULT;
+  ps->cmd = -1;
+  ps->dir_cmd = DIR_NONE;
+  ps->dir = 5;
+  ps->item = -1;
+  ps->count = 0;
+  ps->spell = -1;
+}
+
+
+// Called by MainForm event handler and by hw buttons event handler.
+extern Boolean draw_directional_p;
+extern Boolean undraw_directional_p;
+static void end_turn_start_turn()
+{
+  // undraw the directional foo if it needs to be undrawn.
+  if (undraw_directional_p) undraw_directional();
+
+
+  if (!free_turn_flag) {
+    bump_state();
+
+    end_of_turn();   // this is what moves the creatures and makes new levels
+    // (should I check for death here?  I wonder..)
+    start_of_turn(); // this is what makes your own clock tick.
+  }
+  show_messages();
+  refresh(false);
+  // how about "if (death) FrmGotoForm..."?
+  if (death) {
+    // wait for event
+    EventType queued_event;
+    do {
+      EvtGetEvent(&queued_event, 0); // soak up any queued winclose events
+    } while (queued_event.eType != nilEvent);
+    EvtGetEvent(&queued_event, evtWaitForever);
+    do {
+      EvtGetEvent(&queued_event, 0); // soak up any accompanying queued events
+    } while (queued_event.eType != nilEvent);
+    // kill them
+    LeaveForm();
+    FrmGotoForm(DeathForm);
+  }
+
+  if (curr_state.mode == MODE_DEFAULT && message_clear(false))
+    curr_state.mode = MODE_MORE;
+
+  if (draw_directional_p) draw_directional();
+}
+
+//Boolean stats_toggler = true;
+//Short ctr; // this is for testing foo_list
+//static Boolean do_command(Char c);
+extern Boolean came_from_generation;
+extern UInt need_print_stats;
+
+
+
+/* For Count Command: 0-9, backspace (BS), delete (DEL) */
+#define IS_NUMERIC(c) (('0' <= (c) && (c) <= '9') || 8 == (c) || 127 == (c))
+
+Boolean Main_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false, valid = false;
+  FormPtr frm;
+  Short tmp_x, tmp_y, dir, dist, edge;
+  Char c;
+  //Char buf[40]; // for testing
+
+  free_turn_flag = false;// let's try this shall we
+  /*
+  {
+    Char buf[40];
+    StrPrintF(buf, "%d %d  %d     ", prev_state.mode, curr_state.mode,
+	      curr_state.count);
+    WinDrawChars(buf, StrLen(buf), 10, 10);
+  }
+  */
+
+  // frmOpenEvent is same for all modes
+  switch (e->eType) {
+  case frmOpenEvent:
+    reset_state(&prev_state);
+    reset_state(&curr_state);
+    frm = FrmGetActiveForm();
+    /** place any form-initialization stuff here **/
+#ifndef I_AM_OS_2
+    if (IsVGA) PrvMoveForm(false);
+#endif
+    FrmDrawForm(frm);
+
+    // Make new level if needed, display level, display stats, yadda.
+    if (came_from_generation) { // was (!found_my_character)
+      came_from_generation = false;
+      generate_cave();
+      enter_new_level();
+    } else {
+      Char buf[NAMELEN + 10];
+      StrPrintF(buf, "Hello, %s", pymisc.name);
+      message(buf);
+    }
+    start_of_turn();
+    // just to be really sure:
+    get_panel(char_row, char_col, true);
+    recalc_and_refresh(); //    recalc_screen();   refresh(true);
+    print_stats(STATS_ALL);
+    show_messages(); // in case you can learn a spell.
+
+    return true;
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) PrvMoveForm(true);
+    return true;
+#endif
+
+#ifdef I_AM_COLOR
+  case menuCmdBarOpenEvent:
+    // this will only work if we are on an OS3.5 or greater device.
+    if (Version_GE_OS35) {
+      MenuCmdBarAddButton(4, bmp_cmd_map, menuCmdBarResultMenuItem,
+			  menu_mainMap, NULL);
+      MenuCmdBarAddButton(3, bmp_cmd_log, menuCmdBarResultMenuItem,
+			  menu_mainMsgs, NULL);
+      MenuCmdBarAddButton(2, bmp_cmd_you, menuCmdBarResultMenuItem,
+			  menu_mainStats, NULL);
+      MenuCmdBarAddButton(1, bmp_cmd_fnt, menuCmdBarResultMenuItem,
+			  menu_mainFont, NULL);
+    }
+    return false;
+#endif
+  default:
+    break;
+  } // end FIRST switch e->eType
+
+  // Other modes will have different handlers
+  switch(curr_state.mode) {
+
+    /*
+  case MODE_SHOWINVIS:
+    // Can be entered only from spells.c for detect{invis,monsters,evil}.
+    // Check to see if the mode gets cleared too soon by
+    // end_turn_start_turn ...
+    switch (e->eType) {
+    case keyDownEvent: case penDownEvent:
+      un_showinvis();
+      //      return true;
+    default:
+      return handled;
+    }
+    break; // end MODE_SHOWINVIS
+    */
+
+  case MODE_MORE:
+    // Go into this mode when message_clear(false) returns true.
+    // right now, we can only enter it from end_turn_start_turn.. WILL IT WORK?
+    switch (e->eType) {
+    case keyDownEvent: case penDownEvent:
+      un_more();
+      return true;
+    default:
+      return handled;
+    }
+    break; // end MODE_MORE
+
+  case MODE_SLASH:
+    // Can be entered only from do_command: iff '/' was entered
+    switch (e->eType) {
+    case keyDownEvent:
+      ident_monster(e->data.keyDown.chr);
+      valid = true;
+      break;
+    case penDownEvent:
+      where_in_dungeon(e->screenX, e->screenY, &tmp_x, &tmp_y);//cnvert to cell
+      valid = do_xy_command(tmp_x, tmp_y);
+      break;
+    default:
+      return handled;
+    }
+    if (valid) bump_state();
+    else reset_state(&curr_state);
+    show_messages(); // let's see if this fixes my little problem
+    return true; // end MODE_SLASH
+
+  case MODE_DIRECTIONAL:
+    // Can be entered only from do_command: iff one of "f^cSod?-" was entered.
+    /*      if (undraw_directional_p) undraw_directional(); */ // NO.
+    switch (e->eType) {
+    case keyDownEvent:
+      c = e->data.keyDown.chr;
+      dir = map_roguedir(&c); // dir==5 if NOOP or N/A
+      if (dir == 5) {
+	message("Aborted...");
+	free_turn_flag = true;
+      } else {
+	curr_state.dir = dir;
+	valid = do_dir_command(dir, 0);
+      }
+      break;
+    case penDownEvent:
+      tmp_x = e->screenX - SCR_WIDTH/2;
+      tmp_y = e->screenY - SCR_HEIGHT/2;
+      dir = convert_to_dir(tmp_x, tmp_y, WalkMagic);
+      if (dir == 5 && curr_state.cmd != '?') {// 'aborted' unless 'look'
+	message("Aborted...");
+	free_turn_flag = true;
+      } else {
+	curr_state.dir = dir;
+	valid = do_dir_command(dir, 0);
+      }
+      break;
+    default:
+      return handled;
+    }
+    //    if (valid) bump_state();
+    //    else reset_state(&curr_state); // end_turn_start_turn should do it..
+    // but wait, '?' doesn't take time, does it???  e_t_s_t will only
+    // bump_state for things that don't get a free turn flag.  gar.
+    if (valid) bump_state();
+    else reset_state(&curr_state); // mumble paradigm mumble...
+    handled = true;
+    break; // end MODE_DIRECTIONAL
+
+  case MODE_DEFAULT:
+    // Mode gets set back to this every time we end a time-taking command.
+    switch (e->eType) {
+    case menuEvent:
+      handle_main_menu(e);
+      return true;
+
+    case keyDownEvent:
+      c = e->data.keyDown.chr;
+      handled = do_command(c);
+      if (!handled) {
+	if (IS_NUMERIC(c)) {
+	  handled = count_handler(c);
+	  command_count = curr_state.count;
+	} else {
+	  return handled;
+	}
+      }
+      break;
+
+    case penDownEvent:
+      tmp_x = e->screenX - SCR_WIDTH/2;
+      tmp_y = e->screenY - SCR_HEIGHT/2;
+      if (my_prefs.relative_move) {
+	// translate tap coordinates so that rogue's screen location = 0,0.
+	relativize_move(&tmp_x, &tmp_y);
+      }
+      dist = tmp_x * tmp_x + tmp_y * tmp_y;
+      edge = my_prefs.walk_center_border*WalkMagic;
+      edge *= edge;
+      if (dist < edge) {
+	free_turn_flag = true;
+      } else {
+	dir = convert_to_dir(tmp_x, tmp_y, WalkMagic);
+	do_feep(200,9);	// make a tap sound
+	curr_state.cmd = unmap_roguedir(dir);
+	curr_state.dir = dir;
+	edge = my_prefs.run_walk_border*WalkMagic;
+	edge *= edge;
+	if (!my_prefs.run || (dist < edge) || hit_dont_run(dir))
+	  move_char(dir, do_pickup); // walk or attack
+	else { // run
+	  find_init(dir);
+	  if (find_flag > 0) find_run();
+	}
+      }
+      do_pickup = true;
+      curr_state.count = command_count = 0;
+      handled = true;
+      break;
+    
+    default:
+      //return true; // ah maybe this is the Shortcut Bug.
+      return handled;
+    } // end switch event type!
+  } // end my_mode switch
+
+  // for anyone who has not returned,
+  // call something to move the monsters.
+
+  end_turn_start_turn();
+  return handled;
+}
+/*****************************************************************************/
+static Boolean count_handler(Char c)
+{
+  Char buf[16];
+  Short n = curr_state.count;
+  free_turn_flag = true;
+  if ('0' <= c && c <= '9') {
+    Short incr = c - '0';
+    if (n <= 0)        n = incr;
+    else if (n <= (MAX_COUNT/10))  n = n * 10 + incr;
+    else               n = MAX_COUNT; /* maxed-out */
+    StrPrintF(buf, "count: %d", n);
+    count_message(buf);
+  } else if (8 == c || 127 == c) {   // backspace (BS), delete (DEL)
+    n = n / 10; // yay integer division.
+    if (n) {
+      StrPrintF(buf, "count: %d", n);
+      count_message(buf);
+    } else {
+      print_stats(STATS_WORD); // maybe this will erase it
+      curr_state.mode = MODE_DEFAULT;
+    }
+  }
+  curr_state.count = n;
+  return true;
+}
+// Show next message and switch from more state to default state if no more.
+static void un_more()
+{
+  show_messages();
+  if (!message_clear(false))
+    curr_state.mode = MODE_DEFAULT;
+  // else there are still more messages, so stay in "more" mode.
+}
+/*****************************************************************************/
+// xxx fix this, I haven't touched it yet.
+static void handle_main_menu(EventPtr e)
+{
+  Short cmd;
+  Boolean handled; // do I need this?
+#ifdef I_AM_COLOR
+  DWord version;
+#endif
+  MenuEraseStatus(NULL); /* clear menu status from display */
+  free_turn_flag = true;
+  switch(e->data.menu.itemID) {
+  case menu_mainInstruct:        FrmHelp(InstructStr);     break;
+  case menu_mainScores:     FrmPopupForm(ScoresForm);      break;
+  case menu_mainMap:        FrmPopupForm(MapForm);         break;
+  case menu_mainSettings:   FrmPopupForm(PrefsForm);       break;
+  case menu_mainButtons:    FrmPopupForm(HwButtonsForm);   break;
+  case menu_mainRepeaters:  FrmPopupForm(RepeatCmdsForm);  break;
+  case menu_mainSpellBtns:  FrmPopupForm(SpellHwBtnsForm); break;
+  case menu_mainMsgs:       FrmPopupForm(MsgLogForm);      break;
+  case menu_mainAbout:      FrmPopupForm(AboutForm);       break;
+    /*
+  case menu_mainAbout:
+    {
+    // testing compact_{monster,object}
+      Char buf[80];
+      StrPrintF(buf, "mon: %d  obj: %d", mfptr, tcptr);
+      message(buf);
+    }
+    break;
+    */
+    /*
+  case menu_mainAbout:
+    {
+    // testing how long save_char takes
+    Char buf[80];
+    ULong t0, t1;
+    t0 = TimGetTicks();
+    save_char(); save_char(); save_char(); save_char(); save_char();
+    save_char(); save_char(); save_char(); save_char(); save_char();
+    t1 = TimGetTicks();
+    StrPrintF(buf, "%ld - %ld = %ld", t1, t0, t1 - t0);
+    WinDrawChars(buf, StrLen(buf), 10, 10);
+    break;
+    }
+    */
+  case menu_mainUser:
+    save_char(); // maybe dangerous
+    FrmPopupForm(UserForm);
+    break;
+  case menu_mainTime:
+    //    pymisc.exp = MAX_EXP; // xxxx debugging, remove me!!!!
+    //    pymisc.au = MAX_LONG; // xxxx debugging, remove me!!!!
+    show_time_and_volts();
+    break;
+  case menu_mainStats:
+    came_from_generation = false;
+    FrmPopupForm(CharSummaryForm);
+    break;
+  case menu_cmd_quit:
+    // quit is not accessible by 'Q'... this is a "feature": typo<-->'G'
+    // to make it 'Q'able instead, move this case into dungeon.c's do_command.
+    // I think I'll make it /Q-able though.
+    if (0 == FrmAlert((!total_winner)?QuitP:RetireP)) {
+      free_turn_flag = false; //?
+      death = true;
+      StrCopy(died_from, "Quitting"); // form_death will change for winners
+      LeaveForm();
+      FrmGotoForm(DeathForm);
+      return;
+    }
+    break;
+  case menu_mainFont:
+    toggle_itsy();
+    get_panel(char_row, char_col, true); // FORCE recalculation of panel
+    recalc_and_refresh(); //    recalc_screen();   refresh(true);
+    break;
+  case menu_mainBeam: // XXX Make sure to test this, in the old xcopilot.
+#ifdef I_AM_COLOR
+    FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
+    if (version < 0x03000000l)  message("can't beam in OS2");
+    else  FrmPopupForm(BeamForm);
+#else
+    message("can't beam in OS2 version");
+#endif
+    break;
+  default:
+    free_turn_flag = false;
+    // MAGIC & MORE MAGIC..
+    cmd = e->data.menu.itemID - MAGIC_MENU_NUMBER;
+    if (cmd > 0 && cmd < 128)
+      handled = do_command((Char) cmd);
+    //    if (handled && !free_turn_flag) command_count = 0; // XXX
+    curr_state.count = command_count = 0;
+    break;
+  }
+  end_turn_start_turn();
+}
+/*****************************************************************************/
+// P.I.T.A. ...
+void rest_on(Short rest_num);
+Boolean Rest_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  //  FieldPtr fld;
+  Short rest_num = 0;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+#ifndef I_AM_OS_2
+    if (IsVGA) PrvMoveForm(false);
+#endif
+    FrmDrawForm(frm);
+    handled = true;
+    break;
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) PrvMoveForm(true);
+    return true;
+#endif
+
+  case keyDownEvent:
+    {
+      Word objid = -1;
+      frm = FrmGetActiveForm();
+      switch(e->data.keyDown.chr) {
+      case '0': objid = btn_rest_oops; break;
+      case '1': objid = btn_rest_10; break;
+      case '2': objid = btn_rest_20; break;
+      case '3': objid = btn_rest_max; break;
+      }
+      if (objid != -1)
+	hit_button_if_usable(frm, objid);
+    }
+    break;
+
+  case ctlSelectEvent:
+    rest_num = 0;
+    switch(e->data.ctlSelect.controlID) {
+    case btn_rest_oops:
+      LeaveForm();
+      handled = true;
+      break;
+    case btn_rest_10:  rest_num = 10;         break;
+    case btn_rest_20:  rest_num = 20;         break;
+    case btn_rest_max: rest_num = -MAX_SHORT; break;
+    }
+    if (rest_num != 0) {
+      free_turn_flag = false;
+      LeaveForm();
+      rest_on(rest_num);
+      {
+	// Here we are soaking up a winExit, winEnter, and penUp.  sigh.
+	// Necessary now since I have changed user_interrupted().
+	EventType queued_event;
+	do {
+	  EvtGetEvent(&queued_event, 0);
+	} while (queued_event.eType != nilEvent);
+      }
+      end_turn_start_turn(); // gotta kick-start the resting...
+      handled = true;
+    }
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+static Boolean rest_btnsHandleEvent(Short btn_num) // 0, 1, 2, 3.
+{
+  Short rest_num = 0;
+  if (btn_num < 0 || btn_num > 3) return false; // out of bounds
+  switch(btn_num) {
+    // case 0: rest_num stays 0
+  case 1:  rest_num = 10;         break;
+  case 2:  rest_num = 20;         break;
+  case 3:  rest_num = -MAX_SHORT; break;
+  }
+  LeaveForm();
+  if (rest_num != 0) {
+    free_turn_flag = false;
+    rest_on(rest_num);
+    {
+      // Here we are soaking up a winExit and winEnter.  sigh.
+      EventType queued_event;
+      do {
+	EvtGetEvent(&queued_event, 0);
+      } while (queued_event.eType != nilEvent);
+    }
+    end_turn_start_turn(); // gotta kick-start the resting...
+  }
+  return true;
+}
+/*****************************************************************************/
+
+//static Char hwb_commands[HWB_last+1] = {  0 , 'k', 'j', 'l', 'h',
+//					  'M', '?', 'i', 'm', 's',
+//					  '#', 'r', 'd', 'f' };
+/*static Char hwb_commands[HWB_last+2] = "\0kjlhM?ims#rdf"*/
+const Char hwb_commands[HWB_last+2] = "\0kjlhM?ims#rdfocSF!xtaz/-g@@";
+
+// Need to revise this for the state/mode paradigm!!
+static Boolean buttonsHandleEvent(EventPtr e)
+{
+  Boolean handled = false, valid = false;
+  //  Boolean took_time = true;
+  Short btn, dir, dispatch_type = 0;
+  Word curfrm;
+  //  Word which_form;
+  Char command;
+  Boolean capslock_on, numlock_on, autoshifted;
+  Short tmp_shift;
+
+  // I've decided that "if (!(ChrIsHardKey(e->data.keyDown.chr)) ..)" is 
+  // not so good, since that includes hardPowerChr, hardCradleChr etc.!
+  if ( ((e->data.keyDown.chr < hard1Chr) || (e->data.keyDown.chr > hard4Chr))
+       && (e->data.keyDown.chr != calcChr)
+       && (e->data.keyDown.chr != findChr)
+       && (e->data.keyDown.chr != pageUpChr)
+       && (e->data.keyDown.chr != pageDownChr))
+    return false; // it's NOT a hardware button.. probably graffiti.
+
+  curfrm = FrmGetActiveFormID();
+
+  // Ok, we are dealing now ONLY with the 8 keys that we might rebind.
+  // IF we are in main form, then rebind what we're rebinding.
+  // ELSE if it is rebound in main form, just MASK it.
+
+  // <incs>/UI/Chars.h is useful....   ChrIsHardKey(c)
+  // hard[1-4]Chr, calcChr, findChr.
+  switch (e->data.keyDown.chr) {
+    // this just maps it from wacky-button-char to '0...7'.
+  case hard1Chr:     btn = HW_hard1Chr   ;  break;      // datebook
+  case hard2Chr:     btn = HW_hard2Chr   ;  break;      // address
+  case hard3Chr:     btn = HW_hard3Chr   ;  break;      // todo
+  case hard4Chr:     btn = HW_hard4Chr   ;  break;      // memos
+  case pageUpChr:    btn = HW_pageUpChr  ;  break;
+  case pageDownChr:  btn = HW_pageDownChr;  break;
+  case calcChr:      btn = HW_calcChr    ;  break;
+  case findChr:      btn = HW_findChr    ;  break;
+  default:
+    return false;
+  }
+
+  if (curfrm == SpellForm) {
+    if (spell_btnsHandleEvent(btn)) return true;
+  } else if (curfrm == BookForm) {
+    if (book_btnsHandleEvent(btn)) return true;
+  } else if (curfrm == RestForm) {
+    if (rest_btnsHandleEvent(btn)) return true;
+  } else if (curfrm == LookForm) {
+    if (look_btnsHandleEvent(btn)) return true;
+  } else if (curfrm == RecallForm) {
+    if (btn >= HW_hard1Chr && btn <= HW_hard4Chr) {
+      LeaveForm(); return true;
+    }
+  }
+
+  dispatch_type = my_prefs.hardware[btn];
+
+  // tapping the 'goto map' button a second time will EXIT the map.. rah.
+  if ((curfrm == MapForm) && (dispatch_type == HWB_MAP)) {
+    LeaveForm();
+    return true;
+  }
+
+  if (curfrm != MainForm) {
+    // IF the key is not bound, return false, else return TRUE to MASK it.
+    // unless it is up/down, of course.
+    return ( dispatch_type != HWB_NOOP &&
+	     e->data.keyDown.chr != pageUpChr &&
+	     e->data.keyDown.chr != pageDownChr );
+  }
+
+  // OK, we ARE in the main form.  
+
+  if (dispatch_type < HWB_first || dispatch_type > HWB_last)
+    return false;
+
+  command = hwb_commands[dispatch_type];
+  if (command == 'm' && class[pymisc.pclass].spell == PRIEST) command = 'p';
+
+  if (dispatch_type >= 1 && dispatch_type <= 4) { // "kjlh"
+    // This part is just like map_roguedir...
+    GrfGetState(&capslock_on, &numlock_on, &tmp_shift, &autoshifted);
+    if ((tmp_shift == grfTempShiftUpper) || capslock_on)
+      command -= 'a' - 'A';
+    // ... except we need to "turn off" the temp shift afterwards (if any).
+    GrfSetState(capslock_on, numlock_on, false);
+  }
+
+  switch(curr_state.mode) {
+    /*
+  case MODE_SHOWINVIS:
+    un_showinvis();
+    //    return true;
+    */
+  case MODE_MORE:
+    un_more();
+    return true;
+  case MODE_SLASH:
+    return true; // do nothing
+  case MODE_DIRECTIONAL:
+    // Act like keyDownEvent in Main_Form_HandleEvent
+    /*      if (undraw_directional_p) undraw_directional(); */ // NO.
+    dir = map_roguedir(&command); // dir==5 if NOOP or N/A
+    if (dir == 5) {
+      message("Aborted...");
+      free_turn_flag = true;
+    } else {
+      curr_state.dir = dir;
+      valid = do_dir_command(dir, 0);
+    }
+    if (valid) bump_state();
+    else reset_state(&curr_state); // mumble paradigm mumble...
+    handled = true;
+    break;
+  case MODE_DEFAULT:
+    if (command == 'F') {
+      // just like "case menu_mainFont" in main form event handler
+      toggle_itsy();
+      get_panel(char_row, char_col, true); // FORCE recalculation of panel
+      recalc_and_refresh(); //    recalc_screen();   refresh(true);
+      free_turn_flag = true;
+      handled = true;
+    } else if (command == '@@') {
+      // act like we toggled the CapsLock
+      GrfGetState(&capslock_on, &numlock_on, &tmp_shift, &autoshifted);
+      GrfSetState(!capslock_on, numlock_on, false);
+      return true;
+    } else {
+      // Act like keyDownEvent in Main_Form_HandleEvent
+      handled = do_command(command);
+    }
+    break;
+  }
+
+  end_turn_start_turn();
+  return handled;
+  // Well, let's see if this works.
+}
+
+
+/*****************************************************************************
+ *                                                                           *
+ *                      OpenDatabase                                         *
+ *                                                                           *
+ *****************************************************************************/
+static Boolean OpenDatabase(void)
+{
+  // The '0' arguments are all 'card number'.
+  // Note I have two databases of the same type now, so
+  //  DmOpenDatabaseByTypeCreator is not going to work.
+  LocalID dbID;
+  Boolean created = false;
+
+  // We cannot run if we cannot find the MoriaDB, so return error.
+  // hm, shouldn't it be read-only?
+  if (0 == (dbID = DmFindDatabase(0, MoriaDBName))) return 1;
+  if (0 == (MoriaDB = DmOpenDatabase(0, dbID, dmModeReadWrite))) return 1;
+
+  // We can run if we cannot find the MoriaScoreDB.  Just create it.
+  if (0 == (dbID = DmFindDatabase(0, MoriaScoreDBName))) {
+    if (DmCreateDatabase(0, MoriaScoreDBName, MoriaAppID, MoriaScoreDBType,
+			 false))
+      return 1;
+    if (0 == (dbID = DmFindDatabase(0, MoriaScoreDBName))) return 1;
+    toggle_hotsync(dbID, true);
+  }
+  if (0 == (MoriaScoreDB = DmOpenDatabase(0, dbID, dmModeReadWrite))) return 1;
+
+
+  // We can run if we cannot find the MoriaSaveDB.  Just create it.
+  if (my_prefs.determine_recent_user & RESTORE_RECENT)
+    dbID = most_recent_savedb();
+  else
+    dbID = DmFindDatabase(0, MoriaSaveDBName);
+  if (0 == dbID) {
+    if (DmCreateDatabase(0, MoriaSaveDBName, MoriaAppID, MoriaSaveDBType,
+			 false))
+      return 1;
+    created = true;
+    if (0 == (dbID = DmFindDatabase(0, MoriaSaveDBName))) return 1;
+    toggle_hotsync(dbID, true);
+  }
+  if (0 == (MoriaSaveDB = DmOpenDatabase(0, dbID, dmModeReadWrite))) return 1;
+
+  if (DmNumRecords(MoriaSaveDB) < 1) {
+    data_record_create();
+  }
+
+  return 0;
+}
+
+
+static LocalID most_recent_savedb()
+{
+  DmSearchStateType state;
+  UInt card;
+  LocalID currentDB = 0, most_recent = 0;
+  Err err;
+  ULong modified_date, mru_date = 0;
+
+  err = DmGetNextDatabaseByTypeCreator(true, &state,
+				       MoriaSaveDBType, MoriaAppID,
+				       false, &card, &currentDB);
+  while (!err && currentDB) {
+    if (card == 0) { // (I hope this rules out freakishness) take note of db.
+      DmDatabaseInfo(card, currentDB, NULL, NULL, NULL, NULL, &modified_date,
+		     NULL, NULL, NULL, NULL, NULL, NULL);
+      if (modified_date > mru_date) {
+	mru_date = modified_date;
+	most_recent = currentDB;
+      }
+    }
+    // get the next DB
+    err = DmGetNextDatabaseByTypeCreator(false, &state, 
+					 MoriaSaveDBType, MoriaAppID,
+					 false, &card, &currentDB);
+  }
+  return most_recent;
+}
+
+
+/*****************************************************************************
+ *                      ApplicationHandleEvent                               *
+ *****************************************************************************/
+static Boolean ApplicationHandleEvent(EventPtr e)
+{
+    FormPtr frm;
+    Word    formId;
+    Boolean handled = false;
+
+    if (e->eType == frmLoadEvent) {
+	formId = e->data.frmLoad.formID;
+	frm = FrmInitForm(formId);
+	FrmSetActiveForm(frm);
+
+	switch(formId) {
+	case MainForm:
+	    FrmSetEventHandler(frm, Main_Form_HandleEvent);
+	    break;
+	case SnowCrashForm:
+	    FrmSetEventHandler(frm, SnowCrash_Form_HandleEvent);
+	    break;
+	case AboutForm:
+	    FrmSetEventHandler(frm, About_Form_HandleEvent);
+	    break;
+	case IntroForm:
+	    FrmSetEventHandler(frm, Intro_Form_HandleEvent);
+	    break;
+	case MapForm:
+	    FrmSetEventHandler(frm, Map_Form_HandleEvent);
+	    break;
+	case PrefsForm:
+	    FrmSetEventHandler(frm, Prefs_Form_HandleEvent);
+	    break;
+	case HwButtonsForm:
+	    FrmSetEventHandler(frm, HwButtons_Form_HandleEvent);
+	    break;
+ 	case RepeatCmdsForm:
+ 	    FrmSetEventHandler(frm, RepeatCmds_Form_HandleEvent);
+ 	    break;
+	case SpellHwBtnsForm:
+	    FrmSetEventHandler(frm, SpellHwBtns_Form_HandleEvent);
+	    break;
+	case MsgLogForm:
+	    FrmSetEventHandler(frm, MsgLog_Form_HandleEvent);
+	    break;
+	case RestForm:
+	    FrmSetEventHandler(frm, Rest_Form_HandleEvent);
+	    break;
+#ifdef I_AM_COLOR
+	case BeamForm:
+	    FrmSetEventHandler(frm, Beam_Form_HandleEvent);
+	    break;
+	case BeamCashForm:
+	    FrmSetEventHandler(frm, BeamCash_Form_HandleEvent);
+	    break;
+#endif
+	case UserForm:
+	    FrmSetEventHandler(frm, User_Form_HandleEvent);
+	    break;
+	case InvForm:
+	    FrmSetEventHandler(frm, Inv_Form_HandleEvent);
+	    break;
+	case EquForm:
+	    FrmSetEventHandler(frm, Equ_Form_HandleEvent);
+	    break;
+	case InvSelectForm:
+	    FrmSetEventHandler(frm, InvS_Form_HandleEvent);
+	    break;
+	case ScribeForm:
+	    FrmSetEventHandler(frm, Scribe_Form_HandleEvent);
+	    break;
+	case RecallForm:
+	    FrmSetEventHandler(frm, Recall_Form_HandleEvent);
+	    break;
+	case LookForm:
+	    FrmSetEventHandler(frm, Look_Form_HandleEvent);
+	    break;
+	case StoreForm:
+	    FrmSetEventHandler(frm, Store_Form_HandleEvent);
+	    break;
+	case HaggleForm:
+	    FrmSetEventHandler(frm, Haggle_Form_HandleEvent);
+	    break;
+	case BookForm:
+	    FrmSetEventHandler(frm, Book_Form_HandleEvent);
+	    break;
+	case SpellForm:
+	    FrmSetEventHandler(frm, Spell_Form_HandleEvent);
+	    break;
+	case DalekForm:
+	    FrmSetEventHandler(frm, Dalek_Form_HandleEvent);
+	    break;
+	case GainSpForm:
+	    FrmSetEventHandler(frm, GainSp_Form_HandleEvent);
+	    break;
+	case DeathForm:
+	    FrmSetEventHandler(frm, Death_Form_HandleEvent);
+	    break;
+	case CrownForm:
+	    FrmSetEventHandler(frm, Crown_Form_HandleEvent);
+	    break;
+	case ScoresForm:
+	    FrmSetEventHandler(frm, Scores_Form_HandleEvent);
+	    break;
+       // Generation stuff:
+	case CharRaceForm:
+	    FrmSetEventHandler(frm, CharRace_Form_HandleEvent);
+	    break;
+	case CharGenderForm:
+	    FrmSetEventHandler(frm, CharGender_Form_HandleEvent);
+	    break;
+	case CharClassForm:
+	    FrmSetEventHandler(frm, CharClass_Form_HandleEvent);
+	    break;
+	case CharSummaryForm:
+	    FrmSetEventHandler(frm, CharSummary_Form_HandleEvent);
+	    break;
+	}
+	handled = true;
+    }
+
+    return handled;
+}
+
+/*****************************************************************************
+ *                      Preferences                                          *
+ *****************************************************************************/
+
+static void readMoriaPrefs()
+{
+  Word prefsSize;
+  SWord prefsVersion;
+
+  prefsSize = sizeof(MoriaPreferenceType);
+  prefsVersion = PrefGetAppPreferences(MoriaAppID, MoriaAppPrefID, &my_prefs,
+				       &prefsSize, true);
+  if (!my_prefs.big_font)
+    toggle_itsy();
+
+  if (prefsVersion < MoriaAppPrefVersion) {
+    // hmm... remember to zero out the new space ...
+    if (prefsVersion < 0x03) {
+      my_prefs.no_animations = my_prefs.unused = false;
+      my_prefs.determine_recent_user = RESTORE_DEFAULT;
+    }
+    writeMoriaPrefs();
+  }
+}
+void useMoriaPrefs()
+{
+  find_cut = my_prefs.run_cut_corners;
+  find_examine = my_prefs.run_examine_corners;
+  find_prself = true;
+  find_bound = my_prefs.run_stop_sector;
+  find_ignore_doors = my_prefs.run_thru_doors;
+  prompt_carry_flag = my_prefs.prompt_pickup; // might wire this to false
+  //  rogue_like_commands = true; // this is not used and also only quasitrue
+  //  show_weight_flag = my_prefs.show_weights; // this is not used I guess
+  highlight_seams = my_prefs.highlight_minerals;
+  //  sound_beep_flag = false;
+  //  display_counts = false;
+  set_statsbar_loc(my_prefs.stats_at_top);
+}
+void writeMoriaPrefs()
+{
+  Word prefsSize;
+
+  prefsSize = sizeof(MoriaPreferenceType);
+  PrefSetAppPreferences(MoriaAppID, MoriaAppPrefID, MoriaAppPrefVersion,
+			&my_prefs, prefsSize, true);
+}
+
+
+
+
+/*****************************************************************************
+ *                      StartApplication                                     *
+ *****************************************************************************/
+Boolean IsVGA = false; // like IsColor.  tells you if you're on a Handera 330.
+#ifdef I_AM_OS_2
+FontPtr oldFontSix = 0;
+#else
+FontID SmallFont, MyFont;
+FontID BigFont;
+FontType *fontPtr; // was in StartApplication
+#endif
+Boolean evil = false;
+Short snowcrash = 0;
+extern Boolean userform_first;
+void StartApp_helper()
+{
+  userform_first = false;
+  found_my_character = load_char();
+
+  came_from_generation = !found_my_character;
+  if (recover_crash()) // 'true' if we need to recover from a crash
+    if (found_my_character) {
+      if (0 == FrmAlert(CrashP)) {
+	// "Just Quit"
+	death = true;
+	StrCopy(died_from, "software bug");
+	FrmGotoForm(DeathForm);
+	return;
+      } else {
+	// "Recover Me"
+	came_from_generation = true; // Generate the level all over again! ha!
+	dun_level = 0; // Send you to the town!  It's a safe place...
+	// DANGER DANGER
+	// There may still be inconsistent counters, e.g. inventory, equipment!
+	// But you may consider this resuscitation worth the risk.
+      }
+    } // else there was no save file, no need for recovery
+
+  if (found_my_character) {
+    FrmGotoForm(MainForm);
+  } else {
+    re_init(); // we could be called by form_user.
+    FrmGotoForm(CharRaceForm);
+    FrmPopupForm(IntroForm); // let's try this puppy out
+  }
+  return;
+}
+
+static Word StartApplication(void)
+{
+  Word error = 0;
+  DWord version;
+#ifdef I_AM_OS_2
+  void *custom_font = 0;
+#else
+  VoidHand fontHandle;
+  //  FontType *fontPtr; // Moved out to a global
+#endif
+
+  Version_GE_OS35 = false;
+
+  // Deal with the font.
+  FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
+#ifdef I_AM_OS_2
+  // evil font kludges!
+  custom_font = MemHandleLock(DmGetResource('NFNT', ItsyFont));
+  if (version < 0x03000000L) {
+    // Note: POSE will warn you that this line is a bad idea:
+    oldFontSix = ((UIGlobalsPtr)GUIGlobalsP)->uiFontTable[6];
+    ((UIGlobalsPtr)GUIGlobalsP)->uiFontTable[6] = custom_font;
+  } else {
+    snowcrash = 1;
+    evil = true;
+  }
+#else
+  if (version >= 0x03503000L) {
+    Version_GE_OS35 = true;
+  }
+  if (version >= 0x03000000L) {
+    UInt32 version2;
+    UInt32 defaultFont;
+    // Figure out whether we are on a Handera.
+    IsVGA = _TRGVGAFeaturePresent(&version2);
+    // Get a pointer to what is the "default" font.
+    FtrGet(sysFtrCreator, sysFtrDefaultFont, &defaultFont);
+    // Load up our custom font. "user defined fonts start from 129"
+    fontHandle = DmGetResource('NFNT',ItsyFont);
+    fontPtr = MemHandleLock(fontHandle);
+    FntDefineFont(USERFONT, fontPtr);
+    MyFont = USERFONT;
+    // the custom font is uninstalled automatically when we leave the app;
+    // however, fontHandle must remain locked until then.
+    if (IsVGA) {
+      if (VgaIsVgaFont(defaultFont)) { // vga fonts are 50% LARGER
+	SmallFont = VgaVgaToBaseFont(defaultFont);
+	BigFont = defaultFont;
+      } else {
+	SmallFont = defaultFont;
+	BigFont = VgaBaseToVgaFont(defaultFont);
+      }
+      //FntSetFont(SmallFont);// So the forms OTHER than Main have non-VGA font
+    } else {
+      BigFont = defaultFont;
+      SmallFont = USERFONT;
+    }
+  } else {
+    snowcrash = 2;
+    evil = true;
+  }
+#endif
+
+  readMoriaPrefs();
+  // Return error if we don't have MoriaDB.  Open or create MoriaSaveDB.
+  error = OpenDatabase();
+  if (error && !evil) {
+    snowcrash = 3;
+    evil = true;
+  }
+  if (evil) {
+    FrmGotoForm(SnowCrashForm);
+    return 0;
+  }
+
+#ifndef I_AM_OS_2
+  if (IsVGA) {// If Handera, go to hi res mode
+    VgaSetScreenMode(screenMode1To1, rotateModeNone);
+    init_display_size(); // xxx it's not setting the global arrays right.
+  }
+  //  init_display_size(); // xxx JUST FOR TESTING!!!
+  // xxx Move that call back into the ifIsVGA body as soon as I get
+  // indication that the globals are no longer scrod.
+#endif
+
+  alloc_message_log();
+  useMoriaPrefs();
+
+  data_record_lock(true);
+  userform_first = false;
+  if (my_prefs.determine_recent_user & RESTORE_PROMPT) {
+    userform_first = true;
+    FrmGotoForm(UserForm);
+  } else {
+    // Lock the various database records; also take care of random seed.
+    StartApp_helper();
+  }
+  
+  return 0;
+}
+
+
+/*****************************************************************************
+ *                      StopApplication                                      *
+ *****************************************************************************/
+#define free_me(a)  h = MemPtrRecoverHandle((a)); if (h) MemHandleFree(h);
+
+static void StopApplication(void)
+{
+  //  VoidHand h;
+  DWord version;
+#ifdef I_AM_OS_2
+  //void *custom_font = 0;
+#else
+  VoidHand fontHandle;
+#endif
+
+  if (evil) return;
+
+  FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
+#ifdef I_AM_OS_2
+  if (version < 0x03000000L) {
+    if (oldFontSix) {
+      ((UIGlobalsPtr)GUIGlobalsP)->uiFontTable[6] = oldFontSix;
+      oldFontSix = 0;
+      //      if ((custom_font = ((UIGlobalsPtr)GUIGlobalsP)->uiFontTable[6]))
+      //	MemHandleUnlock(custom_font);
+    }
+  }
+#else
+  if (version >= 0x03000000L) {
+    //    if (!IsVGA) {
+    fontHandle = DmGetResource('NFNT',ItsyFont);
+    MemHandleUnlock(fontHandle);
+    //    }
+  }  
+#endif
+
+  // try to save!  woohoo.  but I should only do this if you're not dead...
+  if (!userform_first) {
+    if (!death) save_char(); // returns false on failure; ignored for now.
+    else        antisave_char(); // delete old save file, if any
+
+    didnt_crash();
+  }
+
+  data_record_lock(false);
+  // possibly I should free some things too.
+
+  /*
+    TO DO:
+    Call function to delete a You Crashed record
+    because we have exited gracefully
+  */
+
+  FrmSaveAllForms();
+  FrmCloseAllForms();
+
+  if (MoriaDB!=NULL) {
+    DmCloseDatabase(MoriaDB);
+    MoriaDB = NULL;
+  }
+  if (MoriaSaveDB!=NULL) {
+    DmCloseDatabase(MoriaSaveDB);
+    MoriaSaveDB = NULL;
+  }
+  // free stuff
+
+}
+
+
+/*****************************************************************************
+ *                      EventLoop                                            *
+ *****************************************************************************/
+
+/* The main event loop */
+
+
+static void EventLoop(void)
+{
+    Word err;
+    EventType e;
+     
+    do {
+	EvtGetEvent(&e, evtWaitForever);
+	// Do special hardware button things if it's a hardware button event.
+	// don't ask me what the poweredOnKeyMask is, though; cargo cult.
+	if ( (e.eType != keyDownEvent)
+	     || !my_prefs.use_hardware 
+	     || (e.data.keyDown.modifiers & poweredOnKeyMask)
+	     // || (FrmGetActiveFormID() != MainForm)
+	     || !buttonsHandleEvent(&e) )
+	  // now proceed with usual handling
+	  if (! SysHandleEvent (&e))
+	    if (! MenuHandleEvent (NULL, &e, &err))
+	      if (! ApplicationHandleEvent (&e))
+		FrmDispatchEvent (&e);
+    } while (e.eType != appStopEvent);
+}
+
+
+/* Main entry point; it is unlikely you will need to change this except to
+   handle other launch command codes */
+/*****************************************************************************
+ *                      PilotMain                                            *
+ *****************************************************************************/
+#ifdef I_AM_COLOR
+Err beam_receive(ExgSocketPtr socketPtr);
+#endif
+DWord PilotMain(Word cmd, Ptr cmdPBP, Word launchFlags)
+{
+    Word err;
+
+    switch(cmd) {
+    case sysAppLaunchCmdNormalLaunch:
+
+      err = StartApplication();
+      if (err) return err;
+
+      EventLoop();
+      StopApplication();
+
+      break;
+
+#ifdef I_AM_COLOR
+    case sysAppLaunchCmdSyncNotify: // register to receive beamed mime types
+      {
+	DWord romVersion;
+	FtrGet(sysFtrCreator, sysFtrNumROMVersion, &romVersion);
+	if (romVersion >= 0x03000000) {
+	  ExgRegisterData(MoriaAppID, exgRegTypeID, MY_MIMETYPE);
+	}
+      }
+      break;
+    case sysAppLaunchCmdExgReceiveData:
+      // I suppose we only get this if we're the right rom version anyway?
+      if ((launchFlags & sysAppLaunchFlagSubCall) != 0)
+	err = beam_receive((ExgSocketPtr) cmdPBP);
+      else
+	err = exgErrTargetMissing; // user was not in kMoria; refuse delivery.
+      if (err) return err;
+      break;
+    case sysAppLaunchCmdExgAskUser:
+      // Check whether we were "running" kMoria already.
+      // If so, we have access to globals (and will accept beams without
+      // asking the user!)  If not... we are not going to accept anything!
+      if ((launchFlags & sysAppLaunchFlagSubCall) != 0)
+	((ExgAskParamPtr)cmdPBP)->result = exgAskOk;
+      else
+	((ExgAskParamPtr)cmdPBP)->result = exgAskCancel;
+      break;
+#endif
+
+      default:
+	return sysErrParamErr;
+      }
+
+    return 0;
+}
+@
+
+
+1.115
+log
+@add compact_monsters and compact_objects (should be more robust for farming now)
+@
+text
+@d702 1
+a702 1
+const Char hwb_commands[HWB_last+2] = "\0kjlhM?ims#rdfocSF!xtaz/-g";
+d713 2
+a786 2
+    Boolean capslock_on, numlock_on, autoshifted;
+    Short tmp_shift;
+d828 5
+@
+
+
+1.114
+log
+@save file should be checkpointed every 200 turns now (2000 if mega-resting)
+@
+text
+@d521 11
+@
+
+
+1.113
+log
+@tested new features (max count, '20h', inv btns, shift+hwbtn, backup on creation)
+@
+text
+@d518 14
+@
+
+
+1.112
+log
+@hjkl hardware buttons should become HJKL when capslock is on.  untested.
+@
+text
+@d759 8
+a766 6
+    // I hear the SDK is wrong about GrfGetState temp shift codes.
+    Boolean capsLock, numLock, autoShifted;
+    Word tempShift;
+    GrfGetState(&capsLock, &numLock, &tempShift, &autoShifted);
+    if (capsLockP) // XXXXX add a check for tempShift too
+      command -= ('a' - 'A'); // make it upper case!  so we RUN if shift is on.
+@
+
+
+1.111
+log
+@henceforth, save/score database Backup bit is set to true on creation.  untested.
+@
+text
+@d758 9
+@
+
+
+1.110
+log
+@increased max count from 99 to 999, made hjkl(etc) count-aware.  untested.
+@
+text
+@d829 1
+d845 1
+@
+
+
+1.109
+log
+@fixed recall for multiple attack types; fixed map crash bug for inverted noncolor ('#define' evil); hardware button bindings for 'look' and 'recall' form
+@
+text
+@d470 4
+a473 3
+    if (n <= 0)        n = c - '0';
+    else if (n <= 9)   n = n * 10 + c - '0';
+    else               n = 99; /* maxed-out */
+@
+
+
+1.108
+log
+@add pause before death form
+@
+text
+@d725 6
+@
+
+
+1.107
+log
+@handera support is mostly working now
+@
+text
+@d207 10
+a516 22
+    // Here I am testing an alternative to FrmAlert:  "FrmDoDialog"
+    // I do not think it is an improvement w.r.t. hardware buttons!
+    /*
+  case menu_mainAbout:
+    {
+      FormPtr previousForm = FrmGetActiveForm();
+      FormPtr frm = FrmInitForm(AboutForm);
+      Word    hitbtn;
+      FrmSetActiveForm(frm);
+      // Set an event handler, if you wish, with FrmSetEventHandler
+      FrmSetEventHandler(frm, About_Form_HandleEvent);
+      // Initialize any form objects in the form
+      hitbtn = FrmDoDialog(frm);
+      // read any values from the form objects here
+      // before the form is deleted
+      if (previousForm)
+	FrmSetActiveForm(previousForm);
+      FrmDeleteForm(frm);
+
+    }
+    break;
+    */
+d522 2
+@
+
+
+1.106
+log
+@Split Preferences into two parts, add 3 new prefs, may have introduced bugs
+@
+text
+@d263 4
+a272 5
+    {
+      Char buf[NAMELEN + 10];
+      StrPrintF(buf, "Hello %s!", pymisc.name);
+      message(buf);
+    }
+d274 1
+@
+
+
+1.105
+log
+@prevent graffiti-retracting for inv/equ/haggle when over the store form; fix various other things
+@
+text
+@d100 4
+a103 1
+  { 0,0,0,0,0,0,0,0,0,0 } // what spells to bind on buttons
+d127 1
+d269 5
+d529 4
+a532 1
+  case menu_mainUser:       FrmPopupForm(UserForm);        break;
+d826 10
+d837 5
+a841 1
+  if (0 == (dbID = DmFindDatabase(0, MoriaSaveDBName))) {
+d854 28
+a881 6
+  // We can run if we cannot find the MoriaScoreDB.  Just create it.
+  if (0 == (dbID = DmFindDatabase(0, MoriaScoreDBName))) {
+    if (DmCreateDatabase(0, MoriaScoreDBName, MoriaAppID, MoriaScoreDBType,
+			 false))
+      return 1;
+    if (0 == (dbID = DmFindDatabase(0, MoriaScoreDBName))) return 1;
+d883 2
+a884 1
+  if (0 == (MoriaScoreDB = DmOpenDatabase(0, dbID, dmModeReadWrite))) return 1;
+a885 2
+  return 0;
+}
+d1028 4
+d1075 1
+d1078 1
+a1078 1
+  //found_my_character = false;
+a1079 2
+  //game_init(); // so, hm, currently that only does this:
+  //  last_command = -1;
+d1100 1
+a1100 1
+  if (found_my_character)
+d1102 1
+a1102 1
+  else {
+d1173 1
+a1179 1
+
+a1194 2
+  // Lock the various database records; also take care of random seed.
+  data_record_lock(true);
+a1195 3
+
+  // Read user preferences.
+  readMoriaPrefs();
+d1198 9
+a1206 1
+  StartApp_helper();
+d1249 6
+a1254 2
+  if (!death) save_char(); // returns false on failure; ignored for now.
+  else        antisave_char(); // delete old save file, if any
+a1255 1
+  didnt_crash();
+@
+
+
+1.104
+log
+@various fixes, mostly to 'again'
+@
+text
+@d119 1
+a119 1
+static void un_showinvis();
+d296 1
+d304 1
+a304 1
+      return true;
+d309 1
+d361 2
+a362 1
+      if (dir == 5 && curr_state.cmd != '?') // 'aborted' unless 'look'
+d364 1
+a364 1
+      else {
+a476 8
+// Go from showinvis state to default state (erase the detected characters)
+static void un_showinvis()
+{
+  show_messages();
+  creatures(false); // undo a 'detect <foo>' spell/scroll/prayer
+  refresh(false);
+  curr_state.mode = MODE_DEFAULT;
+}
+a522 29
+    {
+      Char buf[40];
+extern Short statwidth_large[6];
+extern Short statwidth_small[6];
+extern Short statwidth_misc[8];
+extern const Char *stat_abbrev[6];
+      StrPrintF(buf, "%d %d %d, %d %d %d",
+		statwidth_small[0],
+		statwidth_small[1],
+		statwidth_small[2],
+		statwidth_small[3],
+		statwidth_small[4],
+		statwidth_small[5]);
+      message(buf);
+      StrPrintF(buf, "%d %d %d, %d %d %d; %d",
+		statwidth_large[0],
+		statwidth_large[1],
+		statwidth_large[2],
+		statwidth_large[3],
+		statwidth_large[4],
+		statwidth_large[5],
+		statwidth_misc[2]);
+      message(buf);
+      StrPrintF(buf, "%d %d %d",
+		StrLen(stat_abbrev[0]),
+		StrLen(stat_abbrev[1]),
+		StrLen(stat_abbrev[2]));
+      message(buf);
+    }
+d679 1
+a679 1
+  Boolean handled = false;
+d750 1
+d753 2
+a754 1
+    return true;
+d769 1
+a769 1
+      do_dir_command(dir, 0);
+d771 2
+@
+
+
+1.103
+log
+@fixing bugs (handera display tweaks; store list crash; --more--ing for show-invis...
+@
+text
+@a322 1
+    // Hey, shouldn't this be a free turn command?
+d409 1
+a409 1
+	; // could do search or something
+d413 2
+d494 1
+a494 1
+  case menu_mainInstruct:   break; // currently a noop
+d790 2
+a791 1
+  case MODE_SLASH: return true; // do nothing
+@
+
+
+1.102
+log
+@handera support is mostly working, for some value of mostly
+@
+text
+@d118 2
+d302 1
+a302 5
+      if (message_clear(false))
+	show_messages();
+      creatures(false); // undo a 'detect <foo>' spell/scroll/prayer
+      refresh(false);
+      curr_state.mode = MODE_DEFAULT;
+d314 1
+a314 3
+      show_messages();
+      if (!message_clear(false))
+	curr_state.mode = MODE_DEFAULT;
+d465 16
+d784 1
+a784 1
+    // should be like the other handler.. for now, do nothing
+d787 1
+a787 1
+    // should be like the other handler.. for now, do nothing
+d1166 1
+a1166 1
+    //    init_display_size(); // xxx it's not setting the global arrays right.
+d1168 1
+a1168 1
+  init_display_size(); // xxx JUST FOR TESTING!!!
+@
+
+
+1.101
+log
+@fix hardware button directional bug
+@
+text
+@a511 1
+  case menu_mainTime:       show_time_and_volts();         break;
+d513 32
+d705 1
+a705 1
+  Char c, command;
+d1154 1
+a1154 1
+    init_display_size();
+d1156 3
+@
+
+
+1.100
+log
+@changing magic #define's to calculations (for handera)
+@
+text
+@d750 1
+a750 2
+    c = e->data.keyDown.chr;
+    dir = map_roguedir(&c); // dir==5 if NOOP or N/A
+@
+
+
+1.99
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@d112 1
+d363 1
+a363 1
+      dir = convert_to_dir(tmp_x, tmp_y, 10); // xxx 160 handera
+d411 2
+a412 1
+      edge = my_prefs.walk_center_border*10 * my_prefs.walk_center_border*10;
+d416 1
+a416 1
+	dir = convert_to_dir(tmp_x, tmp_y, 10); // xxx 160 handera
+d418 2
+a419 1
+	edge = my_prefs.run_walk_border*10 * my_prefs.run_walk_border*10;
+d1004 1
+a1004 1
+FontID SmallFont;
+d1083 7
+d1098 1
+a1098 1
+      FntSetFont(SmallFont);// So the forms OTHER than Main have non-VGA font!!
+a1101 6
+      // Load up our custom font. "user defined fonts start from 129"
+      fontHandle = DmGetResource('NFNT',ItsyFont);
+      fontPtr = MemHandleLock(fontHandle);
+      FntDefineFont(USERFONT, fontPtr);
+      // the custom font is uninstalled automatically when we leave the app;
+      // however, fontHandle must remain locked until then.
+d1121 7
+a1134 7
+  
+#ifndef I_AM_OS_2
+  if (IsVGA) {// If Handera, go to hi res mode
+    VgaSetScreenMode(screenMode1To1, rotateModeNone);
+    init_display_size();
+  }
+#endif
+d1171 4
+a1174 4
+    if (!IsVGA) {
+      fontHandle = DmGetResource('NFNT',ItsyFont);
+      MemHandleUnlock(fontHandle);
+    }
+@
+
+
+1.98
+log
+@still working on hiding magic constants
+@
+text
+@d246 3
+d250 1
+d265 6
+d568 3
+d575 6
+d997 1
+a997 2
+Boolean evil = false;
+Short snowcrash = 0;
+d1000 4
+d1005 2
+a1010 1
+
+a1013 1
+
+a1042 4
+// Moved out to a global
+#ifndef I_AM_OS_2
+FontType *fontPtr; // was in StartApplication
+#endif
+d1074 25
+a1098 6
+    fontHandle = DmGetResource('NFNT',ItsyFont);
+    fontPtr = MemHandleLock(fontHandle);
+    // "user defined fonts start from 129"
+    FntDefineFont(USERFONT, fontPtr);
+    // the custom font is uninstalled automatically when we leave the app;
+    // however, fontHandle must remain locked until then.
+d1125 6
+a1130 8
+  
+/*
+  TO DO:
+  Call lock.c function to check for existence of a You Crashed record
+  If it exists, DO NOT call load_char.. call antisave_char and proceed.
+  Else, call function to create a You Crashed record and call load_char
+  (outcome for both branches is: You Crashed record now exists.)
+*/
+d1167 4
+a1170 2
+    fontHandle = DmGetResource('NFNT',ItsyFont);
+    MemHandleUnlock(fontHandle);
+@
+
+
+1.97
+log
+@just tidying up
+@
+text
+@d350 3
+a352 3
+      tmp_x = e->screenX - 80;
+      tmp_y = e->screenY - 80;
+      dir = convert_to_dir(tmp_x, tmp_y, 10);
+d393 2
+a394 2
+      tmp_x = e->screenX - 80;
+      tmp_y = e->screenY - 80;
+d404 1
+a404 1
+	dir = convert_to_dir(tmp_x, tmp_y, 10);
+@
+
+
+1.96
+log
+@hiding magic numbers
+@
+text
+@d382 7
+a388 3
+      if (!handled && IS_NUMERIC(c)) {
+	handled = count_handler(c);
+	command_count = curr_state.count;
+@
+
+
+1.95
+log
+@missed a couple
+@
+text
+@d1026 1
+a1026 1
+  void *font128 = 0;
+d1038 1
+a1038 1
+  font128 = MemHandleLock(DmGetResource('NFNT', ItsyFont));
+d1042 1
+a1042 1
+    ((UIGlobalsPtr)GUIGlobalsP)->uiFontTable[6] = font128;
+d1109 1
+a1109 1
+  //void *font128 = 0;
+d1122 2
+a1123 2
+      //      if ((font128 = ((UIGlobalsPtr)GUIGlobalsP)->uiFontTable[6]))
+      //	MemHandleUnlock(font128);
+@
+
+
+1.94
+log
+@trying another kyocera fix
+@
+text
+@d1055 1
+a1055 1
+    FntDefineFont(129,fontPtr);
+@
+
+
+1.93
+log
+@make sure confiration forms don't interrupt repeated commands; also make digging shovel check a bit smarter
+@
+text
+@a203 1
+  // Will this work?
+d1016 5
+d1029 1
+a1029 1
+  FontType *fontPtr;
+@
+
+
+1.92
+log
+@just investigating FrmDoDialog.. no real changes
+@
+text
+@d559 15
+d589 8
+d622 7
+@
+
+
+1.91
+log
+@bugfix: code reorg for 'again' had made arrow-keys not work for directional cmds
+@
+text
+@d474 22
+d668 1
+a668 1
+  if (curfrm != MainForm)
+d674 1
+d1143 1
+a1143 1
+	// first see if it's a hardware button thing!!!
+a1144 2
+	// Do special hardware button things only if:
+	// it's a hardware button event, [you're alive,] and in the main form.
+@
+
+
+1.90
+log
+@again (g) works for spellcasting. also for t a z; does inventory bounds check
+@
+text
+@d340 2
+a341 1
+      dir = map_roguedir(e->data.keyDown.chr); // dir==5 if NOOP or N/A
+d597 1
+a597 1
+  Char command;
+d672 2
+a673 1
+    dir = map_roguedir(command); // dir==5 if NOOP or N/A
+@
+
+
+1.89
+log
+@can bind 'again' to a hardware button
+@
+text
+@d113 2
+a114 2
+static void reset_state(previous_state *ps);
+static void bump_state();
+d163 1
+a163 1
+static void bump_state()
+d166 1
+a166 1
+  ps->mode = MODE_DEFAULT; // let's not record modes...
+d170 1
+@
+
+
+1.88
+log
+@adding repeat command 'g' ... some stuff works with it; not spellcasting yet
+@
+text
+@d161 1
+d175 1
+d585 1
+a585 1
+const Char hwb_commands[HWB_last+2] = "\0kjlhM?ims#rdfocSF!xtaz/-";
+@
+
+
+1.87
+log
+@trying to get 'beam cash' working
+@
+text
+@d165 1
+a168 1
+  ps->mode = MODE_DEFAULT;
+d329 1
+d343 1
+a343 1
+	/*valid =*/ do_dir_command(dir, 0);
+d352 4
+a355 2
+      else
+	/*valid =*/ do_dir_command(dir, 0);
+a378 1
+      // if (handled && !free_turn_flag) command_count = 0;
+@
+
+
+1.86
+log
+@winning should work now
+@
+text
+@d793 3
+@
+
+
+1.85
+log
+@fix directional-drawing
+@
+text
+@d475 4
+a478 1
+    if (0 == FrmAlert(QuitP)) {
+d481 1
+a481 2
+      total_winner = false;
+      StrCopy(died_from, "Quitting");
+d485 1
+a485 1
+    } // else user said "oops, no".
+d835 3
+@
+
+
+1.84
+log
+@better msgs on floor-change; sped up repeated delay; fewer keypress in spellbk
+@
+text
+@d333 1
+a333 1
+    if (undraw_directional_p) undraw_directional();
+d663 1
+a663 1
+    if (undraw_directional_p) undraw_directional();
+@
+
+
+1.83
+log
+@so we don't get wedged in directional commands
+@
+text
+@d228 1
+d235 1
+a235 1
+
+d933 1
+a933 1
+	dun_level = 0; // Send you to the town!  Think this will work?
+@
+
+
+1.82
+log
+@tidying up, also make Instructions menu item not take time
+@
+text
+@d360 2
+@
+
+
+1.81
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@d456 1
+@
+
+
+1.80
+log
+@(slightly broken) rewiring the MainForm event handlers w/ explicit 'mode'
+@
+text
+@a60 10
+#include "palm.h"
+#include <Graffiti.h> /* just for GrfGetState */
+#include <CharAttr.h> /* for IsDigit */ // why is this not working for 3.1??
+#ifndef I_AM_COLOR
+#include <System/Globals.h> // for font foo
+#else /* I_AM_COLOR */
+// nothing needed, apparently
+#endif /* I_AM_COLOR */
+
+#include "kMoriaRsc.h"
+a61 1
+#include "lock-externs.h"
+@
+
+
+1.79
+log
+@tweaking
+@
+text
+@d123 15
+d162 26
+d195 2
+d198 2
+a199 1
+    // so, like there's a fatal error in one of these puppies.
+d201 1
+a201 1
+    // (should I check for death here?  I wonder..)  xyzzy
+d211 5
+d224 6
+d232 1
+a232 1
+  Boolean handled = false;
+d234 2
+a235 1
+  Short tmp_x, tmp_y, dir;
+d239 7
+d247 1
+a248 1
+
+d250 2
+a266 1
+    command_count = 0;
+d284 37
+d322 11
+a332 6
+  case menuEvent:
+    MenuEraseStatus(NULL); /* clear menu status from display */
+    switch(e->data.menu.itemID) {
+    case menu_mainScores:
+      FrmPopupForm(ScoresForm);
+      free_turn_flag = true;
+d334 19
+a352 12
+    case menu_mainWiz:
+      pymisc.exp=MAX_EXP;
+      prt_experience();
+      detect_inv2(10000);
+      free_turn_flag = true;
+      break;
+    case menu_mainWiz2:
+      {
+	Short x = char_col+7, y = char_row;
+	summon_monster(&y, &x, false);
+	refresh(false);
+	free_turn_flag = false;
+d355 8
+a362 86
+    case menu_mainMap:
+      FrmPopupForm(MapForm);
+      free_turn_flag = true;
+      break;
+    case menu_mainSettings:
+      FrmPopupForm(PrefsForm);
+      free_turn_flag = true;
+      break;
+    case menu_mainButtons:
+      FrmPopupForm(HwButtonsForm);
+      free_turn_flag = true;
+      break;
+    case menu_mainRepeaters:
+      FrmPopupForm(RepeatCmdsForm);
+      free_turn_flag = true;
+      break;
+    case menu_mainSpellBtns:
+      FrmPopupForm(SpellHwBtnsForm);
+      free_turn_flag = true;
+      break;
+    case menu_mainMsgs:
+      FrmPopupForm(MsgLogForm);
+      free_turn_flag = true;
+      break;
+    case menu_mainFont:
+      toggle_itsy();
+      get_panel(char_row, char_col, true); // FORCE recalculation of panel
+      recalc_and_refresh(); //    recalc_screen();   refresh(true);
+      free_turn_flag = true;
+      break;
+    case menu_mainBeam:
+      // XXX Make sure to test this, in the old xcopilot.
+#ifdef I_AM_COLOR
+      {
+	DWord version;
+	FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
+	if (version < 0x03000000l)  message("can't beam in OS2");
+	else  FrmPopupForm(BeamForm);
+      }
+#else
+      message("can't beam in OS2 version");
+#endif
+      free_turn_flag = true;
+      break;
+    case menu_mainUser:
+      FrmPopupForm(UserForm);
+      break;
+    case menu_mainAbout:
+      FrmPopupForm(AboutForm);
+      //      detect_inv2(randint(24)+24); // test
+      free_turn_flag = true;
+      break;
+    case menu_mainStats:
+      came_from_generation = false;
+      FrmPopupForm(CharSummaryForm);
+      free_turn_flag = true;
+      break;
+    case menu_mainTime:
+      show_time_and_volts();
+      free_turn_flag = true;
+      break;
+    case menu_mainRecall:
+      // this should be same as '/' what-is-this- character
+      do_command('/');
+      free_turn_flag = true;
+      break;
+    case menu_cmd_quit:
+      if (0 == FrmAlert(QuitP)) {
+	if (false) {
+	  antisave_char(); // delete the save file
+	  re_init();
+	  LeaveForm();
+	  came_from_generation = true;
+	  FrmGotoForm(CharRaceForm);
+	} else {
+	  death = true;
+	  total_winner = false;
+	  StrCopy(died_from, "Quitting");
+	  LeaveForm();
+	  FrmGotoForm(DeathForm);
+	  //	  FrmGotoForm(ScoresForm);
+	}
+	return true;
+      }
+      // also need to leave the application... hm.
+      free_turn_flag = true;
+d365 1
+a365 6
+      // MAGIC & MORE MAGIC..
+      tmp_x = e->data.menu.itemID - MAGIC_MENU_NUMBER;
+      if (tmp_x > 0 && tmp_x < 128)
+	handled = do_command((Char) tmp_x);
+      if (handled && !free_turn_flag) command_count = 0; // XXX
+      break;
+d367 4
+d372 1
+a372 1
+    break;
+d374 14
+a387 10
+    // let's have some fun...
+  case keyDownEvent:
+    // hardware button -- or else graffiti.
+    if (true) {
+      // under some circ.s you don't want to do this.
+      // like casting a directional spell?  maybe?
+      if (message_clear(false)) {
+	show_messages();
+	command_count = 0;
+	return true;
+d389 1
+a389 32
+    }
+    handled = do_command(e->data.keyDown.chr); // XXXX This needs fixed!
+    if (handled && !free_turn_flag) command_count = 0; // XXX
+    else {
+      Char buf[16];
+      free_turn_flag = true;
+      // allow numbers for 'command_count'
+      if ('0' <= e->data.keyDown.chr
+	  && e->data.keyDown.chr <= '9') {
+	if (command_count <= 0) {
+	  command_count = e->data.keyDown.chr - '0';
+	} else if (command_count <= 9) {
+	  command_count = command_count * 10 + e->data.keyDown.chr - '0';
+	} else {
+	  command_count = 99; /* maxed-out */
+	} // xxx Hey, I need to make "backspace" work too.
+	handled = true;
+	StrPrintF(buf, "count: %d", command_count);
+	count_message(buf);
+      } else if (8 == e->data.keyDown.chr ||   // backspace (BS)
+		 127 == e->data.keyDown.chr) {   // delete (DEL)
+	command_count = command_count / 10;
+	if (command_count) {
+	  StrPrintF(buf, "count: %d", command_count);
+	  count_message(buf);
+	} else {
+	  print_stats(STATS_WORD); // maybe this will erase it
+	}
+	handled = true;
+      }
+    }
+    break;
+d391 3
+a393 27
+  case penDownEvent:
+    if (true) {
+      // under some circ.s you don't want to do this.
+      // like casting a directional spell?  maybe?
+      if (message_clear(false)) {
+	show_messages();
+	command_count = 0;
+	if (last_command == 'I') {
+	  last_command = -1;
+	  creatures(false); // undo a 'detect <foo>' spell/scroll/prayer
+	  refresh(false);
+	}
+	return true;
+      }
+    }
+    tmp_x = e->screenX - 80;
+    tmp_y = e->screenY - 80;
+    /*
+      1. Map the direction to 1,2,3,4,6,7,8,9.
+      2. Decide whether last_command != -1
+      3. Either do_dir_command(dir, NULL),
+      4. Or move_char(dir, do_pickup)
+      5. last_command = -1;do_pickup = true; count = 0; free_turn_flag = false;
+     */
+    if (last_command == -1) { // Move!...
+      Boolean do_run = my_prefs.run;
+      Short dist;
+d399 2
+a400 2
+      if (dist < my_prefs.walk_center_border * 10
+	          * my_prefs.walk_center_border * 10) {
+a403 7
+	// /* search or something */ }
+	//if ((abs(tmp_x) < my_prefs.run_walk_border*10) &&
+	//  (abs(tmp_y) < my_prefs.run_walk_border*10))
+	//	if ((abs(tmp_x) < 6 * 10) && (abs(tmp_y) < 6 * 10))
+	if (dist < my_prefs.run_walk_border * 10
+	           * my_prefs.run_walk_border * 10)
+	  do_run = false;
+d405 5
+a409 4
+	if (!do_run || hit_dont_run(dir))
+	  move_char(dir, do_pickup);	// WALK  .. or attack
+	else {
+	  find_init(dir);	                // RUN
+d414 9
+a422 27
+      command_count = 0; // not that it's, like, currently working or anything
+    } else { // Last turn we got asked to do a directional command
+      if (last_command == '/') {
+	Short x, y;
+	where_in_dungeon(e->screenX, e->screenY, &x, &y); // convert to cell
+	do_xy_command(x, y);
+      } else if (last_command == 'I') {
+	// this is a fake command which sorta stands for 'invisible'.
+	// it un-lights any creatures that last turn's magic had lit up.
+	// hm, monsters get to take their turn BEFORE this is done....
+	// will that be bad?  may need to fix parts of spell.c
+	last_command = -1;
+	creatures(false); // undo a 'detect <foo>' spell/scroll/prayer
+	free_turn_flag = true;
+      } else {
+	//	undraw_directional(); // do_dir_command will take care of it.
+	dir = convert_to_dir(tmp_x, tmp_y, 10);
+	if (dir == 5 && last_command != '?') // 'aborted' unless 'look'
+	  free_turn_flag = true;
+	else
+	  do_dir_command(dir, 0);
+      }
+      last_command = -1;
+    }
+    command_count = 0;
+    handled = true;
+    break;
+a423 4
+  default:
+    //return true; // ah maybe this is the Shortcut Bug.
+    return handled;
+  } // end switch event type!
+d430 88
+a517 1
+
+d525 1
+a525 1
+  FieldPtr fld;
+d588 1
+d593 1
+a593 1
+  Short btn, dispatch_type = 0;
+d659 20
+a678 6
+  if (command == 'F') {
+    // just like "case menu_mainFont" in main form event handler
+    toggle_itsy();
+    get_panel(char_row, char_col, true); // FORCE recalculation of panel
+    recalc_and_refresh(); //    recalc_screen();   refresh(true);
+    free_turn_flag = true;
+d680 14
+a693 4
+  } else {
+    // This is the same as in Main_Form_HandleEvent
+    handled = do_command(command);
+    if (handled && !free_turn_flag) command_count = 0; // XXX
+d925 1
+a925 1
+  last_command = -1;
+d1038 1
+@
+
+
+1.78
+log
+@hey, I think maybe new-user-creation works now
+@
+text
+@d124 1
+d132 1
+a132 1
+  /* Grab a random seed from the clock		*/
+d135 1
+a135 1
+  /* Init monster and treasure levels for allocate */
+d139 1
+a139 1
+  /* Init the store inventories			*/
+d146 1
+a146 1
+
+d596 6
+d727 1
+d731 1
+d857 3
+a859 1
+  game_init(); // so, hm, currently that only initializes the store inv?
+d869 1
+a869 1
+	return 0;
+d887 1
+d908 1
+d1067 1
+d1069 1
+@
+
+
+1.77
+log
+@can switch to another user's game
+@
+text
+@d872 1
+@
+
+
+1.76
+log
+@random tinkering, and prep for multi-user
+@
+text
+@d932 1
+@
+
+
+1.75
+log
+@beam an item (untested)
+@
+text
+@d285 3
+d723 3
+d843 33
+d946 1
+a946 30
+  //found_my_character = false;
+  found_my_character = load_char();
+
+  game_init(); // so, hm, currently that only initializes the store inv?
+
+  came_from_generation = !found_my_character;
+  if (recover_crash()) // 'true' if we need to recover from a crash
+    if (found_my_character) {
+      if (0 == FrmAlert(CrashP)) {
+	// "Just Quit"
+	death = true;
+	StrCopy(died_from, "software bug");
+	FrmGotoForm(DeathForm);
+	return 0;
+      } else {
+	// "Recover Me"
+	came_from_generation = true; // Generate the level all over again! ha!
+	dun_level = 0; // Send you to the town!  Think this will work?
+	// DANGER DANGER
+	// There may still be inconsistent counters, e.g. inventory, equipment!
+	// But you may consider this resuscitation worth the risk.
+      }
+    } // else there was no save file, no need for recovery
+
+  if (found_my_character)
+    FrmGotoForm(MainForm);
+  else {
+    FrmGotoForm(CharRaceForm);
+    FrmPopupForm(IntroForm); // let's try this puppy out
+  }
+@
+
+
+1.74
+log
+@working on top-ten conversion (and beaming)
+@
+text
+@d1064 1
+a1064 1
+	  ExgRegisterData(MoriaAppID, exgRegTypeID, MY_MIMETYPES);
+@
+
+
+1.73
+log
+@can now beam 'hello world' ha ha ha
+@
+text
+@d76 1
+a641 18
+  // quick check to make sure it's maybe-ok (prevent fatal errs)
+    /*
+  {
+    ULong uniqueID = REC_OBJLIST_NAMES;
+    UInt index;
+    {
+      // test: we will screw it up and see if we can fix it later.
+      Short i, recs;
+      recs = DmNumRecords(MoriaDB);
+      for (i = 0, uniqueID = 0 ; i < recs ; i++, uniqueID++) {
+	DmSetRecordInfo(MoriaDB, i, NULL, &uniqueID);
+      }
+    }
+    uniqueID = REC_OBJLIST_NAMES;
+    if (0!=DmFindRecordByID(MoriaDB, uniqueID, &index)) return 1;
+  }
+    */
+
+d656 9
+@
+
+
+1.72
+log
+@ok beaming the app and database should work now.  sorta
+@
+text
+@a1049 2
+#define SCORES_MIMETYPE "application/x-kmoria-scores"
+//#define DB_MIMETYPE "application/x-kmoria-data"
+d1067 1
+a1067 2
+    case sysAppLaunchCmdSyncNotify:
+      // this is where I would register the mime type of my Scores data.
+d1072 1
+a1072 2
+	  //	  ExgRegisterData(MoriaAppID, exgRegTypeID, DB_MIMETYPE);
+	  ExgRegisterData(MoriaAppID, exgRegTypeID, SCORES_MIMETYPE);
+d1078 4
+a1081 1
+      err = beam_receive((ExgSocketPtr) cmdPBP);
+@
+
+
+1.71
+log
+@tweaking, tinkering; adding /T to show current time and voltage..
+@
+text
+@d270 14
+d641 18
+d725 3
+d1050 3
+d1057 2
+a1058 1
+    if (cmd == sysAppLaunchCmdNormalLaunch) {
+d1066 33
+a1098 3
+    } else {
+      return sysErrParamErr;
+    }
+@
+
+
+1.70
+log
+@Improved the 'rest' form: can be aborted, can use hardware buttons.
+@
+text
+@d280 4
+@
+
+
+1.69
+log
+@tweaking/color
+@
+text
+@d454 62
+d567 2
+d685 3
+@
+
+
+1.68
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d172 1
+d353 2
+d555 2
+a556 1
+  // We cannot run if we cannot find the MoriaDB, so return error
+@
+
+
+1.67
+log
+@revised stats-redrawing so that it (hopefully) redraws only what has changed
+@
+text
+@d1 10
+a10 27
+/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * Copyright (C) 2000,2001 Bridget Spitznagel, James E. Wilson,      *
+ *  Robert A. Koeneke.                                               *
+ *                                                                   *
+ * This program is derived from Umoria 5.5.2.  Umoria is:            *
+ *  "Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+ *   This software may be copied and distributed for educational,    *
+ *   research, and not for profit purposes provided that this        *
+ *   copyright and statement are included in all such copies."       *
+ *                                                                   *
+ * kMoria is free software; you can redistribute it and/or           *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+d12 1
+a12 1
+// this comment, from Umoria 5.5.2, is not to be removed from kMoria:
+d15 1
+a15 1
+ *  HISTORICAL CREDITS for Moria itself:                             *
+d17 1
+a17 1
+ *      "Designer and Programmer : Robert Alan Koeneke               *
+d50 4
+d57 1
+a57 1
+ *   of the author Robert Alan Koeneke."                             *
+a59 9
+
+//
+// "copied and Modified freely ... no one.. may sell or market" VS.
+// "copied and Distributed for educational, research, and not for
+// profit purposes"... Which one is 'right'??  Presumably the former
+// given the existence of numerous ports/derivatives?  GPL should
+// achieve same practical goal (prevents mutation into shareware,
+// nagware, adware, etc.  heh.  did adware exist in 1989?)
+//
+@
+
+
+1.66
+log
+@all-new all-different xmen^H^H^H^Hhardware buttons form
+@
+text
+@d219 1
+a219 1
+    print_stats(STATS_STR_ETC);
+@
+
+
+1.65
+log
+@making invert work in the general case; an initial credits screen; and I forget what else
+@
+text
+@a473 3
+static Char hwb_commands[HWB_last+1] = {  0 , 'k', 'j', 'l', 'h',
+					  'M', '?', 'i', 'm', 's',
+					  '#', 'r', 'd', 'f' };
+d476 4
+a479 1
+//					  'F', 'r', 'd', 'f' };
+@
+
+
+1.64
+log
+@added teeny little command bar icons
+@
+text
+@d277 4
+d484 2
+a485 1
+  Short dispatch_type = 0;
+d498 2
+d507 9
+a515 24
+  case hard1Chr:      // datebook
+    dispatch_type = my_prefs.hardware[0];
+    break;
+  case hard2Chr:      // address
+    dispatch_type = my_prefs.hardware[1];
+    break;
+  case hard3Chr:      // todo
+    dispatch_type = my_prefs.hardware[2];
+    break;
+  case hard4Chr:      // memos
+    dispatch_type = my_prefs.hardware[3];
+    break;
+  case pageUpChr:
+    dispatch_type = my_prefs.hardware[4];
+    break;
+  case pageDownChr:
+    dispatch_type = my_prefs.hardware[5];
+    break;
+  case calcChr:
+    dispatch_type = my_prefs.hardware[6];
+    break;
+  case findChr: // hello, why is this not working in xcopilot? works on Visor!!
+    dispatch_type = my_prefs.hardware[7];
+    break;
+d520 9
+a528 1
+  if (FrmGetActiveFormID() != MainForm)
+d619 3
+d634 3
+d853 1
+a853 1
+  else
+d855 2
+@
+
+
+1.63
+log
+@monster colors are kind of working now, maybe (for white background)
+@
+text
+@d99 1
+d224 16
+d762 2
+d777 3
+@
+
+
+1.62
+log
+@I think that users of monster_attacks data are happy again. Fixed shortcut bug also
+@
+text
+@d128 2
+d695 1
+a695 1
+    // remember to zero out the new space
+@
+
+
+1.61
+log
+@hauled a bunch of code from one section to another, and moved some consts to DB
+@
+text
+@d439 2
+a440 1
+    return true; // XXXXXXXXXXXXXXXXXX Maybe this is the Shortcut Bug???
+@
+
+
+1.60
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d127 3
+a129 1
+  "my name"
+d254 4
+d608 3
+d690 5
+@
+
+
+1.59
+log
+@send dead recovered character to tombstone page
+@
+text
+@d83 1
+a83 1
+#include <Pilot.h>
+d86 1
+d88 3
+@
+
+
+1.58
+log
+@detect crashes, pop up a form to kill or attempt-to-recover character
+@
+text
+@d788 4
+a791 2
+	found_my_character = false;
+	came_from_generation = true;
+@
+
+
+1.57
+log
+@crash recovery, maybe
+@
+text
+@d3 2
+a4 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d29 2
+a70 4
+ *  _______________________________________________________________  *
+ *                                                                   *
+ *   ("Version 5.5" == Umoria 5.5.2).                                *
+ *   kMoria would not exist without the work of the people above.    *
+d74 9
+d784 1
+a784 1
+  if (recover_crash())
+d792 1
+a792 1
+	came_from_generation = true; // Generate the level all over again.
+d794 1
+d796 1
+d798 1
+a798 1
+    }
+@
+
+
+1.56
+log
+@backed out of mess-with-py-record change, I think.  notes on crash recovery
+@
+text
+@d774 1
+d776 14
+d836 1
+@
+
+
+1.55
+log
+@messing around with py record: always exists, sometimes zeroed, always locked during gameplay
+@
+text
+@d762 9
+a770 1
+  // [create and] lock and read the py record (returns false if newly created)
+a772 1
+
+d824 6
+a831 1
+
+@
+
+
+1.54
+log
+@gearing up to add some requested features
+@
+text
+@d762 1
+a762 1
+  //found_my_character = false;
+d765 1
+d819 1
+@
+
+
+1.53
+log
+@tested font-toggling hw button binding, then commented it out again
+@
+text
+@d421 1
+a421 1
+    return true;
+@
+
+
+1.52
+log
+@fixed character export bug (and some minor bugs)
+@
+text
+@d432 6
+a437 3
+static Char hwb_commands[14] = {  0 , 'k', 'j', 'l', 'h',
+				 'M', '?', 'i', 'm', 's',
+				 '#', 'r', 'd', 'f' };
+d504 12
+a515 3
+  // This is the same as in Main_Form_HandleEvent
+  handled = do_command(command);
+  if (handled && !free_turn_flag) command_count = 0; // XXX
+@
+
+
+1.51
+log
+@allow more access to monster memory
+@
+text
+@d434 1
+a434 1
+				 '#', 'R', 'd', 'f' };
+d496 1
+a496 1
+  if (dispatch_type < 1 || dispatch_type > 13)
+@
+
+
+1.50
+log
+@Guess The Verb: directional-foo prints what you're doing in message area.
+@
+text
+@d440 1
+a440 1
+  Word which_form;
+@
+
+
+1.49
+log
+@fixed sell-unknown-item-to-store bug.  most forms navigable via keyboard now.
+@
+text
+@a207 1
+    //    message_clear();
+d303 1
+a303 1
+      if (message_clear()) {
+a308 1
+    //      message_clear();
+d343 1
+a343 1
+      if (message_clear()) {
+a407 1
+	//	message_clear(); // in case some of these forget to clear it
+a430 98
+/*
+// if free_turn_flag needs to be set, do the setting here.
+// caller will zero command_count, and deal with numeric input and '-'
+static Boolean do_command(Char c)
+{
+  // decide whether to clear the message....
+  switch(c) {
+  case 'a':
+    //message("aim()"); // xxx needs direction argument
+    needed_direction_for = DIR_AIM; // also needs an object
+    free_turn_flag = true;
+    draw_directional();
+    return true;
+  case 'z':
+    //use();
+    return true;
+  case 'c':
+    needed_direction_for = DIR_CLOSE;
+    free_turn_flag = true;
+    draw_directional();
+    return true;
+  case 't':
+    needed_direction_for = DIR_THROW; // also needs an object
+    //throw_object(need item_val); // shouldn't this be an Inventory command??
+    free_turn_flag = true;
+    draw_directional();
+    return true;
+  case 'm':
+    //cast()
+    return true;
+  case 'o':
+    needed_direction_for = DIR_OPEN;
+    free_turn_flag = true;
+    draw_directional();
+    return true;
+  case 'p':
+    //pray();
+    return true;
+  case 's':
+    //search();
+    return true;
+  case 'x':
+    // exchange weapons
+    return true;
+  case 'f':
+    needed_direction_for = DIR_BASH;
+    free_turn_flag = true;
+    draw_directional();
+    return true;
+  case '.':
+    //rest();
+    return true;
+  case 'd':
+    needed_direction_for = DIR_TUNNEL;
+    free_turn_flag = true;
+    draw_directional();
+    return true;
+  case '^':
+    needed_direction_for = DIR_DISARM;
+    free_turn_flag = true;
+    draw_directional();
+    return true;
+  case '<':
+  case pageUpChr:
+    //go_up();
+    return true;
+  case '>':
+  case pageDownChr:
+    //go_down();
+    return true;
+  case 'i':
+    // go to the inventory form
+    return true;
+  case 'e':
+    // go to the equipment form
+    return true;
+  case 'S':
+    // toggle search mode
+    free_turn_flag = true;
+    return true;
+  case 'w':
+    needed_direction_for = DIR_WEDGE;
+    free_turn_flag = true;
+    draw_directional();
+    return true;
+  case '?':
+    needed_direction_for = DIR_LOOK;
+    free_turn_flag = true;
+    draw_directional();
+    return true;
+  case 'g':
+    //gain_spells();
+    return true;
+  }
+  return false;
+}
+*/
+/*****************************************************************************/
+d671 1
+a671 1
+  set_statsbar_loc();
+@
+
+
+1.48
+log
+@run is (mostly) fixed so you don't run-and-attack. at least stationary monsters
+@
+text
+@d942 1
+a942 1
+	     || (FrmGetActiveFormID() != MainForm)
+@
+
+
+1.47
+log
+@fixed some bugs:
+directional commands redraw properly
+event queue is flushed before entering new level
+going back a screen in shops is ok for boundary case now
+made hw buttons which are bound stay bound (disabled) in all forms
+@
+text
+@d390 1
+a390 1
+	  if (find_flag) find_run();
+@
+
+
+1.46
+log
+@tweaked notice
+@
+text
+@d150 23
+d409 1
+a409 1
+	undraw_directional();
+d428 2
+a429 13
+  if (!free_turn_flag) {
+    // so, like there's a fatal error in one of these puppies.
+    end_of_turn();   // this is what moves the creatures and makes new levels
+                     // (should I check for death here?  I wonder..)  xyzzy
+    start_of_turn(); // this is what makes your own clock tick.
+  }
+  show_messages();
+  refresh(false);
+  // how about "if (death) FrmGotoForm..."?
+  if (death) {
+    LeaveForm();
+    FrmGotoForm(DeathForm);
+  }
+d544 7
+a550 4
+  if (!(ChrIsHardKey(e->data.keyDown.chr))
+      && (e->data.keyDown.chr != findChr)
+      && (e->data.keyDown.chr != pageUpChr)
+      && (e->data.keyDown.chr != pageDownChr))
+d553 3
+a555 9
+  which_form = FrmGetActiveFormID();
+  if (which_form != MainForm) {
+    switch (which_form) {
+    case LookForm: case MapForm:
+      return true; // basically, disable buttons in these two forms
+    default:
+      return false; // else if not main form, buttons go to 'datebook' etc.
+    }
+  }
+d587 10
+d606 1
+a606 11
+  // This is just the same as the end of Main_Form_HandleEvent
+  if (!free_turn_flag) {
+    end_of_turn();
+    start_of_turn();
+  }
+  show_messages();
+  refresh(false);
+  if (death) {
+    LeaveForm();
+    FrmGotoForm(DeathForm);
+  }
+@
+
+
+1.45
+log
+@fixed relative-move bug, might have fixed same-panel-next-level bug,
+some sound added, command-count recognizes 'delete' now,
+app goes to dead-end form for wrong OS or missing database at startup.
+@
+text
+@d5 5
+a9 2
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d11 1
+a11 1
+ * This program is free software; you can redistribute it and/or     *
+d27 48
+@
+
+
+1.44
+log
+@animating throw, fire-bolt, fire-ball, breath attack
+@
+text
+@d240 1
+a244 1
+	Char buf[16];
+d255 8
+a262 3
+      } else { // probably a user typo
+	// is this a good idea?
+	command_count = 0;
+d293 1
+a293 1
+      Short dist = tmp_x * tmp_x + tmp_y * tmp_y;
+d298 1
+d301 1
+a301 1
+	; // search or something
+d311 1
+d604 3
+d730 1
+d753 3
+d765 4
+a768 1
+  }  
+d773 2
+a774 2
+  if (error) {
+    //    FrmGotoForm(SadForm);
+d776 6
+a781 1
+  } //else {
+@
+
+
+1.43
+log
+@corrosion bug might be fixed
+last message shown always has at least cur/max hitpoints visible (overlaid)
+inventory now displays weight (optionally)
+added a preference to move status bar to top of screen
+@
+text
+@d255 4
+a258 1
+      } // else it must be a typo...
+@
+
+
+1.42
+log
+@sing this corrosion to me (fixed corrode-inventory-item bug)
+@
+text
+@d53 1
+d56 1
+a275 10
+    if (e->screenY > 160-6) {
+      print_stats(STATS_TOGGLE);
+      show_messages();
+      refresh(false);
+      //      ctr = 0;
+      //      handled = true;
+      //      free_turn_flag = true;
+      //      break;
+      return true;
+    }
+d699 1
+d764 1
+@
+
+
+1.41
+log
+@mumble
+@
+text
+@d108 2
+d135 4
+d140 3
+a142 1
+      FrmPopupForm(ScoresForm);
+d145 8
+d177 1
+d276 2
+d279 4
+a282 3
+      handled = true;
+      free_turn_flag = true;
+      break;
+@
+
+
+1.40
+log
+@rough cut of top-score list
+@
+text
+@a119 3
+    // a printf for testing:  xxxxx
+    // StrPrintF(buf, "%d, %ld", store[0].store_ctr, store_inven[0][0].scost);
+    // message(buf);
+@
+
+
+1.39
+log
+@genocide scroll works
+@
+text
+@d137 2
+a138 20
+      // for wizardly testing only  xxxxxxxx
+      //      FrmPopupForm(DalekForm);
+      pymisc.exp = MAX_EXP;
+      prt_experience();
+      /*
+      dun_level += WIN_MON_APPEAR-1;
+      place_object(char_row, char_col, false);
+      dun_level -= WIN_MON_APPEAR-1;
+      free_turn_flag = true;
+      */
+      /*
+      free_turn_flag = true;
+      command_count = 17;
+      handled = true;
+      {
+	Char buf[16];
+	StrPrintF(buf, "count: %d", command_count);
+	count_message(buf);
+      }
+      */
+d189 2
+a190 2
+	  //	  FrmGotoForm(DeathForm);
+	  FrmGotoForm(ScoresForm);
+@
+
+
+1.38
+log
+@user can rebind hardware buttons
+@
+text
+@d138 3
+a140 2
+      //      pymisc.exp = MAX_EXP;
+      //      prt_experience();
+d147 1
+d156 1
+d647 3
+@
+
+
+1.37
+log
+@can access Recall from Look now
+@
+text
+@d59 1
+d163 4
+d466 3
+d472 1
+a472 1
+  Boolean took_time = true;
+d474 2
+d483 10
+d517 1
+a517 1
+  case findChr:
+d523 1
+a523 3
+  switch (dispatch_type) {
+    /*
+  case HWB_NOOP:
+d525 11
+a535 7
+  case HWB_N:
+  case HWB_S:
+  case HWB_E:
+  case HWB_W:
+    handled = true;
+    break;
+    */
+d537 5
+a541 3
+  // do that loop thing too.  yeah.
+  if (handled && took_time) {
+    ; //    start_of_Play_Level_loop();
+d544 1
+d608 3
+@
+
+
+1.36
+log
+@rearranged menus, fixed search-mode
+@
+text
+@d602 3
+@
+
+
+1.35
+log
+@added some preferences
+@
+text
+@d139 1
+d144 9
+@
+
+
+1.34
+log
+@fixed ring-wearing
+@
+text
+@d53 4
+@
+
+
+1.33
+log
+@added 'inscribe', rearranged menus
+@
+text
+@d132 4
+a135 6
+      // Gain some levels FOR TESTING ONLY  xxxxxxxx
+      /*
+      pymisc.exp++;
+      pymisc.exp *= 100;
+      prt_experience();
+      dun_level += 20;
+d137 1
+a137 1
+      dun_level -= 20;
+a138 1
+      */
+@
+
+
+1.32
+log
+@bug fixes, 'drop all?' for multiple items
+@
+text
+@d133 1
+a136 1
+      /*
+d584 3
+@
+
+
+1.31
+log
+@wands, staffs mostly tested, recharge works, throw works
+@
+text
+@d140 1
+a141 1
+      free_turn_flag = true;
+a171 1
+      //      FrmPopupForm(StoreForm); // just for testing
+@
+
+
+1.30
+log
+@throw works
+@
+text
+@d134 1
+a134 1
+      pymisc.exp *= 10;
+d136 5
+d582 3
+@
+
+
+1.29
+log
+@maybe bug fixes
+@
+text
+@d68 1
+@
+
+
+1.28
+log
+@continued work on spells
+@
+text
+@d122 1
+a122 2
+    show_messages(); // in case you can learn a spell.  But it's not working..
+    //recalc_screen();// now incorporated in enter_new_level
+d131 1
+a131 1
+      // Gain some levels FOR TESTING ONLY
+@
+
+
+1.27
+log
+@fixed some bugs: messages from actions that make you exit from
+inventory/equipment should now occur on time (instead of the following
+turn); level advancement works; blindness and cure blindness both work
+on time.  speeded up the redraw-whole-screen thing (now have a recalc,
+refresh, and faster recalc_refresh combo.  code needs cleaning up now..)
+@
+text
+@d131 7
+d245 5
+d302 8
+@
+
+
+1.26
+log
+@Death - now you die and go to a tombstone page and can print Character Record to a memo
+@
+text
+@d48 1
+a48 1
+  false, // sector
+d120 1
+a120 2
+    recalc_screen();
+    refresh(); // Hey!  what's wrong here?
+d146 1
+a146 2
+      recalc_screen();
+      refresh();
+d177 2
+a178 1
+	  FrmGotoForm(DeathForm);
+d317 1
+a317 1
+  refresh();
+d578 3
+@
+
+
+1.25
+log
+@fixed Gain Spells so that mages' mana display is updated afterward
+@
+text
+@d168 13
+a180 5
+	antisave_char(); // delete the save file
+	re_init();
+	LeaveForm(); // is this a good idea?
+	came_from_generation = true;
+	FrmGotoForm(CharRaceForm);
+d318 1
+d320 4
+a323 1
+  refresh();
+d576 3
+@
+
+
+1.24
+log
+@'you can gain spells' message in generation
+@
+text
+@d306 1
+a306 1
+                     // (should I check for death here?  I wonder..)
+@
+
+
+1.23
+log
+@fixed a store bug
+@
+text
+@a107 1
+    print_stats(STATS_STR_ETC);
+d122 1
+@
+
+
+1.22
+log
+@fixed scroll title creation bug, I think
+@
+text
+@d72 1
+a72 1
+#if (COST_ADJ != 100)
+d74 1
+a74 1
+#endif
+d84 2
+a85 1
+  store_init();
+d100 1
+a100 1
+  //  Char buf[40]; // for testing
+a107 2
+    //    message(&amulets[0]); // let's see if it exists.  Ok, "Amber"
+    //    message(&rocks[0]); // let's see if it exists.  Ok, "Alexandrite"
+d115 3
+@
+
+
+1.21
+log
+@added scrambling of magic-item names (except scrolls), only partly tested
+@
+text
+@a149 1
+      magic_init(); // XXXX for testing
+@
+
+
+1.20
+log
+@you can now: quit; attack instead of running; be given a default name
+@
+text
+@a84 1
+  // also should call magic_init
+d99 1
+a99 1
+  //  Char buf[40];
+d107 2
+d150 1
+d309 1
+@
+
+
+1.19
+log
+@added saving
+@
+text
+@d110 2
+a111 1
+    if (!found_my_character) {
+d166 5
+a170 1
+	death = true;
+d216 1
+a216 1
+	message(buf);
+d266 2
+a267 2
+	if (!do_run)
+	  move_char(dir, do_pickup);	// WALK
+a270 1
+	  // how come this does not print hit-messages??
+d678 1
+@
+
+
+1.18
+log
+@adding GPL comment
+@
+text
+@d66 1
+d110 4
+a113 2
+    generate_cave();
+    enter_new_level();
+d162 8
+a627 1
+  //  Boolean found_my_character;
+a634 1
+  Boolean found_my_character;
+d636 1
+a636 15
+  error = OpenDatabase(); /// I am not ready for this yet!
+  //  error = false;
+
+  if (error) {
+    //    FrmGotoForm(SadForm);
+    evil = true;
+  } //else {
+
+  data_record_lock(true);
+
+  /* load game and/or do all the ONE-TIME initialization */
+  //    found_my_character = init_game(); // allocates env et al
+  readMoriaPrefs();
+  useMoriaPrefs();
+    
+d651 1
+a651 1
+    // the custom font is uninstalled automatically when we leave iLarn;
+d655 14
+d670 4
+a673 7
+  found_my_character = false;
+    // found_my_character = true;
+  /*
+    if (generate) generate_cave()  -- this is sorta working
+    then I loop until dead in MainForm.  which is like dungeon() was.
+   */
+  game_init();
+a698 2
+  data_record_lock(false);
+
+d716 7
+a722 8
+  // try to save!  woohoo.
+  /*
+  if (env->cdude[HP] > 0)
+    save_all(env);
+
+  free_env(env);
+  free_me(env);
+  */
+@
+
+
+1.17
+log
+@command count sorta works
+@
+text
+@d1 23
+@
+
+
+1.16
+log
+@semi-fixed some message/stats untidiness
+@
+text
+@d95 1
+d141 1
+d150 7
+a156 10
+    //    frm = FrmGetActiveForm();
+    // If it's not numeric or '-', call do_command();
+    switch(e->data.keyDown.chr) {
+    case pageUpChr: // For debugging only!
+      // This should really be in hwbuttons and call go_up(); // XXXX
+      if (dun_level > 0) {
+	dun_level--;
+	generate_cave();
+	recalc_screen();
+	refresh();
+d158 21
+a178 19
+      handled = true;
+      break;
+    case pageDownChr: // For debugging only!
+      // This should really be in hwbuttons and call go_down(); // XXXX
+      if (dun_level < 99) {
+	dun_level++;
+	generate_cave();
+	recalc_screen();
+	refresh();
+      }
+      handled = true;
+      break;
+    default:
+      //      message_clear();
+      handled = do_command(e->data.keyDown.chr); // XXXX This needs fixed!
+      if (handled)
+	command_count = 0;
+      else
+	free_turn_flag = true; // must be a typo (graffitio)
+d188 1
+d253 1
+@
+
+
+1.15
+log
+@overview map sorta works
+@
+text
+@d98 1
+a98 1
+    message_clear();
+d172 1
+a172 1
+      message_clear();
+d242 1
+a242 1
+	message_clear(); // in case some of these forget to clear it
+@
+
+
+1.14
+log
+@added Preferences, maybe half of them work
+@
+text
+@d102 1
+a102 1
+      alert_message("imagine a map");
+d172 1
+d486 3
+@
+
+
+1.13
+log
+@just another random checkpoint
+@
+text
+@a13 23
+#define NAMELEN 20
+struct MoriaPreferenceType_s {
+  /* ... */
+  Short run_walk_border;
+  Short walk_center_border;
+  Boolean run_on;
+  Boolean stay_centered; // new in 0.40
+  Boolean sound_on;
+  Boolean font_large;
+  Boolean use_hardware;
+  Short hardware[8];
+  Char name[NAMELEN];
+};
+typedef struct MoriaPreferenceType_s MoriaPreferenceType;
+
+void this_is_a_test(Short i) SEC_1;
+
+void this_is_a_test(Short i) {
+  Short j;
+  for (i = 0 ; i < 10 ; i++)
+    j += 3;
+}
+
+d17 18
+a34 7
+  true, // run
+  false, // centered
+  true, // sound
+  true, // font
+  false, // hw
+  { 0,0,0,0,0,0,0,0 }, // hw
+  "" // name  
+d93 1
+a93 3
+    show_messages(); // in case you can learn a spell.
+    //    get_panel( char_row,  char_col, true);
+    // ... get_panel is just plain not particularly working.
+d101 6
+a106 2
+    case menu_mainAbout:
+      FrmPopupForm(AboutForm);
+a112 4
+    case menu_mainMap:
+      alert_message("imagine a map");
+      free_turn_flag = true;
+      break;
+d120 4
+d206 1
+a206 1
+      Boolean do_run = true;
+d208 6
+a213 5
+      //if (my_prefs.rogue_relative)
+      //rogue_relativize(&tmp_x, &tmp_y, env->playerx, env->playery);
+      //if ((abs(tmp_x) < my_prefs.walk_center_border*10) && 
+      //  (abs(tmp_y) < my_prefs.walk_center_border*10)) {
+      if (dist < (1*10)*(1*10)) {
+d221 2
+a222 1
+	if (dist < (6 * 10)*(6 * 10))
+d486 3
+d544 1
+a544 2
+  //  Short i;
+  //  MoriaPreferenceType prefs;
+d548 16
+a563 1
+
+d565 1
+a565 1
+static void writeMoriaPrefs()
+d568 1
+a568 1
+  //  MoriaPreferenceType prefs;
+a569 1
+
+d610 1
+@
+
+
+1.12
+log
+@ha!  panel redrawing works.  rock on
+@
+text
+@d105 1
+d112 1
+a112 1
+    unmessage();
+d117 6
+a122 1
+      return true;
+d124 3
+a126 2
+      message("imagine a map");
+      return true;
+d132 2
+a133 1
+      return true;
+d137 2
+a138 1
+      return true;
+d143 2
+a144 1
+      return true;
+d191 8
+a198 1
+    unmessage();
+d217 1
+d222 17
+a238 12
+      // /* search or something */ }
+      dir = convert_to_dir(tmp_x, tmp_y, 10);
+      //if ((abs(tmp_x) < my_prefs.run_walk_border*10) &&
+      //  (abs(tmp_y) < my_prefs.run_walk_border*10))
+      if ((abs(tmp_x) < 6 * 10) &&
+	  (abs(tmp_y) < 6 * 10))
+	do_run = false;
+      if (!do_run)
+	move_char(dir, do_pickup);	// WALK
+      else {
+	find_init(dir);	                // RUN
+	if (find_flag) find_run();
+d249 1
+a249 1
+	unmessage(); // in case some of these forget to clear it
+d272 1
+d493 3
+@
+
+
+1.11
+log
+@running sort of works (leaves the odd '@@' around), painful w/o preferences
+@
+text
+@d101 4
+a104 1
+    refresh();
+d122 1
+a122 2
+      // HEY - also need to recalculate the panel!!!
+      get_panel(char_row, char_col, true);
+@
+
+
+1.10
+log
+@'click to identify' Recall is sorta working, sorta buggy
+@
+text
+@d197 6
+a202 1
+      // slide_dir(tmp_x/40, tmp_y/40); free_turn_flag = true; // for testing
+d204 11
+a214 1
+      move_char(dir, do_pickup);
+@
+
+
+1.9
+log
+@eh, well, you can move around (and so can monsters) but panel/redraw is buggy
+@
+text
+@d129 3
+a131 1
+      FrmPopupForm(StoreForm); // just for testing
+d203 13
+a215 7
+      undraw_directional();
+      unmessage(); // in case some of these forget to clear it
+      dir = convert_to_dir(tmp_x, tmp_y, 10);
+      if (dir == 5 && last_command != '?') // 'aborted' unless 'look'
+	free_turn_flag = true;
+      else
+	do_dir_command(dir, 0);
+@
+
+
+1.8
+log
+@trying to fix the panel thing, still a problem.  but you can see yourself.
+@
+text
+@d101 1
+d119 2
+d122 1
+d153 1
+d163 1
+@
+
+
+1.7
+log
+@working on dungeon.c / command loop foo
+@
+text
+@d101 3
+a103 5
+    //    message("digging..");
+    recalc_screen();
+    //    message("Welcome to kMoria.");
+    //    StrPrintF(buf, "%d", sizeof(inven_type));
+    //    message(buf);
+d218 1
+a218 1
+
+@
+
+
+1.6
+log
+@working on main command input
+@
+text
+@d55 1
+d74 3
+a76 10
+}
+static void start_of_loop()
+{
+  do_pickup = true; // we will turn it off if we receive '-'
+  free_turn_flag = false; // we will turn it on for zero-duration commands
+  //  regenerate(); // put all the clock-ticky things in here
+  
+  /* turn over the store contents every, say, 1000 turns */
+  if ((dun_level != 0) && ((turn % 1000) == 0))
+    store_maint();
+d81 1
+a81 1
+static Boolean do_command(Char c);
+d87 1
+a87 1
+  Short tmp_x, tmp_y;
+d99 2
+a121 21
+    case menu_cmd_e:
+      if (equip_ctr == 0)
+	message("You are not using anything.");
+      else
+	FrmPopupForm(EquForm);
+      return true;
+    case menu_cmd_i:
+      if (inven_ctr == 0)
+	message("You are not carrying anything.");
+      else
+	FrmPopupForm(InvForm);
+      return true;
+    case menu_cmd_m:
+      cast();
+      return true;
+    case menu_cmd_p:
+      pray();
+      return true;
+    case menu_cmd_G:
+      gain_spells();
+      return true;
+d129 6
+d145 2
+a146 1
+    case pageUpChr:
+d154 2
+a155 1
+    case pageDownChr:
+d164 1
+a164 1
+      handled = do_command(e->data.keyDown.chr);
+d180 1
+d183 14
+a196 4
+    if (needed_direction_for == DIR_NONE) {
+      slide_dir(tmp_x/40, tmp_y/40);
+      
+    } else {
+d199 6
+a204 1
+      dispatch_directional(convert_to_dir(tmp_x, tmp_y, 10));
+d214 6
+a219 2
+  if (!free_turn_flag)
+    start_of_loop();
+d225 1
+a225 1
+
+d321 1
+a321 1
+
+@
+
+
+1.5
+log
+@continuing slow accretion (scrolls.c, du partial dungeon.c)
+@
+text
+@d130 1
+a130 1
+      FrmPopupForm(EquForm);
+@
+
+
+1.4
+log
+@mages can gain spells now
+(note: there is a tiny memory leak in learn_the_spell, form_spell.c)
+@
+text
+@a193 1
+      //      stats_toggler = !stats_toggler;
+d201 1
+a201 10
+      /*
+	StrPrintF(buf, "%d: %s", ctr,
+	object_names + object_list[ctr].name_offset);
+	ctr++;
+	message(buf);
+	StrPrintF(buf, "%d: %s", ctr,
+	c_names + c_list[ctr].name_offset);
+	ctr++;
+	message(buf);
+      */
+@
+
+
+1.3
+log
+@adding spell/prayer selection forms
+@
+text
+@d469 3
+@
+
+
+1.2
+log
+@cleaned up creature.c and stuff
+@
+text
+@d43 1
+a43 1
+  false, // font
+d138 9
+d462 6
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d85 1
+a85 1
+Boolean stats_toggler = true;
+d102 1
+a102 1
+    print_stats(stats_toggler);
+d185 2
+a186 2
+      stats_toggler = !stats_toggler;
+      print_stats(stats_toggler);
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

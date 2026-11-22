@@ -1,0 +1,209 @@
+head	1.2;
+access;
+symbols
+	start:1.1.1.1 vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2000.08.24.03.42.17;	author i0lanthe;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2000.06.15.21.16.37;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.06.15.21.16.37;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@no longer keeping web pages in cvs
+@
+text
+@<html>
+<head>
+<title>What's new in iRogue</title>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080">
+
+<!-- a dither-free green palette: ccffcc  99ff99  66cc99  66ff66 -->
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+  bgcolor="ccffcc">
+  <tr>
+    <td align="center"><font color="#000000">
+    <h3>iRogue: status</h3>
+    </font></td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+  bgcolor="ffffff">
+  <tr>
+    <td width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"
+      bgcolor="ffffff">
+      
+      <!-- -->
+      <tr><td bgcolor="ccffcc"><font color="#000000">
+	iRogue Stuff </font></td></tr>
+      <tr><td> <a href="index.html">
+	  What is iRogue?</a> </td></tr>
+      <tr><td> 
+	  <b>What's new</b> </td></tr>
+      <tr><td> <a href="download.html">
+	  Download iRogue</a> </td></tr>
+      <tr><td> <a href="play.html">
+	  How to play</a> </td></tr>
+      <tr><td> <a href="source.html">
+	  How to get source</a> </td></tr>
+      <tr><td bgcolor="ccffcc"><font color="#000000">
+	Roguelikes for PalmOS </font></td></tr>
+      <tr><td> <A href="http://roguelike-palm.sourceforge.net">
+	  home page</A>
+      </td></tr>
+      <tr><td> <a href="http://sourceforge.net/project/?group_id=6932">
+	  project page</a>
+      </td></tr>
+      <tr><td> 
+	  hosted by <A href="http://sourceforge.net">SourceForge</A>
+      </td></tr>
+      <!--
+      <tr><td bgcolor="ccffcc"> Mailing Lists </td></tr>
+      <tr><td> announcement </td></tr>
+      <tr><td> developers </td></tr>
+      <tr><td> users </td></tr>
+      <tr><td bgcolor="ccffcc"> Active Surveys </td></tr>
+      <tr><td> ... </td></tr>
+      -->
+      <!-- -->
+      
+      <!-- -->
+      <tr><td bgcolor="ccffcc"><font color="#000000"><a href="http://www.win.tue.nl/games/roguelike/roguelike.html">
+	Roguelike Games</a> </font></td></tr>
+      <tr><td><a href="http://www.win.tue.nl/games/roguelike/rogue/index.html">
+	  Rogue</a> </td></tr>
+      <tr><td><a href="http://www-math.bgsu.edu/~grabine/moria.html">
+	  Moria</a>, <a href="http://www.phial.com/angband/">
+	  Angband</a> </td></tr>
+      <tr><td><a href="http://www.hut.fi/~eye/roguelike/nethack.html">
+	  Hack</a>, <a href="http://www.nethack.org/">
+	  NetHack</a> </td></tr>
+      <tr><td><a href="http://www.win.tue.nl/games/roguelike/larn/index.html">
+	  Larn, Ularn</a> </td></tr>
+      <tr><td><a href="http://www.alcyone.com/max/projects/omega/">
+	  Omega</a> </td></tr>
+</table>
+</td>
+
+<!-- main area table -->
+<td valign=top>
+<table>
+  <a name="news"></a>
+  <tr><td>
+      <!-- ----- this is the interesting part of the page ----- -->
+      <h3>What's new in the current version?</h3>
+      <P> The current version of iRogue is: 0.40.
+
+      <P> If you have played an earlier version of this game, you know
+that there used to be two files iRogue.prc and iRogue_Library.prc.
+The game is now one file (because we are at last compiling with
+prc-tools 2.0 and multigen), so you can delete the old Library from
+your PalmPilot as soon as you install the new iRogue.prc.
+
+      <P> In Preferences, you can indicate that you would like the
+screen to stay "centered" around your rogue.  This is off by default
+(flickering is sometimes visible and may annoy) but be sure to try it
+out; many people requested it.
+      
+      <P> You can move using the classic "hjklyubn".  This is probably
+only of interest if you have a keyboard.
+      
+      <P> You can bind "inventory" to a hardware button.
+      <P> Fixed some bugs, e.g. throwing a cursed object.
+
+      <h4> Things that were new in the previous version</h4>
+      <P> You can rebind the hardware buttons at whim.
+
+      <h3>Bugs</h3>
+
+      <P> iRogue seems to be reasonably stable now.  I believe it is
+still possible to suffer a fatal error if you are frozen by an ice
+monster under unfortunate conditions (such as being surrounded by
+other monsters).  Please <a href="mailto:i0lanthe@@yahoo.com">report
+any bugs you find</a> and they will be fixed as time permits.
+
+      <P> The game may not be "well balanced" (a number of monsters,
+weapons, and armors were added in a previous version).  If something
+seems particularly unfair, let us know and we will continue to tweak.
+
+      <P> iRogue comes with absolutely no warranty.  In the worst
+case, a buggy application <i>could</i> force you to <b>hard</b>-reset
+and lose everything since your last backup.  Caveat emptor.
+
+      <h3>Future</h3>
+
+      <P> Fix bugs.  Add any requested features (provided that they do
+not make the game take much more memory or require a newer version of
+the OS.)
+      <!-- ----- end of the interesting part of the page ----- -->
+  </td></tr>
+  
+</table>
+</td>
+</tr>
+</table>
+
+<!-- footer table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+  bgcolor="66cc99">
+  <tr>
+    <td>
+	<img src="../hdse-small.gif">
+    </td>
+    <td align="center"><font color="#000000">
+    Half-Dead Spider Entertainment produces freeware for the 
+    <a href="http://www.palm.com">Palm</a> handhelds, 
+    <a href="http://www.handspring.com">Handspring Visor</a>, and whatever
+    else might happen to be running the
+    <a href="http://www.palmos.com">Palm OS</a> this week (perhaps your
+    <a href="http://www.palmos.com/licensing/licensees.html">toaster</a>).
+    </font></td>
+
+  </tr>
+</table>
+<!-- end footer table -->
+
+</body>
+</html>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@iRogue import
+@
+text
+@@

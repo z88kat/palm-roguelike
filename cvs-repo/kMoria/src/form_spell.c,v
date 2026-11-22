@@ -1,0 +1,1898 @@
+head	1.31;
+access;
+symbols
+	Release-2002_03_29:1.31
+	Release-2002_01_12:1.30
+	Release-2002_01_02:1.22
+	Release-2002_01_01:1.22
+	Release-2001_12_19:1.21
+	Release-2001_08_04:1.16
+	Release-2001_07_02:1.16
+	Release-2001_06_16:1.11;
+locks; strict;
+comment	@ * @;
+
+
+1.31
+date	2002.03.26.01.54.39;	author i0lanthe;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2002.01.11.02.20.20;	author i0lanthe;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2002.01.08.19.32.55;	author i0lanthe;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2002.01.06.20.45.21;	author i0lanthe;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2002.01.05.18.46.50;	author i0lanthe;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2002.01.04.20.41.07;	author i0lanthe;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2002.01.04.03.45.44;	author i0lanthe;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2002.01.04.00.01.26;	author i0lanthe;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2002.01.03.18.47.15;	author i0lanthe;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2002.01.01.22.26.13;	author i0lanthe;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2001.12.16.19.17.30;	author i0lanthe;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2001.11.30.23.46.55;	author i0lanthe;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2001.11.30.23.44.42;	author i0lanthe;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2001.11.30.05.06.17;	author i0lanthe;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2001.06.30.17.32.07;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2001.06.26.02.42.37;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2001.06.20.01.56.43;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2001.06.16.18.54.26;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2001.01.05.20.09.31;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2001.01.05.04.12.36;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.01.03.18.23.48;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.01.01.06.59.10;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.12.31.03.57.57;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.11.13.05.58.32;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.11.05.20.24.47;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.11.04.02.13.39;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.10.21.03.34.09;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.31
+log
+@tested new features (max count, '20h', inv btns, shift+hwbtn, backup on creation)
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+#include "kMoria.h"
+
+// Form to select a spell book, then select a spell.
+static void show_books(FormPtr frm) SEC_4;
+static void free_book_select(FormPtr frm) SEC_4;
+static void count_spells(Short selected_book) SEC_4;
+void show_spells(FormPtr frm, Word lst_i, Short first_spell) SEC_4;
+static void print_spell_ss(FormPtr frm, Word lst_i, Short start, Short rows, Boolean browse) SEC_4;
+static void print_spell_status(Short i, Short j, Short top, Short side) SEC_4;
+static void print_spell_stats(Short i, Short j, Short top, Short side) SEC_4;
+static void hit_spell_by_alpha(Char c, Word lst_index) SEC_4;
+static void cast_spell_if_ok(Short first_spell) SEC_4;
+void free_spell_select(ListPtr lst) SEC_4;
+static void learn_the_spell(Short j, ListPtr lst) SEC_4;
+
+Short selected_book = -1;
+Short selected_spell = -1;
+Char **book_display; // used for books or spells
+Char **spell_display; // used for books or spells
+Short book_ctr; // number of strings in book_display
+Short spell_ctr; // number of strings in spell_display
+extern spell_type magic_spell[MAX_CLASS-1][MAX_SPELLS]; // magic.c
+extern Short spells[MAX_SPELLS]; // spell_ctr of them will be filled in.
+//extern ULong spell_learned;
+//extern ULong spell_worked;
+//extern ULong spell_forgotten;
+
+// why we're in the spell form
+Boolean just_browsing_book = false;
+
+Boolean book_btnsHandleEvent(Short btn_i)
+{
+  FormPtr frm;
+  ListPtr lst;
+  if (btn_i < 0 || btn_i >= book_ctr)
+    return false;
+  frm = FrmGetActiveForm();
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_book));
+  LstSetSelection(lst, btn_i);
+  // also, act like we pressed ok.
+  hit_button_if_usable(frm, btn_book_ok);
+  return true;
+}
+
+
+Boolean Book_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  ListPtr lst;
+  CharPtr label;
+  Short s;
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* ...init form... */
+    selected_book = -1;
+    show_books(frm);
+#ifndef I_AM_OS_2
+    if (IsVGA) PrvMoveForm(false);
+#endif
+    FrmDrawForm(frm);
+    // no need to make the right buttons visible - they are by default.
+    // Also, print your current mana!
+    show_mana_at_bottom();
+    handled = true;
+    break;
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) PrvMoveForm(true);
+    return true;
+#endif
+
+    // No need to scroll - there are only 8 distinct books,
+    // and, no character class can use more than 4 of them anyway.
+  case keyDownEvent:
+    // hardware button -- or else graffiti.
+    frm = FrmGetActiveForm();
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_book));
+    s = LstGetSelection(lst); // might be -1
+    switch(e->data.keyDown.chr) {
+    case pageUpChr:
+      if (--s < 0) s = 0;
+      LstSetSelection(lst, s);
+      handled = true;
+      break;
+    case pageDownChr:
+      if (++s >= book_ctr) s = book_ctr - 1;
+      LstSetSelection(lst, s);
+      handled = true;
+      break;
+      // Actually, if you are a mage, and for some daft reason you
+      // acquire prayer books, your first book listed will NOT be a!!!
+      // If you have 2 books (of a kind that you can use) don't worry,
+      // it will only appear once (it is one inventory entry).
+    case 'a':
+      LstSetSelection(lst, 0);
+      hit_button_if_usable(frm, btn_book_ok);
+      handled = true;
+      break;
+    case 'b':
+      LstSetSelection(lst, 1);
+      hit_button_if_usable(frm, btn_book_ok);
+      handled = true;
+      break;
+    case 'c':
+      LstSetSelection(lst, 2);
+      hit_button_if_usable(frm, btn_book_ok);
+      handled = true;
+      break;
+    case 'd':
+      LstSetSelection(lst, 3);
+      hit_button_if_usable(frm, btn_book_ok);
+      handled = true;
+      break;
+    case '\n':
+      // make like we hit 'read book'
+      hit_button_if_usable(frm, btn_book_ok);
+      handled = true;
+      break;
+    }
+    break;
+
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    switch(e->data.ctlSelect.controlID) {
+    case btn_book_ok:
+      lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_book));
+      s = LstGetSelection(lst);
+      if (s != -1) {
+	label = LstGetSelectionText(lst, s);
+	if (label) {
+	  selected_book = label[0] - 'a';
+	  count_spells(selected_book);
+	  if (spell_ctr > 0) {
+	    just_browsing_book = false;
+	    FrmPopupForm(SpellForm);
+	  } else
+	    show_brief_comment("You don't know any in that book.");
+	}
+      }
+      handled = true;
+      break;
+    case btn_book_cancel:
+      free_book_select(frm);
+      LeaveForm();
+      handled = true;
+      break;
+    }
+
+  default:
+    break;
+  }
+  return handled;
+}
+
+
+
+// I should really let the books have 2 lines each.
+static void show_books(FormPtr frm)
+{
+  Short i, j;
+  Char tmp_val[160], c;
+  Int width_str, length_str;
+  Boolean fits;
+  ListPtr lst;
+  UChar tval;
+
+  if (class[pymisc.pclass].spell == PRIEST)
+    tval = TV_PRAYER_BOOK;
+  else if (class[pymisc.pclass].spell == MAGE)
+    tval = TV_MAGIC_BOOK;
+  else
+    return;// should not happen!
+
+  book_ctr = 0;
+  for (i = 0 ; i < inven_ctr ; i++)
+    if (inventory[i].tval == tval)
+      book_ctr++;
+
+  if (book_ctr == 0)
+    return;// caller should have checked!
+
+  // there must be at least one book.
+  book_display = (Char **) md_malloc(sizeof(Char *) * book_ctr);
+
+  for (i = 0, j = 0, c = 'a' ; i < inven_ctr ; i++, c++) {
+    /* Print the items	  */
+    //    if (mask == CNIL || mask[i]) {
+    if (inventory[i].tval == tval) {
+      //      objdes(tmp_val+3, &inventory[i], true); // XXXXxxx fix this.
+      StrPrintF(tmp_val, "%c) %s", c,
+		object_names + object_list[inventory[i].index].name_offset);
+
+      // Truncate if too wide for the screen..... we only have 156 pixels...
+      // length_str gets set to the # of chars that will fit in 156
+      // width_str gets set to the # of pixels that those chars will use(<=156)
+      width_str = SCR_WIDTH - 4; //156;
+      length_str = StrLen(tmp_val); // max chars to allow
+      FntCharsInWidth(tmp_val, &width_str, &length_str, &fits);
+      tmp_val[length_str] = '\0';
+      // ok, now like put it somewhere.
+      book_display[j] = (Char *) md_malloc(1 + length_str);
+      StrCopy(book_display[j], tmp_val);
+      j++;
+    }
+  }
+
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_book));
+  LstSetListChoices(lst, book_display, book_ctr);
+  selected_book = -1;
+  LstSetSelection(lst, -1);
+}
+
+/*
+ *  Free the strings in the list
+ */
+static void free_book_select(FormPtr frm)
+{
+  ListPtr lst;
+  Short i;
+  VoidHand h;
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_book));
+  LstSetListChoices(lst, NULL, 0);
+  for (i = 0 ; i < book_ctr ; i++) {
+    h = MemPtrRecoverHandle(book_display[i]);
+    if (h) 
+      MemHandleFree(h);
+  }
+  h = MemPtrRecoverHandle(book_display);
+  if (h) 
+    MemHandleFree(h);
+}
+
+////////////////////////////////////////////////////////////////////////
+extern Short magic_spell_choice; // dungeon.c
+Boolean Spell_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  ListPtr lst;
+  //  CharPtr label;
+  Char c;
+  Short s;
+  static Short first_spell; // remember which spell is 1st in this book
+  ULong j;
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* ...init form... */
+#ifndef I_AM_OS_2
+    if (IsVGA) PrvMoveForm(false);
+#endif
+    FrmDrawForm(frm);
+    j = inventory[selected_book].flags;
+    first_spell = bit_pos(&j); // this modifies j
+    show_spells(frm, list_spell, first_spell);
+    spell_draw();
+    // also fix the buttons:
+    // if browse: hide "ok", change cancel's buttonlabel to "done"
+    // if learn: hide "ok", *show "learn"*
+    // create a new "learn" button, initially disabled,
+    // and make its handler cause you to learn the selected spell.
+    handled = true;
+    break;
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) PrvMoveForm(true);
+    return true;
+#endif
+
+    // No need to scroll - the books each have 10 or fewer spells.  I _think_.
+    // I will make Learning a separate form.
+    // (Hm, did I?  yeah, GainSpForm)
+  case keyDownEvent:
+    // hardware button -- or else graffiti.
+    frm = FrmGetActiveForm();
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_spell));
+    s = LstGetSelection(lst); // might be -1
+    switch(e->data.keyDown.chr) {
+    case pageUpChr:
+      // see if we bound it to a particular spell
+      if (spell_btnsHandleEvent(HW_pageUpChr)) return true;
+      // nope..
+      if (--s < 0) s = 0;
+      LstSetSelection(lst, s);
+      handled = true;
+      break;
+    case pageDownChr:
+      // see if we bound it to a particular spell
+      if (spell_btnsHandleEvent(HW_pageDownChr)) return true;
+      // nope..
+      if (++s >= spell_ctr) s = spell_ctr - 1;
+      LstSetSelection(lst, s);
+      handled = true;
+      break;
+    case 'a': case 'b': case 'c': case 'd': case 'e':
+    case 'f': case 'g': case 'h': case 'i':
+      // Find the line starting with this letter. Lines are in order with gaps.
+      c = e->data.keyDown.chr;
+      hit_spell_by_alpha(c, list_spell);
+      // make like we hit 'recite'! could be dangerous... hm...
+      hit_button_if_usable(frm, btn_spell_ok);
+      handled = true;
+      break;
+    case '\n': case 'R':
+      // make like we hit 'recite'
+      hit_button_if_usable(frm, btn_spell_ok);
+      handled = true;
+      break;
+    case 'C': case 27:
+      hit_button_if_usable(frm, btn_spell_cancel);
+      handled = true;
+      break;
+    }
+    break;
+
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    switch(e->data.ctlSelect.controlID) {
+    case btn_spell_ok:
+      cast_spell_if_ok(first_spell);
+      handled = true;
+      break;
+    case btn_spell_cancel:
+      lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_spell));
+      free_spell_select(lst); // hm, I get a Nil Pointer here. // fixed
+      // (don't forget to NOT free something you allocated *0* bytes for)
+      LeaveForm();
+      handled = true;
+      break;
+    }
+
+  default:
+    break;
+  }
+  return handled;
+}
+
+void spell_draw()
+{
+  print_spell_ss(FrmGetActiveForm(), list_spell, 0, 10, just_browsing_book);
+  // Also, print your current mana!
+  show_mana_at_bottom();
+}
+
+static void count_spells(Short selected_book)
+{
+  Short k;
+  ULong j;
+  spell_type *s_ptr;
+
+  // set spell_ctr to the number of known SPELLS from the given book
+  //  j = inventory[selected_book].flags;
+  //  first_spell = bit_pos(&j); // this modifies j
+  j = inventory[selected_book].flags & spell_learned;
+  s_ptr = magic_spell[pymisc.pclass-1];
+  spell_ctr = 0;
+  while (j) {
+    k = bit_pos(&j);
+    if (s_ptr[k].slevel <= pymisc.lev) {
+      spells[spell_ctr] = k;
+      spell_ctr++;
+    }
+  }
+}
+
+// For "again"ed spells.
+// Make sure player has the book that this spell comes from, else return false.
+// And make sure the player knows the spell still.
+Boolean has_book(Short spell)
+{
+  ULong j;
+  Short i,k;
+  UChar tval;
+  spell_type *s_ptr;
+
+  switch(class[pymisc.pclass].spell) {
+  case PRIEST: tval = TV_PRAYER_BOOK; break;
+  case MAGE: tval = TV_MAGIC_BOOK; break;
+  default: return false; // "impossible"
+  }
+  for (i = 0 ; i < inven_ctr ; i++) {
+    if (inventory[i].tval != tval) continue;
+    j = inventory[i].flags & spell_learned;
+    s_ptr = magic_spell[pymisc.pclass-1];
+    while (j) {
+      k = bit_pos(&j);
+      if (k == spell) return true; // found it!
+      if (k > spell || s_ptr[k].slevel > pymisc.lev) return false; // too high
+    }
+  }
+  return false;
+}
+
+
+/* Note - may also want to use this form for:
+   browsing a book (list all n<10 spell names, and status instead of #s)
+   [selecting a spell to learn (there might be >10, rats.  how likely??)] */
+//
+// Caller must SET spell_ctr and spells[] to an appropriate value
+// before calling show_spells.
+void show_spells(FormPtr frm, Word lst_i, Short first_spell)
+{
+  Short i, offset, j, lst_width, width_str;
+  //  ULong j;
+  Char tmp_val[160], c;
+  Int length_str;
+  Boolean fits;
+  UInt obj_i = FrmGetObjectIndex(frm, lst_i);
+  ListPtr lst = FrmGetObjectPtr(frm, obj_i);
+  RectangleType r;
+  FrmGetObjectBounds(frm, obj_i, &r);
+  lst_width = r.extent.x; // = 112; // = 156;
+
+  // spell_ctr, spells[] have ALREADY BEEN SET by caller.
+
+  // malloc spell_display - there must be at least 1 spell.
+  spell_display = (Char **) md_malloc(sizeof(Char *) * spell_ctr);
+  // print strings
+  // this was in:      print_spells (spell, num, FALSE, first_spell);
+  offset = (class[pymisc.pclass].spell==MAGE ? SPELL_OFFSET : PRAYER_OFFSET);
+  for (i = 0 ; i < spell_ctr ; i++) {
+    j = spells[i];
+    // comment == false, so no "forgotten/unknown/untried" here
+    if (first_spell != -1)
+      c = 'a' + j - first_spell;
+    else
+      c = 'a' + i;
+    StrPrintF(tmp_val, "%c) %s", c, spell_names[j+offset]);
+    width_str = lst_width;
+    length_str = StrLen(tmp_val); // max chars to allow
+    FntCharsInWidth(tmp_val, &width_str, &length_str, &fits);
+    tmp_val[length_str] = '\0';
+    // ok, now like put it somewhere.
+    spell_display[i] = (Char *) md_malloc(1 + length_str);
+    StrCopy(spell_display[i], tmp_val);
+  }
+  // set ui foo
+  //  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_spell));
+  LstSetListChoices(lst, spell_display, spell_ctr);
+  selected_spell = -1;
+  LstSetSelection(lst, -1);
+  LstDrawList(lst);
+}
+// Print something to the right side of all the spells.
+static void print_spell_ss(FormPtr frm, Word lst_i, Short start,
+			   Short rows, Boolean browse)
+{
+  RectangleType r;
+  Short i, j;
+  Short list_side, top, list_top; //Short list_side = 112+1;
+  FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, lst_i), &r);
+  list_side = r.topLeft.x + r.extent.x + 1; // = 112; // = 156;
+  list_top = r.topLeft.y; // = 26;
+  top = LINE_HEIGHT;
+  //  RctSetRectangle(&r, list_side, top, SCR_WIDTH-list_side, 10*LINE_HEIGHT);
+  RctSetRectangle(&r, list_side, list_top - top, SCR_WIDTH-list_side,
+		  r.extent.y + top);
+  WinEraseRectangle(&r, 0);
+
+  if (rows > spell_ctr) rows = spell_ctr;
+  if (!browse) {
+    WinDrawChars("Lv-M-Fail", 9,   list_side+1, list_top-top);
+    for (i = start ; i < rows ; i++) {
+      j = spells[i];
+      print_spell_stats(i-start, j, list_top, list_side); // where to draw, what to draw
+    }
+  } else {
+    WinDrawChars("Status", 6,   list_side+1, list_top-top);
+    for (i = start ; i < rows ; i++) {
+      j = spells[i];
+      print_spell_status(i-start, j, list_top, list_side); // words instead of numbers
+    }
+  }
+}
+
+// show for browsing
+static void print_spell_status(Short i, Short j, Short lst_top, Short lst_side)
+{
+  Short x = lst_side+FntCharWidth(' '), y = lst_top;
+  Char *p;
+  if ((spell_forgotten & (1L << j)) != 0)
+    p = "forgotten";
+  else if ((spell_learned & (1L << j)) == 0)
+    p = "unknown";
+  else if ((spell_worked & (1L << j)) == 0)
+    p = "untried";
+  else
+    return;
+  WinDrawChars(p, StrLen(p), x, y + LINE_HEIGHT*i);
+}
+// show this if you are Casting [or Learning] a spell (not browsing)
+// shows <slevel> <smana> <spell_chance>%, each is 1 or 2 digits.
+static void print_spell_stats(Short i, Short j, Short lst_top, Short lst_side)
+{
+  Short x = lst_side+FntCharWidth(' '), y = lst_top;
+  Short five = FntCharWidth('0'); // 5 in 160
+  Short dx = FntCharsWidth("00 ", 3); // 13 in 160
+  spell_type *s_ptr;
+  Char tmp_val[10];
+  s_ptr = &magic_spell[pymisc.pclass-1][j];
+  StrPrintF(tmp_val, "%d", s_ptr->slevel);
+  if (s_ptr->slevel > 9) WinDrawChars(tmp_val, 2, x,      y + LINE_HEIGHT*i);
+  else                   WinDrawChars(tmp_val, 1, x+five, y + LINE_HEIGHT*i);
+  x += dx;
+  StrPrintF(tmp_val, "%d", s_ptr->smana);
+  if (s_ptr->smana > 9) WinDrawChars(tmp_val, 2, x,      y + LINE_HEIGHT*i);
+  else                  WinDrawChars(tmp_val, 1, x+five, y + LINE_HEIGHT*i);
+  x += dx;
+  StrPrintF(tmp_val, "%d%%", spell_chance(j));
+  x += five * (3 - StrLen(tmp_val));
+  WinDrawChars(tmp_val, StrLen(tmp_val), x, y + LINE_HEIGHT*i);
+}
+
+void show_mana_at_bottom()
+{
+  Char buf[16];
+  StrPrintF(buf, "mana %d ", pymisc.cmana);
+  WinDrawChars_rj(buf, StrLen(buf), SCR_WIDTH-4, // was 156-...
+		  SCR_HEIGHT-(3*LINE_HEIGHT)/2); // was 141, for 160
+}
+
+// caller must promise that 'a' <= c <= 'i'.   (really?  how about 'a'-'z')
+static void hit_spell_by_alpha(Char c, Word lst_index)
+{
+  FormPtr frm;
+  ListPtr lst;
+  Short s;
+  CharPtr label;
+  frm = FrmGetActiveForm();
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, lst_index));
+  s = c - 'a';
+  if (s > spell_ctr) s = spell_ctr; // or is it spell_ctr - 1 ?
+  while (s > -1) {
+    label = LstGetSelectionText(lst, s);
+    if (label && (label[0] == c))
+      break;
+    s--;
+  }
+  LstSetSelection(lst, s);
+}
+
+extern previous_state curr_state; // replaces last_command & co.
+static void cast_spell_if_ok(Short first_spell)
+{
+  FormPtr frm;
+  ListPtr lst;
+  Short s;
+  CharPtr label;
+  frm = FrmGetActiveForm();
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_spell));
+  s = LstGetSelection(lst);
+  if (s != -1) {
+    label = LstGetSelectionText(lst, s);
+    if (label) {
+      selected_spell = label[0] - 'a';
+      selected_spell += first_spell; // add this to make it the right book!
+      if (confirmed_spell(selected_spell)) {
+	free_spell_select(lst);
+	LeaveForm();
+	LeaveForm(); // yes, TWICE.
+	// also CALL THE SPELL CASTING HELPER now.
+	curr_state.spell = selected_spell; // need this for 'again'ing
+	if (class[pymisc.pclass].spell == MAGE)
+	  cast_helper(selected_spell, -1);
+	else
+	  pray_helper(selected_spell, -1);
+	// and do not reset selected_spell (until we re-enter this form)...
+      }
+    }
+  }
+}
+
+void free_spell_select(ListPtr lst)
+{
+  //  ListPtr lst;
+  Short i;
+  VoidHand h;
+  LstSetListChoices(lst, NULL, 0);
+  for (i = 0 ; i < spell_ctr ; i++) {
+    h = MemPtrRecoverHandle(spell_display[i]);
+    if (h) 
+      MemHandleFree(h);
+  }
+  h = MemPtrRecoverHandle(spell_display);
+  if (h) 
+    MemHandleFree(h);
+}
+
+Boolean confirmed_spell(Short spell)
+{
+  if (magic_spell[pymisc.pclass-1][spell].smana <= pymisc.cmana)
+    return true;
+  if (class[pymisc.pclass].spell == MAGE)
+    return (0 == FrmAlert(LowMageP));
+  else
+    return (0 == FrmAlert(LowPriestP));
+}
+
+Boolean spell_btnsHandleEvent(Short btn_i)
+{
+  // 8 books, 8 buttons per book, 4 bits per button.
+  //  UChar hw_spells[32];
+  // Look up by book, by button, and shift/mask 4 bits.
+  // Each book gets 
+  UChar which_spell;
+  ULong j;
+  Short first_spell, book;
+  UChar *bind_array = my_prefs.hw_spells;
+  Char c;
+  Boolean is_prayer;
+
+  if (just_browsing_book) return false;
+  if (btn_i < HW_hard1Chr || btn_i > HW_findChr) return false;
+
+  j = inventory[selected_book].flags;
+  first_spell = bit_pos(&j); // this modifies j
+
+  // prayer book gets high 4 bits, magic book gets low 4 bits.
+  is_prayer = (inventory[selected_book].tval == TV_PRAYER_BOOK);
+
+  // 32 uchars: 8 for each of the 4 book levels (beginner, I, II, expert)
+  // figure out which book we're looking at by examining first_spell.
+  book = (first_spell+1)/8; // 0, 7||8, 16, 24||25 ---> 0, 1, 2, 3.
+  bind_array += 8 * book; // skip to the 8 uchars belonging to this book.
+  // ok, within this book, get the uchar corresponding to this button press.
+  which_spell = bind_array[btn_i];
+
+  // now mask or shift, according to is_prayer, to get increment to firstspell.
+  if (!is_prayer)
+    which_spell = which_spell & 0x0F;
+  else
+    which_spell = which_spell >> 4; // unsigned, so high 4 bits become 0s
+  if (which_spell == 0) return false; // This Button Is Not Bound.
+  else which_spell--;
+
+  // Now, act just like we wrote the graffiti character ('a'+which_spell).
+  // (if the spell is not known, it is not in List, thus we will not cast it.)
+  c = 'a' + which_spell;
+  if (c > 'i') return false; // probably a BUG if this happens.
+  hit_spell_by_alpha(c, list_spell);
+
+  // Now, act like we pressed Ok.
+  cast_spell_if_ok(first_spell);
+
+  return true;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+
+// This form will have only mage spells in it
+// Unlike the book form and the browse/cast form, it might need scrolled.
+// (damn)
+
+// Hey - news flash.  This isn't an ok->exit form
+// This is a loop until out of new spells form.
+// SOOOO we need a "new spells left" display line,
+// annnnd we need to be able to subtract lines from the list!!
+// so, er, actually this is also the form to double-up for browsing.
+extern Boolean missing_a_book;
+extern ULong spell_learned;
+extern UChar spell_order[MAX_SPELLS+1];
+extern Short new_spells, last_known;
+static Boolean stats_toggler;
+Short gainspell_lines = 9;
+Boolean GainSp_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  ListPtr lst;
+  Short start;
+  Char c;
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* ...init form... */
+    // This form will ONLY be entered if we have > 0 new_spells possible.
+    // (And make sure there are still spells left to learn, eh)
+    // Or.. if we are browsing a book.
+#ifndef I_AM_OS_2
+    if (IsVGA) PrvMoveForm(false);
+#endif
+    FrmDrawForm(frm);
+    show_spells(frm, list_gain, -1); // -1 to make it consec. starting with a
+    gainsp_draw(true);
+    handled = true;
+    break;
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) PrvMoveForm(true);
+    return true;
+#endif
+
+    // need to be able to scroll - a mage of "average" ability might
+    // have 12 or so LEARNABLE spells at late-teen levels.
+    // (though if we're here only to browse a book we never need to scroll)
+    // so, I don't know how to catch use of the little arrows in the list.
+    // this is a pain.  might have to remember previous topItem
+    // and check every penDownEvent,
+    // or mess with LstSetDrawFunction which sets drawItemsCallback.
+    // scrolling below HAS NOT BEEN TESTED and above HAS NOT BEEN IMPLEMENTED
+  case keyDownEvent:
+    // hardware button -- or else graffiti.
+    frm = FrmGetActiveForm();
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_gain));
+    start = lst->topItem;
+    switch(e->data.keyDown.chr) {
+    case pageUpChr:
+      if (LstScrollList(lst, winUp, gainspell_lines)) // (probably 9)
+	LstSetSelection(lst, -1);
+      // xxxxx ALSO need to reprint the stats alongside.  plan how to deal..
+      // heck, could just allocate an array of shorts to reprint from.
+      // it's not like we use this form very often and would hate the overhead
+      print_spell_ss(frm, list_gain, start,
+		     min(start+gainspell_lines, spell_ctr), stats_toggler);
+      handled = true;
+      break;
+    case pageDownChr:
+      if (LstScrollList(lst, winDown, gainspell_lines))
+	LstSetSelection(lst, -1);
+      // xxxxx ALSO need to reprint the stats alongside.
+      print_spell_ss(frm, list_gain, start,
+		     min(start+gainspell_lines, spell_ctr), stats_toggler);
+      handled = true;
+      break;
+    case 'L':
+      hit_button_if_usable(frm, btn_gain_ok);
+      handled = true;
+      break;
+    case 'D': case 27: case '\n':
+      hit_button_if_usable(frm, btn_gain_cancel);
+      handled = true;
+      break;
+    case 't':
+      hit_button_if_usable(frm, btn_gain_tog);
+      handled = true;
+      break;
+    default:
+      c = e->data.keyDown.chr;
+      // let user hit the index letter of a spell: In order, with gaps.
+      if (c >= 'a' && c <= 'z') {
+	hit_spell_by_alpha(c, list_gain); // same utility as casting a spell.
+	hit_button_if_usable(frm, btn_gain_ok);
+	handled = true;
+      }
+      break;
+    }
+    break;
+
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    switch(e->data.ctlSelect.controlID) {
+    case btn_gain_tog:
+      print_spell_ss(frm, list_gain, 0, gainspell_lines, stats_toggler);
+      stats_toggler = !stats_toggler;
+      break;
+    case btn_gain_ok:
+      lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_gain));
+      selected_spell = LstGetSelection(lst);
+      if (selected_spell != -1) {
+	learn_the_spell(selected_spell, lst);
+	/*print_spell_ss(frm, list_gain, 0, gainspell_lines, false);
+	// DO NOT LEAVE FORM, just unselect spell + REMOVE it from the list.
+	if (new_spells <= 0) {
+	  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_gain_ok));
+	  CtlHideControl(btn);
+	}*/
+      }
+      /*StrPrintF(buf, "You can learn %d %s.", new_spells,
+		((new_spells == 1) ? "spell" : "spells"));
+		show_brief_comment(buf);*/
+      gainsp_draw(false);
+      handled = true;
+      break;
+    case btn_gain_cancel:
+      lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_gain));
+      free_spell_select(lst);
+      LeaveForm();
+      // It should be safe to call this whether we picked 0 or n spells.
+      // the original moria did in any event.
+      if (!just_browsing_book)
+	gain_spell_helper();
+      handled = true;
+      break;
+    }
+
+  default:
+    break;
+  }
+  return handled;
+}
+
+void gainsp_draw(Boolean first)
+{
+  FormPtr frm = FrmGetActiveForm();
+  Char buf[40];
+  ControlPtr btn;
+  print_spell_ss(frm, list_gain, 0, gainspell_lines, just_browsing_book);
+  if (!just_browsing_book) {
+    if (missing_a_book)
+      StrPrintF(buf, "You seem to be missing a book.");
+    else {
+      StrPrintF(buf, "You can learn %d %s.", new_spells,
+		((new_spells == 1) ? "spell" : "spells"));
+      if (new_spells <= 0) {
+	btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_gain_ok));
+	CtlHideControl(btn);
+      }
+    }
+  } else {
+    StrPrintF(buf, "Browsing: %s", object_names +
+	      object_list[inventory[selected_book].index].name_offset);
+    if (first) {
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_gain_ok));
+      CtlHideControl(btn);
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_gain_tog));
+      CtlShowControl(btn);
+      // also it would be a good plan to change the title bar.
+      FrmCopyTitle(frm, "Browsing...");
+      stats_toggler = false; // what it should display next time
+    }
+  }
+  show_brief_comment(buf);
+}
+
+// hey, this should be in misc3.c and avoid 'extern', or else the stuff there
+// should be here.
+//extern ULong spell_learned;
+//extern UChar spell_order[MAX_SPELLS+1];
+//extern Short new_spells, last_known;
+//
+// XXX Note:  I have a memory leak here because I am not freeing
+// the orphaned spell_display[0].
+// if I do, the free_spell_select gets an invalid chunk ptr.
+// same thing if I rearrange the strings.  I don't understand why.
+// HYPOTHESIS: people cannot play enough moria on one set of batteries
+// in one session to make this a serious leak, so just leave it in.
+static void learn_the_spell(Short j, ListPtr lst)
+{
+  //  VoidHand h;
+  //  Char *tmp;
+  new_spells--; // decrement number of spells avail
+  spell_learned |= 1L << spells[j]; // learn it
+  spell_order[last_known++] = spells[j]; // remember order it was learned in
+  //  return;
+  LstSetListChoices(lst, NULL, 0);
+  //  tmp = spell_display[0];
+  //  h = MemPtrRecoverHandle(spell_display[0]);
+  //  if (h) MemHandleFree(h); // delete the unneeded string
+  for (; j < spell_ctr-1; j++) {
+    spells[j] = spells[j+1]; // delete this spell from array
+    spell_display[j] = spell_display[j+1]; // delete this spell from List
+  }
+  //  spell_display[spell_ctr-1] = tmp; // will this work?  NO.
+  spell_ctr--;
+  // also, redraw the freaking list,
+  // and the numbers next to it.
+  LstSetListChoices(lst, spell_display, spell_ctr);
+  selected_spell = -1;
+  LstSetSelection(lst, -1);
+  LstDrawList(lst);
+}
+// Note - there's a fatal error in there somewhere.  No real surprise
+// it's just bubble gum and baling wire.
+
+@
+
+
+1.30
+log
+@prevent graffiti-retracting for inv/equ/haggle when over the store form; fix various other things
+@
+text
+@d324 1
+a324 1
+    case '\n':
+d329 4
+d749 12
+a760 2
+    case '\n'://hit_button_if_usable(frm, btn_gain_ok); handled = true; break;
+    case 27: hit_button_if_usable(frm, btn_gain_cancel); handled = true; break;
+@
+
+
+1.29
+log
+@handera support is mostly working, for some value of mostly
+@
+text
+@d745 1
+a745 1
+    case '\n': hit_button_if_usable(frm, btn_gain_ok); handled = true; break;
+@
+
+
+1.28
+log
+@changing magic #define's to calculations (for handera)
+@
+text
+@a22 1
+static void show_mana_at_bottom() SEC_4;
+d275 1
+a275 3
+    print_spell_ss(frm, list_spell, 0, 10, just_browsing_book);
+    // Also, print your current mana!
+    show_mana_at_bottom();
+d354 7
+d466 1
+a466 1
+  Short list_side, list_top; //Short list_side = 112+1;
+d468 6
+a473 3
+  list_side = r.topLeft.y + r.extent.y; // = 112; // = 156;
+  list_top = r.topLeft.x; // = 26;
+  RctSetRectangle(&r, list_side, ROW_1, SCR_WIDTH-list_side, 10*LINE_HEIGHT);
+d478 1
+a478 1
+    WinDrawChars("Lv-M-Fail", 9,   list_side+1, ROW_1);
+d484 1
+a484 1
+    WinDrawChars("Status", 6,   list_side+1, ROW_1);
+d495 1
+a495 1
+  Short x = lst_side+2, y = lst_top;
+d511 1
+a511 1
+  Short x = lst_side, y = lst_top;
+d530 1
+a530 1
+static void show_mana_at_bottom()
+d681 1
+a686 1
+  ControlPtr btn;
+d688 1
+a688 1
+  Char c, buf[40];
+d702 2
+a703 21
+    show_spells(frm, list_gain, -1); // -1 to make it consec. letters starting with a
+    print_spell_ss(frm, list_gain, 0, 9, just_browsing_book);
+    if (!just_browsing_book) {
+      if (missing_a_book)
+	StrPrintF(buf, "You seem to be missing a book.");
+      else {
+	StrPrintF(buf, "You can learn %d %s.", new_spells,
+		  ((new_spells == 1) ? "spell" : "spells"));
+      }
+    } else {
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_gain_ok));
+      CtlHideControl(btn);
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_gain_tog));
+      CtlShowControl(btn);
+      StrPrintF(buf, "Browsing: %s", object_names +
+		object_list[inventory[selected_book].index].name_offset);
+      // also it would be a good plan to change the title bar.
+      FrmCopyTitle(frm, "Browsing...");
+      stats_toggler = false; // what it should display next time
+    }
+    show_brief_comment(buf);
+d728 1
+a728 1
+      if (LstScrollList(lst, winUp, 9)) // there are 9 items visible at a time
+d733 2
+a734 2
+      print_spell_ss(frm, list_gain, start, min(start+9, spell_ctr),
+		     stats_toggler);
+d738 1
+a738 1
+      if (LstScrollList(lst, winDown, 9))
+d741 2
+a742 2
+      print_spell_ss(frm, list_gain, start, min(start+9, spell_ctr),
+		     stats_toggler);
+d763 1
+a763 1
+      print_spell_ss(frm, list_gain, 0, 9, stats_toggler);
+d771 1
+a771 1
+	print_spell_ss(frm, list_gain, 0, 9, false);
+d776 1
+a776 1
+	}
+d778 1
+a778 1
+      StrPrintF(buf, "You can learn %d %s.", new_spells,
+d780 2
+a781 1
+      show_brief_comment(buf);
+d802 32
+@
+
+
+1.27
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@d19 4
+a22 4
+void show_spells(ListPtr lst, Short first_sp, Int width_str) SEC_4;
+static void print_spell_ss(Short start, Short rows, Boolean browse) SEC_4;
+static void print_spell_status(Short i, Short j) SEC_4;
+static void print_spell_stats(Short i, Short j) SEC_4;
+d214 1
+a214 1
+      width_str = 156;
+a272 1
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_spell));
+d275 2
+a276 2
+    show_spells(lst, first_spell, 112);
+    print_spell_ss(0, 10, just_browsing_book);
+d413 1
+a413 1
+void show_spells(ListPtr lst, Short first_spell, Int width_str)
+d415 1
+a415 1
+  Short i, offset, j;
+d420 5
+d441 1
+a441 1
+    width_str = 112; //    width_str = 156; // xxx out of 160
+d457 2
+a458 1
+static void print_spell_ss(Short start, Short rows, Boolean browse)
+d462 4
+a465 1
+  Short list_side = 112+1;
+d474 1
+a474 1
+      print_spell_stats(i-start, j); // where to draw, what to draw
+d480 1
+a480 1
+      print_spell_status(i-start, j); // words instead of numbers
+d486 1
+a486 1
+static void print_spell_status(Short i, Short j)
+d488 1
+a488 2
+  Short list_side = 112+1, list_top = 26;
+  Short x = list_side+2, y = list_top;
+d502 1
+a502 1
+static void print_spell_stats(Short i, Short j)
+d504 2
+a505 3
+  Short list_side = 112+1, list_top = 26;
+  Short x = list_side, y = list_top;
+  Short five = FntCharsWidth("0", 1); // 5 in 160
+d695 2
+a696 3
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_gain));
+    show_spells(lst, -1, 112); // -1 to make it consec. letters starting with a
+    print_spell_ss(0, 9, just_browsing_book);
+d745 2
+a746 1
+      print_spell_ss(start, min(start+9, spell_ctr), stats_toggler);
+d753 2
+a754 1
+      print_spell_ss(start, min(start+9, spell_ctr), stats_toggler);
+d775 1
+a775 1
+      print_spell_ss(0, 9, stats_toggler);
+d783 1
+a849 1
+  print_spell_ss(0, 9, false);
+@
+
+
+1.26
+log
+@still working on hiding magic constants
+@
+text
+@d74 3
+d84 6
+d269 3
+d288 6
+d685 3
+d713 6
+@
+
+
+1.25
+log
+@just tidying up
+@
+text
+@d439 2
+a440 1
+  RctSetRectangle(&r, 113, ROW_1, 160-113, 10*LINE_HEIGHT); // xxx good grief.
+d445 1
+a445 1
+    WinDrawChars("Lv-M-Fail", 9,   114, ROW_1);
+d451 1
+a451 1
+    WinDrawChars("Status", 6,   114, ROW_1);
+d462 2
+a463 1
+  Short x = 115, y = 26;
+d479 2
+a480 1
+  Short x = 113, y = 26; // xxx magic numbers for 160
+@
+
+
+1.24
+log
+@hiding magic numbers
+@
+text
+@d439 1
+a439 1
+  RctSetRectangle(&r, 113, 15, 160-113, 10*11); // xxx Oh good grief.
+d444 1
+a444 1
+    WinDrawChars("Lv-Mn-Fail", 10,   111, 15);
+d450 1
+a450 1
+    WinDrawChars("Status", 6,   111, 15);
+d479 1
+a479 1
+  Short dx = FntCharsWidth("00 ", 1); // 13 in 160
+d500 2
+a501 3
+  WinDrawChars(buf, StrLen(buf),
+	       (SCR_WIDTH-4)-FntCharsWidth(buf,StrLen(buf)), // was 156-...
+	       SCR_HEIGHT-(3*LINE_HEIGHT)/2); // was 141, for 160
+a654 1
+  RectangleType r;
+@
+
+
+1.23
+log
+@beginning handerification
+@
+text
+@d23 1
+d75 3
+a77 1
+    // make the right buttons visible - they are by default.
+d146 1
+a146 1
+	    WinDrawChars("You don't know any in that book.", 32, 2, 128);
+d267 1
+a267 5
+    {
+      Char buf[16];
+      StrPrintF(buf, "mana %d", pymisc.cmana);
+      WinDrawChars(buf, StrLen(buf), 156-FntCharsWidth(buf,StrLen(buf)), 141);
+    }
+d474 1
+d477 3
+a479 3
+  //    StrPrintF(tmp_val, "%d %d %d%%", // each %d is 1- or 2-digit
+  //	      s_ptr->slevel, s_ptr->smana, spell_chance(j));
+  Short x = 113, y = 26;
+d484 3
+a486 3
+  if (s_ptr->slevel > 9) WinDrawChars(tmp_val, 2, x, y + LINE_HEIGHT*i);
+  else                   WinDrawChars(tmp_val, 1, x+5, y + LINE_HEIGHT*i);
+  x += 13; // "%2d "
+d488 3
+a490 3
+  if (s_ptr->smana > 9) WinDrawChars(tmp_val, 2, x, y + LINE_HEIGHT*i);
+  else                  WinDrawChars(tmp_val, 1, x+5, y + LINE_HEIGHT*i);
+  x += 13; // "%2d "
+d492 1
+a492 1
+  x += 5 * (3 - StrLen(tmp_val));
+d496 8
+d688 1
+a688 1
+    WinDrawChars(buf, StrLen(buf),  2, 128);
+d756 1
+a756 4
+      // first, need to clear the space
+      RctSetRectangle(&r, 0, 128, 156, LINE_HEIGHT);
+      WinEraseRectangle(&r, 0);
+      WinDrawChars(buf, StrLen(buf),  2, 128);
+@
+
+
+1.22
+log
+@keyboard: allow selection of spells by letter in Gain Spell form
+@
+text
+@d420 1
+a420 1
+    width_str = 112; //    width_str = 156;
+d440 1
+a440 1
+  RctSetRectangle(&r, 113, 15, 160-113, 10*11);
+d472 1
+a472 1
+  WinDrawChars(p, StrLen(p), x, y + 11*i);
+d484 2
+a485 2
+  if (s_ptr->slevel > 9) WinDrawChars(tmp_val, 2, x, y + 11*i);
+  else                   WinDrawChars(tmp_val, 1, x+5, y + 11*i);
+d488 2
+a489 2
+  if (s_ptr->smana > 9) WinDrawChars(tmp_val, 2, x, y + 11*i);
+  else                  WinDrawChars(tmp_val, 1, x+5, y + 11*i);
+d493 1
+a493 1
+  WinDrawChars(tmp_val, StrLen(tmp_val), x, y + 11*i);
+d749 1
+a749 1
+      RctSetRectangle(&r, 0, 128, 156, 11);
+@
+
+
+1.21
+log
+@again (g) works for spellcasting. also for t a z; does inventory bounds check
+@
+text
+@d23 2
+a24 2
+static void hit_spell_by_alpha(Char c) SEC_4; // is there room in 4?
+static void cast_spell_if_ok(Short first_spell) SEC_4; // (ditto)?
+d306 1
+a306 1
+      hit_spell_by_alpha(c);
+d497 2
+a498 2
+// caller must promise that 'a' <= c <= 'i'
+static void hit_spell_by_alpha(Char c)
+d505 1
+a505 1
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_spell));
+d615 1
+a615 1
+  hit_spell_by_alpha(c);
+d647 1
+a647 1
+  Char buf[40];
+d713 11
+@
+
+
+1.20
+log
+@(oops) make spellbook & spell selection not require \\n
+@
+text
+@a25 1
+static Boolean confirmed_spell() SEC_4;
+d340 1
+d362 29
+d517 1
+d532 1
+a532 1
+      if (confirmed_spell()) {
+d537 1
+d539 1
+a539 1
+	  cast_helper(selected_spell, spell_chance(selected_spell), -1);
+d541 1
+a541 1
+	  pray_helper(selected_spell, spell_chance(selected_spell), -1);
+d564 1
+a564 1
+static Boolean confirmed_spell()
+d566 1
+a566 1
+  if (magic_spell[pymisc.pclass-1][selected_spell].smana <= pymisc.cmana)
+@
+
+
+1.19
+log
+@better msgs on floor-change; sped up repeated delay; fewer keypress in spellbk
+@
+text
+@d309 1
+a309 1
+      hit_button_if_usable(frm, btn_book_ok);
+@
+
+
+1.18
+log
+@moving extern decls around
+@
+text
+@a47 1
+  ControlPtr btn;
+d54 1
+a54 3
+  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_book_ok));
+  if (btn->attr.usable) 
+    CtlHitControl(btn);
+d58 1
+a64 1
+  ControlPtr btn;
+d103 1
+d108 1
+d113 1
+d118 1
+d123 1
+a123 3
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_book_ok));
+      if (btn->attr.usable) 
+	CtlHitControl(btn);
+a246 1
+  ControlPtr btn;
+d308 2
+d314 1
+a314 3
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_spell_ok));
+      if (btn->attr.usable) 
+	CtlHitControl(btn);
+@
+
+
+1.17
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@a544 1
+extern MoriaPreferenceType my_prefs;
+@
+
+
+1.16
+log
+@hit \n == hit 'ok' button
+@
+text
+@a12 2
+#include "palm.h"
+//#include "kMoriaRsc.h"
+a13 2
+#include "lock-externs.h"
+#include "kMoriaRsc.h"
+@
+
+
+1.15
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d71 1
+d124 7
+d252 1
+d314 7
+@
+
+
+1.14
+log
+@making invert work in the general case; an initial credits screen; and I forget what else
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000,2001 Bridget Spitznagel                        *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+@
+
+
+1.13
+log
+@hauled a bunch of code from one section to another, and moved some consts to DB
+@
+text
+@d34 1
+a34 1
+static void show_spells(ListPtr lst, Short first_sp) SEC_4;
+d38 3
+a40 1
+static void free_spell_select(ListPtr lst) SEC_4;
+d49 1
+a49 1
+Short spell_ctr; // number of strings in book_display
+d59 17
+d96 2
+a97 1
+    // No need to scroll - there are only 8 distinct books.
+d118 1
+a118 1
+    case 'a': case hard1Chr:
+d122 1
+a122 1
+    case 'b': case hard2Chr:
+d126 1
+a126 1
+    case 'c': case hard3Chr:
+d130 1
+a130 1
+    case 'd': case hard4Chr:
+d170 2
+d255 2
+a256 1
+  CharPtr label;
+d270 1
+a270 1
+    show_spells(lst, first_spell);
+d296 3
+d304 3
+d314 2
+a315 9
+      s = e->data.keyDown.chr - 'a';
+      if (s > spell_ctr) s = spell_ctr; // or is it spell_ctr - 1 ?
+      while (s > -1) {
+	label = LstGetSelectionText(lst, s);
+	if (label && (label[0] == e->data.keyDown.chr))
+	  break;
+	s--;
+      }
+      LstSetSelection(lst, s);
+d325 1
+a325 20
+      lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_spell));
+      s = LstGetSelection(lst);
+      if (s != -1) {
+	label = LstGetSelectionText(lst, s);
+	if (label) {
+	  selected_spell = label[0] - 'a';
+	  selected_spell += first_spell; // add this to make it the right book!
+	  if (confirmed_spell()) {
+	    free_spell_select(lst);
+	    LeaveForm();
+	    LeaveForm(); // yes, TWICE.
+	    // also CALL THE SPELL CASTING HELPER now.
+	    if (class[pymisc.pclass].spell == MAGE)
+	      cast_helper(selected_spell, spell_chance(selected_spell), -1);
+	    else
+	      pray_helper(selected_spell, spell_chance(selected_spell), -1);
+	    // and do not reset selected_spell (until we re-enter this form)...
+	  }
+	}
+      }
+d366 4
+a369 2
+// so, caller can have a different spell_ctr and spells[]
+static void show_spells(ListPtr lst, Short first_spell)
+d374 1
+a374 1
+  Int width_str, length_str;
+d392 1
+a392 1
+    width_str = 156;
+d468 51
+a518 1
+static void free_spell_select(ListPtr lst)
+d544 43
+d588 5
+d631 1
+a631 1
+    show_spells(lst, -1); // -1 to make it consecutive letters starting with a
+@
+
+
+1.12
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d94 5
+a98 1
+    case 'a':
+d102 1
+a102 1
+    case 'b':
+d106 1
+a106 1
+    case 'c':
+d110 1
+a110 1
+    case 'd':
+@
+
+
+1.11
+log
+@print current mana in 'cast spell' form
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d24 1
+a24 1
+#include <Pilot.h>
+d563 1
+a563 1
+      if (LstScrollList(lst, up, 9)) // there are 9 items visible at a time
+d572 1
+a572 1
+      if (LstScrollList(lst, down, 9))
+@
+
+
+1.10
+log
+@tweaked notice
+@
+text
+@d245 6
+@
+
+
+1.9
+log
+@bug fixes, 'drop all?' for multiple items
+@
+text
+@d5 1
+a5 1
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+@
+
+
+1.8
+log
+@wands, staffs mostly tested, recharge works, throw works
+@
+text
+@a537 3
+    // first, need to clear the space
+    RctSetRectangle(&r, 0, 128, 156, 11);
+    WinEraseRectangle(&r, 0);
+d593 1
+a593 1
+      StrPrintF(buf, "You can learn %d %s", new_spells,
+d595 3
+@
+
+
+1.7
+log
+@maybe bug fixes
+@
+text
+@d276 1
+@
+
+
+1.6
+log
+@continued work on spells
+@
+text
+@d505 1
+d537 3
+@
+
+
+1.5
+log
+@scrolls enabled, spells direction selector added
+@
+text
+@d94 16
+a223 1
+
+d230 2
+a231 1
+  Short s, first_spell;
+d272 13
+d298 1
+@
+
+
+1.4
+log
+@'you can gain spells' message in generation
+@
+text
+@d34 1
+a34 1
+static void show_spells(ListPtr lst, Short first_sp, Boolean comment) SEC_4;
+a77 1
+    /*
+d82 1
+d85 2
+a86 2
+      if (LstScrollList(lst, up, 10)) // there are 10 items visible at a time
+	LstSetSelection(lst, -1);
+d90 2
+a91 2
+      if (LstScrollList(lst, down, 10))
+	LstSetSelection(lst, -1);
+a95 1
+    */
+d207 1
+d227 1
+a227 1
+    show_spells(lst, first_spell, just_browsing_book);
+d239 1
+a239 1
+    /*
+d244 1
+d247 2
+a248 2
+      if (LstScrollList(lst, up, 10)) // there are 10 items visible at a time
+	LstSetSelection(lst, -1);
+d252 2
+a253 2
+      if (LstScrollList(lst, down, 10))
+	LstSetSelection(lst, -1);
+a257 1
+    */
+d275 1
+a275 1
+	      cast_helper(1, selected_spell, spell_chance(selected_spell));
+d277 2
+a278 1
+	      pray_helper(1, selected_spell, spell_chance(selected_spell));
+d323 1
+a323 2
+// also need a boolean argument to indicate "print numbers or other stuff"
+static void show_spells(ListPtr lst, Short first_spell, Boolean comment)
+d341 4
+a344 1
+    c = 'a' + j - first_spell;
+d483 1
+d486 1
+a486 1
+    show_spells(lst, 0, false);
+d511 2
+a512 1
+    // have 12 or so learnable spells at late-teen levels.
+d530 1
+a530 1
+      print_spell_ss(start, min(start+9, spell_ctr), false);
+d537 1
+a537 1
+      print_spell_ss(start, min(start+9, spell_ctr), false);
+d555 1
+a555 1
+	// DO NOT LEAVE FORM, just unselect spell + remove it from the list.
+@
+
+
+1.3
+log
+@added saving
+@
+text
+@d488 1
+a488 1
+	StrPrintF(buf, "You can learn %d %s", new_spells,
+@
+
+
+1.2
+log
+@adding GPL comment
+@
+text
+@d50 3
+a52 3
+extern ULong spell_learned;
+extern ULong spell_worked;
+extern ULong spell_forgotten;
+@
+
+
+1.1
+log
+@add dungeon.c, form_spell.c which I forgot to do earlier
+@
+text
+@d1 23
+@
+

@@ -1,0 +1,1444 @@
+head	1.4;
+access;
+symbols
+	pre-internationalization_20040113:1.4.2.4
+	Release-2002_05_10-on-Handera-branch:1.4
+	Release-2001_07_01-on-Handera-branch:1.4
+	Release-2001_04_26-Handera-branch:1.4.0.2
+	Release-2001_04_26:1.4
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.4
+date	2001.02.24.04.28.33;	author i0lanthe;	state Exp;
+branches
+	1.4.2.1;
+next	1.3;
+
+1.3
+date	2001.02.24.03.25.02;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.10.12.04.00.01;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.06.15.21.16.51;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.06.15.21.16.51;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+1.4.2.1
+date	2003.11.03.19.16.22;	author i0lanthe;	state Exp;
+branches;
+next	1.4.2.2;
+
+1.4.2.2
+date	2003.11.04.14.32.53;	author i0lanthe;	state Exp;
+branches;
+next	1.4.2.3;
+
+1.4.2.3
+date	2003.11.04.16.31.58;	author i0lanthe;	state Exp;
+branches;
+next	1.4.2.4;
+
+1.4.2.4
+date	2004.01.12.03.46.36;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@use.c += lib_use.c
+@
+text
+@/*********************************************************************
+ * iRogue - Rogue adapted for the PalmPilot.                         *
+ * Copyright (C) 1999 Bridget Spitznagel                             *
+ * Note: This program is derived from rogue 5.3-clone for Linux.     *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+/*
+ * use.c
+ *
+ * This source herein may be modified and/or distributed by anybody who
+ * so desires, with the following restrictions:
+ *    1.)  No portion of this notice shall be removed.
+ *    2.)  Credit shall not be taken for the creation of this source.
+ *    3.)  This code is not to be traded, sold, or used for personal
+ *         gain or profit.
+ *
+ */
+
+#include "palm.h"
+#include "iRogueRsc.h"
+#include "Globals.h"
+
+#include "rogue.h"
+
+extern struct state_of_the_union * sotu;
+extern Boolean i_am_dead;
+//extern Char *you_can_move_again;
+
+/************************************************
+  quaff MOVED to LibRogue
+  also Char* strange_feeling.
+************************************************/
+
+/**********************************************************************
+                       READ_SCROLL
+ IN:
+ index = of object in rogue's pack (considered as a list)
+ sotu = various globals
+ identfy = another return value: is it an "identify" scroll.
+ OUT:
+ Was the action legal (should a clock tick be performed)
+ (Also, was the scroll an "identify" scroll.)
+ PURPOSE:
+ Various interesting effects from reading a scroll.
+ **********************************************************************/
+Boolean read_scroll(Short index, struct state_of_the_union *sotu,
+		    Boolean * identfy) 
+{
+  object *obj;
+  Char msg[DCOLS];
+  fighter *rogue = sotu->roguep;
+  Char buf[20];
+
+  *identfy = false;
+  if (sotu->blind) {
+    message("you can't see to read the scroll", sotu);
+    return false;
+  }
+  if (!(obj = get_nth_object(index, &rogue->pack))) {
+    message("no such item.", sotu);
+    return false;
+  }
+  if (obj->what_is != SCROLL) {
+    /* I could prevent this by pruning the presented inventory */
+    message("you can't read that", sotu);
+    return false;
+  }
+  switch(obj->which_kind) {
+  case SCARE_MONSTER:
+    /* purpose of this scroll is, monsters can't move onto it. */
+    message("you hear a maniacal laughter in the distance", sotu);
+    break;
+  case HOLD_MONSTER:
+    hold_monster(sotu);
+    break;
+  case ENCH_WEAPON:
+    if (rogue->weapon) {
+      if (rogue->weapon->what_is == WEAPON) {
+	copy_name_of(rogue->weapon, buf, sotu);
+	StrPrintF(msg, "your %sglow%s %sfor a moment",
+		  buf,
+		  ((rogue->weapon->quantity <= 1) ? "s" : ""),
+		  get_ench_color(sotu));
+	message(msg, sotu);
+	if (coin_toss()) {
+	  rogue->weapon->hit_enchant++;
+	} else {
+	  rogue->weapon->d_enchant++;
+	}
+      }
+      rogue->weapon->is_cursed = 0;
+    } else {
+      message("your hands tingle", sotu);
+    }
+    break;
+  case ENCH_ARMOR:
+    if (rogue->armor) {
+      StrPrintF(msg, "your armor glows %sfor a moment",
+		get_ench_color(sotu));
+      message(msg, sotu);
+      rogue->armor->d_enchant++;
+      rogue->armor->is_cursed = 0;
+      print_stats(STAT_ARMOR, sotu);
+    } else {
+      message("your skin crawls", sotu);
+    }
+    break;
+  case IDENTIFY:
+    message("this is a scroll of identify", sotu);
+    obj->identified = 1;
+    sotu->id_scrolls[obj->which_kind].id_status = IDENTIFIED;
+    *identfy = true; /* through a major hack, we revisit inventory-select */
+    break;
+  case TELEPORT:
+    tele(sotu);
+    break;
+  case SLEEP:
+    if (!(sotu->ring_flags & RING_ALERTNESS)) {
+      message("you fall asleep", sotu);
+      take_a_nap();
+    }
+    break;
+  case PROTECT_ARMOR:
+    if (rogue->armor) {
+      message( "your armor is covered by a shimmering gold shield", sotu);
+      rogue->armor->is_protected = 1;
+      rogue->armor->is_cursed = 0;
+    } else {
+      message("your acne seems to have disappeared", sotu);
+    }
+    break;
+  case REMOVE_CURSE:
+    message((!sotu->halluc) ?
+	    "you feel as though someone is watching over you" :
+	    "you feel in touch with the universal oneness", sotu);
+    uncurse_all(sotu);
+    break;
+  case CREATE_MONSTER:
+    create_monster(0);
+    break;
+  case AGGRAVATE_MONSTER:
+    message("you hear a high pitched humming noise", sotu);
+    aggravate(sotu);
+    break;
+  case MAGIC_MAPPING:
+    message("this scroll seems to have a map on it", sotu);
+    draw_magic_map(sotu); /* XXX maybe make this pop up the overview map */
+    break;
+  case CREATE_OBJ:
+    message("you have the power to create:", sotu);
+    FrmPopupForm(WizForm); // TESTING
+  }
+  if (sotu->id_scrolls[obj->which_kind].id_status != CALLED) {
+    sotu->id_scrolls[obj->which_kind].id_status = IDENTIFIED;
+  }
+  vanish(obj, &rogue->pack, sotu);
+  /* This determines whether the caller should call reg_move...
+     basically, the caller should except when it was a SLEEP scroll */
+  return (obj->which_kind != SLEEP);
+}
+
+/*************************************************
+  vanish MOVED to LibRogue 
+  potion_heal MOVED to LibRogue
+************************************************/
+
+/**********************************************************************
+                       IDNTFY
+ IN:
+ index = of object in pack (consider as list)
+ sotu = various globals
+ OUT:
+ nothing
+ PURPOSE:
+ Identify an item...
+ **********************************************************************/
+void idntfy(Short index, struct state_of_the_union *sotu) {
+  object *obj;
+  struct id *id_table;
+  Char desc[DCOLS];
+  fighter *rogue = sotu->roguep;
+
+  if (!(obj = get_nth_object(index, &rogue->pack))) {
+    message("no such item.", sotu);
+    return;
+  }
+  obj->identified = 1;
+  if (obj->what_is & (SCROLL | POTION | WEAPON | ARMOR | WAND | RING)) {
+    id_table = get_id_table(obj, sotu);
+    id_table[obj->which_kind].id_status = IDENTIFIED;
+  }
+  get_desc(obj, desc, sotu);
+  message(desc, sotu);
+}
+
+
+/************************************************
+  eat MOVED to LibRogue
+************************************************/
+
+
+/************************************************* 
+   MOVED to LibRogue:
+   hold_monster()
+   tele()
+   hallucinate()
+   unhallucinate()
+   unblind()
+   relight()
+*************************************************/
+
+/**********************************************************************
+                       TAKE_A_NAP
+ IN:
+ various globals
+ OUT:
+ nothing
+ PURPOSE:
+ Move monsters (but, like sleeping beauty, DON'T tick the rogue's clock)
+ until rogue wakes.  This may be called by monsters with paralyze
+ or sleep gas attacks; I've fixed it so that they aren't cumulative,
+ cause that would most likely be the Kiss of Death.
+ **********************************************************************/
+void take_a_nap() {
+  static Boolean napping = false;
+  Short i;
+  Long delay = SysTicksPerSecond();
+
+  if (napping) return; // (to prevent needless cruelty)
+  napping = true;
+  i = get_rand(2, 5);
+  SysTaskDelay(delay); // there should be some "visible delay"
+
+  while (i--) {
+    mv_mons();
+    if (i_am_dead)
+      return; // if dead, return
+  }
+  SysTaskDelay(delay); // there should be some "visible delay", again
+  message("you can move again", sotu);
+  napping = false;
+}
+
+/************************************************* 
+   MOVED to LibRogue:
+   go_blind() 
+   get_ench_color() 
+   confuse()
+   unconfuse()
+   uncurse_all() 
+*************************************************/
+
+/***************************************************************************
+ *     Moved all of lib_use.c into here:
+ ***************************************************************************/
+
+
+Char *strange_feeling = "you have a strange feeling for a moment, then it passes";
+
+extern Char fruit_names[21][14]; // in lib_object.c
+extern Char carcase_names[4][14];
+
+/***************************************************************
+                   HOLD_MONSTER
+ IN:
+ sotu = various globals (rogue, dungeon, level_monsters)
+ OUT:
+ nothing
+ PURPOSE:
+ For each monster within two squares of the rogue,
+ the monster freezes (becomes asleep and won't wake on its own).
+****************************************************************/
+void hold_monster(struct state_of_the_union *sotu) {
+  Short i, j;
+  Short mcount = 0;
+  object *monster;
+  Short row, col;
+
+  for (i = -2; i <= 2; i++) {
+    for (j = -2; j <= 2; j++) {
+      row = sotu->roguep->row + i;
+      col = sotu->roguep->col + j;
+      if ((row < MIN_ROW) || (row > (DROWS-2)) || (col < 0) ||
+	  (col > (DCOLS-1))) {
+	continue;
+      }
+      if (sotu->dungeon[row][col] & MONSTER) {
+	monster = object_at(sotu->level_monsters, row, col);
+	monster->m_flags2 |= ASLEEP;
+	monster->m_flags2 &= (~WAKENS);
+	mcount++;
+      }
+    }
+  }
+  if (mcount == 0) {
+    message("you feel a strange sense of loss", sotu);
+  } else if (mcount == 1) {
+    message("the monster freezes", sotu);
+  } else {
+    message("the monsters around you freeze", sotu);
+  }
+}
+
+/***************************************************************
+                   TELE
+ IN:
+ sotu = various globals (rogue, cur_room, rooms, being_held, bear_trap)
+ OUT:
+ nothing
+ PURPOSE:
+ This will teleport the rogue to a random location.
+****************************************************************/
+void tele(struct state_of_the_union *sotu) {
+  fighter *rogue = sotu->roguep;
+
+  mvaddch(rogue->row, rogue->col, 
+	  get_dungeon_char(rogue->row, rogue->col, sotu));
+  if (sotu->cur_room >= 0) {
+    darken_room(sotu->cur_room, sotu);
+  }
+  put_player(get_room_number(rogue->row, rogue->col, sotu->rooms), sotu);
+  sotu->being_held = false;
+  sotu->bear_trap = false;
+}
+
+/***************************************************************
+                   HALLUCINATE
+ IN:
+ sotu = various globals (rogue, level_objects, level_monsters, blind)
+ OUT:
+ nothing
+ PURPOSE:
+ This is called on each clock tick when the rogue is hallucinating.
+ It will update the display, randomly changing the appearance of
+ each object and monster.
+****************************************************************/
+void hallucinate(struct state_of_the_union *sotu) {
+  object *obj, *monster;
+  Short ch;
+  fighter *rogue = sotu->roguep;
+
+  if (sotu->blind)
+    return;
+
+  obj = sotu->level_objects->next_object;
+
+  while (obj) {
+    ch = mvinch(obj->row, obj->col);
+    if ( (Not_Alpha(ch)) && ((obj->row != rogue->row)
+			     || (obj->col != rogue->col)) ) {
+      if ((ch != ' ') && (ch != '.') && (ch != '#') && (ch != '+')) {
+	mvaddch(obj->row, obj->col, gr_obj_char()); // was addch(gr_obj_char())
+      }
+    }
+    obj = obj->next_object;
+  }
+  monster = sotu->level_monsters->next_monster;
+
+  while (monster) {
+    ch = mvinch(monster->row, monster->col);
+    if ( Is_Alpha(ch) ) {
+      if (!(sotu->ring_flags & RING_ESP))
+	ch = (coin_toss()) ? get_rand('A','Z') : get_rand('a','z'); // yo ho!
+      mvaddch(monster->row, monster->col, ch);
+    }
+    monster = monster->next_monster;
+  }
+}
+
+/***************************************************************
+                   UNHALLUCINATE
+ IN:
+ sotu = various globals (halluc)
+ OUT:
+ nothing
+ PURPOSE:
+ This is called on the turn that the rogue is done hallucinating.
+ Redraw the room/passage (is this necessary?)
+****************************************************************/
+void unhallucinate(struct state_of_the_union *sotu) {
+  sotu->halluc = 0;
+  relight(sotu);
+  message("everything looks SO boring now", sotu);
+}
+
+/***************************************************************
+                   UNBLIND
+ IN:
+ sotu = various globals (blind, halluc, detect_monster)
+ OUT:
+ nothing
+ PURPOSE:
+ This is called on the turn that the rogue recovers from
+ temporary blindness.  Redraw the room/passage as visible.
+****************************************************************/
+void unblind(struct state_of_the_union *sotu) {
+  sotu->blind = 0;
+  message("the veil of darkness lifts", sotu);
+  relight(sotu);
+  if (sotu->halluc || (sotu->ring_flags & RING_DELUSION)) {
+    hallucinate(sotu);
+  }
+  if (sotu->detect_monster) {
+    show_monsters(sotu);
+  }
+}
+
+/***************************************************************
+                   RELIGHT
+ IN:
+ sotu = various globals (rogue, cur_room)
+ OUT:
+ nothing
+ PURPOSE:
+ Redraw the room or passage that the rogue is currently in.
+****************************************************************/
+void relight(struct state_of_the_union *sotu) {
+  fighter *rogue = sotu->roguep;
+
+  if (sotu->cur_room == PASSAGE) {
+    light_passage(rogue->row, rogue->col, sotu);
+  } else {
+    light_up_room(sotu->cur_room, sotu);
+  }
+  mvaddch(rogue->row, rogue->col, rogue->fchar);
+}
+
+/***************************************************************
+                   GO_BLIND
+ IN:
+ sotu = various globals (cur_room, rooms, rogue, blind,
+                         detect_monster, level_monsters)
+ OUT:
+ nothing
+ PURPOSE:
+ Make the rogue blind for a randomly determined duration.
+ If the rogue is in a room, darken its interior (except '@@').
+****************************************************************/
+void go_blind(struct state_of_the_union *sotu) {
+  Short i, j;
+  room * rooms = sotu->rooms;
+  fighter *rogue = sotu->roguep;
+
+  if (!sotu->blind) {
+    message("a cloak of darkness falls around you", sotu);
+  }
+  //  sotu->blind += get_rand(500, 800);
+  sotu->blind += get_rand(250, 400); // above was, like, WAY too long.
+
+  if (sotu->detect_monster) {
+    object *monster;
+
+    monster = sotu->level_monsters->next_monster;
+
+    while (monster) {
+      mvaddch(monster->row, monster->col, monster->trail_char);
+      monster = monster->next_monster;
+    }
+  }
+  if (sotu->cur_room >= 0) {
+    for (i = rooms[sotu->cur_room].top_row + 1;
+	 i < rooms[sotu->cur_room].bottom_row; i++) {
+      for (j = rooms[sotu->cur_room].left_col + 1;
+	   j < rooms[sotu->cur_room].right_col; j++) {
+	mvaddch(i, j, ' ');
+      }
+    }
+  }
+  mvaddch(rogue->row, rogue->col, rogue->fchar);
+}
+
+/***************************************************************
+                   CONFUSE
+ IN:
+ sotu = various globals (confused)
+ OUT:
+ nothing
+ PURPOSE:
+ Make the rogue confused for a randomly determined duration.
+ ('confused' will be checked when the rogue tries to move.)
+****************************************************************/
+void confuse(struct state_of_the_union *sotu) {
+  sotu->confused += get_rand(12, 22);
+}
+
+/***************************************************************
+                   UNCONFUSE
+ IN:
+ sotu = various globals (confused, halluc)
+ OUT:
+ nothing
+ PURPOSE:
+ Called when the rogue is no longer confused (because it wore
+ off or some potion dispelled it.)
+****************************************************************/
+void unconfuse(struct state_of_the_union *sotu) {
+  Char msg[80];
+
+  sotu->confused = 0;
+  StrPrintF(msg, "you feel less %s now", (sotu->halluc ? "trippy" : "confused"));
+  message(msg, sotu);
+}
+
+/***************************************************************
+                   UNCURSE_ALL
+ IN:
+ sotu = various globals (rogue)
+ OUT:
+ nothing
+ PURPOSE:
+ For each object that the rogue is carrying, make it not cursed.
+****************************************************************/
+void uncurse_all(struct state_of_the_union *sotu) {
+  object *obj;
+
+  obj = sotu->roguep->pack.next_object;
+
+  while (obj) {
+    obj->is_cursed = 0;
+    obj = obj->next_object;
+  }
+}
+
+/***************************************************************
+                   GET_ENCH_COLOR
+ IN:
+ sotu = various globals (halluc, id_potions)
+ OUT:
+ string representing a color
+ PURPOSE:
+ This returns a color that an item being enchanted will (briefly)
+ glow - just so that, if the rogue is hallucinating, the color
+ will be random instead of blue :-)
+****************************************************************/
+Char * get_ench_color(struct state_of_the_union *sotu) {
+  if (sotu->halluc || (sotu->ring_flags & RING_DELUSION)) {
+    return(sotu->id_potions[get_rand(0, POTIONS-1)].title);
+  }
+  return("blue ");
+}
+
+/***************************************************************
+                   POTION_HEAL
+ IN:
+ extra = true if the healing potion was "extra-strength"
+ sotu = various globals ()
+ OUT:
+ nothing
+ PURPOSE:
+ Heal the rogue of some damage, and maybe cure other problems.
+****************************************************************/
+static void potion_heal(Boolean extra, struct state_of_the_union *sotu) SEC_L;
+static void potion_heal(Boolean extra, struct state_of_the_union *sotu) {
+  Int ratio; // * 16 or so, to avoid working with actual Floats
+  Short add; // (max hp is 800, this should not overflow an int or short)
+  fighter *rogue = sotu->roguep;
+
+  /* First, add a number of hit points equal to the rogue's level. */
+  rogue->hp_current += rogue->exp;
+
+  /* Figure out how badly hurt the rogue is now. */
+  ratio = (16 * rogue->hp_current + 8) / rogue->hp_max; // add 8 to round up
+
+  if (ratio >= 16) { // if ratio >= 1.0 * 16
+    // no damage
+    /* Rogue is healed "better than new" */
+    rogue->hp_max += (extra ? 2 : 1);
+    sotu->extra_hp += (extra ? 2 : 1);
+    rogue->hp_current = rogue->hp_max;
+  } else if (ratio >= 14) { // if ratio >= 0.9 * 16 .. really 14.4
+    // 10% or less damage
+    /* Rogue is healed "as good as new" (better if 'extra') */
+    rogue->hp_max += (extra ? 1 : 0);
+    sotu->extra_hp += (extra ? 1 : 0);
+    rogue->hp_current = rogue->hp_max;
+  } else {
+    /* Rogue will be healed, at minimum:
+       normal => add 1/3 of the remaining hit-point deficit
+       extra  => add 2/3 of the remaining hit-point deficit */
+    if (ratio < 5) ratio = 5; // ratio = max(ratio,0.33); .. really 5.28
+    if (extra) ratio += ratio;
+    add = (Short) ((ratio * (rogue->hp_max - rogue->hp_current) + 8) / 16);
+    rogue->hp_current += add;
+    if (rogue->hp_current > rogue->hp_max) {
+      /* At maximum, rogue will be healed "as good as new" */
+      rogue->hp_current = rogue->hp_max;
+    }
+  }
+  /* Normal and extra-strength cure blindness. */
+  if (sotu->blind) {
+    unblind(sotu);
+  }
+  /* Normal half-cures, and extra-strength cures, confusion. */
+  if (sotu->confused && extra) {
+    unconfuse(sotu);
+  } else if (sotu->confused) {
+    sotu->confused = (sotu->confused / 2) + 1;
+  }
+  /* Normal half-cures, and extra-strength cures, hallucination. */
+  if (sotu->halluc && extra) {
+    unhallucinate(sotu);
+  } else if (sotu->halluc) {
+    sotu->halluc = (sotu->halluc / 2) + 1;
+  }
+}
+
+
+/***************************************************************
+                   VANISH
+ IN:
+ obj = the item that needs to "vanish"
+ pack = the object-list that the vanishing item is held in.
+ sotu = various globals (rogue)
+ OUT:
+ nothing
+ PURPOSE:
+ Destroys the indicated item (could be an object in the rogue's
+ inventory; could be an object or monster in the dungeon level.)
+ If the rogue is currently "using" the item, it will be un-used.
+ NOTE:
+ vanish() does NOT destroy a quiver of weapons with more than one
+ arrow (or whatever) in the quiver.  It only decrements the count.
+****************************************************************/
+void vanish(object *obj, object *pack, struct state_of_the_union *sotu) 
+{
+  fighter * rogue = sotu->roguep;
+  if (!obj)
+    return;
+
+  if (obj->quantity > 1) {
+    obj->quantity--;
+  } else {
+    if (obj->in_use_flags & BEING_WIELDED) {
+      unwield(obj, rogue);
+    } else if (obj->in_use_flags & BEING_WORN) {
+      unwear(obj, rogue);
+    } else if (obj->in_use_flags & ON_EITHER_HAND) {
+      un_put_on(obj, sotu);
+    }
+    take_from_pack(obj, pack);
+    free_object(obj, sotu);
+  }
+}
+
+/***************************************************************
+                   SHOW_OBJECTS
+ IN:
+ sotu = various globals (rogue, level_objects, level_monsters, dungeon)
+ OUT:
+ nothing
+ PURPOSE:
+ This will make all objects (and imitating monsters) visible,
+ unless the rogue or a visible monster is standing on them..
+****************************************************************/
+/* this WAS in object.c */
+static void show_objects(struct state_of_the_union *sotu) SEC_L;
+static void show_objects(struct state_of_the_union *sotu) {
+  object *obj;
+  Short mc, rc, row, col;
+  object *monster;
+  fighter *rogue = sotu->roguep;
+
+  obj = sotu->level_objects->next_object;
+
+  while (obj) {
+    row = obj->row;
+    col = obj->col;
+
+    rc = get_mask_char(obj->what_is);
+
+    if (sotu->dungeon[row][col] & MONSTER) {
+      if ((monster = object_at(sotu->level_monsters, row, col))) {
+	monster->trail_char = rc;
+      }
+    }
+    mc = mvinch(row, col);
+    if ( (Not_Alpha(mc))
+	 && ((row != rogue->row) || (col != rogue->col))) {
+      mvaddch(row, col, rc);
+    }
+    obj = obj->next_object;
+  }
+
+  monster = sotu->level_monsters->next_object;
+
+  while (monster) {
+    if (monster->m_flags1 & IMITATES) {
+      mvaddch(monster->row, monster->col, (Short) monster->disguise);
+    }
+    monster = monster->next_monster;
+  }
+}
+
+
+/***************************************************************
+                   QUAFF
+ IN:
+ index = the index of the item in the rogue's inventory-list
+ sotu = various globals ()
+ OUT:
+ true if the caller should call reg_move().
+ (quaff can't call reg_move itself; reg_move isn't in this library.)
+ PURPOSE:
+ The rogue drank the indexed potion: determine the potion's effect
+ and causes it to be performed.
+****************************************************************/
+Boolean quaff(Short index, struct state_of_the_union *sotu) {
+  //  Char buf[80]; /* buf: 80 and not DCOLS ? */
+  object *obj;
+  fighter *rogue = sotu->roguep;
+
+  if (!(obj = get_nth_object(index, &rogue->pack))) {
+    message("no such item.", sotu);
+    return false;
+  }
+  /* //the following is guaranteed by the caller to NEVER HAPPEN:
+  if (obj->what_is != POTION) {
+    message("you can't drink that", sotu);
+    return false;
+  }
+  */
+  /* Figure out what the potion does, and do it... */
+  switch(obj->which_kind) {
+  case INCREASE_STRENGTH:
+    /* Increment the rogue's current (and perhaps maximum) strength */
+    message("you feel stronger now, what bulging muscles!", sotu);
+    rogue->str_current++;
+    if (rogue->str_current > rogue->str_max) {
+      rogue->str_max = rogue->str_current;
+    }
+    break;
+  case RESTORE_STRENGTH:
+    /* Restore the rogue's strength to its maximum */
+    rogue->str_current = rogue->str_max;
+    message("this tastes great, you feel warm all over", sotu);
+    break;
+  case HEALING:
+    /* Heal the rogue (q.v.) */
+    message("you begin to feel better", sotu);
+    potion_heal(false, sotu);
+    break;
+  case EXTRA_HEALING:
+    /* "Extra-strength"-heal the rogue */
+    message("you begin to feel much better", sotu);
+    potion_heal(true, sotu);
+    break;
+  case POISON:
+    /* Decrease strength (unless "sustained").  Also cures hallucination! */
+    if (!(sotu->ring_flags & RING_SUSTAIN_STR)) {
+      rogue->str_current -= get_rand(1, 3);
+      if (rogue->str_current < 1) {
+	rogue->str_current = 1;
+      }
+    }
+    message("you feel very sick now", sotu);
+    if (sotu->halluc) {
+      unhallucinate(sotu);
+    }
+    break;
+  case RAISE_LEVEL:
+    /* Quantum jump to (just barely) the next experience level */
+    rogue->exp_points = sotu->level_points[rogue->exp - 1];
+    add_exp(1, 1, sotu);
+    break;
+  case BLINDNESS:
+    /* Rogue is temporarily blinded */
+    go_blind(sotu);
+    break;
+  case HALLUCINATION:
+    /* Objects and monsters don't appear as their true selves */
+    message("oh wow, everything seems so cosmic", sotu);
+    sotu->halluc += get_rand(500, 800);
+    break;
+  case DETECT_MONSTER:
+    /* Monsters throughout the level are made visible (unless blind) */
+    show_monsters(sotu);
+    if (!(sotu->level_monsters->next_monster)) {
+      message(strange_feeling, sotu);
+    }
+    break;
+  case DETECT_OBJECTS:
+    /* Objects throughout the level are made visible (unless blind) */
+    if (sotu->level_objects->next_object) {
+      if (!sotu->blind) {
+ 	show_objects(sotu);
+      }
+    } else {
+      message(strange_feeling, sotu);
+    }
+    break;
+  case CONFUSION:
+    /* Rogue's moves will be in random directions for a while */
+    message((sotu->halluc ? "what a trippy feeling" :
+	     "you feel confused"), sotu);
+    confuse(sotu);
+    break;
+  case LEVITATION:
+    /* Rogue can't reach traps, stairs, objects for a while */
+    message("you start to float in the air", sotu);
+    sotu->levitate += get_rand(15, 30);
+    sotu->being_held = sotu->bear_trap = false;
+    break;
+  case HASTE_SELF:
+    /* Rogue moves twice per turn for a while */
+    message("you feel yourself moving much faster", sotu);
+    sotu->haste_self += get_rand(11, 21);
+    if (!(sotu->haste_self % 2)) {
+      sotu->haste_self++;
+    }
+    break;
+  case SEE_INVISIBLE:
+    /* Rogue can see invisible monsters for a while.  Cures blindness. */
+    //    StrPrintF(buf, "hmm, this potion tastes like %sjuice",
+    //	      fruit_names[get_rand(0,20)]);
+    message("hmm, this potion tastes like slime-mold juice", sotu);
+    if (sotu->blind) {
+      unblind(sotu);
+    }
+    sotu->see_invisible = true;
+    relight(sotu);
+    break;
+  }
+  /* Update stats display, "identify" the potion, and destroy it */
+  print_stats((STAT_STRENGTH | STAT_HP), sotu);
+  if (sotu->id_potions[obj->which_kind].id_status != CALLED) {
+    sotu->id_potions[obj->which_kind].id_status = IDENTIFIED;
+  }
+  vanish(obj, &rogue->pack, sotu);
+  return true;
+}
+
+/*********************************************
+  read_scroll moved BACK into ../use.c
+  because moving/creating monsters is a pain
+**********************************************/
+
+// I have MOVED "eat" into lib_object.c because it is Happier There.
+@
+
+
+1.4.2.1
+log
+@take ancient lingering 'sotu' arguments out, everywhere (relic of library code)
+@
+text
+@d61 2
+a62 1
+Boolean read_scroll(Short index, Boolean * identfy) 
+d71 1
+a71 1
+    message("you can't see to read the scroll");
+d75 1
+a75 1
+    message("no such item.");
+d80 1
+a80 1
+    message("you can't read that");
+d86 1
+a86 1
+    message("you hear a maniacal laughter in the distance");
+d89 1
+a89 1
+    hold_monster();
+d94 1
+a94 1
+	copy_name_of(rogue->weapon, buf);
+d98 2
+a99 2
+		  get_ench_color());
+	message(msg);
+d108 1
+a108 1
+      message("your hands tingle");
+d114 2
+a115 2
+		get_ench_color());
+      message(msg);
+d118 1
+a118 1
+      print_stats(STAT_ARMOR);
+d120 1
+a120 1
+      message("your skin crawls");
+d124 1
+a124 1
+    message("this is a scroll of identify");
+d130 1
+a130 1
+    tele();
+d134 1
+a134 1
+      message("you fall asleep");
+d140 1
+a140 1
+      message( "your armor is covered by a shimmering gold shield");
+d144 1
+a144 1
+      message("your acne seems to have disappeared");
+d150 2
+a151 2
+	    "you feel in touch with the universal oneness");
+    uncurse_all();
+d157 2
+a158 2
+    message("you hear a high pitched humming noise");
+    aggravate();
+d161 2
+a162 2
+    message("this scroll seems to have a map on it");
+    draw_magic_map(); /* XXX maybe make this pop up the overview map */
+d165 1
+a165 1
+    message("you have the power to create:");
+d171 1
+a171 1
+  vanish(obj, &rogue->pack);
+d192 1
+a192 2
+void idntfy(Short index)
+{
+d199 1
+a199 1
+    message("no such item.");
+d204 1
+a204 1
+    id_table = get_id_table(obj);
+d207 2
+a208 2
+  get_desc(obj, desc);
+  message(desc);
+d239 1
+a239 2
+void take_a_nap()
+{
+d255 1
+a255 1
+  message("you can move again");
+d288 1
+a288 2
+void hold_monster()
+{
+d311 1
+a311 1
+    message("you feel a strange sense of loss");
+d313 1
+a313 1
+    message("the monster freezes");
+d315 1
+a315 1
+    message("the monsters around you freeze");
+d328 1
+a328 2
+void tele()
+{
+d332 1
+a332 1
+	  get_dungeon_char(rogue->row, rogue->col));
+d334 1
+a334 1
+    darken_room(sotu->cur_room);
+d336 1
+a336 1
+  put_player(get_room_number(rogue->row, rogue->col, sotu->rooms));
+d352 1
+a352 2
+void hallucinate()
+{
+d395 1
+a395 2
+void unhallucinate()
+{
+d397 2
+a398 2
+  relight();
+  message("everything looks SO boring now");
+d411 1
+a411 2
+void unblind()
+{
+d413 2
+a414 2
+  message("the veil of darkness lifts");
+  relight();
+d416 1
+a416 1
+    hallucinate();
+d419 1
+a419 1
+    show_monsters();
+d432 1
+a432 2
+void relight()
+{
+d436 1
+a436 1
+    light_passage(rogue->row, rogue->col);
+d438 1
+a438 1
+    light_up_room(sotu->cur_room);
+d454 1
+a454 2
+void go_blind()
+{
+d460 1
+a460 1
+    message("a cloak of darkness falls around you");
+d497 1
+a497 2
+void confuse()
+{
+d511 1
+a511 2
+void unconfuse()
+{
+d516 1
+a516 1
+  message(msg);
+d528 1
+a528 2
+void uncurse_all()
+{
+d550 1
+a550 2
+Char * get_ench_color()
+{
+d567 2
+a568 3
+static void potion_heal(Boolean extra) SEC_L;
+static void potion_heal(Boolean extra)
+{
+d606 1
+a606 1
+    unblind();
+d610 1
+a610 1
+    unconfuse();
+d616 1
+a616 1
+    unhallucinate();
+d639 1
+a639 1
+void vanish(object *obj, object *pack) 
+d653 1
+a653 1
+      un_put_on(obj);
+d656 1
+a656 1
+    free_object(obj);
+d671 2
+a672 3
+static void show_objects() SEC_L;
+static void show_objects()
+{
+d722 1
+a722 2
+Boolean quaff(Short index)
+{
+d728 1
+a728 1
+    message("no such item.");
+d733 1
+a733 1
+    message("you can't drink that");
+d741 1
+a741 1
+    message("you feel stronger now, what bulging muscles!");
+d750 1
+a750 1
+    message("this tastes great, you feel warm all over");
+d754 2
+a755 2
+    message("you begin to feel better");
+    potion_heal(false);
+d759 2
+a760 2
+    message("you begin to feel much better");
+    potion_heal(true);
+d770 1
+a770 1
+    message("you feel very sick now");
+d772 1
+a772 1
+      unhallucinate();
+d778 1
+a778 1
+    add_exp(1, 1);
+d782 1
+a782 1
+    go_blind();
+d786 1
+a786 1
+    message("oh wow, everything seems so cosmic");
+d791 1
+a791 1
+    show_monsters();
+d793 1
+a793 1
+      message(strange_feeling);
+d800 1
+a800 1
+ 	show_objects();
+d803 1
+a803 1
+      message(strange_feeling);
+d809 2
+a810 2
+	     "you feel confused"));
+    confuse();
+d814 1
+a814 1
+    message("you start to float in the air");
+d820 1
+a820 1
+    message("you feel yourself moving much faster");
+d830 1
+a830 1
+    message("hmm, this potion tastes like slime-mold juice");
+d832 1
+a832 1
+      unblind();
+d835 1
+a835 1
+    relight();
+d839 1
+a839 1
+  print_stats((STAT_STRENGTH | STAT_HP));
+d843 1
+a843 1
+  vanish(obj, &rogue->pack);
+@
+
+
+1.4.2.2
+log
+@reorganizing header files
+@
+text
+@d34 5
+a38 1
+#include "iRogue.h"
+@
+
+
+1.4.2.3
+log
+@more rearranging
+@
+text
+@a39 34
+// from urogue.  I think that [][] should put this in 'data' not 'code'.
+// (irrelevant now but also takes a bit less space declared that way)
+// also used in lib_use.c
+static Char fruit_names[21][14] = {
+  "slime-mold ",  "candleberry ",  "caprifig ",     "dewberry ", 
+  "elderberry ",  "gooseberry ",   "guanabana ",    "hagberry ",
+  "ilama ",       "imbu ",         "jaboticaba ",   "jujube ",
+  "litchi ",      "mombin ",       "pitanga ",      "prickly-pear ",
+  "rambutan ",    "sapodilla ",    "soursop ",      "sweetsop ",
+  "whortleberry "
+};
+#define POPSICLE 4
+static Char carcase_names[5][14] = {
+  "mystery meat ",
+  "orc chop ",
+  "snake steak ",
+  "eye surprise ",
+  "popsicle "
+};
+
+const Char *get_food_name(object *obj)
+{
+  Char *retstring;
+  if (obj->which_kind == RATION) {
+    retstring = "food ";
+  } else if (obj->which_kind == FRUIT) {
+    retstring = fruit_names[obj->o_unused]; // is this ok? used only locally
+  } else {
+    retstring = carcase_names[obj->o_unused];
+  }
+  return retstring;
+}
+
+
+d208 3
+a210 122
+/***************************************************************
+                   EAT
+ IN:
+ index = of the food item, in the rogue's pack
+ sotu = various globals ()
+ OUT:
+ true if caller should call reg_move()
+ (eat can't call reg_move itself; reg_move isn't in this library.)
+ PURPOSE:
+ The rogue ate something.  Make the rogue less hungry.
+// (was in lib_use.c)
+****************************************************************/
+Boolean eat(Short index)
+{
+  Char buf[70];
+  Short moves;
+  object *obj;
+  fighter *rogue = sotu->roguep;
+
+  if (!(obj = get_nth_object(index, &rogue->pack))) {
+    message("no such item.");
+    return false;
+  }
+  /* //the following is guaranteed by the caller to NEVER HAPPEN:
+  if (obj->what_is != FOOD) {
+    message("you can't eat that");
+    return false;
+  }
+  */
+  /* Slime molds are always good; 40% of rations are stale. */
+  /* I should make it so CARCASEs are even worse */
+
+  // record conduct
+  if (obj->which_kind == RATION) {
+    sotu->conduct |= CONDUCT_ATE_VEG;
+    sotu->conduct |= CONDUCT_ATE_MEAT;
+  } else if (obj->which_kind == FRUIT) {
+    sotu->conduct |= CONDUCT_ATE_VEG;
+  } else {
+    // a popsicle doesn't count as anything.
+    if (obj->o_unused != POPSICLE)
+      sotu->conduct |= CONDUCT_ATE_MEAT;    
+  }
+
+  if (sotu->conduct & CONDUCT_UNDEAD) {//if (sotu->score_status & STATUS_UNDEAD)
+    if (obj->which_kind == RATION) {
+      moves = get_rand(100, 200);
+      message("hm, that was strangely unsatisfying");
+    } else if (obj->which_kind == FRUIT) {
+      moves = get_rand(50, 150);
+      StrPrintF(buf, "you gnaw on the vile %s", fruit_names[obj->o_unused]);
+      message(buf);
+    } else {
+      moves = get_rand(900, 1100);
+      StrPrintF(buf, "you enjoy the %s", carcase_names[obj->o_unused]);
+      message(buf);
+    }
+  } else {
+    if ((obj->which_kind == FRUIT) || rand_percent(60)) {
+      moves = get_rand(900, 1100);
+      if (obj->which_kind == RATION) {
+	message("yum, that tasted good");
+      } else if (obj->which_kind == FRUIT) {
+	StrPrintF(buf, "my, that was a yummy %s", fruit_names[obj->o_unused]);
+	message(buf);
+      } else {
+	StrPrintF(buf, "that %s wasn't too bad", carcase_names[obj->o_unused]);
+	message(buf);
+	// if it was a floating-eye, act like a potion of see invisible!!!!
+      }
+    } else {
+      moves = get_rand(700, 900);
+      message("yuk, that food tasted awful");
+      add_exp(2, 1);
+      // add a small chance that the carcass will poison you!!!!
+    }
+  }
+  rogue->moves_left /= 3; /* i.e. there's no sense in stuffing yourself */
+  rogue->moves_left += moves;
+  sotu->hunger_str[0] = 0;
+  if (rogue->moves_left <= FAINT)
+    StrCopy(sotu->hunger_str, "faint");
+  else if (rogue->moves_left <= WEAK)
+    StrCopy(sotu->hunger_str, "weak");
+  else if (rogue->moves_left <= HUNGRY)
+    StrCopy(sotu->hunger_str, "hungry");
+  
+  print_stats(STAT_HUNGER);
+
+  vanish(obj, &rogue->pack);
+  return true;
+}
+
+void drink_monblood(object *monster)
+{
+  Short moves;
+  fighter *rogue = sotu->roguep;
+  Char mn[18];
+  Char buf[70];
+  Short ch;
+
+  ch = monster->m_char - 'A';
+  if (ch > 25)
+    ch = 26 + monster->m_char - 'a'; // yo ho!
+  /* if the monster is the wrong kind, return */
+  switch(ch) {
+  case 5: case 8: case 15: case 22: case 25:
+  case 26: case 27: case 31: case 40: case 42:
+  case 45: case 48: case 49: case 50:
+    return;
+  }
+  mon_name(monster, mn);
+  StrPrintF(buf, "you drink the %s's blood", mn);
+  sotu->conduct |= CONDUCT_ATE_BLOOD;
+  message(buf);
+  moves = get_rand(500, 700);
+  rogue->moves_left /= 3; /* i.e. there's no sense in stuffing yourself */
+  rogue->moves_left += moves;
+  sotu->hunger_str[0] = 0;
+  print_stats(STAT_HUNGER);
+}
+
+d272 2
+@
+
+
+1.4.2.4
+log
+@tidying up globally
+@
+text
+@d36 1
+@
+
+
+1.3
+log
+@compiles with sdk3.5; user-configurable color
+@
+text
+@d267 586
+@
+
+
+1.2
+log
+@fixed death-by-starvation multiple death queue overflow
+@
+text
+@d34 1
+a34 2
+#include "Pilot.h"
+#include "callback.h"
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d253 1
+a253 1
+      return; // stop beating on a dead rogue!
+@
+
+
+1.1.1.1
+log
+@iRogue import
+@
+text
+@@

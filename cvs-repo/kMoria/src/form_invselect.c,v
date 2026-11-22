@@ -1,0 +1,760 @@
+head	1.18;
+access;
+symbols
+	Release-2002_03_29:1.18
+	Release-2002_01_12:1.18
+	Release-2002_01_02:1.15
+	Release-2002_01_01:1.15
+	Release-2001_12_19:1.15
+	Release-2001_08_04:1.10
+	Release-2001_07_02:1.8
+	Release-2001_06_16:1.6;
+locks; strict;
+comment	@ * @;
+
+
+1.18
+date	2002.01.08.19.32.55;	author i0lanthe;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2002.01.06.20.45.21;	author i0lanthe;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2002.01.05.18.46.50;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2001.12.16.19.17.30;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2001.12.15.21.03.17;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2001.11.30.23.44.42;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2001.10.20.18.14.59;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2001.08.01.23.30.25;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2001.08.01.02.59.13;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.03.30.04.29.21;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.03.27.06.30.43;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.01.05.22.43.25;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.01.05.20.09.31;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.01.05.04.12.36;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.18
+log
+@handera support is mostly working, for some value of mostly
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+#include "kMoria.h"
+
+/* This is a form for just selecting an inventory or equipment item,
+   and leaving (to perform some previously selected action like "inscribe".)
+*/
+
+static void invequ_dispatch(Short item) SEC_6;
+static void show_invequ(FormPtr frm, Short mode) SEC_6;
+static void free_invequ_select(FormPtr frm) SEC_6;
+#ifdef I_AM_COLOR
+Err beam_object(Short item) SEC_7; // this is in form_beam.c
+#endif
+
+//extern Char last_command; // for aiming selected wand
+//extern Short needed_direction_item; // for aiming selected wand
+extern previous_state curr_state; // replaces last_command & co.
+
+
+UChar invequ_mode = ACT_NONE; // what action we are supposed to be taking
+Short invequ_scroll = -1; // the item_val of the scroll used to get here, or -1
+Short invequ_charge; // so recharge knows how much juice to use
+
+Short invequ_item;
+Short *invequ_indices; //f. x = line selected ==> inventory[f(x)] = item wanted
+Char **invequ_display;
+Short items_used;
+Short listitems_used;
+Short invsel_lines = 11;
+
+Boolean InvS_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  ListPtr lst;
+  CharPtr label;
+  Char c;
+  Short s;
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* ...init form... */
+    invequ_item = -1;
+    invequ_display = NULL;
+    invequ_indices = NULL;
+    show_invequ(frm, invequ_mode);
+#ifndef I_AM_OS_2
+    if (IsVGA) PrvMoveForm(false);
+#endif
+    FrmDrawForm(frm);
+    // also set the title based on invequ_mode ...
+    switch(invequ_mode) {
+    case ACT_AIM:
+      FrmCopyTitle(frm, "Aim a Wand"); break;
+    case ACT_ZAP:
+      FrmCopyTitle(frm, "Zap a Staff"); break;
+    case ACT_RECHARGE:
+      FrmCopyTitle(frm, "Recharge which?"); break;
+    case ACT_IDENTIFY:
+      FrmCopyTitle(frm, "Identify which?"); break;
+    case ACT_SCRIBE:
+      FrmCopyTitle(frm, "Inscribe which?"); break;
+    case ACT_BEAM:
+      FrmCopyTitle(frm, "Send which?"); break;
+    }
+    handled = true;
+    break;
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) PrvMoveForm(true);
+    return true;
+#endif
+
+  case lstSelectEvent:
+    frm = FrmGetActiveForm();
+    s = e->data.lstSelect.selection;
+    invequ_item = (s != -1) ? invequ_indices[s] : -1;
+    // forget all that label[0] - 'a' stuff...
+    handled = true;
+    break;
+
+  case keyDownEvent:
+    // hardware button -- or else graffiti.
+    frm = FrmGetActiveForm();
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_is));
+    switch(e->data.keyDown.chr) {
+    case pageUpChr:
+      if (LstScrollList(lst, winUp, invsel_lines)) {// usually 11
+	LstSetSelection(lst, -1);
+	invequ_item = -1;
+      }
+      handled = true;
+      break;
+    case pageDownChr:
+      if (LstScrollList(lst, winDown, invsel_lines)) {
+	LstSetSelection(lst, -1);
+	invequ_item = -1;
+      }
+      handled = true;
+      break;
+    default:
+      c = e->data.keyDown.chr;
+      if (c >= 'a' && c <= 'z') {
+	// Find the line starting with this letter. Lines in order with gaps.
+	s = listitems_used;
+	invequ_item = -1;
+	while (s > -1) {
+	  label = LstGetSelectionText(lst, s);
+	  if (label && (label[0] == e->data.keyDown.chr)) {
+	    LstSetSelection(lst, s);
+	    invequ_item = invequ_indices[s];
+	    break;
+	  }
+	  s--;
+	}
+	if (invequ_item == -1) LstSetSelection(lst, -1);
+	handled = true;
+      } else {
+	// Keyboard support for buttons.  Woo hoo.
+	Word objid = -1;
+	switch(c) {
+	case '1': case '\n':  objid = btn_is_frob;   break;
+	case '9': case '0' :  case 27: objid = btn_is_cancel; break;
+	}
+	if (objid != -1) {
+	  hit_button_if_usable(frm, objid);
+	  handled = true;
+	}
+      }
+      break;
+    }
+    break;
+
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    switch(e->data.ctlSelect.controlID) {
+    case btn_is_frob:
+      if (invequ_item != -1) {
+	free_invequ_select(frm);
+	LeaveForm();
+	// Then do something, and decide whether to take a turn about it.
+	// aim, zap, recharge, identify, scribe.
+	invequ_dispatch(invequ_item);
+	// take_a_turn(true);
+	invequ_scroll = -1;
+      }
+      handled = true;
+      break;
+    case btn_is_cancel:
+      free_invequ_select(frm);
+      LeaveForm();
+      invequ_scroll = -1;
+      handled = true;
+      break;
+    }
+
+  default:
+    break;
+  }
+  return handled;
+}
+
+
+void bump_state() SEC_7;
+// 'item' should be an index into inventory[].
+static void invequ_dispatch(Short item)
+{
+  if (item == -1) return;
+
+  switch(invequ_mode) {
+  case ACT_AIM:
+    curr_state.cmd = 'a';
+    curr_state.mode = MODE_DIRECTIONAL;
+    curr_state.item = item;
+    draw_directional();
+    free_turn_flag = true;
+    break;
+  case ACT_ZAP:
+    curr_state.cmd = 'z';
+    curr_state.item = item;
+    use(item);
+    bump_state();
+    take_a_turn(true);
+    break;
+  case ACT_RECHARGE:
+    // check out recharge in spells.c
+    free_turn_flag = false;
+    recharge(item, invequ_charge);
+    // If we came here from a recharge scroll, we must DESTROY IT. 
+    // (do that after we recharge the object so msgs are in a good order)
+    /* There is a chance of destroying wand/staff (but perhaps inventory
+       order makes this step unnecessary?) : */
+    while (invequ_scroll != -1 &&
+	   (inventory[invequ_scroll].tval != TV_SCROLL1 ||
+	    inventory[invequ_scroll].flags != 0x01000000L))
+      invequ_scroll--;
+    // Found the recharge scroll?  Destroy it...
+    if (invequ_scroll != -1) {
+      desc_remain(invequ_scroll);
+      inven_destroy(invequ_scroll);
+    }
+    take_a_turn(true); // think I need this
+    break;
+  case ACT_IDENTIFY:
+    // check out ident_spell in spells.c
+    free_turn_flag = false;
+    ident_spell(item);
+    /* The identify may merge objects, causing the identify scroll
+       to move to a different place.	Check for that here.  It can
+       move arbitrarily far if an identify scroll was used on
+       another identify scroll, but it always moves down. */
+    while (invequ_scroll != -1 &&
+	   (inventory[invequ_scroll].tval != TV_SCROLL1 ||
+	    inventory[invequ_scroll].flags != 0x00000008L))
+      invequ_scroll--;
+    // Found the identify scroll?  Destroy it...
+    if (invequ_scroll != -1) {
+      desc_remain(invequ_scroll);
+      inven_destroy(invequ_scroll);
+    }
+    take_a_turn(true); // think I need this
+    break;
+  case ACT_SCRIBE:
+    // pop up a new form!  note that inscribing should NOT take a turn at all.
+    // needed_direction_item = item;
+    curr_state.item = item;
+    FrmPopupForm(ScribeForm);
+    break;
+#ifdef I_AM_COLOR
+  case ACT_BEAM:
+    beam_object(item);
+    // hey, should we make it take a turn?
+    break;
+#endif
+  default:
+    message("not implemented yet");
+  }
+}
+
+
+// Show either:
+//   only wands
+//   only staffs
+//   just wands and staffs
+//   all inventory and all equipment
+// This is probably full of terrible bugs and wants proof reading
+static void show_invequ(FormPtr frm, Short mode)
+{
+  Short i, j, k, m;
+  Char tmp_val[160], c, *prt1;
+  Int width_str, length_str;
+  Boolean fits, ok;
+  ListPtr lst;
+  Short equips_used = 0, inven_used = 0;
+
+  if (mode == ACT_IDENTIFY || mode == ACT_SCRIBE) {
+    for (i = INVEN_WIELD ; i < INVEN_ARRAY_SIZE ; i++)
+      if (inventory[i].tval != TV_NOTHING)
+	equips_used++; // all equipment items are wanted
+    j = 0;
+    k = inven_ctr - 1; // index of last inventory item (all are wanted)
+  } else if (mode == ACT_BEAM) {
+    // we won't let you beam something you're wearing/wielding...
+    j = 0;
+    k = inven_ctr - 1;
+  } else {
+    ok = false;
+    if (mode == ACT_RECHARGE) ok = find_range(TV_STAFF, TV_WAND, &j, &k);
+    else if (mode == ACT_AIM) ok = find_range(TV_WAND, TV_NEVER, &j, &k);
+    else if (mode == ACT_ZAP) ok = find_range(TV_STAFF, TV_NEVER, &j, &k);
+    if (!ok) return; // No staves or wands; this "should never happen"
+  }
+  inven_used = (k - j) + 1; // 'cause the valid items are j to k *inclusive*
+  //  StrPrintF(tmp_val, "inven_used %d", inven_used);
+  //  WinDrawChars(tmp_val, StrLen(tmp_val), 20, 20);
+
+  // first, figure out whether we should free existing list.
+  if (invequ_display != NULL)
+    free_invequ_select(frm);
+
+  m = 2 * equips_used + inven_used;  
+  invequ_display = (Char **) md_malloc(sizeof(Char *) * m);
+  invequ_indices = (Short *) md_malloc(sizeof(Short)  * m);
+
+  // first the inventory items.
+  for (i = j, listitems_used = 0 ; i <= k ; i++, listitems_used++) {
+    StrPrintF(tmp_val, "%c) ", (Char) ('a' + i));
+    objdes(tmp_val+3, &inventory[i], true);
+    // Truncate if too wide for the screen..... we only have 156 pixels...
+    // length_str gets set to the # of chars that will fit in 156
+    // width_str gets set to the # of pixels that those chars will use (<=156)
+    width_str = SCR_WIDTH - 4; // 156;
+    length_str = StrLen(tmp_val); // max chars to allow
+    FntCharsInWidth(tmp_val, &width_str, &length_str, &fits);
+    tmp_val[length_str] = '\0';
+    // ok, now like put it somewhere.
+    invequ_display[listitems_used] = (Char *) md_malloc(1 + length_str);
+    StrCopy(invequ_display[listitems_used], tmp_val);
+    invequ_indices[listitems_used] = i;
+  }
+
+  // add equipment items also (perhaps).
+  if (mode == ACT_IDENTIFY || mode == ACT_SCRIBE) {
+    c = 'A';
+    j = listitems_used; // just for convenience
+    for (i = INVEN_WIELD ; i < INVEN_ARRAY_SIZE && j < m ; i++) {
+      if (inventory[i].tval != TV_NOTHING) {
+	invequ_indices[j] = invequ_indices[j+1] = i;
+	switch(i) {
+	case INVEN_WIELD:
+	  if (pystats.use_stat[A_STR]*15 < inventory[i].weight)
+	    prt1 = "Just lifting";
+	  else
+	    prt1 = "Wielding";
+	  break;
+	case INVEN_HEAD:	prt1 = "On head";       break;
+	case INVEN_NECK:	prt1 = "Around neck";   break;
+	case INVEN_BODY:	prt1 = "On body";       break;
+	case INVEN_ARM:		prt1 = "On arm";        break;
+	case INVEN_HANDS:	prt1 = "On hands";      break;
+	case INVEN_RIGHT:	prt1 = "On right hand"; break;
+	case INVEN_LEFT:	prt1 = "On left hand";  break;
+	case INVEN_FEET:	prt1 = "On feet";       break;
+	case INVEN_OUTER:	prt1 = "About body";    break;
+	case INVEN_LIGHT:	prt1 = "Light source";  break;
+	case INVEN_AUX:		prt1 = "Spare weapon";  break;
+	default:  		prt1 = "Unknown value"; break;
+	}
+	invequ_display[j] = (Char *) md_malloc(3 + StrLen(prt1) + 1);
+	StrPrintF(invequ_display[j], "%c) %s", c, prt1);
+	j++;
+	objdes(tmp_val, &inventory[i], true);
+	width_str = SCR_WIDTH-4 - 3; // 156-3; // allow room for 1 space
+	length_str = StrLen(tmp_val);
+	FntCharsInWidth(tmp_val, &width_str, &length_str, &fits);
+	tmp_val[length_str] = '\0'; // truncate at screen width
+	invequ_display[j] = (Char *) md_malloc(1 + StrLen(tmp_val) + 1);
+	StrPrintF(invequ_display[j], " %s", tmp_val);
+	j++;
+	c++;
+      }
+    }
+    listitems_used = j;
+  }
+  
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_is));
+  LstSetListChoices(lst, invequ_display, listitems_used);
+  LstSetSelection(lst, -1);
+}
+
+
+/*
+ *  Free some space that we used in the inventory-selection form
+ */
+static void free_invequ_select(FormPtr frm)
+{
+  ListPtr lst;
+  Short i;
+  VoidHand h;
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_is));
+  LstSetListChoices(lst, NULL, 0);
+  if (!listitems_used) return;
+  for (i = 0 ; i < listitems_used ; i++) {
+    h = MemPtrRecoverHandle(invequ_display[i]);
+    if (h) 
+      MemHandleFree(h);
+  }
+  h = MemPtrRecoverHandle(invequ_display);
+  if (h) 
+    MemHandleFree(h);
+  h = MemPtrRecoverHandle(invequ_indices);
+  if (h) 
+    MemHandleFree(h);
+  invequ_display = NULL;
+  invequ_indices = NULL;
+}
+@
+
+
+1.17
+log
+@changing magic #define's to calculations (for handera)
+@
+text
+@d40 1
+d102 1
+a102 1
+      if (LstScrollList(lst, winUp, 11)) {//  11 items visible at a time
+d109 1
+a109 1
+      if (LstScrollList(lst, winDown, 11)) {
+@
+
+
+1.16
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@d305 1
+a305 1
+    width_str = 156;
+d346 1
+a346 1
+	width_str = 156-3; // allow room for 1 space
+@
+
+
+1.15
+log
+@again (g) works for spellcasting. also for t a z; does inventory bounds check
+@
+text
+@d59 3
+d80 6
+@
+
+
+1.14
+log
+@tweaking
+@
+text
+@d168 1
+d183 2
+d186 1
+@
+
+
+1.13
+log
+@better msgs on floor-change; sped up repeated delay; fewer keypress in spellbk
+@
+text
+@d127 1
+a127 1
+	case '9': case '0' :  objid = btn_is_cancel; break;
+@
+
+
+1.12
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@a123 1
+	ControlPtr btn;
+d130 1
+a130 3
+	  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, objid));
+	  if (btn->attr.usable) 
+	    CtlHitControl(btn); // kind of silly, I could just dispatch it..
+@
+
+
+1.11
+log
+@(slightly broken) rewiring the MainForm event handlers w/ explicit 'mode'
+@
+text
+@a12 2
+#include "palm.h"
+//#include "kMoriaRsc.h"
+a13 2
+#include "lock-externs.h"
+#include "kMoriaRsc.h"
+@
+
+
+1.10
+log
+@fixing beam-object
+@
+text
+@d30 4
+a33 2
+extern Char last_command; // for aiming selected wand
+extern Short needed_direction_item; // for aiming selected wand
+d182 3
+a184 2
+    last_command = 'a';
+    needed_direction_item = item;
+d232 2
+a233 1
+    needed_direction_item = item;
+@
+
+
+1.9
+log
+@beam an item (untested)
+@
+text
+@d268 1
+a268 1
+    k = inven_ctr;
+@
+
+
+1.8
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d26 3
+d74 2
+d232 6
+d265 4
+@
+
+
+1.7
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000,2001 Bridget Spitznagel                        *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+@
+
+
+1.6
+log
+@this might fix the memory leak in inventory/equipment List widgets.
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d24 1
+a24 1
+#include <Pilot.h>
+d100 1
+a100 1
+      if (LstScrollList(lst, up, 11)) {// there are 11 items visible at a time
+d107 1
+a107 1
+      if (LstScrollList(lst, down, 11)) {
+@
+
+
+1.5
+log
+@fixed sell-unknown-item-to-store bug.  most forms navigable via keyboard now.
+@
+text
+@d66 2
+d276 4
+d373 2
+@
+
+
+1.4
+log
+@tweaked notice
+@
+text
+@d113 1
+a113 1
+      if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+d116 1
+d119 3
+a121 1
+	  if (label && (label[0] == e->data.keyDown.chr))
+d123 1
+a124 1
+	  handled = true;	
+d126 16
+a141 1
+	invequ_item = (s != -1) ? invequ_indices[s] : -1;
+a150 1
+      free_invequ_select(frm);
+d152 1
+d158 1
+a159 1
+      invequ_scroll = -1;
+@
+
+
+1.3
+log
+@added 'inscribe', rearranged menus
+@
+text
+@d5 1
+a5 1
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+@
+
+
+1.2
+log
+@bug fixes, 'drop all?' for multiple items
+@
+text
+@d214 3
+a216 1
+    // pop up a new form!  that form will take_a_turn, or won't if cancelled.
+@
+
+
+1.1
+log
+@wands, staffs mostly tested, recharge works, throw works
+@
+text
+@d69 12
+@
+

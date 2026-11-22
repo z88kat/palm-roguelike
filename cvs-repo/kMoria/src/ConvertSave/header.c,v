@@ -1,0 +1,106 @@
+head	1.1;
+access;
+symbols
+	Release-2002_03_29:1.1
+	Release-2002_01_12:1.1
+	Release-2002_01_02:1.1
+	Release-2002_01_01:1.1
+	Release-2001_12_19:1.1
+	Release-2001_08_04:1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.07.04.20.01.57;	author uid28407;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@two-way conversion - seems to work ok on linux
+@
+text
+@/*
+ * Because this file uses a little code from the pilot-link utils,
+ * it inherits the GPL - you can get a copy of the GPL from
+ * http://www.gnu.org/copyleft/gpl.html
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+#include "defs.h"
+#include "swap.h"
+#include "to-umoria.h"
+
+extern int TotalRecords;
+extern rec_entry_descr *reds;
+
+// all numbers in these structs are big-endian, MAC format
+struct tDocHeader {
+  char sName[32];         // 32 bytes
+  DWORD dwUnknown1;       // 36
+  DWORD dwTime1;          // 40
+  DWORD dwTime2;          // 44
+  DWORD dwTime3;          // 48
+  DWORD dwLastSync;       // 52
+  DWORD ofsSort;          // 56
+  DWORD ofsCatagories;    // 60
+  DWORD dwType;           // 68
+  DWORD dwCreator;        // 64
+  DWORD dwUnknown2;       // 72
+  DWORD dwUnknown3;       // 76
+  WORD  wNumRecs;         // 78
+};
+
+
+// Some compilers pad structures out to DWORD boundaries so using sizeof()
+// doesn't give the intended result.
+#define DOCHEADSZ 78
+
+struct rec0 {
+  WORD version;
+  WORD unused1;
+  DWORD unused2;
+};
+
+
+
+void read_preamble(FILE* fin)
+{
+  struct tDocHeader head1;
+  int i;
+
+  // The "Preamble" of the database has two parts.
+  // First, there is a fixed-length header.  (head1).
+  // Second, there is a list of record UIDs, attributes, & offsets.
+  // 4 bytes of offset; 1 byte of record attribs; 3 bytes of unique id.
+
+  printf("reading preamble...\n");
+  fread(&head1, sizeof(head1), 1, fin);
+  TotalRecords = SwapWord(head1.wNumRecs);
+  printf("database name = %s, %d records\n", head1.sName, TotalRecords);
+
+  fseek(fin, DOCHEADSZ, SEEK_SET); // get lined up for the second section..
+
+  /*pi_file_get_entries (pf, &nentries);*/
+  reds = (rec_entry_descr *) malloc(sizeof(rec_entry_descr)*TotalRecords);
+
+  for (i = 0 ; i < TotalRecords ; i++) {
+    long tmp;
+    reds[i].offset = in_long(fin);
+    tmp = in_long(fin);
+    /* reds[i].attribs would be the 0xff000000 byte of tmp. */
+    reds[i].unique_id = (tmp & 0x00ffffff);
+  }
+
+}
+@

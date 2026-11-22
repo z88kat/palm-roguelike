@@ -1,0 +1,231 @@
+head	1.3;
+access;
+symbols
+	start:1.1.1.1 vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.3
+date	2001.02.24.04.18.09;	author i0lanthe;	state dead;
+branches;
+next	1.2;
+
+1.2
+date	2001.02.24.03.25.02;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.06.15.21.16.44;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.06.15.21.16.44;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@move.c += lib_move.c
+@
+text
+@/*********************************************************************
+ * iRogue - Rogue adapted for the PalmPilot.                         *
+ * Copyright (C) 1999 Bridget Spitznagel                             *
+ * Note: This program is derived from rogue 5.3-clone for Linux.     *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+
+#include "palm.h"
+#include "librogue.h"
+
+/***************************************************************
+                   CAN_MOVE
+ IN:
+ row1, col1 = initial location
+ row2, col2 = desired location
+ dungeon
+ OUT:
+ true if you can move from one to the other
+ PURPOSE:
+ Determine whether you can move to the desired destination...
+****************************************************************/
+Boolean can_move(Short row1, Short col1, Short row2, Short col2,
+		 UShort ** dungeon) {
+  if (!is_passable(row2, col2, dungeon)) {
+    return false;
+  }
+  if ((row1 != row2) && (col1 != col2)) {
+    /* You can't move diagonal through a door... */
+    if ((dungeon[row1][col1]&DOOR)||(dungeon[row2][col2]&DOOR)) {
+      return false;
+    }
+    /* ... or a tunnel */
+    if ((!dungeon[row1][col2]) || (!dungeon[row2][col1])) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/***************************************************************
+                   IS_PASSABLE
+ IN:
+ row, col = location in question
+ dungeon
+ OUT:
+ true if it's ok for a monster/rogue to go to there
+ PURPOSE:
+ Determine whether the given location can be moved-to.
+****************************************************************/
+Boolean is_passable(Short row, Short col, UShort ** dungeon) {
+  if ((row < MIN_ROW) || (row > (DROWS - 2)) || (col < 0) ||
+      (col > (DCOLS-1))) {
+    return false;
+  }
+  if (dungeon[row][col] & HIDDEN) {
+    return((dungeon[row][col] & TRAP) ? true : false);
+  }
+  return(dungeon[row][col] & (FLOOR | TUNNEL | DOOR | STAIRS | TRAP));
+}
+
+/***************************************************************
+                   NEXT_TO_SOMETHING
+ IN:
+ drow, dcol = previous location of rogue
+ sotu = various globals (rogue, dungeon, confused, blind)
+ OUT:
+ PURPOSE:
+ Determine whether the rogue should drop out of autopilot,
+ i.e. there's something of interest to the player.
+****************************************************************/
+Boolean next_to_something(Short drow, Short dcol,
+			  struct state_of_the_union * sotu) {
+  Short i, j, i_end, j_end, row, col;
+  Short pass_count = 0;
+  UShort s;
+  fighter * rogue = sotu->roguep;
+  UShort ** dungeon = sotu->dungeon;
+
+  if (sotu->confused) {
+    /* Do not let a confused rogue move under autopilot :-) */
+    return true;
+  }
+  if (sotu->blind) {
+    /* If you can't see, you can't see interesting things next to you. */
+    return false;
+  }
+
+/*    i_end = (rogue->row < (DROWS-2)) ? true : false; */
+/*    j_end = (rogue->col < (DCOLS-1)) ? true : false; */
+  i_end = (rogue->row < (DROWS-2)) ? 1 : 0;
+  j_end = (rogue->col < (DCOLS-1)) ? 1 : 0;
+
+  for (i = ((rogue->row > MIN_ROW) ? -1 : 0); i <= i_end; i++) {
+    for (j = ((rogue->col > 0) ? -1 : 0); j <= j_end; j++) {
+      if ((i == 0) && (j == 0)) {
+	/* "Stand in the place where you are..." */
+	continue;
+      }
+      if (((rogue->row+i) == drow) && ((rogue->col+j) == dcol)) {
+	/* The place where you were... */
+	continue;
+      }
+      row = rogue->row + i;
+      col = rogue->col + j;
+      s = dungeon[row][col];
+      if (s & HIDDEN) {
+	/* Something interesting, but you can't see it. */
+	continue;
+      }
+      /* Monsters, objects, and stairs are all interesting. */
+      if (s & (MONSTER | OBJECT | STAIRS)) {
+	/* If the rogue's previous location is directly north/south or
+	   east/west of the location under examination, then don't
+	   bother stopping (the player's already seen the thing, and is
+	   currently moving away from it.) */
+	if (((row == drow) || (col == dcol)) &&
+	    (!((row == rogue->row) || (col == rogue->col)))) {
+	  continue;
+	}
+	return true;
+      }
+      /* Non-hidden traps are interesting. */
+      if (s & TRAP) {
+	if (!(s & HIDDEN)) {
+	  /* Same "don't bother" as above. */
+	  if (((row == drow) || (col == dcol)) &&
+	      (!((row == rogue->row) || (col == rogue->col)))) {
+	    continue;
+	  }
+	  return true;
+	}
+      }
+      /* If we're in a tunnel, and this isn't the square we came from,
+	 and it's n/s/e/w (not diagonal), then it is a Way To Go and
+	 is interesting if there's more than one (i.e. a branch.) */
+      if ((((i - j) == 1) || ((i - j) == -1)) && (s & TUNNEL)) {
+	if (++pass_count > 1) {
+	  return true;
+	}
+      }
+      /* If you are n/s/e/w of a door, that is also interesting. */
+      if ((s & DOOR) && ((i == 0) || (j == 0))) {
+	return true;
+      }
+    }
+  }
+  /* Nothing interesting - keep on truckin' */
+  return false;
+}
+@
+
+
+1.2
+log
+@compiles with sdk3.5; user-configurable color
+@
+text
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d23 1
+a23 1
+#include "Pilot.h"
+@
+
+
+1.1.1.1
+log
+@iRogue import
+@
+text
+@@

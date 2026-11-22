@@ -1,0 +1,65 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.05.31.00.22.31;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.31;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@body,p,h1,h2,h3,h4,h5,dl,ul { color: Black; background: White; } 
+/*
+A:link    { color: Red;  background: White; } 
+A:visited { color: Orange; background: White; } 
+A:active  { color: Green;   background: White; } 
+*/
+
+A:link    { color: Blue;  background: White; } 
+A:visited { color: #003300; background: White; } 
+A:active  { color: Red;   background: White; } 
+
+.sidebar  { color: black; background: White; }
+.side     { color: black; background: White; }
+.sidehead { color: black; background: #ccffcc; font-weight: bold; }
+.body     { color: black; background: White; }
+.footer   { color: black; background: #66cc99; text-align: center; }
+.header   { color: black; background: #ccffcc; text-align: center; }
+
+/* make sure cell spacing is 0.  use cell padding to compensate.  */
+
+/* a dither-free green palette: ccffcc  99ff99  66cc99  66ff66 */
+/* = Pale Weak Green, Pale Dull Green, Light Dull Teal, Light Faded Green */
+
+/* mine: link 000066 visited 003300 */@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

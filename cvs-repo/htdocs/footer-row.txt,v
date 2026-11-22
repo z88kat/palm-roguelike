@@ -1,0 +1,53 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.05.31.00.22.31;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.31;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@    <td class="footer">
+    <img src="http://roguelike-palm.sourceforge.net/images/hdse-small.gif">
+    </td>
+    <td class="footer">
+    Half-Dead Spider Entertainment produces freeware for the 
+    <a href="http://www.palm.com">Palm</a> handhelds, 
+    <a href="http://www.handspring.com">Handspring Visor</a>, and whatever
+    else might happen to be running the
+    <a href="http://www.palmos.com">Palm OS</a> this week (perhaps your
+    <a href="http://www.palmos.com/licensing/licensees.html">toaster</a>).
+    </td>
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

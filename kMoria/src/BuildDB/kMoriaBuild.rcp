@@ -1,0 +1,128 @@
+#include "kMoriaBuildRsc.h"
+
+VERSION ID 1 "0.01"
+
+ICON "kMoria.bmp"
+SMALLICON "kMoriaSmall.bmp"
+
+FORM ID LuserForm AT (2 2 156 156)
+USABLE
+MODAL
+BEGIN
+	TITLE "You Can't Use This"
+	LABEL "This application requires color!" AUTOID AT (2 15) 
+END
+
+FORM ID MainForm AT (2 2 156 156)
+USABLE
+MODAL
+HELPID MainHelpStr
+BEGIN
+  TITLE "Define kMoria Colors"
+  BUTTON "Things" ID btn_things AT (Center 50 AUTO AUTO) USABLE
+  BUTTON "Things->Creatures" ID btn_ttom AT (Center PrevBottom+5 AUTO AUTO) USABLE
+  BUTTON "Colors->Creatures" ID btn_ctom AT (Center PrevBottom+5 AUTO AUTO) USABLE
+  BUTTON "Creatures" ID btn_mons AT (Center PrevBottom+5 AUTO AUTO) USABLE
+  LABEL "press the Down hardware button" AUTOID AT (1 156-22)
+  LABEL "to return here." AUTOID AT (1 156-11)
+END
+//	TITLE "Build kMoria Database"
+//	BUTTON "Rebuild Database" ID btn_ok AT (50 50 AUTO AUTO) USABLE
+
+STRING MainHelpStr "First, press Things and define things.  Then, come back "\
+	"here and press Creatures to define creatures.\n\n" \
+	"The buttons will take you to a form with a bunch of letters.  "\
+	"Tap on a letter to set its color (tap on numbers, press ok).  "\
+	"When you are done with the bunch of letters, to get back here, "\
+	"press the Down hardware button.  "\
+	"Note while you are there, you can press the Up hard button too, " \
+	"this will not take you anywhere but it will change the background "\
+	"of the display to black or white."
+
+
+FORM ID CritterForm AT (0 0 160 160)
+USABLE
+NOFRAME
+BEGIN
+END
+
+FORM ID ThingForm AT (0 0 160 160)
+USABLE
+NOFRAME
+BEGIN
+  LABEL "press the Down hardware button" AUTOID AT (1 160-22)
+  LABEL "to exit from here." AUTOID AT (1 160-11)
+END
+// Things:  ascii 32 to 126 inclusive.
+// for our purposes, 32-64,91-96,123-126.  that's 95 chars - (26+26) = 43.
+// oh!  and 's'!!!
+//  @   . % #
+// object_list: !"#$%&'()*+,-./123456:;<=>?@[\]^_s{|}~
+//             ................*.....*...........**...
+// UNUSED: "0789`"
+
+ALERT ID ConvertP
+WARNING
+DEFAULTBUTTON 2
+BEGIN
+	TITLE "Override?"
+	MESSAGE "Should monsters in Things override all of Creatures, or just the undefined (black/white) creatures?"
+	BUTTON "All" "Undef." "Cancel"
+END
+
+ALERT ID Convert2P
+WARNING
+DEFAULTBUTTON 2
+BEGIN
+	TITLE "Override?"
+	MESSAGE "Should these colors override all of Creatures, or just the undefined (black/white) creatures?"
+	BUTTON "All" "Undef." "Cancel"
+END
+
+FORM ID ColorForm AT (2 2 156 156)
+USABLE
+MODAL
+BEGIN
+       TITLE "abcdefghijklmnopqrstuvwxyz "
+	LABEL "Red / Green / Blue" AUTOID AT (2 15)
+	LIST "ff" "cc" "99" "66" "33" "00" ID list_col_1 AT (PrevLeft PrevBottom+12 15 66) VISIBLEITEMS 6
+	LIST "ff" "cc" "99" "66" "33" "00" ID list_col_2 AT (PrevRight+3 PrevTop 15 66) VISIBLEITEMS 6
+	LIST "ff" "cc" "99" "66" "33" "00" ID list_col_3 AT (PrevRight+3 PrevTop 15 66) VISIBLEITEMS 6
+	
+  BUTTON "Ok" ID btn_col_ok AT (5 141 35 AUTO) USABLE
+  BUTTON "Cancel" ID btn_col_cancel AT (PrevRight+10 141 AUTO AUTO) USABLE
+END
+//	BUTTON "Show" ID btn_col_show AT (5 141 AUTO AUTO) USABLE
+
+
+
+// Really these lists should start out nonusable or something.
+FORM ID DefaultsForm AT (2 2 156 156)
+USABLE
+MODAL
+BEGIN
+	LABEL "Red / Green / Blue" AUTOID AT (70 15)
+	LIST "ff" "cc" "99" "66" "33" "00" ID list_def_1 AT (PrevLeft+5 PrevBottom+12 15 66) VISIBLEITEMS 6
+	LIST "ff" "cc" "99" "66" "33" "00" ID list_def_2 AT (PrevRight+3 PrevTop 15 66) VISIBLEITEMS 6
+	LIST "ff" "cc" "99" "66" "33" "00" ID list_def_3 AT (PrevRight+3 PrevTop 15 66) VISIBLEITEMS 6
+  BUTTON "Palette!" ID btn_def_uipick AT (70 PrevBottom+4 AUTO AUTO) USABLE
+	
+  BUTTON "Ok" ID btn_def_ok AT (5 141 35 AUTO) USABLE
+  BUTTON "Cancel" ID btn_def_cancel AT (PrevRight+10 141 AUTO AUTO) USABLE
+END
+// Colors in text!!
+// Black Blue Brown Clear
+// Green Grey Purple Red
+// Silver White Yellow
+
+
+STRING HelpStr "This will rebuild your constants database."\
+		"It wipes out what was already there!"
+
+ALERT ID NukeP
+WARNING
+BEGIN
+	TITLE "Are you sure?"
+	MESSAGE "Rebuilding the database will wipe out stuff."
+	BUTTON "I'm sure" "No, don't do it!"
+END

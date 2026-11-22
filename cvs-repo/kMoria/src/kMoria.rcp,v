@@ -1,0 +1,2966 @@
+head	1.91;
+access;
+symbols
+	Release-2002_03_29:1.91
+	Release-2002_01_12:1.89
+	Release-2002_01_02:1.80
+	Release-2002_01_01:1.79
+	Release-2001_12_19:1.77
+	Release-2001_08_04:1.72
+	Release-2001_07_02:1.63
+	Release-2001_06_16:1.53
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.91
+date	2002.03.29.00.54.19;	author i0lanthe;	state Exp;
+branches;
+next	1.90;
+
+1.90
+date	2002.01.17.01.24.12;	author i0lanthe;	state Exp;
+branches;
+next	1.89;
+
+1.89
+date	2002.01.12.21.13.14;	author i0lanthe;	state Exp;
+branches;
+next	1.88;
+
+1.88
+date	2002.01.12.01.38.09;	author i0lanthe;	state Exp;
+branches;
+next	1.87;
+
+1.87
+date	2002.01.11.02.20.20;	author i0lanthe;	state Exp;
+branches;
+next	1.86;
+
+1.86
+date	2002.01.10.02.55.48;	author i0lanthe;	state Exp;
+branches;
+next	1.85;
+
+1.85
+date	2002.01.10.01.33.49;	author i0lanthe;	state Exp;
+branches;
+next	1.84;
+
+1.84
+date	2002.01.08.05.24.06;	author i0lanthe;	state Exp;
+branches;
+next	1.83;
+
+1.83
+date	2002.01.06.20.45.21;	author i0lanthe;	state Exp;
+branches;
+next	1.82;
+
+1.82
+date	2002.01.05.18.49.56;	author i0lanthe;	state Exp;
+branches;
+next	1.81;
+
+1.81
+date	2002.01.04.03.45.44;	author i0lanthe;	state Exp;
+branches;
+next	1.80;
+
+1.80
+date	2002.01.02.20.15.47;	author i0lanthe;	state Exp;
+branches;
+next	1.79;
+
+1.79
+date	2002.01.01.21.14.15;	author i0lanthe;	state Exp;
+branches;
+next	1.78;
+
+1.78
+date	2002.01.01.01.35.09;	author i0lanthe;	state Exp;
+branches;
+next	1.77;
+
+1.77
+date	2001.12.16.00.08.40;	author i0lanthe;	state Exp;
+branches;
+next	1.76;
+
+1.76
+date	2001.12.10.01.20.07;	author i0lanthe;	state Exp;
+branches;
+next	1.75;
+
+1.75
+date	2001.12.09.19.05.43;	author i0lanthe;	state Exp;
+branches;
+next	1.74;
+
+1.74
+date	2001.11.30.23.44.42;	author i0lanthe;	state Exp;
+branches;
+next	1.73;
+
+1.73
+date	2001.11.30.02.58.38;	author i0lanthe;	state Exp;
+branches;
+next	1.72;
+
+1.72
+date	2001.08.04.16.56.17;	author i0lanthe;	state Exp;
+branches;
+next	1.71;
+
+1.71
+date	2001.08.03.03.52.52;	author i0lanthe;	state Exp;
+branches;
+next	1.70;
+
+1.70
+date	2001.08.03.01.36.05;	author i0lanthe;	state Exp;
+branches;
+next	1.69;
+
+1.69
+date	2001.08.02.06.50.36;	author i0lanthe;	state Exp;
+branches;
+next	1.68;
+
+1.68
+date	2001.08.01.02.59.13;	author i0lanthe;	state Exp;
+branches;
+next	1.67;
+
+1.67
+date	2001.07.27.15.41.31;	author i0lanthe;	state Exp;
+branches;
+next	1.66;
+
+1.66
+date	2001.07.27.01.17.38;	author i0lanthe;	state Exp;
+branches;
+next	1.65;
+
+1.65
+date	2001.07.26.02.38.39;	author i0lanthe;	state Exp;
+branches;
+next	1.64;
+
+1.64
+date	2001.07.25.06.16.45;	author i0lanthe;	state Exp;
+branches;
+next	1.63;
+
+1.63
+date	2001.06.30.17.32.46;	author i0lanthe;	state Exp;
+branches;
+next	1.62;
+
+1.62
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.61;
+
+1.61
+date	2001.06.28.01.33.54;	author i0lanthe;	state Exp;
+branches;
+next	1.60;
+
+1.60
+date	2001.06.26.04.43.12;	author i0lanthe;	state Exp;
+branches;
+next	1.59;
+
+1.59
+date	2001.06.26.02.42.37;	author i0lanthe;	state Exp;
+branches;
+next	1.58;
+
+1.58
+date	2001.06.23.00.26.33;	author i0lanthe;	state Exp;
+branches;
+next	1.57;
+
+1.57
+date	2001.06.22.05.56.03;	author i0lanthe;	state Exp;
+branches;
+next	1.56;
+
+1.56
+date	2001.06.20.05.02.38;	author i0lanthe;	state Exp;
+branches;
+next	1.55;
+
+1.55
+date	2001.06.20.01.56.43;	author i0lanthe;	state Exp;
+branches;
+next	1.54;
+
+1.54
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.53;
+
+1.53
+date	2001.06.16.18.55.05;	author i0lanthe;	state Exp;
+branches;
+next	1.52;
+
+1.52
+date	2001.05.24.04.24.15;	author i0lanthe;	state Exp;
+branches;
+next	1.51;
+
+1.51
+date	2001.05.21.00.22.01;	author i0lanthe;	state Exp;
+branches;
+next	1.50;
+
+1.50
+date	2001.04.01.18.49.31;	author i0lanthe;	state Exp;
+branches;
+next	1.49;
+
+1.49
+date	2001.03.31.21.45.38;	author i0lanthe;	state Exp;
+branches;
+next	1.48;
+
+1.48
+date	2001.03.31.21.06.19;	author i0lanthe;	state Exp;
+branches;
+next	1.47;
+
+1.47
+date	2001.03.30.06.10.47;	author i0lanthe;	state Exp;
+branches;
+next	1.46;
+
+1.46
+date	2001.03.27.22.49.22;	author i0lanthe;	state Exp;
+branches;
+next	1.45;
+
+1.45
+date	2001.03.27.06.30.43;	author i0lanthe;	state Exp;
+branches;
+next	1.44;
+
+1.44
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.43;
+
+1.43
+date	2001.01.27.21.41.26;	author i0lanthe;	state Exp;
+branches;
+next	1.42;
+
+1.42
+date	2001.01.27.00.53.03;	author i0lanthe;	state Exp;
+branches;
+next	1.41;
+
+1.41
+date	2001.01.26.06.49.41;	author i0lanthe;	state Exp;
+branches;
+next	1.40;
+
+1.40
+date	2001.01.24.04.49.42;	author i0lanthe;	state Exp;
+branches;
+next	1.39;
+
+1.39
+date	2001.01.23.17.49.56;	author i0lanthe;	state Exp;
+branches;
+next	1.38;
+
+1.38
+date	2001.01.19.05.24.19;	author i0lanthe;	state Exp;
+branches;
+next	1.37;
+
+1.37
+date	2001.01.11.06.58.52;	author i0lanthe;	state Exp;
+branches;
+next	1.36;
+
+1.36
+date	2001.01.11.06.27.08;	author i0lanthe;	state Exp;
+branches;
+next	1.35;
+
+1.35
+date	2001.01.10.23.40.25;	author i0lanthe;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2001.01.09.23.07.47;	author i0lanthe;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2001.01.09.21.12.02;	author i0lanthe;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2001.01.09.17.19.22;	author i0lanthe;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2001.01.07.21.46.51;	author i0lanthe;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2001.01.06.23.32.12;	author i0lanthe;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2001.01.06.18.24.38;	author i0lanthe;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2001.01.06.02.32.08;	author i0lanthe;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2001.01.05.22.43.25;	author i0lanthe;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2001.01.05.20.09.31;	author i0lanthe;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2001.01.05.04.12.36;	author i0lanthe;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2001.01.03.22.24.31;	author i0lanthe;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2001.01.01.06.59.10;	author i0lanthe;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2000.12.23.04.03.40;	author i0lanthe;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2000.12.21.21.24.43;	author i0lanthe;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2000.12.07.03.05.19;	author i0lanthe;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2000.12.06.23.53.15;	author i0lanthe;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2000.11.13.02.56.11;	author i0lanthe;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2000.11.06.05.25.23;	author i0lanthe;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2000.11.05.20.24.48;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2000.11.04.02.13.40;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2000.11.03.05.48.04;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2000.11.01.05.01.33;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2000.10.28.22.28.55;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2000.10.28.01.31.08;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2000.10.25.04.29.06;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2000.10.24.03.05.20;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2000.10.20.04.45.36;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2000.10.20.03.38.35;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2000.10.10.04.53.43;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.10.06.06.32.36;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.10.03.04.29.42;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.01.18.31.37;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.09.30.03.37.12;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.44.00;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.44.00;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.91
+log
+@add 'RUN' (capslock toggle) keybinding
+@
+text
+@//********************************************************************
+// kMoria - Moria adapted for the PalmPilot.                         *
+// This file is copyright (C) 2000 Bridget Spitznagel                *
+//                                                                   *
+// Other portions of this program are derived from Moria.            *
+// Moria is copyright 1989-94 James E. Wilson, Robert A. Koeneke,    *
+// Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+//                                                                   *
+// This program is freeware.  You can redistribute it and/or modify  *
+// it (provided that this notice and the full credits are retained), *
+// but it CANNOT be distributed for profit.                          *
+//********************************************************************/
+
+#include "kMoriaRsc.h"
+
+VERSION ID 1 "0.15"
+
+// For Handera, to tell it this is allegedly a hi-res application
+HEX "sKst" ID 1000 0x00 0x00 0x00 0x00
+
+ICONFAMILY "kMoria.bmp" "" "" "kMoriaC.bmp" TRANSPARENT 255 255 255
+SMALLICONFAMILY "kMoriaSmall.bmp" "" "" "kMoriaSmallC.bmp" TRANSPARENT 255 255 255
+
+// 
+ICON ID 2000 "kMoriaLarge.bmp"
+ICON ID 2001 "kMoriaSmall330.bmp"
+ICON ID 2002 "kMoriaLargeInv.bmp"
+//largeIconBW = 48 x 32. centered: leave 1 row at top and 1 row at right.
+//mediumIconBW = 24 x 14
+//largeInvertedIconBW
+
+BITMAP ID bitmap_moria "kMoria.bmp"
+BITMAP ID bitmap_cat   "hdse.bmp"
+
+// used in Main menu
+BITMAP ID bmp_cmd_map "cmd_map.bmp"
+BITMAP ID bmp_cmd_log "cmd_log.bmp"
+BITMAP ID bmp_cmd_you "cmd_you.bmp"
+BITMAP ID bmp_cmd_fnt "cmd_fnt.bmp"
+// used in Inventory and Store
+BITMAP ID bmp_cmd_compact "cmd_compact.bmp"
+// used in Inventory
+BITMAP ID bmp_cmd_wts "cmd_weights.bmp"
+BITMAP ID bmp_cmd_wtsOff "cmd_weightsOff.bmp"
+// used in Store
+BITMAP ID bmp_cmd_hgl "cmd_haggle.bmp"
+BITMAP ID bmp_cmd_hglOff "cmd_haggleOff.bmp"
+// used in monster memory recall
+BITMAP ID bmp_cmd_amnesia "cmd_amnesia.bmp"
+
+
+FONT ID ItsyFont FONTID 129 "Font56.txt"
+
+FORM ID MainForm AT (0 0 160 160)
+USABLE
+NOFRAME
+MENUID MainFormMenu
+BEGIN
+    GRAFFITISTATEINDICATOR AT (150 150)
+END
+
+//	MENUITEM "Wizard" ID  menu_mainWiz
+MENU ID MainFormMenu
+BEGIN
+    PULLDOWN "Show"
+    BEGIN
+        MENUITEM "Map  "           ID menu_mainMap "M"
+	MENUITEM "Message Log   "          ID menu_mainMsgs "L"
+        MENUITEM "Your Stats   "       ID menu_mainStats "Y"
+	MENUITEM SEPARATOR
+        MENUITEM "(/)    What's that?"       ID menu_mainRecall
+	MENUITEM "(?)    Look at" ID  menu_cmd_look
+	MENUITEM "(-)    Next sector" ID  menu_cmd_minus
+	MENUITEM SEPARATOR
+	MENUITEM "Instructions   "      ID menu_mainInstruct
+        MENUITEM "About kMoria   "       ID menu_mainAbout
+	MENUITEM "High Scores" ID  menu_mainScores
+	MENUITEM SEPARATOR
+	MENUITEM "QUIT" ID  menu_cmd_quit "Q"
+    END
+    PULLDOWN "Pick"
+    BEGIN
+	MENUITEM "(i)      Inventory..." ID  menu_cmd_i
+	MENUITEM "(e)    Equipment..." ID  menu_cmd_e
+	MENUITEM "(m)   Magic spell..." ID  menu_cmd_m
+	MENUITEM "(p)    Pray..." ID  menu_cmd_p
+	MENUITEM "(G)   Gain spells" ID  menu_cmd_G
+	MENUITEM SEPARATOR
+	MENUITEM "(t)    Throw" ID  menu_cmd_t
+	MENUITEM "(a)    Aim wand" ID  menu_cmd_a
+	MENUITEM "(z)     Zap staff" ID  menu_cmd_z
+	MENUITEM "({)     Inscribe" ID  menu_cmd_scribe
+	MENUITEM SEPARATOR
+	MENUITEM "(g)    Again" ID  menu_cmd_g
+    END
+    PULLDOWN "Here"
+    BEGIN
+	MENUITEM "(x)    Exchange" ID  menu_cmd_x
+	MENUITEM "(r)    Rest" ID  menu_cmd_r
+	MENUITEM SEPARATOR
+	MENUITEM "(s)    Search" ID  menu_cmd_s
+	MENUITEM "(#)  ... mode" ID  menu_cmd_pound
+	MENUITEM SEPARATOR
+	MENUITEM "(<)    Ascend" ID  menu_cmd_lt
+	MENUITEM "(>)    Descend" ID  menu_cmd_gt
+    END
+    PULLDOWN "Near"
+    BEGIN
+	MENUITEM "(c)    Close" ID  menu_cmd_c
+	MENUITEM "(o)    Open" ID  menu_cmd_o
+	MENUITEM "(f)    Force" ID  menu_cmd_f
+	MENUITEM "(S)    Spike" ID  menu_cmd_S
+	MENUITEM SEPARATOR
+	MENUITEM "(d)    Dig" ID  menu_cmd_d
+	MENUITEM "(  )     Move onto" ID  menu_cmd_space
+	MENUITEM "(^)    Disarm" ID  menu_cmd_disarm
+    END
+    PULLDOWN "Set"
+    BEGIN
+        MENUITEM "Preferences "        ID menu_mainSettings
+        MENUITEM "Buttons   "        ID menu_mainButtons
+        MENUITEM "Repeaters   "        ID menu_mainRepeaters
+        MENUITEM "Spell Btns   "        ID menu_mainSpellBtns
+	MENUITEM SEPARATOR
+	MENUITEM "Beam..." ID  menu_mainBeam
+	MENUITEM "User..." ID  menu_mainUser "U"
+	MENUITEM SEPARATOR
+	MENUITEM "Font" ID  menu_mainFont "F"
+	MENUITEM "(!)  Stats mode" ID  menu_cmd_bang
+	MENUITEM "Show time" ID  menu_mainTime "T"
+    END
+END
+//        MENUITEM "Preferences "        ID menu_mainSettings "R"
+//        MENUITEM "Buttons   "        ID menu_mainButtons "B"
+
+
+
+FORM ID MapForm AT (0 0 160 160)
+USABLE
+NOFRAME
+BEGIN
+END
+
+FORM ID CrownForm AT (0 0 160 160)
+USABLE
+NOFRAME
+BEGIN
+END
+
+
+FORM ID AboutForm AT (2 2 156 156)
+USABLE
+MODAL
+HELPID AboutStr
+DEFAULTBTNID btn_about_ok
+BEGIN
+	TITLE "About kMoria"
+	FORMBITMAP AT (8 19) BITMAP bitmap_cat
+	FORMBITMAP AT (98 15) BITMAP bitmap_moria
+	LABEL "kMoria v0.15" AUTOID AT (90 40)
+	LABEL "Based on" AUTOID AT (PrevLeft-6 PrevTop+11)
+	LABEL "Moria 5.5.2" AUTOID AT (PrevLeft PrevTop+11)
+
+	LABEL "Bugs?  Contact:" AUTOID AT (Center 95)
+	LABEL "Bridget Spitznagel" AUTOID AT (Center PrevTop+11)
+        LABEL "i0lanthe@@yahoo.com" AUTOID AT (Center PrevTop+11)
+	BUTTON "Done" ID btn_about_ok AT (5 141 35 AUTO)
+	BUTTON "License" ID btn_about_more AT (50 141 AUTO AUTO)
+	BUTTON "History" ID btn_about_credits AT (PrevRight+10 141 AUTO AUTO)
+END
+
+FORM ID IntroForm AT (0 0 160 160)
+USABLE
+BEGIN
+END
+
+
+FORM ID DeathForm AT (2 2 156 156)
+USABLE
+MODAL
+HELPID DeathStr
+DEFAULTBTNID btn_death_ok
+BEGIN
+	TITLE "Requiescat In Pace"
+	BUTTON "Next page" ID btn_death_ok AT (5 141 AUTO AUTO)
+	BUTTON "Write memo" ID btn_death_wok AT (PrevRight+5 141 AUTO AUTO)
+END
+
+FORM ID ScoresForm AT (0 0 160 160)
+USABLE
+DEFAULTBTNID btn_scores_ok
+BEGIN
+  TITLE "Hall of Fame"
+  BUTTON "Play again" ID btn_scores_ok AT (2 147 AUTO AUTO)
+  BUTTON "More  >>" ID btn_scores_next AT (PrevRight+5 PrevTop AUTO AUTO)
+END
+
+
+FORM ID RestForm AT (2 93 156 65)
+USABLE
+MODAL
+DEFAULTBTNID btn_rest_oops
+BEGIN
+	TITLE "Rest how many turns?"
+	LABEL "..Or rest until hit points and" AUTOID AT (4 15)
+	LABEL "mana reach maximum?" AUTOID AT (PrevLeft PrevBottom)
+  BUTTON "0" ID btn_rest_oops AT (5 47 27 13)
+  BUTTON "10" ID btn_rest_10 AT (PrevRight+6 PrevTop 32 13)
+  BUTTON "20" ID btn_rest_20 AT (PrevRight+6 PrevTop 32 13)
+  BUTTON "Max!" ID btn_rest_max AT (PrevRight+6 PrevTop 37 13)
+END
+
+
+
+
+// alert can be INFORMATION, CONFIRMATION, WARNING, ERROR.
+//             (i)           (?)           /!\     ( X )
+//              v             v            ---
+
+ALERT ID QuitP
+WARNING
+DEFAULTBUTTON 1
+BEGIN
+	TITLE "Really Quit?"
+	MESSAGE "Do you really want to quit?  This will kill your current character."
+	BUTTON "Ok" "Cancel"
+END
+
+ALERT ID RetireP
+CONFIRMATION
+DEFAULTBUTTON 1
+BEGIN
+	TITLE "Ready to Retire?"
+	MESSAGE "Are you ready to retire this character?"
+	BUTTON "Ok" "Cancel"
+END
+
+ALERT ID CrashP
+WARNING
+DEFAULTBUTTON 1
+BEGIN
+	TITLE "Crash recovery"
+	MESSAGE "I think you crashed.  I can try to recover your character."
+	BUTTON "Just Quit" "Recover Me"
+END
+
+
+ALERT ID DropAllP
+CONFIRMATION
+DEFAULTBUTTON 0
+BEGIN
+	TITLE "Drop All?"
+	MESSAGE "Drop all ^1"
+	BUTTON "All" "Just one"
+END
+
+ALERT ID BeamNextP
+CONFIRMATION
+DEFAULTBUTTON 1
+BEGIN
+	TITLE "Ready?"
+	MESSAGE "Ready to beam the next piece?"
+	BUTTON "Ok" "Cancel"
+END
+
+// (this situation can never occur)
+//ALERT ID DropWornP
+//ERROR
+//DEFAULTBUTTON 1
+//BEGIN
+//	TITLE "Drop?"
+//	MESSAGE "You can't carry ^1  Drop it?"
+//	BUTTON "Yes" "No"
+//END
+
+ALERT ID ExceedP
+WARNING
+DEFAULTBUTTON 1
+BEGIN
+	TITLE "Weight Limit"
+	MESSAGE "Exceed your weight limit to pick up ^1"
+	BUTTON "Ok" "Cancel"
+END
+
+ALERT ID PickupP
+CONFIRMATION
+DEFAULTBUTTON 1
+BEGIN
+	TITLE "Pick Up?"
+	MESSAGE "Pick up ^1"
+	BUTTON "Ok" "Cancel"
+END
+
+ALERT ID CursedP
+ERROR
+DEFAULTBUTTON 0
+BEGIN
+	TITLE "Can't..."
+	MESSAGE "The ^1 you are ^2 appears to be cursed."
+	BUTTON "Oh, bother."
+END
+
+ALERT ID RingHandP
+CONFIRMATION
+DEFAULTBUTTON 0
+BEGIN
+	TITLE "Which Hand?"
+	MESSAGE "Put ring on which hand?\n"\
+		"L: ^1\n"\
+		"R: ^2"
+	BUTTON "Left" "Right"
+END
+
+ALERT ID LowMageP
+INFORMATION
+DEFAULTBUTTON 1
+BEGIN
+	TITLE "Low Mana..."
+	MESSAGE "You summon your limited strength to cast this one!  Confirm?"
+	BUTTON "Ok" "Cancel"
+END
+
+ALERT ID LowPriestP
+INFORMATION
+DEFAULTBUTTON 1
+BEGIN
+	TITLE "Low Mana..."
+	MESSAGE "The gods may think you presumptuous for this! Confirm?"
+	BUTTON "Ok" "Cancel"
+END
+
+
+
+ALERT ID RecallClearP
+CONFIRMATION
+DEFAULTBUTTON 1
+BEGIN
+	TITLE "Clear Monster Memory"
+	MESSAGE "Are you sure you want to erase all knowledge you've accumulated about monsters?"
+	BUTTON "Ok" "Cancel"
+END
+
+ALERT ID RecallClear2P
+CONFIRMATION
+DEFAULTBUTTON 1
+BEGIN
+	TITLE "Clear Monster Memory"
+	MESSAGE "Are you really, really sure?"
+	BUTTON "Ok" "Cancel"
+END
+
+
+ALERT ID DigSlowlyP
+CONFIRMATION
+DEFAULTBUTTON 0
+BEGIN
+	TITLE "Dig with..."
+	MESSAGE "...^1"
+	BUTTON "Ok" "Cancel"
+END
+
+
+///////////////////////////////////////////////////////////////////
+
+FORM ID CharRaceForm AT (0 0 160 160)
+USABLE
+HELPID CharGenStr
+BEGIN
+	TITLE "Choose your race"
+	LABEL "(i)" AUTOID AT (149 0)
+        PUSHBUTTON "Human" ID pbtn_race_0 AT (27 77 35 20) USABLE GROUP 1
+        PUSHBUTTON "Half-Elf" ID pbtn_race_1 AT (PrevRight+1 PrevTop PrevWidth PrevHeight) USABLE GROUP 1
+        PUSHBUTTON "Elf" ID pbtn_race_2 AT (PrevRight+1 PrevTop PrevWidth PrevHeight) USABLE GROUP 1
+        PUSHBUTTON "Halfling" ID pbtn_race_3 AT (27 PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+        PUSHBUTTON "Gnome" ID pbtn_race_4 AT (PrevRight+1 PrevTop PrevWidth PrevHeight) USABLE GROUP 1
+        PUSHBUTTON "Dwarf" ID pbtn_race_5 AT (PrevRight+1 PrevTop PrevWidth PrevHeight) USABLE GROUP 1
+        PUSHBUTTON "Half-Orc" ID pbtn_race_6 AT (27 PrevBottom+1 53 PrevHeight) USABLE GROUP 1
+        PUSHBUTTON "Half-Troll" ID pbtn_race_7 AT (PrevRight+1 PrevTop PrevWidth PrevHeight) USABLE GROUP 1
+
+	BUTTON "Ok, I have chosen" ID btn_race_ok AT (2 147 AUTO AUTO)
+END
+
+FORM ID CharGenderForm AT (0 0 160 160)
+USABLE
+HELPID CharGenStr
+BEGIN
+	TITLE "Choose your sex"
+	LABEL "(i)" AUTOID AT (149 0)
+        PUSHBUTTON "Male" ID pbtn_gender_0 AT (39 110 40 20) USABLE GROUP 1
+        PUSHBUTTON "Female" ID pbtn_gender_1 AT (80 PrevTop PrevWidth PrevHeight) USABLE GROUP 1
+
+	BUTTON "Ok, I have chosen" ID btn_gender_ok AT (2 147 AUTO AUTO)
+	BUTTON "Quit" ID btn_gender_no AT (128 PrevTop AUTO AUTO)
+END
+
+FORM ID CharClassForm AT (0 0 160 160)
+USABLE
+HELPID CharGenStr
+BEGIN
+	TITLE "Accept this roll?"
+	LABEL "(i)" AUTOID AT (149 0)
+        PUSHBUTTON "Warrior" ID pbtn_class_0 AT (20 98 40 20) NONUSABLE GROUP 1
+        PUSHBUTTON "Mage" ID pbtn_class_1 AT (PrevRight+1 PrevTop PrevWidth PrevHeight) NONUSABLE GROUP 1
+        PUSHBUTTON "Priest" ID pbtn_class_2 AT (PrevRight+1 PrevTop PrevWidth PrevHeight) NONUSABLE GROUP 1
+        PUSHBUTTON "Rogue" ID pbtn_class_3 AT (20 PrevBottom+1 PrevWidth PrevHeight) NONUSABLE GROUP 1
+        PUSHBUTTON "Ranger" ID pbtn_class_4 AT (PrevRight+1 PrevTop PrevWidth PrevHeight) NONUSABLE GROUP 1
+        PUSHBUTTON "Paladin" ID pbtn_class_5 AT (PrevRight+1 PrevTop PrevWidth PrevHeight) NONUSABLE GROUP 1
+
+	BUTTON "Ok, I have chosen" ID btn_class_ok2 AT (2 147 AUTO AUTO) NONUSABLE
+	BUTTON "Quit" ID btn_class_no AT (127 PrevTop AUTO AUTO) NONUSABLE
+	BUTTON "Yes, I'll take it!" ID btn_class_ok AT (2 147 AUTO AUTO)
+	BUTTON "No, reroll!" ID btn_class_reroll AT (PrevRight+7 PrevTop AUTO AUTO)
+END
+
+FORM ID CharSummaryForm AT (0 0 160 160)
+USABLE
+BEGIN
+	TITLE "Your Character"
+	FIELD ID field_charsum AT (30 15 125 11) EDITABLE UNDERLINED SINGLELINE MAXCHARS 27
+
+    GRAFFITISTATEINDICATOR AT (150 150)
+	BUTTON "Done" ID btn_charsum_ok AT (2 147 AUTO AUTO)
+	BUTTON "Quit" ID btn_charsum_no AT (117 PrevTop+2 AUTO PrevHeight-2) NONUSABLE
+END
+//	BUTTON "Quit" ID btn_charsum_no AT (127 PrevTop+2 AUTO PrevHeight-2) NONUSABLE
+
+///////////////////////////////////////////////////////////////////
+
+FORM ID InvForm AT (2 2 156 156)
+USABLE
+MODAL
+HELPID InvHelpStr
+DEFAULTBTNID btn_if_cancel
+MENUID InvFormMenu
+BEGIN
+	TITLE "Your Inventory"
+	LIST "foo" "bar" "baz" ID list_if AT (0 15 156 110)
+
+	BUTTON "quaff" ID btn_if_frob AT (3 141 29 AUTO) NONUSABLE
+	BUTTON "drop" ID btn_if_drop AT (PrevRight+5 PrevTop PrevWidth PrevHeight) NONUSABLE
+	BUTTON "throw" ID btn_if_throw AT (PrevRight+5 PrevTop PrevWidth PrevHeight) NONUSABLE
+	BUTTON "Done" ID btn_if_cancel AT (PrevRight+5 PrevTop 31 PrevHeight)
+	BUTTON "[E]" ID btn_if_eq AT (PrevRight+3 PrevTop 16 PrevHeight) NOFRAME
+END
+
+MENU ID InvFormMenu
+BEGIN
+    PULLDOWN "Options"
+    BEGIN
+        MENUITEM "Compact?" ID menu_invCompact "C"
+        MENUITEM "Weights?" ID menu_invWeights "W"
+    END
+END
+
+FORM ID InvSelectForm AT (2 2 156 156)
+USABLE
+MODAL
+DEFAULTBTNID btn_is_cancel
+BEGIN
+	TITLE "                  "
+	LIST "foo" "bar" "baz" ID list_is AT (0 15 156 121)
+
+	BUTTON "Ok" ID btn_is_frob AT (3 141 29 AUTO)
+	BUTTON "Cancel" ID btn_is_cancel AT (PrevRight+5 PrevTop 31 PrevHeight)
+END
+
+
+FORM ID EquForm AT (2 2 156 156)
+USABLE
+MODAL
+HELPID EquHelpStr
+DEFAULTBTNID btn_eq_cancel
+BEGIN
+	TITLE "Your Equipment"
+	LIST "foo" "bar" "baz" ID list_eq AT (0 15 156 110)
+
+	BUTTON "take off" ID btn_eq_off AT (3 141 AUTO AUTO) NONUSABLE
+	BUTTON "drop" ID btn_eq_drop AT (PrevRight+5 PrevTop PrevWidth PrevHeight) NONUSABLE
+	BUTTON "Done" ID btn_eq_cancel AT (PrevRight+5 PrevTop 31 PrevHeight)
+	BUTTON "[In]" ID btn_eq_if AT (PrevRight+3 PrevTop 16 PrevHeight) NOFRAME NONUSABLE
+END
+
+FORM ID StoreForm AT (2 2 156 156)
+USABLE
+MODAL
+HELPID StoreHelpStr
+DEFAULTBTNID btn_st_exit
+MENUID StoreFormMenu
+BEGIN
+   TITLE "              "
+   LIST " " " " " " " " " " " " " " " " " " " " ID list_st AT (0 15 124 110)
+
+   BUTTON "Buy" ID btn_st_buy AT (5 141 25 AUTO)
+   BUTTON "Sell" ID btn_st_sell AT (PrevRight+3 PrevTop 25 AUTO)
+   BUTTON "< -" ID btn_st_prev AT (65 PrevTop 20 AUTO)
+   BUTTON "+ >" ID btn_st_next AT (95 PrevTop 20 AUTO)
+   BUTTON "Exit" ID btn_st_exit AT (123 PrevTop 30 PrevHeight)
+END
+
+MENU ID StoreFormMenu
+BEGIN
+    PULLDOWN "Options"
+    BEGIN
+        MENUITEM "Compact?" ID menu_stoCompact "C"
+        MENUITEM "Haggle?" ID menu_stoHaggle "H"
+    END
+END
+
+
+FORM ID HaggleForm AT (2 47 156 111)
+USABLE
+MODAL
+DEFAULTBTNID btn_hag_exit
+BEGIN
+   FIELD ID field_hag AT (75 80 50 AUTO) USABLE RIGHTALIGN EDITABLE UNDERLINED SINGLELINE MAXCHARS 10
+   BUTTON "[=]" ID btn_hag_all AT (5 PrevTop 15 AUTO) NOFRAME
+   BUTTON "[+0]" ID btn_hag_incr AT (130 PrevTop 25 AUTO) NOFRAME NONUSABLE
+   BUTTON "Submit" ID btn_hag_ok AT (78 PrevTop+16 35 AUTO)
+   BUTTON "GET OUT!" ID btn_hag_boot AT (57 PrevTop 45 AUTO) NONUSABLE
+   BUTTON "Cancel" ID btn_hag_exit AT (118 PrevTop 35 PrevHeight)
+END
+
+
+FORM ID ScribeForm AT (2 63 156 95)
+USABLE
+MODAL
+BEGIN
+	TITLE "Inscribe item"
+
+	LABEL "Inscription:" AUTOID AT (23 59)
+	FIELD ID field_sb AT (PrevRight+2 PrevTop 80 11) EDITABLE UNDERLINED SINGLELINE MAXCHARS 12
+
+    GRAFFITISTATEINDICATOR AT (146 85)
+	BUTTON "Ok" ID btn_sb_ok AT (5 78 AUTO AUTO)
+	BUTTON "Cancel" ID btn_sb_cancel AT (PrevRight+5 PrevTop AUTO AUTO)
+END
+// note MAXCHARS +1 = types.h "INSCRIP_SIZE"
+
+
+
+///////////////////////////////////////////////////////////////////
+FORM ID RecallForm AT (2 2 156 156)
+USABLE
+MODAL
+MENUID RecallFormMenu
+BEGIN
+    TITLE "abcdefghijklmnopqrstuvwxyz "
+    FIELD ID field_recall AT (5 15 146 121) NONEDITABLE MULTIPLELINES MAXCHARS 3000
+    REPEATBUTTON "\001" ID repeat_recall_up AT (144 139 10 AUTO) NOFRAME FONT 5 
+    REPEATBUTTON "\002" ID repeat_recall_down AT (144 147 10 AUTO) NOFRAME FONT 5 
+    BUTTON "Done" ID btn_recall_ok AT (5 139 AUTO AUTO)
+    BUTTON "Next" ID btn_recall_next AT (PrevRight+5 PrevTop AUTO AUTO) NONUSABLE
+END
+
+MENU ID RecallFormMenu
+BEGIN
+    PULLDOWN "Options"
+    BEGIN
+        MENUITEM "Amnesia" ID menu_recClear "A"
+    END
+END
+
+
+///////////////////////////////////////////////////////////////////
+
+FORM ID BookForm AT (2 2 156 156)
+USABLE
+MODAL
+HELPID BookHelpStr
+DEFAULTBTNID btn_book_cancel
+BEGIN
+	TITLE "Read Which Book?"
+	LIST "foo" "bar" "baz" ID list_book AT (0 15 156 66)
+
+	BUTTON "Read Book" ID btn_book_ok AT (3 141 AUTO AUTO) USABLE
+	BUTTON "Cancel" ID btn_book_cancel AT (PrevRight+5 PrevTop AUTO PrevHeight) USABLE
+END
+//	LIST "foo" "bar" "baz" ID list_book AT (0 15 156 110)
+
+FORM ID SpellForm AT (2 2 156 156)
+USABLE
+MODAL
+HELPID SpellHelpStr
+DEFAULTBTNID btn_spell_cancel
+BEGIN
+	TITLE "Recite Which?"
+	LIST " "  ID list_spell AT (0 26 112 110)
+	LABEL "Name" AUTOID AT (2 15)
+
+	BUTTON "Recite" ID btn_spell_ok AT (3 141 AUTO AUTO) USABLE
+	BUTTON "Cancel" ID btn_spell_cancel AT (PrevRight+5 PrevTop AUTO PrevHeight) USABLE
+END
+
+
+// this one might be scrolled, the previous two forms will not.
+FORM ID GainSpForm AT (2 2 156 156)
+USABLE
+MODAL
+HELPID GainSpellHelpStr
+DEFAULTBTNID btn_gain_cancel
+BEGIN
+	TITLE "Learn Which Spell?"
+	LIST " "  ID list_gain AT (0 26 112 99)
+	LABEL "Name" AUTOID AT (2 15)
+
+	BUTTON "Learn" ID btn_gain_ok AT (3 141 AUTO AUTO) USABLE
+	BUTTON "Done" ID btn_gain_cancel AT (PrevRight+5 PrevTop AUTO PrevHeight) USABLE
+	BUTTON "toggle status" ID btn_gain_tog AT (PrevRight+5 PrevTop AUTO AUTO) NONUSABLE
+END
+//	LIST " "  ID list_gain AT (0 26 112 110)
+
+FORM ID MsgLogForm AT (2 2 156 156)
+USABLE
+MODAL
+DEFAULTBTNID btn_ml_ok
+BEGIN
+   TITLE "Message Log"
+   FIELD ID field_ml AT (5 15 146 121) NONEDITABLE MULTIPLELINES MAXCHARS 2048
+   REPEATBUTTON "\001" ID repeat_ml_up AT (144 140 10 AUTO) NOFRAME FONT 5 
+   REPEATBUTTON "\002" ID repeat_ml_down AT (144 148 10 AUTO) NOFRAME FONT 5 
+   BUTTON "Done" ID btn_ml_ok AT (5 140 37 AUTO)
+END
+
+
+FORM ID PrefsForm AT (2 2 156 156)
+USABLE
+MODAL
+HELPID PrefsHelpStr
+DEFAULTBTNID btn_prf_cancel
+BEGIN
+   TITLE "Preference Settings"
+   PUSHBUTTON "Display" ID pbtn_prf_0 AT (5 15 AUTO AUTO) USABLE GROUP 1
+   PUSHBUTTON "Moving" ID pbtn_prf_1 AT (PrevRight+1 PrevTop AUTO PrevHeight) USABLE GROUP 1
+
+   CHECKBOX "Big font." ID check_prf_1 AT (3 15+17 AUTO AUTO) NONUSABLE
+   CHECKBOX "Sound." ID check_prf_4 AT (PrevLeft PrevTop+11 AUTO AUTO) NONUSABLE
+   CHECKBOX "Invert (black background)." ID check_prf_13 AT (PrevLeft PrevTop+11 AUTO AUTO) NONUSABLE
+   CHECKBOX "Color." ID check_prf_14 AT (PrevLeft PrevTop+11 AUTO AUTO) NONUSABLE
+   CHECKBOX "Stats at top of screen." ID check_prf_12 AT (PrevLeft PrevTop+11 AUTO AUTO) NONUSABLE
+   CHECKBOX "Highlight/notice mineral seams." ID check_prf_11 AT (PrevLeft PrevTop+11 AUTO AUTO) NONUSABLE
+   CHECKBOX "Animate spells and missiles." ID check_prf_15 AT (PrevLeft PrevTop+11 AUTO AUTO) NONUSABLE
+   CHECKBOX "Prompt for save file." ID check_prf_16 AT (PrevLeft PrevTop+11+5 AUTO AUTO) NONUSABLE
+   CHECKBOX "Select most recent user." ID check_prf_17 AT (PrevLeft PrevTop+11 AUTO AUTO) NONUSABLE
+	
+	BUTTON "Ok" ID btn_prf_ok AT (5 141 35 AUTO)
+	BUTTON "Cancel" ID btn_prf_cancel AT (PrevRight+7 PrevTop 35 AUTO)
+
+   LABEL "Hole" label_prf_1 AT (105 13)
+   LIST "10" "20" "30" "40" ID list_prf_1 AT (PrevLeft PrevBottom 15 44) VISIBLEITEMS 4 NONUSABLE
+   LABEL "Donut" label_prf_2 AT (128 13)
+   LIST "10" "20" "30" "40" ID list_prf_2 AT (PrevLeft+6 PrevBottom 15 44) VISIBLEITEMS 4 NONUSABLE
+
+   CHECKBOX "Relative move." ID check_prf_2 AT (3 15+17 AUTO AUTO) NONUSABLE
+   CHECKBOX "Show circles." ID check_prf_3 AT (PrevLeft PrevTop+11 AUTO AUTO) NONUSABLE
+   CHECKBOX "Run." ID check_prf_5 AT (PrevLeft PrevTop+11+5 AUTO AUTO) NONUSABLE
+
+   CHECKBOX "Cut known corners." ID check_prf_6 AT (PrevLeft+6 PrevTop+11 AUTO AUTO) NONUSABLE
+   CHECKBOX "Examine potential corners." ID check_prf_7 AT (PrevLeft PrevTop+11 AUTO AUTO) NONUSABLE
+   CHECKBOX "Stop when map sector changes." ID check_prf_8 AT (PrevLeft PrevTop+11 AUTO AUTO) NONUSABLE
+   CHECKBOX "Run through open doors." ID check_prf_9 AT (PrevLeft-6 PrevTop+11 AUTO AUTO) NONUSABLE
+   CHECKBOX "Prompt to pick up objects." ID check_prf_10 AT (PrevLeft PrevTop+11 AUTO AUTO) NONUSABLE
+
+END
+
+
+
+FORM ID RepeatCmdsForm AT (2 2 156 156)
+USABLE
+MODAL
+DEFAULTBTNID btn_rptc_cancel
+BEGIN
+  TITLE "Auto-Repeat Commands"
+  BUTTON "Ok" ID btn_rptc_ok AT (5 141 35 AUTO)
+  BUTTON "Cancel" ID btn_rptc_cancel AT (PrevRight+7 PrevTop 35 AUTO)
+  CHECKBOX "Search" ID check_rptc_1 AT (4 15 AUTO AUTO)
+  CHECKBOX "Dig" ID check_rptc_2 AT (PrevLeft PrevBottom AUTO AUTO)
+  CHECKBOX "Open" ID check_rptc_3 AT (PrevLeft PrevBottom AUTO AUTO)
+  CHECKBOX "Disarm" ID check_rptc_4 AT (PrevLeft PrevBottom AUTO AUTO)
+  CHECKBOX "Force" ID check_rptc_5 AT (PrevLeft PrevBottom AUTO AUTO)
+END
+
+FORM ID HwButtonsForm AT (2 2 156 156)
+USABLE
+MODAL
+HELPID ButtonsStr
+DEFAULTBTNID btn_hwb_cancel
+BEGIN
+  TITLE "Rebind Buttons"
+  BUTTON "Ok" ID btn_hwb_ok AT (5 141 35 AUTO)
+  BUTTON "Cancel" ID btn_hwb_cancel AT (PrevRight+7 PrevTop 35 AUTO)
+
+  CHECKBOX "Rebind these buttons:" ID check_hwb AT (4 15 AUTO AUTO)
+
+  LIST "---" "north" "south" "east" "west"
+       "map" "look" "inventory" "magic/pray" "search"
+       "srch mode" "rest" "dig tunnel" "force/bash" "open door"
+       "close door" "spike door" "font" "stats" "exchange"
+       "throw" "aim wand" "zap staff" "what's that" "next sector"
+       "again" "RUN"
+     ID list_hwb_1 AT (100 PrevBottom+1 55 110) VISIBLEITEMS 10
+
+  PUSHBUTTON "Date" ID pbtn_hwb_0 AT (3 PrevTop 35 11) USABLE GROUP 1
+  PUSHBUTTON "Addr" ID pbtn_hwb_1
+     AT (PrevLeft PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+  PUSHBUTTON "To Do" ID pbtn_hwb_2
+     AT (PrevLeft PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+  PUSHBUTTON "Memo" ID pbtn_hwb_3
+     AT (PrevLeft PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+  PUSHBUTTON "Up" ID pbtn_hwb_4
+     AT (PrevLeft PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+  PUSHBUTTON "Down" ID pbtn_hwb_5
+     AT (PrevLeft PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+  PUSHBUTTON "Calc" ID pbtn_hwb_6
+     AT (PrevLeft PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+  PUSHBUTTON "Find" ID pbtn_hwb_7
+     AT (PrevLeft PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+
+END
+
+FORM ID SpellHwBtnsForm AT (2 2 156 156)
+USABLE
+MODAL
+DEFAULTBTNID btn_shwb_ok
+BEGIN
+  TITLE "Spell Buttons"
+  BUTTON "Done" ID btn_shwb_ok AT (5 141 35 AUTO)
+
+  PUSHBUTTON "Date" ID pbtn_shwb_0 AT (3 15 35 11) USABLE GROUP 1
+  PUSHBUTTON "Addr" ID pbtn_shwb_1
+     AT (PrevLeft PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+  PUSHBUTTON "To Do" ID pbtn_shwb_2
+     AT (PrevLeft PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+  PUSHBUTTON "Memo" ID pbtn_shwb_3
+     AT (PrevLeft PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+  PUSHBUTTON "Up" ID pbtn_shwb_4
+     AT (PrevLeft PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+  PUSHBUTTON "Down" ID pbtn_shwb_5
+     AT (PrevLeft PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+  PUSHBUTTON "Calc" ID pbtn_shwb_6
+     AT (PrevLeft PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+  PUSHBUTTON "Find" ID pbtn_shwb_7
+     AT (PrevLeft PrevBottom+1 PrevWidth PrevHeight) USABLE GROUP 1
+
+  LIST " " ID list_shwb_1 AT (50 15 100 99)
+
+  BUTTON "-None-" ID btn_shwb_clear AT (PrevLeft PrevBottom+3 AUTO AUTO)
+
+  POPUPTRIGGER "Mage 0" ID popup_shwb_2 AT (100 PrevBottom+10 44 AUTO) LEFTANCHOR
+  LIST "Mage 0" "Mage 1" "Mage 2" "Mage 3" "Priest 0" "Priest 1" "Priest 2" "Priest 3" ID list_shwb_2 AT (PrevLeft+10 PrevTop 34 1) NONUSABLE VISIBLEITEMS 8
+
+  POPUPLIST ID popup_shwb_2 list_shwb_2
+
+END
+
+
+FORM ID LookForm AT (0 0 160 160)
+USABLE
+NOFRAME
+DEFAULTBTNID btn_look_exit
+BEGIN
+    BUTTON "X" ID btn_look_exit AT (140 147 AUTO AUTO)
+    BUTTON "R" ID btn_look_recall AT (PrevLeft-20 PrevTop AUTO AUTO) NONUSABLE
+END
+
+
+FORM ID DalekForm AT (0 0 160 160)
+USABLE
+MODAL
+BEGIN
+ TITLE "Exterminate creature:"
+END
+
+FORM ID SnowCrashForm AT (0 0 160 160)
+USABLE
+MODAL
+BEGIN
+ TITLE "kMoria can't run"
+END
+
+
+FORM ID BeamForm AT (2 62 156 96)
+USABLE
+MODAL
+DEFAULTBTNID btn_beam_done
+BEGIN
+  TITLE "Beam Stuff..."
+  LABEL "To beam kMoria, tap kMoria and" AUTOID AT (4 15)
+  LABEL "it will be sent in two pieces." AUTOID AT (PrevLeft PrevBottom)
+  LABEL "You can also share your top score." AUTOID AT (PrevLeft PrevBottom)
+  BUTTON "kMoria" ID btn_beam_myself AT (5 58 AUTO AUTO)
+  BUTTON "Top Score" ID btn_beam_scores AT (PrevRight+6 PrevTop AUTO AUTO)
+  BUTTON "Item" ID btn_beam_item AT (5 PrevTop+20 AUTO AUTO)
+  BUTTON "Cash" ID btn_beam_cash AT (PrevRight+6 PrevTop AUTO AUTO) NONUSABLE
+  BUTTON "Done" ID btn_beam_done AT (PrevRight+6 PrevTop 35 AUTO)
+END
+
+FORM ID BeamCashForm AT (2 63 156 95)
+USABLE
+MODAL
+BEGIN
+  TITLE "Beam Cash"
+  FIELD ID field_bc AT (5 59 80 11) EDITABLE UNDERLINED SINGLELINE MAXCHARS 8
+  BUTTON "Ok" ID btn_bc_ok AT (5 78 AUTO AUTO)
+  BUTTON "Cancel" ID btn_bc_cancel AT (PrevRight+5 PrevTop AUTO AUTO)
+END
+
+
+FORM ID UserForm AT (0 0 160 160)
+USABLE
+DEFAULTBTNID btn_user_cancel
+BEGIN
+  TITLE "Switch Users"
+  LIST "foo" "bar" "baz" ID list_user AT (1 15 158 55)
+  BUTTON "Ok" ID btn_user_ok AT (2 147 35 AUTO)
+  BUTTON "New" ID btn_user_new AT (PrevRight+5 PrevTop 35 AUTO)
+  BUTTON "Cancel" ID btn_user_cancel AT (PrevRight+5 PrevTop AUTO AUTO)
+  CHECKBOX "Hotsync?" ID check_user_1 AT (2 PrevTop-15 AUTO AUTO) NONUSABLE
+END
+
+
+
+
+
+
+
+
+STRING AboutStr "kMoria version 0.15\n"\
+                "© 2000 Bridget Spitznagel, James Wilson, Robert Koeneke.\n"\
+                "This program was derived "\
+                "from UMoria 5.5.2.\n\n"\
+                "kMoria comes with Absolutely No Warranty.\n"\
+                "kMoria is freeware.  You can redistribute it "\
+                "and/or modify it (provided that "\
+                "this notice and the full credits are retained), but "\
+                "it CANNOT be distributed for profit."
+
+STRING CreditStr "Moria has been around since 1983.  "\
+		"(The Mines of Moria, and the Balrog dwelling therein, come "\
+		"from _The Lord of the Rings_ by J.R.R. Tolkien.)  "\
+		"The game of Moria was created by Robert Alan Koeneke "\
+		"with assistants Jimmey Wayne Todd and Gary D. McAdoo.  "\
+		"It has many descendants.  "\
+		"kMoria is a port of Umoria 5.5.2 which is itself "\
+		"descended in varying degree from:\n"\
+		"UNIX Port a.k.a. Umoria 4.x (James E. Wilson),\n"\
+		"MSDOS Port (Don Kneller),\n"\
+		"BRUCE Moria (Christopher Stuart),\n"\
+		"Amiga Port (Corey Gehman).\n"\
+		"Umoria 5.5.x is maintained by David Grabiner.\n\n"\
+		"I, Bridget Spitznagel, ported it to PalmOS.\n"\
+		"Celebrimbor of Hollin drew these signs (no, not really)."
+
+STRING DeathStr "If you do not want to create a memo just press the "\
+		"Next Page button to go on.\n\n"\
+		"The Write Memo button will write your Character Record "\
+		"to a new memo in your Memo Pad application.  "\
+		"This memo will be Unfiled category and will have the "\
+		"time and date of character death in its title.  "\
+		"The Character Record has the same format as in Unix Moria "\
+		"and will look better on an 80-column display than "\
+		"on your PalmOS device.  Sync the memo to your computer "\
+		"and then you can archive it, show it off, or garner "\
+		"sympathy for a near-win just as on any other platform."
+
+// Note: Fix this string, because it is a lie.
+// Actually the (i) does not appear in those forms, maybe due to not modal.
+STRING CharGenStr "Welcome to Moria!\nYour first task "\
+	"is to generate a character.  You must specify a sex, a race, "\
+	"and a class.  \n"\
+	"If this is your first time playing, you may want to "\
+	"read the manual first."
+
+STRING InstructStr "You are an adventurer seeking to defeat the Balrog "\
+	"which lurks in the deeper levels of the Dungeons of Moria.  "\
+	"You may acquire supplies on the town level.  Move by tapping "\
+	"on the screen.  Other commands are listed in the menus; for "\
+	"example, write i to access your inventory.\nFor more "\
+	"help, consult <http://roguelike-palm.sourceforge.net/kMoria>."
+
+STRING InvHelpStr "Tap any inventory item to select it.  "\
+	"A set of buttons will appear.  "\
+	"Tap a button to perform an action.  "\
+	"(Note: Each action takes time!)  "\
+	"Tap Done to exit the inventory screen, or "\
+	"tap [E] to visit the equipment screen.\n\n"\
+	"If you are in a store, you will see a 'sell' button "\
+	"only if the store is willing to buy that type of item; "\
+	"some other actions may also be possible."
+
+STRING EquHelpStr "Tap any equipped item to select it.  "\
+	"A set of buttons will appear.  "\
+	"Tap a button to perform an action.  "\
+	"(Note: Each action takes time!)  "\
+	"Tap Done to exit the equipment screen, or "\
+	"tap [In] to visit the inventory screen."
+
+STRING StoreHelpStr "To buy an item from the store list, select the item "\
+	"and tap Buy.  To sell an item from your inventory, tap Sell.  "\
+	"To view the next page of items offered by this store (if any), "\
+	"tap [+>].  The number between these two paging buttons will "\
+	"indicate the page you are on.  Tap Exit to leave the store." \
+	"\n\nTo buy or sell an item, you must negotiate a price with "\
+	"the store owner.  Write your offer, or tap [=] to match his "\
+	"offer.  Or, use the [+n] autoincrement button which appears after "\
+	"you have made at least two offers (n is the difference between "\
+	"your two most recent offers); tap the button to extrapolate a "\
+	"new offer."\
+	"\nThen tap Submit."
+
+STRING BookHelpStr "Select the book that contains the spell/prayer that "\
+	"you wanted to use."
+
+STRING SpellHelpStr "This is the list of spells/prayers in the book that "\
+	"you are currently reading.  Each has a level (Lv), mana requirement "\
+	"(Mn), and a probability of casting failure (Fail).  \n"\
+	"To recite a spell/prayer, select it and tap Recite; "\
+	"or tap Close Book to cancel and return to your list of books."
+
+STRING GainSpellHelpStr "Each spell/prayer has a level (Lv), mana "\
+	"requirement (Mn), and a probability of casting failure (Fail).  \n"\
+	"- If you're here to Gain Spells: "\
+	"Select a spell that appeals to you and tap Learn. "\
+	"When you can learn no more, or you do not like the "\
+	"remaining choices, tap Done.\n"\
+	"- If you are just Browsing: "\
+	"you can Toggle between Lv-Mn-Fail and Status "\
+	"(tells you whether each listed spell/prayer is unknown to you, "\
+	"whether you have not tried it yet, etc.)" 
+
+STRING PrefsHelpStr "Hole & Donut: set the size of the movement donut.  (Turn Circles on and Relative Move off, if you want to see it overlaid on the dungeon.) \n\n"\
+"Big font: set the default font to large (or small)\n"\
+"Relative move: center the donut around your @@ (or center of screen)\n"\
+"Circles: draw the donut on the screen (or don't); but, this only works when Relative Move is turned off\n"\
+"Sound: turn the sound on (or off)\n"\
+"Run: tapping outside the donut will run (or will walk)\n"\
+"Cut known corners: when running in a passage, use diagonal movement to save time (or don't)\n"\
+"Examine potential corners: when running in an unexplored passage, do not move diagonally (or do leave corners unexplored)\n"\
+"Stop when map sector changes: stop running when you enter a new screen (or keep going)\n"\
+"Run through open doors: don't stop at doors (or stop so you can close 'em)\n"\
+"Prompt to pick up objects: no effect, not implemented yet\n"\
+"Highlight mineral seams: display softer rock walls as % and harder rock as #"
+
+
+STRING ButtonsStr "You can re-bind hardware buttons at whim, more or less. "\
+		"Your settings will be remembered but will not be USED "\
+		"unless you check 'rebind these buttons'.  "\
+		"Anything set to '---' will just do what it normally would.  "
+@
+
+
+1.90
+log
+@fixed recall for multiple attack types; fixed map crash bug for inverted noncolor ('#define' evil); hardware button bindings for 'look' and 'recall' form
+@
+text
+@d699 1
+a699 1
+       "again"
+@
+
+
+1.89
+log
+@handera support is mostly working now
+@
+text
+@d16 1
+a16 1
+VERSION ID 1 "0.14"
+d160 1
+a160 1
+	LABEL "kMoria v0.14" AUTOID AT (90 40)
+d575 2
+a576 2
+	BUTTON "read book" ID btn_book_ok AT (3 141 AUTO AUTO) USABLE
+	BUTTON "cancel" ID btn_book_cancel AT (PrevRight+5 PrevTop AUTO PrevHeight) USABLE
+d590 2
+a591 2
+	BUTTON "recite" ID btn_spell_ok AT (3 141 AUTO AUTO) USABLE
+	BUTTON "close book" ID btn_spell_cancel AT (PrevRight+5 PrevTop AUTO PrevHeight) USABLE
+d827 1
+a827 1
+STRING AboutStr "kMoria version 0.14\n"\
+@
+
+
+1.88
+log
+@Split Preferences into two parts, add 3 new prefs, may have introduced bugs
+@
+text
+@d421 1
+d423 1
+a423 1
+	BUTTON "Quit" ID btn_charsum_no AT (127 PrevTop+2 AUTO PrevHeight-2) NONUSABLE
+d425 1
+d533 1
+@
+
+
+1.87
+log
+@prevent graffiti-retracting for inv/equ/haggle when over the store form; fix various other things
+@
+text
+@d628 7
+a634 14
+	TITLE "Various Settings"
+	LABEL "Hole" AUTOID AT (105 13)
+
+	LIST "10" "20" "30" "40" ID list_prf_1 AT (PrevLeft PrevBottom 15 44) VISIBLEITEMS 4
+		
+	LABEL "Donut" AUTOID AT (128 13)
+
+	LIST "10" "20" "30" "40" ID list_prf_2 AT (PrevLeft+6 PrevBottom 15 44) VISIBLEITEMS 4
+
+	CHECKBOX "Big font." ID check_prf_1 AT (5 15 AUTO AUTO) CHECKED
+	CHECKBOX "Relative move." ID check_prf_2 AT (PrevLeft PrevTop+11 AUTO AUTO)
+	CHECKBOX "Circles." ID check_prf_3 AT (PrevLeft PrevTop+11 AUTO AUTO)
+	CHECKBOX "Sound." ID check_prf_4 AT (PrevLeft PrevTop+11 AUTO AUTO)
+   CHECKBOX "Invert." ID check_prf_13 AT (PrevRight+3 PrevTop AUTO AUTO)
+d636 5
+a640 8
+	CHECKBOX "Run." ID check_prf_5 AT (5 PrevTop AUTO AUTO)
+
+	CHECKBOX "Cut known corners." ID check_prf_6 AT (PrevLeft+6 PrevTop+11 AUTO AUTO) CHECKED
+	CHECKBOX "Examine potential corners." ID check_prf_7 AT (PrevLeft PrevTop+11 AUTO AUTO)
+	CHECKBOX "Stop when map sector changes." ID check_prf_8 AT (PrevLeft PrevTop+11 AUTO AUTO)
+	CHECKBOX "Run through open doors." ID check_prf_9 AT (PrevLeft PrevTop+11 AUTO AUTO)
+	CHECKBOX "Prompt to pick up objects." ID check_prf_10 AT (PrevLeft-6 PrevTop+11 AUTO AUTO)
+	CHECKBOX "Highlight/notice mineral seams." ID check_prf_11 AT (PrevLeft PrevTop+11 AUTO AUTO)
+d645 14
+a658 1
+	CHECKBOX "Stats at top." ID check_prf_12 AT (PrevRight+7 PrevTop AUTO AUTO)
+d662 2
+d816 1
+@
+
+
+1.86
+log
+@various fixes, mostly to 'again'
+@
+text
+@d16 1
+a16 1
+VERSION ID 1 "0.13x"
+d160 1
+a160 1
+	LABEL "kMoria v0.13x" AUTOID AT (90 40)
+d818 1
+a818 1
+STRING AboutStr "kMoria version 0.13x\n"\
+@
+
+
+1.85
+log
+@fixing bugs (handera display tweaks; store list crash; --more--ing for show-invis...
+@
+text
+@d864 7
+@
+
+
+1.84
+log
+@make bookform list smaller - don't need to shrink it for handera rotation?
+@
+text
+@d93 2
+d120 2
+a121 2
+        MENUITEM "Preferences "        ID menu_mainSettings "R"
+        MENUITEM "Buttons   "        ID menu_mainButtons "B"
+d126 1
+a126 1
+	MENUITEM "User..." ID  menu_mainUser
+d133 2
+@
+
+
+1.83
+log
+@changing magic #define's to calculations (for handera)
+@
+text
+@d566 1
+a566 1
+	LIST "foo" "bar" "baz" ID list_book AT (0 15 156 110)
+d571 1
+@
+
+
+1.82
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@d18 3
+d24 8
+d62 1
+a82 1
+	MENUITEM "Wizard" ID  menu_mainWiz
+@
+
+
+1.81
+log
+@just tidying up
+@
+text
+@a17 2
+//ICON "kMoria.bmp"
+//SMALLICON "kMoriaSmall.bmp"
+a40 1
+// Changed from 128 to 129.  Let's see if this fixes Kyocera's wagon.
+a50 2
+//	MENUITEM "Wizard" ID  menu_mainWiz
+//	MENUITEM "Monster" ID  menu_mainWiz2
+a183 7
+//ALERT ID RestP
+//CONFIRMATION
+//DEFAULTBUTTON 0
+// Cutting down height from 156 to 65.  (subtract 91.)
+// Labels were: 4,15;prevleft,prevbot
+// Buttons were: (5 138 36 13) (PR+6 PT 36 13) (PR+6 PT 51 13)
+// Then:  (5 47 36 13) (PR+6 PT 36 13) (PR+6 PT 51 13)
+a408 1
+//	BUTTON "Quit" ID btn_charsum_no AT (PrevRight+15 PrevTop AUTO AUTO) NONUSABLE
+a481 1
+// - is at x, + is at x+30
+a492 3
+// add: 55 y
+// 2-3 lines for FULL name of item
+// 1-2 lines for store owner's comment
+a504 3
+//   BUTTON "Submit" ID btn_hag_ok AT (5 PrevTop+16 35 AUTO)
+//   TITLE "Haggle buy or sell"
+//   LABEL "Asking price:" AUTOID AT (25 PrevTop)
+a506 1
+// 15, 26, 37 object 48 old inscrip 59 field (skip 18 pixels for "New ")
+a523 1
+//FORM ID RecallForm AT (2 30 156 128)  // add/subtract 28
+a573 1
+//	LABEL "Level - Mana - Fail" AUTOID AT (82 15)
+a605 5
+//	LABEL "..." AUTOID AT (85 13)
+//	LABEL "(hole)" AUTOID AT (PrevLeft PrevTop+10)
+//	LABEL "Walk" AUTOID AT (120 13)
+//	LABEL "(donut)" AUTOID AT (PrevLeft PrevTop+10)
+//LABEL "Hole" AUTOID AT (85 13)
+a641 6
+//	CHECKBOX "Show weights in inventory." ID check_prf_12 AT (PrevLeft PrevTop+11 AUTO AUTO)
+// Running: cut known corners, examine potential corners,
+// [print self], stop when map sector changes, run through open doors.
+// Prompt to pick up objects.  [Roguelike commands].
+// [Show weights in inventory.]  Highlight and notice mineral seams.
+// [Beep for invalid character]. [Display rest/repeat counts].
+a657 5
+// null, nsew; 5; 8 remain.
+// /M, ?, i, DTRT(m,p), s, #, R, d.  and how about force.
+//CHECKBOX "Enable hjklyubn for keyboard" ID check_hwb_keyb AT (4 15 AUTO AUTO)
+//CHECKBOX "Rebind these buttons:" ID check_hwb AT (4 PrevTop+17 AUTO AUTO)
+//  LABEL "Date Book" AUTOID AT (4 45)
+a695 1
+// "Memo" is 26 pixels wide
+a729 3
+// also need a doodad to set what book we're looking at.
+// 3 + 35 + 1 + 2 + ('a'=5) + 2 = 48, call it 50, for left start of list
+// 156-50 = 106 is how wide the list can be.
+a798 2
+// 5, 40, 75  -> 5, 160-75, (160-75)+35
+// 5, 85, 120
+a800 1
+//	CHECKBOX "Big font." ID check_prf_1 AT (75 32 AUTO AUTO) CHECKED
+a915 3
+//		"You can also check 'enable keyboard' which will allow you "\
+//		"to use the hjklyubn keys to move; leave them disabled if "\
+//		"you are using Graffiti, to avoid recognition mistakes."
+@
+
+
+1.80
+log
+@trying another kyocera fix
+@
+text
+@d16 1
+a16 1
+VERSION ID 1 "0.13a"
+d150 1
+a150 1
+	LABEL "kMoria v0.13a" AUTOID AT (90 40)
+d848 1
+a848 1
+STRING AboutStr "kMoria version 0.13a\n"\
+@
+
+
+1.79
+log
+@make sure confiration forms don't interrupt repeated commands; also make digging shovel check a bit smarter
+@
+text
+@d16 1
+a16 1
+VERSION ID 1 "0.13"
+d150 1
+a150 1
+	LABEL "kMoria v0.13" AUTOID AT (90 40)
+d848 1
+a848 1
+STRING AboutStr "kMoria version 0.13\n"\
+@
+
+
+1.78
+log
+@bump version number for next release
+@
+text
+@d279 1
+a279 1
+	BUTTON "Yes" "No"
+d288 1
+a288 1
+	BUTTON "Yes" "No"
+d354 3
+a356 3
+	TITLE "Hm..."
+	MESSAGE "Are you sure you want to dig with that?"
+	BUTTON "Shut up & dig" "Cancel"
+@
+
+
+1.77
+log
+@can bind 'again' to a hardware button
+@
+text
+@d16 1
+a16 1
+VERSION ID 1 "0.12"
+d150 1
+a150 1
+	LABEL "kMoria v0.12" AUTOID AT (90 40)
+d848 1
+a848 1
+STRING AboutStr "kMoria version 0.12\n"\
+@
+
+
+1.76
+log
+@trying to get 'beam cash' working
+@
+text
+@d714 1
+@
+
+
+1.75
+log
+@winning should work now
+@
+text
+@d16 1
+a16 1
+VERSION ID 1 "0.11"
+d150 1
+a150 1
+	LABEL "kMoria v0.11" AUTOID AT (90 40)
+d543 1
+d810 2
+a811 1
+  BUTTON "Select Item" ID btn_beam_item AT (5 PrevTop+20 AUTO AUTO)
+d815 11
+d847 1
+a847 1
+STRING AboutStr "kMoria version 0.11\n"\
+@
+
+
+1.74
+log
+@better msgs on floor-change; sped up repeated delay; fewer keypress in spellbk
+@
+text
+@d72 1
+a72 1
+	MENUITEM "QUIT" ID  menu_cmd_quit
+d76 1
+d134 6
+d223 10
+a232 1
+	BUTTON "Ok" "No, don't quit!"
+d822 1
+@
+
+
+1.73
+log
+@tidying up, also make Instructions menu item not take time
+@
+text
+@d301 1
+a301 1
+	BUTTON "Ok" "Cancel!"
+d310 1
+a310 1
+	BUTTON "Ok" "Cancel!"
+d321 1
+a321 1
+	BUTTON "Ok" "Cancel!"
+d330 1
+a330 1
+	BUTTON "Ok" "Cancel!"
+@
+
+
+1.72
+log
+@tweaking
+@
+text
+@d68 1
+a68 1
+	MENUITEM "Instructions   "      ID menu_mainMoveInstruct
+@
+
+
+1.71
+log
+@hey, I think maybe new-user-creation works now
+@
+text
+@d793 1
+a793 1
+  BUTTON "Select Item" ID btn_beam_constdata AT (5 PrevTop+20 AUTO AUTO)
+@
+
+
+1.70
+log
+@can switch to another user's game
+@
+text
+@a203 15
+FORM ID BeamForm AT (2 62 156 96)
+USABLE
+MODAL
+DEFAULTBTNID btn_beam_done
+BEGIN
+  TITLE "Beam Stuff..."
+  LABEL "To beam kMoria, tap kMoria and" AUTOID AT (4 15)
+  LABEL "it will be sent in two pieces." AUTOID AT (PrevLeft PrevBottom)
+  LABEL "You can also share your top score." AUTOID AT (PrevLeft PrevBottom)
+  BUTTON "kMoria" ID btn_beam_myself AT (5 58 AUTO AUTO)
+  BUTTON "Top Score" ID btn_beam_scores AT (PrevRight+6 PrevTop AUTO AUTO)
+  BUTTON "Select Item" ID btn_beam_constdata AT (5 PrevTop+20 AUTO AUTO)
+  BUTTON "Done" ID btn_beam_done AT (PrevRight+6 PrevTop 35 AUTO)
+END
+
+d781 16
+d803 2
+a804 1
+  BUTTON "Ok" ID btn_user_ok AT (2 147 AUTO AUTO)
+@
+
+
+1.69
+log
+@random tinkering, and prep for multi-user
+@
+text
+@d215 1
+a215 1
+  BUTTON "Item" ID btn_beam_constdata AT (5 PrevTop+20 AUTO AUTO)
+@
+
+
+1.68
+log
+@beam an item (untested)
+@
+text
+@d117 1
+d796 9
+@
+
+
+1.67
+log
+@can now beam 'hello world' ha ha ha
+@
+text
+@d214 1
+a214 1
+  BUTTON "msg" ID btn_beam_constdata AT (5 PrevTop+20 AUTO AUTO)
+@
+
+
+1.66
+log
+@ok beaming the app and database should work now.  sorta
+@
+text
+@d214 1
+a214 1
+  BUTTON "noop" ID btn_beam_constdata AT (5 PrevTop+20 AUTO AUTO)
+@
+
+
+1.65
+log
+@tweaking, tinkering; adding /T to show current time and voltage..
+@
+text
+@d203 17
+d250 9
+@
+
+
+1.64
+log
+@Improved the 'rest' form: can be aborted, can use hardware buttons.
+@
+text
+@d116 2
+d120 1
+@
+
+
+1.63
+log
+@tweaking/color
+@
+text
+@d16 1
+a16 1
+VERSION ID 1 "0.09"
+d139 1
+a139 1
+	LABEL "kMoria v0.09" AUTOID AT (90 40)
+d178 22
+a298 9
+ALERT ID RestP
+CONFIRMATION
+DEFAULTBUTTON 0
+BEGIN
+	TITLE "Rest how many turns?"
+	MESSAGE "..Or rest until hit points and mana reach maximum?"
+	BUTTON "10" "20" "Maximum"
+END
+
+d776 1
+a776 1
+STRING AboutStr "kMoria version 0.09\n"\
+@
+
+
+1.62
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d43 2
+a44 1
+FONT ID ItsyFont FONTID 128 "Font56.txt"
+d609 1
+a609 1
+   CHECKBOX "Color." ID check_prf_14 AT (PrevLeft PrevTop+11 AUTO AUTO)
+@
+
+
+1.61
+log
+@revised stats-redrawing so that it (hopefully) redraws only what has changed
+@
+text
+@d3 1
+a3 1
+// Copyright (C) 2000 Bridget Spitznagel                             *
+d5 3
+a7 2
+// This program is derived from Umoria 5.5.2.  Umoria is             *
+//   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+// This program is free software; you can redistribute it and/or     *
+// modify it under the terms of the GNU General Public License       *
+// as published by the Free Software Foundation; either version 2    *
+// of the License, or (at your option) any later version.            *
+//                                                                   *
+// This program is distributed in the hope that it will be useful,   *
+// but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+// GNU General Public License for more details.                      *
+//                                                                   *
+// You should have received a copy of the GNU General Public License *
+// along with this program; if not, write to                         *
+// The Free Software Foundation, Inc.,                               *
+// 59 Temple Place - Suite 330,                                      *
+// Boston, MA  02111-1307, USA.                                      *
+d13 1
+d147 1
+a147 1
+	BUTTON "Credits" ID btn_about_credits AT (PrevRight+10 141 AUTO AUTO)
+d150 1
+a150 1
+FORM ID IntroForm AT (2 2 156 156)
+a151 1
+MODAL
+d763 1
+a763 1
+                "© 2000 Bridget Spitznagel, James Wilson, Robert Koeneke.\n\n"\
+d765 1
+a765 1
+                "from Moria 5.5.2.\n\n"\
+d767 4
+a770 6
+                "This is free software, and "\
+                "you are welcome to "\
+                "redistribute it under certain "\
+                "conditions (for details see: GNU "\
+                "General Public License,\n"\
+                "http://www.gnu.org/ copyleft/gpl.html)"
+d784 3
+a786 4
+		"Umoria 5.5.x is maintained by David Grabiner.\n"\
+		"Thanks also to "\
+		"intrepid testers and reporters of bugs.\n"\
+		"- Bridget Spitznagel, porter\n"
+@
+
+
+1.60
+log
+@all-new all-different xmen^H^H^H^Hhardware buttons form
+@
+text
+@d789 1
+a789 1
+		"with assistants Jimmy Todd and Gary McAdoo.  "\
+@
+
+
+1.59
+log
+@making invert work in the general case; an initial credits screen; and I forget what else
+@
+text
+@d674 22
+a695 40
+  LABEL "Date Book" AUTOID AT (4 PrevTop+13)
+  POPUPTRIGGER "---" ID popup_hwb_1 AT (47 PrevTop 70 AUTO) LEFTANCHOR
+  LIST "---" "north" "south" "east" "west" "map" "look" "inventory" "magic" "search" "srch mode" "rest" "dig" "force" ID list_hwb_1 AT (PrevLeft PrevTop 58 1) NONUSABLE VISIBLEITEMS 14
+
+  LABEL "Address" AUTOID AT (4 PrevTop+12)
+  POPUPTRIGGER "---" ID popup_hwb_2 AT (47 PrevTop 70 AUTO) LEFTANCHOR
+  LIST "---" "north" "south" "east" "west" "map" "look" "inventory" "magic" "search" "srch mode" "rest" "dig" "force" ID list_hwb_2 AT (PrevLeft PrevTop 58 1) NONUSABLE VISIBLEITEMS 14
+
+  LABEL "Up" AUTOID AT (40 PrevTop+12)
+  POPUPTRIGGER "---" ID popup_hwb_5 AT (62 PrevTop 70 AUTO) LEFTANCHOR
+  LIST "---" "north" "south" "east" "west" "map" "look" "inventory" "magic" "search" "srch mode" "rest" "dig" "force" ID list_hwb_5 AT (PrevLeft PrevTop 58 1) NONUSABLE VISIBLEITEMS 14
+
+  LABEL "Down" AUTOID AT (40 PrevTop+12)
+  POPUPTRIGGER "---" ID popup_hwb_6 AT (PrevRight PrevTop 70 AUTO) LEFTANCHOR
+  LIST "---" "north" "south" "east" "west" "map" "look" "inventory" "magic" "search" "srch mode" "rest" "dig" "force" ID list_hwb_6 AT (PrevLeft PrevTop 58 1) NONUSABLE VISIBLEITEMS 14
+
+  LABEL "To Do List" AUTOID AT (4 PrevTop+12)
+  POPUPTRIGGER "---" ID popup_hwb_3 AT (47 PrevTop 70 AUTO) LEFTANCHOR
+  LIST "---" "north" "south" "east" "west" "map" "look" "inventory" "magic" "search" "srch mode" "rest" "dig" "force" ID list_hwb_3 AT (PrevLeft PrevTop 58 1) NONUSABLE VISIBLEITEMS 14
+
+  LABEL "Memo Pad" AUTOID AT (4 PrevTop+12)
+  POPUPTRIGGER "---" ID popup_hwb_4 AT (PrevRight PrevTop 70 AUTO) LEFTANCHOR
+  LIST "---" "north" "south" "east" "west" "map" "look" "inventory" "magic" "search" "srch mode" "rest" "dig" "force" ID list_hwb_4 AT (PrevLeft PrevTop 58 1) NONUSABLE VISIBLEITEMS 14
+
+  LABEL "Calculator" AUTOID AT (40 PrevTop+12)
+  POPUPTRIGGER "---" ID popup_hwb_7 AT (PrevRight PrevTop 70 AUTO) LEFTANCHOR
+  LIST "---" "north" "south" "east" "west" "map" "look" "inventory" "magic" "search" "srch mode" "rest" "dig" "force" ID list_hwb_7 AT (PrevLeft PrevTop 58 1) NONUSABLE VISIBLEITEMS 14
+
+  LABEL "Find" AUTOID AT (40 PrevTop+12)
+  POPUPTRIGGER "---" ID popup_hwb_8 AT (81 PrevTop 70 AUTO) LEFTANCHOR
+  LIST "---" "north" "south" "east" "west" "map" "look" "inventory" "magic" "search" "srch mode" "rest" "dig" "force" ID list_hwb_8 AT (PrevLeft PrevTop 58 1) NONUSABLE VISIBLEITEMS 14
+
+  POPUPLIST ID popup_hwb_1 list_hwb_1
+  POPUPLIST ID popup_hwb_2 list_hwb_2
+  POPUPLIST ID popup_hwb_3 list_hwb_3
+  POPUPLIST ID popup_hwb_4 list_hwb_4
+  POPUPLIST ID popup_hwb_5 list_hwb_5
+  POPUPLIST ID popup_hwb_6 list_hwb_6
+  POPUPLIST ID popup_hwb_7 list_hwb_7
+  POPUPLIST ID popup_hwb_8 list_hwb_8
+d703 1
+d725 2
+@
+
+
+1.58
+log
+@'dig' repeater checks for forgotten 'x'; inv and equ take more keyboard foo
+@
+text
+@d123 1
+d160 7
+d717 35
+@
+
+
+1.57
+log
+@added teeny little command bar icons
+@
+text
+@d308 10
+@
+
+
+1.56
+log
+@monster colors are kind of working now, maybe (for white background)
+@
+text
+@d36 17
+@
+
+
+1.55
+log
+@hauled a bunch of code from one section to another, and moved some consts to DB
+@
+text
+@d563 1
+d571 1
+a571 1
+	LABEL "Hole" AUTOID AT (85 13)
+d575 1
+a575 1
+	LABEL "Donut" AUTOID AT (120 13)
+d583 3
+a585 2
+
+	CHECKBOX "Run." ID check_prf_5 AT (PrevLeft PrevTop+11 AUTO AUTO)
+d591 1
+a591 1
+	CHECKBOX "Prompt to pick up objects." ID check_prf_10 AT (5 PrevTop+11 AUTO AUTO)
+@
+
+
+1.54
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d28 4
+a31 2
+ICON "kMoria.bmp"
+SMALLICON "kMoriaSmall.bmp"
+d105 2
+a107 1
+	MENUITEM SEPARATOR
+d605 14
+@
+
+
+1.53
+log
+@detect crashes, pop up a form to kill or attempt-to-recover character
+@
+text
+@d26 1
+a26 1
+VERSION ID 1 "0.08"
+d127 1
+a127 1
+	LABEL "kMoria v0.08" AUTOID AT (90 40)
+d699 1
+a699 1
+STRING AboutStr "kMoria version 0.08\n"\
+@
+
+
+1.52
+log
+@crash recovery, maybe
+@
+text
+@d26 1
+a26 1
+VERSION ID 1 "0.0.8"
+d127 1
+a127 1
+	LABEL "kMoria v0.0.8" AUTOID AT (90 40)
+d699 2
+a700 2
+STRING AboutStr "kMoria version 0.0.8\n"\
+                "© 2000 Bridget Spitznagel.\n\n"\
+d726 1
+a726 1
+		"- Bridget Spitznagel\n"
+@
+
+
+1.51
+log
+@gearing up to add some requested features
+@
+text
+@d173 10
+@
+
+
+1.50
+log
+@fixed character export bug (and some minor bugs)
+@
+text
+@d26 1
+a26 1
+VERSION ID 1 "0.07"
+d127 1
+a127 1
+	LABEL "kMoria v0.07" AUTOID AT (90 40)
+d689 1
+a689 1
+STRING AboutStr "kMoria version 0.07\n"\
+@
+
+
+1.49
+log
+@add option to clear the monster memory
+@
+text
+@d258 1
+@
+
+
+1.48
+log
+@allow more access to monster memory
+@
+text
+@d258 17
+d465 1
+d474 9
+@
+
+
+1.47
+log
+@tweak: make hit points usually not overwritten by graffiti state indicator
+@
+text
+@d444 2
+a445 2
+
+FORM ID RecallForm AT (2 30 156 128)
+d450 5
+a454 4
+    FIELD ID field_recall AT (5 15 146 88) NONEDITABLE MULTIPLELINES MAXCHARS 3000
+    REPEATBUTTON "\001" ID repeat_recall_up AT (144 111 10 AUTO) NOFRAME FONT 5 
+    REPEATBUTTON "\002" ID repeat_recall_down AT (144 119 10 AUTO) NOFRAME FONT 5 
+    BUTTON "Done" ID btn_recall_ok AT (5 111 AUTO AUTO)
+@
+
+
+1.46
+log
+@fixed same-sector-new-level screen-redraw bug
+@
+text
+@d26 1
+a26 1
+VERSION ID 1 "0.06"
+d127 1
+a127 1
+	LABEL "kMoria v0.06" AUTOID AT (90 40)
+d660 1
+a660 1
+STRING AboutStr "kMoria version 0.06\n"\
+@
+
+
+1.45
+log
+@fixed sell-unknown-item-to-store bug.  most forms navigable via keyboard now.
+@
+text
+@d131 2
+a132 1
+	LABEL "Bridget Spitznagel" AUTOID AT (Center 100)
+d135 2
+a136 1
+	BUTTON "View © Info" ID btn_about_more AT (50 141 AUTO AUTO)
+d671 17
+@
+
+
+1.44
+log
+@tweaked notice
+@
+text
+@d26 1
+a26 1
+VERSION ID 1 "0.05"
+d127 1
+a127 1
+	LABEL "kMoria v0.05" AUTOID AT (90 40)
+d658 1
+a658 1
+STRING AboutStr "kMoria version 0.05\n"\
+@
+
+
+1.43
+log
+@(removed debug aid)
+@
+text
+@d5 1
+a5 1
+// This program is derived from Umoria 5.5.2.  Moria is              *
+@
+
+
+1.42
+log
+@fixed relative-move bug, might have fixed same-panel-next-level bug,
+some sound added, command-count recognizes 'delete' now,
+app goes to dead-end form for wrong OS or missing database at startup.
+@
+text
+@a86 2
+	MENUITEM "Wizard" ID  menu_mainWiz
+	MENUITEM "Monster" ID  menu_mainWiz2
+@
+
+
+1.41
+log
+@animating throw, fire-bolt, fire-ball, breath attack
+@
+text
+@d87 2
+d643 6
+@
+
+
+1.40
+log
+@'this time for sure!' 'aw, that trick never works' (corrode/acid bug)
+@
+text
+@a86 2
+	MENUITEM "Wizard" ID  menu_mainWiz
+	MENUITEM "Monster" ID  menu_mainWiz2
+@
+
+
+1.39
+log
+@corrosion bug might be fixed
+last message shown always has at least cur/max hitpoints visible (overlaid)
+inventory now displays weight (optionally)
+added a preference to move status bar to top of screen
+@
+text
+@d87 2
+@
+
+
+1.38
+log
+@sing this corrosion to me (fixed corrode-inventory-item bug)
+@
+text
+@d44 2
+a45 1
+//	MENUITEM "* 17" ID  menu_mainWiz
+a61 2
+	MENUITEM "Wizard" ID  menu_mainWiz
+	MENUITEM "Monster" ID  menu_mainWiz2
+d104 2
+d344 2
+a345 1
+        MENUITEM "Un/Compact" ID menu_invCompact "C"
+d399 2
+a400 2
+        MENUITEM "Un/Compact" ID menu_stoCompact "C"
+        MENUITEM "Un/Haggle" ID menu_stoHaggle "H"
+d550 3
+@
+
+
+1.37
+log
+@high score list seems to be working
+@
+text
+@d26 1
+a26 1
+VERSION ID 1 "0.04"
+d59 1
+a59 1
+	MENUITEM "High Scores" ID  menu_mainWiz
+d61 2
+d126 1
+a126 1
+	LABEL "kMoria v0.04" AUTOID AT (90 40)
+d647 1
+a647 1
+STRING AboutStr "kMoria version 0.04\n"\
+@
+
+
+1.36
+log
+@rough cut of top-score list
+@
+text
+@d149 3
+a151 2
+	TITLE "Hall of Fame"
+	BUTTON "Play again" ID btn_scores_ok AT (2 147 AUTO AUTO)
+@
+
+
+1.35
+log
+@genocide scroll works
+@
+text
+@d59 1
+@
+
+
+1.34
+log
+@user can rebind hardware buttons
+@
+text
+@d78 1
+a78 1
+	MENUITEM "(R)   Rest" ID  menu_cmd_R
+d242 9
+a614 1
+// should add a Recall button which is sometimes enabled
+d622 8
+@
+
+
+1.33
+log
+@can access Recall from Look now
+@
+text
+@d544 61
+d721 9
+@
+
+
+1.32
+log
+@rearranged menus, fixed search-mode
+@
+text
+@d545 10
+@
+
+
+1.31
+log
+@added menu option in store to turn off haggling (for a fixed% markup)
+@
+text
+@d44 1
+a44 1
+//	MENUITEM "***" ID  menu_mainWiz
+d47 1
+a47 1
+    PULLDOWN "Options"
+d51 1
+a51 2
+        MENUITEM "What's that?   "       ID menu_mainRecall "W"
+        MENUITEM "Your Stats   "       ID menu_mainStats
+d53 3
+a55 3
+        MENUITEM "Preferences   "        ID menu_mainSettings "R"
+        MENUITEM "Buttons   "        ID menu_mainButtons "B"
+	MENUITEM "Font" ID  menu_mainFont "F"
+a60 1
+	MENUITEM "***" ID  menu_mainWiz
+d62 1
+a62 1
+    PULLDOWN "Commands"
+d64 1
+a64 1
+	MENUITEM "(i)    Inventory..." ID  menu_cmd_i
+d66 1
+a66 1
+	MENUITEM "(m)    Magic spell..." ID  menu_cmd_m
+d68 1
+a68 1
+	MENUITEM "(G)    Gain spells" ID  menu_cmd_G
+d70 7
+d78 2
+a79 1
+	MENUITEM "(R)    Rest" ID  menu_cmd_R
+d81 2
+a84 3
+	MENUITEM SEPARATOR
+	MENUITEM "(?)    Look at" ID  menu_cmd_look
+	MENUITEM "(-)    Next sector" ID  menu_cmd_minus
+d86 1
+a86 1
+    PULLDOWN "More"
+d92 1
+d94 1
+a94 5
+	MENUITEM SEPARATOR
+	MENUITEM "(t)    Throw" ID  menu_cmd_t
+	MENUITEM "(a)    Aim wand" ID  menu_cmd_a
+	MENUITEM "(z)    Zap staff" ID  menu_cmd_z
+	MENUITEM "( )    Move onto" ID  menu_cmd_space
+d96 6
+a101 1
+	MENUITEM "({)    Inscribe" ID  menu_cmd_scribe
+@
+
+
+1.30
+log
+@improved inventory display
+@
+text
+@d360 1
+d372 10
+@
+
+
+1.29
+log
+@fixed ring-wearing
+@
+text
+@d307 1
+d317 8
+@
+
+
+1.28
+log
+@odds and ends
+@
+text
+@d62 1
+d194 20
+@
+
+
+1.27
+log
+@added 'inscribe', rearranged menus
+@
+text
+@d26 1
+a26 1
+VERSION ID 1 "0.03"
+d115 1
+a115 1
+	LABEL "kMoria v0.03" AUTOID AT (90 40)
+d508 1
+a508 1
+STRING AboutStr "kMoria version 0.03\n"\
+@
+
+
+1.26
+log
+@bug fixes, 'drop all?' for multiple items
+@
+text
+@d51 2
+a52 2
+        MENUITEM "What's that?   "       ID menu_mainRecall
+        MENUITEM "Stats   "       ID menu_mainStats
+d76 3
+d87 1
+d93 1
+a93 2
+	MENUITEM "(?)    Look" ID  menu_cmd_look
+	MENUITEM "(-)    Slide" ID  menu_cmd_minus
+d145 4
+d151 1
+d159 19
+d179 1
+d181 3
+a183 3
+	TITLE " "
+	MESSAGE "You can drop all, or just one."
+	BUTTON " All " "Just one"
+d186 8
+d196 2
+a197 1
+WARNING
+d205 2
+a206 1
+WARNING
+d360 17
+@
+
+
+1.25
+log
+@wands, staffs mostly tested, recharge works, throw works
+@
+text
+@d150 9
+d264 1
+a264 1
+	TITLE "Select An Item"
+@
+
+
+1.24
+log
+@throw works
+@
+text
+@a61 1
+	MENUITEM "***" ID  menu_mainWiz
+d256 1
+a256 1
+	LIST "foo" "bar" "baz" ID list_is AT (0 15 156 110)
+d258 1
+a258 1
+	BUTTON "Ok" ID btn_is_frob AT (3 141 29 AUTO) NONUSABLE
+a259 1
+	BUTTON "[E]" ID btn_is_eq AT (PrevRight+3 PrevTop 16 PrevHeight) NOFRAME
+@
+
+
+1.23
+log
+@continued work on spells
+@
+text
+@d44 1
+d250 14
+@
+
+
+1.22
+log
+@fixed some bugs: messages from actions that make you exit from
+inventory/equipment should now occur on time (instead of the following
+turn); level advancement works; blindness and cure blindness both work
+on time.  speeded up the redraw-whole-screen thing (now have a recalc,
+refresh, and faster recalc_refresh combo.  code needs cleaning up now..)
+@
+text
+@d61 1
+@
+
+
+1.21
+log
+@Death - now you die and go to a tombstone page and can print Character Record to a memo
+@
+text
+@d132 8
+@
+
+
+1.20
+log
+@added 'info' help strings to most modal forms
+@
+text
+@d121 12
+d433 12
+@
+
+
+1.19
+log
+@fixed in haggling: name-of-item bug (must get the singular item)
+@
+text
+@d26 1
+a26 1
+VERSION ID 1 "0.02"
+d111 1
+a111 1
+	LABEL "kMoria v0.02" AUTOID AT (90 40)
+a144 11
+STRING AboutStr "kMoria version 0.02\n"\
+                "© 2000 Bridget Spitznagel.\n\n"\
+                "This program was derived "\
+                "from Moria 5.5.2.\n\n"\
+                "kMoria comes with Absolutely No Warranty.\n"\
+                "This is free software, and "\
+                "you are welcome to "\
+                "redistribute it under certain "\
+                "conditions (for details see: GNU "\
+                "General Public License,\n"\
+                "http://www.gnu.org/ copyleft/gpl.html)"
+a149 10
+// Note: Fix this string, because it is a lie.
+STRING CharGenStr "Welcome to Moria!\nYour first task "\
+	"is to generate a character.  You must specify a sex, a race, "\
+	"and a class.  Anytime before you have made these specifications, "\
+	"you can interrupt with control-C. You can also specify the race as "\
+	"often as you like by entering '%' to the class request. This will "\
+	"also regenerate your attributes.\n"\
+	"If this is your first time playing, you may want to "\
+	"read the manual first."
+
+d155 1
+d173 1
+d186 1
+d216 1
+d232 1
+d247 1
+d298 1
+d311 1
+d328 1
+d361 1
+d408 84
+a491 1
+//	CHECKBOX "Big font." ID check_prf_1 AT (75 32 AUTO AUTO) CHECKED@
+
+
+1.18
+log
+@inc. version number
+@
+text
+@d287 1
+a287 1
+   BUTTON "Cancel" ID btn_hag_exit AT (5 PrevTop+16 35 AUTO)
+d289 1
+a289 1
+   BUTTON "Submit" ID btn_hag_ok AT (118 PrevTop 35 PrevHeight)
+d291 1
+@
+
+
+1.17
+log
+@you can now: quit; attack instead of running; be given a default name
+@
+text
+@d26 1
+a26 1
+VERSION ID 1 "0.01"
+d111 1
+a111 1
+	LABEL "kMoria v0.01" AUTOID AT (90 40)
+d145 1
+a145 1
+STRING AboutStr "kMoria version 0.03\n"\
+@
+
+
+1.16
+log
+@added saving
+@
+text
+@d50 3
+a59 2
+        MENUITEM "What's that?   "       ID menu_mainRecall
+        MENUITEM "Stats   "       ID menu_mainStats
+@
+
+
+1.15
+log
+@adding GPL comment
+@
+text
+@d59 1
+a59 1
+	MENUITEM "(Q)  QUIT" ID  menu_cmd_quit
+@
+
+
+1.14
+log
+@semi-fixed some message/stats untidiness
+@
+text
+@d1 23
+@
+
+
+1.13
+log
+@added Preferences, maybe half of them work
+@
+text
+@d263 1
+a263 1
+   BUTTON "Submit" ID btn_hag_ok AT (5 PrevTop+16 35 AUTO)
+d265 1
+a265 1
+   BUTTON "Cancel" ID btn_hag_exit AT (118 PrevTop 35 PrevHeight)
+@
+
+
+1.12
+log
+@just another random checkpoint
+@
+text
+@d3 1
+a3 1
+VERSION ID 1 "0.03"
+d87 1
+a87 1
+	LABEL "kMoria v0.03" AUTOID AT (90 40)
+d340 55
+@
+
+
+1.11
+log
+@'click to identify' Recall is sorta working, sorta buggy
+@
+text
+@d26 1
+d29 1
+a29 1
+	MENUITEM "(f) Font" ID  menu_mainFont
+d201 1
+a201 1
+	BUTTON "Quit" ID btn_charsum_no AT (127 PrevTop AUTO AUTO) NONUSABLE
+d326 14
+a339 1
+//	LIST " "  ID list_gain AT (0 26 112 110)@
+
+
+1.10
+log
+@working on dungeon.c / command loop foo
+@
+text
+@d33 1
+a33 1
+        MENUITEM "Recall   "       ID menu_mainRecall
+d200 1
+a200 1
+	BUTTON "Quit" ID btn_charsum_no AT (PrevRight+15 PrevTop AUTO AUTO) NONUSABLE
+d202 1
+@
+
+
+1.9
+log
+@working on main command input
+@
+text
+@d63 2
+@
+
+
+1.8
+log
+@spellbooks / holy books can be browsed
+@
+text
+@d44 19
+@
+
+
+1.7
+log
+@mages can gain spells now
+(note: there is a tiny memory leak in learn_the_spell, form_spell.c)
+@
+text
+@d301 1
+@
+
+
+1.6
+log
+@adding spell/prayer selection forms
+@
+text
+@a281 1
+	LABEL "Level - Mana - Fail" AUTOID AT (82 15)
+d285 13
+d299 2
+d302 1
+@
+
+
+1.5
+log
+@cleaned up creature.c and stuff
+@
+text
+@d41 3
+d83 16
+d262 26
+@
+
+
+1.4
+log
+@store: selling implemented
+@
+text
+@d3 1
+a3 1
+VERSION ID 1 "0.02"
+d62 1
+a62 1
+	LABEL "kMoria v0.02" AUTOID AT (90 40)
+d80 1
+a80 1
+STRING AboutStr "kMoria version 0.02\n"\
+@
+
+
+1.3
+log
+@Haggling in the purchase direction is mostly working (don't try sell though)
+@
+text
+@d222 1
+a222 1
+   BUTTON "GET OUT!" ID btn_hag_boot AT (62 PrevTop 35 AUTO) NONUSABLE
+@
+
+
+1.2
+log
+@fixed stupid bug in fill_cave, generated levels should look more sane now
+@
+text
+@d218 1
+a218 1
+   FIELD ID field_hag AT (78 80 50 AUTO) USABLE RIGHTALIGN EDITABLE UNDERLINED SINGLELINE MAXCHARS 10
+d220 1
+d222 1
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d3 1
+a3 1
+VERSION ID 1 "0.01"
+d62 1
+a62 1
+	LABEL "kMoria v0.01" AUTOID AT (90 40)
+d80 1
+a80 1
+STRING AboutStr "kMoria version 0.01\n"\
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

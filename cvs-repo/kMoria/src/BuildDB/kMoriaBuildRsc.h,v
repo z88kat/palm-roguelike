@@ -1,0 +1,130 @@
+head	1.4;
+access;
+symbols
+	Release-2002_03_29:1.4
+	Release-2002_01_12:1.4
+	Release-2002_01_02:1.4
+	Release-2002_01_01:1.4
+	Release-2001_12_19:1.4
+	Release-2001_08_04:1.4
+	Release-2001_07_02:1.4
+	Release-2001_06_16:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.4
+date	2001.06.22.05.43.26;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.06.22.00.13.19;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.06.20.01.56.43;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.46.15;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.46.15;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@added ui-pick-thingie, but it does not check for older prisms and could crash
+@
+text
+@#define MainForm              1000
+#define LuserForm             1001
+#define MainFormMenu          1010
+#define menu_mainAbout        1015
+#define btn_ok                1016
+#define btn_things            1017
+#define btn_ttom              1018
+#define btn_ctom              1019
+#define btn_mons              1020
+
+#define HelpStr     1031
+#define NukeP       1032
+#define MainHelpStr 1033
+#define ConvertP    1034
+#define Convert2P   1035
+
+#define CritterForm          1050
+#define ThingForm            1060
+
+#define ColorForm       1100
+#define list_col_1      1101
+#define list_col_2      1102
+#define list_col_3      1103
+#define btn_col_show    1104
+#define btn_col_ok      1105
+#define btn_col_cancel  1106
+
+#define DefaultsForm    1200
+#define list_def_1      1201
+#define list_def_2      1202
+#define list_def_3      1203
+#define btn_def_ok      1205
+#define btn_def_cancel  1206
+#define btn_def_uipick  1207
+@
+
+
+1.3
+log
+@cobbled together a simple color-chooser
+@
+text
+@d2 1
+d34 1
+a34 1
+
+@
+
+
+1.2
+log
+@hauled a bunch of code from one section to another, and moved some consts to DB
+@
+text
+@d5 13
+d27 7
+a33 2
+#define HelpStr 1020
+#define NukeP    1022
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d6 8
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

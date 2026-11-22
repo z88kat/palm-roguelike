@@ -1,0 +1,59 @@
+head	1.2;
+access;
+symbols
+	start:1.1.1.1 vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2001.02.24.05.53.58;	author i0lanthe;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2000.06.15.21.16.51;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.06.15.21.16.51;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@housecleaning
+@
+text
+@Ranked by width:
+
+        i  l                                   I
+         j
+  c  f           rst     z           ()    EF   J
+ab de gh  k  nopq   uv    0123456789   ABC        L   P RS
+                      wxy           $     D  GH  K  N     TUV XYZ
+                                                     O Q
+            m                                      M         W@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@iRogue import
+@
+text
+@@

@@ -1,0 +1,432 @@
+head	1.5;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.3
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2006.08.13.05.47.22;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2006.08.13.04.47.24;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2006.08.08.03.46.43;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2002.03.30.00.18.21;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.40;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.40;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>A tour of the town: iLarn</title>
+
+<style type="text/css" media="screen">@@import "../3col.css";</style>
+
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>iLarn's Town</h1>
+  <p><i>a supplement to the <a href="play.php">how to play</a> instructions.
+</i></p>
+</div>
+
+
+<div class="content">
+  <h2>The town</h2>
+<p>
+When you start out, you are in the town.  We will take a tour of
+the buildings (skipping the dungeon entrance, which was covered in the
+play instructions.)
+</p>
+</div>
+
+<div class="content">
+  <h2>Where to buy all kinds of stuff</h2>
+<p>
+<P> <img src="../images/iLarn/9=.gif" alt="[DND entry]">
+ <img src="../images/iLarn/9=2.gif" alt="[DND stock]">
+
+<P> First stop on our tour is the DND Store.  This is where you go to
+buy interesting items (once you have money).
+
+<P> Here we see a partial list of the store's stock.  The price (in
+'gold pieces') of each item is given on the right.  To buy an item,
+select it on the list and tap "Buy".  To see the next page of items
+available for purchase, tap the "+ &gt;" button (or "&lt; -" to see
+the previous page.)  When you are done, hit "Exit" to return to the
+town --- this is pretty obvious so it won't be mentioned again.
+
+</p>
+</div>
+<div class="content">
+  <h2>Where to pay taxes if you ever need to</h2>
+<p>
+<P> <img src="../images/iLarn/9L.gif" alt="[LRS entry]">
+ <img src="../images/iLarn/9L2.gif" alt="[LRS interior]">
+
+<P> Next we see the Larn Revenue Service office.  This is where you go
+to pay taxes.
+
+<P> Generally you will not owe taxes until after you have won a game, so
+this building is of little concern for beginners.
+
+</p>
+</div>
+<div class="content">
+  <h2>Where to "improve yourself"</h2>
+<p>
+<P> <img src="../images/iLarn/9+.gif" alt="[U.Larn]">
+<img src="../images/iLarn/9+2.gif" alt="[Course list]">
+
+<P> The College of Ularn offers classes in several areas of interest
+to adventurers.  Tuition is reasonable.
+
+<P> Here we see the list of courses currently offered and, on the
+right, the amount of time in 'mobuls' that each course will suck out
+of your life leaving you a pathetic withered husk of your former self
+(can you tell that I should really have been working on my thesis when
+I wrote this page?)
+</p>
+</div>
+<div class="content">
+  <h2>Where to put your money for safe keeping</h2>
+<p>
+<P> <img src="../images/iLarn/9S.gif" alt="[Bank entry]">
+ <img src="../images/iLarn/9S2.gif" alt="[Sell gem]">
+ <img src="../images/iLarn/9S3.gif" alt="[Transaction]">
+
+<P> Why put those hard-earned gold pieces under the mattress when you
+can store them in an interest bearing account at the First National
+Bank of Ularn?  Plus no fees for use of ATMs or tellers!
+
+<P> You can also sell gems.  Select a gem on your list and tap 'sell'
+to exchange it for the amount offered on the right.
+
+<P> To deposit or withdraw money, tap 'Transaction'.  Write a number
+in the Amount field.  (To save time, if you want to deposit all of
+your money, hit the '=' equals sign on the left ... if you want to
+withdraw all of your money, hit the '=' equals sign on the right.
+This will copy that number into the field.)  Tap 'Deposit' to deposit
+that amount, or 'Withdraw' to withdraw that amount.
+</p>
+</div>
+<div class="content">
+  <h2>Where your sick daughter is</h2>
+<p>
+<P> When you have found the McGuffin, er, I mean 'potion of cure
+dianthroritis', this is where you will need to take it!
+
+<P> <img src="../images/iLarn/9H.gif" alt="[your home]">
+<img src="../images/iLarn/9H2.gif" alt="[your quest]">
+
+<P> If you don't have the potion yet, you are reminded to scoot off and
+look for it pronto.
+</p>
+</div>
+
+<div class="content">
+  <h2>Where not to start out</h2>
+<p>
+<P> When you have completed the first dungeon, your quest continues in
+the volcano.  (But feel free to take a peek in when you're starting
+out... as long as you don't mind dying before you even know what hit
+you.)
+
+<P> <img src="../images/iLarn/9V.gif" alt="[volcano entry]">
+
+<P> In case I didn't make it clear enough, if you are a beginner and
+fond of your current character, you really should tap "stay here".
+</p>
+</div>
+
+<div class="content">
+  <h2>Where to sell things that you found lying around</h2>
+<p>
+<P> As you wander around, you will probably end up collecting a number
+of interesting things of varying degrees of usefulness.  This is a
+place where you can sell some of the less interesting or less useful
+items.
+
+<P> <img src="../images/iLarn/9tp.gif" alt="[trading post entry]">
+ <img src="../images/iLarn/9tp2.gif" alt="[item list]">
+ <img src="../images/iLarn/9tp3.gif" alt="[an offer]">
+
+<P> Unfortunately (as you may find if you buy an item at the DND store
+and then sell it here) adventuring equipment tends to depreciate in
+much the same fashion as computing equipment, that is, immediately and
+enormously.
+
+<P> To sell an item on the list, first you must select it.  A fixed
+ value will be offered for it, which you can accept by tapping 'sell'.
+</p>
+</div>
+
+
+<div class="content">
+  <h2>Want spoilers for iLarn?</h2>
+<p>
+You will have to read the source...
+</p>
+</div>
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+</body>
+</html>
+@
+
+
+1.4
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+@
+
+
+1.3
+log
+@commit everything before massive style change
+@
+text
+@d1 3
+a3 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+d7 4
+a10 4
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+d14 5
+a18 50
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">iLarn: out on the town</h3>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      <!-- -->
+      <tr><td class="sidehead">
+	iLarn Stuff </td></tr>
+      <tr><td class="side"> <a href="index.php">
+	  What is iLarn?</a> </td></tr>
+      <tr><td class="side"> <a href="whatsnew.php">
+	  What's new</a> </td></tr>
+      <tr><td class="side"> <a href="download.php">
+	  Download iLarn</a> </td></tr>
+      <tr><td class="side"> <a href="play.php">How to play</a>;
+	  <b>town</b></td></tr>
+      <tr><td class="side"> <a href="source.php">
+	  How to get source</a> </td></tr>
+      <?php include ("../hostedby.txt") ?>
+    </table></td>
+
+    <!-- main area table -->
+    <td class="body" valign=top>
+    <!-- ----- this is the interesting part of the page ----- -->
+
+    <h3> A tour of the town: iLarn </h3>
+
+    <P> This is a supplement to the <a href="play.php">how to
+    play</a> instructions.
+</td></tr></table>
+
+<P>
+
+<a name="town"></a>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header"> <h3>The town</h3> </td>
+  </tr>
+</table>
+a19 1
+<P> <img src="../images/iLarn/2town.gif" alt="[start screen]">
+d21 4
+a24 1
+<P> When you start out, you are in the town.  We will take a tour of
+d27 2
+d30 3
+a32 8
+
+<a name="town"></a>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header"> <h3> Where to buy all kinds of stuff </h3> </td>
+  </tr>
+</table>
+
+d46 5
+a50 7
+<a name="town"></a>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header"> <h3> Where to pay taxes if you ever need to </h3> </td>
+  </tr>
+</table>
+
+d60 5
+a64 7
+<a name="town"></a>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header"> <h3> Where to "improve yourself" </h3> </td>
+  </tr>
+</table>
+
+d74 7
+a80 9
+(that reminds me, I should really be working on my thesis).
+
+<a name="town"></a>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header"> <h3> Where to put your money for safe keeping </h3> </td>
+  </tr>
+</table>
+
+d98 5
+a102 8
+
+<a name="town"></a>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header"> <h3> Where your sick daughter is </h3> </td>
+  </tr>
+</table>
+
+d111 2
+d114 3
+a116 7
+<a name="town"></a>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header"> <h3> Where not to start out </h3> </td>
+  </tr>
+</table>
+
+d126 2
+d129 3
+a131 8
+
+<a name="town"></a>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header"> <h3> Where to sell things that you found lying around </h3> </td>
+  </tr>
+</table>
+
+d148 2
+a150 14
+<a name="town"></a>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header"> <h3>help!</h3> </td>
+  </tr>
+</table>
+
+<P> Want "spoilers" for iLarn?  You will have to read the source.
+      
+      <!-- ----- end of the interesting part of the page ----- -->
+
+<!-- footer table -->
+<?php include ("../footer.txt") ?>
+<!-- end footer table -->
+d152 16
+a167 1
+<address>i0lanthe@@users.sourceforge.net</address>
+a168 1
+Last modified: Fri Oct 13 15:08:51 EDT 2000
+d170 1
+a170 1
+<?php $hitsfile = "town.hits"; include ("../counter.php")?>
+@
+
+
+1.2
+log
+@checkpointing web before kMoria 0.15 update
+@
+text
+@d7 2
+d41 1
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d14 1
+a14 1
+    <h3>iLarn: out on the town</h3>
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

@@ -1,0 +1,308 @@
+head	1.3;
+access;
+symbols
+	start:1.1.1.1 vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.3
+date	2001.02.24.04.24.39;	author i0lanthe;	state dead;
+branches;
+next	1.2;
+
+1.2
+date	2001.02.24.03.25.02;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.06.15.21.16.46;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.06.15.21.16.46;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@spec_hit.c += lib_spechit.c
+@
+text
+@/*********************************************************************
+ * iRogue - Rogue adapted for the PalmPilot.                         *
+ * Copyright (C) 1999 Bridget Spitznagel                             *
+ * Note: This program is derived from rogue 5.3-clone for Linux.     *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+
+#include "palm.h"
+#include "librogue.h"
+
+
+/***************************************************************
+                   GET_CLOSER
+ IN:
+ row, col = the current location
+ trow, tcol = the goal
+ OUT:
+ nothing (really row,col)
+ PURPOSE:
+ Figure out which of the nine squares "reachable" from row,col
+ is closest to trow,tcol.  Return that location in row,col.
+****************************************************************/
+void get_closer(Short *row, Short *col, Short trow, Short tcol) {
+  if (*row < trow) {
+    (*row)++;
+  } else if (*row > trow) {
+    (*row)--;
+  }
+  if (*col < tcol) {
+    (*col)++;
+  } else if (*col > tcol) {
+    (*col)--;
+  }
+}
+
+/***************************************************************
+                   IMITATING
+ IN:
+ row, col = location to check for imitator
+ sotu = various globals (dungeon, level_monsters)
+ OUT:
+ true if there's an imitator there
+ PURPOSE:
+ Given a location, determine whether there's an imitator there
+ (a monster that can camoflague itself as something else.)
+****************************************************************/
+Boolean imitating(Short row, Short col, struct state_of_the_union * sotu) {
+  object *monster;
+  if (sotu->dungeon[row][col] & MONSTER) {
+    if ((monster = object_at(sotu->level_monsters, row, col))) {
+      if (monster->m_flags1 & IMITATES) {
+	return true;
+      }
+    }
+  }
+  return false;
+}
+
+/***************************************************************
+                   DISAPPEAR
+ IN:
+ monster = the one that's disappearing
+ sotu = various globals (dungeon, level_monsters, mon_disappeared)
+ OUT:
+ nothing
+ PURPOSE:
+ Remove the given monster from the dungeon level.
+ (mon_disappeared is checked if the monster is hasted, since it
+ could disappear and then get a second chance to move..)
+****************************************************************/
+void disappear(object *monster, struct state_of_the_union *sotu) {
+  Short row, col;
+
+  row = monster->row;
+  col = monster->col;
+
+  sotu->dungeon[row][col] &= ~MONSTER;
+  if (rogue_can_see(row, col, sotu)) {
+    mvaddch(row, col, get_dungeon_char(row, col, sotu));
+  }
+  take_from_pack(monster, sotu->level_monsters);
+  free_object(monster, sotu);
+  sotu->mon_disappeared = true;
+}
+
+/***************************************************************
+                   TRY_TO_COUGH
+ IN:
+ row, col = a location near a dying monster
+ obj = an object that the monster will (maybe) leave behind
+ sotu = various globals (
+ OUT:
+ true if the object could be placed at the location
+ PURPOSE:
+ This will try to place the given object at the given location
+ and (if there's not a rogue or monster standing on it) update
+ the display.
+****************************************************************/
+static Boolean try_to_cough(Short row, Short col, object *obj,
+			    struct state_of_the_union *sotu) SEC_L;
+static Boolean try_to_cough(Short row, Short col, object *obj,
+			    struct state_of_the_union *sotu) 
+{
+  if ((row < MIN_ROW) || (row > (DROWS-2)) || (col < 0) || (col>(DCOLS-1))) {
+    return false;
+  }
+  if ((!(sotu->dungeon[row][col] & (OBJECT | STAIRS | TRAP))) &&
+      (sotu->dungeon[row][col] & (TUNNEL | FLOOR | DOOR))) {
+    place_at(obj, row, col, sotu);
+    if (((row != sotu->roguep->row) || (col != sotu->roguep->col)) &&
+	(!(sotu->dungeon[row][col] & MONSTER))) {
+      mvaddch(row, col, get_dungeon_char(row, col, sotu));
+    }
+    return true;
+  }
+  return false;
+}
+
+/***************************************************************
+                   COUGH_UP
+ IN:
+ monster = dying beastie that leaves some treasure behind
+ sotu = various globals (cur_level, max_level)
+ OUT:
+ nothng
+ PURPOSE:
+ (Maybe) Create and place gold, or an object, near a dying monster.
+****************************************************************/
+void cough_up(object *monster, struct state_of_the_union *sotu) {
+  object *obj;
+  Short row, col, i, n;
+
+  if (sotu->cur_level < sotu->max_level) {
+    /* you don't get treasure coughed up on your way home */
+    return;
+  }
+
+  /* Some monsters cough up gold.
+     Others have a percentage chance of leaving an object behind. */
+  if (monster->m_flags1 & STEALS_GOLD) {
+    obj = alloc_object(sotu);
+    obj->what_is = GOLD;
+    obj->quantity = get_rand((sotu->cur_level * 15), (sotu->cur_level * 30));
+  } else if ((monster->m_flags2 & TASTY) && rand_percent(15)) {
+    obj = alloc_object(sotu);
+    get_food(obj, 1);
+    obj->which_kind = CARCASE;
+    obj->o_unused = monster->carcase_type;
+  } else {
+    if (!rand_percent((Int) monster->drop_percent)) {
+      return;
+    }
+    obj = gr_object(sotu);
+  }
+  row = monster->row;
+  col = monster->col;
+
+  /* Try to place the object somewhere near the dying monster. */
+  for (n = 0; n <= 5; n++) {
+    for (i = -n; i <= n; i++) {
+      if (try_to_cough(row+n, col+i, obj, sotu)) {
+	return;
+      }
+      if (try_to_cough(row-n, col+i, obj, sotu)) {
+	return;
+      }
+    }
+    for (i = -n; i <= n; i++) {
+      if (try_to_cough(row+i, col-n, obj, sotu)) {
+	return;
+      }
+      if (try_to_cough(row+i, col+n, obj, sotu)) {
+	return;
+      }
+    }
+  }
+  /* If there isn't room nearby, don't cough it up after all. */
+  free_object(obj, sotu);
+}
+
+/***************************************************************
+                   CHECK_GOLD_SEEKER
+ IN:
+ monster = the one to check
+ OUT:
+ nothing
+ PURPOSE:
+ "check" seems misleading to me.  The effect is to make a monster
+ not-gold-seeking.
+****************************************************************/
+void check_gold_seeker(object *monster) {
+  if (monster)
+    monster->m_flags1 &= (~SEEKS_GOLD);
+}
+
+/***************************************************************
+                   CHECK_IMITATOR
+ IN:
+ monster = the monster in question
+ sotu = various globals (blind)
+ OUT:
+ true if the monster is an imitator...
+ PURPOSE:
+ Given a monster, if it is an imitator, wake it up and reveal
+ (if the rogue isn't blind) its true appearance.  
+****************************************************************/
+Boolean check_imitator(object *monster, struct state_of_the_union *sotu) {
+  Char msg[80];
+  Char mn[16];
+
+  if (monster && monster->m_flags1 & IMITATES) {
+    wake_up(monster);
+    if (!sotu->blind) {
+      mvaddch(monster->row, monster->col,
+	      get_dungeon_char(monster->row, monster->col, sotu));
+      //      check_message();
+      mon_name(monster, mn, sotu);
+      StrPrintF(msg, "wait, that's a %s!", mn);
+      message(msg, sotu);
+    }
+    return true;
+  }
+  return false;
+}
+
+
+@
+
+
+1.2
+log
+@compiles with sdk3.5; user-configurable color
+@
+text
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d23 1
+a23 1
+#include "Pilot.h"
+@
+
+
+1.1.1.1
+log
+@iRogue import
+@
+text
+@@

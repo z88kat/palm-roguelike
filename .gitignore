@@ -53,3 +53,24 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# --- palm-roguelike ---
+# Locally built patched pilrc (see tools/build-pilrc.sh)
+tools/pilrc/
+
+# kMoria build outputs
+kMoria/src/*.o
+kMoria/src/*.bin
+kMoria/src/*.grc
+kMoria/src/bin.stamp
+kMoria/src/kMoria
+kMoria/src/kMoria-sections.s
+kMoria/src/kMoria-sections.ld
+kMoria/src/kMoria.prc
+kMoria/src/compat/
+
+.DS_Store
+
+# Palm databases and other CVS-era files are source assets here, not build junk
+!kMoria/**/*.pdb
+!kMoria/src/BuildDB/foo.out

@@ -1,0 +1,1187 @@
+head	1.40;
+access;
+symbols
+	Release-2002_03_29:1.40
+	Release-2002_01_12:1.40
+	Release-2002_01_02:1.37
+	Release-2002_01_01:1.37
+	Release-2001_12_19:1.37
+	Release-2001_08_04:1.36
+	Release-2001_07_02:1.30
+	Release-2001_06_16:1.26
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.40
+date	2002.01.05.18.49.56;	author i0lanthe;	state Exp;
+branches;
+next	1.39;
+
+1.39
+date	2002.01.04.21.52.52;	author i0lanthe;	state Exp;
+branches;
+next	1.38;
+
+1.38
+date	2002.01.04.20.41.07;	author i0lanthe;	state Exp;
+branches;
+next	1.37;
+
+1.37
+date	2001.11.30.05.06.17;	author i0lanthe;	state Exp;
+branches;
+next	1.36;
+
+1.36
+date	2001.08.04.17.07.22;	author i0lanthe;	state Exp;
+branches;
+next	1.35;
+
+1.35
+date	2001.08.04.16.56.17;	author i0lanthe;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2001.08.02.06.50.36;	author i0lanthe;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2001.08.01.02.59.13;	author i0lanthe;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2001.07.27.01.17.38;	author i0lanthe;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2001.07.25.06.16.45;	author i0lanthe;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2001.06.26.02.42.37;	author i0lanthe;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2001.06.20.05.02.38;	author i0lanthe;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2001.06.20.01.56.43;	author i0lanthe;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2001.05.24.04.24.15;	author i0lanthe;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2001.03.27.06.30.43;	author i0lanthe;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2001.01.27.00.53.03;	author i0lanthe;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2001.01.23.17.49.56;	author i0lanthe;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2001.01.19.05.24.19;	author i0lanthe;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2001.01.10.23.40.25;	author i0lanthe;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2001.01.09.23.07.47;	author i0lanthe;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2001.01.09.21.12.01;	author i0lanthe;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2001.01.05.22.43.25;	author i0lanthe;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2001.01.05.04.12.36;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2001.01.01.06.59.10;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2000.12.23.04.03.40;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2000.12.21.21.24.43;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2000.12.06.23.53.14;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2000.11.05.20.24.47;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2000.11.03.04.48.22;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2000.11.01.05.01.32;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2000.10.28.22.28.54;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2000.10.25.04.29.06;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2000.10.21.03.31.07;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.10.10.04.53.43;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.10.06.06.32.35;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.01.18.31.37;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.09.30.03.37.12;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.44.01;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.44.01;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.40
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@TARGET = kMoria
+APPNAME = "kMoria"
+APPID = "Mria"
+# I have got this appid assigned.
+
+# spells.c, magic.c, prayer.c .. have a few lines commented out..
+UIOBJS = form_about.o form_inv.o form_equ.o form_recall.o form_chargen.o \
+       form_store.o form_spell.o form_messagelog.o form_prefs.o \
+       form_map.o form_death.o form_topscores.o form_invselect.o \
+       form_scribe.o form_look.o form_hwbuttons.o form_dalek.o \
+       form_snowcrash.o \
+       form_repeat.o form_spellhwb.o form_beam.o form_user.o
+
+#OBJS = main.o display.o lock.o generate.o sets.o desc.o recall.o util.o 
+#       misc1.o misc2.o misc3.o misc4.o moria1.o moria2.o create.o 
+#       eat.o potions.o staffs.o wands.o   store1.o store2.o 
+#       magic.o prayer.o spells.o moria3.o moria4.o misc5.o 
+#       creature.o 
+# monsters, player, tables, treasure, variable: these are just data
+# io: this will be partly implemented elsewhere partly ignored.
+# rnd, wizard, signals: these will be ignored
+# death dungeon files help save: these need to be munged.
+
+OBJS = create.o creature.o desc.o \
+       dungeon.o \
+       eat.o generate.o magic.o main.o \
+       misc1.o misc2.o misc3.o misc4.o moria1.o moria2.o moria3.o moria4.o \
+       potions.o prayer.o recall.o sets.o scrolls.o spells.o staffs.o \
+       store1.o store2.o wands.o \
+       misc5.o display.o lock.o util.o save.o \
+       color.o win.o handera.o \
+       $(UIOBJS) \
+       $(TARGET)-sections.o
+
+INCS = kMoriaRsc.h kMoria.h
+
+CC = m68k-palmos-gcc
+
+# Getting tired of if'ing for OS2  - how many folks still have
+# palm pilot professionals?
+# To build for a different OS, uncomment its line and comment the others
+# (Be sure to 'make clean' between different os builds!!)
+#CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+##CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+CFLAGS = -Wall -g -O2 -I. -palmos3.5 -DNON_INTERNATIONAL -DI_AM_COLOR
+
+PILRC = pilrc
+BUILDPRC = build-prc
+
+all: kMoria.prc
+
+install: kMoria.prc
+	/usr/local/pilot/bin/pilot-xfer /dev/ttyqe -i kMoria.prc
+
+.S.o:
+	$(CC) $(TARGETFLAGS) -c $<
+
+.c.s:
+	$(CC) $(CSFLAGS) $<
+
+
+$(TARGET).prc: $(TARGET) bin.stamp
+	$(BUILDPRC) $(TARGET).def $(TARGET) *.bin
+
+$(TARGET): $(OBJS) $(TARGET)-sections.ld
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(TARGET)-sections.ld
+
+bin.stamp: $(TARGET).rcp $(TARGET).pbm Font56.txt
+	$(PILRC) $(TARGET).rcp .
+	touch bin.stamp
+
+$(TARGET)-sections.o: $(TARGET)-sections.s
+	$(CC) -c $(TARGET)-sections.s
+
+$(TARGET)-sections.s $(TARGET)-sections.ld: $(TARGET).def
+	multigen $(TARGET).def
+
+depend:
+	makedepend -Y  *.c
+
+dingy:
+	-rm -f *.[oa] $(TARGET)
+
+clean:
+	-rm -f *.[oa] $(TARGET) *.bin bin.stamp *.grc Makefile.bak $(TARGET)-sections.s $(TARGET)-sections.ld
+
+veryclean: clean
+	-rm -f $(TARGET).prc pilot.ram pilot.scratch *.ld *.s
+
+# DO NOT DELETE
+
+create.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+create.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+creature.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+creature.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+desc.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+desc.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+display.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+display.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+dungeon.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+dungeon.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+eat.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h prototypes.h
+eat.o: records.h lock-externs.h misc-externs.h win.h
+form_about.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_about.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_beam.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_beam.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_chargen.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_chargen.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_dalek.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_dalek.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_death.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_death.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_equ.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_equ.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_hwbuttons.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_hwbuttons.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_identchar.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_identchar.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_inv.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_inv.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_invselect.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_invselect.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_look.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_look.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_map.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_map.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_messagelog.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_messagelog.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_prefs.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_prefs.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_recall.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_recall.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_repeat.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_repeat.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_scribe.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_scribe.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_snowcrash.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_snowcrash.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_spell.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_spell.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_spellhwb.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_spellhwb.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_store.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_store.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_topscores.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_topscores.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+form_user.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+form_user.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+generate.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+generate.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+lock.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+lock.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+magic.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+magic.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+main.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+main.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+misc1.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+misc1.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+misc2.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+misc2.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+misc3.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+misc3.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+misc4.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+misc4.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+misc5.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+misc5.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+moria1.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+moria1.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+moria2.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+moria2.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+moria3.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+moria3.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+moria4.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+moria4.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+potions.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+potions.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+prayer.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+prayer.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+recall.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+recall.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+save.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+save.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+scrolls.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+scrolls.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+sets.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+sets.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+spells.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+spells.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+staffs.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+staffs.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+store1.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+store1.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+store2.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+store2.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+util.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+util.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+wands.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h
+wands.o: prototypes.h records.h lock-externs.h misc-externs.h win.h
+win.o: kMoria.h palm.h kMoriaRsc.h sections.h constant.h types.h prototypes.h
+win.o: records.h lock-externs.h misc-externs.h win.h
+@
+
+
+1.39
+log
+@still working on hiding magic constants
+@
+text
+@d31 1
+a31 1
+       color.o win.o \
+a33 1
+#       handera.o \
+@
+
+
+1.38
+log
+@still working on hiding magic constants
+@
+text
+@a32 1
+       handera.o \
+d34 1
+@
+
+
+1.37
+log
+@moving extern decls around
+@
+text
+@d33 1
+@
+
+
+1.36
+log
+@oops
+@
+text
+@d92 7
+a98 7
+create.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+create.o: records.h lock-externs.h misc-externs.h
+creature.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+creature.o: records.h lock-externs.h misc-externs.h
+desc.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h records.h
+desc.o: lock-externs.h misc-externs.h
+display.o: palm.h kMoriaRsc.h kMoria.h sections.h constant.h types.h
+d100 102
+a201 98
+dungeon.o: palm.h kMoriaRsc.h kMoria.h sections.h constant.h types.h
+dungeon.o: prototypes.h records.h lock-externs.h misc-externs.h
+eat.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h records.h
+eat.o: lock-externs.h misc-externs.h
+form_about.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_about.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_beam.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_beam.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_chargen.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_chargen.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_dalek.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_dalek.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_death.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_death.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_equ.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_equ.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_hwbuttons.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_hwbuttons.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_identchar.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_identchar.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_inv.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_inv.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_invselect.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_invselect.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_look.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_look.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_map.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_map.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_messagelog.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_messagelog.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_prefs.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_prefs.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_recall.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_recall.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_repeat.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_repeat.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_scribe.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_scribe.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_snowcrash.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_snowcrash.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_spell.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_spell.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_spellhwb.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_spellhwb.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_store.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_store.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_topscores.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_topscores.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+form_user.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+form_user.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+generate.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+generate.o: records.h lock-externs.h misc-externs.h
+lock.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h records.h
+magic.o: palm.h kMoriaRsc.h kMoria.h sections.h constant.h types.h
+magic.o: prototypes.h records.h lock-externs.h misc-externs.h
+main.o: palm.h kMoriaRsc.h kMoria.h sections.h constant.h types.h
+main.o: prototypes.h records.h lock-externs.h misc-externs.h
+misc1.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h records.h
+misc1.o: lock-externs.h misc-externs.h
+misc2.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h records.h
+misc2.o: lock-externs.h misc-externs.h
+misc3.o: palm.h kMoriaRsc.h kMoria.h sections.h constant.h types.h
+misc3.o: prototypes.h records.h lock-externs.h misc-externs.h
+misc4.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h records.h
+misc4.o: lock-externs.h misc-externs.h
+misc5.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h records.h
+misc5.o: lock-externs.h misc-externs.h
+moria1.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+moria1.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+moria2.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+moria2.o: records.h lock-externs.h misc-externs.h
+moria3.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+moria3.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+moria4.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+moria4.o: records.h lock-externs.h misc-externs.h
+potions.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+potions.o: records.h lock-externs.h misc-externs.h
+prayer.o: palm.h kMoriaRsc.h kMoria.h sections.h constant.h types.h
+prayer.o: prototypes.h records.h lock-externs.h misc-externs.h
+recall.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+recall.o: records.h lock-externs.h misc-externs.h
+save.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h records.h
+save.o: lock-externs.h misc-externs.h
+scrolls.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+scrolls.o: records.h lock-externs.h misc-externs.h kMoriaRsc.h
+sets.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h records.h
+spells.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+spells.o: records.h lock-externs.h misc-externs.h
+staffs.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+staffs.o: records.h lock-externs.h misc-externs.h
+store1.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h
+store1.o: records.h lock-externs.h misc-externs.h
+store2.o: palm.h kMoriaRsc.h kMoria.h sections.h constant.h types.h
+store2.o: prototypes.h records.h lock-externs.h misc-externs.h
+util.o: palm.h
+wands.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h records.h
+wands.o: lock-externs.h misc-externs.h
+win.o: palm.h kMoria.h sections.h constant.h types.h prototypes.h records.h
+@
+
+
+1.35
+log
+@tweaking
+@
+text
+@d43 1
+a43 1
+CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+d45 1
+a45 1
+#CFLAGS = -Wall -g -O2 -I. -palmos3.5 -DNON_INTERNATIONAL -DI_AM_COLOR
+@
+
+
+1.34
+log
+@random tinkering, and prep for multi-user
+@
+text
+@d39 1
+a39 1
+# Getting tired of building for OS2  - how many folks still have
+d43 1
+a43 1
+#CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+d45 1
+a45 1
+CFLAGS = -Wall -g -O2 -I. -palmos3.5 -DNON_INTERNATIONAL -DI_AM_COLOR
+@
+
+
+1.33
+log
+@beam an item (untested)
+@
+text
+@d12 1
+a12 1
+       form_repeat.o form_spellhwb.o form_beam.o
+d148 2
+@
+
+
+1.32
+log
+@ok beaming the app and database should work now.  sorta
+@
+text
+@d92 5
+a96 5
+create.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+create.o: lock-externs.h misc-externs.h
+creature.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+creature.o: lock-externs.h misc-externs.h
+desc.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+d98 5
+a102 5
+display.o: kMoriaRsc.h kMoria.h sections.h constant.h types.h prototypes.h
+display.o: records.h lock-externs.h misc-externs.h
+dungeon.o: kMoriaRsc.h kMoria.h sections.h constant.h types.h prototypes.h
+dungeon.o: records.h lock-externs.h misc-externs.h
+eat.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+d104 13
+a116 11
+form_about.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+form_about.o: lock-externs.h misc-externs.h kMoriaRsc.h
+form_chargen.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+form_chargen.o: lock-externs.h misc-externs.h kMoriaRsc.h
+form_dalek.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+form_dalek.o: lock-externs.h misc-externs.h kMoriaRsc.h
+form_death.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+form_death.o: lock-externs.h misc-externs.h kMoriaRsc.h
+form_equ.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+form_equ.o: lock-externs.h misc-externs.h kMoriaRsc.h
+form_hwbuttons.o: kMoria.h sections.h constant.h types.h prototypes.h
+d118 1
+a118 1
+form_identchar.o: kMoria.h sections.h constant.h types.h prototypes.h
+d120 3
+a122 3
+form_inv.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+form_inv.o: lock-externs.h misc-externs.h kMoriaRsc.h
+form_invselect.o: kMoria.h sections.h constant.h types.h prototypes.h
+d124 5
+a128 7
+form_look.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+form_look.o: lock-externs.h misc-externs.h kMoriaRsc.h
+form_map.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+form_map.o: lock-externs.h misc-externs.h kMoriaRsc.h
+form_map2.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+form_map2.o: lock-externs.h misc-externs.h kMoriaRsc.h
+form_messagelog.o: kMoria.h sections.h constant.h types.h prototypes.h
+d130 9
+a138 7
+form_prefs.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+form_prefs.o: lock-externs.h misc-externs.h kMoriaRsc.h
+form_recall.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+form_recall.o: lock-externs.h misc-externs.h kMoriaRsc.h
+form_scribe.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+form_scribe.o: lock-externs.h misc-externs.h kMoriaRsc.h
+form_snowcrash.o: kMoria.h sections.h constant.h types.h prototypes.h
+d140 7
+a146 5
+form_spell.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+form_spell.o: lock-externs.h misc-externs.h kMoriaRsc.h
+form_store.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+form_store.o: lock-externs.h misc-externs.h kMoriaRsc.h
+form_topscores.o: kMoria.h sections.h constant.h types.h prototypes.h
+d148 8
+a155 8
+generate.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+generate.o: lock-externs.h misc-externs.h
+lock.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+magic.o: kMoriaRsc.h kMoria.h sections.h constant.h types.h prototypes.h
+magic.o: records.h lock-externs.h misc-externs.h
+main.o: kMoriaRsc.h kMoria.h sections.h constant.h types.h prototypes.h
+main.o: records.h lock-externs.h misc-externs.h
+misc1.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+d157 1
+a157 1
+misc2.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+d159 3
+a161 3
+misc3.o: kMoriaRsc.h kMoria.h sections.h constant.h types.h prototypes.h
+misc3.o: records.h lock-externs.h misc-externs.h
+misc4.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+d163 1
+a163 1
+misc5.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+d165 15
+a179 15
+moria1.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+moria1.o: lock-externs.h misc-externs.h kMoriaRsc.h
+moria2.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+moria2.o: lock-externs.h misc-externs.h
+moria3.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+moria3.o: lock-externs.h misc-externs.h kMoriaRsc.h
+moria4.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+moria4.o: lock-externs.h misc-externs.h
+potions.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+potions.o: lock-externs.h misc-externs.h
+prayer.o: kMoriaRsc.h kMoria.h sections.h constant.h types.h prototypes.h
+prayer.o: records.h lock-externs.h misc-externs.h
+recall.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+recall.o: lock-externs.h misc-externs.h
+save.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+d181 13
+a193 12
+scrolls.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+scrolls.o: lock-externs.h misc-externs.h kMoriaRsc.h
+sets.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+spells.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+spells.o: lock-externs.h misc-externs.h
+staffs.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+staffs.o: lock-externs.h misc-externs.h
+store1.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+store1.o: lock-externs.h misc-externs.h
+store2.o: kMoriaRsc.h kMoria.h sections.h constant.h types.h prototypes.h
+store2.o: records.h lock-externs.h misc-externs.h
+wands.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+d195 1
+@
+
+
+1.31
+log
+@Improved the 'rest' form: can be aborted, can use hardware buttons.
+@
+text
+@d12 1
+a12 1
+       form_repeat.o form_spellhwb.o
+@
+
+
+1.30
+log
+@making invert work in the general case; an initial credits screen; and I forget what else
+@
+text
+@d39 2
+a40 2
+# Moria will probably be OS 3.*  sorry all you palm pilot professionals.
+# But I will have to do palmos2 if I want to test on my old xcopilot.  rats.
+@
+
+
+1.29
+log
+@monster colors are kind of working now, maybe (for white background)
+@
+text
+@d12 1
+a12 1
+       form_repeat.o
+d31 1
+a31 1
+       color.o \
+@
+
+
+1.28
+log
+@hauled a bunch of code from one section to another, and moved some consts to DB
+@
+text
+@d31 3
+a33 1
+       $(UIOBJS) $(TARGET)-sections.o
+@
+
+
+1.27
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d11 2
+a12 1
+       form_snowcrash.o
+@
+
+
+1.26
+log
+@crash recovery, maybe
+@
+text
+@d38 2
+a39 2
+# To build for OS 3.*, comment the os 2 line and uncomment the os 3.1 line.
+# (Be sure to 'make clean' between different os builds.)
+d41 2
+a42 1
+CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.25
+log
+@fixed sell-unknown-item-to-store bug.  most forms navigable via keyboard now.
+@
+text
+@a89 1
+create_db.o: dbrecords.h
+a91 1
+dbrecords.o: dbrecords.h
+d104 4
+d110 4
+d116 8
+d126 2
+d130 4
+d138 2
+a141 1
+io.o: constant.h types.h
+d158 1
+a158 1
+moria1.o: lock-externs.h misc-externs.h
+d162 1
+a162 3
+moria3.o: lock-externs.h misc-externs.h
+moria3a.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+moria3a.o: lock-externs.h misc-externs.h
+d171 2
+d174 1
+a174 1
+scrolls.o: lock-externs.h misc-externs.h
+a175 2
+spells-b.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+spells-b.o: lock-externs.h misc-externs.h
+a183 2
+tmp.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+tmp.o: lock-externs.h misc-externs.h
+@
+
+
+1.24
+log
+@tweaked notice
+@
+text
+@d40 2
+a41 2
+CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+#CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.23
+log
+@fixed relative-move bug, might have fixed same-panel-next-level bug,
+some sound added, command-count recognizes 'delete' now,
+app goes to dead-end form for wrong OS or missing database at startup.
+@
+text
+@d40 2
+a41 2
+#CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.22
+log
+@corrosion bug might be fixed
+last message shown always has at least cur/max hitpoints visible (overlaid)
+inventory now displays weight (optionally)
+added a preference to move status bar to top of screen
+@
+text
+@d10 2
+a11 1
+       form_scribe.o form_look.o form_hwbuttons.o form_dalek.o
+d40 2
+a41 2
+CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+#CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.21
+log
+@sing this corrosion to me (fixed corrode-inventory-item bug)
+@
+text
+@d4 1
+a4 1
+# NOTE: I have not requested an app id yet.
+@
+
+
+1.20
+log
+@genocide scroll works
+@
+text
+@d37 2
+@
+
+
+1.19
+log
+@user can rebind hardware buttons
+@
+text
+@d10 1
+a10 1
+       form_scribe.o form_look.o form_hwbuttons.c
+@
+
+
+1.18
+log
+@can access Recall from Look now
+@
+text
+@d10 1
+a10 1
+       form_scribe.o form_look.o
+@
+
+
+1.17
+log
+@added 'inscribe', rearranged menus
+@
+text
+@d10 1
+a10 1
+       form_scribe.o
+@
+
+
+1.16
+log
+@wands, staffs mostly tested, recharge works, throw works
+@
+text
+@d9 2
+a10 1
+       form_map.o form_death.o form_topscores.o form_invselect.o
+@
+
+
+1.15
+log
+@continued work on spells
+@
+text
+@d9 1
+a9 1
+       form_map.o form_death.o form_topscores.o
+@
+
+
+1.14
+log
+@fixed some bugs: messages from actions that make you exit from
+inventory/equipment should now occur on time (instead of the following
+turn); level advancement works; blindness and cure blindness both work
+on time.  speeded up the redraw-whole-screen thing (now have a recalc,
+refresh, and faster recalc_refresh combo.  code needs cleaning up now..)
+@
+text
+@d36 2
+a37 2
+#CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.13
+log
+@Death - now you die and go to a tombstone page and can print Character Record to a memo
+@
+text
+@d9 1
+a9 1
+       form_map.o form_death.o
+d36 2
+a37 2
+CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+#CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.12
+log
+@fixed in haggling: name-of-item bug (must get the singular item)
+@
+text
+@d9 1
+a9 1
+       form_map.o
+d36 2
+a37 2
+#CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.11
+log
+@added saving
+@
+text
+@d36 2
+a37 2
+CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+#CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.10
+log
+@overview map sorta works
+@
+text
+@d27 1
+a27 1
+       misc5.o display.o lock.o util.o \
+@
+
+
+1.9
+log
+@added Preferences, maybe half of them work
+@
+text
+@d8 2
+a9 1
+       form_store.o form_spell.o form_messagelog.o form_prefs.o
+@
+
+
+1.8
+log
+@just another random checkpoint
+@
+text
+@d8 1
+a8 1
+       form_store.o form_spell.o form_messagelog.o
+@
+
+
+1.7
+log
+@working on dungeon.c / command loop foo
+@
+text
+@d8 1
+a8 1
+       form_store.o form_spell.o
+d88 1
+d93 2
+d105 2
+d137 2
+@
+
+
+1.6
+log
+@continuing slow accretion (scrolls.c, du partial dungeon.c)
+@
+text
+@d43 3
+@
+
+
+1.5
+log
+@adding spell/prayer selection forms
+@
+text
+@a5 1
+# the line of eat.c, etc., need to have their user interface revised!
+a6 1
+# moria3a.c is missing some functions entirely..
+d9 18
+a26 5
+OBJS = main.o display.o lock.o generate.o sets.o desc.o recall.o util.o \
+       misc1.o misc2.o misc3.o misc4.o moria1.o moria2.o create.o \
+       eat.o potions.o staffs.o wands.o   store1.o store2.o \
+       magic.o prayer.o spells.o moria3a.o moria4.o misc5.o \
+       creature.o \
+a27 1
+#   moria4.o
+a84 1
+dbrecords.o: dbrecords.h
+d101 2
+d109 2
+a110 2
+magic.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+magic.o: lock-externs.h misc-externs.h
+d117 2
+a118 2
+misc3.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+misc3.o: lock-externs.h misc-externs.h
+a128 2
+moria3a.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+moria3a.o: lock-externs.h misc-externs.h
+d133 2
+a134 2
+prayer.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+prayer.o: lock-externs.h misc-externs.h
+d148 2
+a149 2
+store2.o: kMoria.h sections.h constant.h types.h prototypes.h records.h
+store2.o: lock-externs.h misc-externs.h
+@
+
+
+1.4
+log
+@cleaned up creature.c and stuff
+@
+text
+@d10 1
+a10 1
+       form_store.o
+@
+
+
+1.3
+log
+@Haggling in the purchase direction is mostly working (don't try sell though)
+@
+text
+@d15 1
+@
+
+
+1.2
+log
+@fixed stupid bug in fill_cave, generated levels should look more sane now
+@
+text
+@d13 1
+a13 1
+       eat.o potions.o staffs.o wands.o   store1.o \
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d91 2
+d136 4
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

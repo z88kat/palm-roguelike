@@ -1,0 +1,2049 @@
+head	1.2;
+access;
+symbols
+	start:1.1.1.1 vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.2
+date	2000.11.04.02.13.39;	author i0lanthe;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.43.44;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.43.44;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@adding GPL comment
+@
+text
+@#include <Pilot.h>
+#include "dbrecords.h"
+// also include some constants
+
+DmOpenRef MoriaDB; // stuff that does not change, much
+DmOpenRef MoriaSaveDB;
+static Boolean OpenMyDatabase();
+
+// returns false on error, true otherwise.
+Boolean RebuildDatabase()
+{
+  // open the database
+  if (OpenMyDatabase())
+    return false;
+  // call some stuff to write to it
+  // like all the stuff you see here.
+  // ...
+
+  // close database
+  if (MoriaDB != NULL) {
+    DmCloseDatabase(MoriaDB);
+    MoriaDB = NULL;
+  }
+  return true;
+}
+
+/*
+ *  newrec_text
+ *  IN: uid of record; number of strings; max string length; the strings
+ *  REQUIRES: that record does not exist
+ *  RESULT:   record is created and strings are NAIVELY stored in it.
+ */
+void newrec_text(ULong uniqueID, Short qty, Short sze, Char **text) {
+  VoidHand rec;
+  Ptr p;
+  Int size;
+  UInt index;
+  Short i, offset;
+  index = DmNumRecords(MoriaDB);
+  size = qty * sze;
+  rec = DmNewRecord(MoriaDB, &index, size);
+  p = MemHandleLock(rec);
+  // print stuff to it.
+  for (i = 0, offset = 0 ; i < qty; i++, offset += sze)
+    DmWrite(p, offset, text[i], sze);
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaDB, index, true);
+  DmSetRecordInfo(MoriaDB, index, NULL, &uniqueID); // set its uid!
+}
+/*
+ *  copy_text
+ *  IN: uid of record; # of strings in rec; desired index; a buffer to write
+ *  REQUIRES: that record was created by newrec_text; buffer is big enough
+ *  RESULT:   appropriate string is copied into the buffer
+ */
+void copy_text(ULong uniqueID, Short qty, Short i, Char *buf) {
+  // ...
+}
+
+/*****************************************************************************
+ *                                                                           *
+ *                    OpenMyDatabase                                         *
+ *                                                                           *
+ *****************************************************************************/
+static Boolean OpenMyDatabase()
+{
+  LocalID dbID;
+
+  // DELETE database, if any.
+  dbID = DmFindDatabase(0, MoriaDBName); // card#, name
+  if (dbID)
+    if (DmDeleteDatabase(0, dbID)) // card#, id
+      return 1;
+
+  // create database
+  if (DmCreateDatabase(0, MoriaDBName, MoriaAppID, MoriaDBType, false))
+    return 1;
+
+  // open database
+  dbID = DmFindDatabase(0, MoriaDBName); // card#, name
+  if (!dbID) return 1;
+  MoriaDB = DmOpenDatabase(0, dbID, dmModeReadWrite);
+  // we assume that opening a newly created db will work
+
+  // Also, open (creating it if necessary) the MoriaSaveDB
+  if (0 == (dbID = DmFindDatabase(0, MoriaSaveDBName))) {
+    if (DmCreateDatabase(0, MoriaSaveDBName, MoriaAppID, MoriaSaveDBType,
+			 false))
+      return 1;
+    if (0 == (dbID = DmFindDatabase(0, MoriaSaveDBName))) return 1;
+  }
+  if (0 == (MoriaSaveDB = DmOpenDatabase(0, dbID, dmModeReadWrite))) return 1;
+  
+
+  return 0;
+}
+
+/************************************************************************
+ *                                                                      *
+ *                          Message Log                                 *
+ *                                                                      *
+ ************************************************************************/
+/*
+ *  newrec_messagelog
+ *  REQUIRES: no existing REC_MESSAGELOG in the save db
+ *  RESULT:   new empty record of appropriate size
+ */
+void newrec_messagelog() {
+  VoidHand rec;
+  Ptr p;
+  Int i, size;
+  UInt index;
+  ULong uniqueID = REC_MESSAGELOG;
+  // The message log acts as a circular buffer
+  // <newnewnew>.<oldoldold>
+  // There should be a global indicating what is the next spot to use.
+  // When printing the circular buffer in chronological order,
+  // print that spot to the end, then print the beginning to spot-1.
+  index = DmNumRecords(MoriaSaveDB);
+  size = MAXLEN_MSG * MAX_MSGLOG;
+  rec = DmNewRecord(MoriaSaveDB, &index, size);
+  p = MemHandleLock(rec);
+  DmSet(p, 0, size, 0);  // set it all to 0.  i think that will work.
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaSaveDB, index, true);
+  DmSetRecordInfo(MoriaSaveDB, index, NULL, &uniqueID); // set its uid!
+}
+/*
+ *  add_message_to_log
+ *  IN: your message 'msg', globals 'env'
+ *  REQUIRES: existing REC_MESSAGELOG in the save db; msg is null-terminated.
+ *  RESULT:   string is added to it; circular FIFO replacement
+ */
+void add_message_to_log(Char *msg, everything *env) {
+  VoidHand rec;
+  Ptr p;
+  UInt index;
+  ULong uniqueID = REC_MESSAGELOG;
+  if (DmFindRecordByID(MoriaSaveDB, uniqueID, &index)) return;
+  rec = DmGetRecord(MoriaSaveDB, index);
+  p = MemHandleLock(rec);
+  DmStrCopy(p, env->log_next * sizeof(MSGLOG_ENTRY), msg);
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaSaveDB, index, true);
+  env->log_next++;
+}
+/*
+ *  pring_message_log
+ *  IN: globals 'env'
+ *  REQUIRES: existing REC_MESSAGELOG in the save db
+ *  RESULT:   any strings in it will be printed
+ */
+void print_message_log(everything *env) {
+  VoidHand rec;
+  Ptr p;
+  UInt index;
+  ULong uniqueID = REC_MESSAGELOG;
+  Short i;
+  Char * msg;
+  if (DmFindRecordByID(MoriaSaveDB, uniqueID, &index)) return;
+  rec = DmQueryRecord(MoriaSaveDB, index);
+  p = MemHandleLock(rec);
+  msg = (Char *) p;
+  for (i = env->log_next ; i < MSG_LOG_SIZE ; i++)
+    message(msg + i * sizeof(MSGLOG_ENTRY)); // xxx fix this
+  for (i = 0 ; i < env->log_next - 1 ; i++)
+    message(msg + i * sizeof(MSGLOG_ENTRY)); // xxx fix this
+  MemPtrUnlock(p);
+}
+
+/************************************************************************
+ *                                                                      *
+ *                          Player Titles                               *
+ *                                                                      *
+ ************************************************************************/
+
+Char *player_title[MAX_CLASS][MAX_PLAYER_LEVEL] = {
+	/* Warrior	 */
+{"Rookie","Private","Soldier","Mercenary","Veteran(1st)","Veteran(2nd)",
+"Veteran(3rd)","Warrior(1st)","Warrior(2nd)","Warrior(3rd)","Warrior(4th)",
+"Swordsman-1","Swordsman-2","Swordsman-3","Hero","Swashbuckler","Myrmidon",
+"Champion-1","Champion-2","Champion-3","Superhero","Knight","Superior Knt",
+"Gallant Knt","Knt Errant","Guardian Knt","Baron","Duke","Lord (1st)",
+"Lord (2nd)","Lord (3rd)","Lord (4th)","Lord (5th)","Lord (6th)","Lord (7th)",
+"Lord (8th)","Lord (9th)","Lord Gallant","Lord Keeper","Lord Noble"},
+	/* Mage		 */
+{"Novice","Apprentice","Trickster-1","Trickster-2","Trickster-3","Cabalist-1",
+"Cabalist-2","Cabalist-3","Visionist","Phantasmist","Shadowist","Spellbinder",
+"Illusionist","Evoker (1st)","Evoker (2nd)","Evoker (3rd)","Evoker (4th)",
+"Conjurer","Theurgist","Thaumaturge","Magician","Enchanter","Warlock",
+"Sorcerer","Necromancer","Mage (1st)","Mage (2nd)","Mage (3rd)","Mage (4th)",
+"Mage (5th)","Wizard (1st)","Wizard (2nd)","Wizard (3rd)","Wizard (4th)",
+"Wizard (5th)","Wizard (6th)","Wizard (7th)","Wizard (8th)","Wizard (9th)",
+"Wizard Lord"},
+	/* Priests	 */
+{"Believer","Acolyte(1st)","Acolyte(2nd)","Acolyte(3rd)","Adept (1st)",
+"Adept (2nd)","Adept (3rd)","Priest (1st)","Priest (2nd)","Priest (3rd)",
+"Priest (4th)","Priest (5th)","Priest (6th)","Priest (7th)","Priest (8th)",
+"Priest (9th)","Curate (1st)","Curate (2nd)","Curate (3rd)","Curate (4th)",
+"Curate (5th)","Curate (6th)","Curate (7th)","Curate (8th)","Curate (9th)",
+"Canon (1st)","Canon (2nd)","Canon (3rd)","Canon (4th)","Canon (5th)",
+"Low Lama","Lama-1","Lama-2","Lama-3","High Lama","Great Lama","Patriarch",
+"High Priest","Great Priest","Noble Priest"},
+	/* Rogues	 */
+{"Vagabond","Footpad","Cutpurse","Robber","Burglar","Filcher","Sharper",
+"Magsman","Common Rogue","Rogue (1st)","Rogue (2nd)","Rogue (3rd)",
+"Rogue (4th)","Rogue (5th)","Rogue (6th)","Rogue (7th)","Rogue (8th)",
+"Rogue (9th)","Master Rogue","Expert Rogue","Senior Rogue","Chief Rogue",
+"Prime Rogue","Low Thief","Thief (1st)","Thief (2nd)","Thief (3rd)",
+"Thief (4th)","Thief (5th)","Thief (6th)","Thief (7th)","Thief (8th)",
+"Thief (9th)","High Thief","Master Thief","Executioner","Low Assassin",
+"Assassin","High Assassin","Guildsmaster"},
+	/* Rangers	 */
+{"Runner (1st)","Runner (2nd)","Runner (3rd)","Strider (1st)","Strider (2nd)",
+"Strider (3rd)","Scout (1st)","Scout (2nd)","Scout (3rd)","Scout (4th)",
+"Scout (5th)","Courser (1st)","Courser (2nd)","Courser (3rd)","Courser (4th)",
+"Courser (5th)","Tracker (1st)","Tracker (2nd)","Tracker (3rd)",
+"Tracker (4th)","Tracker (5th)","Tracker (6th)","Tracker (7th)",
+"Tracker (8th)","Tracker (9th)","Guide (1st)","Guide (2nd)","Guide (3rd)",
+"Guide (4th)","Guide (5th)","Guide (6th)","Guide (7th)","Guide (8th)",
+"Guide (9th)","Pathfinder-1","Pathfinder-2","Pathfinder-3","Ranger",
+"High Ranger","Ranger Lord"},
+	/* Paladins	 */
+{"Gallant","Keeper (1st)","Keeper (2nd)","Keeper (3rd)","Keeper (4th)",
+"Keeper (5th)","Keeper (6th)","Keeper (7th)","Keeper (8th)","Keeper (9th)",
+"Protector-1","Protector-2","Protector-3","Protector-4","Protector-5",
+"Protector-6","Protector-7","Protector-8","Defender-1","Defender-2",
+"Defender-3","Defender-4","Defender-5","Defender-6","Defender-7","Defender-8",
+"Warder (1st)","Warder (2nd)","Warder (3rd)","Warder (4th)","Warder (5th)",
+"Warder (6th)","Warder (7th)","Warder (8th)","Warder (9th)","Guardian",
+"Chevalier","Justiciar","Paladin","High Lord"}
+};
+// The player titles are stored in a (read-only) record
+// i.e. I will need an application to print them to it,
+// Moria will only need to read from it.
+// This table is used for ...
+// 'buf' must have at least 14 chars
+/*
+ *  newrec_playertitle
+ *  REQUIRES: the player titles, above;  no REC_PLAYERTITLE in main db
+ *  RESULT:   record is created and initialized with that data
+ */
+void newrec_playertitle() {
+  VoidHand rec;
+  Ptr p;
+  Int size;
+  UInt index;
+  ULong uniqueID = REC_PLAYERTITLE;
+  Short i, j, offset;
+  index = DmNumRecords(MoriaDB);
+  size = MAX_CLASS * MAX_PLAYER_LEVEL * MAXLEN_PLAYERTITLE;
+  rec = DmNewRecord(MoriaDB, &index, size);
+  p = MemHandleLock(rec);
+  // print stuff to it.
+  for (i = 0, offset = 0 ; i < MAX_CLASS; i++)
+    for (j = 0 ; j < MAX_PLAYER_LEVEL ; j++, offset += MAXLEN_PLAYERTITLE)
+      DmWrite(p, offset, player_title[i][j], MAXLEN_PLAYERTITLE);
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaDB, index, true);
+  DmSetRecordInfo(MoriaDB, index, NULL, &uniqueID); // set its uid!
+}
+/*
+ *  copy_player_title
+ *  IN: class & level of desired title, space to copy it
+ *  REQUIRES: buf is large enough, record exists
+ *  RESULT:   title is copied into buf (if class and level are in bounds)
+ */
+void copy_player_title(Short pclass, Short plevel, Char *buf)
+{
+  VoidHand rec;
+  Ptr p;
+  UInt index;
+  ULong uniqueID = REC_MESSAGELOG;
+  Char * str;
+  // bounds check
+  if (plevel < 0 || pclass < 0 ||
+      pclass >= MAX_CLASS || plevel >= MAX_PLAYER_LEVEL)
+    return 0;
+  if (DmFindRecordByID(MoriaDB, uniqueID, &index)) return;
+  rec = DmQueryRecord(MoriaDB, index);
+  p = MemHandleLock(rec);
+  str = (Char *) p;
+  StrCopy(buf, str);
+  MemHandleUnlock(rec);
+}
+
+/************************************************************************
+ *                                                                      *
+ *                      Background Generation                           *
+ *                                                                      *
+ ************************************************************************/
+
+background_type background[MAX_BACKGROUND] = {
+{"You are the illegitimate and unacknowledged child ",		 10, 1, 2, 25},
+{"You are the illegitimate but acknowledged child ",		 20, 1, 2, 35},
+{"You are one of several children ",				 95, 1, 2, 45},
+{"You are the first child ",					100, 1, 2, 50},
+{"of a Serf.  ",						 40, 2, 3, 65},
+{"of a Yeoman.  ",						 65, 2, 3, 80},
+{"of a Townsman.  ",						 80, 2, 3, 90},
+{"of a Guildsman.  ",						 90, 2, 3,105},
+{"of a Landed Knight.  ",					 96, 2, 3,120},
+{"of a Titled Noble.  ",					 99, 2, 3,130},
+{"of a Royal Blood Line.  ",					100, 2, 3,140},
+{"You are the black sheep of the family.  ",			 20, 3,50, 20},
+{"You are a credit to the family.  ",				 80, 3,50, 55},
+{"You are a well liked child.  ",				100, 3,50, 60},
+{"Your mother was a Green-Elf.  ",				 40, 4, 1, 50},
+{"Your father was a Green-Elf.  ",				 75, 4, 1, 55},
+{"Your mother was a Grey-Elf.  ",				 90, 4, 1, 55},
+{"Your father was a Grey-Elf.  ",				 95, 4, 1, 60},
+{"Your mother was a High-Elf.  ",				 98, 4, 1, 65},
+{"Your father was a High-Elf.  ",				100, 4, 1, 70},
+{"You are one of several children ",				 60, 7, 8, 50},
+{"You are the only child ",					100, 7, 8, 55},
+{"of a Green-Elf ",						 75, 8, 9, 50},
+{"of a Grey-Elf ",						 95, 8, 9, 55},
+{"of a High-Elf ",						100, 8, 9, 60},
+{"Ranger.  ",							 40, 9,54, 80},
+{"Archer.  ",							 70, 9,54, 90},
+{"Warrior.  ",							 87, 9,54,110},
+{"Mage.  ",							 95, 9,54,125},
+{"Prince.  ",							 99, 9,54,140},
+{"King.  ",							100, 9,54,145},
+{"You are one of several children of a Halfling ",		 85,10,11, 45},
+{"You are the only child of a Halfling ",			100,10,11, 55},
+{"Bum.  ",							 20,11, 3, 55},
+{"Tavern Owner.  ",						 30,11, 3, 80},
+{"Miller.  ",							 40,11, 3, 90},
+{"Home Owner.  ",						 50,11, 3,100},
+{"Burglar.  ",							 80,11, 3,110},
+{"Warrior.  ",							 95,11, 3,115},
+{"Mage.  ",							 99,11, 3,125},
+{"Clan Elder.  ",						100,11, 3,140},
+{"You are one of several children of a Gnome ",			 85,13,14, 45},
+{"You are the only child of a Gnome ",				100,13,14, 55},
+{"Beggar.  ",							 20,14, 3, 55},
+{"Braggart.  ",							 50,14, 3, 70},
+{"Prankster.  ",						 75,14, 3, 85},
+{"Warrior.  ",							 95,14, 3,100},
+{"Mage.  ",							100,14, 3,125},
+{"You are one of two children of a Dwarven ",			 25,16,17, 40},
+{"You are the only child of a Dwarven ",			100,16,17, 50},
+{"Thief.  ",							 10,17,18, 60},
+{"Prison Guard.  ",						 25,17,18, 75},
+{"Miner.  ",							 75,17,18, 90},
+{"Warrior.  ",							 90,17,18,110},
+{"Priest.  ",							 99,17,18,130},
+{"King.  ",							100,17,18,150},
+{"You are the black sheep of the family.  ",			 15,18,57, 10},
+{"You are a credit to the family.  ",				 85,18,57, 50},
+{"You are a well liked child.  ",				100,18,57, 55},
+{"Your mother was an Orc, but it is unacknowledged.  ",		 25,19,20, 25},
+{"Your father was an Orc, but it is unacknowledged.  ",		100,19,20, 25},
+{"You are the adopted child ",					100,20, 2, 50},
+{"Your mother was a Cave-Troll ",				 30,22,23, 20},
+{"Your father was a Cave-Troll ",				 60,22,23, 25},
+{"Your mother was a Hill-Troll ",				 75,22,23, 30},
+{"Your father was a Hill-Troll ",				 90,22,23, 35},
+{"Your mother was a Water-Troll ",				 95,22,23, 40},
+{"Your father was a Water-Troll ",				100,22,23, 45},
+{"Cook.  ",							  5,23,62, 60},
+{"Warrior.  ",							 95,23,62, 55},
+{"Shaman.  ",							 99,23,62, 65},
+{"Clan Chief.  ",						100,23,62, 80},
+{"You have dark brown eyes, ",					 20,50,51, 50},
+{"You have brown eyes, ",					 60,50,51, 50},
+{"You have hazel eyes, ",					 70,50,51, 50},
+{"You have green eyes, ",					 80,50,51, 50},
+{"You have blue eyes, ",					 90,50,51, 50},
+{"You have blue-gray eyes, ",					100,50,51, 50},
+{"straight ",							 70,51,52, 50},
+{"wavy ",							 90,51,52, 50},
+{"curly ",							100,51,52, 50},
+{"black hair, ",						 30,52,53, 50},
+{"brown hair, ",						 70,52,53, 50},
+{"auburn hair, ",						 80,52,53, 50},
+{"red hair, ",							 90,52,53, 50},
+{"blond hair, ",						100,52,53, 50},
+{"and a very dark complexion.",					 10,53, 0, 50},
+{"and a dark complexion.",					 30,53, 0, 50},
+{"and an average complexion.",					 80,53, 0, 50},
+{"and a fair complexion.",					 90,53, 0, 50},
+{"and a very fair complexion.",					100,53, 0, 50},
+{"You have light grey eyes, ",					 85,54,55, 50},
+{"You have light blue eyes, ",					 95,54,55, 50},
+{"You have light green eyes, ",					100,54,55, 50},
+{"straight ",							 75,55,56, 50},
+{"wavy ",							100,55,56, 50},
+{"black hair, and a fair complexion.",				 75,56, 0, 50},
+{"brown hair, and a fair complexion.",				 85,56, 0, 50},
+{"blond hair, and a fair complexion.",				 95,56, 0, 50},
+{"silver hair, and a fair complexion.",				100,56, 0, 50},
+{"You have dark brown eyes, ",					 99,57,58, 50},
+{"You have glowing red eyes, ",					100,57,58, 60},
+{"straight ",							 90,58,59, 50},
+{"wavy ",							100,58,59, 50},
+{"black hair, ",						 75,59,60, 50},
+{"brown hair, ",						100,59,60, 50},
+{"a one foot beard, ",						 25,60,61, 50},
+{"a two foot beard, ",						 60,60,61, 51},
+{"a three foot beard, ",					 90,60,61, 53},
+{"a four foot beard, ",						100,60,61, 55},
+{"and a dark complexion.",					100,61, 0, 50},
+{"You have slime green eyes, ",					 60,62,63, 50},
+{"You have puke yellow eyes, ",					 85,62,63, 50},
+{"You have blue-bloodshot eyes, ",				 99,62,63, 50},
+{"You have glowing red eyes, ",					100,62,63, 55},
+{"dirty ",							 33,63,64, 50},
+{"mangy ",							 66,63,64, 50},
+{"oily ",							100,63,64, 50},
+{"sea-weed green hair, ",					 33,64,65, 50},
+{"bright red hair, ",						 66,64,65, 50},
+{"dark purple hair, ",						100,64,65, 50},
+{"and green ",							 25,65,66, 50},
+{"and blue ",							 50,65,66, 50},
+{"and white ",							 75,65,66, 50},
+{"and black ",							100,65,66, 50},
+{"ulcerous skin.",						 33,66, 0, 50},
+{"scabby skin.",						 66,66, 0, 50},
+{"leprous skin.",						100,66, 0, 50}
+};
+// The backgrounds are stored in a (read-only) record
+// This table is used for amusing you during character generation,
+// and also adjusting your attributes.
+// I think I will need to reorganize it to save space
+// Suppose we print the generated text into buf,
+// and alter attributes in env.
+/*
+ *  newrec_background
+ *  REQUIRES: the backgrounds, above;  no REC_BACKGROUND in main db
+ *  RESULT:   record is created and initialized with that data
+ */
+void newrec_background()
+{
+  // I'll probably put this into multiple records, actually.
+}
+/*
+ *  generate_background
+ *  REQUIRES: record exists
+ *  RESULT:   stuff is copied into buf, and player stats are MUTATED.
+ */
+void generate_background(Char *buf, everything *env)
+{
+  // Do we ever need to "regenerate" the same background?
+  // If so, we must remember what random indices we used.
+}
+
+/************************************************************************
+ *                                                                      *
+ *                          Player Experience                           *
+ *                                                                      *
+ ************************************************************************/
+
+/* Base experience levels, may be adjusted up for race and/or class*/
+ULong player_exp[MAX_PLAYER_LEVEL] = {
+      10,      25,	45,	 70,	  100,	    140,      200,	280,
+     380,     500,     650,	850,	 1100,	   1400,     1800,     2300,
+    2900,    3600,    4400,    5400,	 6800,	   8400,    10200,    12500,
+   17500,   25000,  35000L,  50000L,   75000L,	100000L,  150000L,  200000L,
+ 300000L, 400000L, 500000L, 750000L, 1500000L, 2500000L, 5000000L, 10000000L
+};
+// The experience table is stored in a (read-only) record
+// This table is for determining if you have enough exp to go up a level
+/*
+ *  newrec_playerexp
+ *  REQUIRES: experience levels, above;  no REC_PLAYEREXP in main db
+ *  RESULT:   record is created and initialized with that data
+ */
+void newrec_playerexp() {
+  VoidHand rec;
+  Ptr p;
+  Int size;
+  UInt index;
+  ULong uniqueID = REC_PLAYEREXP;
+  Short qty = MAX_PLAYER_LEVEL;
+  Short sze = sizeof(ULong);
+  Short i, offset;
+  index = DmNumRecords(MoriaDB);
+  size = qty * sze;
+  rec = DmNewRecord(MoriaDB, &index, size);
+  p = MemHandleLock(rec);
+  // print stuff to it.
+  for (i = 0, offset = 0 ; i < qty; i++, offset += sze)
+    DmWrite(p, offset, player_exp[i], sze);
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaDB, index, true);
+  DmSetRecordInfo(MoriaDB, index, NULL, &uniqueID); // set its uid!
+}
+/*
+ *  get_player_exp
+ *  IN: player level of interest
+ *  REQUIRES: record exists
+ *  RESULT:   returns the minimum experience to be that level, or 0 on failure!
+ */
+ULong get_player_exp(Short plevel)
+{
+  VoidHand rec;
+  Ptr p;
+  UInt index;
+  ULong uniqueID = REC_PLAYEREXP;
+  ULong *exps;
+  ULong val;
+  // look up and return the correct number
+  plevel--; // the 0th entry is "exp needed to reach level 1", etc.
+  // bounds check
+  if (plevel < 0 || plevel >= MAX_PLAYER_LEVEL) return 0;
+  if (DmFindRecordByID(MoriaDB, uniqueID, &index)) return 0;
+  rec = DmQueryRecord(MoriaDB, index);
+  p = MemHandleLock(rec);
+  exps = (ULong *) p;
+  val = exps[plevel];
+  MemHandleUnlock(rec);
+  return val;
+}
+
+/************************************************************************
+ *                                                                      *
+ *                          Player Hit Points                           *
+ *                                                                      *
+ ************************************************************************/
+
+// The hit point table is stored in a (write-once) record
+// This table is for determining how much hp you get per level
+// if you lose and regain a level.
+/*
+ *  newrec_playerexp
+ *  REQUIRES: REC_PLAYERHP record does not exist in save db
+ *  RESULT:   empty record of appropriate size is created
+ */
+void newrec_playerhp()
+{
+  VoidHand rec;
+  Ptr p;
+  Int i, size;
+  UInt index;
+  ULong uniqueID = REC_PLAYERHP;
+
+  index = DmNumRecords(MoriaSaveDB);
+  size = sizeof(UShort) * MAX_PLAYER_LEVEL;
+
+  rec = DmNewRecord(MoriaSaveDB, &index, size);
+  p = MemHandleLock(rec);
+  DmSet(p, 0, size, 0);  // set it all to 0.  i think that will work.
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaSaveDB, index, true);
+  DmSetRecordInfo(MoriaSaveDB, index, NULL, &uniqueID); // set its uid!
+}
+/*
+ *  reset_player_hp
+ *  REQUIRES: REC_PLAYERHP record exists in save db
+ *  RESULT:   zeroes the record
+ */
+void reset_player_hp()
+{
+  VoidHand rec;
+  Ptr p;
+  UInt index;
+  ULong uniqueID = REC_PLAYERHP;
+  Int size;
+
+  if (DmFindRecordByID(MoriaSaveDB, uniqueID, &index)) return;
+  rec = DmGetRecord(MoriaSaveDB, index);
+  p = MemHandleLock(rec);
+  size = sizeof(UShort) * MAX_PLAYER_LEVEL;
+  DmSet(p, 0, size, 0);  // set it all to 0.
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaSaveDB, index, true);
+}
+/*
+ *  write_player_exp
+ *  IN: level player just reached, hp player got upon reaching it
+ *  REQUIRES: record exists
+ *  RESULT:   write this in the record
+ */
+void write_player_hp(Short plevel, UShort hp)
+{
+  // record the hp the player got upon reaching that level
+  VoidHand rec;
+  Ptr p;
+  UInt index;
+  ULong uniqueID = REC_PLAYERHP;
+
+  plevel--;
+  if (DmFindRecordByID(MoriaSaveDB, uniqueID, &index)) return;
+  rec = DmGetRecord(MoriaSaveDB, index);
+  p = MemHandleLock(rec);
+  DmWrite(p, sizeof(UShort) * plevel, hp, sizeof(UShort));
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaSaveDB, index, true);
+}
+/*
+ *  get_player_exp
+ *  IN: player level of interest
+ *  REQUIRES: record exists
+ *  RESULT:   returns the hit points the player got upon reaching that level
+ */
+UShort get_player_hp(Short plevel)
+{
+  VoidHand rec;
+  Ptr p;
+  UInt index;
+  ULong uniqueID = REC_PLAYERHP;
+  UShort *hps;
+  UShort val;
+  // look up and return the correct number
+  plevel--;
+  // bounds check
+  if (plevel < 0 || plevel >= MAX_PLAYER_LEVEL) return 0;
+  if (DmFindRecordByID(MoriaSaveDB, uniqueID, &index)) return 0;
+  rec = DmQueryRecord(MoriaSaveDB, index);
+  p = MemHandleLock(rec);
+  hps = (UShort *) p;
+  val = hps[plevel];
+  MemHandleUnlock(rec);
+  return val;
+}
+
+/************************************************************************
+ *                                                                      *
+ *                          Race Gold Adjustment                        *
+ *                                                                      *
+ ************************************************************************/
+
+/* Buying and selling adjustments for character race VS store	*/
+/* owner race							 */
+UChar rgold_adj[MAX_RACES][MAX_RACES] = {
+			/*  Hum,  HfE,	Elf,  Hal,  Gno,  Dwa,	HfO,  HfT*/
+/*Human		 */	  {  100,  105,	 105,  110,  113,  115,	 120,  125},
+/*Half-Elf	 */	  {  110,  100,	 100,  105,  110,  120,	 125,  130},
+/*Elf		 */	  {  110,  105,	 100,  105,  110,  120,	 125,  130},
+/*Halfling	 */	  {  115,  110,	 105,	95,  105,  110,	 115,  130},
+/*Gnome		 */	  {  115,  115,	 110,  105,   95,  110,	 115,  130},
+/*Dwarf		 */	  {  115,  120,	 120,  110,  110,   95,	 125,  135},
+/*Half-Orc	 */	  {  115,  120,	 125,  115,  115,  130,	 110,  115},
+/*Half-Troll	 */	  {  110,  115,	 115,  110,  110,  130,	 110,  110}
+};
+// The race gold adjustment table is stored in a (read-only) record
+// This table is used to adjust the price a shopkeeper offers,
+// based on your degree of relationship
+/*
+ *  newrec_rgoldadj
+ *  REQUIRES: gold adjustments, above;  no REC_RGOLDADJ in main db
+ *  RESULT:   record is created and initialized with that data
+ */
+void newrec_rgoldadj() {
+  VoidHand rec;
+  Ptr p;
+  Int size;
+  UInt index;
+  ULong uniqueID = REC_RGOLDADJ;
+  Short i, j, offset;
+  index = DmNumRecords(MoriaDB);
+  size = sizeof(UChar) * MAX_RACES * MAX_RACES;
+  rec = DmNewRecord(MoriaDB, &index, size);
+  p = MemHandleLock(rec);
+  // print stuff to it.
+  for (i = 0, offset = 0 ; i < MAX_RACES; i++)
+    for (j = 0 ; j < MAX_RACES; j++, offset += sizeof(UChar))
+      DmWrite(p, offset, rgold_adj[i][j], sizeof(UChar));
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaDB, index, true);
+  DmSetRecordInfo(MoriaDB, index, NULL, &uniqueID); // set its uid!
+}
+/*
+ *  get_player_exp
+ *  IN: race of the store owner and player
+ *  REQUIRES: record exists
+ *  RESULT:   returns the gold adjustment based on mutual amicability
+ */
+UChar rgold_adj(Short owner_race, Short player_race)
+{
+  VoidHand rec;
+  Ptr p;
+  UInt index;
+  ULong uniqueID = REC_RGOLDADJ;
+  UChar **adjs;
+  UChar val;
+  // look up and return the correct number
+  // bounds check
+  if (owner_race < 0 || player_race < 0 ||
+      owner_race >= MAX_RACES || player_race >= MAX_RACES)
+    return 0;
+  if (DmFindRecordByID(MoriaDB, uniqueID, &index)) return 0;
+  rec = DmQueryRecord(MoriaDB, index);
+  p = MemHandleLock(rec);
+  adjs = (UChar **) p;
+  val = adjs[owner_race][player_race]; // xxx make sure this isn't backwards
+  MemHandleUnlock(rec);
+  return val;
+}
+
+/************************************************************************
+ *                                                                      *
+ *                          Spell Names                                 *
+ *                                                                      *
+ ************************************************************************/
+
+Char *spell_names[MAX_SPELLNAME] = {
+  /* Mage Spells */
+  "Magic Missile",  "Detect Monsters",	"Phase Door",  "Light Area",
+  "Cure Light Wounds",	"Find Hidden Traps/Doors",  "Stinking Cloud",
+  "Confusion",	"Lightning Bolt",  "Trap/Door Destruction", "Sleep I",
+  "Cure Poison",  "Teleport Self",  "Remove Curse",  "Frost Bolt",
+  "Turn Stone to Mud",	"Create Food",	"Recharge Item I",  "Sleep II",
+  "Polymorph Other",  "Identify",  "Sleep III",	 "Fire Bolt",  "Slow Monster",
+  "Frost Ball",	 "Recharge Item II", "Teleport Other",	"Haste Self",
+  "Fire Ball", "Word of Destruction", "Genocide",
+  /* Priest Spells, start at index 31 */
+  "Detect Evil",  "Cure Light Wounds",	"Bless",  "Remove Fear", "Call Light",
+  "Find Traps",	 "Detect Doors/Stairs",	 "Slow Poison",	 "Blind Creature",
+  "Portal",  "Cure Medium Wounds",  "Chant",  "Sanctuary",  "Create Food",
+  "Remove Curse",  "Resist Heat and Cold",  "Neutralize Poison",
+  "Orb of Draining",  "Cure Serious Wounds",  "Sense Invisible",
+  "Protection from Evil",  "Earthquake",  "Sense Surroundings",
+  "Cure Critical Wounds",  "Turn Undead",  "Prayer",  "Dispel Undead",
+  "Heal",  "Dispel Evil",  "Glyph of Warding",	"Holy Word"
+};
+// The spell name table is stored in a (read-only) record
+// This table is used for, e.g., "the <spell name> hits the <monster name>"
+// 'buf' must have at least 24 chars
+/*
+ *  newrec_spellname
+ *  REQUIRES: spell names, above;  no REC_SPELLNAME in main db
+ *  RESULT:   record is created and initialized with that data
+ */
+void newrec_spellname() {
+  newrec_text(REC_SPELLNAME, MAX_SPELLNAME, MAXLEN_SPELLNAME, spell_names);
+}
+/*
+ *  copy_spell_name
+ *  IN: index of desired spell, space to copy it
+ *  REQUIRES: buf is large enough, record exists
+ *  RESULT:   name is copied into buf (if index is in bounds)
+ */
+void copy_spell_name(Short spell, Char *buf)
+{
+  copy_text(REC_SPELLNAME, MAX_SPELLNAME, spell, buf);
+}
+
+/************************************************************************
+ *                                                                      *
+ *                          Spell Ordering                              *
+ *                                                                      *
+ ************************************************************************/
+
+// The order that you have learned spells is written to a record.
+// (This is so that you forget most-recently-learned spells first,
+// and also re-learn in the same order you learned in.)
+// This must be set to all 99's when a new character is created.
+// (Ick.  Can't I just set it to zeros?)
+/*
+ *  newrec_spellorder
+ *  REQUIRES: REC_SPELLORDER record does not exist in save db
+ *  RESULT:   empty record of appropriate size is created
+ */
+void newrec_spellorder()
+{
+  // create empty record in MoriaSaveDB
+  VoidHand rec;
+  Ptr p;
+  Int i, size;
+  UInt index;
+  ULong uniqueID = REC_SPELLORDER;
+
+  index = DmNumRecords(MoriaSaveDB);
+  size = sizeof(UChar) * 32;
+
+  rec = DmNewRecord(MoriaSaveDB, &index, size);
+  p = MemHandleLock(rec);
+  DmSet(p, 0, size, 0);  // set it all to 0.  i think that will work.
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaSaveDB, index, true);
+  DmSetRecordInfo(MoriaSaveDB, index, NULL, &uniqueID); // set its uid!
+}
+/*
+ *  reset_spell_order
+ *  REQUIRES: REC_SPELLORDER record exists in save db
+ *  RESULT:   zeroes the record
+ */
+void reset_spell_order()
+{
+  VoidHand rec;
+  Ptr p;
+  UInt index;
+  ULong uniqueID = REC_SPELLORDER;
+  Int size;
+  UChar val = NO_SPELL; // well actually Byte==UChar anyway
+
+  if (DmFindRecordByID(MoriaSaveDB, uniqueID, &index)) return;
+  rec = DmGetRecord(MoriaSaveDB, index);
+  p = MemHandleLock(rec);
+  DmSet(p, 0, MAX_SPELLORDER, (Byte) val);  // set it all to 99.
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaSaveDB, index, true);
+}
+// The spell order table is write-once (per lifetime).
+/*
+ *  write_spell_order
+ *  IN: spell player just learned, globals
+ *  REQUIRES: record exists
+ *  RESULT:   write spell in next empty slot, update empty-slot-index global
+ */
+void write_spell_order(Short new_spell, everything *env)
+{
+  VoidHand rec;
+  Ptr p;
+  UInt index;
+  ULong uniqueID = REC_SPELLORDER;
+
+  if (env->last_known_spell >= MAX_SPELLORDER)
+    return; // that should not happen...
+  // write new_spell to index env->last_known_spell
+  if (DmFindRecordByID(MoriaSaveDB, uniqueID, &index)) return;
+  rec = DmGetRecord(MoriaSaveDB, index);
+  p = MemHandleLock(rec);
+  DmWrite(p, sizeof(Short) * env->last_known_spell, new_spell, sizeof(Short));
+  env->last_known_spell++; // because it points to first "empty" slot
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaSaveDB, index, true);
+}
+// a spell to forget or re-learn
+/*
+ *  get_spell_order
+ *  IN: index i
+ *  REQUIRES: record exists
+ *  RESULT:   return the i'th spell learned
+ */
+Short get_spell_order(Short i)
+{
+  // return the i'th spell learned
+  VoidHand rec;
+  Ptr p;
+  UInt index;
+  ULong uniqueID = REC_SPELLORDER;
+  Short *spells;
+  Short val;
+  // look up and return the correct number
+  plevel--;
+  // bounds check
+  if (plevel < 0 || plevel >= MAX_SPELLORDER) return 0;
+  if (DmFindRecordByID(MoriaSaveDB, uniqueID, &index)) return 0;
+  rec = DmQueryRecord(MoriaSaveDB, index);
+  p = MemHandleLock(rec);
+  spells = (Short *) p;
+  val = spells[i];
+  MemHandleUnlock(rec);
+  return val;
+}
+
+/************************************************************************
+ *                                                                      *
+ *                          Store Owners                                *
+ *                                                                      *
+ ************************************************************************/
+// Ok, owner race is included in the struct, so I will eliminate from string.
+// What about store type?
+// Also, make sure alignment does not suck!
+owner_type owners[MAX_OWNERS] = {
+  {"Erick the Honest",      250, 175, 108,  4, 0, 12}, // human general store
+  {"Mauglin the Grumpy",  32000, 200, 112,  4, 5,  5}, // dwarf armory
+  {"Arndal Beast-Slayer", 10000, 185, 110,  5, 1,  8}, // h'elf weaponsmith
+  {"Hardblow the Humble",  3500, 175, 109,  6, 0, 15}, // human temple
+  {"Ga-nat the Greedy",   12000, 220, 115,  4, 4,  9}, // gnome alchemist
+  {"Valeria Starshine",   32000, 175, 110,  5, 2, 11}, // elf magic shop
+  {"Andy the Friendly",     200, 170, 108,  5, 3, 15}, // halfl general store
+  {"Darg-Low the Grim",   10000, 190, 111,  4, 0,  9}, // human armory
+  {"Oglign Dragon-Slayer",32000, 195, 112,  4, 5,  8}, // dwarf weaponsmith
+  {"Gunnar the Paladin",   5000, 185, 110,  5, 0, 23}, // human temple
+  {"Mauser the Chemist",  10000, 190, 111,  5, 1,  8}, // h'elf alchemist
+  {"Gopher the Great!",   20000, 215, 113,  6, 4, 10}, // gnome magic shop
+  {"Lyar-el the Comely",    300, 165, 107,  6, 2, 18}, // elf general store
+  {"Mauglim the Horrible", 3000, 200, 113,  5, 6,  9}, // h'orc armory
+  {"Ithyl-Mak the Beastly",3000, 210, 115,  6, 7,  8}, // h'troll weaponsmith
+  {"Delilah the Pure",    25000, 180, 107,  6, 1, 20}, // h'elf temple
+  {"Wizzle the Chaotic",  10000, 190, 110,  6, 3,  8}, // halfling alchemist
+  {"Inglorian the Mage",  32000, 200, 110,  7, 0, 10}  // human magic shop
+};
+// Store owners are stored in a record
+//bored
+/*
+ *  newrec_storeowner
+ *  REQUIRES: store owner info, above;  no REC_STOREOWNER in main db
+ *  RESULT:   record is created and initialized with that data
+ */
+void newrec_storeowner() {
+  VoidHand rec;
+  Ptr p;
+  Int size;
+  UInt index;
+  ULong uniqueID = REC_STOREOWNER;
+  Short qty = MAX_OWNERS;
+  Short sze = sizeof(owner_type);
+  Short i, offset;
+  index = DmNumRecords(MoriaDB);
+  size = qty * sze;
+  rec = DmNewRecord(MoriaDB, &index, size);
+  p = MemHandleLock(rec);
+  // print stuff to it.
+  for (i = 0, offset = 0 ; i < qty; i++, offset += sze)
+    DmWrite(p, offset, owners[i], sze);
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaDB, index, true);
+  DmSetRecordInfo(MoriaDB, index, NULL, &uniqueID); // set its uid!
+}
+
+// Also need a routine to retrieve the store owner!
+
+/************************************************************************
+ *                                                                      *
+ *                          Store Types                                 *
+ *                                                                      *
+ ************************************************************************/
+// Types of stores - this is freaky and contains their whole inventory
+// there are MAX_STORES of store_type
+
+/************************************************************************
+ *                                                                      *
+ *                          Store Selection                             *
+ *                                                                      *
+ ************************************************************************/
+// the inventory of the store?
+// there are MAX_STORES * STORE_CHOICES of UShort
+
+
+// The objecty things following are chiefly from treasure.c
+/************************************************************************
+ *                                                                      *
+ *                          Types of Objects                            *
+ *                                                                      *
+ ************************************************************************/
+// There are MAX_OBJECTS of treasure_type
+
+
+/************************************************************************
+ *                                                                      *
+ *                          Sorted objects                              *
+ *                                                                      *
+ ************************************************************************/
+
+// Short MAX_DUNGEON_OBJ
+// I am not sure what the purpose of this is.
+// "an array with object indices sorted by level" according to main.c
+// It is read-only after construction.  it must be constructed AFTER t_level
+
+/************************************************************************
+ *                                                                      *
+ *                Objects Identified   (object_ident)                   *
+ *                                                                      *
+ ************************************************************************/
+
+// UChar OBJECT_IDENT_SIZE
+void create_objid()
+{
+  Int size = OBJECT_IDENT_SIZE * sizeof(UChar);
+  // ...
+}
+void objid_clear()
+{
+  // DmSet everything to 0
+}
+void objid_set_known(Short index)
+{
+  // |= OD_KNOWN1
+}
+void objid_set_tried(Short index)
+{
+  // |= OD_TRIED
+}
+void objid_set_untried(Short index)
+{
+  // &= ~OD_TRIED
+}
+Boolean objid_is_known(Short index)
+{
+  // & OD_KNOWN1
+}
+Boolean objid_is_tried(Short index);
+{
+  // & OD_TRIED
+}
+
+
+/************************************************************************
+ *                                                                      *
+ *                  Treasure Level array (t_level)                      *
+ *                                                                      *
+ ************************************************************************/
+
+// Short MAX_OBJ_LEVEL + 1
+
+// First it is zeroed.
+// Then we walk through object_list[] and increment a bucket for each .level
+// Then we walk through the buckets and accumulate, so that
+// t_level[i] is the number of object types of level i or lower.
+
+// After that, it is a read-only puppy in misc3.c
+// It is also read from in main.c to construct the funky sorted object list.
+// which is ALSO read-only after construction.
+
+/************************************************************************
+ *                                                                      *
+ *                          t_list                                      *
+ *                                                                      *
+ ************************************************************************/
+
+// inven_type MAX_TALLOC
+
+
+// Ok, I have no idea what this array is for.  Maybe it is the objects
+// currently on this dungeon level, because it gets mutated and checked a lot
+
+/************************************************************************
+ *                                                                      *
+ *                          Inventory                                   *
+ *                                                                      *
+ ************************************************************************/
+
+// inven_type INVEN_ARRAY_SIZE
+
+// I imagine that this is your INVENTORY.
+// It gets used ALL OVER THE PLACE.  and passed around in POINTERS.  ugh.
+
+
+/************************************************************************
+ *                                                                      *
+ *                          Special Object Names                        *
+ *                                                                      *
+ ************************************************************************/
+// foo "of slaying"
+// There are SN_ARRAY_SIZE of 19 chars
+char *special_names[SN_ARRAY_SIZE] = {
+	CNIL,			"(R)",			"(RA)",
+	"(RF)",			"(RC)",			"(RL)",
+	"(HA)",			"(DF)",			"(SA)",
+	"(SD)",			"(SE)",			"(SU)",
+	"(FT)",			"(FB)",			"of Free Action",
+	"of Slaying",		"of Clumsiness",	"of Weakness",
+	"of Slow Descent",	"of Speed",		"of Stealth",
+	"of Slowness",		"of Noise",		"of Great Mass",
+	"of Intelligence",	"of Wisdom",		"of Infra-Vision",
+	"of Might",		"of Lordliness",	"of the Magi",
+	"of Beauty",		"of Seeing",		"of Regeneration",
+	"of Stupidity",		"of Dullness",		"of Blindness",
+	"of Timidness",		"of Teleportation",	"of Ugliness",
+	"of Protection",	"of Irritation",	"of Vulnerability",
+	"of Enveloping",	"of Fire",		"of Slay Evil",
+	"of Dragon Slaying",	"(Empty)",		"(Locked)",
+	"(Poison Needle)",	"(Gas Trap)",		"(Explosion Device)",
+	"(Summoning Runes)",	"(Multiple Traps)",	"(Disarmed)",
+	"(Unlocked)",		"of Slay Animal"
+};
+/*
+ *  newrec_specname
+ *  REQUIRES: "of foo" names, above;  no REC_SPECNAME in main db
+ *  RESULT:   record is created and initialized with that data
+ */
+void newrec_specname() {
+  newrec_text(REC_SPECNAME, SN_ARRAY_SIZE, MAXLEN_SPECNAME, special_names);
+}
+/*
+ *  copy_spec_name
+ *  IN: index of desired "of foo", space to copy it
+ *  REQUIRES: buf is large enough, record exists
+ *  RESULT:   name is copied into buf (if index is in bounds)
+ */
+void copy_spec_name(Short spec, Char *buf)
+{
+  copy_text(REC_SPECNAME, MAXLEN_SPECNAME, spec, buf);
+}
+
+/************************************************************************
+ *                                                                      *
+ *                          Types of Monsters                           *
+ *                                                                      *
+ ************************************************************************/
+// There are MAX_CREATURES of creature_type
+// they are found in c_list.
+
+creature_type c_list[MAX_CREATURES] = {
+{"Filthy Street Urchin"	    ,0x0012000AL,0x00000000L,0x2034,    0,  40,
+   4,	1, 11, 'p', {1,4}   , {72,148,0,0}		,    0},
+{"Blubbering Idiot"	    ,0x0012000AL,0x00000000L,0x2030,    0,   0,
+   6,	1, 11, 'p', {1,2}   , {79,0,0,0}		,    0},
+{"Pitiful-Looking Beggar"   ,0x0012000AL,0x00000000L,0x2030,    0,  40,
+  10,	1, 11, 'p', {1,4}   , {72,0,0,0}		,    0},
+{"Mangy-Looking Leper"	    ,0x0012000AL,0x00000000L,0x2030,    0,  50,
+  10,	1, 11, 'p', {1,1}   , {72,0,0,0}		,    0},
+{"Squint-Eyed Rogue"	    ,0x07120002L,0x00000000L,0x2034,    0,  99,
+  10,	8, 11, 'p', {2,8}   , {5,149,0,0}		,    0},
+{"Singing, Happy Drunk"	    ,0x06120038L,0x00000000L,0x2030,    0,   0,
+  10,	1, 11, 'p', {2,3}   , {72,0,0,0}		,    0},
+{"Mean-Looking Mercenary"   ,0x0B12000AL,0x00000000L,0x2034,    0, 250,
+  10,  20, 11, 'p', {5,8}   , {9,0,0,0}			,    0},
+{"Battle-Scarred Veteran"   ,0x0B12000AL,0x00000000L,0x2030,    0, 250,
+  10,  30, 11, 'p', {7,8}   , {15,0,0,0}		,    0},
+{"Grey Mushroom patch"	    ,0x00000001L,0x00000000L,0x10A0,    1,   0,
+   2,	1, 11, ',', {1,2}   , {91,0,0,0}		,    1},
+{"Giant Yellow Centipede"   ,0x00000002L,0x00000000L,0x0002,    2,  30,
+   8,  12, 11, 'c', {2,6}   , {26,60,0,0}		,    1},
+{"Giant White Centipede"    ,0x0000000AL,0x00000000L,0x0002,    2,  40,
+   7,  10, 11, 'c', {3,5}   , {25,59,0,0}		,    1},
+{"White Icky-Thing"	    ,0x00000012L,0x00000000L,0x0020,    2,  10,
+  12,	7, 11, 'i', {3,5}   , {63,0,0,0}		,    1},
+{"Clear Icky-Thing"	    ,0x00010012L,0x00000000L,0x0020,    1,  10,
+  12,	6, 11, 'i', {2,5}   , {63,0,0,0}		,    1},
+{"Giant White Mouse"	    ,0x0020000AL,0x00000000L,0x2072,    1,  20,
+   8,	4, 11, 'r', {1,3}   , {25,0,0,0}		,    1},
+{"Large Brown Snake"	    ,0x0000000AL,0x00000000L,0x00B2,    3,  99,
+   4,  35, 10, 'R', {4,6}   , {26,73,0,0}		,    1},
+{"Large White Snake"	    ,0x00000012L,0x00000000L,0x00B2,    2,  99,
+   4,  30, 11, 'R', {3,6}   , {24,0,0,0}		,    1},
+{"Kobold"		    ,0x07820002L,0x00000000L,0x2030,    5,  10,
+  20,  16, 11, 'k', {3,7}   , {5,0,0,0}			,    1},
+{"White Worm mass"	    ,0x00200022L,0x00000000L,0x01B2,    2,  10,
+   7,	1, 10, 'w', {4,4}   , {173,0,0,0}		,    1},
+{"Floating Eye"		    ,0x00000001L,0x0001000DL,0x2100,    1,  10,
+   2,	6, 11, 'e', {3,6}   , {146,0,0,0}		,    1},
+{"Shrieker Mushroom patch"  ,0x00000001L,0x00000000L,0x10A0,    1,   0,
+   2,	1, 11, ',', {1,1}   , {203,0,0,0}		,    2},
+{"Blubbering Icky-Thing"    ,0x0B980012L,0x00000000L,0x0020,    8,  10,
+  14,	4, 11, 'i', {5,8}   , {174,210,0,0}		,    2},
+{"Metallic Green Centipede" ,0x00000012L,0x00000000L,0x0002,    3,  10,
+   5,	4, 12, 'c', {4,4}   , {68,0,0,0}		,    2},
+{"Novice Warrior"	    ,0x07020002L,0x00000000L,0x2030,    6,   5,
+  20,  16, 11, 'p', {9,4}   , {6,0,0,0}			,    2},
+{"Novice Rogue"		    ,0x07120002L,0x00000000L,0x2034,    6,   5,
+  20,  12, 11, 'p', {8,4}   , {5,148,0,0}		,    2},
+{"Novice Priest"	    ,0x07020002L,0x0000108CL,0x2030,    7,   5,
+  20,  10, 11, 'p', {7,4}   , {4,0,0,0}			,    2},
+{"Novice Mage"		    ,0x07020002L,0x0000089CL,0x2030,    7,   5,
+  20,	6, 11, 'p', {6,4}   , {3,0,0,0}			,    2},
+{"Yellow Mushroom patch"    ,0x00000001L,0x00000000L,0x10A0,    2,   0,
+   2,	1, 11, ',', {1,1}   , {100,0,0,0}		,    2},
+{"White Jelly"		    ,0x00000001L,0x00000000L,0x11A0,   10,  99,
+   2,	1, 12, 'J', {8,8}   , {168,0,0,0}		,    2},
+{"Giant Green Frog"	    ,0x0000000AL,0x00000000L,0x00A2,    6,  30,
+  12,	8, 11, 'f', {2,8}   , {26,0,0,0}		,    2},
+{"Giant Black Ant"	    ,0x0000000AL,0x00000000L,0x0002,    8,  80,
+   8,  20, 11, 'a', {3,6}   , {27,0,0,0}		,    2},
+{"White Harpy"		    ,0x00000012L,0x00000000L,0x2034,    5,  10,
+  16,  17, 11, 'h', {2,5}   , {49,49,25,0}		,    2},
+{"Blue Yeek"		    ,0x07020002L,0x00000000L,0x2030,    4,  10,
+  18,  14, 11, 'y', {2,6}   , {4,0,0,0}			,    2},
+{"Green Worm mass"	    ,0x00200022L,0x00000000L,0x0132,    3,  10,
+   7,	3, 10, 'w', {6,4}   , {140,0,0,0}		,    2},
+{"Large Black Snake"	    ,0x0000000AL,0x00000000L,0x00B2,    9,  75,
+   5,  38, 10, 'R', {4,8}   , {27,74,0,0}		,    2},
+{"Poltergeist"		    ,0x0F95003AL,0x0000001FL,0x110C,    6,  10,
+   8,  15, 13, 'G', {2,5}   , {93,0,0,0}		,    3},
+{"Metallic Blue Centipede"  ,0x00000012L,0x00000000L,0x0002,    7,  15,
+   6,	6, 12, 'c', {4,5}   , {69,0,0,0}		,    3},
+{"Giant White Louse"	    ,0x00200022L,0x00000000L,0x01F2,    1,  10,
+   6,	5, 12, 'l', {1,1}   , {24,0,0,0}		,    3},
+{"Black Naga"		    ,0x0710000AL,0x00000000L,0x20E4,   20, 120,
+  16,  40, 11, 'n', {6,8}   , {75,0,0,0}		,    3},
+{"Spotted Mushroom patch"   ,0x00000001L,0x00000000L,0x10A0,    3,   0,
+   2,	1, 11, ',', {1,1}   , {175,0,0,0}		,    3},
+{"Yellow Jelly"		    ,0x00000001L,0x0001000FL,0x11A0,   12,  99,
+   2,	1, 12, 'J', {10,8}  , {169,0,0,0}		,    3},
+{"Scruffy-Looking Hobbit"   ,0x07920002L,0x00000000L,0x2034,    4,  10,
+  16,	8, 11, 'p', {3,5}   , {3,148,0,0}		,    3},
+{"Huge Brown Bat"	    ,0x00000022L,0x00000000L,0x2162,    4,  40,
+   8,  12, 13, 'b', {2,6}   , {25,0,0,0}		,    3},
+{"Giant White Ant"	    ,0x00000002L,0x00000000L,0x0002,    7,  80,
+   8,  16, 11, 'a', {3,6}   , {27,0,0,0}		,    3},
+{"Yellow Mold"		    ,0x00000001L,0x00000000L,0x10A0,    9,  99,
+   2,  10, 11, 'm', {8,8}   , {3,0,0,0}			,    3},
+{"Metallic Red Centipede"   ,0x0000000AL,0x00000000L,0x0002,   12,  20,
+   8,	9, 12, 'c', {4,8}   , {69,0,0,0}		,    3},
+{"Yellow Worm mass"	    ,0x00200022L,0x00000000L,0x01B2,    4,  10,
+   7,	4, 10, 'w', {4,8}   , {182,0,0,0}		,    3},
+{"Large Green Snake"	    ,0x0000000AL,0x00000000L,0x00B2,   10,  70,
+   5,  40, 10, 'R', {6,8}   , {27,74,0,0}		,    3},
+{"Radiation Eye"	    ,0x00000001L,0x0001000BL,0x2100,    6,  10,
+   2,	6, 11, 'e', {3,6}   , {88,0,0,0}		,    3},
+{"Drooling Harpy"	    ,0x00000012L,0x00000000L,0x2034,    7,  10,
+  16,  22, 11, 'h', {2,8}   , {49,49,25,79}		,    3},
+{"Silver Mouse"		    ,0x0020000AL,0x00000000L,0x0072,    1,  10,
+   8,	5, 11, 'r', {1,1}   , {212,0,0,0}		,    4},
+{"Black Mushroom patch"	    ,0x00000001L,0x00000000L,0x10A0,    8,   0,
+   2,	1, 11, ',', {8,8}   , {71,0,0,0}		,    4},
+{"Blue Jelly"		    ,0x00000001L,0x00400000L,0x11A0,   14,  99,
+   2,	1, 11, 'J', {12,8}  , {125,0,0,0}		,    4},
+{"Creeping Copper Coins"    ,0x12000002L,0x00000000L,0x1000,    9,  10,
+   3,  24, 10, '$', {7,8}   , {3,170,0,0}		,    4},
+{"Giant White Rat"	    ,0x0020000AL,0x00000000L,0x2072,    1,  30,
+   8,	7, 11, 'r', {2,2}   , {153,0,0,0}		,    4},
+{"Giant Black Centipede"    ,0x0000000AL,0x00000000L,0x0002,   11,  30,
+   8,  20, 11, 'c', {5,8}   , {25,59,0,0}		,    4},
+{"Giant Blue Centipede"	    ,0x00000002L,0x00000000L,0x0002,   10,  50,
+   8,  20, 11, 'c', {4,8}   , {26,61,0,0}		,    4},
+{"Blue Worm mass"	    ,0x00200022L,0x00400000L,0x01A2,    5,  10,
+   7,  12, 10, 'w', {5,8}   , {129,0,0,0}		,    4},
+{"Large Grey Snake"	    ,0x0000000AL,0x00000000L,0x00B2,   14,  50,
+   6,  41, 10, 'R', {6,8}   , {28,75,0,0}		,    4},
+{"Jackal"		    ,0x00000012L,0x00000000L,0x2032,    8,  30,
+  12,  16, 11, 'j', {3,8}   , {29,0,0,0}		,    4},
+{"Green Naga"		    ,0x0710000AL,0x00200000L,0x2064,   30, 120,
+  18,  40, 11, 'n', {9,8}   , {75,118,0,0}		,    5},
+{"Green Glutton Ghost"	    ,0x0F950032L,0x0000003FL,0x110C,   15,  10,
+  10,  20, 13, 'G', {3,6}   , {211,0,0,0}		,    5},
+{"White Mushroom patch"	    ,0x00000001L,0x00000000L,0x10A0,    5,   0,
+   2,	1, 11, ',', {1,1}   , {147,0,0,0}		,    5},
+{"Green Jelly"		    ,0x00000001L,0x00200000L,0x1120,   18,  99,
+   2,	1, 12, 'J', {22,8}  , {136,0,0,0}		,    5},
+{"Skeleton Kobold"	    ,0x00020002L,0x00000000L,0x100C,   12,  40,
+  20,  26, 11, 's', {5,8}   , {5,0,0,0}			,    5},
+{"Silver Jelly"		    ,0x00000001L,0x00000000L,0x10A0,   15,  40,
+   2,  25, 11, 'J', {20,8}  , {213,0,0,0}		,    5},
+{"Giant Black Frog"	    ,0x0000000AL,0x00000000L,0x00A2,   12,  40,
+  12,  18, 11, 'f', {4,8}   , {29,0,0,0}		,    5},
+{"Grey Icky-Thing"	    ,0x00000012L,0x00000000L,0x0020,   10,  15,
+  14,  12, 11, 'i', {4,8}   , {66,0,0,0}		,    5},
+{"Disenchanter Eye"	    ,0x00000001L,0x00010009L,0x2100,   20,  10,
+   2,  10, 10, 'e', {7,8}   , {207,0,0,0}		,    5},
+{"Black Yeek"		    ,0x07020002L,0x00000000L,0x2030,    8,  10,
+  18,  16, 11, 'y', {2,8}   , {4,0,0,0}			,    5},
+{"Red Worm mass"	    ,0x00200022L,0x00800000L,0x2192,    6,  10,
+   7,  12, 10, 'w', {5,8}   , {111,0,0,0}		,    5},
+{"Giant House Fly"	    ,0x00000022L,0x00000000L,0x0062,   10,  20,
+  12,  16, 13, 'F', {3,8}   , {25,0,0,0}		,    5},
+{"Copperhead Snake"	    ,0x00000012L,0x00000000L,0x00B2,   15,   1,
+   6,  20, 11, 'R', {4,6}   , {158,0,0,0}		,    5},
+{"Rot Jelly"		    ,0x00000001L,0x00000000L,0x10A0,   15,  99,
+   2,  30, 11, 'J', {20,8}  , {209,0,0,0}		,    5},
+{"Purple Mushroom patch"    ,0x00000001L,0x00000000L,0x10A0,   12,   0,
+   2,	1, 12, ',', {1,1}   , {183,0,0,0}		,    6},
+{"Brown Mold"		    ,0x00000001L,0x00000000L,0x10A0,   20,  99,
+   2,  12, 11, 'm', {15,8}  , {89,0,0,0}		,    6},
+{"Giant Brown Bat"	    ,0x0000001AL,0x00000000L,0x2162,   10,  30,
+  10,  15, 13, 'b', {3,8}   , {26,0,0,0}		,    6},
+{"Creeping Silver Coins"    ,0x16000002L,0x00000000L,0x1000,   18,  10,
+   4,  30, 10, '$', {12,8}  , {5,171,0,0}		,    6},
+{"Orc"			    ,0x0B020002L,0x00000000L,0x2034,   16,  30,
+  20,  32, 11, 'o', {9,8}   , {7,0,0,0}			,    6},
+{"Grey Harpy"		    ,0x00000012L,0x00000000L,0x2034,   14,  10,
+  16,  20, 12, 'h', {3,8}   , {50,50,25,0}		,    6},
+{"Blue Icky-Thing"	    ,0x00000012L,0x00400000L,0x0020,   12,  20,
+  14,  14, 11, 'i', {4,8}   , {126,0,0,0}		,    6},
+{"Rattlesnake"		    ,0x00000012L,0x00000000L,0x00B2,   20,   1,
+   6,  24, 11, 'R', {6,7}   , {159,0,0,0}		,    6},
+{"Bloodshot Eye"	    ,0x00000001L,0x00010007L,0x2100,   15,  10,
+   2,	6, 11, 'e', {4,8}   , {143,0,0,0}		,    7},
+{"Red Naga"		    ,0x0710000AL,0x00000000L,0x20E4,   40, 120,
+  20,  40, 11, 'n', {11,8}  , {76,82,0,0}		,    7},
+{"Red Jelly"		    ,0x00000001L,0x00000000L,0x11A0,   26,  99,
+   2,	1, 11, 'J', {26,8}  , {87,0,0,0}		,    7},
+{"Giant Red Frog"	    ,0x0000000AL,0x00000000L,0x00A2,   16,  50,
+  12,  16, 11, 'f', {5,8}   , {83,0,0,0}		,    7},
+{"Green Icky-Thing"	    ,0x00000012L,0x00000000L,0x0020,   18,  20,
+  14,  12, 11, 'i', {5,8}   , {137,0,0,0}		,    7},
+{"Zombie Kobold"	    ,0x00020002L,0x00000000L,0x102C,   14,  30,
+  20,  14, 11, 'z', {6,8}   , {1,1,0,0}			,    7},
+{"Lost Soul"		    ,0x0F95001AL,0x0001002FL,0x110C,   18,  10,
+  12,  10, 11, 'G', {2,8}   , {11,185,0,0}		,    7},
+{"Greedy Little Gnome"	    ,0x0B920002L,0x00000000L,0x2034,   13,  10,
+  18,  14, 11, 'p', {3,8}   , {6,149,0,0}		,    7},
+{"Giant Green Fly"	    ,0x00000022L,0x00000000L,0x0062,   15,  20,
+  12,  14, 12, 'F', {3,8}   , {27,0,0,0}		,    7},
+{"Brown Yeek"		    ,0x07020002L,0x00000000L,0x2030,   11,  10,
+  18,  18, 11, 'y', {3,8}   , {5,0,0,0}			,    8},
+{"Green Mold"		    ,0x00000001L,0x00000000L,0x10A0,   28,  75,
+   2,  14, 11, 'm', {21,8}  , {94,0,0,0}		,    8},
+{"Skeleton Orc"		    ,0x00020002L,0x00000000L,0x100C,   26,  40,
+  20,  36, 11, 's', {10,8}  , {14,0,0,0}		,    8},
+{"Seedy Looking Human"	    ,0x13020002L,0x00000000L,0x2034,   22,  20,
+  20,  26, 11, 'p', {8,8}   , {17,0,0,0}		,    8},
+{"Red Icky-Thing"	    ,0x00000012L,0x00200000L,0x0020,   22,  20,
+  14,  18, 12, 'i', {4,8}   , {64,117,0,0}		,    8},
+{"Bandit"		    ,0x13120002L,0x00000000L,0x2034,   26,  10,
+  20,  24, 11, 'p', {8,8}   , {13,148,0,0}		,    8},
+{"Yeti"			    ,0x00020002L,0x00400000L,0x2024,   30,  10,
+  20,  24, 11, 'Y', {11,8}  , {51,51,27,0}		,    9},
+{"Bloodshot Icky-Thing"	    ,0x00000012L,0x0001000BL,0x0020,   24,  20,
+  14,  18, 11, 'i', {7,8}   , {65,139,0,0}		,    9},
+{"Giant Grey Rat"	    ,0x0020000AL,0x00000000L,0x2072,    2,  20,
+   8,  12, 11, 'r', {2,3}   , {154,0,0,0}		,    9},
+{"Black Harpy"		    ,0x0000000AL,0x00000000L,0x2034,   19,  10,
+  16,  22, 12, 'h', {3,8}   , {50,50,26,0}		,    9},
+{"Giant Black Bat"	    ,0x00000012L,0x00000000L,0x2162,   16,  25,
+  12,  18, 13, 'b', {2,8}   , {29,0,0,0}		,    9},
+{"Clear Yeek"		    ,0x07030002L,0x00000000L,0x0030,   14,  10,
+  18,  24, 11, 'y', {3,6}   , {4,0,0,0}			,    9},
+{"Orc Shaman"		    ,0x0B020002L,0x00008085L,0x2034,   30,  20,
+  20,  15, 11, 'o', {7,8}   , {5,0,0,0}			,    9},
+{"Giant Red Ant"	    ,0x00000002L,0x00000000L,0x0002,   22,  60,
+  12,  34, 11, 'a', {4,8}   , {27,85,0,0}		,    9},
+{"King Cobra"		    ,0x00000012L,0x00000000L,0x00B2,   28,   1,
+   8,  30, 11, 'R', {8,8}   , {144,161,0,0}		,    9},
+{"Clear Mushroom patch"	    ,0x00210001L,0x00000000L,0x10A0,    1,   0,
+   4,	1, 12, ',', {1,1}   , {70,0,0,0}		,   10},
+{"Giant White Tick"	    ,0x0000000AL,0x00000000L,0x0022,   27,  20,
+  12,  40, 10, 't', {15,8}  , {160,0,0,0}		,   10},
+{"Hairy Mold"		    ,0x00000001L,0x00000000L,0x10A0,   32,  70,
+   2,  15, 11, 'm', {15,8}  , {151,0,0,0}		,   10},
+{"Disenchanter Mold"	    ,0x00000001L,0x0001000BL,0x10A0,   40,  70,
+   2,  20, 11, 'm', {16,8}  , {206,0,0,0}		,   10},
+{"Giant Red Centipede"	    ,0x00000002L,0x00000000L,0x0002,   24,  50,
+  12,  26, 12, 'c', {3,8}   , {25,164,0,0}		,   10},
+{"Creeping Gold Coins"	    ,0x1A000002L,0x00000000L,0x1000,   32,  10,
+   5,  36, 10, '$', {18,8}  , {14,172,0,0}		,   10},
+{"Giant Fruit Fly"	    ,0x00200022L,0x00000000L,0x0062,    4,  10,
+   8,  14, 12, 'F', {2,2}   , {25,0,0,0}		,   10},
+{"Brigand"		    ,0x13120002L,0x00000000L,0x2034,   35,  10,
+  20,  32, 11, 'p', {9,8}   , {13,149,0,0}		,   10},
+{"Orc Zombie"		    ,0x00020002L,0x00000000L,0x102C,   30,  25,
+  20,  24, 11, 'z', {11,8}  , {3,3,0,0}			,   11},
+{"Orc Warrior"		    ,0x0B020002L,0x00000000L,0x2034,   34,  25,
+  20,  36, 11, 'o', {11,8}  , {15,0,0,0}		,   11},
+{"Vorpal Bunny"		    ,0x0020000AL,0x00000000L,0x2072,    2,  30,
+   8,  10, 12, 'r', {2,3}   , {28,0,0,0}		,   11},
+{"Nasty Little Gnome"	    ,0x13820002L,0x000020B5L,0x2034,   32,  10,
+  18,  10, 11, 'p', {4,8}   , {4,0,0,0}			,   11},
+{"Hobgoblin"		    ,0x0F020002L,0x00000000L,0x2034,   38,  30,
+  20,  38, 11, 'H', {12,8}  , {9,0,0,0}			,   11},
+{"Black Mamba"		    ,0x00000012L,0x00000000L,0x00B2,   40,   1,
+  10,  32, 12, 'R', {10,8}  , {163,0,0,0}		,   12},
+{"Grape Jelly"		    ,0x00000001L,0x0001000BL,0x11A0,   60,  99,
+   2,	1, 11, 'J', {52,8}  , {186,0,0,0}		,   12},
+{"Master Yeek"		    ,0x07020002L,0x00008018L,0x2030,   28,  10,
+  18,  24, 11, 'y', {5,8}   , {7,0,0,0}			,   12},
+{"Priest"		    ,0x13020002L,0x00000285L,0x2030,   36,  40,
+  20,  22, 11, 'p', {7,8}   , {12,0,0,0}		,   12},
+{"Giant Clear Ant"	    ,0x00010002L,0x00000000L,0x0002,   24,  60,
+  12,  18, 11, 'a', {3,7}   , {27,0,0,0}		,   12},
+{"Air Spirit"		    ,0x00030022L,0x00000000L,0x1000,   40,  20,
+  12,  20, 13, 'E', {5,8}   , {2,0,0,0}			,   12},
+{"Skeleton Human"	    ,0x00020002L,0x00000000L,0x100C,   38,  30,
+  20,  30, 11, 's', {12,8}  , {7,0,0,0}			,   12},
+{"Human Zombie"		    ,0x00020002L,0x00000000L,0x102C,   34,  20,
+  20,  24, 11, 'z', {11,8}  , {3,3,0,0}			,   12},
+{"Moaning Spirit"	    ,0x0F15000AL,0x0001002FL,0x110C,   44,  10,
+  14,  20, 11, 'G', {4,8}   , {99,178,0,0}		,   12},
+{"Swordsman"		    ,0x13020002L,0x00000000L,0x2030,   40,  20,
+  20,  34, 11, 'p', {11,8}  , {18,0,0,0}		,   12},
+{"Killer Brown Beetle"	    ,0x0000000AL,0x00000000L,0x0002,   38,  30,
+  10,  40, 11, 'K', {13,8}  , {41,0,0,0}		,   13},
+{"Ogre"			    ,0x07020002L,0x00000000L,0x2034,   42,  30,
+  20,  32, 11, 'o', {13,8}  , {16,0,0,0}		,   13},
+{"Giant Red Speckled Frog"  ,0x0000000AL,0x00000000L,0x00A2,   32,  30,
+  12,  20, 11, 'f', {6,8}   , {41,0,0,0}		,   13},
+{"Magic User"		    ,0x13020002L,0x00002413L,0x2030,   35,  10,
+  20,  10, 11, 'p', {7,8}   , {11,0,0,0}		,   13},
+{"Black Orc"		    ,0x0B020002L,0x00000000L,0x2034,   40,  20,
+  20,  36, 11, 'o', {12,8}  , {17,0,0,0}		,   13},
+{"Giant Long-Eared Bat"	    ,0x00000012L,0x00000000L,0x2162,   20,  20,
+  12,  20, 13, 'b', {5,8}   , {27,50,50,0}		,   13},
+{"Giant Gnat"		    ,0x00200022L,0x00000000L,0x0062,    1,  10,
+   8,	4, 13, 'F', {1,2}   , {24,0,0,0}		,   13},
+{"Killer Green Beetle"	    ,0x0000000AL,0x00000000L,0x0002,   46,  30,
+  12,  45, 11, 'K', {16,8}  , {43,0,0,0}		,   14},
+{"Giant Flea"		    ,0x00200022L,0x00000000L,0x0062,    1,  10,
+   8,  25, 12, 'F', {2,2}   , {25,0,0,0}		,   14},
+{"Giant White Dragon Fly"   ,0x00000012L,0x0040000AL,0x0062,   54,  50,
+  20,  20, 11, 'F', {5,8}   , {122,0,0,0}		,   14},
+{"Hill Giant"		    ,0x07020002L,0x00000000L,0x2034,   52,  50,
+  20,  36, 11, 'P', {16,8}  , {19,0,0,0}		,   14},
+{"Skeleton Hobgoblin"	    ,0x00020002L,0x00000000L,0x100C,   46,  30,
+  20,  34, 11, 's', {13,8}  , {14,0,0,0}		,   14},
+{"Flesh Golem"		    ,0x00000002L,0x00000000L,0x1030,   48,  10,
+  12,  10, 11, 'g', {12,8}  , {5,5,0,0}			,   14},
+{"White Dragon Bat"	    ,0x00000012L,0x00400004L,0x0162,   40,  50,
+  12,  20, 13, 'b', {2,6}   , {121,0,0,0}		,   14},
+{"Giant Black Louse"	    ,0x00200012L,0x00000000L,0x01F2,    1,  10,
+   6,	7, 12, 'l', {1,1}   , {25,0,0,0}		,   14},
+{"Guardian Naga"	    ,0x1710000AL,0x00000000L,0x20E4,   60, 120,
+  20,  50, 11, 'n', {24,8}  , {77,31,0,0}		,   15},
+{"Giant Grey Bat"	    ,0x00000012L,0x00000000L,0x2162,   22,  15,
+  12,  22, 13, 'b', {4,8}   , {29,50,50,0}		,   15},
+{"Giant Clear Centipede"    ,0x00010002L,0x00000000L,0x0002,   30,  30,
+  12,  30, 11, 'c', {5,8}   , {34,62,0,0}		,   15},
+{"Giant Yellow Tick"	    ,0x0000000AL,0x00000000L,0x0022,   48,  20,
+  12,  48, 10, 't', {20,8}  , {162,0,0,0}		,   15},
+{"Giant Ebony Ant"	    ,0x00200002L,0x00000000L,0x0002,    3,  60,
+  12,  24, 11, 'a', {3,4}   , {33,0,0,0}		,   15},
+{"Frost Giant"		    ,0x07020002L,0x00400000L,0x0024,   54,  50,
+  20,  38, 11, 'P', {17,8}  , {120,0,0,0}		,   15},
+{"Clay Golem"		    ,0x00000002L,0x00000000L,0x1200,   50,  10,
+  12,  20, 11, 'g', {14,8}  , {7,7,0,0}			,   15},
+{"Huge White Bat"	    ,0x00200012L,0x00000000L,0x2162,    3,  40,
+   7,  12, 12, 'b', {3,8}   , {29,0,0,0}		,   15},
+{"Giant Tan Bat"	    ,0x00000012L,0x00000000L,0x2162,   18,  40,
+  12,  18, 12, 'b', {3,8}   , {95,49,49,0}		,   15},
+{"Violet Mold"		    ,0x00000001L,0x00010009L,0x10A0,   50,  70,
+   2,  15, 11, 'm', {17,8}  , {145,0,0,0}		,   15},
+{"Umber Hulk"		    ,0x00020002L,0x00000000L,0x2124,   75,  10,
+  20,  20, 11, 'U', {20,8}  , {92,5,5,36}		,   16},
+{"Gelatinous Cube"	    ,0x2F98000AL,0x00200000L,0x1020,   36,   1,
+  12,  18, 10, 'C', {45,8}  , {115,0,0,0}		,   16},
+{"Giant Black Rat"	    ,0x0020000AL,0x00000000L,0x2072,    3,  20,
+   8,  16, 11, 'r', {3,4}   , {155,0,0,0}		,   16},
+{"Giant Green Dragon Fly"   ,0x00000012L,0x0010000AL,0x0032,   58,  50,
+  20,  20, 11, 'F', {5,8}   , {156,0,0,0}		,   16},
+{"Fire Giant"		    ,0x07020002L,0x00800000L,0x2014,   62,  50,
+  20,  40, 11, 'P', {20,8}  , {102,0,0,0}		,   16},
+{"Green Dragon Bat"	    ,0x00000012L,0x00100004L,0x2112,   44,  50,
+  12,  22, 13, 'b', {2,7}   , {153,0,0,0}		,   16},
+{"Quasit"		    ,0x1183000AL,0x000010FAL,0x1004,   48,  20,
+  20,  30, 11, 'q', {5,8}   , {176,51,51,0}		,   16},
+{"Troll"		    ,0x0F020002L,0x00000000L,0x2024,   64,  40,
+  20,  40, 11, 'T', {17,8}  , {3,3,29,0}		,   17},
+{"Water Spirit"		    ,0x0000000AL,0x00000000L,0x1020,   58,  40,
+  12,  28, 12, 'E', {8,8}   , {13,0,0,0}		,   17},
+{"Giant Brown Scorpion"	    ,0x0000000AL,0x00000000L,0x0002,   62,  20,
+  12,  44, 11, 'S', {11,8}  , {34,86,0,0}		,   17},
+{"Earth Spirit"		    ,0x0016000AL,0x00000000L,0x1200,   64,  50,
+  10,  40, 11, 'E', {13,8}  , {7,7,0,0}			,   17},
+{"Fire Spirit"		    ,0x0000000AL,0x00800000L,0x3010,   66,  20,
+  16,  30, 12, 'E', {10,8}  , {101,0,0,0}		,   18},
+{"Uruk-Hai Orc"		    ,0x0B020002L,0x00000000L,0x2034,   68,  20,
+  20,  42, 11, 'o', {14,8}  , {18,0,0,0}		,   18},
+{"Stone Giant"		    ,0x07020002L,0x00000000L,0x2204,   80,  50,
+  20,  40, 11, 'P', {22,8}  , {20,0,0,0}		,   18},
+{"Stone Golem"		    ,0x00000002L,0x00000000L,0x1200,  100,  10,
+  12,  75, 10, 'g', {28,8}  , {9,9,0,0}			,   19},
+{"Grey Ooze"		    ,0x07980022L,0x00400000L,0x10A0,   40,   1,
+  15,  10, 11, 'O', {6,8}   , {127,0,0,0}		,   19},
+{"Disenchanter Ooze"	    ,0x07980022L,0x00000000L,0x10B0,   50,   1,
+  15,  15, 11, 'O', {6,8}   , {205,0,0,0}		,   19},
+{"Giant Spotted Rat"	    ,0x0020000AL,0x00000000L,0x2072,    3,  20,
+   8,  20, 11, 'r', {4,3}   , {155,0,0,0}		,   19},
+{"Mummified Kobold"	    ,0x0B820002L,0x00000000L,0x102C,   46,  75,
+  20,  24, 11, 'M', {13,8}  , {5,5,0,0}			,   19},
+{"Killer Black Beetle"	    ,0x0000000AL,0x00000000L,0x0002,   75,  30,
+  12,  46, 11, 'K', {18,8}  , {44,0,0,0}		,   19},
+{"Red Mold"		    ,0x00000001L,0x00800000L,0x3090,   64,  70,
+   2,  16, 11, 'm', {17,8}  , {108,0,0,0}		,   19},
+{"Quylthulg"		    ,0x00010004L,0x00002017L,0x5000,  200,   0,
+  10,	1, 11, 'Q', {4,8}   , {0,0,0,0}			,   20},
+{"Giant Red Bat"	    ,0x00000012L,0x00000000L,0x2162,   40,  20,
+  12,  24, 12, 'b', {5,8}   , {30,51,51,0}		,   20},
+{"Giant Black Dragon Fly"   ,0x00000012L,0x00200009L,0x0072,   58,  50,
+  20,  22, 11, 'F', {4,8}   , {141,0,0,0}		,   20},
+{"Cloud Giant"		    ,0x07020002L,0x00080000L,0x2034,  125,  50,
+  20,  44, 11, 'P', {24,8}  , {130,0,0,0}		,   20},
+{"Black Dragon Bat"	    ,0x00000012L,0x00200004L,0x2152,   50,  50,
+  12,  24, 13, 'b', {2,8}   , {112,0,0,0}		,   21},
+{"Blue Dragon Bat"	    ,0x00000012L,0x00080004L,0x2052,   54,  50,
+  12,  26, 13, 'b', {3,6}   , {131,0,0,0}		,   21},
+{"Mummified Orc"	    ,0x0B020002L,0x00000000L,0x102C,   56,  75,
+  20,  28, 11, 'M', {14,8}  , {13,13,0,0}		,   21},
+{"Killer Boring Beetle"	    ,0x0000000AL,0x00000000L,0x0002,   70,  30,
+  12,  48, 11, 'K', {18,8}  , {44,0,0,0}		,   21},
+{"Killer Stag Beetle"	    ,0x0000000AL,0x00000000L,0x0002,   80,  30,
+  12,  50, 11, 'K', {20,8}  , {41,10,0,0}		,   22},
+{"Black Mold"		    ,0x00000081L,0x00000000L,0x10A0,   68,  50,
+   2,  18, 11, 'm', {15,8}  , {21,0,0,0}		,   22},
+{"Iron Golem"		    ,0x00000002L,0x00000000L,0x1080,  160,  10,
+  12,  99,  9, 'g', {80,8}  , {10,10,0,0}		,   22},
+{"Giant Yellow Scorpion"    ,0x0000000AL,0x00000000L,0x0002,   60,  20,
+  12,  38, 11, 'S', {12,8}  , {31,167,0,0}		,   22},
+{"Green Ooze"		    ,0x07BA0012L,0x00200000L,0x1030,    6,   1,
+  15,	5, 10, 'O', {4,8}   , {116,0,0,0}		,   22},
+{"Black Ooze"		    ,0x07BA0012L,0x0001000BL,0x1030,    7,   1,
+  10,	6,  9, 'O', {6,8}   , {138,0,0,0}		,   23},
+{"Warrior"		    ,0x13020002L,0x00000000L,0x2030,   60,  40,
+  20,  40, 11, 'p', {15,8}  , {18,0,0,0}		,   23},
+{"Red Dragon Bat"	    ,0x00000012L,0x00800004L,0x2152,   60,  50,
+  12,  28, 13, 'b', {3,8}   , {105,0,0,0}		,   23},
+{"Killer Blue Beetle"	    ,0x0000000AL,0x00000000L,0x0002,   85,  30,
+  14,  50, 11, 'K', {20,8}  , {44,0,0,0}		,   23},
+{"Giant Silver Ant"	    ,0x0000000AL,0x00200000L,0x0002,   45,  60,
+  10,  38, 11, 'a', {6,8}   , {114,0,0,0}		,   23},
+{"Crimson Mold"		    ,0x00000001L,0x00000000L,0x10A0,   65,  50,
+   2,  18, 11, 'm', {16,8}  , {2,97,0,0}		,   23},
+{"Forest Wight"		    ,0x0F02000AL,0x0000100FL,0x112C,  140,  30,
+  20,  30, 11, 'W', {12,8}  , {5,5,187,0}		,   24},
+{"Berzerker"		    ,0x13020002L,0x00000000L,0x2030,   65,  10,
+  20,  20, 11, 'p', {15,8}  , {7,7,0,0}			,   24},
+{"Mummified Human"	    ,0x0B020002L,0x00000000L,0x102C,   70,  60,
+  20,  34, 11, 'M', {17,8}  , {13,13,0,0}		,   24},
+{"Banshee"		    ,0x0F15001AL,0x0001002FL,0x110C,   60,  10,
+  20,  24, 12, 'G', {6,8}   , {99,188,0,0}		,   24},
+{"Giant Troll"		    ,0x0F020002L,0x00000000L,0x2024,   85,  50,
+  20,  40, 11, 'T', {19,8}  , {5,5,41,0}		,   25},
+{"Giant Brown Tick"	    ,0x0000000AL,0x00000000L,0x0022,   70,  20,
+  12,  50, 10, 't', {18,8}  , {157,142,0,0}		,   25},
+{"Killer Red Beetle"	    ,0x0000000AL,0x00000000L,0x0002,   85,  30,
+  14,  50, 11, 'K', {20,8}  , {84,0,0,0}		,   25},
+{"Wooden Mold"		    ,0x00000001L,0x00000000L,0x10A0,  100,  50,
+   2,  50, 11, 'm', {25,8}  , {171,0,0,0}		,   25},
+{"Giant Blue Dragon Fly"    ,0x00000012L,0x00080009L,0x0072,   75,  50,
+  20,  24, 11, 'F', {6,8}   , {29,0,0,0}		,   25},
+{"Giant Grey Ant Lion"	    ,0x0008000AL,0x00000000L,0x0032,   90,  40,
+  10,  40, 11, 'A', {19,8}  , {39,0,0,0}		,   26},
+{"Disenchanter Bat"	    ,0x00000012L,0x00000000L,0x2162,   75,   1,
+  14,  24, 13, 'b', {4,8}   , {204,0,0,0}		,   26},
+{"Giant Fire Tick"	    ,0x0000000AL,0x00800000L,0x2012,   90,  20,
+  14,  54, 11, 't', {16,8}  , {109,0,0,0}		,   26},
+{"White Wraith"		    ,0x0F02000AL,0x0000100CL,0x112C,  165,  10,
+  20,  40, 11, 'W', {15,8}  , {5,5,189,0}		,   26},
+{"Giant Black Scorpion"	    ,0x0000000AL,0x00000000L,0x0002,   85,  20,
+  12,  50, 11, 'S', {13,8}  , {32,167,0,0}		,   26},
+{"Clear Ooze"		    ,0x0799000AL,0x00000000L,0x10B0,   12,   1,
+  10,  14, 11, 'O', {4,8}   , {90,0,0,0}		,   26},
+{"Killer Fire Beetle"	    ,0x0000000AL,0x00800000L,0x2012,   95,  30,
+  14,  45, 11, 'K', {13,8}  , {41,110,0,0}		,   27},
+{"Vampire"		    ,0x17020002L,0x00001209L,0x112C,  175,  10,
+  20,  45, 11, 'V', {20,8}  , {5,5,190,0}		,   27},
+{"Giant Red Dragon Fly"	    ,0x00000012L,0x00800008L,0x2052,   75,  50,
+  20,  24, 11, 'F', {7,8}   , {96,0,0,0}		,   27},
+{"Shimmering Mold"	    ,0x00000081L,0x00080000L,0x10A0,  180,  50,
+   2,  24, 11, 'm', {32,8}  , {135,0,0,0}		,   27},
+{"Black Knight"		    ,0x13020002L,0x0000010FL,0x2034,  140,  10,
+  20,  60, 11, 'p', {25,8}  , {23,0,0,0}		,   28},
+{"Mage"			    ,0x13020002L,0x00002C73L,0x2030,  150,  10,
+  20,  30, 11, 'p', {10,8}  , {14,0,0,0}		,   28},
+{"Ice Troll"		    ,0x0F020002L,0x00400000L,0x0024,  160,  50,
+  20,  46, 11, 'T', {22,8}  , {4,4,123,0}		,   28},
+{"Giant Purple Worm"	    ,0x0000000AL,0x00200000L,0x2032,  400,  30,
+  14,  65, 11, 'w', {65,8}  , {7,113,166,0}		,   29},
+{"Young Blue Dragon"	    ,0x1F00000AL,0x0008100BL,0x2005,  300,  70,
+  20,  50, 11, 'd', {33,8}  , {52,52,29,0}		,   29},
+{"Young White Dragon"	    ,0x1F00000AL,0x0040100BL,0x0025,  275,  70,
+  20,  50, 11, 'd', {32,8}  , {52,52,29,0}		,   29},
+{"Young Green Dragon"	    ,0x1F00000AL,0x0010100BL,0x2005,  290,  70,
+  20,  50, 11, 'd', {32,8}  , {52,52,29,0}		,   29},
+{"Giant Fire Bat"	    ,0x00000012L,0x00800000L,0x2152,   85,  10,
+  14,  30, 12, 'b', {5,8}   , {106,52,52,0}		,   29},
+{"Giant Glowing Rat"	    ,0x0020000AL,0x00080000L,0x2072,    4,  20,
+   8,  24, 11, 'r', {3,3}   , {132,0,0,0}		,   29},
+	/* Now things are going to get tough.			 */
+	/* Some of the creatures have Max hit points, denoted in */
+	/* their CDEFENSE flags as the '4000' bit set		 */
+{"Skeleton Troll"	    ,0x00020002L,0x00000000L,0x500C,  225,  20,
+  20,  55, 11, 's', {14,8}  , {5,5,41,0}		,   30},
+{"Giant Lightning Bat"	    ,0x00000012L,0x00080000L,0x2042,   80,  10,
+  15,  34, 12, 'b', {8,8}   , {133,53,53,0}		,   30},
+{"Giant Static Ant"	    ,0x0000000AL,0x00080000L,0x0002,   80,  60,
+  10,  40, 11, 'a', {8,8}   , {134,0,0,0}		,   30},
+{"Grave Wight"		    ,0x0F02000AL,0x0000110AL,0x512C,  325,  30,
+  20,  35, 11, 'W', {12,8}  , {6,6,191,0}		,   30},
+{"Killer Slicer Beetle"	    ,0x0000000AL,0x00000000L,0x0002,  200,  30,
+  14,  55, 11, 'K', {22,8}  , {48,0,0,0}		,   30},
+{"Giant White Ant Lion"	    ,0x0008000AL,0x00400000L,0x0022,  175,  40,
+  12,  45, 11, 'A', {20,8}  , {124,0,0,0}		,   30},
+{"Ghost"		    ,0x1715000AL,0x0001002FL,0x510C,  350,  10,
+  20,  30, 12, 'G', {13,8}  , {99,192,184,0}		,   31},
+{"Giant Black Ant Lion"	    ,0x0008000AL,0x00200000L,0x0032,  170,  40,
+  14,  45, 11, 'A', {23,8}  , {39,119,0,0}		,   31},
+{"Death Watch Beetle"	    ,0x0000000AL,0x00000000L,0x0002,  190,  30,
+  16,  60, 11, 'K', {25,8}  , {47,67,0,0}		,   31},
+{"Ogre Mage"		    ,0x0B020002L,0x0000A355L,0x6034,  250,  30,
+  20,  42, 11, 'o', {14,8}  , {19,0,0,0}		,   31},
+{"Two-Headed Troll"	    ,0x0F020002L,0x00000000L,0x6024,  275,  50,
+  20,  48, 11, 'T', {14,8}  , {7,7,29,29}		,   32},
+{"Invisible Stalker"	    ,0x00030022L,0x00000000L,0x1000,  200,  20,
+  20,  46, 13, 'E', {19,8}  , {5,0,0,0}			,   32},
+{"Giant Hunter Ant"	    ,0x00000002L,0x00000000L,0x0002,  150,   1,
+  16,  40, 11, 'a', {12,8}   , {46,0,0,0}		,   32},
+{"Ninja"		    ,0x13020002L,0x00000000L,0x6034,  300,  10,
+  20,  65, 11, 'p', {15,8}  , {152,80,0,0}		,   32},
+{"Barrow Wight"		    ,0x0F02000AL,0x00001308L,0x512C,  375,  10,
+  20,  40, 11, 'W', {13,8}  , {7,7,193,0}		,   33},
+{"Skeleton 2-Headed Troll"  ,0x00020002L,0x00000000L,0x500C,  325,  20,
+  20,  48, 11, 's', {20,8}  , {8,8,28,28}		,   33},
+{"Water Elemental"	    ,0x0008000AL,0x00000000L,0x1020,  325,  50,
+  12,  36, 11, 'E', {25,8}  , {9,9,0,0}			,   33},
+{"Fire Elemental"	    ,0x0008000AL,0x00800000L,0x3010,  350,  70,
+  16,  40, 10, 'E', {25,8}  , {103,0,0,0}		,   33},
+{"Lich"			    ,0x1F020002L,0x00019F75L,0x510C,  750,  60,
+  20,  50, 11, 'L', {25,8}  , {179,194,214,0}		,   34},
+{"Master Vampire"	    ,0x17020002L,0x00001307L,0x512C,  700,  10,
+  20,  55, 11, 'V', {23,8}  , {5,5,195,0}		,   34},
+{"Spirit Troll"		    ,0x17150002L,0x00000000L,0x510C,  425,  10,
+  20,  40, 11, 'G', {15,8}  , {53,53,29,185}		,   34},
+{"Giant Red Scorpion"	    ,0x0000000AL,0x00000000L,0x0002,  275,  40,
+  12,  50, 12, 'S', {18,8}  , {29,165,0,0}		,   34},
+{"Earth Elemental"	    ,0x001E000AL,0x00000000L,0x1200,  375,  90,
+  10,  60, 10, 'E', {30,8}  , {22,22,0,0}		,   34},
+{"Young Black Dragon"	    ,0x1F00000AL,0x0020100BL,0x6005,  600,  50,
+  20,  55, 11, 'd', {32,8}  , {53,53,29,0}		,   35},
+{"Young Red Dragon"	    ,0x1F00000AL,0x0080100AL,0x6015,  650,  50,
+  20,  60, 11, 'd', {36,8}  , {54,54,37,0}		,   35},
+{"Necromancer"		    ,0x13020002L,0x00005763L,0x6030,  600,  10,
+  20,  40, 11, 'p', {17,8}  , {15,0,0,0}		,   35},
+{"Mummified Troll"	    ,0x0F020002L,0x00000000L,0x502C,  400,  50,
+  20,  38, 11, 'M', {18,8}  , {15,15,0,0}		,   35},
+{"Giant Red Ant Lion"	    ,0x0008000AL,0x00800000L,0x2012,  350,  40,
+  14,  48, 11, 'A', {23,8}  , {107,0,0,0}		,   35},
+{"Mature White Dragon"	    ,0x2F00000AL,0x0040100AL,0x4025, 1000,  70,
+  20,  65, 11, 'd', {48,8}  , {54,54,37,0}		,   35},
+{"Xorn"			    ,0x00160002L,0x00000000L,0x4200,  650,  10,
+  20,  80, 11, 'X', {20,8}  , {5,5,5,0}			,   36},
+{"Giant Mottled Ant Lion"   ,0x0008000AL,0x00000000L,0x0032,  350,  40,
+  14,  50, 12, 'A', {24,8}  , {38,0,0,0}		,   36},
+{"Grey Wraith"		    ,0x0F02000AL,0x00001308L,0x512C,  700,  10,
+  20,  50, 11, 'W', {23,8}  , {9,9,196,0}		,   36},
+{"Young Multi-Hued Dragon"  ,0x4F00000AL,0x00F81005L,0x6005, 1250,  50,
+  20,  55, 11, 'd', {40,8}  , {55,55,38,0}		,   36},
+{"Mature Blue Dragon"	    ,0x2F00000AL,0x00081009L,0x6005, 1200,  70,
+  20,  75, 11, 'd', {48,8}  , {54,54,38,0}		,   36},
+{"Mature Green Dragon"	    ,0x2F00000AL,0x0010100AL,0x6005, 1100,  70,
+  20,  70, 11, 'd', {48,8}  , {52,52,29,0}		,   36},
+{"Iridescent Beetle"	    ,0x0000000AL,0x00000000L,0x0002,  850,  30,
+  16,  60, 11, 'K', {32,8}  , {45,10,146,0}		,   37},
+{"King Vampire"		    ,0x17020002L,0x00001307L,0x512C, 1000,  10,
+  20,  65, 11, 'V', {38,8}  , {5,5,198,0}		,   37},
+{"King Lich"		    ,0x1F020002L,0x00019F73L,0x510C, 1400,  50,
+  20,  65, 11, 'L', {52,8}  , {180,197,214,0}		,   37},
+{"Mature Red Dragon"	    ,0x2F00000AL,0x00801808L,0x6015, 1400,  30,
+  20,  80, 11, 'd', {60,8}  , {56,56,39,0}		,   37},
+{"Mature Black Dragon"	    ,0x2F00000AL,0x00201009L,0x6005, 1350,  30,
+  20,  55, 11, 'd', {58,8}  , {54,54,38,0}		,   37},
+{"Mature Multi-Hued Dragon" ,0x6F00000AL,0x00F81A05L,0x6005, 1650,  50,
+  20,  65, 11, 'd', {80,8}  , {56,56,39,0}		,   38},
+{"Ancient White Dragon"	    ,0x4F000002L,0x00401A09L,0x4025, 1500,  80,
+  20,  80, 12, 'D', {88,8}  , {54,54,37,0}		,   38},
+{"Emperor Wight"	    ,0x1B02000AL,0x00001306L,0x512C, 1600,  10,
+  20,  40, 12, 'W', {48,8}  , {10,10,199,0}		,   38},
+{"Black Wraith"		    ,0x1F02000AL,0x00001307L,0x512C, 1700,  10,
+  20,  55, 11, 'W', {50,8}  , {10,10,200,0}		,   38},
+{"Nether Wraith"	    ,0x1F07000AL,0x00005316L,0x512C, 2100,  10,
+  20,  55, 11, 'W', {58,8}  , {10,10,202,0}		,   39},
+{"Sorcerer"		    ,0x1F020002L,0x0000FF73L,0x6030, 2150,  10,
+  20,  50, 12, 'p', {30,8}  , {16,0,0,0}		,   39},
+{"Ancient Blue Dragon"	    ,0x4F000002L,0x00081A08L,0x6005, 2500,  80,
+  20,  90, 12, 'D', {87,8}  , {55,55,39,0}		,   39},
+{"Ancient Green Dragon"	    ,0x4F000002L,0x00101A09L,0x6005, 2400,  80,
+  20,  85, 12, 'D', {90,8}  , {54,54,38,0}		,   39},
+{"Ancient Black Dragon"	    ,0x4F000002L,0x00201A07L,0x6005, 2500,  70,
+  20,  90, 12, 'D', {90,8}  , {55,55,38,0}		,   39},
+{"Crystal Ooze"		    ,0x07BB000AL,0x00400000L,0x10A0,    8,   1,
+  10,  30,  9, 'O', {12,8}  , {128,0,0,0}		,   40},
+{"Disenchanter Worm"	    ,0x00200022L,0x00000000L,0x01B2,   30,  10,
+   7,	5, 10, 'w', {10,8}  , {208,0,0,0}		,   40},
+{"Rotting Quylthulg"	    ,0x00010004L,0x00004014L,0x5000, 1000,   0,
+  20,	1, 12, 'Q', {12,8}  , {0,0,0,0}			,   40},
+{"Ancient Red Dragon"	    ,0x6F000002L,0x00801E06L,0x6015, 2750,  70,
+  20, 100, 12, 'D', {105,8} , {56,56,40,0}		,   40},
+{"Death Quasit"		    ,0x1103000AL,0x000010FAL,0x1004, 1000,   0,
+  20,  80, 13, 'q', {55,8}  , {177,58,58,0}		,   40},
+{"Emperor Lich"		    ,0x2F020002L,0x00019F72L,0x510C,10000,  50,
+  20,  75, 12, 'L', {38,40} , {181,201,214,0}		,   40},
+{"Ancient Multi-Hued Dragon",0x7F000002L,0x00F89E05L,0x6005,12000,  70,
+  20, 100, 12, 'D', {52,40} , {57,57,42,0}		,   40},
+	/* Winning creatures should follow here.			 */
+	/* Winning creatures are denoted by the 32 bit in CMOVE		 */
+	/* Iggy is not a win creature, just a royal pain in the ass.	 */
+{"Evil Iggy"		    ,0x7F130002L,0x0001D713L,0x5004,18000,   0,
+  30,  80, 12, 'p', {60,40} , {81,150,0,0}		,   50},
+	/* Here is the only actual win creature.			 */
+{"Balrog"		    ,0xFF1F0002L,0x0081C743L,0x5004,55000L,   0,
+  40, 125, 13, 'B', {75,40} , {104,78,214,0}		,  100}
+};
+
+void newrec_creaturelist() {
+  VoidHand rec;
+  Ptr p;
+  Int size;
+  UInt index;
+  ULong uniqueID = REC_CREATURELIST;
+  Short qty = MAX_CREATURES;
+  Short sze = sizeof(creature_type);
+  Short i, offset;
+  index = DmNumRecords(MoriaDB);
+  size = qty * sze;
+  rec = DmNewRecord(MoriaDB, &index, size);
+  p = MemHandleLock(rec);
+  // print stuff to it.
+  for (i = 0, offset = 0 ; i < qty; i++, offset += sze)
+    DmWrite(p, offset, c_list[i], sze);
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaDB, index, true);
+  DmSetRecordInfo(MoriaDB, index, NULL, &uniqueID); // set its uid!
+}
+
+
+// I imagine that c_list is read-only.  For this and treasure type,
+// I can just Query the record at application start time and release
+// the handle at application exit.  Then it will basically look like a
+// regular array of struct.
+VoidHand creature_handle = 0;
+creature_type * lock_creature_list()
+{
+  Ptr p;
+  UInt index;
+  ULong uniqueID = REC_CREATURELIST;
+  creature_type *c;
+  if (DmFindRecordByID(MoriaDB, uniqueID, &index)) return 0;
+  creature_handle = DmQueryRecord(MoriaDB, index);
+  p = MemHandleLock(rec);
+  c = (creature_type *) p;
+  return c;
+}
+void unlock_creature_list()
+{
+  if (creature_handle)
+    MemHandleUnlock(creature_handle);
+  creature_handle = 0;
+}
+
+// this was formerly in spells.c:
+// the caller is responsible for obtaining the monster name
+void monster_name(Char *m_name, monster_type *m_ptr, creature_type *r_ptr)
+{
+  if (!m_ptr->ml)
+    StrCopy (m_name, "It");
+  else
+    StrPrintF (m_name, "The %s", r_ptr->name);
+}
+
+// this was formerly in spells.c:
+// the caller is responsible for obtaining the monster name
+void lower_monster_name(Char *m_name, monster_type *m_ptr,creature_type *r_ptr)
+{
+  if (!m_ptr->ml)
+    StrCopy (m_name, "it");
+  else
+    StrPrintF (m_name, "the %s", r_ptr->name);
+}
+
+
+/************************************************************************
+ *                                                                      *
+ *                          m_level                                     *
+ *                                                                      *
+ ************************************************************************/
+
+// monster equivalent of t_level, same read-only buckety deal.
+// Short MAX_MONS_LEVEL + 1
+
+
+/************************************************************************
+ *                                                                      *
+ *                          m_list                                      *
+ *                                                                      *
+ ************************************************************************/
+
+// monster equivalent of t_list, one imagines.
+// monster_type MAX_MALLOC
+
+// "Short mfptr" is the index of the next free slot in m_list.
+
+
+/************************************************************************
+ *                                                                      *
+ *                          Attack Type Table                           *
+ *                                                                      *
+ ************************************************************************/
+// Each monster has a set of attack types available to it, or something
+/* ERROR: attack #35 is no longer used */
+struct m_attack_type monster_attacks[N_MONS_ATTS] = {
+/* 0 */	{0, 0, 0, 0},	{1, 1, 1, 2},	{1, 1, 1, 3},	{1, 1, 1, 4},
+	{1, 1, 1, 5},	{1, 1, 1, 6},	{1, 1, 1, 7},	{1, 1, 1, 8},
+	{1, 1, 1, 9},	{1, 1, 1, 10},	{1, 1, 1, 12},	{1, 1, 2, 2},
+	{1, 1, 2, 3},	{1, 1, 2, 4},	{1, 1, 2, 5},	{1, 1, 2, 6},
+	{1, 1, 2, 8},	{1, 1, 3, 4},	{1, 1, 3, 5},	{1, 1, 3, 6},
+/* 20 */{1, 1, 3, 8},	{1, 1, 4, 3},	{1, 1, 4, 6},	{1, 1, 5, 5},
+	{1, 2, 1, 1},	{1, 2, 1, 2},	{1, 2, 1, 3},	{1, 2, 1, 4},
+	{1, 2, 1, 5},	{1, 2, 1, 6},	{1, 2, 1, 7},	{1, 2, 1, 8},
+	{1, 2, 1, 10},	{1, 2, 2, 3},	{1, 2, 2, 4},	{1, 2, 2, 5},
+	{1, 2, 2, 6},	{1, 2, 2, 8},	{1, 2, 2, 10},	{1, 2, 2, 12},
+/* 40 */{1, 2, 2, 14},	{1, 2, 3, 4},	{1, 2, 3, 12},	{1, 2, 4, 4},
+	{1, 2, 4, 5},	{1, 2, 4, 6},	{1, 2, 4, 8},	{1, 2, 5, 4},
+	{1, 2, 5, 8},	{1, 3, 1, 1},	{1, 3, 1, 2},	{1, 3, 1, 3},
+	{1, 3, 1, 4},	{1, 3, 1, 5},	{1, 3, 1, 8},	{1, 3, 1, 9},
+	{1, 3, 1, 10},	{1, 3, 1, 12},	{1, 3, 3, 3},	{1, 4, 1, 2},
+/* 60 */{1, 4, 1, 3},	{1, 4, 1, 4},	{1, 4, 2, 4},	{1, 5, 1, 2},
+	{1, 5, 1, 3},	{1, 5, 1, 4},	{1, 5, 1, 5},	{1, 10, 5, 6},
+	{1, 12, 1, 1},	{1, 12, 1, 2},	{1, 13, 1, 1},	{1, 13, 1, 3},
+	{1, 14, 0, 0},	{1, 16, 1, 4},	{1, 16, 1, 6},	{1, 16, 1, 8},
+	{1, 16, 1, 10},	{1, 16, 2, 8},	{1, 17, 8, 12},	{1, 18, 0, 0},
+/* 80 */{2, 1, 3, 4},	{2, 1, 4, 6},	{2, 2, 1, 4},	{2, 2, 2, 4},
+	{2, 2, 4, 4},	{2, 4, 1, 4},	{2, 4, 1, 7},	{2, 5, 1, 5},
+	{2, 7, 1, 6},	{3, 1, 1, 4},	{3, 5, 1, 8},	{3, 13, 1, 4},
+	{3, 7, 0, 0},	{4, 1, 1, 1},	{4, 1, 1, 4},	{4, 2, 1, 2},
+	{4, 2, 1, 6},	{4, 5, 0, 0},	{4, 7, 0, 0},	{4, 10, 0, 0},
+/*100 */{4, 13, 1, 6},	{5, 1, 2, 6},	{5, 1, 3, 7},	{5, 1, 4, 6},
+	{5, 1, 10, 12},	{5, 2, 1, 3},	{5, 2, 3, 6},	{5, 2, 3, 12},
+	{5, 5, 4, 4},	{5, 9, 3, 7},	{5, 9, 4, 5},	{5, 12, 1, 6},
+	{6, 2, 1, 3},	{6, 2, 2, 8},	{6, 2, 4, 4},	{6, 5, 1, 10},
+	{6, 5, 2, 3},	{6, 8, 1, 5},	{6, 9, 2, 6},	{6, 9, 3, 6},
+/*120 */{7, 1, 3, 6},	{7, 2, 1, 3},	{7, 2, 1, 6},	{7, 2, 3, 6},
+	{7, 2, 3, 10},	{7, 5, 1, 6},	{7, 5, 2, 3},	{7, 5, 2, 6},
+	{7, 5, 4, 4},	{7, 12, 1, 4},	{8, 1, 3, 8},	{8, 2, 1, 3},
+	{8, 2, 2, 6},	{8, 2, 3, 8},	{8, 2, 5, 5},	{8, 5, 5, 4},
+	{9, 5, 1, 2},	{9, 5, 2, 5},	{9, 5, 2, 6},	{9, 8, 2, 4},
+/*140 */{9, 12, 1, 3},	{10, 2, 1, 6},	{10, 4, 1, 1},	{10, 7, 2, 6},
+	{10, 9, 1, 2},	{11, 1, 1, 2},	{11, 7, 0, 0},	{11, 13, 2, 4},
+	{12, 5, 0, 0},	{13, 5, 0, 0},	{13, 19, 0, 0},	{14, 1, 1, 3},
+	{14, 1, 3, 4},	{14, 2, 1, 3},	{14, 2, 1, 4},	{14, 2, 1, 5},
+	{14, 2, 1, 6},	{14, 2, 1, 10},	{14, 2, 2, 4},	{14, 2, 2, 5},
+/*160 */{14, 2, 2, 6},	{14, 2, 3, 4},	{14, 2, 3, 9},	{14, 2, 4, 4},
+	{14, 4, 1, 2},	{14, 4, 1, 4},	{14, 4, 1, 8},	{14, 4, 2, 5},
+	{14, 5, 1, 2},	{14, 5, 1, 3},	{14, 5, 2, 4},	{14, 5, 2, 6},
+	{14, 5, 3, 5},	{14, 12, 1, 2},	{14, 12, 1, 4},	{14, 13, 2, 4},
+	{15, 2, 1, 6},	{15, 2, 3, 6},	{15, 5, 1, 8},	{15, 5, 2, 8},
+/*180 */{15, 5, 2, 10},	{15, 5, 2, 12},	{15, 12, 1, 3},	{16, 13, 1, 2},
+	{17, 3, 1, 10},	{18, 5, 0, 0},	{19, 5, 5, 8},	{19, 5, 12, 8},
+	{19, 5, 14, 8},	{19, 5, 15, 8},	{19, 5, 18, 8},	{19, 5, 20, 8},
+	{19, 5, 22, 8},	{19, 5, 26, 8},	{19, 5, 30, 8},	{19, 5, 32, 8},
+	{19, 5, 34, 8},	{19, 5, 36, 8},	{19, 5, 38, 8},	{19, 5, 42, 8},
+/*200 */{19, 5, 44, 8},	{19, 5, 46, 8},	{19, 5, 52, 8},	{20, 10, 0, 0},
+	{21, 1, 0, 0},	{21, 5, 0, 0},	{21, 5, 1, 6},	{21, 7, 0, 0},
+	{21, 12, 1, 4},	{22, 5, 2, 3},	{22, 12, 0, 0},	{22, 15, 1, 1},
+/*212 */{23, 1, 1, 1},	{23, 5, 1, 3},	{24, 5, 0, 0}
+};
+void newrec_monattacks() {
+  VoidHand rec;
+  Ptr p;
+  Int size;
+  UInt index;
+  ULong uniqueID = REC_MONATTACKS;
+  Short qty = N_MONS_ATTS;
+  Short sze = sizeof(struct m_attack_type);
+  Short i, offset;
+  index = DmNumRecords(MoriaDB);
+  size = qty * sze;
+  rec = DmNewRecord(MoriaDB, &index, size);
+  p = MemHandleLock(rec);
+  // print stuff to it.
+  for (i = 0, offset = 0 ; i < qty; i++, offset += sze)
+    DmWrite(p, offset, monster_attacks[i], sze);
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaDB, index, true);
+  DmSetRecordInfo(MoriaDB, index, NULL, &uniqueID); // set its uid!
+}
+
+// Also need to be able to look them up!!
+
+/************************************************************************
+ *                                                                      *
+ *                          Colors                                      *
+ *                                                                      *
+ ************************************************************************/
+void newrec_colors() {
+  newrec_text(REC_COLORS, MAX_COLORS, MAXLEN_COLORS, colors);
+}
+void copy_color(Short i, Char *buf) {
+  copy_text(REC_COLORS, MAX_COLORS, i, buf);
+}
+/************************************************************************
+ *                                                                      *
+ *                          Mushrooms                                   *
+ *                                                                      *
+ ************************************************************************/
+void newrec_mushrooms(){
+  newrec_text(REC_MUSH, MAX_MUSH, MAXLEN_MUSH, mushrooms);
+}
+void copy_mushroom(Short i, Char *buf) {
+  copy_text(REC_MUSH, MAX_MUSH, i, buf);
+}
+/************************************************************************
+ *                                                                      *
+ *                          Woods                                       *
+ *                                                                      *
+ ************************************************************************/
+void newrec_wood(){
+  newrec_text(REC_WOOD, MAX_WOOD, MAXLEN_WOOD, wood);
+}
+void copy_wood(Short i, Char *buf) {
+  copy_text(REC_WOOD, MAX_WOOD, i, buf);
+}
+/************************************************************************
+ *                                                                      *
+ *                          Metals                                      *
+ *                                                                      *
+ ************************************************************************/
+void newrec_metals(){
+  newrec_text(REC_METALS, MAX_METALS, MAXLEN_METALS, metals);
+}
+void copy_metal(Short i, Char *buf) {
+  copy_text(REC_METALS, MAX_METALS, i, buf);
+}
+/************************************************************************
+ *                                                                      *
+ *                          Rocks                                       *
+ *                                                                      *
+ ************************************************************************/
+void newrec_rocks(){
+  newrec_text(REC_ROCKS, MAX_ROCKS, MAXLEN_ROCKS, rocks);
+}
+void copy_rock(Short i, Char *buf) {
+  copy_text(REC_ROCKS, MAX_ROCKS, i, buf);
+}
+/************************************************************************
+ *                                                                      *
+ *                          Amulets                                     *
+ *                                                                      *
+ ************************************************************************/
+void newrec_amulets(){
+  newrec_text(REC_AMULETS, MAX_AMULETS, MAXLEN_AMULETS, amulets);
+}
+void copy_amulet(Short i, Char *buf) {
+  copy_text(REC_AMULETS, MAX_AMULETS, i, buf);
+}
+/************************************************************************
+ *                                                                      *
+ *                          Syllables                                   *
+ *                                                                      *
+ ************************************************************************/
+void newrec_syllables(){
+  newrec_text(REC_SYLLABLES, MAX_SYLLABLES, MAXLEN_SYLLABLES, syllables);
+}
+void copy_syllable(Short i, Char *buf) {
+  copy_text(REC_SYLLABLES, MAX_SYLLABLES, i, buf);
+}
+
+/************************************************************************
+ *                                                                      *
+ *                          Normal Distribution                         *
+ *                                                                      *
+ ************************************************************************/
+// Ok, bub.
+/* this table is used to generate a psuedo-normal distribution.	 See the
+   function randnor() in misc1.c, this is much faster than calling
+   transcendental function to calculate a true normal distribution */
+UShort normal_table[NORMAL_TABLE_SIZE] = {
+     206,     613,    1022,    1430,	1838,	 2245,	  2652,	   3058,
+    3463,    3867,    4271,    4673,	5075,	 5475,	  5874,	   6271,
+    6667,    7061,    7454,    7845,	8234,	 8621,	  9006,	   9389,
+    9770,   10148,   10524,   10898,   11269,	11638,	 12004,	  12367,
+   12727,   13085,   13440,   13792,   14140,	14486,	 14828,	  15168,
+   15504,   15836,   16166,   16492,   16814,	17133,	 17449,	  17761,
+   18069,   18374,   18675,   18972,   19266,	19556,	 19842,	  20124,
+   20403,   20678,   20949,   21216,   21479,	21738,	 21994,	  22245,
+   22493,   22737,   22977,   23213,   23446,	23674,	 23899,	  24120,
+   24336,   24550,   24759,   24965,   25166,	25365,	 25559,	  25750,
+   25937,   26120,   26300,   26476,   26649,	26818,	 26983,	  27146,
+   27304,   27460,   27612,   27760,   27906,	28048,	 28187,	  28323,
+   28455,   28585,   28711,   28835,   28955,	29073,	 29188,	  29299,
+   29409,   29515,   29619,   29720,   29818,	29914,	 30007,	  30098,
+   30186,   30272,   30356,   30437,   30516,	30593,	 30668,	  30740,
+   30810,   30879,   30945,   31010,   31072,	31133,	 31192,	  31249,
+   31304,   31358,   31410,   31460,   31509,	31556,	 31601,	  31646,
+   31688,   31730,   31770,   31808,   31846,	31882,	 31917,	  31950,
+   31983,   32014,   32044,   32074,   32102,	32129,	 32155,	  32180,
+   32205,   32228,   32251,   32273,   32294,	32314,	 32333,	  32352,
+   32370,   32387,   32404,   32420,   32435,	32450,	 32464,	  32477,
+   32490,   32503,   32515,   32526,   32537,	32548,	 32558,	  32568,
+   32577,   32586,   32595,   32603,   32611,	32618,	 32625,	  32632,
+   32639,   32645,   32651,   32657,   32662,	32667,	 32672,	  32677,
+   32682,   32686,   32690,   32694,   32698,	32702,	 32705,	  32708,
+   32711,   32714,   32717,   32720,   32722,	32725,	 32727,	  32729,
+   32731,   32733,   32735,   32737,   32739,	32740,	 32742,	  32743,
+   32745,   32746,   32747,   32748,   32749,	32750,	 32751,	  32752,
+   32753,   32754,   32755,   32756,   32757,	32757,	 32758,	  32758,
+   32759,   32760,   32760,   32761,   32761,	32761,	 32762,	  32762,
+   32763,   32763,   32763,   32764,   32764,	32764,	 32764,	  32765,
+   32765,   32765,   32765,   32766,   32766,	32766,	 32766,	  32766,
+};
+/*
+ *  newrec_normaltab
+ *  REQUIRES: distribution info, above;  no REC_NORMALTAB in main db
+ *  RESULT:   record is created and initialized with that data
+ */
+void newrec_normaltab() {
+  VoidHand rec;
+  Ptr p;
+  Int size;
+  UInt index;
+  ULong uniqueID = REC_NORMALTAB;
+  Short qty = NORMAL_TABLE_SIZE;
+  Short sze = sizeof(UShort);
+  Short i, offset;
+  index = DmNumRecords(MoriaDB);
+  size = qty * sze;
+  rec = DmNewRecord(MoriaDB, &index, size);
+  p = MemHandleLock(rec);
+  // print stuff to it.
+  for (i = 0, offset = 0 ; i < qty; i++, offset += sze)
+    DmWrite(p, offset, normal_table[i], sze);
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaDB, index, true);
+  DmSetRecordInfo(MoriaDB, index, NULL, &uniqueID); // set its uid!
+}
+
+/*
+ *  get_player_exp
+ *  IN: player level of interest
+ *  REQUIRES: record exists
+ *  RESULT:   returns the minimum experience to be that level
+ */
+UShort get_normal_tab(Short i)
+{
+  VoidHand rec;
+  Ptr p;
+  UInt index;
+  ULong uniqueID = REC_NORMALTAB;
+  UShort *vals;
+  UShort val;
+  // look up and return the correct number
+  // bounds check
+  if (i < 0 || i >= NORMAL_TABLE_SIZE) return 0;
+  // perform lookup
+  if (DmFindRecordByID(MoriaDB, uniqueID, &index)) return 0;
+  rec = DmQueryRecord(MoriaDB, index);
+  p = MemHandleLock(rec);
+  vals = (UShort *) p;
+  val = vals[i];
+  MemHandleUnlock(rec);
+  return val;
+}
+
+
+
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

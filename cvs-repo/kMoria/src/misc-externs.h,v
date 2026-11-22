@@ -1,0 +1,198 @@
+head	1.6;
+access;
+symbols
+	Release-2002_03_29:1.6
+	Release-2002_01_12:1.6
+	Release-2002_01_02:1.5
+	Release-2002_01_01:1.5
+	Release-2001_12_19:1.5
+	Release-2001_08_04:1.4
+	Release-2001_07_02:1.4
+	Release-2001_06_16:1.3
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.6
+date	2002.01.05.18.46.50;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.11.30.05.06.17;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.11.04.02.13.40;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.45.01;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.45.01;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+// form_recall.c
+extern Short recall_this_monster;
+
+// moria1.c - this could be a database record.. but it's only 60 bytes..
+extern Short class_level_adj[MAX_CLASS][MAX_LEV_ADJ];
+
+// spells-a.c - this could be a database record.. but it's only 160 bytes..
+extern ULong player_exp[MAX_PLAYER_LEVEL];
+extern class_type class[MAX_CLASS]; // ditto 186 bytes or so
+
+// create.c - this is how big? like 240 bytes I think.
+extern race_type race[MAX_RACES];
+extern Short player_hp[MAX_PLAYER_LEVEL];// another 80 bytes
+
+// magic.c
+// these should probably be database records.  they are read only.
+extern spell_type magic_spell[MAX_CLASS-1][31];
+extern Char spell_names[62][24]; // could also be const.
+
+// misc5.c
+extern Short needed_direction_for;
+extern Short needed_direction_item;
+
+// store1.c
+extern owner_type owners[MAX_OWNERS];
+
+// main.c
+extern MoriaPreferenceType my_prefs;
+
+
+// display.c, main.c ...
+extern Boolean IsVGA;
+#ifndef I_AM_OS_2
+extern FontID BigFont;
+extern FontID SmallFont;
+extern FontID NanoFont;
+#endif
+@
+
+
+1.5
+log
+@moving extern decls around
+@
+text
+@d41 9
+@
+
+
+1.4
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d38 3
+@
+
+
+1.3
+log
+@tweaked notice
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d5 3
+a7 5
+ * This program is derived from Umoria 5.5.2.  Umoria is:            *
+ *  "Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+ *   This software may be copied and distributed for educational,    *
+ *   research, and not for profit purposes provided that this        *
+ *   copyright and statement are included in all such copies."       *
+d9 3
+a11 15
+ * kMoria is free software; you can redistribute it and/or           *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+@
+
+
+1.2
+log
+@adding GPL comment
+@
+text
+@d5 5
+a9 2
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d11 1
+a11 1
+ * This program is free software; you can redistribute it and/or     *
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 23
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

@@ -1,0 +1,4799 @@
+head	1.68;
+access;
+symbols
+	Release-2002_03_29:1.68
+	Release-2002_01_12:1.62
+	Release-2002_01_02:1.58
+	Release-2002_01_01:1.58
+	Release-2001_12_19:1.54
+	Release-2001_08_04:1.47
+	Release-2001_07_02:1.43
+	Release-2001_06_16:1.36;
+locks; strict;
+comment	@ * @;
+
+
+1.68
+date	2002.03.27.05.09.03;	author i0lanthe;	state Exp;
+branches;
+next	1.67;
+
+1.67
+date	2002.03.27.04.21.06;	author i0lanthe;	state Exp;
+branches;
+next	1.66;
+
+1.66
+date	2002.03.27.03.17.28;	author i0lanthe;	state Exp;
+branches;
+next	1.65;
+
+1.65
+date	2002.03.26.01.54.39;	author i0lanthe;	state Exp;
+branches;
+next	1.64;
+
+1.64
+date	2002.03.25.21.15.25;	author i0lanthe;	state Exp;
+branches;
+next	1.63;
+
+1.63
+date	2002.01.26.20.11.52;	author i0lanthe;	state Exp;
+branches;
+next	1.62;
+
+1.62
+date	2002.01.12.21.13.14;	author i0lanthe;	state Exp;
+branches;
+next	1.61;
+
+1.61
+date	2002.01.10.02.55.48;	author i0lanthe;	state Exp;
+branches;
+next	1.60;
+
+1.60
+date	2002.01.10.01.48.04;	author i0lanthe;	state Exp;
+branches;
+next	1.59;
+
+1.59
+date	2002.01.08.19.32.55;	author i0lanthe;	state Exp;
+branches;
+next	1.58;
+
+1.58
+date	2002.01.01.22.25.45;	author i0lanthe;	state Exp;
+branches;
+next	1.57;
+
+1.57
+date	2002.01.01.21.14.15;	author i0lanthe;	state Exp;
+branches;
+next	1.56;
+
+1.56
+date	2002.01.01.03.30.33;	author i0lanthe;	state Exp;
+branches;
+next	1.55;
+
+1.55
+date	2002.01.01.01.37.09;	author i0lanthe;	state Exp;
+branches;
+next	1.54;
+
+1.54
+date	2001.12.16.19.17.30;	author i0lanthe;	state Exp;
+branches;
+next	1.53;
+
+1.53
+date	2001.12.16.00.02.07;	author i0lanthe;	state Exp;
+branches;
+next	1.52;
+
+1.52
+date	2001.12.15.21.03.17;	author i0lanthe;	state Exp;
+branches;
+next	1.51;
+
+1.51
+date	2001.11.30.23.44.42;	author i0lanthe;	state Exp;
+branches;
+next	1.50;
+
+1.50
+date	2001.11.30.05.06.17;	author i0lanthe;	state Exp;
+branches;
+next	1.49;
+
+1.49
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.48;
+
+1.48
+date	2001.10.20.18.14.59;	author i0lanthe;	state Exp;
+branches;
+next	1.47;
+
+1.47
+date	2001.08.04.16.56.17;	author i0lanthe;	state Exp;
+branches;
+next	1.46;
+
+1.46
+date	2001.08.03.08.23.34;	author i0lanthe;	state Exp;
+branches;
+next	1.45;
+
+1.45
+date	2001.08.03.00.32.55;	author i0lanthe;	state Exp;
+branches;
+next	1.44;
+
+1.44
+date	2001.07.30.02.23.06;	author i0lanthe;	state Exp;
+branches;
+next	1.43;
+
+1.43
+date	2001.06.30.17.31.17;	author i0lanthe;	state Exp;
+branches;
+next	1.42;
+
+1.42
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.41;
+
+1.41
+date	2001.06.28.01.33.54;	author i0lanthe;	state Exp;
+branches;
+next	1.40;
+
+1.40
+date	2001.06.23.00.26.33;	author i0lanthe;	state Exp;
+branches;
+next	1.39;
+
+1.39
+date	2001.06.22.06.21.56;	author i0lanthe;	state Exp;
+branches;
+next	1.38;
+
+1.38
+date	2001.06.20.01.56.43;	author i0lanthe;	state Exp;
+branches;
+next	1.37;
+
+1.37
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.36;
+
+1.36
+date	2001.04.01.18.49.31;	author i0lanthe;	state Exp;
+branches;
+next	1.35;
+
+1.35
+date	2001.03.31.21.06.19;	author i0lanthe;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2001.03.31.00.55.25;	author i0lanthe;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2001.03.27.22.49.22;	author i0lanthe;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2001.03.27.06.30.43;	author i0lanthe;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2001.03.10.05.46.57;	author i0lanthe;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2001.03.10.05.07.20;	author i0lanthe;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2001.03.09.23.29.47;	author i0lanthe;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2001.01.27.00.53.03;	author i0lanthe;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2001.01.23.17.49.56;	author i0lanthe;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2001.01.11.00.31.58;	author i0lanthe;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2001.01.10.23.40.25;	author i0lanthe;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2001.01.09.23.07.47;	author i0lanthe;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2001.01.09.21.12.01;	author i0lanthe;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2001.01.09.17.19.22;	author i0lanthe;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2001.01.06.18.24.38;	author i0lanthe;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2001.01.06.02.32.08;	author i0lanthe;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2001.01.05.22.43.25;	author i0lanthe;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2001.01.05.04.12.36;	author i0lanthe;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2001.01.03.22.24.31;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2000.12.31.03.57.57;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2000.12.23.04.03.40;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2000.11.13.05.15.03;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2000.11.12.05.36.38;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2000.11.04.02.13.39;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2000.11.04.01.46.47;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2000.11.01.05.01.32;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2000.10.28.22.28.54;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2000.10.28.02.28.09;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2000.10.28.01.31.07;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.10.26.05.49.38;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.10.26.04.25.25;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.25.04.29.06;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.10.24.03.05.20;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.10.21.03.34.09;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.68
+log
+@add compact_monsters and compact_objects (should be more robust for farming now)
+@
+text
+@/**********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                          *
+ * This file is                                                       *
+ * copyright (C) 1985-2001 Robert A. Koeneke, Jimmey Wayne Todd,      *
+ * James E. Wilson, Bridget Spitznagel. (see main.c for full credits) *
+ *                                                                    *
+ * This program is freeware.  You can redistribute it and/or modify   *
+ * it (provided that this notice and the full credits are retained),  *
+ * but it CANNOT be distributed for profit.                           *
+ **********************************************************************/
+#include "kMoria.h"
+/* A note on EvtSysEventAvail(true) ... It's inefficient to check it
+   every turn, I guess, but it doesn't matter much if we slow down a counted
+   command a little bit.  the slower it is, the easier it is to abort
+   earlier, anyway. */
+
+void try_print_status() SEC_5;
+
+static Boolean non_againable_command(Char c) SEC_7;
+static ULong valid_command(Char c) SEC_7;
+static Boolean start_use_item() SEC_7;
+static void regenhp(Short percent) SEC_6;
+static void regenmana(Short percent) SEC_6;
+static Boolean enchanted (inven_type *t_ptr) SEC_5;
+static void go_up() SEC_5;
+static void go_down() SEC_5;
+static void do_verb_generic(void (*verb)(Short)) SEC_3;
+static void do_search() SEC_6;
+static void do_force() SEC_6;
+static void do_disarm() SEC_6;
+static void do_open() SEC_6;
+static void do_dig() SEC_6;
+static void do_spike() SEC_6;
+static void jamdoor(Short dir) SEC_5;
+static void exchange_weap() SEC_5;
+//static Char map_roguedir(Char comval) SEC_5;
+static void ident_char(Char command) SEC_5;
+// static void ident_monster(Char c) SEC_6;
+static Boolean user_interrupted() SEC_5;
+static Boolean check_for_shovel() SEC_6;
+
+extern Short recall_this_monster;
+extern Boolean recall_list;
+
+extern UChar invequ_mode; // for aim,zap
+
+UInt need_print_stats;
+extern Boolean unverbing;
+
+// In the original,
+// you exit the dungeon loop when it's time to start a new dungeon level.
+
+Short find_count; // this was a local variable in dungeon() so was regen_amount
+extern Boolean do_pickup;
+/* 
+ * Call this every time you enter a new level.  THis was the stuff at the
+ * start of dungeon() before you enter the giant Do-While loop.
+ */
+//void dungeon()
+void enter_new_level()
+{
+  /* Main procedure for dungeon.			-RAK-	*/
+  /* Note: There is a lot of preliminary magic going on here at first*/
+  // This procedure is just all the preliminary magic.
+  need_print_stats = 0;
+
+  /* Check light status for setup	   */
+  if (inventory[INVEN_LIGHT].p1 > 0)
+    player_light = true;
+  else
+    player_light = false;
+  /* Check for a maximum level		   */
+  if (dun_level > pymisc.max_dlv)
+    pymisc.max_dlv = dun_level;
+
+  /* Reset flags and initialize variables  */
+  //  curr_state.count = 0;
+  find_count = 0;
+  new_level_flag = false;
+  find_flag = 0; // false;
+  teleport_flag = false;
+  mon_tot_mult = 0;
+  cave_set(char_row, char_col, CAVE_cptr, 1); // put the '@@' where you are!!!
+  /* Ensure we display the panel. Used to do this with a global var. -CJS- */
+  panel_row = panel_col = -1;
+  /* Light up the area around character	   */ // also move panel if needed.
+  if (!check_view())
+    recalc_screen(); // and_refresh(); // fix the screen-not-redrawn bug
+  
+  /* must do this after panel_row/col set to -1, because search_off() will
+     call check_view(), and so the panel_* variables must be valid before
+     search_off() is called */
+  if (pyflags.status & PY_SEARCH)
+    search_off();
+  /* Light,  but do not move critters	    */
+  creatures(false);
+  /* Print the depth			   */
+  //  prt_depth(); // XXXXX dude, just print_stats(mumble)
+  if (!need_print_stats) need_print_stats |= STATS_NONE; // XXXXXXX &= ?
+
+}
+
+/*************************************************************************
+ * This is stuff from the beginning of dungeon(),
+ * the stuff that gets done BEFORE we require player input.
+ * (which, remember, will be an EVENT for us and not a polled char.)
+ *************************************************************************/
+#define CHECKPOINT_TIME 200
+void start_of_turn()
+{
+  //  inven_type *i_ptr;
+  Short plight, regen_amount, i;
+
+  do {
+    turn++;
+    /* leave out game-hours restriction, unless your Palm is a mainframe */
+    if ((!pyflags.rest && (turn % CHECKPOINT_TIME) == 0) ||
+	(turn % (CHECKPOINT_TIME * 10)) == 0)
+      maybe_checkpoint();
+
+    /* turn over the store contents every, say, 1000 turns */
+    if ((dun_level != 0) && ((turn % 1000) == 0))
+      store_maint();
+
+    /* Check for creature generation		*/
+    if (randint(MAX_MALLOC_CHANCE) == 1)
+      alloc_monster(1, MAX_SIGHT, false);
+
+    /* Check light status			       */
+    //  i_ptr = &inventory[INVEN_LIGHT];
+    plight = inventory[INVEN_LIGHT].p1;
+    if (player_light) {
+      if (plight > 0) {
+	plight--;
+	invy_set_p1(inventory, INVEN_LIGHT, plight); // used a turn of light
+	if (plight == 0) {
+	  player_light = false;
+	  message("Your light has gone out!");
+	  disturb(false, true);
+	  /* unlight creatures */
+	  creatures(false);
+	} else if ((plight < 40) && (randint(5) == 1) &&
+		   (pyflags.blind < 1)) {
+	  disturb(false, false);
+	  message("Your light is growing faint.");
+	}
+      } else {
+	player_light = false;
+	disturb(false, true);
+	/* unlight creatures */
+	creatures(false);
+      }
+    } else if (plight > 0) {
+      invy_set_p1(inventory, INVEN_LIGHT, plight); // used a turn of light
+      player_light = true;
+      disturb(false, true);
+      /* light creatures */
+      creatures(false);
+    } /* end of Check light status                  */
+  
+    /* Update counters and messages (quite long)			*/
+
+    /* Heroism (must precede anything that can damage player)      */
+    if (pyflags.hero > 0) {
+      if ((PY_HERO & pyflags.status) == 0) {
+	pyflags.status |= PY_HERO;
+	disturb(false, false);
+	pymisc.mhp += 10;
+	pymisc.chp += 10;
+	pymisc.bth += 12;
+	pymisc.bthb+= 12;
+	message("You feel like a HERO!");
+	need_print_stats |= STATS_HP; // was QUO
+      }
+      pyflags.hero--;
+      if (pyflags.hero == 0) {
+	pyflags.status &= ~PY_HERO;
+	disturb (false, false);
+	pymisc.mhp -= 10;
+	if (pymisc.chp > pymisc.mhp) {
+	  pymisc.chp = pymisc.mhp;
+	  pymisc.chp_frac = 0;
+	  // need_print_stats |= STATS_HP;// omit because we do it below
+	}
+	pymisc.bth  -= 12;
+	pymisc.bthb -= 12;
+	message("The heroism wears off.");
+	need_print_stats |= STATS_HP; // was QUO
+      }
+    } /* end Heroism                  */
+
+    /* Super Heroism */
+    if (pyflags.shero > 0) {
+      if ((PY_SHERO & pyflags.status) == 0) {
+	pyflags.status |= PY_SHERO;
+	disturb (false, false);
+	pymisc.mhp += 20;
+	pymisc.chp += 20;
+	pymisc.bth += 24;
+	pymisc.bthb+= 24;
+	message("You feel like a SUPER HERO!");
+	need_print_stats |= STATS_HP; // was QUO
+      }
+      pyflags.shero--;
+      if (pyflags.shero == 0) {
+	pyflags.status &= ~PY_SHERO;
+	disturb (false, false);
+	pymisc.mhp -= 20;
+	if (pymisc.chp > pymisc.mhp) {
+	  pymisc.chp = pymisc.mhp;
+	  pymisc.chp_frac = 0;
+	  // need_print_stats |= STATS_HP; // omit, we do it below
+	}
+	pymisc.bth  -= 24;
+	pymisc.bthb -= 24;
+	message("The super heroism wears off.");
+	need_print_stats |= STATS_HP; // was QUO
+      }
+    } /* end Super Heroism              */
+
+    /* Check food status	       */
+    regen_amount = PLAYER_REGEN_NORMAL;
+    if (pyflags.food < PLAYER_FOOD_ALERT) {
+      if (pyflags.food < PLAYER_FOOD_WEAK) {
+	if (pyflags.food < 0)
+	  regen_amount = 0;
+	else if (pyflags.food < PLAYER_FOOD_FAINT)
+	  regen_amount = PLAYER_REGEN_FAINT;
+	else if (pyflags.food < PLAYER_FOOD_WEAK)
+	  regen_amount = PLAYER_REGEN_WEAK;
+	if ((PY_WEAK & pyflags.status) == 0) {
+	  pyflags.status |= PY_WEAK;
+	  message("You are getting weak from hunger.");
+	  disturb (false, false);
+	  print_stats(STATS_WORD);//	prt_hunger(); // XXXXX not implemented
+	}
+	if ((pyflags.food < PLAYER_FOOD_FAINT) && (randint(8) == 1)) {
+	  pyflags.paralysis += randint(5);
+	  message("You faint from the lack of food.");
+	  disturb (true, false);
+	}
+      } else if ((PY_HUNGRY & pyflags.status) == 0) {
+	pyflags.status |= PY_HUNGRY;
+	message("You are getting hungry.");
+	disturb (false, false);
+	print_stats(STATS_WORD);//   prt_hunger(); // XXXXXXX not implemented
+      }
+    } /* end of Check food status          */
+
+    /* Food consumption
+     * Note: Speeded up characters really burn up the food!  */
+    if (pyflags.speed < 0)
+      pyflags.food -= pyflags.speed * pyflags.speed;
+    pyflags.food -= pyflags.food_digested;
+    if (pyflags.food < 0) {
+      take_hit (-pyflags.food/16, "starvation");   /* -CJS- */
+      // XXXX can you die here?
+      disturb(true, false);
+    } /* end Food consumption */
+
+    /* Regenerate	       */
+    if (pyflags.regenerate)  regen_amount *= 3 / 2;
+    if ((pyflags.status & PY_SEARCH) || pyflags.rest != 0)
+      regen_amount *= 2;
+    if ((pyflags.poisoned < 1) && (pymisc.chp < pymisc.mhp))
+      regenhp(regen_amount);
+    if (pymisc.cmana < pymisc.mana)
+      regenmana(regen_amount);
+    /* end Regenerate */
+
+    /* Blindness	       */
+    if (pyflags.blind > 0) {
+      if ((PY_BLIND & pyflags.status) == 0) {
+	pyflags.status |= PY_BLIND;
+	//      prt_map(); // XXXX not implemented
+	print_stats(STATS_WORD);//      prt_blind(); // XXXX not implemented
+	disturb (false, true);
+	/* unlight creatures */
+	creatures (false);
+      }
+      pyflags.blind--;
+      if (pyflags.blind == 0) {
+	pyflags.status &= ~PY_BLIND;
+	print_stats(STATS_WORD);//      prt_blind(); // XXXX not implemented
+	//      prt_map(); // XXXX not implemented
+	recalc_and_refresh(); //    recalc_screen();  // refresh(true);
+	/* light creatures */
+	disturb (false, true);
+	creatures(false);
+	message("The veil of darkness lifts.");
+      }
+    } /* end Blindness */
+
+    /* Confusion	       */
+    if (pyflags.confused > 0) {
+      if ((PY_CONFUSED & pyflags.status) == 0) {
+	pyflags.status |= PY_CONFUSED;
+	print_stats(STATS_WORD);//      prt_confused(); // XXXX not implemented
+      }
+      pyflags.confused--;
+      if (pyflags.confused == 0) {
+	pyflags.status &= ~PY_CONFUSED;
+	print_stats(STATS_WORD);//      prt_confused(); // XXXX not implemented
+	message("You feel less confused now.");
+	if (pyflags.rest != 0)
+	  rest_off();
+      }
+    } /* end Confusion */
+
+    /* Afraid		       */
+    if (pyflags.afraid > 0) {
+      if ((PY_FEAR & pyflags.status) == 0) {
+	if ((pyflags.shero + pyflags.hero) > 0)
+	  pyflags.afraid = 0;
+	else {
+	  pyflags.status |= PY_FEAR;
+	  print_stats(STATS_WORD);//	prt_afraid(); // XXXX not implemented
+	}
+      } else if ((pyflags.shero + pyflags.hero) > 0)
+	pyflags.afraid = 1;
+      pyflags.afraid--;
+      if (pyflags.afraid == 0) {
+	pyflags.status &= ~PY_FEAR;
+	print_stats(STATS_WORD);//      prt_afraid(); // XXXX not implemented
+	message("You feel bolder now.");
+	disturb (false, false);
+      }
+    } /* end Afraid */
+
+    /* Poisoned	       */
+    if (pyflags.poisoned > 0) {
+      if ((PY_POISONED & pyflags.status) == 0) {
+	pyflags.status |= PY_POISONED;
+	print_stats(STATS_WORD);//      prt_poisoned(); // XXXX not implemented
+      }
+      pyflags.poisoned--;
+      if (pyflags.poisoned == 0) {
+	pyflags.status &= ~PY_POISONED;
+	print_stats(STATS_WORD);//      prt_poisoned(); // XXXX not implemented
+	message("You feel better.");
+	disturb (false, false);
+      } else {
+	i = 0;
+	switch(con_adj()) {
+	case -4:  i = 4;  break;
+	case -3:
+	case -2:  i = 3;  break;
+	case -1:  i = 2;  break;
+	case 0:	  i = 1;  break;
+	case 1: case 2: case 3:
+	  i = ((turn % 2) == 0);
+	  break;
+	case 4: case 5:
+	  i = ((turn % 3) == 0);
+	  break;
+	case 6:
+	  i = ((turn % 4) == 0);
+	  break;
+	}
+	take_hit (i, "poison");
+	// XXX can you die here?
+	disturb (true, false);
+      }
+    } /* end Poisoned */
+
+    /* Fast		       */
+    if (pyflags.fast > 0) {
+      if ((PY_FAST & pyflags.status) == 0) {
+	pyflags.status |= PY_FAST;
+	change_speed(-1);
+	message("You feel yourself moving faster.");
+	disturb (false, false);
+      }
+      pyflags.fast--;
+      if (pyflags.fast == 0) {
+	pyflags.status &= ~PY_FAST;
+	change_speed(1);
+	message("You feel yourself slow down.");
+	disturb (false, false);
+      }
+    } /* end Fast */
+
+    /* Slow		       */
+    if (pyflags.slow > 0) {
+      if ((PY_SLOW & pyflags.status) == 0) {
+	pyflags.status |= PY_SLOW;
+	change_speed(1);
+	message("You feel yourself moving slower.");
+	disturb (false, false);
+      }
+      pyflags.slow--;
+      if (pyflags.slow == 0) {
+	pyflags.status &= ~PY_SLOW;
+	change_speed(-1);
+	message("You feel yourself speed up.");
+	disturb (false, false);
+      }
+    } /* end Slow */
+
+    /* Resting is over?      */
+    // First, check to see if the user has interrupted it...
+    if ((pyflags.rest != 0) && user_interrupted())
+      rest_off();
+    // User has not interrupted the rest, check other termination conditions
+    if (pyflags.rest > 0) {
+      pyflags.rest--;
+      if (pyflags.rest == 0)		      /* Resting over	       */
+	rest_off();
+    } else if (pyflags.rest < 0) {
+      /* Rest until reach max mana and max hit points.  */
+      pyflags.rest++;
+      if ((pymisc.chp == pymisc.mhp && pymisc.cmana == pymisc.mana) ||
+	  pyflags.rest == 0)
+	rest_off();
+    }
+
+    /* Hallucinating?	 (Random characters appear!)*/
+    if (pyflags.image > 0) {
+      end_find ();
+      pyflags.image--;
+      if (pyflags.image == 0)
+	recalc_and_refresh(); //    recalc_screen();  // refresh(true);
+    } /* end Hallucinating */
+
+    /* Paralysis	       */
+    if (pyflags.paralysis > 0) {
+      /* when paralysis true, you can not see any movement that occurs */
+      pyflags.paralysis--;
+      if (!pyflags.paralysis)
+	print_stats(STATS_WORD);
+      disturb (true, false);
+    } /* end Paralysis */
+
+    /* Protection from evil counter*/
+    if (pyflags.protevil > 0) {
+      pyflags.protevil--;
+      if (pyflags.protevil == 0)
+	message ("You no longer feel safe from evil.");
+    } /* end Protection from evil */
+
+    /* Invulnerability	*/
+    if (pyflags.invuln > 0) {
+      if ((PY_INVULN & pyflags.status) == 0) {
+	pyflags.status |= PY_INVULN;
+	disturb (false, false);
+	pymisc.pac += 100;
+	pymisc.dis_ac += 100;
+	need_print_stats |= STATS_AC;      //      prt_pac(); // XXXX
+	message("Your skin turns into steel!");
+      }
+      pyflags.invuln--;
+      if (pyflags.invuln == 0) {
+	pyflags.status &= ~PY_INVULN;
+	disturb (false, false);
+	pymisc.pac -= 100;
+	pymisc.dis_ac -= 100;
+	need_print_stats |= STATS_AC;      //      prt_pac(); // XXX
+	message("Your skin returns to normal.");
+      }
+    } /* end Invulnerability */
+
+    /* Blessed       */
+    if (pyflags.blessed > 0) {
+      if ((PY_BLESSED & pyflags.status) == 0) {
+	pyflags.status |= PY_BLESSED;
+	disturb (false, false);
+	pymisc.bth += 5;
+	pymisc.bthb+= 5;
+	pymisc.pac += 2;
+	pymisc.dis_ac+= 2;
+	message("You feel righteous!");
+	need_print_stats |= STATS_AC;      //      prt_pac(); // XXXX
+      }
+      pyflags.blessed--;
+      if (pyflags.blessed == 0) {
+	pyflags.status &= ~PY_BLESSED;
+	disturb (false, false);
+	pymisc.bth -= 5;
+	pymisc.bthb-= 5;
+	pymisc.pac -= 2;
+	pymisc.dis_ac -= 2;
+	message("The prayer has expired.");
+	need_print_stats |= STATS_AC;      //      prt_pac(); // XXXX
+      }
+    } /* end Blessed */
+
+    /* Resist Heat   */
+    if (pyflags.resist_heat > 0) {
+      pyflags.resist_heat--;
+      if (pyflags.resist_heat == 0)
+	message ("You no longer feel safe from flame.");
+    } /* end Resist heat */
+
+    /* Resist Cold   */
+    if (pyflags.resist_cold > 0) {
+      pyflags.resist_cold--;
+      if (pyflags.resist_cold == 0)
+	message ("You no longer feel safe from cold.");
+    } /* end Resist cold */
+
+    /* Detect Invisible      */
+    if (pyflags.detect_inv > 0) {
+      if ((PY_DET_INV & pyflags.status) == 0) {
+	pyflags.status |= PY_DET_INV;
+	pyflags.see_inv = true;
+	/* light but don't move creatures */
+	creatures (false);
+      }
+      pyflags.detect_inv--;
+      if (pyflags.detect_inv == 0) {
+	pyflags.status &= ~PY_DET_INV;
+	/* may still be able to see_inv if wearing magic item */
+	calc_bonuses();
+	/* unlight but don't move creatures */
+	creatures (false);
+      }
+    } /* end Detect invisible */
+
+    /* Timed infra-vision    */
+    if (pyflags.tim_infra > 0) {
+      if ((PY_TIM_INFRA & pyflags.status) == 0) {
+	pyflags.status |= PY_TIM_INFRA;
+	pyflags.see_infra++;
+	/* light but don't move creatures */
+	creatures (false);
+      }
+      pyflags.tim_infra--;
+      if (pyflags.tim_infra == 0) {
+	pyflags.status &= ~PY_TIM_INFRA;
+	pyflags.see_infra--;
+	/* unlight but don't move creatures */
+	creatures (false);
+      }
+    } /* end Timed infra-vision */
+
+    /* Word-of-Recall  Note: Word-of-Recall is a delayed action	 */
+    if (pyflags.word_recall > 0) {
+      if (pyflags.word_recall == 1) {
+	new_level_flag = true;
+	pyflags.paralysis++;
+	pyflags.word_recall = 0;
+	if (dun_level > 0) {
+	  dun_level = 0;
+	  level_message("You feel yourself yanked upwards!");
+	} else if (pymisc.max_dlv != 0) {
+	  dun_level = pymisc.max_dlv;
+	  level_message("You feel yourself yanked downwards!");
+	}
+      } else
+	pyflags.word_recall--;
+    } /* end Word-of-recall */
+
+    /* Random teleportation  */
+    if ((pyflags.teleport) && (randint(100) == 1)) {
+      disturb (false, false);
+      teleport(40);
+    } /* end Random teleportation */
+
+    /* end of Update counters and messages (told you it was long)     */  
+    /* ok there's not much more stuff left to do... */
+
+    /* See if we are too weak to handle the weapon or pack.  -CJS- */
+    if (pyflags.status & PY_STR_WGT)
+      check_strength();
+
+    /* Decide whether to print status-words on the screen. */
+    /*  // XXXXXXXX This needs to be revised for the tiny PalmOS screen
+	if (pyflags.status & PY_STUDY)
+	prt_study();
+	if (pyflags.status & PY_SPEED) {
+	pyflags.status &= ~PY_SPEED;
+	prt_speed();
+	}
+	if ((pyflags.status & PY_PARALYSED) && (pyflags.paralysis < 1)) {
+	prt_state();
+	pyflags.status &= ~PY_PARALYSED;
+	}
+	else if (pyflags.paralysis > 0) {
+	prt_state();
+	pyflags.status |= PY_PARALYSED;
+	}
+	else if (pyflags.rest != 0)
+	prt_state();
+    */  
+    if (pyflags.status & PY_ARMOR) {
+      need_print_stats |= STATS_AC;    //    prt_pac();
+      pyflags.status &= ~PY_ARMOR;
+    }
+    if (pyflags.status & PY_STATS) {
+      for (i = 0; i < 6; i++)
+	if ((PY_STR << i) & pyflags.status)
+	  need_print_stats |= STATS_STR;	// prt_stat(i);
+      pyflags.status &= ~PY_STATS;
+    }
+    if (pyflags.status & PY_HP) {
+      need_print_stats |= STATS_HP; //    prt_mhp();  prt_chp();
+      pyflags.status &= ~PY_HP;
+    }
+    if (pyflags.status & PY_MANA) {
+      need_print_stats |= STATS_MANA;    // prt_cmana();
+      pyflags.status &= ~PY_MANA;
+    }
+    /* End of printing status type stuff. */
+
+    /* Allow for a slim chance of detect enchantment -CJS- */
+    /* for 1st level char, check once every 2160 turns    // (* 16 135)
+       for 40th level char, check once every 416 turns */ // (* 16 26)
+    if  ( ((turn & 0xF) == 0) &&
+	  (pyflags.confused == 0) &&
+	  (randint((Short)(10 + 750 / (5 + pymisc.lev))) == 1)) {
+
+      Char tmp_str[80];
+    
+      for (i = 0; i < INVEN_ARRAY_SIZE; i++) {
+	if (i == inven_ctr) // skip space between "inventory" and "equipment"
+	  i = 22;
+	// if in inventory,      succeed 1 out of 50 times,
+	// if in equipment list, success 1 out of 10 times
+	if ( (&inventory[i].tval != TV_NOTHING) &&
+	     enchanted(&inventory[i]) &&
+	     (randint(i < 22 ? 50 : 10) == 1) ) {
+	  StrPrintF(tmp_str,
+		    "There's something about what you are %s...",
+		    describe_use(i));
+	  disturb(false, false);
+	  message(tmp_str);
+	  add_inscribe(inventory, i, ID_MAGIK);//add_inscribe(i_ptr, ID_MAGIK);
+	}
+      }
+    }
+
+    /* Check the state of the monster list, and delete some monsters if
+       the monster list is nearly full.  This helps to avoid problems in
+       creature.c when monsters try to multiply.  Compact_monsters() is
+       much more likely to succeed if called from here, than if called
+       from within creatures().  */
+    if (MAX_MALLOC - mfptr < 10)
+      compact_monsters();
+
+    // OK - We have now reached a comment that says "Accept a command?"
+
+    // But in some cases we don't want to accept a command:
+    // If still alive but you're paralyzed or resting, keep on do-whileing...
+    if (!death && !(pyflags.paralysis <= 0 && pyflags.rest == 0)) {
+      /*
+      show_messages();//(this is kind of flickery, might be better to, instead,
+      refresh(false); // call try_print_status() after the end_of_turn.)
+      */
+      end_of_turn(); // Move the monsters, then spin your wheels again
+      
+      if (pyflags.rest == 99) update_status_words();
+      else if (0 == pyflags.rest % 10 || abs(pyflags.rest) < 99)
+	try_print_status();
+      // will we miss anything w/o show_msgs&refresh ?
+
+      // let's try some stats updating, too.  Testing....
+      if ((turn & 0xF) == 0) { // every 16 turns
+	unverbing = true; // secret switch to turn off Words (once).
+	show_messages();
+      }
+
+    }
+  } while (!death && (pyflags.paralysis >= 1 || pyflags.rest != 0));
+
+  /* if paralyzed, resting, or dead, flush output */
+  // no idea how to do that
+  /* but first move the cursor onto the player, for aesthetics */
+  // I'm not doing that now but it would be cool.
+
+  // these happen Right Before we accept the command i.e. not if paralyzed
+  do_pickup = true;
+  free_turn_flag = false;
+  //  refresh(false);
+}
+
+void end_of_turn()
+{
+  /* Teleport?		       */
+  if (teleport_flag)  teleport(100);
+  /* Move the creatures	       */
+  if (!new_level_flag)
+    creatures(true);
+  else {
+    // this used to be taken care of by exiting 'while' when (new_level_flag).
+    generate_cave();
+    enter_new_level();
+    // In case the user has gotten impatient..
+    EvtFlushKeyQueue();
+    EvtFlushPenQueue();
+  }
+}
+
+// a c d e f i m o p s t x z ' ' G R S < > ^
+
+/*      commands:        NOT commands:
+ *   a  aim/fire wand        browse: inv
+ *   c  close door           drop: inv
+ *   e  equip list           look: menu
+ *   t  fire/throw           quaff: inv
+ *   i  inventory            read scroll: inv
+ *   S# jam/spike door       take off: inv
+ *   m  magic spell          version: menu
+ *   o# open door/chest      wear,wield: inv
+ *   p  pray                 your stats: menu
+ *   s# search for trap/door eat: inv
+ *   z  zap a staff          fill: inv
+ *   x  exchange weapons     locate-on-map: menu
+ *   <  ascend               map: menu
+ *   >  descend              search mode: menu?
+ *   f# force/bash           view scores: menu?
+ *   ^# disarm trap/chest    set options: menu
+ *   G  gain spells          help: menu
+ *   R# rest                 inscribe: ????
+ *   d# dig tunnel           prev msg: menu
+ *    # move w/o pickup ' '  /identify char: menu   */
+// I think for now I will ignore the command_count nature of MOVE and REST.
+// but I will try for S, o, s, f, ^, and d
+// A note on things that take a command_count:
+// The various you-moving and monster_moving parts of the turn can
+// 'disturb' your repetition and set command_count to 0.
+// in fact, anything that prints a message will set command_count to 0
+// (unless it calls count_message instead.)
+// So you may end the repetition prematurely.  Make sure this works ok.
+Char last_command = -1;
+extern previous_state curr_state; // in main.c.  The new paradigm (heh)
+extern Boolean just_throwing;
+extern Boolean draw_directional_p;
+extern Boolean undraw_directional_p;
+extern UChar current_print_stats; // display.c; for toggle
+static const Char map_arrows[4] = { 'h','l','k','j' };
+
+
+// If a command should not be repeatable by AGAIN,
+// then take care of it here.  Else return false & we'll put it in the struct.
+static Boolean non_againable_command(Char c)
+{
+  switch(c) {
+  case 'R':    
+#ifndef I_AM_OS_2
+    if (IsVGA) handera_rotate();      // Rotate screen!!!
+    else message("can't rotate");
+#endif
+    free_turn_flag = true;
+    return true;    
+  case 'g':
+    // the AGAIN command ...
+    do_again(); // I should copy prev_cmd back to curr_cmd and call do...
+    return true;
+  case ' ':
+    /* hack for move without pickup.  Map ' ' to a movement command. */
+    // Hm.  This will need to be FIXED for the new curr_state/mode paradigm:
+    do_pickup = false;
+    // XXXXX Remember command_count; Draw a get-direction pie and move.
+    // This turn should be a freebie.
+    free_turn_flag = true;
+    return true;
+  case '{':		/* ({) inscribe an object    */
+    free_turn_flag = true;
+    if (inven_ctr == 0 && equip_ctr == 0)
+      message("You are not carrying anything.");
+    else {
+      invequ_mode = ACT_SCRIBE;
+      FrmPopupForm(InvSelectForm);
+    }
+    return true;
+  case 'M':
+    FrmPopupForm(MapForm);
+    free_turn_flag = true;
+    return true;    
+  case 'G':		/* (G)ain magic spells */
+    gain_spells();
+    return true;
+  case '!':
+    if (current_print_stats & CURSTAT_NOT_STR)
+      print_stats(STATS_STR);
+    else
+      print_stats(STATS_AC | STATS_GOLD);
+    free_turn_flag = true;
+    return true;
+  case '#':		/* (#) search toggle	(S)earch toggle */
+  case '"':		/* for people who have trouble writing graffiti # */
+    if (pyflags.status & PY_SEARCH)
+      search_off();
+    else
+      search_on();
+    free_turn_flag = true;
+    return true;
+  case '/':		// (/) identify a symbol
+    message("Tap (or write) a symbol to identify.");
+    curr_state.mode = MODE_SLASH;
+    free_turn_flag = true;
+    return true;
+  }
+  return false;
+}
+
+
+#define C_NONE         0x00
+#define C_VALID        0x01
+#define C_COUNTABLE    0x02
+#define C_DIRECTABLE   0x04
+#define C_USEITEM      0x08
+#define C_SPECIAL      0x10
+static ULong valid_command(Char c)
+{
+  ULong attributes = C_NONE;
+  switch(c) {
+  case 'b': case 'n': case 'y': case 'u': case 'h': case 'j': case 'k':
+  case 'l': case 'B': case 'N': case 'Y': case 'U': case 'H': case 'J':
+  case 'K': case 'L': 
+    attributes |= C_COUNTABLE;
+    // fall through
+
+  case '<': case '>': case 'x': case '.':
+
+  case 'G': case '{': // these two pop up a form..
+  case '!': case '#': case '"': // hey, these should take no time
+    attributes |= C_VALID;
+    break;
+  case 'c': case '?': case '-':
+    attributes |= C_VALID | C_DIRECTABLE;
+    break;
+  case 'a': case 't':
+    attributes |= C_VALID | C_DIRECTABLE | C_USEITEM;
+    break;
+  case 'z':
+    attributes |= C_VALID | C_USEITEM;
+    break;
+  case 'r': case 's':
+    attributes |= C_COUNTABLE | C_VALID;
+    break;
+  case ' ': case 'f': case '^': case 'S': case 'o': case 'd':
+    attributes |= C_COUNTABLE | C_VALID | C_DIRECTABLE;
+    break;
+  case 'e': case 'i': case 'm': case 'p': // these can turn into something else
+    attributes |= C_VALID | C_SPECIAL;
+    break;
+  default:
+    return C_NONE;
+  }
+  return attributes;
+}
+
+// return true if 'handled'
+Boolean do_command(Char com_val) // really 'parse and then do' command
+{
+  // Fill in curr_state and then call do_parsed_command.
+  Short dir;
+  ULong attributes;
+  //  Char buf[40];
+
+  /* This has been moved to map_roguedir */
+  dir = map_roguedir(&com_val); // dir==5 if noop or non-direction.
+  free_turn_flag = false; // by default
+
+
+  // Take care of NON-AGAINable commands first.
+  // these are    g {M
+  if (non_againable_command(com_val))
+    return true;
+
+  // All remaining commands are AGAINable, or are invalid.
+  // Build them into a structure.
+
+  attributes = valid_command(com_val);
+  // Check for invalid command.
+  if (!attributes) {
+    free_turn_flag = false;
+    //    StrPrintF(buf, "invalid command '%c'", com_val);
+    //    message(buf);
+    return false;
+  }
+  // Check for needing more information for curr_state.
+  curr_state.cmd = com_val;
+  curr_state.dir = dir;
+  if (!(attributes & C_COUNTABLE)) curr_state.count = 0; //else set by main.c
+  if (attributes & C_USEITEM) {
+    // need item (and probably direction) before we go to do_parsed_command
+    return start_use_item();
+  } else if (attributes & C_DIRECTABLE) {
+    // need direction before we go to do_parsed_command
+    draw_directional_p = true;
+    curr_state.mode = MODE_DIRECTIONAL;
+    free_turn_flag = true;
+    return true;
+  } else
+    return do_parsed_command(&curr_state);
+}
+
+// This will popup a form to set the inventory counter for curr_state.
+static Boolean start_use_item()
+{
+  Short iii, jjj;
+  free_turn_flag = true;
+  switch(curr_state.cmd) {
+  case 'a':		/* (a)im a wand		(a)im a wand */
+    if (!find_range(TV_WAND, TV_NEVER, &iii, &jjj)) {
+      message("You are not carrying any wands.");
+      break;
+    }
+    invequ_mode = ACT_AIM;
+    FrmPopupForm(InvSelectForm);
+    break;
+  case 'z':		/* (z)ap a staff	(u)se a staff */
+    if (!find_range(TV_STAFF, TV_NEVER, &iii, &jjj)) {
+      message("You are not carrying any staffs.");
+      break;
+    }
+    invequ_mode = ACT_ZAP;
+    FrmPopupForm(InvSelectForm);
+    break;
+  case 't':		/* (t)hrow something	(f)ire something */
+    if (inven_ctr == 0) {
+      message("You are not carrying anything.");
+      break;
+    }
+    just_throwing = true;
+    FrmPopupForm(InvForm);
+    break;
+  default:
+    return false;
+  }
+  return true;
+}
+
+// The command should be previously parsed into a previous_state struct.
+// I assume it's at least kinda valid.
+// return true if 'handled'.   Note 'ps' is READ ONLY here
+Boolean do_parsed_command(previous_state *ps)
+{
+  Char buf[80];
+  if (ps->mode != MODE_DEFAULT && ps->mode != MODE_AGAIN) {
+    StrPrintF(buf, "hm, non-default mode %d", ps->mode);
+    message(buf);
+    return false;
+  }
+
+  switch(ps->cmd) {
+  // ----- NON DIRECTIONAL COMMANDS ------------------------------------
+  case 'x': exchange_weap(); break;
+  case 'r': rest();          break; // rest will use and zero command_count
+  case '<': go_up();         break;
+  case '>': go_down();       break;
+  case 's': do_search();     break;
+
+  case 'h':case 'j':case 'k':case 'l':case 'y':case 'u':case 'b':case 'n':
+    if (curr_state.count <= 0) {
+      move_char(ps->dir, do_pickup);
+      break;
+    }
+    // else FALL THROUGH!  'find_run' will do counting now in moria2.c.
+  case 'H':case 'J':case 'K':case 'L':case 'Y':case 'U':case 'B':case 'N':    
+    find_init(ps->dir);
+    if (find_flag > 0) find_run();
+    break;
+
+  case '.':
+    move_char (5, do_pickup);
+    if (curr_state.count > 1) {
+      command_count = curr_state.count - 1;
+      rest();
+    }
+    break;
+
+  case 'e':		/* (e)quipment list */
+    free_turn_flag = true;
+    if (equip_ctr == 0)
+      message("You are not using anything.");
+    else
+      FrmPopupForm(EquForm);
+    break;
+  case 'i':		/* (i)nventory list */
+    free_turn_flag = true;
+    if (inven_ctr == 0)
+      message("You are not carrying anything.");
+    else
+      FrmPopupForm(InvForm);
+    break;
+  // ----- DIRECTIONAL COMMANDS ------------------------------------------
+ // hmmmm, what to do about m and p???
+
+  case 'm':		/* (m)agic spells */
+    free_turn_flag = true; // cast_helper will decide to set it
+    cast();
+    break;
+  case 'p':		/* (p)ray */
+    free_turn_flag = true; // pray_helper will decide to set it
+    pray();
+    break;
+  default:
+   return false;
+  }
+  return true;
+}
+
+
+/******************************************************
+ * Finish up a command that needed a location on screen
+ * This is only used from MODE_SLASH, it's non-againable
+ ********************************************************/
+Boolean do_xy_command(Short x, Short y)
+{
+  UChar monptr;
+  switch(curr_state.mode) {
+  case MODE_SLASH:		// (/) identify a symbol
+    free_turn_flag = true;
+    // If there's a monster there,
+    // set recall_this_monster to some index of c_list.
+    // Otherwise do ident_char().
+    monptr = cave_cptr[y * MAX_WIDTH + x];
+    // hopefully adding the m_list[].ml will weed out invisible monsters
+    if (monptr > 1 && m_list[monptr].ml) {
+      recall_list = false;
+      recall_this_monster = m_list[monptr].mptr;
+      if (recall_this_monster < 0 || recall_this_monster >= MAX_CREATURES) {
+	message("m_list[].mptr assertion failed"); // this better not happen
+	break;
+      }
+      FrmPopupForm(RecallForm);
+    } else
+      ident_char((Char) loc_symbol(y,x));
+    break;
+  default:
+    return false;
+  }
+  // Caller will bump the state.
+  return true;
+}
+
+/******************************************************
+ * Finish up a command that needed a compass direction
+ ********************************************************/
+
+extern Short selected_spell;
+
+//Short needed_direction_item;
+extern Short look_form_dir;
+// note cast_helper and pray_helper rely on valid direction never being -1
+Boolean do_dir_command(Short dir, Short item)
+{
+  /*Short XXX_item=0; / * This is a tmp argument.  Really these things need
+		       to be setting a global variable, which you select
+		       from some form or other when we do Z, z, or t. */
+  if (undraw_directional_p) undraw_directional();
+
+  if (curr_state.cmd == -1) return false;
+
+  switch(curr_state.cmd) {
+
+  case 'm': cast_helper(curr_state.spell, dir);   break;
+  case 'p': pray_helper(curr_state.spell, dir);   break;
+
+  case 't': throw_object(curr_state.item, dir);   break;
+  case 'a': aim(curr_state.item, dir);            break;
+  // case 'z': the item-selection form itself calls use(item)!
+  // we only get to here if we're doing 'again'.
+  case 'z': use(curr_state.item);                 break;
+
+  case 'c': closeobject(curr_state.dir); break;
+  case 'f': do_force();    break;
+  case '^': do_disarm();   break;
+  case 'S': do_spike();    break;
+  case 'o': do_open();     break;
+  case 'd': do_dig();      break;
+  case '?':		/* look or examine */
+    //    look(dir);
+    if (pyflags.blind > 0)
+      message("You can't see a damn thing!");
+    else if (pyflags.image > 0)
+      message("You can't believe what you are seeing! It's like a dream!");
+    else {
+      look_form_dir = dir;
+      FrmPopupForm(LookForm);
+    }
+    free_turn_flag = true;
+    break;
+  case '-':
+    slide_dir(dir);
+    free_turn_flag = true;
+    break;
+
+  default:
+    {
+      //      Char buf[20];
+      //      StrPrintF(buf, "Unknown command '%c'.", curr_state.cmd);
+      //      message(buf);
+      free_turn_flag = true;
+      return false;
+    }
+  }
+  // Caller will bump the state.
+  return true;
+}
+
+
+
+static void regenhp(Short percent)
+{
+  Long new_chp, new_chp_frac;
+  Short old_chp;
+
+  old_chp = pymisc.chp;
+  new_chp = ((Long)pymisc.mhp) * percent + PLAYER_REGEN_HPBASE;
+  pymisc.chp += new_chp >> 16;	/* div 65536 */
+  /* check for overflow */
+  if (pymisc.chp < 0 && old_chp > 0)
+    pymisc.chp = MAX_SHORT;
+  new_chp_frac = (new_chp & 0xFFFF) + pymisc.chp_frac; /* mod 65536 */
+  if (new_chp_frac >= 0x10000L) {
+    pymisc.chp_frac = new_chp_frac - 0x10000L;
+    pymisc.chp++;
+  } else
+    pymisc.chp_frac = new_chp_frac;
+
+  /* must set frac to zero even if equal */
+  if (pymisc.chp >= pymisc.mhp) {
+    pymisc.chp = pymisc.mhp;
+    pymisc.chp_frac = 0;
+  }
+  if (old_chp != pymisc.chp)
+    pyflags.status |= PY_HP;// need_print_stats |= STATS_HP;  //    prt_chp();
+}
+
+static void regenmana(Short percent)
+{
+  Long new_mana, new_mana_frac;
+  Short old_cmana;
+
+  old_cmana = pymisc.cmana;
+  new_mana = ((Long)pymisc.mana) * percent + PLAYER_REGEN_MNBASE;
+  pymisc.cmana += new_mana >> 16;  /* div 65536 */
+  /* check for overflow */
+  if (pymisc.cmana < 0 && old_cmana > 0)
+    pymisc.cmana = MAX_SHORT;
+  new_mana_frac = (new_mana & 0xFFFF) + pymisc.cmana_frac; /* mod 65536 */
+  if (new_mana_frac >= 0x10000L) {
+    pymisc.cmana_frac = new_mana_frac - 0x10000L;
+    pymisc.cmana++;
+  } else
+    pymisc.cmana_frac = new_mana_frac;
+
+  /* must set frac to zero even if equal */
+  if (pymisc.cmana >= pymisc.mana) {
+    pymisc.cmana = pymisc.mana;
+    pymisc.cmana_frac = 0;
+  }
+  if (old_cmana != pymisc.cmana)
+    pyflags.status |= PY_MANA;//need_print_stats |= STATS_HP; //  prt_cmana();
+}
+
+
+/* Is an item an enchanted weapon or armor and we don't know?  -CJS- */
+/* only returns true if it is a good enchantment */
+// So, like, this is partly not working.  Sigh.  It says known non-magical
+// things are magic (cloak, dagger).  What is up with that?!
+static Boolean enchanted(inven_type *t_ptr)
+{
+  if (t_ptr->tval < TV_MIN_ENCHANT ||
+      t_ptr->tval > TV_MAX_ENCHANT ||
+      t_ptr->flags & TR_CURSED)
+    return false;
+  if (known2_p(t_ptr))
+    return false;
+  if (t_ptr->ident & ID_MAGIK)
+    return false;
+  if (t_ptr->tohit > 0 || t_ptr->todam > 0 || t_ptr->toac > 0)
+    return true;
+  if ((0x4000107fL & t_ptr->flags) && t_ptr->p1 > 0)
+    return true;
+  if (0x07ffe980L & t_ptr->flags)
+    return true;
+
+  return false;
+}
+
+// Note that examine_book is complete and has been parceled out to form_blah fu
+
+
+/* Go up one level					-RAK-	*/
+static void go_up()
+{
+  UChar thing;
+
+  thing = cave_tptr[char_row*MAX_WIDTH+char_col];
+  if (thing != 0) {
+    if (t_list[thing].tval == TV_UP_STAIR) {
+      dun_level--;
+      new_level_flag = true;
+      level_message("You enter a maze of up staircases.");
+      message("You pass through a one-way door.");
+      // end_of_turn will call generate_cave and enter_new_level.
+      free_turn_flag = false;
+      return;
+    }
+  }
+  message("I see no up staircase here.");
+  free_turn_flag = true;
+}
+
+/* Go down one level					-RAK-	*/
+static void go_down()
+{
+  UChar thing;
+
+  thing = cave_tptr[char_row*MAX_WIDTH+char_col];
+  if (thing != 0) {
+    if (t_list[thing].tval == TV_DOWN_STAIR) {
+      dun_level++;
+      new_level_flag = true;
+      level_message("You enter a maze of down staircases.");
+      message("You pass through a one-way door.");
+      free_turn_flag = false;
+      return;
+    }
+  }
+  message("I see no down staircase here.");
+  free_turn_flag = true;
+}
+
+static void do_search()
+{
+  //  Char buf[20];
+  // This can take a multiplier in command_count.
+  if (curr_state.count <= 0 && (my_prefs.repeaters & RPT_SEARCH))
+    command_count = DEFAULT_COUNT;
+  else command_count = curr_state.count;
+  do {
+    search(char_row, char_col, pymisc.srh); // moria2.c
+    if (command_count <= 0) break;// avoid free_turn_flag for AGAINability
+    end_of_turn();
+    if (command_count > 0) command_count--;
+    if (command_count == 90) update_status_words();
+    else if (0 == command_count % 10 || command_count < 99) try_print_status();
+    start_of_turn();
+  } while ((command_count > 0) && !user_interrupted());
+  command_count = 0;
+  update_status_words(); // in case of remaining command_count msg
+  //free_turn_flag = true;
+}
+
+static void do_verb_generic(void (*verb)(Short))
+{
+  do {
+    verb(curr_state.dir); // moria4.c
+    end_of_turn();
+    if (command_count > 0) command_count--;
+    if (command_count == 99) update_status_words();
+    else if (0 == command_count % 10 || command_count < 99) try_print_status();
+    start_of_turn();
+  } while ((command_count > 0) && !user_interrupted());
+  command_count = 0;
+  update_status_words(); // in case of remaining command_count msg
+  free_turn_flag = true; // 'cause we just did end_of and start_of.
+}
+
+static void do_force()
+{
+  if (curr_state.count <= 0 && (my_prefs.repeaters & RPT_FORCE))
+    command_count = DEFAULT_COUNT;
+  else command_count = curr_state.count;
+  do_verb_generic(&bash);
+}
+
+static void do_disarm()
+{
+  if (curr_state.count <= 0 && (my_prefs.repeaters & RPT_DISARM))
+    command_count = DEFAULT_COUNT;
+  else command_count = curr_state.count;
+  do_verb_generic(&disarm_trap);
+}
+
+static void do_open()
+{
+  if (curr_state.count <= 0 && (my_prefs.repeaters & RPT_OPEN))
+    command_count = DEFAULT_COUNT;
+  else command_count = curr_state.count;
+  do_verb_generic(&openobject);
+}
+
+static void do_dig()
+{
+  if (curr_state.count <= 0 && (my_prefs.repeaters & RPT_DIG))
+    command_count = DEFAULT_COUNT;
+  else command_count = curr_state.count;
+  if ((command_count > 0) && !check_for_shovel()) {
+    // we checked for shovel being equipped and if not, popped up a form.
+    // if the user wants to cancel the action, return.
+    return;
+  }
+  do_verb_generic(&tunnel);
+}
+
+static void do_spike()
+{
+  command_count = curr_state.count;
+  do_verb_generic(&jamdoor);
+}
+
+// missing: jamdoor()
+// This involves destroying stuff from inventory so I will do it "later"
+// i.e. "not tonight"
+/* Jam a closed door					-RAK-	*/
+// I now assume that we ALREADY HAVE A DIRECTION given.
+static void jamdoor(Short dir)
+{
+  Short y, x, i, j, spikeness;
+  inven_type *t_ptr, *i_ptr;
+  Char tmp_str[80];
+  UChar thing, critter;
+  Boolean got_spikes;
+
+  free_turn_flag = true;
+  y = char_row;
+  x = char_col;
+
+  mmove(dir, &y, &x); // given direction calculate new row,col.
+
+  // Make sure there is something there
+  thing = cave_tptr[y*MAX_WIDTH+x];
+  critter = cave_cptr[y*MAX_WIDTH+x];
+  if (thing == 0) {
+    message("That isn't a door!");
+    return;
+  }
+  // Make sure the thing is a closed door
+  t_ptr = &t_list[thing];
+  if (t_ptr->tval != TV_CLOSED_DOOR) {
+    if (t_ptr->tval == TV_OPEN_DOOR)
+      message("The door must be closed first.");
+    else
+      message("That isn't a door!");
+    return;
+  }
+  // Make sure no monsters in the way
+  if (critter != 0) {
+    free_turn_flag = false;
+    StrPrintF(tmp_str, "The %s is in your way!",
+	      c_names + c_list[m_list[critter].mptr].name_offset);
+    message(tmp_str);
+    return;
+  }
+  // Find your spikes.  this sets i which we use below.
+  got_spikes = find_range(TV_SPIKE, TV_NEVER, &i, &j);
+  if (!got_spikes) {
+    message("But you have no spikes.");
+    return;
+  }
+  // Make the door jammed.
+  free_turn_flag = false;
+  count_message("You jam the door with a spike."); // XXXXX not impl yet
+  spikeness = t_ptr->p1;
+  if (spikeness > 0) spikeness = -spikeness; /* Make door 'locked to' stuck. */
+  /* Successive spikes have a progressively smaller effect.
+     Series is: 0 20 30 37 43 48 52 56 60 64 67 70 ... */
+  spikeness -= 1 + 190 / (10 - spikeness);
+  invy_set_p1(t_list, thing, spikeness); // make the door that much spiked.
+  // Lose a spike from inventory.
+  i_ptr = &inventory[i];
+  if (i_ptr->number > 1) { 
+    invy_set_number(inventory, i, i_ptr->number - 1); //== "i_ptr->number--"
+    inven_weight -= i_ptr->weight;
+  } else
+    inven_destroy(i);
+}
+
+
+
+
+// Note that refill_lamp already complete (?) in form_inv.c
+
+
+
+// missing: (earlier)
+//    do_command  - this will be near MainForm handler
+//    valid_countcommand  - ditto
+
+/* benevolent dictatorship will check for potentially stupid action */
+static Boolean check_for_shovel()
+{
+  EventType queued_event;
+  inven_type *i_ptr;
+  Short i, j;
+  Char out_val[160];
+  i_ptr = &inventory[INVEN_WIELD];
+  if ((i_ptr->tval != TV_NOTHING) &&
+      ((TR_TUNNEL & i_ptr->flags) || // you ARE wielding a shovel-type thing!
+       (TR_CURSED & i_ptr->flags))) // weapon is cursed, no choice!
+    return true; // weapon is cursed, user CANNOT wield anything else
+
+  i_ptr = &inventory[INVEN_AUX];
+  //  if (((i_ptr->tval == TV_NOTHING) || (TR_TUNNEL & i_ptr->flags)) &&
+  //      (!find_range(TV_DIGGING, TV_NEVER, &i, &j))) {
+
+  if (!(
+	((i_ptr->tval != TV_NOTHING) && (TR_TUNNEL & i_ptr->flags)) ||
+	(find_range(TV_DIGGING, TV_NEVER, &i, &j)) ))
+    return true; // you have no better choice
+  
+  // ok... there's one in exchange slot, and you forgot to hit 'x',
+  // or there's one in inventory, unequipped.
+  // we'll return 'false' if the user decides not to dig with equipped item.
+
+  i_ptr = &inventory[INVEN_WIELD];
+  if (i_ptr->tval != TV_NOTHING) {
+    objdes(out_val, i_ptr, true);
+    out_val[StrLen(out_val)-1] = '?'; // change '.' to '?'
+  } else {
+    StrPrintF(out_val, "your bare hands?");
+  }
+  if (0 != FrmCustomAlert(DigSlowlyP, out_val, NULL, NULL)) {
+    command_count = 0;
+    update_status_words();
+    free_turn_flag = true;
+    return false;	  // "abort!"
+  }
+  // Here we are soaking up a winExit, winEnter, and penUp.  sigh.
+  // Necessary now since I have changed user_interrupted().
+  do {
+    EvtGetEvent(&queued_event, 0);
+  } while (queued_event.eType != nilEvent);
+  return true;
+}
+
+
+static void exchange_weap()
+{
+  //  Char prt1[80], prt2[160];
+  Char prt1[160], prt2[160];
+  Boolean was_heavy = weapon_heavy;
+  if (inventory[INVEN_WIELD].tval == TV_NOTHING &&
+      inventory[INVEN_AUX].tval == TV_NOTHING) {
+    message("But you are wielding no weapons.");
+  } else if (TR_CURSED & inventory[INVEN_WIELD].flags) {
+    objdes(prt1, &inventory[INVEN_WIELD], false);
+    StrPrintF(prt2, "The %s you are wielding appears to be cursed.", prt1);
+    message(prt2);
+  } else {
+    free_turn_flag = false;
+    invy_swap(INVEN_AUX, INVEN_WIELD);
+    //    tmp_obj = inventory[INVEN_AUX];
+    //    inventory[INVEN_AUX] = inventory[INVEN_WIELD];
+    //    inventory[INVEN_WIELD] = tmp_obj;
+    //    if (scr_state == EQUIP_SCR)
+    //      scr_left = show_equip(show_weight_flag, scr_left);
+    py_bonuses(&inventory[INVEN_AUX], -1);	 /* Subtract bonuses */
+    py_bonuses(&inventory[INVEN_WIELD], 1);	   /* Add bonuses    */
+    if (inventory[INVEN_WIELD].tval != TV_NOTHING) {
+      StrCopy(prt1, "Primary weapon: ");
+      objdes(prt2, &inventory[INVEN_WIELD], true);
+      message(StrCat(prt1, prt2));
+    } else
+      message("No primary weapon.");
+    /* this is a new weapon, so clear the heavy flag */
+    weapon_heavy = false;
+    check_strength(); // might call calc_bonuses (if heavy)
+    if (was_heavy && !weapon_heavy) calc_bonuses(); // not often enough. --bas
+  }
+}
+
+
+
+/* map rogue_like direction commands into numbers */
+/* this will modify the argument to one of hjklHJKL, if it's an arrow key. */
+Char map_roguedir(Char *comval)
+{
+  // map the deeply irritating arrow keys for keyboards (e.g. stowaway, gotype)
+  // the shift thing was particularly annoying.
+  Char c = *comval;
+  if (c >= leftArrowChr && c <= downArrowChr) {
+    Boolean capslock_on, numlock_on, autoshifted;
+    Short tmp_shift;
+    c = map_arrows[c - leftArrowChr]; // convert to one of "hlkj"!
+    GrfGetState(&capslock_on, &numlock_on, &tmp_shift, &autoshifted);
+    if ((tmp_shift == grfTempShiftUpper) || capslock_on)
+      c -= 'a'-'A';
+    *comval = c; // we modify the arg, to fake out do_command().
+  }
+  if (c < 'A' || c > 'z') return 5; // catch most non-alphabetics
+  if (c <= 'Z') c += ('a' - 'A');   // make it lowercase!
+  switch(c) {
+  case 'h': return 4;
+  case 'y': return 7;
+  case 'k': return 8;
+  case 'u': return 9;
+  case 'l': return 6;
+  case 'n': return 3;
+  case 'j': return 2;
+  case 'b': return 1;
+  case '.': return 5;
+  }
+  return 5;
+}
+static const Char hjkl_arr[10] = "bjnh.lyku";
+Char unmap_roguedir(Short dir)
+{
+  if (dir < 1 || dir > 9) dir = 5;
+  return hjkl_arr[dir-1];
+}
+
+static void ident_char(Char command)
+{
+  switch(command) {
+    /* every printing ASCII character is listed here, in the order in which
+       they appear in the ASCII character set */
+  case ' ': message("  - An open pit."); break;
+  case '!': message("! - A potion."); break;
+  case '"': message("\" - An amulet, periapt, or necklace."); break;
+  case '#': message("# - A stone wall."); break;
+  case '$': message("$ - Treasure."); break;
+  case '%':
+    if (highlight_seams == true)
+      message("% - A magma or quartz vein.");
+    else
+      message("% - Not used.");
+    break;
+  case '&': message("& - Treasure chest."); break;
+  case '\'': message("' - An open door."); break;
+  case '(': message("( - Soft armor."); break;
+  case ')': message(") - A shield."); break;
+  case '*': message("* - Gems."); break;
+  case '+': message("+ - A closed door."); break;
+  case ',': message(", - Food or mushroom patch."); break;
+  case '-': message("- - A wand"); break;
+  case '.': message(". - Floor."); break;
+  case '/': message("/ - A pole weapon."); break;
+    /* case '0': message("0 - Not used."); break; */
+  case '1': message("1 - Entrance to General Store."); break;
+  case '2': message("2 - Entrance to Armory."); break;
+  case '3': message("3 - Entrance to Weaponsmith."); break;
+  case '4': message("4 - Entrance to Temple."); break;
+  case '5': message("5 - Entrance to Alchemy shop."); break;
+  case '6': message("6 - Entrance to Magic-Users store."); break;
+    /* case '7': message("7 - Not used."); break; */
+    /* case '8': message("8 - Not used."); break; */
+    /* case '9': message("9 - Not used.");  break;*/
+  case ':': message(": - Rubble."); break;
+  case ';': message("; - A loose rock."); break;
+  case '<': message("< - An up staircase."); break;
+  case '=': message("= - A ring."); break;
+  case '>': message("> - A down staircase."); break;
+  case '?': message("? - A scroll."); break;
+  case '@@': message(pymisc.name); break;
+  case 'A': message("A - Giant Ant Lion."); break;
+  case 'B': message("B - The Balrog."); break;
+  case 'C': message("C - Gelatinous Cube."); break;
+  case 'D': message("D - An Ancient Dragon (Beware)."); break;
+  case 'E': message("E - Elemental."); break;
+  case 'F': message("F - Giant Fly."); break;
+  case 'G': message("G - Ghost."); break;
+  case 'H': message("H - Hobgoblin."); break;
+    // case 'I': message("I - Invisible Stalker."); break;
+  case 'J': message("J - Jelly."); break;
+  case 'K': message("K - Killer Beetle."); break;
+  case 'L': message("L - Lich."); break;
+  case 'M': message("M - Mummy."); break;
+    // case 'N': message("N - Not used."); break;
+  case 'O': message("O - Ooze."); break;
+  case 'P': message("P - Giant humanoid."); break;
+  case 'Q': message("Q - Quylthulg (Pulsing Flesh Mound)."); break;
+  case 'R': message("R - Reptile."); break;
+  case 'S': message("S - Giant Scorpion."); break;
+  case 'T': message("T - Troll."); break;
+  case 'U': message("U - Umber Hulk."); break;
+  case 'V': message("V - Vampire."); break;
+  case 'W': message("W - Wight or Wraith."); break;
+  case 'X': message("X - Xorn."); break;
+  case 'Y': message("Y - Yeti."); break;
+    // case 'Z': message("Z - Not used."); break;
+  case '[': message("[ - Hard armor."); break;
+  case '\\': message("\\ - A hafted weapon."); break;
+  case ']': message("] - Misc. armor."); break;
+  case '^': message("^ - A trap."); break;
+  case '_': message("_ - A staff."); break;
+    // case '`': message("` - Not used."); break;
+  case 'a': message("a - Giant Ant."); break;
+  case 'b': message("b - Giant Bat."); break;
+  case 'c': message("c - Giant Centipede."); break;
+  case 'd': message("d - Dragon."); break;
+  case 'e': message("e - Floating Eye."); break;
+  case 'f': message("f - Giant Frog."); break;
+  case 'g': message("g - Golem."); break;
+  case 'h': message("h - Harpy."); break;
+  case 'i': message("i - Icky Thing."); break;
+  case 'j': message("j - Jackal."); break;
+  case 'k': message("k - Kobold."); break;
+  case 'l': message("l - Giant Louse."); break;
+  case 'm': message("m - Mold."); break;
+  case 'n': message("n - Naga."); break;
+  case 'o': message("o - Orc or Ogre."); break;
+  case 'p': message("p - Person (Humanoid)."); break;
+  case 'q': message("q - Quasit."); break;
+  case 'r': message("r - Rodent."); break;
+  case 's': message("s - Skeleton."); break;
+  case 't': message("t - Giant Tick."); break;
+    // case 'u': message("u - Not used."); break;
+    // case 'v': message("v - Not used."); break;
+  case 'w': message("w - Worm or Worm Mass."); break;
+    // case 'x': message("x - Not used."); break;
+  case 'y': message("y - Yeek."); break;
+  case 'z': message("z - Zombie."); break;
+  case '{': message("{ - Arrow, bolt, or bullet."); break;
+  case '|': message("| - A sword or dagger."); break;
+  case '}': message("} - Bow, crossbow, or sling."); break;
+  case '~': message("~ - Miscellaneous item."); break;
+  default:	message("Not Used."); break;
+  }
+
+  /* Allow access to monster memory. -CJS- */
+  // nah. -sprite
+}
+
+
+void ident_monster(Char c)
+{
+  Boolean valid = false;
+  Short i;
+  //  Char buf[40];
+
+  // Is it a monster...
+  if (c == '$' || c == ',' ||
+      (c >= 'A' && c <= 'Y' && c != 'I' && c != 'N') ||
+      (c >= 'a' && c <= 'z' && c != 'u' && c != 'v' && c != 'x'))
+    valid = true;
+  if (!valid) {
+    //    StrPrintF(buf, "'%c' - not a monster", c);
+    //    message(buf);
+    ident_char(c);
+    return;
+  }
+
+  // Is it a monster that we remember something about...
+  for (i = MAX_CREATURES-1, valid = false ; i >= 0 ; i--)
+    if ((c_list[i].cchar == c) && bool_roff_recall(i)) {
+      recall_this_monster = i;
+      valid = true;
+      break;
+    }
+  if (!valid) {
+    //    StrPrintF(buf, "You don't recall any '%c'", c);
+    //    message(buf);
+    ident_char(c);
+    return;
+  }
+
+  // Pop up the form... set a boolean so it decides whether to
+  // have Next button turned on (if there's a next),
+  // and have it set the title appropriately
+  recall_list = true;
+  FrmPopupForm(RecallForm);
+
+}
+
+
+extern previous_state prev_state;
+void do_again()
+{
+  /*
+  previous_state *ps = &curr_state;
+  Char buf[80];
+  ps = &prev_state;
+  StrPrintF(buf, "mode %d cmd %c dcmd %d dir %d # %d inv %d",
+	    ps->mode, ps->cmd, ps->dir_cmd, ps->dir, ps->count, ps->item);
+  message(buf);
+  ps = &curr_state;
+  StrPrintF(buf, "mode %d cmd %c dcmd %d dir %d # %d inv %d",
+	    ps->mode, ps->cmd, ps->dir_cmd, ps->dir, ps->count, ps->item);
+  message(buf);
+  */
+  if (prev_state.cmd != -1) {
+    curr_state = prev_state;
+    if (curr_state.cmd == 'm')
+      cast_helper(curr_state.spell, curr_state.dir);
+    else if (curr_state.cmd == 'p')
+      pray_helper(curr_state.spell, curr_state.dir);
+    else if (!do_parsed_command(&curr_state))
+      if (!do_dir_command(curr_state.dir, curr_state.item))
+	message("hmmm");
+  } else
+    message("I can't repeat that.");
+}
+
+
+/*
+ * Here is a nice little function that will let the user
+ *  interrupt a counted command, such as resting.
+ * Call this in your loop and, if it's true, then abort.
+ * Note that it flushes the interrupting event (and any others)
+ *  out of the queue - I hope.  Works for pen taps.
+ *  Less good for graffiti or keyboard.
+ *
+ */
+static Boolean user_interrupted()
+{
+  EventType queued_event;
+  //  static UChar lots = 0;
+  // It helps if I make it slow enough for the user to interrupt, I'm thinking.
+  // but let's speed it up if they've entered a really large number.
+  //  lots = (lots + 1) % 10;
+  if (curr_state.count <= COUNT_THRESHOLD)// || !lots)
+    SysTaskDelay(SysTicksPerSecond()/32); // XXX Remove this line? // was /10
+  /*
+  // this catches pen taps but not keyboard events.
+  if (EvtSysEventAvail(true)) {
+    EvtFlushKeyQueue(); // these don't seem to do me any good
+    EvtFlushPenQueue(); // these don't seem to do me any good
+    return true;
+  }
+  */
+  // try this instead:
+  do {
+    EvtGetEvent(&queued_event, 0); // wait 0 ticks, i.e. just check the queue
+  } while (queued_event.eType == penUpEvent);
+  if (queued_event.eType != nilEvent)
+    return true;
+  // ok, that sucks up the event.  even works with keyboards now.
+  // BUT it broke the Rest How Long form....
+
+  return false;
+}
+
+@
+
+
+1.67
+log
+@save file should be checkpointed every 200 turns now (2000 if mega-resting)
+@
+text
+@d637 2
+a638 4
+    /* // XXXXXX Disabled in PalmOS for now although maybe it's a good idea.
+       if (MAX_MALLOC - mfptr < 10)
+       compact_monsters();
+    */
+@
+
+
+1.66
+log
+@speed up repeat a bit
+@
+text
+@d108 1
+d117 3
+@
+
+
+1.65
+log
+@tested new features (max count, '20h', inv btns, shift+hwbtn, backup on creation)
+@
+text
+@d27 1
+d649 3
+a651 2
+      if (pyflags.rest == 90) update_status_words();
+      else if (0 == pyflags.rest % 10) try_print_status();
+d1231 1
+a1231 1
+    else if (0 == command_count % 10) try_print_status();
+d1239 1
+a1239 1
+static void do_force()
+a1240 4
+  // This can take a multiplier in command_count.
+  if (curr_state.count <= 0 && (my_prefs.repeaters & RPT_FORCE))
+    command_count = DEFAULT_COUNT;
+  else command_count = curr_state.count;
+d1242 1
+a1242 1
+    bash(curr_state.dir); // moria4.c
+d1245 2
+a1246 2
+    if (command_count == 90) update_status_words();
+    else if (0 == command_count % 10) try_print_status();
+d1254 8
+a1263 1
+  // This can take a multiplier in command_count.
+d1267 1
+a1267 11
+  do {
+    disarm_trap(curr_state.dir); // moria4.c
+    end_of_turn();
+    if (command_count > 0) command_count--;
+    if (command_count == 90) update_status_words();
+    else if (0 == command_count % 10) try_print_status();
+    start_of_turn();
+  } while ((command_count > 0) && !user_interrupted());
+  command_count = 0;
+  update_status_words(); // in case of remaining command_count msg
+  free_turn_flag = true; // 'cause we just did end_of and start_of.
+a1271 1
+  // This can take a multiplier in command_count.
+d1275 1
+a1275 11
+  do {
+    openobject(curr_state.dir); // moria3.c
+    end_of_turn();
+    if (command_count > 0) command_count--;
+    if (command_count == 90) update_status_words();
+    else if (0 == command_count % 10) try_print_status();
+    start_of_turn();
+  } while ((command_count > 0) && !user_interrupted());
+  command_count = 0;
+  update_status_words(); // in case of remaining command_count msg
+  free_turn_flag = true; // 'cause we just did end_of and start_of.
+a1277 1
+
+a1279 1
+  // This can take a multiplier in command_count.
+d1288 1
+a1288 11
+  do {
+    tunnel(curr_state.dir); // moria4.c
+    end_of_turn();
+    if (command_count > 0) command_count--;
+    if (command_count == 90) update_status_words();
+    else if (0 == command_count % 10) try_print_status();
+    start_of_turn();
+  } while ((command_count > 0) && !user_interrupted());
+  command_count = 0;
+  update_status_words(); // in case of remaining command_count msg
+  free_turn_flag = true; // 'cause we just did end_of and start_of.
+a1292 1
+  // This can take a multiplier in command_count.
+d1294 1
+a1294 11
+  do {
+    jamdoor(curr_state.dir); // dungeon.c
+    end_of_turn();
+    if (command_count > 0) command_count--;
+    if (command_count == 90) update_status_words();
+    else if (0 == command_count % 10) try_print_status();
+    start_of_turn();
+  } while ((command_count > 0) && !user_interrupted());
+  command_count = 0;
+  update_status_words(); // in case of remaining command_count msg
+  free_turn_flag = true; // 'cause we just did end_of and start_of.
+d1693 1
+a1693 1
+  static UChar lots = 0;
+d1696 2
+a1697 2
+  lots = (lots + 1) % 10;
+  if (curr_state.count <= COUNT_THRESHOLD || !lots)
+@
+
+
+1.64
+log
+@increased max count from 99 to 999, made hjkl(etc) count-aware.  untested.
+@
+text
+@d647 4
+a650 1
+      try_print_status(); // will we miss anything w/o show_msgs&refresh ?
+d1228 2
+a1229 1
+    try_print_status();
+d1247 2
+a1248 1
+    try_print_status();
+d1266 2
+a1267 1
+    try_print_status();
+d1285 2
+a1286 1
+    try_print_status();
+d1310 2
+a1311 1
+    try_print_status();
+d1327 2
+a1328 1
+    try_print_status();
+d1732 1
+d1735 3
+a1737 2
+  if (curr_state.count <= COUNT_THRESHOLD)
+    SysTaskDelay(SysTicksPerSecond()/16); // XXX Remove this line? // was /10
+@
+
+
+1.63
+log
+@fixed crash bug: buffer too short for weapon names, which can be >80chars
+@
+text
+@a16 2
+
+
+d803 5
+a807 1
+  case 'K': case 'L': case '<': case '>': case 'x': case '.':
+d940 5
+a944 2
+    move_char(ps->dir, do_pickup);
+    break;
+d1218 1
+a1218 1
+    command_count = 99;
+d1237 1
+a1237 1
+    command_count = 99;
+d1255 1
+a1255 1
+    command_count = 99;
+d1273 1
+a1273 1
+    command_count = 99;
+d1292 1
+a1292 1
+    command_count = 99;
+d1724 3
+a1726 1
+  SysTaskDelay(SysTicksPerSecond()/16); // XXX Remove this line? // was /10
+@
+
+
+1.62
+log
+@handera support is mostly working now
+@
+text
+@d1450 2
+a1451 1
+  Char prt1[80], prt2[160];
+@
+
+
+1.61
+log
+@various fixes, mostly to 'again'
+@
+text
+@d1451 1
+d1478 1
+@
+
+
+1.60
+log
+@fix whats-that command
+@
+text
+@d1513 6
+@
+
+
+1.59
+log
+@handera support is mostly working, for some value of mostly
+@
+text
+@d992 2
+a993 2
+  switch(curr_state.cmd) {
+  case '/':		// (/) identify a symbol
+@
+
+
+1.58
+log
+@let's ignore penUp events when interrupting repeated commands
+@
+text
+@d733 7
+@
+
+
+1.57
+log
+@make sure confiration forms don't interrupt repeated commands; also make digging shovel check a bit smarter
+@
+text
+@d1713 3
+a1715 1
+  EvtGetEvent(&queued_event, 0); // wait 0 ticks, i.e. just check in the queue
+@
+
+
+1.56
+log
+@this might fix the 'keyboard doesn't interrupt repeated commands' problem
+@
+text
+@d398 1
+a398 1
+    // First, check to see if user has interrupted us...
+a413 7
+    /* Check for user interrupts to find or rest. */
+    /*
+     * XXXXXXXXXX  I do not think that I can do that under PalmOS. 
+     * So I have skipped that part (i.e. up to Hallucinating)
+     * Hope this does not tend to unbalance gameplay.
+     */
+
+d1282 5
+a1286 8
+  if (command_count > 0)
+    if (!check_for_shovel())
+      if (0 != FrmAlert(DigSlowlyP)) {	  // abort
+	command_count = 0;
+	update_status_words();
+	free_turn_flag = true;
+	return;
+      }
+d1396 1
+d1398 21
+d1421 4
+a1424 4
+    if (TR_TUNNEL & i_ptr->flags)
+      return true; // you're wielding a shovel-type thing
+    if (TR_CURSED & i_ptr->flags)
+      return true; // weapon is cursed, user has no choice
+d1426 12
+a1437 6
+  i_ptr = &inventory[INVEN_AUX];
+  if (i_ptr->tval != TV_NOTHING)
+    if (TR_TUNNEL & i_ptr->flags)
+      return false; // you forgot to exchange for shovel-type thing
+  return true; // eh, maybe you don't have one
+  // Perhaps I should check inventory too.
+d1705 1
+a1705 1
+  // annoyingly, flush does not suck up the event....  sigh
+d1707 2
+a1708 2
+    EvtFlushKeyQueue();
+    EvtFlushPenQueue();
+d1716 2
+a1717 1
+  // ok, that sucks up the event.  might even work with keybaords now.
+@
+
+
+1.55
+log
+@bugfix: code reorg for 'again' had made arrow-keys not work for directional cmds
+@
+text
+@d1683 1
+d1686 2
+a1687 2
+  // Maybe THIS will allow keyboard keypresses to interrupt... Nope...  sigh
+  // if (EvtSysEventAvail(true) || EvtEventAvail()) {
+a1690 1
+    // annoyingly, flush does not suck up the event....  sigh
+d1692 9
+a1700 2
+  } else
+    return false;
+@
+
+
+1.54
+log
+@again (g) works for spellcasting. also for t a z; does inventory bounds check
+@
+text
+@d843 2
+a844 11
+  // map the deeply irritating arrow keys for stowaway keyboard.
+  // I particularly distrust and despise the shift thing.
+  if (com_val >= leftArrowChr && com_val <= downArrowChr) {
+    Boolean capslock_on, numlock_on, autoshifted;
+    Short tmp_shift;
+    com_val = map_arrows[com_val - leftArrowChr];
+    GrfGetState(&capslock_on, &numlock_on, &tmp_shift, &autoshifted);
+    if ((tmp_shift == grfTempShiftUpper) || capslock_on)
+      com_val -= 'a'-'A';
+  }
+  dir = map_roguedir(com_val); // dir==5 if noop or non-direction.
+d1210 1
+a1210 1
+  Char buf[20];
+d1456 1
+d1458 2
+a1459 1
+Char map_roguedir(Char comval)
+d1461 15
+a1475 3
+  if (comval < 'A' || comval > 'z') return 5; // catch most non-alphabetics
+  if (comval <= 'Z') comval += ('a' - 'A');   // make it lowercase!
+  switch(comval) {
+@
+
+
+1.53
+log
+@adding repeat command 'g' ... some stuff works with it; not spellcasting yet
+@
+text
+@d911 1
+d932 1
+a932 1
+  if (ps->mode != MODE_DEFAULT) {
+d1036 1
+a1036 1
+Boolean do_dir_command(Short dir, Short XXX_item)
+d1046 10
+a1055 7
+    // m and p have already had their chance of failure....
+    // chalk up another thing I have to change for AGAIN.
+  case 'm': cast_helper(selected_spell, 101, dir);   break;
+  case 'p': pray_helper(selected_spell, 101, dir);   break;
+  case 'a':  aim(curr_state.item, dir);   break;
+  // case 'z': the item-selection form itself calls use(item)!  argh.
+  case 't':  throw_object(curr_state.item, dir);  break;
+d1655 5
+a1659 1
+    if (!do_parsed_command(&curr_state))
+d1663 1
+a1663 1
+    message("I don't remember a command to repeat.");
+@
+
+
+1.52
+log
+@tweaking
+@
+text
+@d21 3
+a23 1
+static Boolean valid_countcommand(Char c) SEC_6;
+d29 6
+a732 5
+Boolean do_command(Char com_val)
+{
+  Boolean handled = true;
+  Short dir;
+  Short iii, jjj;
+a733 10
+  // map the deeply irritating arrow keys for stowaway keyboard.
+  // I particularly distrust and despise the shift thing.
+  if (com_val >= leftArrowChr && com_val <= downArrowChr) {
+    Boolean capslock_on, numlock_on, autoshifted;
+    Short tmp_shift;
+    com_val = map_arrows[com_val - leftArrowChr];
+    GrfGetState(&capslock_on, &numlock_on, &tmp_shift, &autoshifted);
+    if ((tmp_shift == grfTempShiftUpper) || capslock_on)
+      com_val -= 'a'-'A';
+  }
+d735 12
+a746 10
+  dir = map_roguedir(com_val); // dir==5 if noop or non-direction.
+  free_turn_flag = false; // by default
+  // NOTE I took out the "check for 'last_command needed directional'" block.
+
+  //  curr_state.cmd = -1;
+  //  curr_state.cmd = com_val;
+
+  /* hack for move without pickup.  Map ' ' to a movement command. */
+  // Hm.  This will need to be FIXED for the new curr_state/mode paradigm:
+  if (com_val == ' ') {
+a751 5
+  }
+
+  curr_state.cmd = com_val;
+
+  switch(com_val) {
+d760 1
+a760 39
+    break;
+    // note: CTRL-<char> was used for tunneling
+  case 'b':		/* (b) down, left	(1) */
+  case 'j':		/* (j) down		(2) */
+  case 'n':		/* (n) down, right	(3) */
+  case 'h':		/* (h) left		(4) */
+  case 'l':		/* (l) right		(6) */
+  case 'y':		/* (y) up, left		(7) */
+  case 'k':		/* (k) up		(8) */
+  case 'u':		/* (u) up, right	(9) */
+    move_char(dir, do_pickup);
+    break;
+  case 'B':		/* (B) run down, left	(. 1) */
+  case 'J':		/* (J) run down		(. 2) */
+  case 'N':		/* (N) run down, right	(. 3) */
+  case 'H':		/* (H) run left		(. 4) */
+  case 'L':		/* (L) run right	(. 6) */
+  case 'Y':		/* (Y) run up, left	(. 7) */
+  case 'K':		/* (K) run up		(. 8) */
+  case 'U':		/* (U) run up, right	(. 9) */
+    find_init(dir);
+    if (find_flag > 0) find_run();
+    break;
+  case '.':		/* (.) stay in one place (5) */
+    move_char (5, do_pickup);
+    if (curr_state.count > 1) {
+      command_count = curr_state.count - 1;
+      rest();
+    }
+    break;
+  case 'g':             /* (g) "again" redo last command */
+    do_again();
+    break;
+  case '<':		/* (<) go down a staircase */
+    go_up();
+    break;
+  case '>':		/* (>) go up a staircase */
+    go_down();
+    break;
+d764 1
+a764 1
+    break;    
+d767 1
+a767 4
+    break;
+  case 'r':		/* (R)est a while */
+    rest(); // rest will use and zero command_count
+    break;
+d774 1
+a774 1
+    break;
+d782 28
+d811 2
+a812 6
+  case 'e':		/* (e)quipment list */
+    free_turn_flag = true;
+    if (equip_ctr == 0)
+      message("You are not using anything.");
+    else
+      FrmPopupForm(EquForm);
+d814 2
+a815 6
+  case 'i':		/* (i)nventory list */
+    free_turn_flag = true;
+    if (inven_ctr == 0)
+      message("You are not carrying anything.");
+    else
+      FrmPopupForm(InvForm);
+d817 2
+a818 3
+  case 'm':		/* (m)agic spells */
+    free_turn_flag = true; // cast_helper will decide to set it
+    cast();
+d820 2
+a821 3
+  case 'p':		/* (p)ray */
+    free_turn_flag = true; // pray_helper will decide to set it
+    pray();
+d823 2
+a824 3
+  case 'x':		/* e(X)change weapons	e(x)change */
+  case 'X':		/* e(X)change weapons	e(x)change */
+    exchange_weap();
+d826 2
+a827 15
+  case 's':		/* (s)earch for a turn */
+    // This can take a multiplier in command_count.
+    if (curr_state.count <= 0 && (my_prefs.repeaters & RPT_SEARCH))
+      command_count = 99;
+    else command_count = curr_state.count;
+    do {
+      search(char_row, char_col, pymisc.srh); // moria2.c
+      end_of_turn();
+      if (command_count > 0) command_count--;
+      try_print_status();
+      start_of_turn();
+    } while ((command_count > 0) && !user_interrupted());
+    command_count = 0;
+    update_status_words(); // in case of remaining command_count msg
+    free_turn_flag = true; // 'cause we just did end_of and start_of.
+d829 32
+d862 21
+a882 9
+  case 'f':		/* (f)orce		(B)ash */
+  case '^':		/* (D)isarm trap */
+  case 'c':		/* (c)lose an object */
+  case 'S':		/* (S)pike a door	(j)am a door */
+  case 'o':		/* (o)pen something */
+  case 'd':		/* (d)ig / tunnel */
+  case '?':		/* look/examine */
+  case '-':		/* slide */
+    draw_directional_p = true;    // draw_directional();
+d885 11
+a895 1
+    break;
+d897 1
+a897 2
+    free_turn_flag = true;
+    if (!find_range(TV_WAND, TV_NEVER, &iii, &jjj))
+d899 1
+a899 3
+    else {
+      invequ_mode = ACT_AIM;
+      FrmPopupForm(InvSelectForm);
+d901 2
+d905 1
+a905 2
+    free_turn_flag = true;
+    if (!find_range(TV_STAFF, TV_NEVER, &iii, &jjj))
+d907 51
+a957 3
+    else {
+      invequ_mode = ACT_ZAP;
+      FrmPopupForm(InvSelectForm);
+d960 9
+a968 1
+  case 't':		/* (t)hrow something	(f)ire something */
+d972 1
+a972 2
+    else {
+      just_throwing = true;
+a973 1
+    }
+d975 10
+a984 4
+  case '/':		// (/) identify a symbol
+    message("Tap (or write) a symbol to identify.");
+    curr_state.mode = MODE_SLASH;
+    free_turn_flag = true;
+d987 1
+a987 3
+    //message("Type '?' for help.");
+    handled = false;
+    free_turn_flag = true;
+d989 1
+a989 2
+  do_pickup = true;
+  return handled;
+d992 1
+d995 1
+d1045 13
+a1057 95
+  case 'm':
+    cast_helper(selected_spell, 101, dir); // already had chance of failure
+    break;
+  case 'p':
+    pray_helper(selected_spell, 101, dir); // already had chance of failure
+    break;
+  case 'f':		/* (f)orce		(B)ash */
+    // This can take a multiplier in command_count.
+    if (curr_state.count <= 0 && (my_prefs.repeaters & RPT_FORCE))
+      command_count = 99;
+    else command_count = curr_state.count;
+    do {
+      bash(dir); // moria4.c
+      end_of_turn();
+      if (command_count > 0) command_count--;
+      try_print_status();
+      start_of_turn();
+    } while ((command_count > 0) && !user_interrupted());
+    command_count = 0;
+    update_status_words(); // in case of remaining command_count msg
+    free_turn_flag = true; // 'cause we just did end_of and start_of.
+    break;
+  case '^':		/* (D)isarm trap */
+    // This can take a multiplier in command_count.
+    if (curr_state.count <= 0 && (my_prefs.repeaters & RPT_DISARM))
+      command_count = 99;
+    else command_count = curr_state.count;
+    do {
+      disarm_trap(dir); // moria4.c
+      end_of_turn();
+      if (command_count > 0) command_count--;
+      try_print_status();
+      start_of_turn();
+    } while ((command_count > 0) && !user_interrupted());
+    command_count = 0;
+    update_status_words(); // in case of remaining command_count msg
+    free_turn_flag = true; // 'cause we just did end_of and start_of.
+    break;
+  case 'c':		/* (c)lose an object */
+    closeobject(dir);
+    break;
+  case 'S':		/* (S)pike a door	(j)am a door */
+    // This can take a multiplier in command_count.
+    command_count = curr_state.count;
+    do {
+      jamdoor(dir); // dungeon.c
+      end_of_turn();
+      if (command_count > 0) command_count--;
+      try_print_status();
+      start_of_turn();
+    } while ((command_count > 0) && !user_interrupted());
+    command_count = 0;
+    update_status_words(); // in case of remaining command_count msg
+    free_turn_flag = true; // 'cause we just did end_of and start_of.
+    break;
+  case 'o':		/* (o)pen something */
+    // This can take a multiplier in command_count.
+    if (curr_state.count <= 0 && (my_prefs.repeaters & RPT_OPEN))
+      command_count = 99;
+    else command_count = curr_state.count;
+    do {
+      openobject(dir); // moria3.c
+      end_of_turn();
+      if (command_count > 0) command_count--;
+      try_print_status();
+      start_of_turn();
+    } while ((command_count > 0) && !user_interrupted());
+    command_count = 0;
+    update_status_words(); // in case of remaining command_count msg
+    free_turn_flag = true; // 'cause we just did end_of and start_of.
+    break;
+  case 'd':		/* (d)ig a tunnel */
+    // This can take a multiplier in command_count.
+    if (curr_state.count <= 0 && (my_prefs.repeaters & RPT_DIG))
+	command_count = 99;
+    else command_count = curr_state.count;
+    if (command_count > 0)
+      if (!check_for_shovel())
+	if (0 != FrmAlert(DigSlowlyP)) {	  // abort
+	  command_count = 0;
+	  update_status_words();
+	  free_turn_flag = true;
+	  break;
+	}
+    do {
+      tunnel(dir); // moria4.c
+      end_of_turn();
+      if (command_count > 0) command_count--;
+      try_print_status();
+      start_of_turn();
+    } while ((command_count > 0) && !user_interrupted());
+    command_count = 0;
+    update_status_words(); // in case of remaining command_count msg
+    free_turn_flag = true; // 'cause we just did end_of and start_of.
+    break;
+a1074 10
+  case 'a':		/* (z)ap a wand		(a)im a wand */
+    aim(curr_state.item, dir);
+    break;
+  // case 'z': the item-selection form itself calls use(item)!
+
+  case 't':		/* (t)hrow something	(f)ire something */
+    throw_object(curr_state.item, dir);
+    // Note: we must also call 	  calc_bonuses();
+    calc_bonuses();
+    break;
+d1077 3
+a1079 3
+      Char buf[20];
+      StrPrintF(buf, "Unknown command '%c'.", curr_state.cmd);
+      message(buf);
+a1087 61
+/* Check whether this command will accept a count.     -CJS-  */
+static Boolean valid_countcommand(Char c)
+{
+  switch(c) {
+    // Quit, wizard, exit, set options, inscribe,
+    //  case 'Q':  case CTRL('W'):  case CTRL('X'):  case '=':  case '{':
+    // whatsit, help, your-descrip, Eat, Fill-lamp
+    //  case '/':  case '?':  case 'C':  case 'E':  case 'F':
+    // View-scores, search-toggle, Peruse/browse, drop, examine/look
+    //  case 'V':  case '#':  case 'P':  case 'd':  case 'x':
+    // quaff, read-scroll, Take-off, version, wear-wield, Where-on-map
+    //  case 'q':  case 'r':  case 'T':  case 'v':  case 'w':  case 'W':
+    // wizard stuff....
+    //  case CTRL('A'): case '\\': case CTRL('I'): case '*': case ':':
+    //  case CTRL('T'): case CTRL('E'): case CTRL('F'): case CTRL('S'): //?
+    //  case CTRL('Q'): //?
+
+    /*
+     * THESE THINGS DO NOT TAKE A COUNT:
+     * ascend, descend, Gain-spell, zap-wand
+     * close, equip-list, throw/fire, inv-list
+     * magic, pray, Zap-staff, Xchange
+     */
+  case '<':  case '>':  case 'G':  case 'z':
+  case 'c':  case 'e':  case 't':  case 'i':
+  case 'm':  case 'p':  case 'Z':  case 'X':
+    return false;
+
+    // prev message, noop, old move-wo-pickup
+    //  case CTRL('P'):  case ESCAPE:   case '-':
+    // wizard foo
+    //  case CTRL('D'):  case CTRL('G'):  case '+':
+
+    /*
+     * THESE THINGS TAKE A COUNT:
+     * move-w/o-pickup, force, <movement>, stay-here,
+     * disarm, rest, spike, open, search
+     */
+  case ' ':  case 'f':    // move-w/o-pickup, force
+  case 'b': case 'n': case 'y': case 'u':     // these are all movement...
+  case 'h': case 'j': case 'k': case 'l':
+  case 'B': case 'N': case 'Y': case 'U':
+  case 'H': case 'J': case 'K': case 'L':
+  case CTRL('Y'): case CTRL('U'): case CTRL('B'): case CTRL('N'):
+  case CTRL('H'): case CTRL('J'): case CTRL('K'): case CTRL('L'):
+  case '.':     // stay in one place
+  case '^':    // disarm trap was 'D', now '^'
+  case 'r':    // rest was 'R', now 'r'
+  case 'S':    // spike/jam a door
+  case 'o':    // open door/chest
+  case 's':    // search
+    return true;
+
+    /*
+     * Anything I forgot does not take a count.
+     * (Also, anything accessible SOLELY from menu, inv, & equip should not.)
+     */
+  default:
+    return false;
+  }
+}
+d1213 117
+d1424 1
+d1637 2
+d1640 5
+a1644 7
+
+  // mode == MODE_DEFAULT
+  // cmd == ???
+  // dir_cmd == ???
+  // dir == some valid direction, or 5
+  // count == 0 or valid count
+  // inv == -1 or some valid inventory index
+d1646 1
+a1646 6
+	    prev_state.mode,
+	    prev_state.cmd,
+	    prev_state.dir_cmd,
+	    prev_state.dir,
+	    prev_state.count,
+	    prev_state.item);
+d1648 8
+a1655 2
+  //  message("sorry, still implementing 'again'");
+  free_turn_flag = true;
+d1682 1
+@
+
+
+1.51
+log
+@better msgs on floor-change; sped up repeated delay; fewer keypress in spellbk
+@
+text
+@d800 3
+d1602 24
+@
+
+
+1.50
+log
+@moving extern decls around
+@
+text
+@d540 1
+a540 1
+	  message("You feel yourself yanked upwards!");
+d543 1
+a543 1
+	  message("You feel yourself yanked downwards!");
+d914 1
+a914 1
+    message("Click on a symbol to identify it.");
+d1268 1
+a1268 1
+      message("You enter a maze of up staircases.");
+d1289 1
+a1289 1
+      message("You enter a maze of down staircases.");
+d1614 1
+a1614 1
+  SysTaskDelay(SysTicksPerSecond()/10); // XXX Remove this line?
+@
+
+
+1.49
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@a16 1
+extern MoriaPreferenceType my_prefs; // for what commands to auto-repeat
+@
+
+
+1.48
+log
+@(slightly broken) rewiring the MainForm event handlers w/ explicit 'mode'
+@
+text
+@a10 2
+#include "palm.h"
+#include "kMoriaRsc.h"
+a11 3
+#include "lock-externs.h"
+#include <SysEvtMgr.h> // to interrupt rest!
+#include <Graffiti.h> /* just for GrfGetState */
+@
+
+
+1.47
+log
+@tweaking
+@
+text
+@d35 1
+a35 1
+static Char map_roguedir(Char comval) SEC_5;
+d37 1
+a37 1
+static void ident_monster(Char c) SEC_6;
+d76 1
+a76 1
+  command_count = 0;
+d725 1
+d750 4
+a753 11
+  if (last_command != -1) { // we wanted to do a command that needed direction
+    if (last_command == '/') {
+      ident_monster(com_val);
+      free_turn_flag = true;
+    } else if (dir == 5 && last_command != '?') // 'aborted' unless 'look'
+      free_turn_flag = true;
+    else
+      do_dir_command(dir, 0);
+    last_command = -1;
+    return true;
+  }
+a754 1
+  last_command = -1;
+d756 1
+d765 2
+d786 1
+a786 1
+    move_char(dir, do_pickup); // Hello, why is this not working?!
+d797 1
+a797 1
+    if (find_flag > 0) find_run(); // will this make keyboard run?
+d801 2
+a802 2
+    if (command_count > 1) {
+      command_count--;
+d865 1
+a865 1
+    if (command_count <= 0 && (my_prefs.repeaters & RPT_SEARCH))
+d867 1
+a887 1
+    // draw that funky pie.....  UNLESS it's '/'
+d889 1
+a889 1
+    last_command = com_val;
+d921 1
+a921 1
+    last_command = com_val;
+d936 1
+a936 1
+void do_xy_command(Short x, Short y)
+d939 1
+a939 3
+  //  Char buf[40];
+  if (last_command == -1) return;
+  switch(last_command) {
+a947 1
+      //      recall_this_monster = m_list[monptr].mptr;
+d958 2
+d961 2
+a962 1
+  last_command = -1;
+d971 1
+a971 1
+Short needed_direction_item;
+d974 1
+a974 1
+void do_dir_command(Short dir, Short XXX_item)
+d981 3
+a983 3
+  if (last_command == -1) return;
+  // ... Need to undraw that funky pie....
+  switch(last_command) {
+d992 1
+a992 1
+    if (command_count <= 0 && (my_prefs.repeaters & RPT_FORCE))
+d994 1
+d1008 1
+a1008 1
+    if (command_count <= 0 && (my_prefs.repeaters & RPT_DISARM))
+d1010 1
+d1027 1
+d1041 1
+a1041 1
+    if (command_count <= 0 && (my_prefs.repeaters & RPT_OPEN))
+d1043 1
+d1057 1
+a1057 1
+    if (command_count <= 0 && (my_prefs.repeaters & RPT_DIG))
+d1059 1
+d1097 1
+a1097 1
+    aim(needed_direction_item, dir);
+d1102 1
+a1102 1
+    throw_object(needed_direction_item, dir);
+d1109 1
+a1109 1
+      StrPrintF(buf, "Unknown command '%c'.", last_command);
+d1112 1
+d1115 2
+a1116 2
+  command_count = 0; // seems like a good idea
+  last_command = -1;
+d1436 1
+a1436 1
+static Char map_roguedir(Char comval)
+d1567 1
+a1567 1
+static void ident_monster(Char c)
+d1621 1
+a1621 1
+  // Maybe THIS will allow keyboard keypresses to interrupt... Nope...
+d1626 1
+@
+
+
+1.46
+log
+@ok, the blasted arrow keys work for Stowaway now, including grovel-for-shift
+@
+text
+@d16 1
+@
+
+
+1.45
+log
+@EvtEventAvail is a bad idea
+@
+text
+@d728 1
+d732 1
+a732 1
+  Short dir = map_roguedir(com_val); // dir==5 if noop or non-direction.
+d735 12
+@
+
+
+1.44
+log
+@foo
+@
+text
+@d1605 3
+a1607 3
+  /*  if (EvtSysEventAvail(true)) { */
+  // Maybe THIS will allow keyboard keypresses to interrupt... GRUMBLE...
+  if (EvtSysEventAvail(true) || EvtEventAvail()) {
+@
+
+
+1.43
+log
+@update mana/hp while resting
+@
+text
+@d1605 3
+a1607 1
+  if (EvtSysEventAvail(true)) {
+@
+
+
+1.42
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d46 1
+d654 7
+@
+
+
+1.41
+log
+@revised stats-redrawing so that it (hopefully) redraws only what has changed
+@
+text
+@d1 10
+a10 27
+/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * Copyright (C) 2000,2001 Bridget Spitznagel, James E. Wilson,      *
+ *  Robert A. Koeneke.                                               *
+ *                                                                   *
+ * This program is derived from Umoria 5.5.2.  Umoria is:            *
+ *  "Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+ *   This software may be copied and distributed for educational,    *
+ *   research, and not for profit purposes provided that this        *
+ *   copyright and statement are included in all such copies."       *
+ *                                                                   *
+ * kMoria is free software; you can redistribute it and/or           *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+@
+
+
+1.40
+log
+@'dig' repeater checks for forgotten 'x'; inv and equ take more keyboard foo
+@
+text
+@d62 1
+a62 1
+UChar need_print_stats;
+d113 1
+a113 1
+  if (!need_print_stats) need_print_stats |= STATS_QUO;
+d183 1
+a183 1
+	need_print_stats |= STATS_QUO;
+d193 1
+a193 1
+	  // need_print_stats |= STATS_QUO;// omit because we do it below
+d198 1
+a198 1
+	need_print_stats |= STATS_QUO;
+d212 1
+a212 1
+	need_print_stats |= STATS_QUO;
+d222 1
+a222 1
+	  // need_print_stats |= STATS_QUO; // omit, we do it below
+d227 1
+a227 1
+	need_print_stats |= STATS_QUO;
+d465 1
+a465 1
+	need_print_stats |= STATS_GOLD_AC;      //      prt_pac(); // XXXX
+d474 1
+a474 1
+	need_print_stats |= STATS_GOLD_AC;      //      prt_pac(); // XXX
+d489 1
+a489 1
+	need_print_stats |= STATS_GOLD_AC;      //      prt_pac(); // XXXX
+d500 1
+a500 1
+	need_print_stats |= STATS_GOLD_AC;      //      prt_pac(); // XXXX
+d603 1
+a603 1
+      need_print_stats |= STATS_GOLD_AC;    //    prt_pac();
+d609 1
+a609 1
+	  need_print_stats |= STATS_STR_ETC;	// prt_stat(i);
+d617 1
+a617 1
+      need_print_stats |= STATS_HP;    // prt_cmana();
+d736 1
+d822 4
+a825 1
+    print_stats(STATS_TOGGLE); // will this work?
+@
+
+
+1.39
+log
+@clear the leftover count when interrupted
+@
+text
+@d55 1
+d1049 9
+a1057 1
+      command_count = 99;
+d1372 17
+@
+
+
+1.38
+log
+@hauled a bunch of code from one section to another, and moved some consts to DB
+@
+text
+@d868 1
+d995 1
+d1010 1
+d1026 1
+d1041 1
+d1056 1
+@
+
+
+1.37
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d38 3
+d859 2
+d985 2
+d999 2
+d1028 2
+d1040 1
+a1040 1
+  case 'd':		/* (o)pen something */
+d1042 2
+@
+
+
+1.36
+log
+@fixed character export bug (and some minor bugs)
+@
+text
+@d3 2
+a4 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d28 1
+a28 1
+#include <Pilot.h>
+@
+
+
+1.35
+log
+@allow more access to monster memory
+@
+text
+@d741 1
+@
+
+
+1.34
+log
+@mumble
+@
+text
+@d49 1
+d53 1
+d739 3
+a741 1
+    if (dir == 5 && last_command != '?') // 'aborted' unless 'look'
+d937 1
+d1447 1
+a1447 1
+    /* case 'I': message("I - Invisible Stalker."); break; */
+d1452 1
+a1452 1
+    /* case 'N': message("N - Not used."); break; */
+d1464 1
+a1464 1
+    /* case 'Z': message("Z - Not used."); break; */
+d1470 1
+a1470 1
+    /* case '`': message("` - Not used."); break; */
+d1491 2
+a1492 2
+    /* case 'u': message("u - Not used."); break; */
+    /* case 'v': message("v - Not used."); break; */
+d1494 1
+a1494 1
+    /* case 'x': message("x - Not used."); break; */
+d1506 41
+@
+
+
+1.33
+log
+@fixed same-sector-new-level screen-redraw bug
+@
+text
+@d1509 2
+a1510 1
+ *  out of the queue - I hope.  Works on xcopilot for pen taps.
+@
+
+
+1.32
+log
+@fixed sell-unknown-item-to-store bug.  most forms navigable via keyboard now.
+@
+text
+@d86 1
+a86 1
+  new_level_flag    = false;
+d89 1
+a89 1
+  mon_tot_mult	= 0;
+a92 1
+  //clear_screen(); // nope this did not fix the same-panel-dirty-screen thing.
+d94 2
+a95 1
+  check_view();
+a685 1
+    clear_screen();// dude make the freaking screen redraw - hope this works
+@
+
+
+1.31
+log
+@run is (mostly) fixed so you don't run-and-attack. at least stationary monsters
+@
+text
+@d786 1
+@
+
+
+1.30
+log
+@fixed some bugs:
+directional commands redraw properly
+event queue is flushed before entering new level
+going back a screen in shops is ok for boundary case now
+made hw buttons which are bound stay bound (disabled) in all forms
+@
+text
+@d87 1
+a87 1
+  find_flag	= false;
+@
+
+
+1.29
+log
+@Tap screen to abort 'rest' and other counted commands.
+@
+text
+@d689 3
+d728 2
+d870 1
+a870 1
+    draw_directional();
+d960 2
+@
+
+
+1.28
+log
+@tweaked notice
+@
+text
+@d31 5
+d49 1
+d404 4
+d851 1
+a851 1
+    } while (command_count > 0);
+d972 1
+a972 1
+    } while (command_count > 0);
+d984 1
+a984 1
+    } while (command_count > 0);
+d999 1
+a999 1
+    } while (command_count > 0);
+d1011 1
+a1011 1
+    } while (command_count > 0);
+d1023 1
+a1023 1
+    } while (command_count > 0);
+d1494 21
+@
+
+
+1.27
+log
+@fixed relative-move bug, might have fixed same-panel-next-level bug,
+some sound added, command-count recognizes 'delete' now,
+app goes to dead-end form for wrong OS or missing database at startup.
+@
+text
+@d5 5
+a9 2
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d11 1
+a11 1
+ * This program is free software; you can redistribute it and/or     *
+@
+
+
+1.26
+log
+@corrosion bug might be fixed
+last message shown always has at least cur/max hitpoints visible (overlaid)
+inventory now displays weight (optionally)
+added a preference to move status bar to top of screen
+@
+text
+@d84 1
+a84 1
+  clear_screen(); // Maybe this will fix the same-panel-dirty-screen thing.
+d673 1
+@
+
+
+1.25
+log
+@fixed glyph of warding
+@
+text
+@d84 1
+d87 1
+d97 1
+a97 1
+  need_print_stats |= STATS_QUO;
+a111 1
+
+d582 1
+a582 1
+    if ((pyflags.status & PY_ARMOR) != 0) {
+d586 1
+a586 1
+    if ((pyflags.status & PY_STATS) != 0) {
+d791 4
+d1139 1
+a1139 1
+    need_print_stats |= STATS_HP;  //    prt_chp();
+d1166 1
+a1166 1
+    need_print_stats |= STATS_HP;  //    prt_cmana();
+@
+
+
+1.24
+log
+@genocide scroll works
+@
+text
+@d418 1
+a418 1
+	;// prt_map ();	 /* Used to draw entire screen! -CJS- */ // XXXX !impl
+d425 2
+@
+
+
+1.23
+log
+@user can rebind hardware buttons
+@
+text
+@d32 2
+a33 2
+static void regenhp(Short percent) SEC_5;
+static void regenmana(Short percent) SEC_5;
+d279 1
+d299 1
+a299 1
+	  rest_off ();
+d640 8
+a647 2
+    if (!death && !(pyflags.paralysis <= 0 && pyflags.rest == 0))
+      end_of_turn(); // move the monsters, then spin your wheels again
+d769 1
+a769 1
+      rest(); // #
+d786 1
+a786 1
+    rest(); // needs to use command_count
+@
+
+
+1.22
+log
+@can access Recall from Look now
+@
+text
+@d112 1
+a112 1
+    /* I am leaving out: game-hours restriction.  We are not a mainframe! -bas */
+a727 24
+    /*
+  case 'Q':	// (Q)uit		(^K)ill
+    // Popup a confirmation.
+    if (get_check("Do you really want to quit?")) {
+      new_level_flag = true;
+      death = true;
+      StrCopy(died_from, "Quitting");
+    }
+    free_turn_flag = true;
+    break;
+  case CTRL('X'):	// e(^X)it and save
+    if (total_winner) {
+      message("You are a Total Winner,  your character must be retired.");
+      message("Use /Q to when you are ready to quit.");
+    } else {
+      StrCopy (died_from, "(saved)");
+      message ("Saving game...");
+      if (save_char ())
+	exit_game();
+      StrCopy (died_from, "(alive and well)");
+    }
+    free_turn_flag = true;
+    break;
+    */
+d737 1
+d746 1
+a746 1
+    move_char(dir, do_pickup);
+a764 29
+
+    /* I am not sanguine about these - might work with keyboard though.
+  case CTRL('B'):		// (^B) tunnel down left	(T 1) 
+    tunnel(1);
+    break;
+  case CTRL('M'):		// cr must be treated same as lf. 
+  case CTRL('J'):		// (^J) tunnel down		(T 2) 
+    tunnel(2);
+    break;
+  case CTRL('N'):		// (^N) tunnel down right	(T 3) 
+    tunnel(3);
+    break;
+  case CTRL('H'):		// (^H) tunnel left		(T 4) 
+    tunnel(4);
+    break;
+  case CTRL('L'):		// (^L) tunnel right		(T 6) 
+    tunnel(6);
+    break;
+  case CTRL('Y'):		// (^Y) tunnel up left		(T 7) 
+    tunnel(7);
+    break;
+  case CTRL('K'):		// (^K) tunnel up		(T 8) 
+    tunnel(8);
+    break;
+  case CTRL('U'):		// (^U) tunnel up right		(T 9) 
+    tunnel(9);
+    break;
+    */
+
+d771 4
+d779 1
+a779 1
+    rest(); // #
+d783 1
+a783 2
+    if (pyflags.status & PY_SEARCH) {
+      //      message("search: off");
+d785 1
+a785 2
+    } else {
+      //      message("search: on");
+a786 1
+    }
+d882 3
+d913 4
+d1343 9
+a1351 27
+  case 'h':
+    comval = '4';
+    break;
+  case 'y':
+    comval = '7';
+    break;
+  case 'k':
+    comval = '8';
+    break;
+  case 'u':
+    comval = '9';
+    break;
+  case 'l':
+    comval = '6';
+    break;
+  case 'n':
+    comval = '3';
+    break;
+  case 'j':
+    comval = '2';
+    break;
+  case 'b':
+    comval = '1';
+    break;
+  case '.':  default:
+    comval = '5';
+    break;
+d1353 1
+a1353 1
+  return(comval);
+@
+
+
+1.21
+log
+@rearranged menus, fixed search-mode
+@
+text
+@d964 1
+d1044 9
+a1052 1
+    look(dir);
+@
+
+
+1.20
+log
+@fixed ring-wearing
+@
+text
+@d29 3
+a31 1
+static Boolean valid_countcommand(Char c) SEC_5;
+d228 1
+a228 1
+	  //	prt_hunger(); // XXXXX not implemented
+d239 1
+a239 1
+	//      prt_hunger(); // XXXXXXX not implemented
+d269 1
+a269 1
+	//      prt_blind(); // XXXX not implemented
+d277 1
+a277 1
+	//      prt_blind(); // XXXX not implemented
+d290 1
+a290 1
+	//      prt_confused(); // XXXX not implemented
+d295 1
+a295 1
+	//      prt_confused(); // XXXX not implemented
+d309 1
+a309 1
+	  //	prt_afraid(); // XXXX not implemented
+d316 1
+a316 1
+	//      prt_afraid(); // XXXX not implemented
+d326 1
+a326 1
+	//      prt_poisoned(); // XXXX not implemented
+d331 1
+a331 1
+	//      prt_poisoned(); // XXXX not implemented
+d830 3
+a832 1
+    if (pyflags.status & PY_SEARCH)
+d834 2
+a835 1
+    else
+d837 1
+d872 1
+d875 1
+d985 1
+d988 1
+d997 1
+d1000 1
+d1012 1
+d1015 1
+d1024 1
+d1027 1
+d1036 1
+d1039 1
+@
+
+
+1.19
+log
+@odds and ends
+@
+text
+@d109 2
+a110 2
+  turn++;
+  /* I am leaving out: game-hours restriction.  We are not a mainframe! -bas */
+d112 27
+a138 16
+  /* turn over the store contents every, say, 1000 turns */
+  if ((dun_level != 0) && ((turn % 1000) == 0))
+    store_maint();
+
+  /* Check for creature generation		*/
+  if (randint(MAX_MALLOC_CHANCE) == 1)
+    alloc_monster(1, MAX_SIGHT, false);
+
+  /* Check light status			       */
+  //  i_ptr = &inventory[INVEN_LIGHT];
+  plight = inventory[INVEN_LIGHT].p1;
+  if (player_light) {
+    if (plight > 0) {
+      plight--;
+      invy_set_p1(inventory, INVEN_LIGHT, plight); // used a turn of light
+      if (plight == 0) {
+a139 1
+	message("Your light has gone out!");
+a142 4
+      } else if ((plight < 40) && (randint(5) == 1) &&
+		 (pyflags.blind < 1)) {
+	disturb(false, false);
+	message("Your light is growing faint.");
+d144 3
+a146 2
+    } else {
+      player_light = false;
+d148 1
+a148 1
+      /* unlight creatures */
+d150 1
+a150 8
+    }
+  } else if (plight > 0) {
+    invy_set_p1(inventory, INVEN_LIGHT, plight); // used a turn of light
+    player_light = true;
+    disturb(false, true);
+    /* light creatures */
+    creatures(false);
+  } /* end of Check light status                  */
+d152 1
+a152 1
+  /* Update counters and messages (quite long)			*/
+d154 28
+a181 28
+  /* Heroism (must precede anything that can damage player)      */
+  if (pyflags.hero > 0) {
+    if ((PY_HERO & pyflags.status) == 0) {
+      pyflags.status |= PY_HERO;
+      disturb(false, false);
+      pymisc.mhp += 10;
+      pymisc.chp += 10;
+      pymisc.bth += 12;
+      pymisc.bthb+= 12;
+      message("You feel like a HERO!");
+      need_print_stats |= STATS_QUO;
+    }
+    pyflags.hero--;
+    if (pyflags.hero == 0) {
+      pyflags.status &= ~PY_HERO;
+      disturb (false, false);
+      pymisc.mhp -= 10;
+      if (pymisc.chp > pymisc.mhp) {
+	pymisc.chp = pymisc.mhp;
+	pymisc.chp_frac = 0;
+	// need_print_stats |= STATS_QUO;// omit because we do it below
+      }
+      pymisc.bth  -= 12;
+      pymisc.bthb -= 12;
+      message("The heroism wears off.");
+      need_print_stats |= STATS_QUO;
+    }
+  } /* end Heroism                  */
+d183 28
+a210 28
+  /* Super Heroism */
+  if (pyflags.shero > 0) {
+    if ((PY_SHERO & pyflags.status) == 0) {
+      pyflags.status |= PY_SHERO;
+      disturb (false, false);
+      pymisc.mhp += 20;
+      pymisc.chp += 20;
+      pymisc.bth += 24;
+      pymisc.bthb+= 24;
+      message("You feel like a SUPER HERO!");
+      need_print_stats |= STATS_QUO;
+    }
+    pyflags.shero--;
+    if (pyflags.shero == 0) {
+      pyflags.status &= ~PY_SHERO;
+      disturb (false, false);
+      pymisc.mhp -= 20;
+      if (pymisc.chp > pymisc.mhp) {
+	pymisc.chp = pymisc.mhp;
+	pymisc.chp_frac = 0;
+	// need_print_stats |= STATS_QUO; // omit, we do it below
+      }
+      pymisc.bth  -= 24;
+      pymisc.bthb -= 24;
+      message("The super heroism wears off.");
+      need_print_stats |= STATS_QUO;
+    }
+  } /* end Super Heroism              */
+d212 24
+a235 13
+  /* Check food status	       */
+  regen_amount = PLAYER_REGEN_NORMAL;
+  if (pyflags.food < PLAYER_FOOD_ALERT) {
+    if (pyflags.food < PLAYER_FOOD_WEAK) {
+      if (pyflags.food < 0)
+	regen_amount = 0;
+      else if (pyflags.food < PLAYER_FOOD_FAINT)
+	regen_amount = PLAYER_REGEN_FAINT;
+      else if (pyflags.food < PLAYER_FOOD_WEAK)
+	regen_amount = PLAYER_REGEN_WEAK;
+      if ((PY_WEAK & pyflags.status) == 0) {
+	pyflags.status |= PY_WEAK;
+	message("You are getting weak from hunger.");
+d237 1
+a237 1
+	//	prt_hunger(); // XXXXX not implemented
+d239 42
+a280 4
+      if ((pyflags.food < PLAYER_FOOD_FAINT) && (randint(8) == 1)) {
+	pyflags.paralysis += randint(5);
+	message("You faint from the lack of food.");
+	disturb (true, false);
+d282 1
+a282 7
+    } else if ((PY_HUNGRY & pyflags.status) == 0) {
+      pyflags.status |= PY_HUNGRY;
+      message("You are getting hungry.");
+      disturb (false, false);
+      //      prt_hunger(); // XXXXXXX not implemented
+    }
+  } /* end of Check food status          */
+d284 15
+a298 42
+  /* Food consumption
+   * Note: Speeded up characters really burn up the food!  */
+  if (pyflags.speed < 0)
+    pyflags.food -= pyflags.speed * pyflags.speed;
+  pyflags.food -= pyflags.food_digested;
+  if (pyflags.food < 0) {
+    take_hit (-pyflags.food/16, "starvation");   /* -CJS- */
+    // XXXX can you die here?
+    disturb(true, false);
+  } /* end Food consumption */
+
+  /* Regenerate	       */
+  if (pyflags.regenerate)  regen_amount *= 3 / 2;
+  if ((pyflags.status & PY_SEARCH) || pyflags.rest != 0)
+    regen_amount *= 2;
+  if ((pyflags.poisoned < 1) && (pymisc.chp < pymisc.mhp))
+    regenhp(regen_amount);
+  if (pymisc.cmana < pymisc.mana)
+    regenmana(regen_amount);
+  /* end Regenerate */
+
+  /* Blindness	       */
+  if (pyflags.blind > 0) {
+    if ((PY_BLIND & pyflags.status) == 0) {
+      pyflags.status |= PY_BLIND;
+      //      prt_map(); // XXXX not implemented
+      //      prt_blind(); // XXXX not implemented
+      disturb (false, true);
+      /* unlight creatures */
+      creatures (false);
+    }
+    pyflags.blind--;
+    if (pyflags.blind == 0) {
+      pyflags.status &= ~PY_BLIND;
+      //      prt_blind(); // XXXX not implemented
+      //      prt_map(); // XXXX not implemented
+      /* light creatures */
+      disturb (false, true);
+      creatures(false);
+      message("The veil of darkness lifts.");
+    }
+  } /* end Blindness */
+d300 19
+a318 15
+  /* Confusion	       */
+  if (pyflags.confused > 0) {
+    if ((PY_CONFUSED & pyflags.status) == 0) {
+      pyflags.status |= PY_CONFUSED;
+      //      prt_confused(); // XXXX not implemented
+    }
+    pyflags.confused--;
+    if (pyflags.confused == 0) {
+      pyflags.status &= ~PY_CONFUSED;
+      //      prt_confused(); // XXXX not implemented
+      message("You feel less confused now.");
+      if (pyflags.rest != 0)
+	rest_off ();
+    }
+  } /* end Confusion */
+d320 35
+a354 19
+  /* Afraid		       */
+  if (pyflags.afraid > 0) {
+    if ((PY_FEAR & pyflags.status) == 0) {
+      if ((pyflags.shero + pyflags.hero) > 0)
+	pyflags.afraid = 0;
+      else {
+	pyflags.status |= PY_FEAR;
+	//	prt_afraid(); // XXXX not implemented
+      }
+    } else if ((pyflags.shero + pyflags.hero) > 0)
+      pyflags.afraid = 1;
+    pyflags.afraid--;
+    if (pyflags.afraid == 0) {
+      pyflags.status &= ~PY_FEAR;
+      //      prt_afraid(); // XXXX not implemented
+      message("You feel bolder now.");
+      disturb (false, false);
+    }
+  } /* end Afraid */
+d356 14
+a369 29
+  /* Poisoned	       */
+  if (pyflags.poisoned > 0) {
+    if ((PY_POISONED & pyflags.status) == 0) {
+      pyflags.status |= PY_POISONED;
+      //      prt_poisoned(); // XXXX not implemented
+    }
+    pyflags.poisoned--;
+    if (pyflags.poisoned == 0) {
+      pyflags.status &= ~PY_POISONED;
+      //      prt_poisoned(); // XXXX not implemented
+      message("You feel better.");
+      disturb (false, false);
+    } else {
+      i = 0;
+      switch(con_adj()) {
+      case -4:  i = 4;  break;
+      case -3:
+      case -2:  i = 3;  break;
+      case -1:  i = 2;  break;
+      case 0:	  i = 1;  break;
+      case 1: case 2: case 3:
+	i = ((turn % 2) == 0);
+	break;
+      case 4: case 5:
+	i = ((turn % 3) == 0);
+	break;
+      case 6:
+	i = ((turn % 4) == 0);
+	break;
+d371 1
+a371 5
+      take_hit (i, "poison");
+      // XXX can you die here?
+      disturb (true, false);
+    }
+  } /* end Poisoned */
+d373 16
+a388 16
+  /* Fast		       */
+  if (pyflags.fast > 0) {
+    if ((PY_FAST & pyflags.status) == 0) {
+      pyflags.status |= PY_FAST;
+      change_speed(-1);
+      message("You feel yourself moving faster.");
+      disturb (false, false);
+    }
+    pyflags.fast--;
+    if (pyflags.fast == 0) {
+      pyflags.status &= ~PY_FAST;
+      change_speed(1);
+      message("You feel yourself slow down.");
+      disturb (false, false);
+    }
+  } /* end Fast */
+d390 11
+a400 14
+  /* Slow		       */
+  if (pyflags.slow > 0) {
+    if ((PY_SLOW & pyflags.status) == 0) {
+      pyflags.status |= PY_SLOW;
+      change_speed(1);
+      message("You feel yourself moving slower.");
+      disturb (false, false);
+    }
+    pyflags.slow--;
+    if (pyflags.slow == 0) {
+      pyflags.status &= ~PY_SLOW;
+      change_speed(-1);
+      message("You feel yourself speed up.");
+      disturb (false, false);
+a401 1
+  } /* end Slow */
+d403 6
+a408 12
+  /* Resting is over?      */
+  if (pyflags.rest > 0) {
+    pyflags.rest--;
+    if (pyflags.rest == 0)		      /* Resting over	       */
+      rest_off();
+  } else if (pyflags.rest < 0) {
+    /* Rest until reach max mana and max hit points.  */
+    pyflags.rest++;
+    if ((pymisc.chp == pymisc.mhp && pymisc.cmana == pymisc.mana) ||
+	pyflags.rest == 0)
+      rest_off();
+  }
+d410 14
+a423 49
+  /* Check for user interrupts to find or rest. */
+  /*
+   * XXXXXXXXXX  I do not think that I can do that under PalmOS. 
+   * So I have skipped that part (i.e. up to Hallucinating)
+   * Hope this does not tend to unbalance gameplay.
+   */
+
+  /* Hallucinating?	 (Random characters appear!)*/
+  if (pyflags.image > 0) {
+    end_find ();
+    pyflags.image--;
+    if (pyflags.image == 0)
+      ;// prt_map ();	 /* Used to draw entire screen! -CJS- */ // XXXX !impl
+  } /* end Hallucinating */
+
+  /* Paralysis	       */
+  if (pyflags.paralysis > 0) {
+    /* when paralysis true, you can not see any movement that occurs */
+    pyflags.paralysis--;
+    disturb (true, false);
+  } /* end Paralysis */
+
+  /* Protection from evil counter*/
+  if (pyflags.protevil > 0) {
+    pyflags.protevil--;
+    if (pyflags.protevil == 0)
+      message ("You no longer feel safe from evil.");
+  } /* end Protection from evil */
+
+  /* Invulnerability	*/
+  if (pyflags.invuln > 0) {
+    if ((PY_INVULN & pyflags.status) == 0) {
+      pyflags.status |= PY_INVULN;
+      disturb (false, false);
+      pymisc.pac += 100;
+      pymisc.dis_ac += 100;
+      need_print_stats |= STATS_GOLD_AC;      //      prt_pac(); // XXXX
+      message("Your skin turns into steel!");
+    }
+    pyflags.invuln--;
+    if (pyflags.invuln == 0) {
+      pyflags.status &= ~PY_INVULN;
+      disturb (false, false);
+      pymisc.pac -= 100;
+      pymisc.dis_ac -= 100;
+      need_print_stats |= STATS_GOLD_AC;      //      prt_pac(); // XXX
+      message("Your skin returns to normal.");
+    }
+  } /* end Invulnerability */
+d425 27
+a451 24
+  /* Blessed       */
+  if (pyflags.blessed > 0) {
+    if ((PY_BLESSED & pyflags.status) == 0) {
+      pyflags.status |= PY_BLESSED;
+      disturb (false, false);
+      pymisc.bth += 5;
+      pymisc.bthb+= 5;
+      pymisc.pac += 2;
+      pymisc.dis_ac+= 2;
+      message("You feel righteous!");
+      need_print_stats |= STATS_GOLD_AC;      //      prt_pac(); // XXXX
+    }
+    pyflags.blessed--;
+    if (pyflags.blessed == 0) {
+      pyflags.status &= ~PY_BLESSED;
+      disturb (false, false);
+      pymisc.bth -= 5;
+      pymisc.bthb-= 5;
+      pymisc.pac -= 2;
+      pymisc.dis_ac -= 2;
+      message("The prayer has expired.");
+      need_print_stats |= STATS_GOLD_AC;      //      prt_pac(); // XXXX
+    }
+  } /* end Blessed */
+d453 24
+a476 31
+  /* Resist Heat   */
+  if (pyflags.resist_heat > 0) {
+    pyflags.resist_heat--;
+    if (pyflags.resist_heat == 0)
+      message ("You no longer feel safe from flame.");
+  } /* end Resist heat */
+
+  /* Resist Cold   */
+  if (pyflags.resist_cold > 0) {
+    pyflags.resist_cold--;
+    if (pyflags.resist_cold == 0)
+      message ("You no longer feel safe from cold.");
+  } /* end Resist cold */
+
+  /* Detect Invisible      */
+  if (pyflags.detect_inv > 0) {
+    if ((PY_DET_INV & pyflags.status) == 0) {
+      pyflags.status |= PY_DET_INV;
+      pyflags.see_inv = true;
+      /* light but don't move creatures */
+      creatures (false);
+    }
+    pyflags.detect_inv--;
+    if (pyflags.detect_inv == 0) {
+      pyflags.status &= ~PY_DET_INV;
+      /* may still be able to see_inv if wearing magic item */
+      calc_bonuses();
+      /* unlight but don't move creatures */
+      creatures (false);
+    }
+  } /* end Detect invisible */
+d478 31
+a508 16
+  /* Timed infra-vision    */
+  if (pyflags.tim_infra > 0) {
+    if ((PY_TIM_INFRA & pyflags.status) == 0) {
+      pyflags.status |= PY_TIM_INFRA;
+      pyflags.see_infra++;
+      /* light but don't move creatures */
+      creatures (false);
+    }
+    pyflags.tim_infra--;
+    if (pyflags.tim_infra == 0) {
+      pyflags.status &= ~PY_TIM_INFRA;
+      pyflags.see_infra--;
+      /* unlight but don't move creatures */
+      creatures (false);
+    }
+  } /* end Timed infra-vision */
+d510 14
+a523 12
+  /* Word-of-Recall  Note: Word-of-Recall is a delayed action	 */
+  if (pyflags.word_recall > 0) {
+    if (pyflags.word_recall == 1) {
+      new_level_flag = true;
+      pyflags.paralysis++;
+      pyflags.word_recall = 0;
+      if (dun_level > 0) {
+	dun_level = 0;
+	message("You feel yourself yanked upwards!");
+      } else if (pymisc.max_dlv != 0) {
+	dun_level = pymisc.max_dlv;
+	message("You feel yourself yanked downwards!");
+d525 24
+a548 3
+    } else
+      pyflags.word_recall--;
+  } /* end Word-of-recall */
+d550 2
+a551 51
+  /* Random teleportation  */
+  if ((pyflags.teleport) && (randint(100) == 1)) {
+    disturb (false, false);
+    teleport(40);
+  } /* end Random teleportation */
+
+  /* end of Update counters and messages (told you it was long)     */  
+  /* ok there's not much more stuff left to do... */
+
+  /* See if we are too weak to handle the weapon or pack.  -CJS- */
+  if (pyflags.status & PY_STR_WGT)
+    check_strength();
+
+  /* Decide whether to print status-words on the screen. */
+  /*  // XXXXXXXX This needs to be revised for the tiny PalmOS screen
+  if (pyflags.status & PY_STUDY)
+    prt_study();
+  if (pyflags.status & PY_SPEED) {
+    pyflags.status &= ~PY_SPEED;
+    prt_speed();
+  }
+  if ((pyflags.status & PY_PARALYSED) && (pyflags.paralysis < 1)) {
+    prt_state();
+    pyflags.status &= ~PY_PARALYSED;
+  }
+  else if (pyflags.paralysis > 0) {
+    prt_state();
+    pyflags.status |= PY_PARALYSED;
+  }
+  else if (pyflags.rest != 0)
+    prt_state();
+  */  
+  if ((pyflags.status & PY_ARMOR) != 0) {
+    need_print_stats |= STATS_GOLD_AC;    //    prt_pac();
+    pyflags.status &= ~PY_ARMOR;
+  }
+  if ((pyflags.status & PY_STATS) != 0) {
+    for (i = 0; i < 6; i++)
+      if ((PY_STR << i) & pyflags.status)
+        need_print_stats |= STATS_STR_ETC;	// prt_stat(i);
+    pyflags.status &= ~PY_STATS;
+  }
+  if (pyflags.status & PY_HP) {
+    need_print_stats |= STATS_HP; //    prt_mhp();  prt_chp();
+    pyflags.status &= ~PY_HP;
+  }
+  if (pyflags.status & PY_MANA) {
+    need_print_stats |= STATS_HP;    // prt_cmana();
+    pyflags.status &= ~PY_MANA;
+  }
+  /* End of printing status type stuff. */
+d553 49
+a601 7
+  /* Allow for a slim chance of detect enchantment -CJS- */
+  /* for 1st level char, check once every 2160 turns
+     for 40th level char, check once every 416 turns */
+  /* /// XXXXX Disabled pending me checking on add_inscribe. */
+  if ( ((turn & 0xF) == 0) &&
+       (pyflags.confused == 0) &&
+       (randint((Short)(10 + 750 / (5 + pymisc.lev))) == 1)) {
+d603 1
+a603 1
+    Char tmp_str[80];
+d605 15
+a619 16
+    for (i = 0; i < INVEN_ARRAY_SIZE; i++) {
+      if (i == inven_ctr)
+	i = 22;
+      //      i_ptr = &inventory[i];
+      // if in inventory,      succeed 1 out of 50 times,
+      // if in equipment list, success 1 out of 10 times
+      if ( (&inventory[i].tval != TV_NOTHING) &&
+	   enchanted(&inventory[i]) &&
+	   (randint(i < 22 ? 50 : 10) == 1)) {
+	//	extern Char *describe_use();
+	StrPrintF(tmp_str,
+		  "There's something about what you are %s...",
+		  describe_use(i));
+	disturb(false, false);
+	message(tmp_str);
+	add_inscribe(inventory, i, ID_MAGIK);//add_inscribe(i_ptr, ID_MAGIK);
+a621 1
+  }
+d623 16
+a638 16
+  /* Check the state of the monster list, and delete some monsters if
+     the monster list is nearly full.  This helps to avoid problems in
+     creature.c when monsters try to multiply.  Compact_monsters() is
+     much more likely to succeed if called from here, than if called
+     from within creatures().  */
+  /* // XXXXXX Disabled in PalmOS for now although maybe it's a good idea.
+  if (MAX_MALLOC - mfptr < 10)
+    compact_monsters();
+  */
+
+  // OK - We have now reached a comment that says "Accept a command?"
+
+  // But in some cases we don't want to accept a command:
+  // If still alive but you're paralyzed or resting, keep on do-whileing...
+  if (!death && !(pyflags.paralysis <= 0 && pyflags.rest == 0))
+    end_of_turn(); // move the monsters, then spin your wheels again
+d1175 2
+@
+
+
+1.18
+log
+@added 'inscribe', rearranged menus
+@
+text
+@d106 3
+d403 1
+a403 1
+  /* Check for interrupts to find or rest. */
+d439 1
+a439 2
+      //      prt_pac(); // XXXX
+      need_print_stats |= STATS_GOLD_AC;
+d448 1
+a448 2
+      //      prt_pac(); // XXX
+      need_print_stats |= STATS_GOLD_AC;
+d463 1
+a463 2
+      //      prt_pac(); // XXXX
+      need_print_stats |= STATS_GOLD_AC;
+d474 1
+a474 2
+      //      prt_pac(); // XXXX
+      need_print_stats |= STATS_GOLD_AC;
+d577 1
+a577 2
+    //    prt_pac();
+    need_print_stats |= STATS_GOLD_AC;
+d583 1
+a583 2
+	// prt_stat(i);
+        need_print_stats |= STATS_STR_ETC;
+d599 1
+a599 1
+  /* /// XXXXX Disabled pending me checking on add_inscribe.
+d609 2
+a610 2
+      i_ptr = &inventory[i];
+      // if in inventory, succeed 1 out of 50 times,
+d612 2
+a613 2
+      if ( (i_ptr->tval != TV_NOTHING) &&
+	   enchanted(i_ptr) &&
+a615 1
+	    
+d621 1
+a621 1
+	add_inscribe(i_ptr, ID_MAGIK);
+a624 1
+  */
+d638 6
+a643 6
+  // Note that we're not supposed to accept a command if:
+  // pyflags.paralysis >= 1   or
+  // pyflags.rest != 0        or
+  // death
+  // The MainForm event handler will have to DEAL WITH THAT.
+  // currently IT DOES NOT.
+d645 1
+d647 1
+d649 1
+d1178 1
+a1178 1
+static Boolean enchanted (inven_type *t_ptr)
+@
+
+
+1.17
+log
+@wands, staffs mostly tested, recharge works, throw works
+@
+text
+@a755 1
+    scribe_object ();
+d757 6
+@
+
+
+1.16
+log
+@throw works
+@
+text
+@d42 1
+d708 1
+a872 1
+  case 'a':		/* (a)im a wand		(a)im a wand */
+a876 1
+  case 'z':		/* (z)ap a staff	(u)se a staff */
+d884 18
+d908 1
+a908 1
+      FrmPopupForm(InvForm); // THEN when we exit, draw_directional() etc.
+d1034 1
+a1034 4
+    aim(XXX_item, dir);
+    break;
+  case 'z':		/* (Z)ap a staff	(u)se a staff */
+    use(XXX_item);
+d1036 2
+@
+
+
+1.15
+log
+@scrolls enabled, spells direction selector added
+@
+text
+@d702 1
+a872 1
+  case 't':		/* (t)hrow something	(f)ire something */
+d884 9
+d937 1
+d1022 3
+a1024 1
+    throw_object(XXX_item, dir);
+@
+
+
+1.14
+log
+@fixed some bugs: messages from actions that make you exit from
+inventory/equipment should now occur on time (instead of the following
+turn); level advancement works; blindness and cure blindness both work
+on time.  speeded up the redraw-whole-screen thing (now have a recalc,
+refresh, and faster recalc_refresh combo.  code needs cleaning up now..)
+@
+text
+@d846 1
+d850 1
+d926 3
+d937 6
+a942 1
+
+@
+
+
+1.13
+log
+@made inventory/equip actions take time (buggy); made AC display update
+@
+text
+@d589 1
+a589 3
+    //    prt_mhp();
+    //    prt_chp();
+    need_print_stats |= STATS_QUO;
+d593 1
+a593 2
+    // prt_cmana();
+    need_print_stats |= STATS_QUO;
+d653 1
+a653 1
+  //  refresh();
+d1103 1
+a1103 2
+  //    prt_chp();
+    need_print_stats |= STATS_QUO;
+d1130 1
+a1130 2
+  //    prt_cmana();
+    need_print_stats |= STATS_QUO;
+@
+
+
+1.12
+log
+@fixed minor bugs (whatsit invisible, pickup message)
+@
+text
+@d575 1
+a575 1
+  
+a598 1
+  */
+d1313 1
+a1313 1
+    check_strength();
+@
+
+
+1.11
+log
+@adding GPL comment
+@
+text
+@d912 2
+a913 1
+    if (monptr > 1) {
+@
+
+
+1.10
+log
+@command count sorta works
+@
+text
+@d1 23
+@
+
+
+1.9
+log
+@added Preferences, maybe half of them work
+@
+text
+@d674 8
+d761 1
+a761 1
+      rest();
+d803 1
+a803 1
+    rest();
+d837 8
+a844 1
+    search(char_row, char_col, pymisc.srh);
+d914 8
+a921 1
+    bash(dir);
+d924 8
+a931 1
+    disarm_trap(dir);
+d937 8
+a944 1
+    jamdoor(dir);
+d947 8
+a954 1
+    openobject(dir);
+d957 8
+a964 1
+    tunnel(dir);
+d992 1
+d1199 1
+a1199 1
+  mmove(dir, &y, &x);
+d1233 1
+a1233 1
+  //  count_msg_print("You jam the door with a spike."); // XXXXX not impl yet
+@
+
+
+1.8
+log
+@just another random checkpoint
+@
+text
+@d849 1
+a849 1
+    alert_message("Click on a symbol to identify it.");
+@
+
+
+1.7
+log
+@ok Recall working for town monsters, may still have bugs for dungeon critters
+@
+text
+@d849 1
+a849 1
+    message("Click on a symbol to identify it.");
+@
+
+
+1.6
+log
+@'click to identify' Recall is sorta working, sorta buggy
+@
+text
+@d869 1
+d875 1
+d877 4
+a883 1
+    free_turn_flag = true;
+@
+
+
+1.5
+log
+@eh, well, you can move around (and so can monsters) but panel/redraw is buggy
+@
+text
+@d15 3
+a748 6
+    /*
+  case '/':		// (/) identify a symbol
+    ident_char();
+    free_turn_flag = true;
+    break;
+    */
+d843 7
+a851 2
+    // draw that funky pie.....
+    draw_directional();
+d862 22
+d892 1
+d1274 112
+@
+
+
+1.4
+log
+@trying to fix the panel thing, still a problem.  but you can see yourself.
+@
+text
+@d67 1
+d631 1
+a631 1
+
+@
+
+
+1.3
+log
+@working on dungeon.c / command loop foo
+@
+text
+@d55 1
+a55 1
+  /* Light up the area around character	   */
+d624 1
+d676 1
+a1062 1
+  Boolean no_stairs = false;
+d1072 3
+a1074 8
+    } else
+      no_stairs = true;
+  } else
+    no_stairs = true;
+
+  if (no_stairs) {
+    message("I see no up staircase here.");
+    free_turn_flag = true;
+d1076 2
+a1083 1
+  Boolean no_stairs = false;
+d1092 3
+a1094 8
+    } else
+      no_stairs = true;
+  } else
+    no_stairs = true;
+
+  if (no_stairs) {
+    message("I see no down staircase here.");
+    free_turn_flag = true;
+d1096 2
+@
+
+
+1.2
+log
+@working on main command input
+@
+text
+@a5 2
+static void do_command(Char com_val) SEC_5;
+static void do_dir_command(Short dir, Short XXX_item) SEC_5;
+a16 4
+void enter_new_level() SEC_5;
+void start_of_turn() SEC_5;
+void end_of_turn() SEC_5;
+
+d23 1
+d52 1
+a52 1
+  cave_set(char_row, char_col, CAVE_cptr, 1);
+d626 4
+d637 7
+a643 3
+  if (!new_level_flag)  creatures(true);
+  /* Exit when new_level_flag is set   */
+  // no, instead of exiting, call enter_new_level() THEN call start_of_turn()
+d669 2
+a670 2
+Char last_command;
+static void do_command(Char com_val)
+d672 1
+a672 1
+  Boolean do_pickup = true;
+d676 1
+a676 1
+    if (dir == 5) // 'aborted'
+d681 1
+a681 1
+    return;
+d686 1
+a686 1
+  if (com_val == '-') {
+d691 1
+a691 1
+    return;
+d824 1
+d834 1
+a834 1
+  case 'z':		/* (z)ap a wand		(a)im a wand */
+d839 4
+a842 1
+  case 'Z':		/* (Z)ap a staff	(u)se a staff */
+d846 1
+d849 2
+a850 1
+    message("Type '?' for help.");
+d852 1
+a852 1
+    }
+d854 1
+d857 1
+a857 1
+static void do_dir_command(Short dir, Short XXX_item)
+d883 8
+d892 1
+a892 1
+  case 'z':		/* (z)ap a wand		(a)im a wand */
+d895 1
+a895 1
+  case 'Z':		/* (Z)ap a staff	(u)se a staff */
+d902 6
+a907 2
+    message("Type '?' for help.");
+    free_turn_flag = true;
+d1070 1
+d1207 1
+a1207 1
+      StrCopy(prt1, "Primary weapon   : ");
+@
+
+
+1.1
+log
+@add dungeon.c, form_spell.c which I forgot to do earlier
+@
+text
+@d2 1
+a2 1
+//#include "kMoriaRsc.h"
+d6 3
+d14 3
+d23 1
+a35 6
+  //  Short regen_amount;	    /* Regenerate hp and mana*/
+  //  Char command;		/* Last command		 */
+  //  register struct misc *p_ptr;
+  //  register inven_type *i_ptr;
+  //  register struct flags *f_ptr;
+
+d38 2
+d71 1
+a129 1
+    Boolean printhp = false;
+d138 1
+a138 1
+      printhp = true;
+d148 1
+a148 1
+	printhp = true;
+d153 1
+a153 1
+      printhp = true;
+a154 1
+    if (printhp) print_stats(STATS_QUO); // print mhp, chp.
+a158 1
+    Boolean printhp = false;
+d167 1
+a167 1
+      printhp = true;
+d177 1
+a177 1
+	printhp = true;
+d182 1
+a182 1
+      printhp = true;
+a183 1
+    if (printhp) print_stats(STATS_QUO); // print mhp, chp.
+d414 1
+d424 1
+d440 1
+d452 1
+d555 2
+a556 1
+    prt_pac();
+d562 2
+a563 1
+	prt_stat(i);
+d567 3
+a569 2
+    prt_mhp();
+    prt_chp();
+d573 2
+a574 1
+    prt_cmana();
+d640 248
+a887 1
+  // now, instead of exiting, call enter_new_level() THEN call start_of_turn()
+d890 52
+d943 8
+a951 1
+/* Need: regen{hp,mana} */
+d977 2
+a978 2
+    //    prt_chp();
+    print_stats(STATS_QUO);
+d1005 2
+a1006 2
+    //    prt_cmana();
+    print_stats(STATS_QUO);
+d1028 1
+a1028 1
+  // guess not ...
+d1086 65
+d1160 72
+@
+

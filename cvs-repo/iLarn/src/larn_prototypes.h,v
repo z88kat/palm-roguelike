@@ -1,0 +1,1290 @@
+head	1.25;
+access;
+symbols
+	Release-2001_08_06:1.25
+	Release-2001_06_15:1.24
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.25
+date	2001.08.05.03.25.14;	author i0lanthe;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2001.06.15.00.23.33;	author i0lanthe;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2001.06.14.03.46.08;	author i0lanthe;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2001.05.10.02.39.54;	author i0lanthe;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2001.05.09.02.54.41;	author i0lanthe;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2001.05.06.18.12.00;	author i0lanthe;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2001.05.05.20.26.20;	author i0lanthe;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2001.05.03.00.45.38;	author i0lanthe;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2001.05.01.04.41.33;	author i0lanthe;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2001.01.28.23.32.17;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2001.01.17.20.26.15;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2001.01.13.22.10.06;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2001.01.13.02.27.16;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2000.10.15.22.03.22;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2000.10.15.19.35.18;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2000.10.14.23.16.50;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2000.10.14.04.19.22;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2000.10.14.03.00.31;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2000.10.14.01.59.20;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2000.10.13.03.26.15;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.09.03.02.54.35;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.09.02.14.15.33;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.08.28.04.30.50;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.08.28.01.15.22;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.34.38;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.34.38;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.25
+log
+@moved scores into saveDB; unique ids no longer used in iLarnDB; next, beaming
+@
+text
+@#ifndef __ILARN_PROTOTYPES_H__
+#define __ILARN_PROTOTYPES_H__
+#include "sections.h"
+
+
+/*  alloc_env.c  L */
+void free_env(struct everything *env) SEC_5;
+void alloc_env(struct everything *env) SEC_5;
+void clear_env(struct everything *env) SEC_5;
+
+/*  cast.c  1 */
+void draw_cast_slices() SEC_1;
+Boolean isconfuse() SEC_1;
+void genmonst(Short j) SEC_1;
+void makewall(Short x, Short y) SEC_1;
+void tdirect(Short x, Short y) SEC_1;
+void omnidirect(Short spnum, Short dam, Char *str) SEC_1;
+void dirpoly(Short x, Short y) SEC_1;
+// static Boolean nospell(Short x, Short monst) SEC_1;
+void direct(Short spnum, Short dam, Char *str, Short arg) SEC_1;
+void direct_helper(Short x, Short y) SEC_1;
+void godirect(Short spnum, Short dam, Char *str, Short delay,Char cshow) SEC_1;
+void godirect_helper(Short dx, Short dy) SEC_1;
+void cast(Short i) SEC_1;
+void speldamage(Short x) SEC_1;
+void dir_task_dispatch(Short click_dir) SEC_1;
+
+
+/*  create.c  2 */
+void makeplayer(Short selected_class) SEC_2;
+void newcavelevel(Short x); //  SEC_2; // JUST FOR DEBUGGING.
+// static Boolean cannedlevel(Short k, struct everything * env) SEC_2;
+// static void makemaze(Short k, struct everything *env) SEC_2;
+// static Boolean eat_this_way_p(Short x, Short y, Short dir,
+//                               struct everything *env) SEC_2;
+void eat(Short x0, Short y0) SEC_2;
+// static void makeobject(Short j, struct everything *env) SEC_2;
+// static void fillmroom(Short n, Char what, Short arg,
+//                       struct everything *env) SEC_2;
+// static void froom(Short n,Char itm,Short arg, struct everything *env) SEC_2;
+// static void fillroom(Char what, Short arg, struct everything *env) SEC_2;
+// static void treasureroom(Short lv, struct everything *env) SEC_2;
+// static void troom(Short lv, Short xsize, Short ysize,
+// 		  Short tx, Short ty, Short glyph,
+// 		  struct everything *env) SEC_2;
+Boolean fillmonst(Char what) SEC_2;
+void sethp(Boolean flg) SEC_2;
+// static void checkgen(struct everything *env) SEC_2;
+
+
+/*  data.c  L */
+Short m_hitpoints(Short i) SEC_5;
+const Char *m_name(Short i) SEC_5;
+Short m_intelligence(Short i) SEC_5;
+
+/* dead.c  1 */
+void get_default_username() SEC_1;
+Short do_sum(Char *name); // SEC_3;
+Short get_suid(); // SEC_3;
+void get_taxes() SEC_1;
+Boolean set_taxes(Long tax, Long dmg) SEC_4;
+Boolean life_protected(Short x) SEC_1;
+void newscore(Short cod) SEC_1;
+void died(Short cod, Boolean show_scores) SEC_1;
+void init_death(FormPtr frm) SEC_3;
+void scroll_scores(Boolean up, FormPtr frm) SEC_3;
+void which_scores(Boolean winners, FormPtr frm) SEC_3;
+void topten_fwdcompatibl() SEC_4;
+void topten_move_db();// SEC_4;
+
+/*  display.c  L */
+void level0_itsy_fix(Boolean yes) SEC_5;
+void am_i_on_level_0(Boolean yes) SEC_5;
+Boolean toggle_itsy() SEC_5;
+void clear_visible()  SEC_5;
+void setscreen(Short col, Short row, Short ch) SEC_5;
+Char get_monstnamelist(Short i) SEC_3;
+void see_invisible() SEC_5;
+void got_larneye() SEC_5;
+void unsee_invisible() SEC_5;
+void ungot_larneye() SEC_5;
+void recalc_screen() SEC_5;
+// static void put_char_at(Short row, Short col, Char ch, Boolean bold) SEC_5;
+void refresh() SEC_5;
+void check_player_position(Short playerx, Short playery, Boolean runng) SEC_5;
+void move_visible_window(Short left_x, Short top_y, Boolean centered) SEC_5;
+void update_screen_cell(Short j, Short i) SEC_5;
+void showcell(Short x, Short y) SEC_5;
+void rogue_relativize(Short *x, Short *y, Short px, Short py) SEC_5;
+
+/*  global.c  L */
+void raiselevel() SEC_5;
+void loselevel() SEC_5;
+void raiseexperience(Long x) SEC_5;
+void loseexperience(Long x) SEC_5;
+void losehp(Short x) SEC_5;
+void losemhp(Short x) SEC_5;
+void raisehp(Short x) SEC_5;
+void raisemhp(Short x) SEC_5;
+// static void raisespells(Short x) SEC_5;
+void raisemspells(Short x) SEC_5;
+// static void losespells(Short x) SEC_5;
+void losemspells(Short x) SEC_5;
+void positionplayer() SEC_5;
+Short makemonst(Short lev) SEC_5;
+void recalc() SEC_5;
+void creategem() SEC_5;
+void adjustcvalues(Short itm, Short arg, Boolean draw) SEC_5;
+Boolean has_object(Short what) SEC_5;
+Short has_object_at(Short what) SEC_5;
+Boolean take(Short itm, Short arg, Boolean noisy) SEC_5;
+
+
+// ignore iLarnstub.c
+
+
+/*  inv.c  2 */
+// static void you_dont_have(Char x) SEC_2;
+void drop_object(Short k) SEC_2;
+Boolean takeoff() SEC_2;
+// static void make_it_fit(CharPtr buf,Short avail_space,Short maxbuflen)SEC_2;
+void free_inventory_select(FormPtr frm) SEC_2;
+void init_inventory_select(FormPtr frm, Boolean t) SEC_2;
+void remove1_inventory_select(FormPtr frm, Short k) SEC_2;
+void specialize_labels(FormPtr frm, Short k, Boolean t) SEC_2;
+Boolean deduce_task(Short k, Short btn012) SEC_2;
+
+
+
+
+
+
+/*  main.c  (0) */
+Boolean init_game();
+// static void i_used_too_much_heap();
+Boolean is_male();
+void start_of_Play_Level_loop();
+Short get_click_dir(Short tmp_x, Short tmp_y);
+// static Boolean main_help_handle_cmd(Char c);
+Boolean Main_Form_HandleEvent(EventPtr e);
+void LeaveForm(); //void LeaveForm(Boolean redraw);
+// these are in various form_*.c files
+Boolean About_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean Cast_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean Evader_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean HwButtons_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean InvSelect_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean Lrs_Form_HandleEvent(EventPtr e) SEC_4;
+//void show_dungeon(struct everything * env);
+Boolean Map_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean MsgLog_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean Pad_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean PickCh_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean Prefs_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean Question_Form_HandleEvent(EventPtr e) SEC_4;
+//Boolean Splash_Form_HandleEvent(EventPtr e);
+Boolean Score_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean Store_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean Trans_Form_HandleEvent(EventPtr e) SEC_4;
+// static Boolean OpenDatabase(void);
+// static Boolean ApplicationHandleEvent(EventPtr e);
+void writeLarnPrefs();
+// static Word StartApplication(void);
+// static void StopApplication(void);
+// static void EventLoop(void);
+DWord PilotMain(Word cmd, Ptr cmdPBP, Word launchFlags);
+
+/*  md_malloc.c  L */
+Char * md_malloc(Int n);
+
+/*  monster.c  L */
+void heal_monsters() SEC_3;
+Boolean cgood(Short x, Short y, Short itm, Short monst) SEC_5;
+void createmonster(Short mon) SEC_5;
+void createitem(Short it, Long arg) SEC_5;
+Short fullhit(Short xx) SEC_5;
+void ifblind(Short x, Short y) SEC_5;
+Boolean vxy(Short *x, Short *y) SEC_5;
+void hitmonster(Short x, Short y, Boolean silent) SEC_5;
+Short hitm(Short x, Short y, Short amt) SEC_5;
+void clobberm(Short monst) SEC_3;
+void hitplayer(Short x, Short y) SEC_5;
+// static void dropsomething(Short monst) SEC_5;
+void dropgold(Short amount) SEC_5;
+void something(Short lev) SEC_5;
+Short newobject(Short lev, Short *i) SEC_5;
+void checkloss(Short x) SEC_5;
+// static Boolean emptyhanded(struct everything *env) SEC_5;
+// static Boolean stealsomething(struct everything *env) SEC_5;
+// static Boolean spattack(Short attack, Short xx, Short yy,
+// 			struct everything *env) SEC_5;
+void munge_lastmonst(Char * mname) SEC_5;
+Char * read_lastmonst() SEC_5;
+void init_doomed_monsters(FormPtr frm) SEC_3;
+void fight(Short dir) SEC_3;
+
+/*  movem.c  2 */
+void movemonst() SEC_2;
+//static void movemt(Short i, Short j) SEC_2;
+//static void mmove(Short aa, Short bb, Short cc, Short dd,
+//		  struct everything *env) SEC_2;
+
+
+/*  moveplayer.c  2 */
+void unmoveplayer() SEC_2;
+void showplayer(Short playerx, Short playery) SEC_2;
+Short moveplayer(Short dir) SEC_2;
+void a_better_run(Short dir) SEC_2;
+
+/*  nap.c  1 */
+void nap(Short x); // SEC_1;
+
+/*  obj.c  L */
+Char newpotion() SEC_5;
+Char newscroll() SEC_5;
+Char newleather(Boolean hardgame) SEC_5;
+Char newchain() SEC_5;
+Char newplate(Boolean hardgame) SEC_5;
+Char newdagger() SEC_5;
+Char newsword(Boolean hardgame) SEC_5;
+void disappear(Short x, Short y) SEC_5;
+Char * get_Of_scroll(Short j, Boolean known) SEC_5;
+Char * get_Of_potion(Short j, Boolean known) SEC_5;
+const Char * get_objectname(Short j) SEC_5;
+void show3(Short index) SEC_5;
+void show3_cp(Short index, Char *buf) SEC_5;
+
+/*  object.c  2 */
+void id_trap() SEC_1;
+Boolean nearbymonst() SEC_5;
+void ogold(Short arg) SEC_5;
+void setupQuestionForm(FormPtr frm) SEC_5;
+Boolean lookforobject(Short auto_pray) SEC_2;
+// static void finditem_part1(Short item) SEC_2;
+//Boolean dspchQuestionForm(Short button); // SEC_2; // used in form_question.c
+
+/*  object_actions.c  1 */
+void ovoldown();// SEC_1;
+void ovolup() SEC_1;
+void oentrance() SEC_1;
+void oopendoor() SEC_1;
+void oclosedoor() SEC_1;
+void oelevator(Boolean up) SEC_1;
+void ostairs(Boolean up) SEC_1;
+// static void obottomless(struct everything *env) SEC_1;
+void opit() SEC_1;
+void show_packweight() SEC_1;
+void free_cast_select(FormPtr frm) SEC_1;
+void init_known_items(FormPtr frm) SEC_1;
+void init_cast_select(FormPtr frm) SEC_1;
+Boolean readbook(Short arg) SEC_1;
+void obrasslamp() SEC_1;
+void obrasslamp_learn(Short i) SEC_3;
+void oteleport(Boolean err) SEC_1;
+Boolean enchantarmor() SEC_1;
+Boolean enchweapon() SEC_1;
+void adjtime(Long time, Boolean show_stats) SEC_1;
+Boolean read_scroll(Short typ) SEC_1;
+void enlighten(Short dyl, Short dyh, Short dxl, Short dxh) SEC_1;
+void spill() SEC_1;
+void quaffpotion(Short pot) SEC_1; 
+void o_draws() SEC_1;
+
+/*  object_actions_cont.c  2 */
+void ocookie() SEC_2;
+Boolean odesecrate() SEC_2;
+Boolean ojustpr() SEC_2;
+Boolean omoney(ULong amnt) SEC_2;
+// static void ohear(struct everything *env) SEC_2;
+Boolean othrone_pry(Boolean two) SEC_2;
+Boolean othrone_sit(Boolean two) SEC_2;
+void odeadthrone() SEC_2;
+void ochest() SEC_2;
+void ofountain_drink() SEC_2;
+Boolean ofountain_wash() SEC_2;
+// static void fntchange(Boolean how) SEC_2;
+void drug_speed() SEC_3;
+void drug_shrooms() SEC_3;
+void drug_acid() SEC_3;
+void drug_hash() SEC_3;
+void drug_coke() SEC_3;
+
+// ignore old-monster.c
+
+
+/*  pickchar.c  L */
+//Char *class_name(Short i);
+void pick_char(Short i) SEC_5;
+
+/*  random.c  L */
+//void seed_random() SEC_5;
+Int rnd(Int y); // SEC_5;
+Int rund(Int y); // SEC_5;
+
+/*  regen.c  2 */
+void regen(Boolean show_stats) SEC_2;
+
+/*  savelev.c  1 */
+void remove_save_records() SEC_1;
+void save_all(struct everything *env) SEC_1;
+Boolean restore_all(struct everything *env) SEC_1;
+Boolean savelevel(struct everything *env); // SEC_3;  // JUST FOR DEBUGGING.
+Boolean getlevel(struct everything *env); // SEC_3;  // JUST FOR DEBUGGING.
+Boolean save_sketch() SEC_4;
+Boolean load_sketch() SEC_4;
+void destroy_sketch_if_any() SEC_4;
+Boolean sketch_exists() SEC_4;
+
+
+// ignore start.c
+
+// ignore start2.c
+
+/*  stats.c  L */
+Boolean message_clear() SEC_5;
+void message(Char *buf) SEC_5;
+void alloc_message_log() SEC_5;
+//void add_to_splash(Char *msg) SEC_5;
+//void add_long_to_splash(Char *msg) SEC_3;
+void preempt_messages() SEC_5;
+//void print_splash(struct everything *env) SEC_5;
+void show_messages() SEC_5; // replaces print_splash
+void spell_stats() SEC_5;
+void print_stats() SEC_5;
+
+/* store.c  1 */
+Short packweight() SEC_1;
+Boolean pocketfull() SEC_1;
+//void pay_tax(Long amt) SEC_1;
+void add_tax(Long amt, Boolean damage) SEC_1;
+void print_tax() SEC_1;
+void lrs_init_or_refresh(FormPtr frm) SEC_1;
+void lrs_pay_cash(FormPtr frm, Long amt) SEC_1;
+void lrs_req_trans(FormPtr frm) SEC_1;
+Boolean has_potion_cured() SEC_1;
+void drop_dough(Long amt) SEC_3;
+void evader_init(FormPtr frm, Short in_store) SEC_1;
+void store_gold(Long gold) SEC_1;
+void bank_gold(Long gold) SEC_1;
+void bank_interest() SEC_5;
+void bank_init(FormPtr frm) SEC_1;
+void bank_init_buttons(FormPtr frm) SEC_1;
+void bank_mumble() SEC_1;
+void bank_sell(FormPtr frm, Char inv_i, Short list_j) SEC_1;
+void bank_trans_init(FormPtr frm, Boolean bank) SEC_1;
+Boolean bank_transact(Long amt, Boolean deposit) SEC_1;
+void dndstore_buy(FormPtr frm, Short store_item) SEC_1;
+void dndstore_restock() SEC_1;
+void dndstore_init(FormPtr frm) SEC_1;
+void dndstore_list_tens(FormPtr frm, Short plus) SEC_1;
+void dndstore_btns(FormPtr frm) SEC_1;
+void store_cleanup(FormPtr frm) SEC_1;
+void college_init(FormPtr frm) SEC_1;
+void college_mumble(Long gold) SEC_1;
+// static void college_remark(Char *buf) SEC_1;
+void college_enroll(FormPtr frm, Short i) SEC_1;
+void tpost_print_value(Short k) SEC_1;
+Boolean tpost_sell_item(Short k) SEC_1;
+void pad_gold() SEC_3;
+void pad_buy(FormPtr frm, Short store_item) SEC_3;
+Long tpost_calc_val(Int itm_cost, Short izarg) SEC_2;
+Long get_mobuls() SEC_2;
+void add_winner_bonus() SEC_2;
+Long get_mobuls_elapsed() SEC_1;
+
+/*  util.c  2 */
+void do_feep(Long frq, UInt dur); // SEC_2;
+void draw_circle(Short x, Short y, Short radius, Boolean b); // SEC_2;
+void update_field_scrollers(FormPtr frm, FieldPtr fld,
+			    Word up_scroller, Word down_scroller);
+void page_scroll_field(FormPtr frm, FieldPtr fld, 
+#ifndef I_AM_COLOR
+		       DirectionType
+#else /* I_AM_COLOR */
+		       WinDirectionType
+#endif /* I_AM_COLOR */
+		       dir); // SEC_3;
+
+
+// note: sec_1 is pretty much full
+/* sphere.c  1 */
+void annihilate() SEC_2;
+void newsphere(Short x, Short y, Short dir, Short life, Short optional_i) SEC_2;
+void rmsphere(Short x, Short y) SEC_2;
+void rmsp(Short i, Short x, Short y) SEC_2;
+void sphboom(Short x, Short y) SEC_2;
+void movsphere() SEC_2;
+void clearspheres() SEC_2;
+
+
+#endif
+
+/*
+  POSE gets angry if these are not in the default code section:
+   get_suid
+   do_sum
+   rnd, rund
+   do_feep
+   nap
+  I don't know why.  Sometime not a late night I should try to find out.
+*/
+@
+
+
+1.24
+log
+@draw stairs and you in (non-color) map-view
+@
+text
+@d7 3
+a9 3
+void free_env(struct everything *env) SEC_L;
+void alloc_env(struct everything *env) SEC_L;
+void clear_env(struct everything *env) SEC_L;
+d31 1
+a31 1
+void newcavelevel(Short x) SEC_2;
+d52 3
+a54 3
+Short m_hitpoints(Short i) SEC_L;
+const Char *m_name(Short i) SEC_L;
+Short m_intelligence(Short i) SEC_L;
+d69 1
+d72 5
+a76 5
+void level0_itsy_fix(Boolean yes) SEC_L;
+void am_i_on_level_0(Boolean yes) SEC_L;
+Boolean toggle_itsy() SEC_L;
+void clear_visible()  SEC_L;
+void setscreen(Short col, Short row, Short ch) SEC_L;
+d78 12
+a89 12
+void see_invisible() SEC_L;
+void got_larneye() SEC_L;
+void unsee_invisible() SEC_L;
+void ungot_larneye() SEC_L;
+void recalc_screen() SEC_L;
+// static void put_char_at(Short row, Short col, Char ch, Boolean bold) SEC_L;
+void refresh() SEC_L;
+void check_player_position(Short playerx, Short playery, Boolean runng) SEC_L;
+void move_visible_window(Short left_x, Short top_y, Boolean centered) SEC_L;
+void update_screen_cell(Short j, Short i) SEC_L;
+void showcell(Short x, Short y) SEC_L;
+void rogue_relativize(Short *x, Short *y, Short px, Short py) SEC_L;
+d92 20
+a111 20
+void raiselevel() SEC_L;
+void loselevel() SEC_L;
+void raiseexperience(Long x) SEC_L;
+void loseexperience(Long x) SEC_L;
+void losehp(Short x) SEC_L;
+void losemhp(Short x) SEC_L;
+void raisehp(Short x) SEC_L;
+void raisemhp(Short x) SEC_L;
+// static void raisespells(Short x) SEC_L;
+void raisemspells(Short x) SEC_L;
+// static void losespells(Short x) SEC_L;
+void losemspells(Short x) SEC_L;
+void positionplayer() SEC_L;
+Short makemonst(Short lev) SEC_L;
+void recalc() SEC_L;
+void creategem() SEC_L;
+void adjustcvalues(Short itm, Short arg, Boolean draw) SEC_L;
+Boolean has_object(Short what) SEC_L;
+Short has_object_at(Short what) SEC_L;
+Boolean take(Short itm, Short arg, Boolean noisy) SEC_L;
+d143 6
+a148 6
+Boolean About_Form_HandleEvent(EventPtr e);
+Boolean Cast_Form_HandleEvent(EventPtr e);
+Boolean Evader_Form_HandleEvent(EventPtr e);
+Boolean HwButtons_Form_HandleEvent(EventPtr e);
+Boolean InvSelect_Form_HandleEvent(EventPtr e);
+Boolean Lrs_Form_HandleEvent(EventPtr e);
+d150 6
+a155 6
+Boolean Map_Form_HandleEvent(EventPtr e);
+Boolean MsgLog_Form_HandleEvent(EventPtr e);
+Boolean Pad_Form_HandleEvent(EventPtr e);
+Boolean PickCh_Form_HandleEvent(EventPtr e);
+Boolean Prefs_Form_HandleEvent(EventPtr e);
+Boolean Question_Form_HandleEvent(EventPtr e);
+d157 3
+a159 3
+Boolean Score_Form_HandleEvent(EventPtr e);
+Boolean Store_Form_HandleEvent(EventPtr e);
+Boolean Trans_Form_HandleEvent(EventPtr e);
+d173 8
+a180 8
+Boolean cgood(Short x, Short y, Short itm, Short monst) SEC_L;
+void createmonster(Short mon) SEC_L;
+void createitem(Short it, Long arg) SEC_L;
+Short fullhit(Short xx) SEC_L;
+void ifblind(Short x, Short y) SEC_L;
+Boolean vxy(Short *x, Short *y) SEC_L;
+void hitmonster(Short x, Short y, Boolean silent) SEC_L;
+Short hitm(Short x, Short y, Short amt) SEC_L;
+d182 8
+a189 8
+void hitplayer(Short x, Short y) SEC_L;
+// static void dropsomething(Short monst) SEC_L;
+void dropgold(Short amount) SEC_L;
+void something(Short lev) SEC_L;
+Short newobject(Short lev, Short *i) SEC_L;
+void checkloss(Short x) SEC_L;
+// static Boolean emptyhanded(struct everything *env) SEC_L;
+// static Boolean stealsomething(struct everything *env) SEC_L;
+d191 3
+a193 3
+// 			struct everything *env) SEC_L;
+void munge_lastmonst(Char * mname) SEC_L;
+Char * read_lastmonst() SEC_L;
+d214 13
+a226 13
+Char newpotion() SEC_L;
+Char newscroll() SEC_L;
+Char newleather(Boolean hardgame) SEC_L;
+Char newchain() SEC_L;
+Char newplate(Boolean hardgame) SEC_L;
+Char newdagger() SEC_L;
+Char newsword(Boolean hardgame) SEC_L;
+void disappear(Short x, Short y) SEC_L;
+Char * get_Of_scroll(Short j, Boolean known) SEC_L;
+Char * get_Of_potion(Short j, Boolean known) SEC_L;
+const Char * get_objectname(Short j) SEC_L;
+void show3(Short index) SEC_L;
+void show3_cp(Short index, Char *buf) SEC_L;
+d230 3
+a232 3
+Boolean nearbymonst() SEC_L;
+void ogold(Short arg) SEC_L;
+void setupQuestionForm(FormPtr frm) SEC_L;
+d288 1
+a288 1
+void pick_char(Short i) SEC_L;
+d291 3
+a293 3
+//void seed_random() SEC_L;
+Int rnd(Int y); // SEC_L;
+Int rund(Int y); // SEC_L;
+d302 2
+a303 2
+Boolean savelevel(struct everything *env) SEC_3; // SEC_1;
+Boolean getlevel(struct everything *env) SEC_3; // SEC_1;
+d315 4
+a318 4
+Boolean message_clear() SEC_L;
+void message(Char *buf) SEC_L;
+void alloc_message_log() SEC_L;
+//void add_to_splash(Char *msg) SEC_L;
+d320 5
+a324 5
+void preempt_messages() SEC_L;
+//void print_splash(struct everything *env) SEC_L;
+void show_messages() SEC_L; // replaces print_splash
+void spell_stats() SEC_L;
+void print_stats() SEC_L;
+d340 1
+a340 1
+void bank_interest() SEC_L;
+@
+
+
+1.23
+log
+@chalk up another to 3.5: draw_circle wants to be in same section as caller(?)
+@
+text
+@d376 1
+a376 1
+		       dir) SEC_3;
+@
+
+
+1.22
+log
+@moved code section again (what is it about sdk 3.5 and this?)
+@
+text
+@d367 1
+a367 1
+void draw_circle(Short x, Short y, Short radius, Boolean b) SEC_2;
+@
+
+
+1.21
+log
+@recalc/stats are smarter about updating AC and WC.  demons are properly invisible (always and not just in the easy case to test).
+@
+text
+@d369 1
+a369 1
+			    Word up_scroller, Word down_scroller) SEC_3;
+@
+
+
+1.20
+log
+@colorizing dragons
+@
+text
+@d108 2
+a109 1
+Short has_object(Short what) SEC_L;
+@
+
+
+1.19
+log
+@tinkering with map.  fixed keyboard running bug
+@
+text
+@d236 1
+a236 1
+void ovoldown() SEC_1;
+@
+
+
+1.18
+log
+@adding color to iLarn!
+@
+text
+@d30 1
+a30 1
+void makeplayer(Short selected_class); // SEC_2;
+d83 1
+a83 1
+void refresh(); // SEC_L;
+d209 1
+a209 1
+void nap(Short x) SEC_1;
+d233 1
+a233 1
+Boolean dspchQuestionForm(Short button) SEC_2;
+d286 1
+a286 1
+void pick_char(Short i); // SEC_L;
+d390 10
+@
+
+
+1.17
+log
+@get iLarn to compile with sdk 3.5 so's I can add color...
+@
+text
+@d83 1
+a83 1
+void refresh() SEC_L;
+@
+
+
+1.16
+log
+@odds and ends.  one entry in high-score lists per clone family.
+@
+text
+@d30 1
+a30 1
+void makeplayer(Short selected_class) SEC_2;
+d58 2
+a59 2
+Short do_sum(Char *name) SEC_3;
+Short get_suid() SEC_3;
+d167 1
+a167 1
+Char * md_malloc(Int n) SEC_L;
+d286 1
+a286 1
+void pick_char(Short i) SEC_L;
+d289 3
+a291 3
+void seed_random() SEC_L;
+Int rnd(Int y) SEC_L;
+Int rund(Int y) SEC_L;
+d365 1
+a365 1
+void do_feep(Long frq, UInt dur) SEC_2;
+d369 7
+a375 1
+void page_scroll_field(FormPtr frm, FieldPtr fld, DirectionType dir) SEC_3;
+@
+
+
+1.15
+log
+@sunsword Long bug fixed, cloning restricted to difficulty 0, edit name in Prefs
+@
+text
+@d68 1
+@
+
+
+1.14
+log
+@Can create & restore character snapshot (minus plot tokens)
+@
+text
+@d303 1
+@
+
+
+1.13
+log
+@Tax payment inherited; high score list viewable anytime
+@
+text
+@d301 4
+@
+
+
+1.12
+log
+@eliminated (fossilized) global argument
+@
+text
+@d61 1
+@
+
+
+1.11
+log
+@fixed some bugs -
+ some object actions sometimes create monsters - if they do, don't take a turn
+    (except read a scroll still does)   also, /F font should not take a turn
+ "drop gold" sets dropflag
+ intelligent monsters no longer get stuck in south wall
+@
+text
+@d13 6
+a18 7
+Boolean isconfuse(struct everything *env) SEC_1;
+void genmonst(Short j, struct everything *env) SEC_1;
+void makewall(Short x, Short y, struct everything *env) SEC_1;
+void tdirect(Short x, Short y, struct everything *env) SEC_1;
+void omnidirect(Short spnum, Short dam, Char *str,
+		struct everything *env) SEC_1;
+void dirpoly(Short x, Short y, struct everything *env) SEC_1;
+d20 7
+a26 9
+void direct(Short spnum, Short dam, Char *str, Short arg,
+	    struct everything *env) SEC_1;
+void direct_helper(Short x, Short y, struct everything *env) SEC_1;
+void godirect(Short spnum, Short dam, Char *str, Short delay, Char cshow,
+	      struct everything *env) SEC_1;
+void godirect_helper(Short dx, Short dy, struct everything *env) SEC_1;
+void cast(Short i, struct everything *env) SEC_1;
+void speldamage(Short x, struct everything *env) SEC_1;
+void dir_task_dispatch(Short click_dir, struct everything *env) SEC_1;
+d30 2
+a31 2
+void makeplayer(Short selected_class, struct everything *env) SEC_2;
+void newcavelevel(Short x, struct everything *env) SEC_2;
+d36 1
+a36 1
+void eat(Short x0, Short y0, struct everything * env) SEC_2;
+d46 2
+a47 2
+Boolean fillmonst(Char what, struct everything *env) SEC_2;
+void sethp(Boolean flg, struct everything *env) SEC_2;
+d60 4
+a63 4
+void get_taxes(struct everything *env) SEC_1;
+Boolean life_protected(Short x, struct everything *env) SEC_1;
+void newscore(Short cod, struct everything *env) SEC_1;
+void died(Short cod, Boolean show_scores, struct everything *env) SEC_1;
+d79 1
+a79 1
+void recalc_screen(struct everything *env) SEC_L;
+d81 1
+a81 1
+void refresh(struct everything *env) SEC_L;
+d84 2
+a85 2
+void update_screen_cell(Short j, Short i, struct everything *env) SEC_L;
+void showcell(Short x, Short y, struct everything *env) SEC_L;
+d89 19
+a107 21
+void raiselevel(struct everything *env) SEC_L;
+void loselevel(struct everything *env) SEC_L;
+void raiseexperience(Long x, struct everything *env) SEC_L;
+void loseexperience(Long x, struct everything *env) SEC_L;
+void losehp(Short x, struct everything *env) SEC_L;
+void losemhp(Short x, struct everything *env) SEC_L;
+void raisehp(Short x, struct everything *env) SEC_L;
+void raisemhp(Short x, struct everything *env) SEC_L;
+// static void raisespells(Short x, struct everything *env) SEC_L;
+void raisemspells(Short x, struct everything *env) SEC_L;
+// static void losespells(Short x, struct everything *env) SEC_L;
+void losemspells(Short x, struct everything *env) SEC_L;
+void positionplayer(struct everything *env) SEC_L;
+Short makemonst(Short lev, struct everything *env) SEC_L;
+void recalc(struct everything *env) SEC_L;
+void creategem(struct everything *env) SEC_L;
+void adjustcvalues(Short itm, Short arg, Boolean draw,
+  struct everything *env) SEC_L;
+Short has_object(Short what, struct everything *env) SEC_L;
+Boolean take(Short itm, Short arg, Boolean noisy,
+  struct everything *env) SEC_L;
+d115 2
+a116 2
+void drop_object(Short k, struct everything *env) SEC_2;
+Boolean takeoff(struct everything *env) SEC_2;
+d119 4
+a122 7
+void init_inventory_select(FormPtr frm, Boolean t,
+                           struct everything *env) SEC_2;
+void remove1_inventory_select(FormPtr frm, Short k,
+                              struct everything *env) SEC_2;
+void specialize_labels(FormPtr frm, Short k, Boolean t,
+                       struct everything *env) SEC_2;
+Boolean deduce_task(Short k, Short btn012, struct everything *env) SEC_2;
+d168 6
+a173 7
+void heal_monsters(struct everything *env) SEC_3;
+Boolean cgood(Short x, Short y, Short itm, Short monst,
+		     struct everything *env) SEC_L;
+void createmonster(Short mon, struct everything *env) SEC_L;
+void createitem(Short it, Long arg, struct everything *env) SEC_L;
+Short fullhit(Short xx, struct everything *env) SEC_L;
+void ifblind(Short x, Short y, struct everything *env) SEC_L;
+d175 9
+a183 9
+void hitmonster(Short x, Short y, Boolean silent,struct everything *env) SEC_L;
+Short hitm(Short x, Short y, Short amt, struct everything *env) SEC_L;
+void clobberm(Short monst, struct everything *env) SEC_3;
+void hitplayer(Short x, Short y, struct everything *env) SEC_L;
+// static void dropsomething(Short monst, struct everything *env) SEC_L;
+void dropgold(Short amount, struct everything *env) SEC_L;
+void something(Short lev, struct everything *env) SEC_L;
+Short newobject(Short lev, Short *i, struct everything *env) SEC_L;
+void checkloss(Short x, struct everything *env) SEC_L;
+d190 2
+a191 2
+void init_doomed_monsters(FormPtr frm, struct everything *env) SEC_3;
+void fight(Short dir, struct everything *env) SEC_3;
+d194 2
+a195 2
+void movemonst(struct everything *env) SEC_2;
+//static void movemt(Short i, Short j, struct everything *env) SEC_2;
+d201 1
+a201 1
+void unmoveplayer(struct everything *env) SEC_2;
+d203 2
+a204 2
+Short moveplayer(Short dir, struct everything *env) SEC_2;
+void a_better_run(Short dir, struct everything *env) SEC_2;
+d217 1
+a217 1
+void disappear(Short x, Short y, struct everything *env) SEC_L;
+d221 2
+a222 2
+void show3(Short index, struct everything *env) SEC_L;
+void show3_cp(Short index, Char *buf, struct everything *env) SEC_L;
+d225 7
+a231 7
+void id_trap(struct everything *env) SEC_1;
+Boolean nearbymonst(struct everything *env) SEC_L;
+void ogold(Short arg, struct everything *env) SEC_L;
+void setupQuestionForm(FormPtr frm, struct everything *env) SEC_L;
+Boolean lookforobject(Short auto_pray, struct everything *env) SEC_2;
+// static void finditem_part1(Short item, struct everything *env) SEC_2;
+Boolean dspchQuestionForm(Short button, struct everything *env) SEC_2;
+d234 7
+a240 7
+void ovoldown(struct everything *env) SEC_1;
+void ovolup(struct everything *env) SEC_1;
+void oentrance(struct everything *env) SEC_1;
+void oopendoor(struct everything *env) SEC_1;
+void oclosedoor(struct everything *env) SEC_1;
+void oelevator(Boolean up, struct everything *env) SEC_1;
+void ostairs(Boolean up, struct everything *env) SEC_1;
+d242 2
+a243 2
+void opit(struct everything *env) SEC_1;
+void show_packweight(struct everything *env) SEC_1;
+d245 14
+a258 15
+void init_known_items(FormPtr frm, struct everything *env) SEC_1;
+void init_cast_select(FormPtr frm, struct everything *env) SEC_1;
+Boolean readbook(Short arg, struct everything *env) SEC_1;
+void obrasslamp(struct everything *env) SEC_1;
+void obrasslamp_learn(Short i, struct everything *env) SEC_3;
+void oteleport(Boolean err, struct everything *env) SEC_1;
+Boolean enchantarmor(struct everything *env) SEC_1;
+Boolean enchweapon(struct everything *env) SEC_1;
+void adjtime(Long time, Boolean show_stats, struct everything *env) SEC_1;
+Boolean read_scroll(Short typ, struct everything *env) SEC_1;
+void enlighten(Short dyl, Short dyh, Short dxl, Short dxh,
+	       struct everything *env) SEC_1;
+void spill(struct everything *env) SEC_1;
+void quaffpotion(Short pot, struct everything *env) SEC_1; 
+void o_draws(struct everything *env) SEC_1;
+d261 4
+a264 4
+void ocookie(struct everything *env) SEC_2;
+Boolean odesecrate(struct everything *env) SEC_2;
+Boolean ojustpr(struct everything *env) SEC_2;
+Boolean omoney(ULong amnt, struct everything *env) SEC_2;
+d266 12
+a277 12
+Boolean othrone_pry(Boolean two, struct everything *env) SEC_2;
+Boolean othrone_sit(Boolean two, struct everything *env) SEC_2;
+void odeadthrone(struct everything *env) SEC_2;
+void ochest(struct everything *env) SEC_2;
+void ofountain_drink(struct everything *env) SEC_2;
+Boolean ofountain_wash(struct everything *env) SEC_2;
+// static void fntchange(Boolean how, struct everything *env) SEC_2;
+void drug_speed(struct everything *env) SEC_3;
+void drug_shrooms(struct everything *env) SEC_3;
+void drug_acid(struct everything *env) SEC_3;
+void drug_hash(struct everything *env) SEC_3;
+void drug_coke(struct everything *env) SEC_3;
+d284 1
+a284 1
+void pick_char(Short i, struct everything *env) SEC_L;
+d292 1
+a292 1
+void regen(Boolean show_stats, struct everything *env) SEC_2;
+d309 2
+a310 2
+//void add_to_splash(Char *msg, struct everything *env) SEC_L;
+//void add_long_to_splash(Char *msg, struct everything *env) SEC_3;
+d314 2
+a315 2
+void spell_stats(struct everything *env) SEC_L;
+void print_stats(struct everything *env) SEC_L;
+d318 11
+a328 11
+Short packweight(struct everything *env) SEC_1;
+Boolean pocketfull(struct everything *env) SEC_1;
+//void pay_tax(Long amt, struct everything *env) SEC_1;
+void add_tax(Long amt, Boolean damage, struct everything *env) SEC_1;
+void print_tax(struct everything *env) SEC_1;
+void lrs_init_or_refresh(FormPtr frm, struct everything *env) SEC_1;
+void lrs_pay_cash(FormPtr frm, struct everything *env, Long amt) SEC_1;
+void lrs_req_trans(FormPtr frm, struct everything *env) SEC_1;
+Boolean has_potion_cured(struct everything *env) SEC_1;
+void drop_dough(Long amt, struct everything *env) SEC_3;
+void evader_init(FormPtr frm, Short in_store, struct everything *env) SEC_1;
+d331 2
+a332 2
+void bank_interest(struct everything *env) SEC_L;
+void bank_init(FormPtr frm, struct everything *env) SEC_1;
+d334 5
+a338 6
+void bank_mumble(struct everything *env) SEC_1;
+void bank_sell(FormPtr frm, Char inv_i, Short list_j,
+	       struct everything *env) SEC_1;
+void bank_trans_init(FormPtr frm, Boolean bank, struct everything *env) SEC_1;
+Boolean bank_transact(Long amt, Boolean deposit, struct everything *env) SEC_1;
+void dndstore_buy(FormPtr frm, Short store_item, struct everything *env) SEC_1;
+d342 3
+a344 3
+void dndstore_btns(FormPtr frm, struct everything *env) SEC_1;
+void store_cleanup(FormPtr frm, struct everything *env) SEC_1;
+void college_init(FormPtr frm, struct everything *env) SEC_1;
+d347 5
+a351 5
+void college_enroll(FormPtr frm, Short i, struct everything *env) SEC_1;
+void tpost_print_value(Short k, struct everything *env) SEC_1;
+Boolean tpost_sell_item(Short k, struct everything *env) SEC_1;
+void pad_gold(struct everything *env) SEC_3;
+void pad_buy(FormPtr frm, Short store_item, struct everything *env) SEC_3;
+d353 3
+a355 3
+Long get_mobuls(struct everything *env) SEC_2;
+void add_winner_bonus(struct everything *env) SEC_2;
+Long get_mobuls_elapsed(struct everything *env) SEC_1;
+d367 6
+a372 7
+void annihilate(struct everything *env) SEC_2;
+void newsphere(Short x, Short y, Short dir, Short life, Short optional_i,
+	       struct everything *env) SEC_2;
+void rmsphere(Short x, Short y, struct everything *env) SEC_2;
+void rmsp(Short i, Short x, Short y, struct everything *env) SEC_2;
+void sphboom(Short x, Short y, struct everything *env) SEC_2;
+void movsphere(struct everything *env) SEC_2;
+@
+
+
+1.10
+log
+@revising messages to have --more--.  sort of half working.
+@
+text
+@d272 3
+a274 3
+void odesecrate(struct everything *env) SEC_2;
+void ojustpr(struct everything *env) SEC_2;
+void omoney(ULong amnt, struct everything *env) SEC_2;
+d276 2
+a277 2
+void othrone_pry(Boolean two, struct everything *env) SEC_2;
+void othrone_sit(Boolean two, struct everything *env) SEC_2;
+d281 1
+a281 1
+void ofountain_wash(struct everything *env) SEC_2;
+@
+
+
+1.9
+log
+@can eat drugs from inventory now.  also some bug fixes
+@
+text
+@a74 5
+void add_to_splash(Char *msg, struct everything *env) SEC_L;
+void add_long_to_splash(Char *msg, struct everything *env) SEC_3;
+void preempt_splash(struct everything *env) SEC_L;
+void print_splash(struct everything *env) SEC_L;
+void do_splash_form(struct everything *env) SEC_L; // same like print_splash
+d316 1
+d319 5
+@
+
+
+1.8
+log
+@inventory and question-form actions should take a turn now
+(e.g. wear, wield, quaff, read, burn ...)
+This may have introduced new bugs
+@
+text
+@d126 1
+a126 1
+void takeoff(struct everything *env) SEC_2;
+@
+
+
+1.7
+log
+@reorganization of existing code
+@
+text
+@d135 1
+a135 1
+void deduce_task(Short k, Short btn012, struct everything *env) SEC_2;
+d245 1
+a245 1
+void dspchQuestionForm(Short button, struct everything *env) SEC_2;
+d288 5
+a292 1
+
+@
+
+
+1.6
+log
+@* added message log (has a bug in that dead people leave a message or two
+for the next character, but I don't think anyone cares.)
+* fixed Discretion preference to work with expanded awareness
+* added Fight (like in rogue, more or less)
+* got rid of -L18 preference
+@
+text
+@d151 1
+d153 9
+d163 1
+d165 2
+a166 3
+void show_dungeon(struct everything * env);
+Boolean Map_Form_HandleEvent(EventPtr e);
+Boolean Splash_Form_HandleEvent(EventPtr e);
+a168 4
+Boolean Lrs_Form_HandleEvent(EventPtr e);
+Boolean Evader_Form_HandleEvent(EventPtr e);
+Boolean InvSelect_Form_HandleEvent(EventPtr e);
+Boolean Cast_Form_HandleEvent(EventPtr e);
+d171 1
+@
+
+
+1.5
+log
+@centered movement
+@
+text
+@d150 1
+a150 1
+void LeaveForm(Boolean redraw);
+d182 1
+a182 1
+void hitmonster(Short x, Short y, struct everything *env) SEC_L;
+d198 1
+d311 1
+@
+
+
+1.4
+log
+@minor bug fixes
+@
+text
+@d90 1
+a90 1
+void check_player_position(Short playerx, Short playery) SEC_L;
+@
+
+
+1.3
+log
+@borrowed rogue-centric navigation
+@
+text
+@d257 2
+a258 2
+void enchantarmor(struct everything *env) SEC_1;
+void enchweapon(struct everything *env) SEC_1;
+@
+
+
+1.2
+log
+@fooling around with the popup messages
+@
+text
+@d94 1
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d79 1
+d328 1
+@
+
+
+1.1.1.1
+log
+@iLarn - Ularn port for PalmOS - initial code checkin
+@
+text
+@@

@@ -1,0 +1,283 @@
+head	1.6;
+access;
+symbols
+	Release-2002_03_29:1.6;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2002.03.27.05.09.03;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2002.03.27.04.21.06;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2002.03.26.01.54.39;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2002.03.25.21.15.59;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2002.01.26.20.11.52;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2002.01.26.19.14.27;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@add compact_monsters and compact_objects (should be more robust for farming now)
+@
+text
+@0.15 - for the next release
+---------------------------
+Fixed the 'recall' bug, you now remember multiple attack types properly.
+Hardware button bindings in 'look' form: up/down for next,
+  datebook/address to recall (when applicable), todo/memopad to exit
+Hardware button bindings in 'recall' form: down for next (also up/down
+  to scroll), datebook/address/todo/memopad to exit
+Fixed map bug that could crash non-color devices in an inverted map screen.
+  ....However this causes a new problem: on some Sony device the code in
+  display.c to print inverted characters in the dungeon doesn't invert now
+  (the stats area still inverts ok)
+Fixed crash bug in exchange_weap: buffer for "Primary weapon: <name>" was
+   too short for weapons with long names, e.g. a studly Zweihander.
+[ time passes ]
+Increased max count to 999 (default for auto-repeat commands is still 99);
+  reduced the delay for all.  I made it print the "Repeat %d" less often.
+Made hjklyubnHJLKYUBN "countable", so you should be able to say "20h" now;
+  "20h" is just like "H", except that it will go for at most 20 paces.
+You can write the initial letter of inventory buttons (e=eat, ..., D=Done).
+  Case-sensitive!  Lower-case will only work after an item is selected.
+New save databases are set to "backup".  Existing ones are not touched yet.
+"Shift" will make hjkl-bound buttons into HJKL-bound (i.e. you run).
+  Note: You can't attack things that you are next to, when shift is on.
+kMoria will now checkpoint the save file every 200 turns if you are
+  not resting; 2000 turns if you are resting a whole lot.
+Monsters/objects will compact now when there are too many; you should
+  see "Compacting monsters.." when farming rather than just crash.
+
+0.14 - current release
+----------------------
+* Handera users can now experience an entirely new set of bugs!
+  (The Handera support has been tested only on the POSE emulator, not on
+  the real thing.  Be wary and please report any problems.)
+    + kMoria uses Handera's small font for the small font.
+    + The virtual Graffiti area can be frobbed to expand the screen.
+    + Write 'R' to rotate the display...
+      - The Rotation command is available in the main screen only.
+      - The character generation screen reverts to 0-degree rotation.
+* Preferences screen is rearranged into 2 parts, "display" and "moving",
+  with three new preferences (initially set to "maintain status quo").
+    + new preference to turn off animations for missiles/spells
+      (Doesn't affect animation of breath attacks; should it?)
+    + new preference to prompt for user when kMoria starts up
+      (for multi-user Palms; like tapping Menu->Set->User immediately)
+    + new preference to select most recent user when kMoria starts up,
+      or just highlight the most recent one if prompt-for-user is on
+* Keyboard users: in the Map screen, type '@@' to tap on the @@ button.
+* Added/removed a couple of main-menu shortcuts.  Added 'g' to menu.
+* Some more of the bugs introduced with the 'g' command are cleaned up:
+    + hardware buttons should work for directional commands
+      (e.g. opening/closing doors)
+    + detect-{monsters,invisible,evil} message should clear properly.
+    + what's-that command (/) should work.
+    + move-by-tapping and nondirectional spells can be "again"ed.
+
+Known bugs:
+- Modal forms (e.g. prompt to pick up an item) that use FrmAlert() cannot
+  override the application buttons.  (So if you are heading east with
+  enthusiasm you'll wind up in the ToDo list.)  Not very fixable.
+- Handera support could use more work, e.g. the Map screen is not fabulous.
+
+
+PREVIOUS CHANGES
+----------------
+
+0.13
+        Bug fix: Keyboard arrow keys will work for directional commands.
+        Repeated commands can be interrupted by keyboard now.
+        In the Learn Spell form, keyboard users can select spells by letter.
+        Targeting-circles preference is somewhat less broken now.
+              (But does anyone actually want it?)
+0.12
+        New application icon: doors of Moria
+        Winning should work now (don't exit before seeing the scoreboard).
+        New command 'g' for "again"; can be bound to a button.
+              (Many exciting new bugs were introduced simultaneously!)
+        Spell book does not wait for you to press Return (for keyboard).
+        In color, the /M map uses your defined foreground/background colors.
+        Longer message log.
+        Level-changing messages print _during_ the dungeon level creation.
+        Shorter delay for repeated commands.
+        In the User selection screen, you can set the Hotsync bit for saves.
+	(For keyboards) the Haggle form grabs focus when you type numbers.
+        You can beam cash.  Woo hoo.
+0.11
+        "Beam" menu choice: kMoria itself; your top score; an inventory item
+        "User" menu choice: you can have several concurrent save databases
+        'Rest' form buttons bound to the 4 app buttons
+        Item weight is displayed in stores (thanks to dan_van)
+        'Show time' menu item will show current date/time and battery voltage
+        Arrow keys act like 'hjkl' for stowaway keyboard users
+        The button bound to 'map' will also exit from 'map'.
+        Fixed the Chunk-Overlocked bug from 0.10.
+0.10
+        Fixed "fails to detect no saved character" bug from 0.09
+        The Your Stats screen highlights drained stats.
+        Source code for [unsupported] pdb<->umoria save file converter
+        [Forgot to update version in the 0.10 About screen: still says 0.09]
+0.09
+        Color.  Install and use kMoriaUtil to set the colors.
+        Invert (more or less working)
+        "Open door", "font", etc. can now be bound to hardware buttons too.
+        When casting a spell you can hit the 4 app buttons for spellbook.
+        You can assign hardware buttons to any of the spells.
+        You can set some of the repeatable commands to autorepeat.
+        Fixed the stone-to-mud monster-killing crash.
+        Directional prayers are fixed (used to take 2 turns, now take 1).
+        Command-bar bug (for OS 3.5) fixed; icons added.
+        Fixed the wielding-thing-when-already-wielding-cursed-weapon msg.
+        The Repeat count is cleared when it is interrupted.
+        Stats update should be a little smarter now.
+        Font ID++.  If you have a Kyocera, let me know if this helped.
+        Score is reset between characters now.
+        Shopkeeper bug fixed (if you got booted, the store owner got 
+          clobbered by a General Store owner.)
+        License stuff has been clarified.
+0.08
+        Recovery of crashed save files.  Minor bug fixes.
+0.07
+        Tap the [@@] button in the Map to make your position flash briefly.
+        Write a letter after '/' command, to recall ALL that-letter monsters.
+        When recalling monsters, there's a menu item to clear your "memory".
+        Should be safe to export dead character to memo now.
+        Fixed crosshairs for directional spells (were appearing "too late").
+        Made hit points 'usually' not get overwritten by graffiti indicator.
+        Made directional acts print the verb, e.g. "Throwing"
+        Plugged memory leaks in store, inventory, equipment, and invselect.
+        Twiddled the store form in a few ways:
+        1. When the store is "full", the last screen says so.
+        2. Made the "You have" "You've sold" (in haggling form) word-wrapped.
+        3. Tweaked the truncation of item names in store list.
+        Fixed look-at so the dungeon is always drawn up at the top.
+0.06
+        Counted commands (like rest) can be interrupted now, tap the screen.
+        Directional commands with pie slices should now redraw properly always.
+        Fixed bug that sometimes didn't draw a new dungeon level.
+        When you climb stairs, the event queue is flushed on general principle.
+        Going back from screen 0 in a shop should not produce empty screen now.
+        Hardware buttons that are bound stay disabled in all Forms.
+        Running stops before hitting a stationary creature (but it can hit you)
+        Made "HJKLYUBJN" run instead of walk; other keyboard-friendly things.
+        Fixed bug so that selling an unknown thing to store makes it known.
+        [Checked what the amulet of resist acid is supposed to do.  not a bug.]
+0.05
+        Acid/corrosion bug and relative-move bug fixed.  I think.
+        Inventory has optional weight display (menu item).
+        Hit points always visible in the last message of the turn.
+        Preference to move status bar to top of screen.
+        Command-count should understand 'delete' character now.
+        Animation for throw, spells, + breath attacks.
+        Some sound added.
+        Potions, food, monster special attacks + monster spells got tested.
+        Detects wrong-version-for-OS and missing-database at startup.
+0.04
+        High score list.
+        Menus re-organized.
+        User can reassign hardware buttons.
+        Overview map and 'look' are improved.
+        Throw, inscribe, resting should work now.
+        Write a letter to select item in the inventory view.
+        Item names are not truncated in equipment, inventory, + stores.
+        There is another menu item in the stores to turn off haggling.
+        Scrolls, spells, prayers, wands, staffs all enabled, tested.
+        Some bugs fixed.
+0.03
+        Fixed many small bugs.
+        Status words (e.g. "Hungry") are displayed now (but still buggy).
+        Characters with negative hit points die (but no high score list yet).
+        Tombstone page allows Character Record export to memo.
+        Screen redraw made less sluggish.
+0.02
+        Saving the game (when you leave the application) works.
+        You can quit the game and start a new character.
+        Some bugs (most frequent, most evil) have been removed.
+0.01
+        first alpha release.
+@
+
+
+1.5
+log
+@save file should be checkpointed every 200 turns now (2000 if mega-resting)
+@
+text
+@d26 2
+a27 1
+
+@
+
+
+1.4
+log
+@tested new features (max count, '20h', inv btns, shift+hwbtn, backup on creation)
+@
+text
+@d16 1
+a16 1
+  reduced the delay for all.
+d24 3
+@
+
+
+1.3
+log
+@update
+@
+text
+@d15 9
+a23 4
+Increased max count to 999 (leaving default at 99), removed delay for >99.
+  Need to compile and test.  affected files: constant.h, main.c, dungeon.c
+Made hjklyubnHJLKYUBN "countable" commands, should be able to say "20h" now
+  Need to compile and test.  affected files: dungeon.c, moria2.c
+@
+
+
+1.2
+log
+@fixed crash bug: buffer too short for weapon names, which can be >80chars
+@
+text
+@d14 5
+a18 1
+
+@
+
+
+1.1
+log
+@added TODO and CHANGELOG
+@
+text
+@d12 3
+@
+

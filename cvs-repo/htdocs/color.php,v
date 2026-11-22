@@ -1,0 +1,777 @@
+head	1.6;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.4;
+locks; strict;
+comment	@# @;
+
+
+1.6
+date	2006.08.13.05.47.22;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2006.08.13.04.47.24;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2006.08.08.04.01.05;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2002.03.30.00.18.21;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.07.02.06.08.41;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.04.02.17;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>Color for Roguelike Games</title>
+
+
+<style type="text/css" media="screen">@@import "3col.css";</style>
+
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+
+</head>
+<body>
+
+<div class="content">
+  <h1>Color</h1>
+  <p><i>for kMoria, iRogue, and iLarn</i></p>
+</div>
+
+<div class="content">
+
+      <h2>How do I set colors in kMoria?</h2>
+<p> <a href="http://roguelike-palm.sourceforge.net/kMoria/color.php">Color in kMoria</a> is documented on its own page. </p>
+</div>
+
+<div class="content">
+      <h2>How do I set colors in iRogue or iLarn?</h2>
+<p> (Or, "I turned on the color preference, but I don't see
+any colors yet!") </p>
+<p> Color in these games is completely user-defined.  It will take
+a little work on your part, unless you want to use one of the
+<a href="#use">color schemes that someone else has written</a> (available at
+the end of this page.)</p>
+
+<p> First, three requirements must be met </p>
+<dl>
+      <dt>Version
+<dd> You must have a version of the game that supports color.
+<br> iRogue versions prior to 0.45 do not support color.
+<br> iLarn versions prior to 0.25 do not support color.
+
+      <dt>Hardware
+<dd> Obviously you will also need a color PalmOS device (or an emulator
+with a color ROM).
+
+      <dt>Preferences
+
+<dd> You must go to the Preferences screen of your game, which has a
+bunch of checkboxes.  You will see a "Color" checkbox, if your OS
+thinks that it can support color.  It will be unchecked by default.
+You should check it if you want color to be on.
+<br> If you want the background color of the screen to be black
+(instead of "white") you should also check the "Invert" checkbox.
+</dl>
+      <h2>Definition Memo</h2>
+
+<p> Ok, now you are ready for the hard part.  You must write a Memo
+(you know, those things in the MemoPad application) that will tell the
+game what colors you want to see.  The title of the memo will be
+&lt;<i>game</i>&gt;-RGB, e.g. "iRogue-RGB" or "iLarn-RGB". </p>
+
+<p> Here is a very short memo to test the color in iRogue.  (You can
+use this same test in iLarn: just write iLarn-RGB in place of
+iRogue-RGB.) </p>
+<ol>
+<li> Go to MemoPad.
+<li> Hit the New button to start a new Memo.
+<li> Write <b>iRogue-RGB</b>
+<li> Write the "newline" Graffiti (./) to start a new line.
+<li> Write <b>@@ ff0000</b>
+<li> Write the "newline" Graffiti (./) to start a new line.
+</ol>
+ <p>Your memo looks like this:
+<br><b>iRogue-RGB</b>
+<br><b>@@ ff0000</b> </p>
+<p> Now start playing the game.  If you have the color preference
+turned on, your '@@' <b>should</b> be red now.  If it is not, you have
+a problem that this page is not going to help you with (send me
+email). </p>
+
+      <h2>Ok, it worked, now what?</h2>
+
+<p> The game will expect each line in the &lt;<i>game</i>&gt;-RGB memo
+to tell it how to color some particular symbol. </p>
+
+<p> So far, your memo has only one line, which says to color the '@@'
+red.  For each symbol whose color you want to set, you will add a line
+to that memo. </p>
+      <h2>What do you mean, "ff0000 is red"</h2>
+<p> There are many ways to describe a color.  The way that we will be using
+is this: a six-digit hexadecimal number, where the first two digits say
+how much "red" to add, the middle two digits are how much "green", and
+the last two digits are how much "blue". </p>
+<p> <i>Hexadecimal?</i> The digits you can use in a hexadecimal number
+are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f.  (or A,B,C,D,E,F.
+Upper or lower case is ok.) </p>
+<p> Suppose you have a room with equal amounts of red, green, and blue
+light bulbs, and this number is going to tell you what bulbs to turn
+on.
+<br> <b>000000</b> is no red, no green, and no blue.  That means no lights
+are turned on and you get a pitch BLACK room.
+<br> <b>ffffff</b> is the highest number you can have.  All the lights are on and
+you get more-or-less WHITE light.
+<br> <b>ff0000</b> tells you to turn on only the red lights and leave the others off.
+This makes the room fairly bright but it's all RED.
+<br> <b>00ff00</b> tells you to turn on all the green lights and leave the others off.  Green.
+<br> <b>0000ff</b> tells you to turn on all the blue lights and leave the others off.  Blue.
+<br> <b>ffff00</b> .. turn on all the red and all the green, and you get YELLOW.  Surprise.
+<br> <b>ff00ff</b> .. red and blue.  Magenta.
+<br> <b>00ffff</b> .. green and blue.  Cyan. </p>
+      <h2>Enlightenment</h2>
+
+<p> Now you understand what that number means, or else you are tired
+of hearing about it and want to get on with the game.  If you would
+like to see some virtual "paint chips" that are labeled with their
+numbers, there is a nice page at another site with colors <a
+href="http://www.lynda.com/hexv.html">by value</a> (arranged form
+light to dark) or <a href="http://www.lynda.com/hexh.html">by hue</a>
+(arranged by color).  Note: these same colors might tend to look
+lighter or darker on your PalmOS device, but you'll at least get some
+idea. </p>
+
+<p> So take a look at your game screen.  Decide what colors you
+would like the walls and so on to be.  Then add some lines to
+your memo.  Continuing the iRogue-RGB example, </p>
+<blockquote><p>
+# 000099
+<br>- 000099
+<br>| 000099
+</p></blockquote>
+ <p>Anything that you write <i>after</i> the number, up to the end of the line, will be ignored for your convenience.  So you could write: </p>
+<blockquote><p>
+@@ ff0000 This sentence is ignored!
+<br># 000099  ...corridors are dark blue
+<br>- 000099 these are horizontal walls
+<br>| 000099 and vertical walls
+</p></blockquote>
+ <p>If you write a very long comment, it may take up several rows of text
+in the MemoPad, but I am sure you know that it is not <i>a new
+line</i> until you write that Graffiti newline character (or hit
+Return or Enter, whatever it's called, on your keyboard, or whatever).
+So, do not forget to do that, even at the end of a long remark, or
+you'll wonder why the symbol in your next definition isn't getting
+colored. </p>
+
+<p> You can colorize any number of monsters and objects, also,
+and it does not matter what order your lines are in.  Anything that you
+do not colorize will remain black. </p>
+<blockquote><p>
+S 00ff00 this monster is green
+<br>f 999999 this monster is gray
+<br>! 990000 dark red potion
+<br>? cc00cc purple scroll
+</p></blockquote>
+</div>
+
+<div class="content">
+
+<h2>Exceptions</h2>
+
+<p> All the things that I have said so far are general and apply to
+iRogue or iLarn.  Different games may use the same
+symbols to mean different things.  This is one reason to have separate
+memos which can define some of the same symbols to have different
+colors in different games.  There are other little quirks that the
+different games have, which I will cover in this section. </p>
+
+<h2>... in iRogue</h2>
+
+<p> The symbol that represents food is the "degrees" symbol.  You can
+write a "degrees" symbol if you know how (just look in the Graffiti
+Help), but if you don't want to learn how, you can write a colon
+"<b>:</b>" instead.  Either one will work.   </p>
+<blockquote><p>
+iRogue-RGB
+<br>...
+<br>: 009900 green food
+</p></blockquote>
+
+<p> I will also mention, although no one cares, that iRogue really
+uses an <i>emdash</i> for horizontal walls and not the shorter '-'
+character, but you can use a '-' and it will work.  Honk if you know
+what an emdash is. </p>
+
+<p> If you're not interested in iLarn, <a href="#skip">skip down</a>. </p>
+
+<h2>... in iLarn</h2>
+
+<p> There are two oddities to cover in iLarn, represented in the last
+two lines of this example, </p>
+<blockquote><p>
+iLarn-RGB
+<br>@@ ff0000 You are red...
+<br># 000099  ...walls are dark blue
+<br>G 00ff00 this kind of monster is green
+<br>D_ ffff00 doors are yellow
+<br>D 999999  all dragons are gray
+</p></blockquote>
+
+<p> <i>D_ ?</i> Where did that underscore come from?
+
+<br> Well.  If you have been playing iLarn for a
+while, you might have noticed that objects like scrolls, potions,
+doors, fountains, thrones, etc., are drawn in white-on-black, and that
+some letters (which are monsters when they are black-on-white) do
+<i>double duty</i> as objects (when you see them as white-on-black).
+If you want to set the color of an <b>object</b> like a door, and its
+symbol is a letter (A to Z, a to z), put an underscore <b>_</b> right
+after the letter and iLarn will know you mean a door rather than a
+dragon.  <br> These are the letters that are used for objects:
+ABCDEFHLMOPSTVcfostu </p>
+
+<p> <i> D = all dragons?  I want to make red dragons red and green dragons
+green!</i> Yeah, I was expecting that.  If you write just "D
+999999" (or whatever color), all dragons will be that color.  But you
+can also individually colorize some or all of the six kinds of dragons
+('b'ronze, 'g'reen, 's'ilver, 'p'latinum, 'r'ed, in no
+particular order; as it happens, 'w'hite dragons are represented by a
+different character, <b>d</b>, already).  
+Just make an additional line with "D" followed by
+the initial letter of the particular kind of dragon.  Here's an
+example to make red dragons red, green dragons green, and all other
+dragons gray. </p>
+<blockquote><p>
+D 999999   dragons are gray by default
+<br>Dr ff0000   red dragons are bright red
+<br>Dg 00cc00  green dragons are medium-green
+</p></blockquote>
+<p> You can define colors for Db, Ds, and Dp too, but I am too lazy to
+make this example any longer. </p>
+
+</div>
+
+<div class="content">
+<a name="skip"></a>
+<h2> When you're done with all that </h2>
+
+<p> If you create a set of colors that you are particularly proud of,
+either for white-background or black-background, you can send the text
+file to me for credited inclusion in the .zip file for that game. </p>
+
+</div>
+
+<div class="content">
+<a name="use"></a>
+<h2> Sample color scheme memos </h2>
+<p><b>iRogue</b> - just paste the contents of the text file into
+a Memo entitled iRogue_RGB. </p>
+<ul>
+<li> <a href="color_schemes/iRogue-RGB_1.txt">iRogue #1</a> by Loco Motive
+<br>   This set of colors is designed to work with the invert option.  All
+  of the colors are strictly from the palm iiic.  If it isn't on the
+  list, then it's intentionally white (yeti, ghosts etc...).
+<li> <a href="color_schemes/iRogue-RGB_2.txt">iRogue #2</a> by John Brooks
+<br>   Same scheme, altered a bit to work with a noninverted screen
+       (white background).  For a nonbacklit display, such as m505,
+       this one will probably look better..
+</ul>
+<p><b>iLarn</b> - just paste the contents of the text file into
+a Memo entitled iLarn_RGB.  Make your own and send it in so that I
+can get rid of the following: </p>
+<ul>
+<li> <a href="color_schemes/iLarn-blank.txt">iLarn test file</a>
+    <br> This is an ad-hoc list of most of the symbols in the game
+    (I've probably forgotten one or two)... just fill in the hex
+    numbers (yeah, I make it sound like that's not the hard part) and
+    you're all set.
+<li> <a href="color_schemes/iLarn-RGB_test.txt">iLarn test file</a>
+    <br> This set of colors can be used either with or
+    without the invert option, so (being a compromise)
+    it's really kind of sucky in both.  It is ok for testing purposes,
+    or if you don't want to start from scratch.
+</ul>
+
+
+</div>
+
+<div id="navAlpha">
+     <?php include ("navAlphaTop.txt") ?>
+     <?php include ("navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+     <?php include ("navBeta.txt") ?>
+</div>
+
+</body>
+</html>
+@
+
+
+1.5
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+d70 1
+a70 1
+<li> Write <tt>iRogue-RGB</tt>
+d72 1
+a72 1
+<li> Write <tt>@@ ff0000</tt>
+d76 2
+a77 2
+<br><tt>iRogue-RGB</tt>
+<br><tt>@@ ff0000</tt> </p>
+d102 1
+a102 1
+<br> <tt>000000</tt> is no red, no green, and no blue.  That means no lights
+d104 1
+a104 1
+<br> <tt>ffffff</tt> is the highest number you can have.  All the lights are on and
+d106 1
+a106 1
+<br> <tt>ff0000</tt> tells you to turn on only the red lights and leave the others off.
+d108 5
+a112 5
+<br> <tt>00ff00</tt> tells you to turn on all the green lights and leave the others off.  Green.
+<br> <tt>0000ff</tt> tells you to turn on all the blue lights and leave the others off.  Blue.
+<br> <tt>ffff00</tt> .. turn on all the red and all the green, and you get YELLOW.  Surprise.
+<br> <tt>ff00ff</tt> .. red and blue.  Magenta.
+<br> <tt>00ffff</tt> .. green and blue.  Cyan. </p>
+d128 5
+a132 5
+<blockquote>
+<tt># 000099</tt>
+<br><tt>- 000099</tt>
+<br><tt>| 000099</tt>
+</blockquote>
+d134 6
+a139 6
+<blockquote>
+<tt>@@ ff0000 This sentence is ignored!</tt>
+<br><tt># 000099  ...corridors are dark blue</tt>
+<br><tt>- 000099 these are horizontal walls</tt>
+<br><tt>| 000099 and vertical walls</tt>
+</blockquote>
+d151 6
+a156 6
+<blockquote>
+<tt>S 00ff00 this monster is green</tt>
+<br><tt>f 999999 this monster is gray</tt>
+<br><tt>! 990000 dark red potion</tt>
+<br><tt>? cc00cc purple scroll</tt>
+</blockquote>
+d176 5
+a180 5
+<blockquote>
+<tt>iRogue-RGB</tt>
+<br><tt>...</tt>
+<br><tt>: 009900 green food</tt>
+</blockquote>
+d193 8
+a200 8
+<blockquote>
+<tt>iLarn-RGB</tt>
+<br><tt>@@ ff0000 You are red...</tt>
+<br><tt># 000099  ...walls are dark blue</tt>
+<br><tt>G 00ff00 this kind of monster is green</tt>
+<br><tt>D_ ffff00 doors are yellow</tt>
+<br><tt>D 999999  all dragons are gray</tt>
+</blockquote>
+d226 5
+a230 5
+<blockquote>
+<tt>D 999999   dragons are gray by default</tt>
+<br><tt>Dr ff0000   red dragons are bright red</tt>
+<br><tt>Dg 00cc00  green dragons are medium-green</tt>
+</blockquote>
+@
+
+
+1.4
+log
+@commit everything before massive style change
+@
+text
+@d1 3
+a3 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+d7 6
+a12 4
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="green.css" media="screen">
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+d16 16
+a31 61
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">How to set colors</h3>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      
+      <!-- -->
+      <tr><td class="sidehead"> Stuff here </td></tr>
+      <tr><td class="side"> <a href="index.php">News</a> </td></tr>
+      <tr><td class="side"> 
+	<img src="images/iRogue/iRogue-logo.gif" alt="[ @@ ]">
+	<a href="iRogue/index.php">iRogue</a> </td></tr>
+      <tr><td class="side">
+	<img src="images/iLarn/iLarn-logo.gif" alt="[ i ]">
+	<a href="iLarn/index.php">iLarn</a> <!-- ..
+	<a href="iLarn/alpha.html">beta</a> -->
+	 </td>
+      </tr>
+      <tr><td class="side">
+      <img src="images/kMoria/kMoria-logo.gif" alt="[ @@ B ]">
+      <a href="kMoria/index.php">kMoria</a>
+      </td>
+      </tr>
+      <tr><td class="sidehead"> Hosted by </td></tr>
+      <tr><td class="side"> <A href="http://sourceforge.net">
+	<IMG src="http://sourceforge.net/sflogo.php?group_id=6932&type=1"
+	width="88" height="31" border="0" alt="SourceForge Logo"></A>
+	</td>
+      </tr>
+      <tr><td class="side">
+	<a href="http://sourceforge.net/project/?group_id=6932">
+	This Project's page</a>
+	</td>
+      </tr>
+      <?php include ("activesurveys.txt") ?>
+      <?php include ("roguelikegames.txt") ?>
+    </table>
+    </td>
+
+<!-- main area table -->
+<td class="body" valign=top>
+  <a name="news"></a>
+      <!-- ----- this is the interesting part of the page ----- -->
+      <h3>How do I set colors in kMoria?</h3>
+<P> See <a href="http://roguelike-palm.sourceforge.net/kMoria/color.php">
+this document</a>.
+      <h3>How do I set colors in iRogue or iLarn?</h3>
+<P> (Or, "I turned on the color preference, but I don't see
+any colors yet!")
+<P> Color in these games is completely user-defined.  It will take
+d33 2
+a34 1
+color schemes that someone else has written (<a href="#use">see below</a>).
+d36 1
+a36 1
+<P> First, three requirements must be met
+d56 1
+a56 1
+      <h4>Definition Memo</h4>
+d58 1
+a58 1
+<P> Ok, now you are ready for the hard part.  You must write a Memo
+d61 1
+a61 1
+&lt;<i>game</i>&gt;-RGB, e.g. "iRogue-RGB" or "iLarn-RGB".
+d63 1
+a63 1
+<P> Here is a very short memo to test the color in iRogue.  (You can
+d65 1
+a65 1
+iRogue-RGB.)
+d73 2
+a74 2
+</ul>
+Your memo looks like this:
+d76 2
+a77 2
+<br><tt>@@ ff0000</tt>
+<P> Now start playing the game.  If you have the color preference
+d80 1
+a80 1
+email).
+d82 1
+a82 1
+      <h3>Ok, it worked, now what?</h3>
+d84 2
+a85 2
+<P> The game will expect each line in the &lt;<i>game</i>&gt;-RGB memo
+to tell it how to color some particular symbol.
+d87 1
+a87 1
+<P> So far, your memo has only one line, which says to color the '@@'
+d89 3
+a91 3
+to that memo.
+      <h4>What do you mean, "ff0000 is red"</h4>
+<P> There are many ways to describe a color.  The way that we will be using
+d94 2
+a95 2
+the last two digits are how much "blue".
+<P> <i>Hexadecimal?</i> The digits you can use in a hexadecimal number
+d97 2
+a98 2
+Upper or lower case is ok.)
+<P> Suppose you have a room with equal amounts of red, green, and blue
+d111 2
+a112 2
+<br> <tt>00ffff</tt> .. green and blue.  Cyan.
+      <h4>Enlightenment</h4>
+d114 1
+a114 1
+<P> Now you understand what that number means, or else you are tired
+d122 1
+a122 1
+idea.
+d124 1
+a124 1
+<P> So take a look at your game screen.  Decide what colors you
+d126 1
+a126 1
+your memo.  Continuing the iRogue-RGB example,
+d132 1
+a132 1
+Anything that you write <i>after</i> the number, up to the end of the line, will be ignored for your convenience.  So you could write:
+d139 1
+a139 1
+If you write a very long comment, it may take up several rows of text
+d145 1
+a145 1
+colored.
+d147 1
+a147 1
+<P> You can colorize any number of monsters and objects, also,
+d149 1
+a149 1
+do not colorize will remain black.
+d156 3
+d162 1
+a162 1
+<P> All the things that I have said so far are general and apply to
+d167 1
+a167 1
+different games have, which I will cover in this section.
+d169 1
+a169 1
+<h3>... in iRogue</h3>
+d171 1
+a171 1
+<P> The symbol that represents food is the "degrees" symbol.  You can
+d174 1
+a174 1
+"<b>:</b>" instead.  Either one will work.  
+d181 1
+a181 1
+<P> I will also mention, although no one cares, that iRogue really
+d184 1
+a184 1
+what an emdash is.
+d186 1
+a186 1
+<P> If you're not interested in iLarn, <a href="#skip">skip down</a>.
+d188 1
+a188 1
+<h3>... in iLarn</h3>
+d190 2
+a191 2
+<P> There are two oddities to cover in iLarn, represented in the last
+two lines of this example,
+d201 1
+a201 1
+<P> <i>D_ ?</i> Where did that underscore come from?
+d212 1
+a212 1
+ABCDEFHLMOPSTVcfostu
+d214 1
+a214 1
+<P> <i> D = all dragons?  I want to make red dragons red and green dragons
+d224 1
+a224 1
+dragons gray.
+d230 6
+a235 19
+You can define colors for Db, Ds, and Dp too, but I am too lazy to
+make this example any longer.
+<!--
+<P> If you're not interested in kMoria, <a href="#skip">skip down</a>.
+
+<h3>... in kMoria</h3>
+
+<P> kMoria does not have color yet, so this is speculative.
+
+<P> Each letter represents a whole lot of monster varieties.  Some
+varieties are named by color: blue, green, yellow, tan/brown,
+red/crimson, purple/violet/grape, black/ebony, silver/grey, clear,
+white.  For monsters, maybe it would be easiest to have the memo
+define what color "green" is, etc, and then green frogs, green
+centipedes, etc., could all be drawn in the color designated as green.
+This still leaves some monsters undistinguished from their brethren,
+though - I haven't counted yet to see what fraction would be left.
+<p><i>(Scratch all that and see <a href="http://roguelike-palm.sourceforge.net/previews/">this draft</a>.)</i>
+-->
+d239 1
+a239 1
+<P> If you create a set of colors that you are particularly proud of,
+d241 1
+a241 1
+file to me for credited inclusion in the .zip file for that game.
+d243 1
+a243 3
+<P> If you encounter any problems, let me know and I will attempt to
+remedy them.  I do not have a color device at present, though my
+emulator claims that this colorization will work.
+d245 1
+d247 3
+a249 3
+<h2> Sample memos </h2>
+<P><b>iRogue</b> - to use, paste the contents of the text file into
+a Memo entitled iRogue_RGB.
+d260 1
+a260 1
+<P><b>iLarn</b> - to use, paste the contents of the text file into
+d262 1
+a262 1
+can get rid of the following:
+d275 13
+a287 22
+<!--
+<P><b>kMoria</b> - 
+N/A
+<P> The kMoriaUtil utility will create a kMoriaColorDB.pdb or
+something like that.  Those can be shared instead of memos.      
+-->
+<!-- ----- end of the interesting part of the page ----- -->
+
+
+</td>
+</tr>
+</table>
+
+<!-- footer table -->
+<?php include ("footer.txt") ?>
+<!-- end footer table -->
+
+<address>i0lanthe@@users.sourceforge.net</address>
+<!-- hhmts start -->
+Last modified: Tue Jan  8 16:52:27 EST 2002
+<!-- hhmts end -->
+<?php $hitsfile = "color.hits"; include ("counter.php")?>
+@
+
+
+1.3
+log
+@checkpointing web before kMoria 0.15 update
+@
+text
+@d7 2
+@
+
+
+1.2
+log
+@in the middle of release/update
+@
+text
+@d14 1
+a14 1
+    <h3>How to set colors</h3>
+d65 2
+a66 2
+<P> See <a href="http://roguelike-palm.sourceforge.net/previews/">
+this draft</a> (temporary).
+a79 2
+<br> kMoria does not support color yet (maybe this summer but don't hold
+    your breath).
+d198 1
+a198 2
+iRogue or iLarn (or, for the most part, kMoria although that is
+completely speculative at present).  Different games may use the same
+d243 1
+a243 1
+If you want to set the color of an <b>object</i> like a door, and its
+d267 1
+a267 1
+
+d283 1
+d324 1
+a324 1
+
+d329 1
+d343 1
+a343 1
+Last modified: Fri Jun 15 19:48:58 EDT 2001
+@
+
+
+1.1
+log
+@updated for iRogue 1.0.0 release
+@
+text
+@d64 10
+a73 1
+      <h3>How do I set colors in iRogue, iLarn, etc?</h3>
+d79 3
+a81 3
+<br> iLarn versions prior to 0.25 (yes, I know it's not out yet) do
+not support color.
+<br> kMoria does not support color yet.
+d256 4
+a259 2
+('w'hite, 'b'ronze, 'g'reen, 's'ilver, 'p'latinum, 'r'ed, in no
+particular order).  Just make an additional line with "D" followed by
+d268 1
+a268 1
+You can define colors for Dw, Db, Ds, and Dp too, but I am too lazy to
+d285 1
+a285 1
+
+d297 36
+a332 1
+      <!-- ----- end of the interesting part of the page ----- -->
+d344 1
+a344 1
+Last modified: Wed May 30 20:56:01 EDT 2001
+@
+

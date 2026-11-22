@@ -1,0 +1,202 @@
+head	1.2;
+access;
+symbols
+	start:1.1.1.1 vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.2
+date	2000.11.04.02.13.39;	author i0lanthe;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.43.55;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.43.55;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@adding GPL comment
+@
+text
+@// This will be the equivalent of io.c.
+
+#include<copyright.txt>
+
+
+/* Dump IO to buffer					-RAK-	*/
+// The key part here is just 'mvaddstr'.
+void put_buffer(Char *out_str, Short row, Short col)
+{
+  mvaddstr(row, col, out_str); // check also to make sure StrLen(out_str)<80
+}
+
+
+// this updates the screen
+void put_qio()
+{
+  screen_change = TRUE;	   /* Let inven_command know something has changed. */
+  (void) refresh();
+}
+
+// void shell_out() is not implemented on this OS
+
+// char inkey() is used to return a single character input.
+// I will be using forms and stuff instead.  There should be no inkeys.
+
+// void flush()
+// I am not sure if there is an equivalent with palmos event handlers
+
+// clear a line of text
+void erase_line(Short row, Short col)
+{
+  // do something with Rect
+}
+
+
+/* Clears screen */
+void clear_screen()
+{
+  if (msg_flag)
+    msg_print(CNIL);
+//  (void) clear();
+  // do something with Rect
+}
+
+/*    clrtobot (win)     All lines below the cursor in this  win-
+                         dow  are erased.  Also, the current line
+                         to the right of the  cursor,  inclusive,
+                         is erased. */
+void clear_from (Short row)
+{
+//  (void) move(row, 0);
+//  clrtobot();
+  // do something with Rect
+}
+
+/* Outputs a char to a given interpolated y, x position	-RAK-	*/
+/* sign bit of a character used to indicate standout mode. -CJS */
+void print(Char ch, Short row, Short col)
+{
+  row -= panel_row_prt;/* Real co-ords convert to screen positions */
+  col -= panel_col_prt;
+  mvaddch(row, col, ch);
+}
+
+/* Moves the cursor to a given interpolated y, x position	-RAK-	*/
+void move_cursor_relative(Short row, Short col);
+// Ok, I don't need that, but anything subsequent to it must be
+// de-relativized!
+
+/* Print a message so as not to interrupt a counted command. -CJS- */
+void count_msg_print(Char *p)
+{
+  Short i;
+
+  i = command_count;
+  msg_print(p);
+  command_count = i;
+}
+
+/* Outputs a line to a given y, x position		-RAK-	*/
+void prt(Char *str_buff, Short row, Short col)
+{
+}
+
+/* move cursor to a given y, x position */
+void move_cursor(Short row, Short col)
+{
+  (void) move (row, col);
+}
+// Not needed but watch out for what follows it.
+
+
+/* Outputs message to top line of screen				*/
+/* These messages are kept for later reference.	 */
+void msg_print(Char *str_buff);
+// rename this to "message"
+
+
+/* Used to verify a choice - user gets the chance to abort choice.  -CJS- */
+Boolean get_check(Char *prompt);
+// Replace this with "Alert"s!
+
+/* Prompts (optional) and returns ord value of input char	*/
+/* Function returns false if <ESCAPE> is input	*/
+Boolean get_com(Char *prompt, Char *command);
+// Replace this with something..
+
+/* Gets a string terminated by <RETURN>		*/
+/* Function returns false if <ESCAPE> is input	*/
+Boolean get_string(Char *in_str, Short row, Short column, Short slen);
+// Replace this with a form with place for string input..
+
+/* Pauses for user response before returning		-RAK-	*/
+void pause_line(Short prt_line);
+// press-any-key-to-continue
+// replace with something...
+
+// pause_exit is not needed, I *think*.
+
+// Not sure what these are for
+void save_screen()
+{
+  overwrite(stdscr, savescr);
+}
+
+void restore_screen()
+{
+  overwrite(savescr, stdscr);
+  touchwin(stdscr);
+}
+
+
+// Replace this with the obvious
+void bell()
+{
+  put_qio();
+
+  /* The player can turn off beeps if he/she finds them annoying.  */
+  if (! sound_beep_flag)
+    return;
+
+  (void) write(1, "\007", 1);
+
+}
+
+void screen_map(); // not sure what this does.
+// ah.. it is used by command 'M'.  I will be replacing it with
+// something really flyspecky.
+
+
+
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

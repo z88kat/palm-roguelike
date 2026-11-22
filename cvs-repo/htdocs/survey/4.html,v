@@ -1,0 +1,352 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.05.31.00.23.02;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.23.02;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>kMoria Button Survey</title>
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+  </head>
+
+  <body>
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3>kMoria Button Survey</h3>
+
+<P> <i>This <a href="index.php">survey</a> is about <a
+href="../kMoria/index.php">kMoria</a> (Moria ported to PalmOS),
+part of the <a href="../index.php">Roguelikes for PalmOS</a> project
+hosted at <a href="http://sourceforge.net">SourceForge</a>.</i>
+    
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<form action="http://roguelike-palm.sourceforge.net/cgi-bin/vote.pl" method=get>
+<!-- 'value' must be the name of a section in the config file -->
+<input type="hidden" name="name" value="kbuttons">
+
+<P> kMoria has a lot more possible actions than iRogue or iLarn.
+Currently, each hardware button's list of possible actions is the
+same.  I would like to support binding for a larger set of actions,
+but you may have noticed when you are setting the bindings that the
+list already barely fits on the screen.  So, maybe I can give each
+hardware button a different list... e.g. if no one binds "calculator"
+to "north", leave "north" out of its list, and put in "change font" or
+whatever else that people would find more useful than "north".  How
+can I find out whether no one binds "calculator" to "north", and what
+bindings people want to keep?  That is your job - answer this survey
+and then I will know.
+
+<P> This survey looks basically just like your Hardware Buttons form
+in kMoria, except that the n/s/e/w are mashed together, and there are
+a couple of new choices.  Let me know what bindings you use now, or
+what bindings you would use in your ideal world.
+
+<hr>
+<img src="buttons_names.gif" alt="[picture of buttons]">
+<P>
+<b>Date Book</b><br>
+<input type="Radio" name="a" value="1">
+"---" (I like to leave it unbound) <br>
+<input type="Radio" name="a" value="2">
+"north", "south", "east", or "west" (move 1 square in that direction) <br>
+<input type="Radio" name="a" value="3">
+"map" (pop up a map that shows most of the level) <br>
+<input type="Radio" name="a" value="4">
+"look" (look in a direction to see names of the monsters/objects there) <br>
+<input type="Radio" name="a" value="5">
+"inventory" <br>
+<input type="Radio" name="a" value="6">
+"magic" (mage-types cast a spell, priest-types pray) <br>
+<input type="Radio" name="a" value="7">
+"search" (search surrounding area) <br>
+<input type="Radio" name="a" value="8">
+"srch mode" (toggle the auto-search mode to search as you move around) <br>
+<input type="Radio" name="a" value="9">
+"rest"<br>
+<input type="Radio" name="a" value="10">
+"dig"<br>
+<input type="Radio" name="a" value="11">
+"force" (try to force open a stuck door; or bash at a monster) <br>
+<input type="Radio" name="a" value="12">
+<i>"change font"</i> [a proposed addition - would you use it <i>here</i>] <br>
+<input type="Radio" name="a" value="13">
+<i>"other"</i> [there's something not listed that you'd like to use <i>here</i>]
+<hr>
+<P>
+<b>Address</b><br>
+<input type="Radio" name="b" value="1">
+"---" (I like to leave it unbound) <br>
+<input type="Radio" name="b" value="2">
+"north", "south", "east", or "west" (move 1 square in that direction) <br>
+<input type="Radio" name="b" value="3">
+"map" (pop up a map that shows most of the level) <br>
+<input type="Radio" name="b" value="4">
+"look" (look in a direction to see names of the monsters/objects there) <br>
+<input type="Radio" name="b" value="5">
+"inventory" <br>
+<input type="Radio" name="b" value="6">
+"magic" (mage-types cast a spell, priest-types pray) <br>
+<input type="Radio" name="b" value="7">
+"search" (search surrounding area) <br>
+<input type="Radio" name="b" value="8">
+"srch mode" (toggle the auto-search mode to search as you move around) <br>
+<input type="Radio" name="b" value="9">
+"rest"<br>
+<input type="Radio" name="b" value="10">
+"dig"<br>
+<input type="Radio" name="b" value="11">
+"force" (try to force open a stuck door; or bash at a monster) <br>
+<input type="Radio" name="b" value="12">
+<i>"change font"</i> [a proposed addition - would you use it <i>here</i>] <br>
+<input type="Radio" name="b" value="13">
+<i>"other"</i> [there's something not listed that you'd like to use <i>here</i>]
+
+<hr>
+<P>
+<b>Up</b><br>
+<input type="Radio" name="c" value="1">
+"---" (I like to leave it unbound) <br>
+<input type="Radio" name="c" value="2">
+"north", "south", "east", or "west" (move 1 square in that direction) <br>
+<input type="Radio" name="c" value="3">
+"map" (pop up a map that shows most of the level) <br>
+<input type="Radio" name="c" value="4">
+"look" (look in a direction to see names of the monsters/objects there) <br>
+<input type="Radio" name="c" value="5">
+"inventory" <br>
+<input type="Radio" name="c" value="6">
+"magic" (mage-types cast a spell, priest-types pray) <br>
+<input type="Radio" name="c" value="7">
+"search" (search surrounding area) <br>
+<input type="Radio" name="c" value="8">
+"srch mode" (toggle the auto-search mode to search as you move around) <br>
+<input type="Radio" name="c" value="9">
+"rest"<br>
+<input type="Radio" name="c" value="10">
+"dig"<br>
+<input type="Radio" name="c" value="11">
+"force" (try to force open a stuck door; or bash at a monster) <br>
+<input type="Radio" name="c" value="12">
+<i>"change font"</i> [a proposed addition - would you use it <i>here</i>] <br>
+<input type="Radio" name="c" value="13">
+<i>"other"</i> [there's something not listed that you'd like to use <i>here</i>]
+
+<hr>
+<P>
+<b>Down</b><br>
+<input type="Radio" name="d" value="1">
+"---" (I like to leave it unbound) <br>
+<input type="Radio" name="d" value="2">
+"north", "south", "east", or "west" (move 1 square in that direction) <br>
+<input type="Radio" name="d" value="3">
+"map" (pop up a map that shows most of the level) <br>
+<input type="Radio" name="d" value="4">
+"look" (look in a direction to see names of the monsters/objects there) <br>
+<input type="Radio" name="d" value="5">
+"inventory" <br>
+<input type="Radio" name="d" value="6">
+"magic" (mage-types cast a spell, priest-types pray) <br>
+<input type="Radio" name="d" value="7">
+"search" (search surrounding area) <br>
+<input type="Radio" name="d" value="8">
+"srch mode" (toggle the auto-search mode to search as you move around) <br>
+<input type="Radio" name="d" value="9">
+"rest"<br>
+<input type="Radio" name="d" value="10">
+"dig"<br>
+<input type="Radio" name="d" value="11">
+"force" (try to force open a stuck door; or bash at a monster) <br>
+<input type="Radio" name="d" value="12">
+<i>"change font"</i> [a proposed addition - would you use it <i>here</i>] <br>
+<input type="Radio" name="d" value="13">
+<i>"other"</i> [there's something not listed that you'd like to use <i>here</i>]
+<hr>
+<P>
+<b>To Do List</b><br>
+<input type="Radio" name="e" value="1">
+"---" (I like to leave it unbound) <br>
+<input type="Radio" name="e" value="2">
+"north", "south", "east", or "west" (move 1 square in that direction) <br>
+<input type="Radio" name="e" value="3">
+"map" (pop up a map that shows most of the level) <br>
+<input type="Radio" name="e" value="4">
+"look" (look in a direction to see names of the monsters/objects there) <br>
+<input type="Radio" name="e" value="5">
+"inventory" <br>
+<input type="Radio" name="e" value="6">
+"magic" (mage-types cast a spell, priest-types pray) <br>
+<input type="Radio" name="e" value="7">
+"search" (search surrounding area) <br>
+<input type="Radio" name="e" value="8">
+"srch mode" (toggle the auto-search mode to search as you move around) <br>
+<input type="Radio" name="e" value="9">
+"rest"<br>
+<input type="Radio" name="e" value="10">
+"dig"<br>
+<input type="Radio" name="e" value="11">
+"force" (try to force open a stuck door; or bash at a monster) <br>
+<input type="Radio" name="e" value="12">
+<i>"change font"</i> [a proposed addition - would you use it <i>here</i>] <br>
+<input type="Radio" name="e" value="13">
+<i>"other"</i> [there's something not listed that you'd like to use <i>here</i>]
+<hr>
+<P>
+<b>Memo Pad</b><br>
+<input type="Radio" name="f" value="1">
+"---" (I like to leave it unbound) <br>
+<input type="Radio" name="f" value="2">
+"north", "south", "east", or "west" (move 1 square in that direction) <br>
+<input type="Radio" name="f" value="3">
+"map" (pop up a map that shows most of the level) <br>
+<input type="Radio" name="f" value="4">
+"look" (look in a direction to see names of the monsters/objects there) <br>
+<input type="Radio" name="f" value="5">
+"inventory" <br>
+<input type="Radio" name="f" value="6">
+"magic" (mage-types cast a spell, priest-types pray) <br>
+<input type="Radio" name="f" value="7">
+"search" (search surrounding area) <br>
+<input type="Radio" name="f" value="8">
+"srch mode" (toggle the auto-search mode to search as you move around) <br>
+<input type="Radio" name="f" value="9">
+"rest"<br>
+<input type="Radio" name="f" value="10">
+"dig"<br>
+<input type="Radio" name="f" value="11">
+"force" (try to force open a stuck door; or bash at a monster) <br>
+<input type="Radio" name="f" value="12">
+<i>"change font"</i> [a proposed addition - would you use it <i>here</i>] <br>
+<input type="Radio" name="f" value="13">
+<i>"other"</i> [there's something not listed that you'd like to use <i>here</i>]
+<hr>
+<P>
+<b>Calculator</b><br>
+<input type="Radio" name="g" value="1">
+"---" (I like to leave it unbound) <br>
+<input type="Radio" name="g" value="2">
+"north", "south", "east", or "west" (move 1 square in that direction) <br>
+<input type="Radio" name="g" value="3">
+"map" (pop up a map that shows most of the level) <br>
+<input type="Radio" name="g" value="4">
+"look" (look in a direction to see names of the monsters/objects there) <br>
+<input type="Radio" name="g" value="5">
+"inventory" <br>
+<input type="Radio" name="g" value="6">
+"magic" (mage-types cast a spell, priest-types pray) <br>
+<input type="Radio" name="g" value="7">
+"search" (search surrounding area) <br>
+<input type="Radio" name="g" value="8">
+"srch mode" (toggle the auto-search mode to search as you move around) <br>
+<input type="Radio" name="g" value="9">
+"rest"<br>
+<input type="Radio" name="g" value="10">
+"dig"<br>
+<input type="Radio" name="g" value="11">
+"force" (try to force open a stuck door; or bash at a monster) <br>
+<input type="Radio" name="g" value="12">
+<i>"change font"</i> [a proposed addition - would you use it <i>here</i>] <br>
+<input type="Radio" name="g" value="13">
+<i>"other"</i> [there's something not listed that you'd like to use <i>here</i>]
+
+<hr>
+<P>
+<b>Find</b><br>
+<input type="Radio" name="h" value="1">
+"---" (I like to leave it unbound) <br>
+<input type="Radio" name="h" value="2">
+"north", "south", "east", or "west" (move 1 square in that direction) <br>
+<input type="Radio" name="h" value="3">
+"map" (pop up a map that shows most of the level) <br>
+<input type="Radio" name="h" value="4">
+"look" (look in a direction to see names of the monsters/objects there) <br>
+<input type="Radio" name="h" value="5">
+"inventory" <br>
+<input type="Radio" name="h" value="6">
+"magic" (mage-types cast a spell, priest-types pray) <br>
+<input type="Radio" name="h" value="7">
+"search" (search surrounding area) <br>
+<input type="Radio" name="h" value="8">
+"srch mode" (toggle the auto-search mode to search as you move around) <br>
+<input type="Radio" name="h" value="9">
+"rest"<br>
+<input type="Radio" name="h" value="10">
+"dig"<br>
+<input type="Radio" name="h" value="11">
+"force" (try to force open a stuck door; or bash at a monster) <br>
+<input type="Radio" name="h" value="12">
+<i>"change font"</i> [a proposed addition - would you use it <i>here</i>] <br>
+<input type="Radio" name="h" value="13">
+<i>"other"</i> [there's something not listed that you'd like to use <i>here</i>]
+
+
+
+<P> If you have some thoughts that are not covered in this survey you can
+send email, or write your idea on the
+<a href="http://roguelike-palm.sourceforge.net/wiki/">WikiWiki</a> (a set of
+web pages that anyone can modify without knowing any html).
+(But submit this survey first - these links are on the next page too.)
+
+<P>
+
+<br>
+<input type=submit value="Submit">
+<input type=reset value="Reset">
+<a href="http://roguelike-palm.sourceforge.net/cgi-bin/vote.pl?name=kbuttons&action=view">
+Result</a>
+
+
+</form>
+
+    <hr>
+    <address><a href="mailto:i0lanthe@@users.sourceforge.net">email</a></address>
+<!-- Created: Wed Aug  2 17:13:41 EDT 2000 -->
+<!-- hhmts start -->
+Last modified: Sun Apr  1 20:25:21 EDT 2001
+<!-- hhmts end -->
+  </body>
+</html>
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

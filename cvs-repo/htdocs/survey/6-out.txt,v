@@ -1,0 +1,70 @@
+head	1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2006.08.08.03.59.52;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@commit everything before massive style change
+@
+text
+@TITLE: My PalmOS version
+&lt;= 2.*
+3.0-3.3
+3.5
+&gt;= 4.*
+TITLE: Game
+iRogue
+iLarn
+kMoria
+most/all
+I am lost
+TITLE: Keyboard
+Yes
+No
+maybe
+TITLE: HandEra 330
+Yes
+No
+maybe
+TITLE: Sony Clie
+Yes
+No
+maybe
+TITLE: Tall dungeon
+Yes
+No
+maybe
+TITLE: Wide dungeon
+Yes
+No
+maybe
+TITLE: Small font
+Yes
+No
+maybe
+TITLE: Jog dial etc
+Yes
+No
+maybe
+TITLE: If I ran the zoo
+hardware
+porting
+debugging
+graduating
+crack
+other
+@

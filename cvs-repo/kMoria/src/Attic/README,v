@@ -1,0 +1,66 @@
+head	1.2;
+access;
+symbols
+	Release-2001_06_16:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2001.07.02.05.09.55;	author i0lanthe;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2001.02.28.06.38.32;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@since I haven't bothered keeping these up to date: less misleading to delete.
+@
+text
+@kMoria is a "port" of Umoria 5.5.2.
+(That is, it is reasonably faithful to Umoria 5.5.2, given that it is
+running on a wildly different platform.)
+
+Umoria 5.5.2 says: Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke.
+(Robert A. Koeneke was the original designer/programmer;
+James E. Wilson was responsible for the UNIX port;
+David Grabiner was responsible for version 5.5.*.
+For full historical credits see comment in main.c.)
+David Grabiner states, in the Umoria 5.5.2 source distribution:
+ You may distribute modified copies of this game.  However, you must clearly
+ indicate the extent and purpose of the changes.  Also, if the changes are
+ extensive, I request that you call your sources something other than
+ `umoria' so that they won't be confused with my version of the game.
+
+There are rather extensive changes in kMoria, mostly in the obvious
+areas (user interface is a total rewrite, no surprise there;
+storage/access of large data; some control flow issues; etc.)
+The purpose of these is to make a game that runs in PalmOS.
+
+Non-OS-related changes:
+
+You can turn off haggling in shops, but you don't get as good a deal.
+(Actually, even this was motivated primarily by user interface
+problems: it's tedious and slow to enter bids without a keyboard.)
+
+Any bug you may encounter is doubtless mine, and not the
+responsibility of earlier authors!
+@
+
+
+1.1
+log
+@extent + purpose of changes
+@
+text
+@@
+

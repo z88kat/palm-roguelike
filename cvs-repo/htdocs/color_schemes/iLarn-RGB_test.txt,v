@@ -1,0 +1,125 @@
+head	1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2006.08.08.03.57.17;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@added iLarn
+@
+text
+@iLarn-RGB
+A_ 66cc99 altar
+B_ cc0033 book
+C_ cc6633 chest
+c_ ffcc00 cookie
+D_ cc6633 door
+E_ 336699  003366 entrance
+F_ 66ccff fountain
+f_ 666666 dead fountain
+H_ 3300cc home
+L_ cc0066 LRS
+M_ 9900ff mirror
+O_ cc6633 open door
+P_ none
+S_ 993399  660066 shop
+T_ 6699cc throne
+t_ 666666 dead throne
+V_ FF0000 volcano
+! 0033ff potion
+? cccc99 scroll
+# 666666 wall
+$ 009933 bank
+% ff0000
+^ ff9966
+& 990033 statue
+* cc9900 gold
+( 99ccff weap
+) 99ccff weap
++ 00cc00 college
+= 999900 shop
+] 99ccff armor
+[ 99ccff armor
+/ 990033 wand
+| ff6699 ring
+< 009933 gem
+{ 996633 belt
+. 66ff66
+A cc0000
+a 9933ff  ff6633
+b 009999
+C cc9933
+c ff9900
+d: no entry
+E 0066ff
+e 00cc00
+F 9900ff
+f 6666cc
+G 66cc99  ff6600
+g 00cc99
+H 009900
+h cc0000
+I no color
+i 99ccff
+J cc6633
+j cc6633
+K 999999
+k 66cc99
+L 336633
+l 999900
+M none
+m none (metamorph)
+N cc9966   too light: ffcc99
+n 009900
+O 669933
+o 993333 (osequip)
+P cc66ff
+p no color (poltergeist)
+Q cc66ff ff3399
+q ff6699  cc9966
+R 993333
+r 999900 (rothe)
+S 009900
+s 99cc00
+T 66cc33
+t cc9966
+U 996633
+u 00ff00
+V ff0000 
+v 6633ff
+W 99cccc
+w 9999cc
+X cccccc
+x 3366ff
+Y has no color
+y cc9900 - should be ffff00 for invert
+Z 669966
+z cc9900 (i'm lazy)
+Dg 00ff00
+Dp cccccc
+Ds 999999
+Dr ff0000
+Db cc9900
+1 ff00ff v
+2 9933ff i
+3 0000ff b
+4 00cc99 g-b
+5 00ff00 g
+6 99cc00 y-g
+7 cccc33 o-y
+8 ff9900 o
+9 ff0000 r
+0 no color@

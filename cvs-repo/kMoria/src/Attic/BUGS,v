@@ -1,0 +1,1884 @@
+head	1.58;
+access;
+symbols
+	Release-2001_06_16:1.57;
+locks; strict;
+comment	@# @;
+
+
+1.58
+date	2001.07.02.05.09.55;	author i0lanthe;	state dead;
+branches;
+next	1.57;
+
+1.57
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.56;
+
+1.56
+date	2001.01.27.00.53.03;	author i0lanthe;	state Exp;
+branches;
+next	1.55;
+
+1.55
+date	2001.01.26.06.49.41;	author i0lanthe;	state Exp;
+branches;
+next	1.54;
+
+1.54
+date	2001.01.24.04.49.42;	author i0lanthe;	state Exp;
+branches;
+next	1.53;
+
+1.53
+date	2001.01.23.17.49.56;	author i0lanthe;	state Exp;
+branches;
+next	1.52;
+
+1.52
+date	2001.01.19.05.24.18;	author i0lanthe;	state Exp;
+branches;
+next	1.51;
+
+1.51
+date	2001.01.12.18.28.28;	author i0lanthe;	state Exp;
+branches;
+next	1.50;
+
+1.50
+date	2001.01.11.06.27.08;	author i0lanthe;	state Exp;
+branches;
+next	1.49;
+
+1.49
+date	2001.01.11.01.46.03;	author i0lanthe;	state Exp;
+branches;
+next	1.48;
+
+1.48
+date	2001.01.11.00.31.57;	author i0lanthe;	state Exp;
+branches;
+next	1.47;
+
+1.47
+date	2001.01.10.23.40.25;	author i0lanthe;	state Exp;
+branches;
+next	1.46;
+
+1.46
+date	2001.01.09.23.07.47;	author i0lanthe;	state Exp;
+branches;
+next	1.45;
+
+1.45
+date	2001.01.09.21.12.01;	author i0lanthe;	state Exp;
+branches;
+next	1.44;
+
+1.44
+date	2001.01.09.17.19.22;	author i0lanthe;	state Exp;
+branches;
+next	1.43;
+
+1.43
+date	2001.01.08.03.20.39;	author i0lanthe;	state Exp;
+branches;
+next	1.42;
+
+1.42
+date	2001.01.08.01.51.39;	author i0lanthe;	state Exp;
+branches;
+next	1.41;
+
+1.41
+date	2001.01.06.18.24.38;	author i0lanthe;	state Exp;
+branches;
+next	1.40;
+
+1.40
+date	2001.01.06.02.32.08;	author i0lanthe;	state Exp;
+branches;
+next	1.39;
+
+1.39
+date	2001.01.05.22.43.25;	author i0lanthe;	state Exp;
+branches;
+next	1.38;
+
+1.38
+date	2001.01.05.20.09.31;	author i0lanthe;	state Exp;
+branches;
+next	1.37;
+
+1.37
+date	2001.01.05.04.12.36;	author i0lanthe;	state Exp;
+branches;
+next	1.36;
+
+1.36
+date	2001.01.03.22.24.31;	author i0lanthe;	state Exp;
+branches;
+next	1.35;
+
+1.35
+date	2001.01.03.18.23.48;	author i0lanthe;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2001.01.01.06.59.10;	author i0lanthe;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2000.12.31.03.57.57;	author i0lanthe;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2000.12.23.04.03.40;	author i0lanthe;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2000.12.21.21.24.43;	author i0lanthe;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2000.12.17.01.32.24;	author i0lanthe;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2000.12.07.03.05.19;	author i0lanthe;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2000.12.07.01.41.58;	author i0lanthe;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2000.12.07.00.12.33;	author i0lanthe;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2000.12.06.23.55.22;	author i0lanthe;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2000.12.06.23.53.14;	author i0lanthe;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2000.11.13.05.58.32;	author i0lanthe;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2000.11.13.05.15.03;	author i0lanthe;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2000.11.12.06.05.31;	author i0lanthe;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2000.11.12.05.36.38;	author i0lanthe;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2000.11.11.18.20.39;	author i0lanthe;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2000.11.09.06.18.42;	author i0lanthe;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2000.11.04.01.46.47;	author i0lanthe;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2000.11.03.05.48.04;	author i0lanthe;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2000.10.28.22.28.54;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2000.10.28.17.03.40;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2000.10.28.02.28.09;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2000.10.28.01.31.07;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2000.10.26.05.49.38;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2000.10.26.04.43.34;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2000.10.26.04.25.25;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2000.10.25.04.29.06;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2000.10.24.03.05.20;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2000.10.21.03.31.07;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2000.10.20.04.45.36;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.10.20.03.38.35;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.10.06.06.32.35;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.03.04.29.42;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.10.01.18.31.37;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.09.30.04.47.22;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.58
+log
+@since I haven't bothered keeping these up to date: less misleading to delete.
+@
+text
+@Bugs
+----
+
+you're not redrawn when you pick something up?
+  seems like you are.  but how about this: move onto it.  resting picks it up!
+  (original: '.' "stay in place" should pick up, but 'R' rest should not)
+
+unfortunately it is sometimes STILL the case that when you start out
+in a new dungeon level it does not draw you at first?  (and when you
+start playing with a saved game)
+
+need run to *hit* a monster if you *start out* next to it
+	but need to STOP if you did not start out next to it - CHECK THIS
+
+inventory/equipment messages ought to appear in the message log...
+
+I still need an initial "you can gain <foo>s" message when char created!
+    FIXED sort of.
+	so, pyflags.new_spells is apparently ==1 by the time you get to
+	calc_spells.  that seems... bad.  and stuff.  So I have set it
+	to 0 in character generation but this may be a symptom of a
+	weirder problem.  like shouldn't it have been initialized 0 in
+	lock.c? (changing this to 0x0 does not help).
+
+Fatal Error wandering around w/ an unarmed unclad elf priest on lev 1
+
+If a Wight drains your life and you had 0 exp already, got soft reset.
+Or maybe this was because of something else undead/invisible foo.  drat.
+	check whether life draining was a spell like mana draining.
+	no, it is in make_attack like corrosion. is a bug there?
+
+** descending stairs needs to clear screen, this doesn't happen if you
+start out in the same panel you were in..
+
+eek! unlight_area doesn't bounds check, fortunately lock.c does
+
+If you ever had all spells listed as a-z there would not be enough
+letters.  It's possible (but unlikely) to observe this in Gain Spells.
+
+Radiation eye caused soft reset
+
+I seem to have broken "Write Memo" - DmWriteCheck failed for a 9th level char.
+
+hallucinated monsters leave occasional turd letters on the screen.
+and I waited 100 turns or so while hallucinating and blind, and when
+my vision returned there were at least 40 turds.
+tried this with a cure-blindness foo which (really minor bug) redraws
+the screen twice, and I got to see two different sets of turds
+(location and character).  maybe it is a 'feature'.
+
+-----------------------
+Unimplemented ... to do
+-----------------------
+
+Need to test winning the game.  Need to implement winning the game.
+
+Test search mode!!! ('#')
+	Well, it seems to work as well as the original (in terms of when
+	it decides to turn itself off).  And I found a secret door.
+// xxx Hey, I need to make "backspace" work too.
+cause right now it just zeroes the count, and "Repeat %d" is not cleared.
+in fact anything that aborts the command count doesn't clear 'Repeat'.
+
+Also, check on keyboard-y goodness.
+
+The top-score list does not reallly exist yet.
+	FIXED
+
+moria3.c: grep for "Exceed your weight limit"
+	FIXED
+form_inv.c:  // else:  may have been thrown out... xxxx need to deal with that
+	DEALT, untested
+
+[When i do make "throw" work, remember to have it call calc_bonuses() at end!]
+
+note that compact_monsters is still commented out.
+
+-----------
+Suggestions
+-----------
+
+Perhaps the <- +> should disable themselves when there's < 1 screen of items!!
+well.  still visible but returns w/o redrawing the screen.  9/29
+
+(Notes:  if ".text" region is full, do not panic;
+move stuff out of the default code section into e.g. SEC_4).
+how about "ld: region datares is full (kMoria section .bss)"?
+	seems like I am on the ragged edge of no room for globals maybe.
+
+Throwing should select the start of the range of throwable weapons.
+	DONE
+
+Stats-draining attacks should make stats bar show stats next turn (duh).
+that whole switch-stats-mode issue seems to be not working now.
+
+---------------------------------------------
+Things to do when I have nothing better to do
+---------------------------------------------
+
+add monster_attacks to lock.c !!!!!!  currently it's in recall.c
+
+some added forms might need (i) information strings
+
+Think about the fact that check_strength might call message(), and
+happens to be called in a store when you've sold something.
+Eh, message can deal, probably.
+
+revise the pyflags.status / need_print_stats / <blah> entirely.
+(fix it so that it knows whether any line needs refreshed, and which line.
+including whether bottom needs it which right now it might ignore.
+[1] for example, when you get mana after your first gain_spell)
+	well, sort of working iirc, but could be better
+
+Optional: make 2-line messages do "-more-" at the END so you can get back
+ to seeing your stats (and know when to run away and heal)
+Optional: make option to put message/stats at TOP of screen (the Study,
+ etc, would still be over first row of dungeon view) - DONE
+
+Check take_a_turn - does {everything that takes time} before it's called
+		    set free_turn_flag to FALSE?
+
+Need to: have gain_spell_helper() use the same sorta take_a_turn() as inv/equ!
+
+Need to test whether paralysis / rest wheel-spinning in dungeon.c works.
+	seems to work.
+
+a general note...
+Summoned monsters take a turn as soon as they get summoned; not sure that
+this is really fair; does the original game do this.  Also,
+I dispelled a mummified troll (maybe) but it killed me at the same turn.
+Check to see if monsters/spells order is working right (I thought it was).
+
+Add more sound where useful.
+
+--------------------------------------------------------------------
+
+--------------------------------
+Status of Testing of magical foo
+--------------------------------
+   1 spell (tele self) and 1 prayer (orb of draining) need to be fixed
+   all potions/mushrooms are handwaved.
+
+SPELLS:
+all ok except for tele self in 2nd book:
+** tried tele self: my '@@' was not redrawn and heard 3 screams muffled by rock;
+   then dire things transpired and the visor reset itself.  not good!!
+	well, I have not reproduced this.
+PRAYERS:
+all ok except for orb of draining in 3rd book Chants:
+  ****  HM, the orb of draining message disappears SILENTLY into the log. ***
+        even though e.g. wand of acid balls had a nice noisy message.
+WANDS: all ok
+STAFFS: all ok
+SCROLLS: all ok
+POTIONS: and mushrooms: all ok (well, dunno about hallucination)
+
+      // for testing
+      pymisc.exp=MAX_EXP;
+      prt_experience();
+
+not tested:
+monster special attacks.  some of these might break.
+Well.. I think it's time to test them....
+
+Here's the plan.  I will make a wiz menu item to soup me up, and
+another one to create a creature.
+see notes in B*/creature_names.txt
+also tested death by starvation - seemed to work ok.
+
+CORROSION:
+---------
+thought I fixed it a few times but I was deluded.
+Ok, this time for sure.  The acid bug is in minus_ac (had an i_ptr->blah--)
+This solves the acid/corrosion bug seen in green naga, green jelly, and traps
+I hope.
+snow crash wandering around in a hallway (maybe an acid trap.) pre-acid-fix..
+
+DON'T FORGET to fix summon_monster in misc1.c to be RANDOM again.
+
+for some reason when I am regenerating hit points, STATS_GOLD_AC instead of quo
+	FIXED.  my bad - mixing hex and decimal constants.
+Note to self:  define fooflag 16, or 0x10; just not 0x16, thanks.
+
+if you bash creatures, it says "it" and if you kill it it is still alive,
+what is up with that. see moria4.c
+oops had   monster = cave_cptr[y + MAX_WIDTH+x];   in py_bash.  s/ + /\*/.
+	FIXED.
+
+
+Test the animations... throw, fire bolt, fire ball, breathe (moria4, spells)
+Need to tweak delay-lengths, test on visor.
+	e.g.	throw_object was too fast at 1/10 sec.  try 1/8.  still fast..
+
+
+I have tested all the spells that a Lich can cast, except paralyse its prey.
+I assume "cause light wounds" will work since cause serious does.
+Also tested Q's "summon a monster" and "summon the undead".
+have tested dragon breath animation (but not its effects if any).
+SNOW CRASH on visor when mage was ?killed? by young blue 'd' 216.
+
+Also, note that relative-move is currently screwed up
+	FIXED
+ok MAKE STAIRS CLEAR SCREEN, dang it, and add sound.  then release.
+	stairs might be FIXED. hard to be sure.
+ok how about a little sound.  just screen taps for now.
+tried adding DEL and BS idea to command-count.  test on visor... yay! works.
+
+is there anything else I should do before a release.  nothing occurs to me.
+@
+
+
+1.57
+log
+@tweaked notice
+@
+text
+@@
+
+
+1.56
+log
+@fixed relative-move bug, might have fixed same-panel-next-level bug,
+some sound added, command-count recognizes 'delete' now,
+app goes to dead-end form for wrong OS or missing database at startup.
+@
+text
+@d133 1
+a133 1
+Add sound where useful.
+d207 2
+@
+
+
+1.55
+log
+@animating throw, fire-bolt, fire-ball, breath attack
+@
+text
+@a26 3
+Froze up when a mage was fighting a (corrosive) green worm mass.  Twice!
+	Ok, I am changing moria2.c and misc3.c to NOT use fn ptrs.
+
+d117 1
+a117 1
+ etc, would still be over first row of dungeon view)
+a134 10
+Add animations where there used to be put_qio.
+	throw_object in moria4.c
+		WORKING (nothing, monster, pile of stuff, off screen
+	fire_bolt in spells.c  (2x) - magic missile
+		WORKING (nothing, monster)
+	fire_ball in spells.c  (2x) - stinking cloud
+		WORKING (wall, monster, off screen)
+	breathe in spells.c - UNTESTED, need breathing-creature
+
+
+d187 20
+a206 1
+	FIXED.@
+
+
+1.54
+log
+@'this time for sure!' 'aw, that trick never works' (corrode/acid bug)
+@
+text
+@d96 2
+a97 1
+Stats-draining attacks should make stats bar show stats next turn (duh)
+d136 11
+a146 1
+Add sound where useful.  Add animations where there used to be put_qio.
+d185 5
+a189 2
+Ok, I seem to have fixed it, but I don't know what was wrong, unless
+it was the function ptrs and I misaligned a compile/install/test trip.
+a196 13
+Hm.... Fatal Error from Green Jelly on visor.. bug is still there?  
+mega SADNESS.
+I have not been able to reproduce it in xcopilot...  wah.
+I will try testing on the Visor itself.
+  First, re-enable the Wizard + Monster menu items.
+  Set Monster to the green jelly.  (62.)  ok.
+  Do a test run to see if the green jelly can frotz us.
+	An acrid smell came from my pack and a dagger was destroyed.
+	Dude.  What is UP with this?
+ok, let's play for a while and see if it still works.
+
+snow crash wandering around in a hallway (maybe a trap?)
+
+d198 3
+a200 17
+what is up with that.
+
+Green Naga caused fatal error on visor.  (spits to shoot acid).
+yep, reproducible on xcopilot.
+	acid_dam(damage, ddesc); // moria2.c
+  if (inven_damage(IT_ACID_AFFECT, 3) > 0) // misc3.c
+      inven_destroy(i); // misc3.c
+
+seems to happen when you are WEARING armor that is acid-affected.
+and it destroys stuff you are WEARING.
+
+drop dagger, armor
+wear cloak (hold food and torches) - yep, error
+wear cl hold food: no error! AND it nuked the cloak, not the food.
+What is up with that?  it's destroying equipment?!
+
+Ok, this time for sure.  The acid bug is in minus_ac (had an i_ptr->blah--)@
+
+
+1.53
+log
+@corrosion bug might be fixed
+last message shown always has at least cur/max hitpoints visible (overlaid)
+inventory now displays weight (optionally)
+added a preference to move status bar to top of screen
+@
+text
+@d198 16
+@
+
+
+1.52
+log
+@sing this corrosion to me (fixed corrode-inventory-item bug)
+@
+text
+@d96 2
+d169 2
+d172 2
+a173 1
+Corrosion:
+d176 22
+@
+
+
+1.51
+log
+@mumble
+@
+text
+@d28 1
+d47 7
+d58 1
+a58 1
+Need to test winning the game.
+d155 1
+a155 2
+POTIONS: and mushrooms:
+I've tested some random ones.  haven't gone right down the list though.
+d160 11
+@
+
+
+1.50
+log
+@rough cut of top-score list
+@
+text
+@d34 1
+a34 1
+descending stairs needs to clear screen, this doesn't happen if you
+d50 2
+d62 1
+d67 1
+d85 3
+d98 1
+d117 1
+a132 1
+   1 staff (darkness) needs testing
+d139 1
+d145 2
+a146 4
+STAFFS:
+ "Darkness" staff seems limited to the panel (half of screen) you are in
+     This is because unlight_area uses SCREEN_WIDTH_REAL.  Need to think about!
+	ok I deleted the _REAL, let's try again sometime.
+d150 3
+a152 8
+
+
+
+
+
+Working on top score list.  I get "DmWriteCheck failed" when I quit
+when the high schore list exists.
+
+@
+
+
+1.49
+log
+@fixed store/inv/equ bug
+@
+text
+@d78 2
+d142 9
+@
+
+
+1.48
+log
+@fixed glyph of warding
+@
+text
+@a45 4
+OOOOOOO!  If you sell something that is in your EQUIPMENT, it is never
+taken out of your equipment (some random thing from inventory gets the
+ax instead?).  So you still have it.  Eeek.
+
+@
+
+
+1.47
+log
+@genocide scroll works
+@
+text
+@a24 6
+Blindness needs to refresh screen initially; otherwise works fine. FIXED
+ (better check Cure Blindness too though; I've only checked on waiting.)
+
+The "study" etc doesn't get cleared until you move off the board.
+	FIXED, need to check whether poisoned, confused, etc. work ok too.
+
+d27 1
+a27 5
+Froze up when a mage was fighting a (mana-draining) eye.
+tmp/kMoriaSaveDB should let you test this, maybe
+Fatal exception when a mage was fighing a (mana-draining) yellow jelly.
+	FIXED the mana draining (there was a  recall.blah |= stuff )
+Froze up when a mage was fighting a (corrosive) green worm mass.  TWICE!
+a41 3
+Gold in status bar is not refreshed when you leave a store.
+	FIXED
+
+a45 3
+Recall isn't printing fractional exp points
+	FIXED
+
+a60 5
+"rest" is not actually implemented yet - it's missing some pieces.
+	FIXED and seems to work
+
+Hardware buttons don't do anything.
+	FIXED
+a111 5
+Boy, the recalc/refresh pair of calls really needs sped up...
+  FIXED (move_char in moria3.c calls a combo version, so not even
+	find_run calls recalc_screen now.  ha!  I hope that nothing is
+	counting on having terminal[][] updated then (last write will win)).
+
+a117 5
+another general note...
+need to clear the msg in equipment/inventory whenever you 'select' a new row.
+	FIXED. note that inv and equip behave differently when you use item..
+	inv selects the next item, equip selects no item.  seems ok to me.
+
+d125 3
+a127 3
+
+SCROLLS:
+rune_prot: *???* // 191
+a132 1
+
+d134 1
+a134 1
+Chants:
+a136 3
+Exorcisms:
+	not tested: heal, holy word.
+
+a137 1
+
+d141 1
+a141 1
+
+@
+
+
+1.46
+log
+@user can rebind hardware buttons
+@
+text
+@d62 4
+d73 1
+a73 1
+ // xxx Hey, I need to make "backspace" work too.
+d78 1
+d158 1
+a158 9
+
+magic_mapping: *needs to clear and redraw screen! (so does un-blindness)*
+rune_prot: *???*
+object_det: ?ok?  (haven't read it on a screen with objects.)
+det_invis: *untested (need clear icky thing to test)*
+genocide: *just a dummy function at present*
+prot_evil: *???*  need 'evil' creature to test.  e.g. mean looking mercenary
+** The scrolls that need further consideration are **
+magic_map, rune_prot, det_invis, genocide, prot_evil
+d161 1
+a161 5
+
+Beginners Magick is ok except for: detect monsters - FIXED, kludgey
+
+Magick 1 is ok except for !curse and teleport:
+** have not tried remove curse.  (worked as scrolls though).
+d163 1
+a163 10
+   then dire things transpired and the visor reset itself.  not good!
+
+Magick 2 is: Create Food - Slow Monster.
+** recharge and identify are sorta missing.
+	FIXED, untested
+
+Magick 3 is: Frost Ball - Genocide.
+** rechargeII is sorta missing.
+	FIXED, untested
+** and genocide is missing
+a165 8
+
+Priest 0, 1, 2, 3 are untried but most call subroutines that have been tested.
+Beginners:
+detect evil - slow poison
+(clw works.  bless seems to work.)
+Words:
+blind creature - resist hot/cold
+(bc works)
+d167 2
+a168 2
+neut poison - turn undead
+(cure crit works)
+d170 1
+a170 1
+prayer - holy word
+d172 1
+a172 9
+WANDS:
+
+Testing:
+Wands start at 269.  recharge is 206.
+Notes on wands:
+  t/d destruct - even destroys secret doors, eh
+  wall building - stops after killing a monster
+  disarming - ? haven't tried on a trap
+  acid balls - ? haven't tried yet
+d175 2
+d178 2
+a179 10
+All staffs ok except as noted: ? are untested
+  ? "Trap Location"	/*295*/
+  ? "Treasure Location"	/*296*/
+  ? "Object Location"	/*297*/
+  ? "Detect Invisible"	/*308*/
+  ? "Remove Curse"	/*312*/
+  ? "Curing"		/*314*/
+  "Darkness" seems limited to the panel (half of screen) you are in ???
+ththththat's all folks
+
+@
+
+
+1.45
+log
+@can access Recall from Look now
+@
+text
+@d75 3
+a77 1
+Hardware buttons.  Also, check on keyboard-y goodness.
+@
+
+
+1.44
+log
+@rearranged menus, fixed search-mode
+@
+text
+@d57 5
+d69 3
+@
+
+
+1.43
+log
+@mumble
+@
+text
+@d29 1
+d37 1
+a37 1
+FROZE UP when a mage was fighting a (corrosive) green worm mass.  TWICE!
+d39 1
+a39 1
+If a Wight drains your life and you had 0 exp already, got SOFT RESET.
+d53 3
+d61 6
+d69 1
+a69 1
+"rest" is not actually implemented yet - it's maybe missing some pieces.
+d72 1
+a76 2
+Search mode!!! ('#')
+
+d133 2
+@
+
+
+1.42
+log
+@added some preferences
+@
+text
+@a3 11
+store: "Buying: 20 Rations of Food", "Buying: 10 Strips of Beef Jerky"
+um, try *1*?  (Note however that when you buy spikes, you buy the whole set.)
+	FIXED 6 dec 2000
+
+are mana points being decreased?  YES but:
+they're increased when you Gain but it's not showing til next turn. [1]
+  It shows up ok for priests, but not for mages!
+  note: gain_spell SHOULD be taking 1 turn iff (successful||aborted).
+	FIXED 6 dec 2000
+  ok but now that I have "Study" it isn't going away after mages learn.
+
+d15 35
+a49 3
+still have this "rooms have half-drawn" bug (left or right half not drawn)
+  culprit is light_room in moria1.c.  disagreed w/generate.c on screen width.
+	FIXED
+d51 1
+a51 1
+inventory/equipment messages ought to appear in the message log...
+d53 1
+d70 1
+d80 1
+a80 4
+redrawing screen is SLOW.  especially, screen is blank for a long time
+while running.  it should at least show where you used to be, say.
+	FIXED
+
+d83 1
+d86 1
+a86 13
+fix the tiny-print stats for 18/xx stats.  it's currently "wrong".
+	FIXED
+
+all forms need (i) information strings!
+    FIXED
+
+I still need an initial "you can gain <foo>s" message when char created!
+    FIXED sort of.
+	so, pyflags.new_spells is apparently ==1 by the time you get to
+	calc_spells.  that seems... bad.  and stuff.  So I have set it
+	to 0 in character generation but this may be a symptom of a
+	weirder problem.  like shouldn't it have been initialized 0 in
+	lock.c? (changing this to 0x0 does not help).
+a96 20
+--------------------------------------------------------------------
+
+Fatal Error wandering around w/ an unarmed unclad elf priest on lev 1
+
+------------
+New bugs 12/21 while cooking stew.  Many many.
+FIXED-->Refill: no lamp" message is 1 turn late (also potion + scroll msgs).
+FIXED--> Level advancement doesn't work!!!
+FIXED--> Blindness needs to refresh screen initially; otherwise works fine
+ (better check Cure Blindness too though; I've only checked on waiting.)
+FIXED-> Hit pointsNOT refreshed in stats as you heal! (if nothing else changes)
+
+Need to: have gain_spell_helper() use the same sorta take_a_turn() as inv/equ!
+The "study" etc doesn't get cleared until you move off the board.
+
+Some of start_of_turn is still commented out.
+	FIXED, seems to work, but compact_monsters is still commented out
+
+Need to test whether paralysis / rest wheel-spinning in dungeon.c works.
+
+d105 4
+a113 4
+A bug in object description desc.c: (StrPrintF and %c hate me).
+  FIXED
+  hm, +/- will be hard to see with limited-width inventory screen.
+
+d125 1
+a125 10
+Froze up when a mage was fighting a (mana-draining) eye.
+tmp/kMoriaSaveDB should let you test this, maybe
+Fatal exception when a mage was fighing a (mana-draining) yellow jelly.
+	FIXED the mana draining (there was a  recall.blah |= stuff )
+FROZE UP when a mage was fighting a (corrosive) green worm mass.  TWICE!
+
+If a Wight drains your life and you had 0 exp already, got SOFT RESET.
+Or maybe this was because of something else undead/invisible foo.  drat.
+	check whether life draining was a spell like mana draining.
+	no, it is in make_attack like corrosion. is a bug there?
+d127 3
+a129 2
+descending stairs needs to clear screen, this doesn't happen if you
+start out in the same panel you were in..
+d131 1
+a131 2
+There is a bug in known2().  Things that call it with (inventory, <i>).
+	FIXED (unsample had a &= where should be &)
+a132 10
+eek! unlight_area doesn't bounds check, fortunately lock.c does
+
+If you ever had all spells listed as a-z there would not be enough
+letters.  It's possible (but unlikely) to observe this in Gain Spells.
+
+wearing a cursed object crashed
+	FIXED
+
+-----------------
+Testing scrolls:
+a140 2
+-----------------
+spells/prayers:
+d142 1
+a142 2
+learning spells: need to clear the msg fully before printing new msg
+	FIXED
+d160 2
+d175 1
+a175 1
+----
+d184 4
+a187 1
+All staffs ok except as noted:
+a196 2
+
+Gold in status bar is not refreshed when you leave a store.
+@
+
+
+1.41
+log
+@fixed ring-wearing
+@
+text
+@d35 2
+a41 2
+"throw" in inventory sets a global to DIR_THROW which nothing uses.
+this is an artifact of me changing the directional menu commands.  broken.
+a91 1
+
+a100 1
+Scrolls don't do anything yet, ditto prayers/spells I suppose.
+a146 6
+A note - Can you die in the gain_spell form?  (Should gaining N spells
+take N turns? - currently it takes 1 turn to enter the form.. *sigh* bad.)
+
+I put on two rings and got fatal error
+Bus error: wrote a long to database RAM address 0x1005efc6
+
+a152 5
+There is some global/static in the haggling that's getting set wackily
+so that the store rejects all offers, and it is cleared if you exit
+kMoria and return with the same character.  thrown_out got me thrown
+out properly though.
+
+a160 3
+When you wear a 3rd ring, things are Not Quite Right ("was wearing" <a>)
+
+
+d191 1
+a191 1
+** and genocide
+a205 1
+
+d208 1
+a208 7
+Added aim/zap, haven't tested with actually charged wands yet.
+should "the <foo> has no charges left" take a turn?.. orig code says Yes.
+Also added scribe object (which can't be invoked yet), identify, recharge.
+Identify gets a fatal exception when you tap Ok:
+ Bus error: wrote a byte to database RAM address 0x1005eb9d
+(probably this is in something it calls that hasn't been tested yet)
+
+d226 1
+a226 7
+Gold is not refreshed when you leave a store.
+The haggle bug is when you buys omething cheap after something expensive
+
+
+
+I am testing "enchanted()" detection in dungeon.c
+It seems to work.@
+
+
+1.40
+log
+@odds and ends
+@
+text
+@d106 1
+a106 1
+	mostly FIXED, untested
+d108 1
+a108 7
+MainForm should not be accepting events for
+  pyflags.paralysis >= 1   or pyflags.rest != 0    or death
+so, basically, paralysis and rest aren't doing diddly squat yet.
+(what SHOULD i be doing given rearchitecture as event model?
+have the 'start turn' spin wheels until the counter ticks down?
+   if (paralysis && !death) {  end_of_turn; goto start_of_start_of_turn; }
+perhaps)
+d171 6
+d252 4
+@
+
+
+1.39
+log
+@added 'inscribe', rearranged menus
+@
+text
+@d46 2
+d104 1
+d106 9
+d121 1
+a121 1
+Check take_a_turn - does everything that takes time before it's called
+d247 5
+@
+
+
+1.38
+log
+@bug fixes, 'drop all?' for multiple items
+@
+text
+@d17 1
+d30 1
+a30 2
+fixed inventory/equipment so that actions take time.
+however, messages are not real happy there.  they should really be logged.
+a234 1
+
+@
+
+
+1.37
+log
+@wands, staffs mostly tested, recharge works, throw works
+@
+text
+@a148 1
+
+d152 13
+a166 1
+identify: *just a dummy function at present*
+a170 1
+recharge_item: *just a dummy function at present* (ok if no wand/staves in inv)
+a171 1
+darkness: ok (eek! unlight_area doesn't bounds check, fortunately lock.c does)
+d174 1
+a174 1
+identify, magic_map, rune_prot, det_invis, recharge, genocide, prot_evil
+a177 8
+If you ever had all spells listed as a-z there would not be enough
+letters.  Abnormal users may observe this in Gain Spells; I doubt it.
+
+There is some global/static in the haggling that's getting set wackily
+so that the store rejects all offers, and it is cleared if you exit
+kMoria and return with the same character.  thrown_out got me thrown
+out properly though.
+
+d179 1
+a179 1
+	FIXED, untested
+d190 1
+d193 3
+a195 1
+** rechargeII and genocide are sorta missing.
+a219 1
+Tried scroll of recharge on wand - worked ok. sometimes destroys wand. check.
+d221 5
+a225 5
+All wands ok except as noted:
+t/d destruct - ok (even destroys secret doors, eh)
+wall building - ok (stops after killing a monster)
+disarming - ? haven't tried on a trap
+a balls -    exploded
+d227 9
+a235 8
+? "Trap Location"	/*295*/
+? "Treasure Location"	/*296*/
+? "Object Location"	/*297*/
+? "Detect Invisible"	/*308*/
+? "Remove Curse"	/*312*/
+? "Curing"		/*314*/
+"Darkness" seems limited to the panel (half of screen) you are in ???
+ththththat's all folks@
+
+
+1.36
+log
+@throw works
+@
+text
+@d146 7
+d156 1
+a156 1
+magic_mapping: *needs to clear and redraw screen! (like blindness)*
+d207 25
+@
+
+
+1.35
+log
+@maybe bug fixes
+@
+text
+@d129 2
+a130 3
+
+If a Wight drains your life and you had 0 exp already, SOFT RESET.
+Or maybe this was because of something else undead/invisible foo.  drat.
+d138 4
+a141 2
+A note - Can you die in the gain_spell form?  (Does gaining N spells
+take N turns - then you can.)
+d143 2
+a156 1
+create_food:  *Hey!! This created a SCROLL??*
+d158 1
+a158 1
+identify, magic_map, rune_prot, det_invis, recharge, genocide, prot_evil, food.
+a180 1
+** create food has known problems.
+@
+
+
+1.34
+log
+@continued work on spells
+@
+text
+@a144 1
++hit: ok  +dam: ok  +ac: ok
+a145 2
+remove_curse: ok  light: ok  summon_monster: ok  phase_door: ok
+teleport: ok  teleport_level: ok  monster_confusion: ok
+d147 1
+a147 1
+sleep_monster: ok  rune_prot: *???*  treasure_det: ok
+a148 1
+trap_det: ok  stair_loc: ok  mass_gen: ok
+a149 1
+agg_mon: ok  trap_crea: ok  trap_dest: ok  door_crea: ok
+d153 1
+a153 1
+prot_evil: *???*  need 'evil' creature to test.
+a154 4
+disp_undead, enchant_weap, curse_weap, enchant_arm, curse_arm: ok
+sum_undead: ok  blessing, holy_chant, holy_prayer: bless() is ok
+word_of_recall: hm, this seems to work, at least to return to town.
+destruction: well, it did something all right, and pretty destructively too.
+d158 1
+a158 7
+spells:
+3, 4, 6, 10, 13, 19, 30 worked as scrolls.
+The rest are either not ready yet (being directional or equivalent to a
+non-working scroll) or are not yet inspected/tested (2, 5, 12, 14, 22, 28).
+I made directional foo work but have not tested any additional spells.
+Except magic missile which claims to work.
+prayers:
+d161 1
+a161 2
+letters.  But this should never happen (unless some twit somehow goes
+up a billion levels and then uses Gain Spells for the first time).
+d165 2
+a166 2
+kMoria and return with the same character.
+(maybe thrown_out isn't throwing you out?)
+d168 2
+d171 1
+a171 11
+I have added a "gain exp" function temporarily so that I can test heap
+big spells and stuff.
+
+learning spells: clear the 'you seem to be missing a book' msg fully
+
+Beginners Magick is ok except for:
+  ** what is detect monsters s'posed to do?
+	it should show all monsters (e.g. all 'p' even those behind buildings)
+	and print "You sense the presence of monsters! -more-" and when you
+	hit a key to fulfil the -more-, the screen goes back to normal.
+    FIXED, though it is not a pretty sight (spell.c + display.c + last_command)
+d188 1
+a188 5
+(what's det evil supposed to do?) (clw works.  bless seems to work.)
+	det evil should make a mean-looking mercenary 'p' show up even
+        if it's behind a building.  then it should print "you sense the
+	presence of evil -more-".  after more, it should go back to normal.
+     this ought to be FIXED now since it uses the same foo as detect monsters.
+@
+
+
+1.33
+log
+@scrolls enabled, spells direction selector added
+@
+text
+@d133 5
+a137 1
+FROZE UP when a mage was fighting a mana-draining eye.
+d178 48
+@
+
+
+1.32
+log
+@fixed some bugs: messages from actions that make you exit from
+inventory/equipment should now occur on time (instead of the following
+turn); level advancement works; blindness and cure blindness both work
+on time.  speeded up the redraw-whole-screen thing (now have a recalc,
+refresh, and faster recalc_refresh combo.  code needs cleaning up now..)
+@
+text
+@a39 3
+death, scores, etc.
+Note that you can die while in inventory/equipment.  D'oh.
+
+d57 1
+d64 1
+d67 1
+a67 1
+    DONE
+d102 1
+d113 62
+a174 3
+FIXED (move_char in moria3.c calls a combo version, so not even
+find_run calls recalc_screen now.  ha!  I hope that nothing is
+counting on having terminal[][] updated then (last write wins an'at)).
+@
+
+
+1.31
+log
+@Death - now you die and go to a tombstone page and can print Character Record to a memo
+@
+text
+@d90 26
+@
+
+
+1.30
+log
+@test
+@
+text
+@d13 1
+d88 2
+@
+
+
+1.29
+log
+@added 'info' help strings to most modal forms
+@
+text
+@d84 1
+@
+
+
+1.28
+log
+@fixed rooms-half-drawn (horizontally) problem
+@
+text
+@d52 1
+a52 1
+ok.  still visible but returns w/o redrawing.  9/29
+d57 2
+a58 1
+redrawing screen is SLOW.
+d67 1
+@
+
+
+1.27
+log
+@fixed Gain Spells so that mages' mana display is updated afterward
+@
+text
+@d15 1
+d25 2
+d45 2
+@
+
+
+1.26
+log
+@(kMoria.prc is not a source file)
+@
+text
+@d10 3
+a12 2
+	It shows up ok for priests, but not for mages!
+	so, where do I fix this.
+d26 1
+a26 1
+however, messages are not real happy there.  maybe they should be logged.
+@
+
+
+1.25
+log
+@fixed in haggling: name-of-item bug (must get the singular item)
+@
+text
+@d10 2
+a11 1
+	it shows up ok for priests, but not for mages!
+@
+
+
+1.24
+log
+@'you can gain spells' message in generation
+@
+text
+@d6 1
+d9 2
+a10 1
+they're increased when you Gain but it's not showing til next turn. ohwell.
+d15 2
+a16 1
+in a new dungeon level it does not draw you at first?
+a24 2
+also, the displayed AC is not being updated (if visible, not updated, if
+   not visible, it is not made visible).  sadness.
+d74 1
+a74 1
+for example, when you get mana after your first gain_spell)
+@
+
+
+1.23
+log
+@made inventory/equip actions take time (buggy); made AC display update
+@
+text
+@d60 6
+d71 3
+a73 2
+(fix it so that it knows when any line needs refreshed, and which line.
+including whether bottom needs it.)
+@
+
+
+1.22
+log
+@fixed recall-monster-attack bug
+@
+text
+@d1 2
+a2 2
+Bugs in store:
+-------------
+d4 2
+a5 16
+You can attempt to buy a "..." item and this is not caught
+(the description shows up as "error in objdes()" or something)
+This is not a problem for the sell command of course.
+Ok, I have fixed that.  Tested out ok.  9/29
+
+Hm, seems like scrolling is not working yet.
+Ok, I have fixed that.  Tested out ok.  9/29
+
+When you buy something, the store's inventory display does not update.
+Ok, sort of fixed.  There's still a bug.  When the last item moves up,
+things get screwy.  I will fix this some other day.
+	-fixed (9/11)
+
+"Buying: 20 Rations of Food"
+"Buying: 10 Strips of Beef Jerky"
+um, try *1*?
+d7 2
+a8 2
+Suggestions for store:
+---------------------
+d10 1
+a10 4
+Perhaps the <- +> should disable themselves when there's < 1 screen of items!!
+ok.  still visible but returns w/o redrawing.  9/29
+Perhaps there is room for a page number btwn <- and +>.
+ok, done.  9/29
+d12 2
+a13 3
+Incomplete implementation:
+-------------------------
+(Selling basically works now)
+d15 2
+d18 6
+a23 2
+(Notes:  if ".text" region is full, do not panic;
+move stuff out of the default code section into e.g. SEC_4).
+d25 2
+d28 1
+a28 3
+Things to do when I have nothing better to do:
+------------
+add monster_attacks to lock.c !!!!!!  currently it's in recall.c
+d30 2
+a31 1
+fix the tiny-print stats for 18/xx stats. currentyl fsked.
+d33 2
+a34 1
+all forms need (i) information strings!
+d36 3
+a38 1
+"quit" doesn't work
+d40 2
+a41 3
+magic.c: cast_helper does not get 'dir' for spells that need it!!
+         same for prayer.c and pray_helper
+moria4.c: look_see needs frobbing also.
+d43 2
+a44 1
+command count.
+d46 2
+a47 2
+--------------------------------------------------------------------
+I still need an initial "you can gain <foo>s" message when char created!
+d49 1
+a49 2
+are mana points being decreased?  YES but:
+they're increased when you Gain but it's not showing til next turn. ohwell.
+d51 3
+a53 1
+you're not redrawn when you pick something up?
+d55 1
+a55 2
+unfortunately it is sometimes STILL the case that when you start out
+in a new dungeon level it does not draw you at first?
+d57 1
+a57 5
+Looks like the AC is not changing when I wear armor
+need run to *hit* a monster if you *start out* next to it
+	but need to STOP if you did not start out next to it - CHECK THIS
+redrawing screen is SLOW.
+"rest" is not actually implemented yet - it's maybe missing some pieces.
+d59 1
+a59 2
+If you 'whatsit' an INVISIBLE MONSTER you get some random monster recall
+(e.g. kobold).  This is bad.  It should say "that is floor" or something!
+d61 2
+a62 1
+you (@@) are not drawn when you leave and return to the game. until you move.
+d64 3
+a66 1
+still have this "rooms have half-drawn" bug (left or right half not drawn)
+d68 1
+a68 2
+Unimplemented things I noticed while fixing other bugs:
+	moria3.c: grep for "Exceed your weight limit"@
+
+
+1.21
+log
+@fixed minor bugs (whatsit invisible, pickup message)
+@
+text
+@d77 3
+@
+
+
+1.20
+log
+@fixed a store bug
+@
+text
+@d15 1
+@
+
+
+1.19
+log
+@added scrambling of magic-item names (except scrolls), only partly tested
+@
+text
+@a58 8
+oh, by the way, you don't need a light source in dungeons and all is 'known'!
+did I disable something or what?
+(interesting you don't run in 'dark' corridors.)
+
+running: leaves a @@ drawn at the location where you started running.
+	fixed: initialize find_prself to true. (bug in sub3_move_light?)
+runfighting doesn't work properly I think.
+	actually I think this might be a feature.  "oops"/ow
+a59 1
+cool, opening doors works (and closing and off-balance branch of forcing)
+a63 5
+sometimes it locks up, with no error given in simulator or xterm,
+after killing e.g. battle-scarred veteran monster which leaves an object.
+could be out of memory or who knows what.
+it did this when I walked on a potoin or scroll or something; maybe name fscked
+
+d73 1
+a73 3
+Oh yeah - scrolls and potions and such have no allocated name space.
+Thus the game tends to crash and stuff when you encounter them.  Oops.
+Need to get a round tuit.
+d75 1
+a75 1
+you (@@) are not drawn when you leave and return to the game. until you move.
+@
+
+
+1.18
+log
+@command count sorta works
+@
+text
+@d80 1
+d82 10
+a91 1
+"rest" is not actually implemented yet - it's maybe missing some pieces.@
+
+
+1.17
+log
+@semi-fixed some message/stats untidiness
+@
+text
+@d70 2
+a71 4
+ARGH - 'you' are NOT DRAWN if you have a light source (unless in town).
+
+unfortunately it is STILL the case that when you start out in a new
+dungeon level it does not draw the RIGHT panel until you move.  (grr)
+d78 1
+a78 2
+Looks like the AC is not chaning when I wear armor
+reallly need command count, and maybe a "run" dig.
+d81 1
+@
+
+
+1.16
+log
+@just another random checkpoint
+@
+text
+@d78 1
+d80 4
+@
+
+
+1.15
+log
+@ha!  panel redrawing works.  rock on
+@
+text
+@d51 1
+a51 3
+so, remind me.  "contributors to your monster memory" is all past
+characters you've played, right?  so it's ok not to clear it.
+this is a persistent part of a SaveDB yeah?  My own memory sucks...
+a53 5
+Oct. 18
+Ok, what in the heck was I working on a mere week ago?
+Spell casting IIRC.
+I have 'Recall' bound to testing shops forms.
+There is spell casting, praying, and gaining on the commands menu.
+a55 1
+(is there a message after the praying? yes - and it's not appearing, rats)
+a57 1
+Basically I should revise messages to be just like iLarn.  this is a "TODO".
+d59 3
+a61 5
+
+
+oh, by the way, don't need a light source in dungeons and all is 'known'.
+did I disable something or what.
+* combat messages don't appear - need message_log & --more-- fu anyway.
+d64 3
+a66 1
+fighting doesn't work properly I think.
+a67 1
+you don't run in corridors???
+d69 9
+@
+
+
+1.14
+log
+@ok Recall working for town monsters, may still have bugs for dungeon critters
+@
+text
+@a69 10
+
+Working on dungeon.c .... Try compiling it, ha ha ha
+
+* there's a fatal error in end_of_turn or start_of_turn?
+	I think whatever makes creatures move.
+** I am changing SCREEN_WIDTH from 66 to 32 (and max from 198 to 192).
+*** I am trying to get the panel foo working, like so it at least
+	starts in the same town panel you are in.  no dice so far.
+Wow, so that sort of works now (panels are still really fscked though,
+as is evident if you try to walk around in the dungeon.  strobe baby)
+a71 1
+* I've fixed fatal errors in creature.c - there may be more though.
+d74 5
+a78 9
+Someone is messed up...
+misc4.c check_view (recalc_screen)
+moria3.c move_char (recalc_screen)
+display.c get_panel
+* when you should be moving half a screen over, after the first step
+  some totally panel is shown, and is drawn TWICE in fact,
+  then after the second step the correct panel is drawn.
+  * 1. this is strange
+  * 2. there are two problems, the drwaing twice and the wrong paneling.
+@
+
+
+1.13
+log
+@'click to identify' Recall is sorta working, sorta buggy
+@
+text
+@d51 4
+@
+
+
+1.12
+log
+@eh, well, you can move around (and so can monsters) but panel/redraw is buggy
+@
+text
+@d47 4
+d89 2
+a90 1
+  * 2. there are two problems, the drwaing twice and the wrong paneling.@
+
+
+1.11
+log
+@squash some creatures bugs
+@
+text
+@d75 11
+a85 1
+* combat messages don't appear - need message_log & --more-- fu anyway.@
+
+
+1.10
+log
+@trying to fix the panel thing, still a problem.  but you can see yourself.
+@
+text
+@a71 2
+But now the monsters know they're in the same panel as me and try to move,
+and I tickle the fatal error.  BAD BAD BAD
+d73 3
+a75 1
+did I disable something or what.@
+
+
+1.9
+log
+@working on dungeon.c / command loop foo
+@
+text
+@d66 10
+a75 2
+* the screen is not positioned to show you initially
+	(I must have disabled the stuff that used to do it.)@
+
+
+1.8
+log
+@working on main command input
+@
+text
+@d16 4
+d62 1
+d65 3
+a67 3
+"Buying: 20 Rations of Food"
+"Buying: 10 Strips of Beef Jerky"
+um, try *1*?@
+
+
+1.7
+log
+@continuing slow accretion (scrolls.c, du partial dungeon.c)
+@
+text
+@d57 6
+@
+
+
+1.6
+log
+@spellbooks / holy books can be browsed
+@
+text
+@d46 1
+a46 1
+Spell casting type forms IIRC.
+a47 1
+
+a48 2
+That is how I test those.
+Priest and Mage types can Gain and Cast now.  Also you can Browse in inventory.
+@
+
+
+1.5
+log
+@mages can gain spells now
+(note: there is a tiny memory leak in learn_the_spell, form_spell.c)
+@
+text
+@d51 1
+a51 2
+Priest and Mage types can Gain and Cast now.
+The cast/pray form (same thing) works - pick a book then a spell/prayer
+@
+
+
+1.4
+log
+@cleaned up creature.c and stuff
+@
+text
+@d36 25
+@
+
+
+1.3
+log
+@store: selling implemented
+@
+text
+@d32 4
+@
+
+
+1.2
+log
+@Haggling in the purchase direction is mostly working (don't try sell though)
+@
+text
+@d26 1
+a26 2
+Haggling (duh)
+It is too late at night for me to work on this, but I will do it "soon".
+d29 1
+a29 3
+
+What I'm working on - Haggling
+I got it to compile and link (if ".text" region is full, do not panic;
+a31 3
+Just realized I have no way to denote a fixed price item (e.g. Biscuit).
+Suggest I do this by reverse-videoing the listed price.
+damn, how clever I am.. I'm already doing that.
+@
+
+
+1.1
+log
+@added BUGS notes for those short attention span hacking nights
+@
+text
+@d12 4
+d29 9
+@
+

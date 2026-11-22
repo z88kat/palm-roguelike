@@ -1,0 +1,298 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.05.31.00.22.57;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.57;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@*** CONGRATULATIONS *** You have won the game.
+A black gas surrounds you!
+A creature digs itself out from the rock!
+A gas of scintillating colors surrounds you!
+A line of blue shimmering light appears.
+A puff of yellow gas surrounds you!
+A pungent green gas surrounds you!
+A small dart barely misses you.
+A small dart hits you!
+A small dart saps your health!
+A small dart weakens you!
+A small needle has pricked you!
+A stinging red gas swirls about you.
+A strange red gas surrounds you.
+A strange white mist surrounds you!
+A veil of darkness surrounds you.
+After a long bargaining session, you agree upon the price.
+An arrow barely misses you.
+An arrow hits you.
+Aren't you brilliant!
+But you have no Holy Book!
+But you have no spell-book!
+But you have no spikes.
+But your mind quickly clears.
+Click!
+Darkness surrounds you.
+Energy drains from your pack!
+Gee, ain't you cute!
+Hey!  This is good stuff!  * Hick! *
+Hmmm, it seems to be cursed.
+Hmmm, there was something under this rock.
+How dare you!  I will not buy that!
+I am sorry, but I have not the money to afford such a fine item.
+I do not buy such items.
+I do not see anything to disarm there.
+I do not see anything you can close there.
+I do not see anything you can open there.
+I don't see a trap.
+I don't see how you can use that.
+I have not the room here to keep it.
+It appears to be stuck.
+It cringes from the light!
+It got at your rations!
+It shrivels away in the light!
+It was a *GREAT* hit! (x5 damage)
+It was a good hit! (x2 damage)
+It was a superb hit! (x4 damage)
+It was an excellent hit! (x3 damage)
+Lightning strikes you!
+Oops! It feels deathly cold!
+Pray hard enough and your prayers may be answered.
+Something is in your way!
+Something shatters inside your pack!
+The air about you becomes charged.
+The chest holds firm.
+The chest is trapped!
+The chest was not trapped.
+The door appears to be broken.
+The door crashes open!
+The door holds firm.
+The doors are locked.
+The effect of the poison has been reduced.
+The enchantment fails.
+The end of the staff bursts into a blue shimmering light.
+The gods may think you presumptuous for this! Confirm?
+The heroism wears off.
+The lock breaks open!
+The potion makes you vomit!
+The prayer has expired.
+The rune of protection is broken!
+The staff glows blue for a moment..
+The staff has no charges left.
+The super heroism wears off.
+The veil of darkness lifts.
+The wall turns into mud.
+The wand has no charges left.
+There are several screams of agony!
+There are sparks coming from your pack!
+There is a bright flash of light.
+There is a closed door blocking your way.
+There is a high pitched humming noise.
+There is a puff of smoke!
+There is a scream of agony!
+There is a searing blast of light!
+There is a static feeling in the air.
+There is a sudden explosion!
+There is already an object under you.
+There is an acrid smell coming from your pack!
+There is rubble blocking your way.
+There is smoke coming from your pack!
+This is a Recharge-Item scroll.
+This is a genocide scroll.
+This is a mass genocide scroll.
+This is an identify scroll.
+This seems to be permanent rock.
+Tunnel through what?  Empty air?!?
+Wow!  What bulging muscles!
+You are bloated from overeating.
+You are confused.
+You are covered by a veil of darkness.
+You are covered in acid!
+You are covered with frost!
+You are enveloped in flames!
+You are getting hungry.
+You are getting weak from hunger.
+You are hit by falling rock.
+You are off-balance.
+You are paralyzed.
+You are splashed with acid!
+You are suddenly afraid!
+You are surrounded by a white light.
+You are too afraid!
+You are too confused to pick the lock.
+You are too confused to read a scroll.
+You are too confused.
+You are unaffected.
+You bash at empty space.
+You bash it, but nothing interesting happens.
+You become dizzy for a moment,  it passes.
+You become very dizzy.
+You can't cast spells!
+You can't see to read the scroll.
+You can't see to read your prayer!
+You can't see to read your spell book!
+You can't tunnel through that.
+You choke and pass out.
+You dig in the rubble.
+You dig with your hands, making no progress.
+You do not understand the language.
+You don't know any in that book.
+You enter a maze of down staircases.
+You enter a maze of up staircases.
+You failed to disarm the chest.
+You failed to disarm the trap.
+You failed to get the spell off!
+You failed to pick the lock.
+You failed to use the staff properly.
+You failed to use the wand properly.
+You faint from fatigue!
+You faint from the effort!
+You faint from the lack of food.
+You fall asleep.
+You feel a little better.
+You feel as if someone is watching over you.
+You feel better.
+You feel bolder now.
+You feel clumsy for a moment, but it passes.
+You feel confused.
+You feel drugged.
+You feel less clumsy.
+You feel less confused now.
+You feel less thirsty.
+You feel like a HERO!
+You feel like a SUPER HERO!
+You feel more clumsy.
+You feel more dextrous.
+You feel more experienced.
+You feel more limber!
+You feel much better.
+You feel naive for a moment,  it passes.
+You feel righteous!
+You feel sick for a moment,  it passes.
+You feel something roll beneath your feet.
+You feel sore for a moment,  it passes.
+You feel terrified!
+You feel tingly for a moment.
+You feel very good.
+You feel very naive.
+You feel very sick.
+You feel very sore.
+You feel warm all over.
+You feel weakened!
+You feel weaker for a moment, but it passes.
+You feel weaker.
+You feel your health returning!
+You feel your life draining away!
+You feel your life energies returning.
+You feel your looks returning.
+You feel your memories fade.
+You feel your strength returning.
+You feel your wisdom returning.
+You feel yourself moving faster.
+You feel yourself moving slower.
+You feel yourself slow down.
+You feel yourself speed up.
+You feel yourself yanked downwards!
+You feel yourself yanked upwards!
+You fell into a covered pit.
+You fell into a pit!
+You fell through a trap door!
+You gently float down.
+You grab hold of your backpack!
+You have damaged your health!
+You have destroyed the chest.
+You have disarmed the chest.
+You have disarmed the trap.
+You have discovered a trap on the chest!
+You have finished the tunnel.
+You have found a secret door.
+You have found something!
+You have have a warm feeling.
+You have no light to read by.
+You have nothing to recharge.
+You have picked the lock.
+You have removed the rubble.
+You have trouble thinking clearly.
+You have trouble wielding such a heavy weapon.
+You hear a door burst open!
+You hear a scream muffled by rock!
+You hear a sudden stirring in the distance!
+You hit a teleport trap!
+You jam the door with a spike.
+You lost your concentration!
+You no longer feel safe from cold.
+You no longer feel safe from evil.
+You no longer feel safe from flame.
+You pass through a one-way door.
+You quickly protect your money pouch!
+You resist the effects of the spell.
+You resist the effects!
+You seem to be missing a book.
+You sense the presence of evil!
+You sense the presence of invisible creatures!
+You sense the presence of monsters!
+You set a trap off!
+You set the trap off!
+You smash into the door!
+You stop running to catch your breath.
+You suddenly have a profound thought!
+You summon your limited strength to cast this one!  Confirm?
+You tunnel into the granite wall.
+You tunnel into the magma intrusion.
+You tunnel into the quartz vein.
+You'll have to drop something first.
+Your backpack feels lighter.
+Your body resists the effects of the disease.
+Your eyes begin to sting.
+Your eyes begin to tingle.
+Your feel your head clear.
+Your hands begin to glow.
+Your hands stop glowing.
+Your head spins a moment.
+Your health is damaged!
+Your lamp overflows, spilling oil on the ground.
+Your light dims.
+Your light has gone out!
+Your light is growing faint.
+Your pack is so heavy that it slows you down.
+Your purse feels lighter.
+Your skin itches briefly.
+Your skin returns to normal.
+Your skin starts to itch.
+Your skin stops itching.
+Your skin turns into steel!
+Your wisdom is drained.
+Your wisdom is sustained.
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

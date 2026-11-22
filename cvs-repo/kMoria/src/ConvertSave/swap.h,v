@@ -1,0 +1,48 @@
+head	1.1;
+access;
+symbols
+	Release-2002_03_29:1.1
+	Release-2002_01_12:1.1
+	Release-2002_01_02:1.1
+	Release-2002_01_01:1.1
+	Release-2001_12_19:1.1
+	Release-2001_08_04:1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.07.04.20.01.57;	author uid28407;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@two-way conversion - seems to work ok on linux
+@
+text
+@typedef unsigned char byte;
+typedef unsigned long DWORD;
+typedef unsigned short WORD;
+
+int SwapChoose();
+WORD (*SwapWord)(WORD r);
+DWORD (*SwapLong)(DWORD r);
+
+void out_word(FILE* fin, short w);
+void out_long(FILE* fin, long d);
+short in_word(FILE* fin);
+long in_long(FILE* fin);
+
+
+
+
+
+
+
+@

@@ -1,0 +1,43 @@
+head	1.1;
+access;
+symbols
+	pre-internationalization_20040113:1.1
+	Release-2002_05_10-on-Handera-branch:1.1
+	Release-2001_07_01-on-Handera-branch:1.1
+	Release-2001_04_26-Handera-branch:1.1.0.2
+	Release-2001_04_26:1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.02.24.03.25.02;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@compiles with sdk3.5; user-configurable color
+@
+text
+@// Palm changed the name of header files for SDK 3.5 ....
+#ifndef I_AM_COLOR
+
+#include <Pilot.h>
+// up,down are in Core/UI/Window.h
+#define winUp up
+#define winDown down
+
+#else /* I_AM_COLOR */
+
+#include <PalmOS.h>
+#include <PalmCompatibility.h>
+// winUp,winDown are in Core/System/Window.h and replace up,down
+
+#endif /* I_AM_COLOR */
+@

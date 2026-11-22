@@ -1,0 +1,90 @@
+head	1.1;
+access;
+symbols
+	Release-2002_03_29:1.1
+	Release-2002_01_12:1.1
+	Release-2002_01_02:1.1
+	Release-2002_01_01:1.1
+	Release-2001_12_19:1.1
+	Release-2001_08_04:1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.07.04.20.01.57;	author uid28407;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@two-way conversion - seems to work ok on linux
+@
+text
+@// this file is public domain
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+#include "defs.h"
+#include "xor.h"
+#include "swap.h"
+
+extern rec_entry_descr *reds;
+extern int TotalRecords;
+
+long offsets[MYRECS];
+
+void sort_offsets(FILE* fin)
+{
+  int i, j;
+  for (j = 0 ; j < MYRECS ; j++)
+    offsets[j] = NOREC;
+
+  for (i = 0 ; i < TotalRecords ; i++) {
+    switch(reds[i].unique_id) {
+    case REC_CAVE_CPTR:    offsets[O_CPTR] = reds[i].offset; break;
+    case REC_CAVE_TPTR:    offsets[O_TPTR] = reds[i].offset; break;
+    case REC_CAVE_FVAL:    offsets[O_FVAL] = reds[i].offset; break;
+    case REC_CAVE_LIGHT:   offsets[O_LIGHT] = reds[i].offset; break;
+    case REC_TLIST:        offsets[O_TLIST] = reds[i].offset; break;
+    case REC_MLIST:        offsets[O_MLIST] = reds[i].offset; break;
+    case REC_INVENTORY:    offsets[O_INVENTORY] = reds[i].offset; break;
+    case REC_OBJIDENT:     offsets[O_OBJIDENT] = reds[i].offset; break;
+    case REC_RECALL:       offsets[O_RECALL] = reds[i].offset; break;
+    case REC_STORES:       offsets[O_STORES] = reds[i].offset; break;
+    case REC_STOREINV_1:   offsets[O_STOREINV_1] = reds[i].offset; break;
+    case REC_STOREINV_2:   offsets[11] = reds[i].offset; break;
+    case REC_STOREINV_3:   offsets[12] = reds[i].offset; break;
+    case REC_STOREINV_4:   offsets[13] = reds[i].offset; break;
+    case REC_STOREINV_5:   offsets[14] = reds[i].offset; break;
+    case REC_STOREINV_6:   offsets[15] = reds[i].offset; break;
+    case REC_MAGICNAMEIDX: offsets[16] = reds[i].offset; break;
+    case REC_SCROLLTITLES: offsets[17] = reds[i].offset; break;
+    case REC_PHISTORY:     offsets[18] = reds[i].offset; break;
+    case REC_PY:           offsets[O_PY] = reds[i].offset; break;
+    }
+  }
+
+  for (j = 0 ; j < MYRECS ; j++) {
+    if (offsets[j] == NOREC) {
+      fprintf(stderr, "Missing record (%d).  Aborting...\n", j);
+      exit(-1);
+    }
+  }
+
+  // Got this far, guess we have them all
+#ifdef NOISY
+  printf("all records present and accounted for\n");
+#endif
+
+}
+
+
+@

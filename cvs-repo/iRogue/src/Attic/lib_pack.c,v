@@ -1,0 +1,391 @@
+head	1.3;
+access;
+symbols
+	start:1.1.1.1 vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.3
+date	2001.02.24.04.17.51;	author i0lanthe;	state dead;
+branches;
+next	1.2;
+
+1.2
+date	2001.02.24.03.25.02;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.06.15.21.16.45;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.06.15.21.16.45;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@pack.c += lib_pack.c
+@
+text
+@/*********************************************************************
+ * iRogue - Rogue adapted for the PalmPilot.                         *
+ * Copyright (C) 1999 Bridget Spitznagel                             *
+ * Note: This program is derived from rogue 5.3-clone for Linux.     *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+
+#include "palm.h"
+#include "librogue.h"
+
+/***************************************************************
+                   CHECK_DUPLICATE
+ IN:
+ obj = object to check for a collection of
+ pack = the list to check in
+ OUT:
+ "collection" object if found; 0 if not
+ PURPOSE:
+ For objects that can be collected into a group.  If the given object
+ can be part of a collection, search the pack list for another object
+ of the same kind, and add to it the quantity of the given object
+ (combining the two into a single collection.)
+ Returns the collection object found in the pack list, if any
+ (freeing the given object is the caller's problem.)
+****************************************************************/
+static object * check_duplicate(object *obj, object *pack) SEC_L;
+static object * check_duplicate(object *obj, object *pack) {
+  object *op;
+
+  if (!(obj->what_is & (WEAPON | FOOD | SCROLL | POTION))) {
+    return(0);
+  }
+  if ((obj->what_is == FOOD) && (obj->which_kind != RATION)) {
+    return(0);
+  }
+  op = pack->next_object;
+
+  while (op) {
+    if ((op->what_is == obj->what_is) && 
+	(op->which_kind == obj->which_kind)) {
+
+      if ((obj->what_is != WEAPON)
+	  || ((obj->what_is == WEAPON)
+	      && (obj->o_flags & O_COLLECTION)
+	      && (obj->quiver == op->quiver)) ) {
+	op->quantity += obj->quantity;
+	return(op);
+      }
+    }
+    op = op->next_object;
+  }
+  return(0);
+}
+
+
+/***************************************************************
+                   TAKE_FROM_PACK
+ IN:
+ obj = object to remove
+ pack = list to remove it from
+ OUT:
+ nothing
+ PURPOSE:
+ Remove the given object from the given list.
+****************************************************************/
+void take_from_pack(object *obj, object *pack) {
+  while (pack->next_object != obj) {
+    pack = pack->next_object;
+    if (!pack) return; /* it wasn't IN the pack after all */
+  }
+  pack->next_object = pack->next_object->next_object;
+}
+
+/***************************************************************
+                   MASK_PACK
+ IN:
+ pack = list to look in
+ mask = the type of object desired
+ OUT:
+ true if an object of 'mask' type is found in 'pack'
+ PURPOSE:
+ Are there any objects of this type in the pack?
+****************************************************************/
+Boolean mask_pack(object *pack, UShort mask) {
+  while (pack->next_object) {
+    pack = pack->next_object;
+    if (pack->what_is & mask) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/***************************************************************
+                   NEXT_AVAIL_ICHAR
+ IN:
+ sotu = various globals (rogue)
+ OUT:
+ the alphabetically-first unused inventory character
+ PURPOSE:
+ Get an unused inventory character to assign to a picked-up item.
+****************************************************************/
+/* Get next available inventory character.. */
+/*
+static Char next_avail_ichar(struct state_of_the_union * sotu) {
+  object *obj;
+  Short i;
+  Boolean ichars[26];
+
+  for (i = 0; i < 26; i++) {
+    ichars[i] = 0;
+  }
+  obj = sotu->roguep->pack.next_object;
+  while (obj) {
+    ichars[(obj->ichar - 'a')] = 1;
+    obj = obj->next_object;
+  }
+  for (i = 0; i < 26; i++) {
+    if (!ichars[i]) {
+      return(i + 'a');
+    }
+  }
+  return('?');
+}
+*/
+static Char next_avail_ichar(struct state_of_the_union * sotu) SEC_L;
+static Char next_avail_ichar(struct state_of_the_union * sotu) {
+  object *obj;
+  //  Short i;
+  Char cur_ichar = 'a';
+
+  obj = sotu->roguep->pack.next_object;
+  while (obj) {
+    obj->ichar = cur_ichar++;
+    obj = obj->next_object;
+    if (cur_ichar > 'z')
+      cur_ichar = 'A'; // I should check that it never reaches '['...
+  }
+  return (cur_ichar <= 'z') ? cur_ichar : '?';
+
+}
+
+/***************************************************************
+                   ADD_TO_PACK
+ IN:
+ obj = the object that's being added to a list
+ pack = the list to put it in
+ condense = whether to condense it into a "collection" (e.g. 3 rations)
+ sotu = various globals...
+ OUT:
+ the object (original, or a different "collection" object.)
+ PURPOSE:
+ Add an object or monster to a list (rogue->pack, level_objects,
+ level_monsters.)  Optionally condenses some types of objects
+ into collections.
+****************************************************************/
+object * add_to_pack(object *obj, object *pack, Boolean condense,
+		     struct state_of_the_union * sotu) 
+{
+  object *op;
+
+  if (condense) {
+    if ((op = check_duplicate(obj, pack))) {
+      free_object(obj, sotu);
+      return(op);
+    } else {
+      obj->ichar = next_avail_ichar(sotu);
+    }
+  }
+  if (pack->next_object == 0) {
+    pack->next_object = obj;
+  } else {
+    op = pack->next_object;
+
+    while (op->next_object) {
+      op = op->next_object;
+    }
+    op->next_object = obj;
+  }
+  obj->next_object = 0;
+  return(obj);
+}
+
+/***************************************************************
+                   UNWEAR
+ IN:
+ obj = the armor being worn, or 0.
+ rogue
+ OUT:
+ nothing
+ PURPOSE:
+ Take off the armor.
+****************************************************************/
+void unwear(object *obj, fighter *rogue) {
+  if (obj) {
+    obj->in_use_flags &= (~BEING_WORN);
+  }
+  rogue->armor = (object *) 0;
+}
+
+/***************************************************************
+                   DO_WEAR
+ IN:
+ obj = the armor to be worn
+ rogue
+ OUT:
+ nothing
+ PURPOSE:
+ Put on the armor.  This also identifies it.
+****************************************************************/
+void do_wear(object *obj, fighter *rogue) {
+  rogue->armor = obj;
+  obj->in_use_flags |= BEING_WORN;
+  obj->identified = 1;
+}
+
+/***************************************************************
+                   DO_WIELD
+ IN:
+ obj = the object (not an armor or ring) to be wielded
+ OUT:
+ nothing
+ PURPOSE:
+ Wield the object.
+****************************************************************/
+void do_wield(object *obj, fighter *rogue) {
+  rogue->weapon = obj;
+  obj->in_use_flags |= BEING_WIELDED;
+}
+
+/***************************************************************
+                   UNWIELD
+ IN:
+ obj = The object being wielded, or 0.
+ OUT:
+ PURPOSE:
+ Un-wield the object.
+****************************************************************/
+void unwield(object *obj, fighter *rogue) 
+{
+  if (obj) {
+    obj->in_use_flags &= (~BEING_WIELDED);
+  }
+  rogue->weapon = (object *) 0;
+}
+
+
+/***************************************************************
+                   PACK_COUNT
+ IN:
+ new_obj = 0 or an object that might be put in the pack
+ rogue
+ OUT:
+ The number of items in the pack (- 1 for the collection the new_obj
+ would be put in, if any.)
+ PURPOSE:
+ Figure out whether there is space in the rogue's pack for new_obj.
+ (If there's no new_obj, just count the items in the pack.)
+ For collections of non-weapon items, the quantity is counted.  
+ For collections of weapon items, if there's no new_obj the collection
+ always counts as one object; otherwise, if the new_obj would be put
+ in that collection, we don't count that collection at all (so that
+ the return value indicates there's space for it.)
+// Also - return what the pack will weigh if this item is added!
+****************************************************************/
+Short pack_count(object *new_obj, fighter *rogue, Short *weight) {
+  object *obj;
+  Short count = 0;
+
+  *weight = (new_obj) ? new_obj->weight : 0;
+  obj = rogue->pack.next_object;
+
+  while (obj) {
+    *weight = *weight + (obj->quantity * obj->weight); // (all qtys are initially 1 so this is ok)
+    if (obj->what_is != WEAPON) {
+      count += obj->quantity; // e.g. several scrolls, potions, rations
+    } else if (!new_obj) {
+      count++;
+    } else if ((new_obj->what_is != WEAPON)
+	       || (!(obj->o_flags & O_COLLECTION))
+	       || (new_obj->which_kind != obj->which_kind)
+	       || (obj->quiver != new_obj->quiver)) {
+      count++;
+    }
+    obj = obj->next_object;
+  }
+  return(count);
+}
+/***************************************************************
+                   MAX_WEIGHT
+ IN:
+ various globals
+ OUT:
+ the maximum weight this rogue can carry
+ PURPOSE:
+ Figure out whether the pack is too heavy.
+****************************************************************/
+Short max_weight(struct state_of_the_union * sotu) {
+  Short w;
+  Char h;
+  w = BASE_ROGUE_CARRYABLE;
+  w += (sotu->roguep->str_current - 8) * 50;
+  h = sotu->hunger_str[0];
+  if (h == 'w')
+    w -= w/10; // hunger = weak
+  else if (h == 'f')
+    w /= 2; // hunger = faint
+  return w;
+}
+@
+
+
+1.2
+log
+@compiles with sdk3.5; user-configurable color
+@
+text
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d23 1
+a23 1
+#include "Pilot.h"
+@
+
+
+1.1.1.1
+log
+@iRogue import
+@
+text
+@@

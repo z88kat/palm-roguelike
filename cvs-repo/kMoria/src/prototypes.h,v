@@ -1,0 +1,1922 @@
+head	1.76;
+access;
+symbols
+	Release-2002_03_29:1.76
+	Release-2002_01_12:1.71
+	Release-2002_01_02:1.65
+	Release-2002_01_01:1.65
+	Release-2001_12_19:1.64
+	Release-2001_08_04:1.55
+	Release-2001_07_02:1.51
+	Release-2001_06_16:1.45
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.76
+date	2002.03.27.05.09.03;	author i0lanthe;	state Exp;
+branches;
+next	1.75;
+
+1.75
+date	2002.03.27.04.21.06;	author i0lanthe;	state Exp;
+branches;
+next	1.74;
+
+1.74
+date	2002.03.25.23.13.34;	author i0lanthe;	state Exp;
+branches;
+next	1.73;
+
+1.73
+date	2002.01.26.20.10.35;	author i0lanthe;	state Exp;
+branches;
+next	1.72;
+
+1.72
+date	2002.01.17.01.24.12;	author i0lanthe;	state Exp;
+branches;
+next	1.71;
+
+1.71
+date	2002.01.10.02.55.48;	author i0lanthe;	state Exp;
+branches;
+next	1.70;
+
+1.70
+date	2002.01.10.01.33.49;	author i0lanthe;	state Exp;
+branches;
+next	1.69;
+
+1.69
+date	2002.01.08.19.32.55;	author i0lanthe;	state Exp;
+branches;
+next	1.68;
+
+1.68
+date	2002.01.05.18.46.50;	author i0lanthe;	state Exp;
+branches;
+next	1.67;
+
+1.67
+date	2002.01.04.03.45.44;	author i0lanthe;	state Exp;
+branches;
+next	1.66;
+
+1.66
+date	2002.01.04.00.01.26;	author i0lanthe;	state Exp;
+branches;
+next	1.65;
+
+1.65
+date	2002.01.01.01.37.09;	author i0lanthe;	state Exp;
+branches;
+next	1.64;
+
+1.64
+date	2001.12.16.19.17.30;	author i0lanthe;	state Exp;
+branches;
+next	1.63;
+
+1.63
+date	2001.12.16.00.02.07;	author i0lanthe;	state Exp;
+branches;
+next	1.62;
+
+1.62
+date	2001.12.15.21.03.17;	author i0lanthe;	state Exp;
+branches;
+next	1.61;
+
+1.61
+date	2001.12.10.01.20.07;	author i0lanthe;	state Exp;
+branches;
+next	1.60;
+
+1.60
+date	2001.12.09.19.05.27;	author i0lanthe;	state Exp;
+branches;
+next	1.59;
+
+1.59
+date	2001.12.08.18.46.30;	author i0lanthe;	state Exp;
+branches;
+next	1.58;
+
+1.58
+date	2001.11.30.23.44.42;	author i0lanthe;	state Exp;
+branches;
+next	1.57;
+
+1.57
+date	2001.11.30.05.06.17;	author i0lanthe;	state Exp;
+branches;
+next	1.56;
+
+1.56
+date	2001.10.20.18.14.59;	author i0lanthe;	state Exp;
+branches;
+next	1.55;
+
+1.55
+date	2001.08.02.06.50.36;	author i0lanthe;	state Exp;
+branches;
+next	1.54;
+
+1.54
+date	2001.07.27.01.17.38;	author i0lanthe;	state Exp;
+branches;
+next	1.53;
+
+1.53
+date	2001.07.26.02.38.39;	author i0lanthe;	state Exp;
+branches;
+next	1.52;
+
+1.52
+date	2001.07.25.06.16.46;	author i0lanthe;	state Exp;
+branches;
+next	1.51;
+
+1.51
+date	2001.07.01.22.34.33;	author i0lanthe;	state Exp;
+branches;
+next	1.50;
+
+1.50
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.49;
+
+1.49
+date	2001.06.28.01.33.55;	author i0lanthe;	state Exp;
+branches;
+next	1.48;
+
+1.48
+date	2001.06.26.02.42.37;	author i0lanthe;	state Exp;
+branches;
+next	1.47;
+
+1.47
+date	2001.06.20.01.56.43;	author i0lanthe;	state Exp;
+branches;
+next	1.46;
+
+1.46
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.45;
+
+1.45
+date	2001.05.24.04.24.15;	author i0lanthe;	state Exp;
+branches;
+next	1.44;
+
+1.44
+date	2001.05.22.03.01.54;	author i0lanthe;	state Exp;
+branches;
+next	1.43;
+
+1.43
+date	2001.05.22.00.59.32;	author i0lanthe;	state Exp;
+branches;
+next	1.42;
+
+1.42
+date	2001.03.31.21.45.38;	author i0lanthe;	state Exp;
+branches;
+next	1.41;
+
+1.41
+date	2001.03.31.03.33.08;	author i0lanthe;	state Exp;
+branches;
+next	1.40;
+
+1.40
+date	2001.03.27.22.49.22;	author i0lanthe;	state Exp;
+branches;
+next	1.39;
+
+1.39
+date	2001.03.27.06.30.43;	author i0lanthe;	state Exp;
+branches;
+next	1.38;
+
+1.38
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.37;
+
+1.37
+date	2001.01.27.00.53.03;	author i0lanthe;	state Exp;
+branches;
+next	1.36;
+
+1.36
+date	2001.01.23.17.49.56;	author i0lanthe;	state Exp;
+branches;
+next	1.35;
+
+1.35
+date	2001.01.19.05.24.19;	author i0lanthe;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2001.01.12.18.28.28;	author i0lanthe;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2001.01.11.06.27.08;	author i0lanthe;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2001.01.10.23.40.25;	author i0lanthe;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2001.01.09.23.07.47;	author i0lanthe;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2001.01.09.21.12.02;	author i0lanthe;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2001.01.08.03.13.30;	author i0lanthe;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2001.01.06.18.24.38;	author i0lanthe;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2001.01.05.22.43.25;	author i0lanthe;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2001.01.05.04.12.36;	author i0lanthe;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2001.01.01.06.59.10;	author i0lanthe;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2000.12.31.03.57.57;	author i0lanthe;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2000.12.23.04.03.40;	author i0lanthe;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2000.12.21.21.24.43;	author i0lanthe;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2000.11.12.03.30.04;	author i0lanthe;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2000.11.09.06.18.44;	author i0lanthe;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2000.11.06.05.25.23;	author i0lanthe;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2000.11.05.20.24.48;	author i0lanthe;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2000.11.04.02.13.40;	author i0lanthe;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2000.11.04.01.46.47;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2000.11.03.04.48.23;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2000.11.01.05.01.33;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2000.10.28.22.28.55;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2000.10.28.02.28.09;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2000.10.28.01.31.08;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2000.10.26.04.25.25;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2000.10.25.04.29.06;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2000.10.24.03.05.20;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2000.10.21.03.31.07;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2000.10.20.03.38.35;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.10.10.04.53.43;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.10.06.06.32.36;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.03.04.29.42;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.10.01.18.31.37;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.44.11;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.44.11;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.76
+log
+@add compact_monsters and compact_objects (should be more robust for farming now)
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+// main.c
+// default section
+// forms
+Boolean About_Form_HandleEvent(EventPtr e) SEC_3;
+Boolean Intro_Form_HandleEvent(EventPtr e) SEC_3;
+Boolean Inv_Form_HandleEvent(EventPtr e) SEC_7;
+void invOrEqu_drop(Short item) SEC_7;
+void refill_lamp() SEC_7;
+void take_a_turn(Boolean mainform) SEC_5;
+Boolean Equ_Form_HandleEvent(EventPtr e) SEC_7;
+Boolean Recall_Form_HandleEvent(EventPtr e) SEC_7;
+Boolean Look_Form_HandleEvent(EventPtr e) SEC_6;
+Boolean look_btnsHandleEvent(Short btn_i) SEC_7;
+Boolean CharRace_Form_HandleEvent(EventPtr e) SEC_3;
+Boolean CharGender_Form_HandleEvent(EventPtr e) SEC_3;
+Boolean CharClass_Form_HandleEvent(EventPtr e);
+Boolean CharSummary_Form_HandleEvent(EventPtr e);
+Boolean Store_Form_HandleEvent(EventPtr e) SEC_6;
+Boolean Haggle_Form_HandleEvent(EventPtr e) SEC_6;
+void haggle_form_setfield(Long amt) SEC_6;
+void haggle_form_enable_autoinc(Short incr) SEC_4;
+void store_form_boot() SEC_6;
+void haggle_form_boot(Boolean kick_out, Char *str) SEC_4;
+void store_list_tens(Short dir) SEC_6;
+Boolean Book_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean Spell_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean book_btnsHandleEvent(Short btn_i) SEC_7;
+Boolean spell_btnsHandleEvent(Short btn_i) SEC_7;
+Boolean Dalek_Form_HandleEvent(EventPtr e) SEC_3;
+Boolean GainSp_Form_HandleEvent(EventPtr e) SEC_4;
+Boolean MsgLog_Form_HandleEvent(EventPtr e) SEC_5;
+Boolean Rest_Form_HandleEvent(EventPtr e) SEC_7;
+Boolean Prefs_Form_HandleEvent(EventPtr e) SEC_5;
+void useMoriaPrefs() SEC_5;
+void writeMoriaPrefs() SEC_5;
+Boolean HwButtons_Form_HandleEvent(EventPtr e) SEC_6;
+Boolean Map_Form_HandleEvent(EventPtr e) SEC_5;
+Boolean Death_Form_HandleEvent(EventPtr e) SEC_5;
+Boolean Crown_Form_HandleEvent(EventPtr e) SEC_5;
+Boolean Scores_Form_HandleEvent(EventPtr e) SEC_5;
+Boolean InvS_Form_HandleEvent(EventPtr e) SEC_6;
+Boolean Scribe_Form_HandleEvent(EventPtr e) SEC_6;
+Boolean SnowCrash_Form_HandleEvent(EventPtr e) SEC_6;
+Boolean RepeatCmds_Form_HandleEvent(EventPtr e) SEC_6;
+Boolean SpellHwBtns_Form_HandleEvent(EventPtr e) SEC_7;
+Boolean Beam_Form_HandleEvent(EventPtr e) SEC_7;
+Boolean BeamCash_Form_HandleEvent(EventPtr e) SEC_7;
+Boolean User_Form_HandleEvent(EventPtr e) SEC_7;
+void toggle_hotsync(LocalID dbid, Boolean backup) SEC_7;
+
+
+// These are used only by their own form_*.c AND by handera.c.
+// In alphabetical order of form_*.c in which they appear:
+void beamcash_draw() SEC_7;
+void charrace_draw() SEC_3;
+void chargender_draw() SEC_3;
+void charclass_draw(Boolean all, Boolean squeeze);
+void charsummary_draw();
+void dalek_draw() SEC_3;
+void crown_draw() SEC_5;
+void tombstone_draw() SEC_5;
+void look_draw(Boolean first) SEC_6;
+void map_draw() SEC_6;
+void scribe_draw() SEC_6;
+void show_mana_at_bottom() SEC_4; // for BookForm.
+void spell_draw() SEC_4;
+void gainsp_draw(Boolean first) SEC_4;
+void show_spell_char(Short i) SEC_7; // for SpellHwBtns.
+void free_store_list(FormPtr frm) SEC_6;
+//void store_draw() SEC_6;
+void haggle_draw() SEC_6; // doesn't refresh everything; can't; sigh.
+Short draw_topscores(Boolean reset) SEC_6;
+void show_user_info(FormPtr frm, Short i) SEC_7; // for User.
+
+// dungeon.c
+void enter_new_level() SEC_5;
+void start_of_turn() SEC_5;
+void end_of_turn() SEC_5;
+Boolean do_command(Char com_val) SEC_5;
+Boolean do_parsed_command(previous_state *ps) SEC_7;
+Boolean do_xy_command(Short x, Short y) SEC_5;
+Boolean do_dir_command(Short dir, Short XXX_item) SEC_5;
+Char map_roguedir(Char *comval) SEC_5;
+Char unmap_roguedir(Short dir) SEC_5;
+void ident_monster(Char c) SEC_6;
+void do_again() SEC_7;
+
+// display.c
+// default section
+Boolean toggle_itsy();
+void set_statsbar_loc(Boolean stats_at_top);
+void where_in_dungeon(Short scr_x, Short scr_y, Short *dun_x, Short *dun_y);
+void clear_screen();
+void print(Short ch, Short col, Short row);
+//void setscreen(Short col, Short row, Short ch);
+void recalc_screen();
+void animate_char(Short row, Short col, Char c, Boolean bold) SEC_6;
+void refresh(Boolean clearall);
+void recalc_and_refresh();
+void nuke_display() SEC_5;;
+void relativize_move(Short *x, Short *y) SEC_5;
+void change_visible_xy(Short x, Short y);
+void slide_dir(Short dir);
+//
+void count_message(Char *buf);
+void level_message(Char *buf);
+void clear_brief_comment();
+void show_brief_comment(Char *buf);
+Boolean in_brief_comment(Short x, Short y);
+void message(Char *buf);
+//#define unmessage() message(0)
+Boolean message_clear(Boolean really);
+void alert_message(Char *buf);
+void preempt_messages();
+void show_messages();
+void show_a_more(Short lines_used) SEC_6;
+void alloc_message_log();
+void print_stats(UInt statsmode);
+void update_status_words() SEC_5;
+Boolean panel_contains(Short a, Short b); // FAKE!
+Boolean get_panel(Short row, Short col, Boolean foo); // FAKE!
+void show_time_and_volts() SEC_7;
+
+
+// misc1.c
+// all section1
+void seed_random() SEC_1;
+void set_seed(ULong seed) SEC_1;
+void reset_seed() SEC_1;
+Int randint(Int y) SEC_1;
+Int rund(Int y) SEC_1;
+Short randnor(Short mean, Short stand) SEC_1;// not 'correctly' implemented at presnt
+Short bit_pos(ULong *test) SEC_1;
+Boolean in_bounds(Short y, Short x) SEC_1;
+Short distance(Short y1, Short x1, Short y2, Short x2) SEC_1;
+Short damroll(Short num, Short sides) SEC_1;
+Short pdamroll(UChar *array) SEC_1;
+Boolean los(Short fromY, Short fromX, Short toY, Short toX) SEC_1;
+UChar loc_symbol(Short y, Short x) SEC_1;
+Boolean test_light(Short y, Short x) SEC_1;
+Boolean compact_monsters() SEC_2;
+void add_food(Short num) SEC_1;
+Short popm() SEC_1;
+Short max_hp(UChar *array) SEC_1;
+Boolean place_monster(Short y, Short x, Short z, Boolean slp) SEC_1;
+void place_win_monster() SEC_1;
+Short get_mons_num(Short level) SEC_1;
+void alloc_monster(Short num, Short dist, Boolean sleep) SEC_1;
+Boolean summon_monster(Short *y, Short *x, Boolean slp) SEC_1;
+Boolean summon_undead(Short *y, Short *x) SEC_1;
+Short popt() SEC_1;
+void pusht(UChar x) SEC_1;
+Boolean magik(Short chance) SEC_1;
+Short m_bonus(Short base, Short max_std, Short level) SEC_1;
+
+// generate.c
+// all section1
+void generate_cave() SEC_1;
+
+// lock.c
+// default section
+void re_init() SEC_5;
+void data_record_create();
+void data_record_lock(Boolean unlocked); // call at startup and shutdown
+//void create_cave_rec();
+void blank_cave();
+void cave_set(Short row, Short col, Short element, UChar val);
+//void create_tlist_rec();
+void blank_tlist();
+// mess with objects-on-level
+#define tlist_set_p1 invy_set_p1
+#define tlist_set_cost invy_set_cost
+#define tlist_set_flags invy_set_flags
+#define tlist_set_name2 invy_set_name2
+//void tlist_set_p1(Short index, Short p1);
+//void tlist_set_flags(Short index, ULong flags);
+void tlist_mv(Short from, Short to);
+void invcopy(inven_type *to_rec, Short to_index, Short from_index);//was desc.c
+void storeinv_nullify(inven_record *to_rec, Short to_index) SEC_5;
+//void storeinvcopy(inven_record *to_rec, Short to_index, Short from_index);
+void blank_mlist();
+void blank_mlist();
+void mlist_set_short(Short mptr, Short offset, Short val);
+void mlist_set_uchar(Short mptr, Short offset, UChar val);
+void mlist_set_ml(Short mptr, Boolean ml);
+void mlist_mv(Short from, Short to);
+// mess with inventory
+void invy_set_number(inven_type *iptr, Short index, UChar n) SEC_5; // fixed
+void invy_set_flags(inven_type *iptr, Short index, ULong n) SEC_5;
+void invy_set_p1(inven_type *iptr, Short index, Short n) SEC_5;
+void invy_set_cost(inven_type *iptr, Short index, Long cost) SEC_5;
+void invy_set_hitdamac(inven_type *iptr, Short index,
+			    Char tohit, Char todam, Char toac) SEC_5;
+void invy_set_index(inven_type *iptr, Short index, UShort val) SEC_5;
+void invy_delete(Short item_val) SEC_5;
+void invy_set_name2(inven_type *iptr, Short index, UChar val) SEC_5;
+void invy_insert(Short locn, inven_type *copyme) SEC_5;
+void invy_swap(Short item_a, Short item_b) SEC_5;
+void invy_set_ident(inven_type *iptr, Short index, UChar ident) SEC_5;
+void blank_objident() SEC_5;
+// mess with identification status
+void object_ident_or(Short index, UChar or_me) SEC_5;
+void object_ident_nand(Short index, UChar nand_me) SEC_5;
+// mess with the monster memory (c_recall)
+void blank_recall();
+void recall_cmove_or(Short index, ULong or_me) SEC_5;
+void recall_set_cmove(Short index, ULong val) SEC_5;
+void recall_spells_or(Short index, ULong val) SEC_5;
+void recall_set_spells(Short index, ULong val) SEC_5;
+void recall_increment_kills(Short index) SEC_5;
+void recall_increment_deaths(Short index) SEC_5;
+void recall_cdefense_or(Short index, UShort or_me) SEC_5;
+void recall_set_wake(Short index, UChar val) SEC_5;
+void recall_set_ignore(Short index, UChar val) SEC_5;
+void recall_increment_attacks(Short index, Short attindex) SEC_5;
+// scramble/create the arrays of names of magic stuff.
+void magic_init() SEC_5;
+// store foo
+void store_set_ctr(Short index, UChar ctr) SEC_5;
+Char *get_haggle_string(Short i) SEC_4;
+void write_history_block(Char *history_block) SEC_5;
+Short get_savefile_version() SEC_7;
+void perform_conversion(Short from_version, Boolean pyrec_found) SEC_7;
+
+// sets.c
+// these could practically be macros, or something
+// all section1
+Boolean is_room(UChar element) SEC_1;
+Boolean is_corr(UChar element) SEC_1;
+Boolean is_floor(UChar element) SEC_1;
+Boolean is_corrodes(inven_type *item) SEC_1;
+Boolean is_flammable(inven_type *item) SEC_1;
+Boolean is_frost_destroy(inven_type *item) SEC_1;
+Boolean is_acid_affect(inven_type *item) SEC_1;
+Boolean is_lightning_destroy(inven_type *item) SEC_1;
+Boolean is_null(inven_type *item) SEC_1;
+Boolean is_acid_destroy(inven_type *item) SEC_1;
+Boolean is_fire_destroy(inven_type *item) SEC_1;
+Boolean is_large(treasure_type *item) SEC_1;
+Boolean is_general_store(UChar element) SEC_1;
+Boolean is_armory(UChar element) SEC_1;
+Boolean is_weaponsmith(UChar element) SEC_1;
+Boolean is_temple(UChar element) SEC_1;
+Boolean is_alchemist(UChar element) SEC_1;
+Boolean is_magic_shop(UChar element) SEC_1;
+Boolean is_store_buy(Short storeno, UChar element) SEC_1;
+
+// misc2.c
+// all section2
+void magic_treasure(Short x, Short level) SEC_6;
+void set_options() SEC_2;
+
+// misc3.c
+// all section1 (so far)
+void place_trap(Short y, Short x, Short subval) SEC_1;
+void place_rubble(Short y, Short x) SEC_1;
+void place_gold(Short y, Short x) SEC_1;
+Short get_obj_num(Short level, Boolean must_be_small) SEC_1;
+void place_object(Short y, Short x, Boolean must_be_small) SEC_1;
+void alloc_object(UChar alloc_set, Short typ, Short num) SEC_1;
+void random_object(Short y, Short x, Short num) SEC_1;
+Short stat_adj(Short stat) SEC_1;
+Short chr_adj() SEC_1;
+Short con_adj() SEC_1;
+UChar modify_stat (Short stat, Short amount) SEC_1;
+void set_use_stat(Short stat) SEC_1;
+Boolean inc_stat(Short stat) SEC_1;
+Boolean dec_stat(Short stat) SEC_1;
+Boolean res_stat (Short stat) SEC_1;
+void bst_stat (Short stat, Short amount) SEC_1;
+Short tohit_adj() SEC_1;
+Short toac_adj() SEC_1;
+Short todis_adj() SEC_1;
+Short todam_adj() SEC_1;
+void draw_cave() SEC_1;
+void inven_destroy(Short item_val) SEC_1;
+void take_one_item(inven_type *s_ptr, inven_type *i_ptr) SEC_1;
+void inven_drop(Short item_val, Boolean drop_all) SEC_1;
+//Short inven_damage(Boolean (*typ)(), Short perc) SEC_1;
+Short inven_damage(UChar typ, Short perc) SEC_1;
+Short weight_limit() SEC_1;
+Boolean inven_similar(inven_type *a_ptr, inven_type *b_ptr) SEC_1;
+Boolean inven_check_num (inven_type *t_ptr) SEC_1;
+Boolean inven_check_weight(inven_type *i_ptr) SEC_1;
+void check_strength() SEC_1;
+Short inven_carry(inven_type *i_ptr) SEC_1;
+Short spell_chance(Short spell) SEC_4;
+     //...
+void calc_spells(Short stat) SEC_4;
+void gain_spells() SEC_4;
+void gain_spell_helper() SEC_4;
+void calc_mana(Short stat) SEC_4;
+void calc_hitpoints() SEC_4;
+void prt_experience() SEC_5;
+     //...
+void insert_lnum(Char *object_str, const Char *mtc_str,
+		 Long number, Boolean signp) SEC_1;
+void insert_str(Char *object_str, Char *mtc_str, Char *insert) SEC_1;
+Short attack_blows(Short weight, Short *wtohit) SEC_1;
+Short tot_dam(inven_type *i_ptr, Short tdam, Short monster) SEC_1;
+Short critical_blow(Short weight, Short plus, Short dam,
+		    Short attack_type) SEC_1;
+Boolean mmove(Short dir, Short *y, Short *x) SEC_1;
+Boolean player_saves() SEC_1;
+Boolean find_range(Short item1, Short item2, Short *j, Short *k) SEC_1;
+void teleport(Short dis) SEC_1;
+
+// misc4.c
+//void scribe_object() SEC_3;
+void add_inscribe(inven_type *i_ptr, Short index, UChar type) SEC_3;
+//void inscribe(Short iptr, Char *str) SEC_3;
+Boolean check_view() SEC_3;
+
+
+// moria1.c
+void change_speed(Short num) SEC_1;
+void py_bonuses(inven_type *t_ptr, Short factor) SEC_1;
+void calc_bonuses() SEC_1;
+Char *describe_use(Short i) SEC_1;
+void takeoff(Short item_val, Short posn) SEC_1;
+Boolean no_light() SEC_1;
+void move_rec(Short y1, Short x1, Short y2, Short x2) SEC_1;
+void light_room(Short y, Short x) SEC_1;
+void lite_spot(Short y, Short x) SEC_1;
+//static void sub1_move_light(Short y1, Short x1, Short y2, Short x2);
+//static void sub3_move_light(Short y1, Short x1, Short y2, Short x2);
+void move_light(Short y1, Short x1, Short y2, Short x2) SEC_1;
+void disturb(Boolean se, Boolean li) SEC_1;
+void search_on() SEC_1;
+void search_off() SEC_1;
+void rest() SEC_5;
+void rest_off() SEC_1;
+Boolean test_hit(Short bth, Short level, Short pth, Short ac,
+		 Short attack_typ) SEC_1;
+void take_hit(Short damage, Char *hit_from) SEC_1;
+
+// moria2.c
+void change_trap(Short y, Short x) SEC_2;
+void search(Short y, Short x, Short chance) SEC_2;
+void find_init(Short dir) SEC_2;
+Boolean hit_dont_run(Short dir) SEC_5;
+void find_run() SEC_2;
+void end_find() SEC_2;
+//static Boolean see_wall(Short dir, Short y, Short x) SEC_2;
+//static Boolean see_nothing(Short dir, Short y, Short x) SEC_2;
+void area_affect(Short dir, Short y, Short x) SEC_2;
+Boolean minus_ac(ULong typ_dam) SEC_2;
+void corrode_gas(Char *kb_str) SEC_2;
+void poison_gas(Short dam, Char *kb_str) SEC_2;
+void fire_dam(Short dam, Char *kb_str) SEC_2;
+void cold_dam(Short dam, Char *kb_str) SEC_2;
+void light_dam(Short dam, Char *kb_str) SEC_2;
+void acid_dam(Short dam, Char *kb_str) SEC_2;
+
+// moria3.c  (moria3a.c)  There is more yet to come.
+void delete_monster(Short j) SEC_3;
+Short cast_spell(Char *prompt, Short item_val, Short *sn, Short *sc) SEC_3;//xxx not implemented yet
+void fix1_delete_monster(Short j) SEC_3;
+void fix2_delete_monster(Short j) SEC_3;
+Boolean delete_object(Short y, Short x) SEC_3;
+ULong monster_death(Short y, Short x, ULong flags) SEC_3;
+Short mon_take_hit(Short monptr, Short dam) SEC_3;
+void py_attack(Short y, Short x) SEC_3;
+void move_char(Short dir, Boolean do_pickup) SEC_3;// xxx
+void chest_trap(Short y, Short x) SEC_3;
+void openobject(Short dir) SEC_3; // xxx
+void closeobject(Short dir) SEC_3;// xxx
+Boolean twall(Short y, Short x, Short t1, Short t2) SEC_3;
+
+
+// moria4.c
+void tunnel(Short dir) SEC_3;
+void disarm_trap(Short dir) SEC_3;
+void look(Short dir) SEC_3;
+void throw_object(Short item_val, Short dir) SEC_3;
+void bash(Short dir) SEC_3;
+
+
+
+// desc.c
+Boolean is_a_vowel(Char ch) SEC_1;
+Short object_offset(inven_type *t_ptr) SEC_1;
+void known1(inven_type *i_ptr) SEC_1;
+Boolean known1_p(inven_type *i_ptr) SEC_1;
+void known2(inven_type *i_ptr, Short index) SEC_1;
+void known2_local(inven_type *i_ptr) SEC_1;
+Boolean known2_p(inven_type *i_ptr) SEC_1;
+void clear_known2(inven_type *i_ptr, Short index) SEC_1;
+void clear_empty(inven_type *i_ptr, Short index) SEC_1;
+void store_bought(inven_type *i_ptr, Short index) SEC_1;
+Boolean store_bought_p(inven_type *i_ptr) SEC_1;
+void sample (inven_type *i_ptr) SEC_1;
+void identify(Short *item) SEC_1;
+void unmagic_name(Short iptr) SEC_1;
+void objdes(Char *out_val, inven_type *i_ptr, Boolean pref) SEC_1;
+void desc_charges(Short item_val) SEC_1;
+void desc_remain(Short item_val) SEC_1;
+
+
+// recall.c
+Boolean bool_roff_recall(Short mon_num) SEC_7;
+void roff_recall(Short mon_num, Char *buf) SEC_7;
+
+// util.c
+Boolean hit_button_if_usable(FormPtr frm, Word btn_index);
+void update_field_scrollers(FormPtr frm, FieldPtr fld,
+			    Word up_scroller, Word down_scroller);
+void page_scroll_field(FormPtr frm, FieldPtr fld,
+#ifndef I_AM_COLOR
+                       DirectionType
+#else /* I_AM_COLOR */
+                       WinDirectionType
+#endif /* I_AM_COLOR */
+		       dir);
+void LeaveForm();
+Char * md_malloc(Int n);
+void seconds_to_string(ULong seconds, Char *buf, Short start);// SEC_7;
+
+// spells.c  (spells-a.c, but not missing any functions)
+void monster_name(Char *m_name, monster_type *m_ptr,
+		  creature_type *r_ptr) SEC_2;
+void lower_monster_name(Char *m_name, monster_type *m_ptr,
+			creature_type *r_ptr) SEC_2;
+Boolean sleep_monsters1(Short y, Short x) SEC_2;
+Boolean detect_treasure() SEC_2;
+Boolean detect_object() SEC_2;
+Boolean detect_trap() SEC_2;
+Boolean detect_sdoor() SEC_2;
+Boolean detect_invisible() SEC_2;
+Boolean light_area(Short y, Short x) SEC_2;
+Boolean unlight_area(Short y, Short x) SEC_2;
+void map_area() SEC_2;
+Short ident_spell(Short item_val) SEC_2;
+Boolean aggravate_monster(Short dis_affect) SEC_2;
+Boolean trap_creation() SEC_2;
+Boolean door_creation() SEC_2;
+Short td_destroy() SEC_2;
+Boolean detect_monsters() SEC_2;
+void light_line(Short dir, Short y, Short x) SEC_2;
+void starlite(Short y, Short x) SEC_2;
+Boolean disarm_all(Short dir, Short y, Short x) SEC_2;
+//static void get_flags(Short typ, ULong *weapon_type, Short *harm_type, 
+//		      Short (**destroy)() ) SEC_2;
+void fire_bolt(Short typ, Short dir, Short y, Short x, Short dam,
+	       Char *bolt_typ) SEC_2;
+void fire_ball(Short typ, Short dir, Short y, Short x, Short dam_hp,
+	       Char *descrip) SEC_2;
+void breath(Short typ, Short y, Short x, Short dam_hp, Char *ddesc,
+	    Short monptr) SEC_2;
+Boolean recharge(Short item_val, Short num) SEC_2;
+Boolean hp_monster(Short dir, Short y, Short x, Short dam) SEC_2;
+Boolean drain_life(Short dir, Short y, Short x) SEC_2;
+Boolean speed_monster(Short dir, Short y, Short x, Short spd) SEC_2;
+Boolean confuse_monster(Short dir, Short y, Short x) SEC_2;
+Boolean sleep_monster(Short dir, Short y, Short x) SEC_2;
+Boolean wall_to_mud(Short dir, Short y, Short x) SEC_2;
+Boolean td_destroy2(Short dir, Short y, Short x) SEC_2;
+Boolean poly_monster(Short dir, Short y, Short x) SEC_2;
+Boolean build_wall(Short dir, Short y, Short x) SEC_2;
+Boolean clone_monster(Short dir, Short y, Short x) SEC_2;
+void teleport_away(Short monptr, Short dis) SEC_2;
+void teleport_to(Short ny, Short nx) SEC_2;
+Boolean teleport_monster(Short dir, Short y, Short x) SEC_2;
+Boolean mass_genocide() SEC_2;
+Boolean genocide(Char c) SEC_2;
+Boolean speed_monsters(Short spd) SEC_2;
+Boolean sleep_monsters2() SEC_2;
+Boolean mass_poly() SEC_2;
+Boolean detect_evil() SEC_2;
+Boolean hp_player(Short num) SEC_2;
+Boolean cure_confusion() SEC_2;
+Boolean cure_blindness() SEC_2;
+void cause_blindness(Short duration) SEC_5;
+Boolean cure_poison() SEC_2;
+Boolean remove_fear() SEC_2;
+void earthquake() SEC_2;
+Boolean protect_evil() SEC_2;
+void create_food() SEC_2;
+Boolean dispel_creature(Short cflag, Short damage) SEC_2;
+Boolean turn_undead() SEC_2;
+void warding_glyph() SEC_2;
+void lose_str() SEC_2;
+void lose_int() SEC_2;
+void lose_wis() SEC_2;
+void lose_dex() SEC_2;
+void lose_con() SEC_2;
+void lose_chr() SEC_2;
+void lose_exp(Long amount) SEC_2;
+Boolean slow_poison() SEC_2;
+void bless(Short amount) SEC_2;
+void detect_inv2(Short amount) SEC_2;
+//static void replace_spot(Short y, Short x, Short typ) SEC_2;
+void destroy_area(Short y, Short x) SEC_2;
+Boolean enchant(Short *plusses, Short limit) SEC_2;
+Boolean remove_curse() SEC_2;
+Boolean restore_level() SEC_2;
+
+// eat.c
+void eat(Short item_val) SEC_2;
+Boolean get_item(Short *, Char *, Short, Short, Char *, Char *); // this is a dummy function and should be replaced by form type stuff.
+
+// potions.c
+void quaff(Short item_val) SEC_2;
+
+// staffs.c
+void use(Short item_val) SEC_3;
+
+// wands.c
+void aim(Short item_val, Short dir) SEC_3;
+
+// magic.c
+void cast() SEC_3;
+void cast_helper(Short choice, Short dir_or_minus_one) SEC_3;// SEC_3; // just debugging...
+// form_spell.c
+Boolean confirmed_spell(Short spell) SEC_4;
+Boolean has_book(Short spell) SEC_7;
+
+// prayer.c
+void pray() SEC_3;
+void pray_helper(Short choice, Short dir_or_minus_one) SEC_3;
+
+// misc5.c
+void draw_directional() SEC_3;
+void undraw_directional() SEC_3;
+Short convert_to_dir(Short x, Short y, Short ignore_center) SEC_3;
+void dispatch_directional(Short dir) SEC_3;
+void get_default_username() SEC_5;
+void do_feep(Long frq, UInt dur) SEC_6;
+
+// store1.c
+Long item_value(inven_type *i_ptr) SEC_4;
+Long sell_price(Short snum, Long *max_sell, Long *min_sell,
+		inven_type *item) SEC_4;
+Boolean store_check_num(inven_type *t_ptr, Short store_num) SEC_4;
+void store_carry(Short store_num, Short *ipos, inven_type *t_ptr) SEC_4;
+void store_destroy(Short store_num, Short item_val, Boolean one_of) SEC_4;
+void store_init() SEC_4;
+void store_maint() SEC_4;
+Boolean noneedtobargain(Short store_num, Long minprice) SEC_4;
+void updatebargain(Short store_num, Long price, Long minprice) SEC_4;
+
+// store2.c
+void reset_haggle_foo() SEC_6;
+Long haggle_get_ask() SEC_4;
+Long haggle_get_incr() SEC_4;
+void purchase_haggle_init() SEC_4;
+Short purchase_haggle_endturn(Long new_offer) SEC_4;
+void sell_haggle_init() SEC_4;
+Short sell_haggle_endturn(Long new_offer) SEC_4;
+Boolean store_purchase_init(Short store_num, Short item_val) SEC_4;
+void store_purchase_end(Boolean in_haggle) SEC_4;
+Boolean store_sell_init(Short store_num, Short item_val) SEC_4;
+void store_sell_end(Boolean in_haggle) SEC_4;
+Boolean enter_store(Short store_num) SEC_4;
+
+// creature.c
+void update_mon(Short monptr) SEC_4;
+Boolean multiply_monster(Short y, Short x, Short cr_index, Short monptr) SEC_4;
+void creatures(Short attack) SEC_5;
+
+// save.c
+Boolean recover_crash() SEC_5;
+void didnt_crash() SEC_5;
+void maybe_checkpoint() SEC_5;
+Boolean save_char() SEC_5;
+Boolean load_char() SEC_5;
+void antisave_char() SEC_5;
+
+// scrolls.c
+void read_scroll(Short item_val) SEC_6;
+
+// death.c, or form_topscores.c anyway
+Long total_points() SEC_6;
+
+// win.c
+void WinDrawChars_ctr(Char *buf, Short buflen, Short x_mid, Short y) SEC_6;
+void WinDrawChars_rj(Char *buf, Short buflen, Short x_right, Short y) SEC_6;
+
+
+// abs seemed to be acting up but I think it was just %c problems after all.
+//#define abs(a) (((a) >= 0) ? (a) : (-(a)))
+// Because desc.c is cranky about %c ... this returns a char + or - for sign.
+#define sgnchar(a) (((a) >= 0) ? ((Char) '+') : ((Char) '-'))
+
+#define IsColor (found_color && my_prefs.color_on)
+@
+
+
+1.75
+log
+@save file should be checkpointed every 200 turns now (2000 if mega-resting)
+@
+text
+@d153 1
+a153 1
+Boolean compact_monsters() SEC_1;
+@
+
+
+1.74
+log
+@henceforth, save/score database Backup bit is set to true on creation.  untested.
+@
+text
+@d576 1
+@
+
+
+1.73
+log
+@undo debugging section move
+@
+text
+@d61 2
+@
+
+
+1.72
+log
+@fixed recall for multiple attack types; fixed map crash bug for inverted noncolor ('#define' evil); hardware button bindings for 'look' and 'recall' form
+@
+text
+@d73 1
+a73 1
+void map_draw();// SEC_6; // DEBUGGING
+@
+
+
+1.71
+log
+@various fixes, mostly to 'again'
+@
+text
+@d25 1
+d73 1
+a73 1
+void map_draw() SEC_6;
+@
+
+
+1.70
+log
+@fixing bugs (handera display tweaks; store list crash; --more--ing for show-invis...
+@
+text
+@d93 1
+@
+
+
+1.69
+log
+@handera support is mostly working, for some value of mostly
+@
+text
+@d78 2
+a79 1
+void store_draw() SEC_6;
+@
+
+
+1.68
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@d16 2
+a17 2
+Boolean About_Form_HandleEvent(EventPtr e) SEC_7;
+Boolean Intro_Form_HandleEvent(EventPtr e) SEC_7;
+d25 2
+a26 2
+Boolean CharRace_Form_HandleEvent(EventPtr e);
+Boolean CharGender_Form_HandleEvent(EventPtr e);
+d40 1
+a40 1
+Boolean Dalek_Form_HandleEvent(EventPtr e) SEC_6;
+d60 22
+@
+
+
+1.67
+log
+@just tidying up
+@
+text
+@d563 1
+@
+
+
+1.66
+log
+@hiding magic numbers
+@
+text
+@d559 4
+@
+
+
+1.65
+log
+@bugfix: code reorg for 'again' had made arrow-keys not work for directional cmds
+@
+text
+@d92 3
+@
+
+
+1.64
+log
+@again (g) works for spellcasting. also for t a z; does inventory bounds check
+@
+text
+@d69 1
+a69 1
+Char map_roguedir(Char comval) SEC_5;
+@
+
+
+1.63
+log
+@adding repeat command 'g' ... some stuff works with it; not spellcasting yet
+@
+text
+@d495 4
+a498 1
+void cast_helper(Short choice, Short chance, Short dir_or_minus_one);// SEC_3; // just debugging...
+d502 1
+a502 1
+void pray_helper(Short choice, Short chance, Short dir_or_minus_one) SEC_3;
+@
+
+
+1.62
+log
+@tweaking
+@
+text
+@d66 1
+@
+
+
+1.61
+log
+@trying to get 'beam cash' working
+@
+text
+@d70 1
+@
+
+
+1.60
+log
+@winning should work now
+@
+text
+@d58 1
+@
+
+
+1.59
+log
+@let user set the save database backup bit in form_user
+@
+text
+@d50 1
+@
+
+
+1.58
+log
+@better msgs on floor-change; sped up repeated delay; fewer keypress in spellbk
+@
+text
+@d491 1
+a491 1
+void cast_helper(Short choice, Short chance, Short dir_or_minus_one) SEC_3;
+@
+
+
+1.57
+log
+@moving extern decls around
+@
+text
+@d87 1
+d383 1
+@
+
+
+1.56
+log
+@(slightly broken) rewiring the MainForm event handlers w/ explicit 'mode'
+@
+text
+@d551 2
+@
+
+
+1.55
+log
+@random tinkering, and prep for multi-user
+@
+text
+@d64 4
+a67 2
+void do_xy_command(Short x, Short y) SEC_5;
+void do_dir_command(Short dir, Short XXX_item) SEC_5;
+@
+
+
+1.54
+log
+@ok beaming the app and database should work now.  sorta
+@
+text
+@d23 1
+a23 1
+Boolean Recall_Form_HandleEvent(EventPtr e);
+d57 1
+d391 1
+@
+
+
+1.53
+log
+@tweaking, tinkering; adding /T to show current time and voltage..
+@
+text
+@d56 1
+@
+
+
+1.52
+log
+@Improved the 'rest' form: can be aborted, can use hardware buttons.
+@
+text
+@d95 2
+@
+
+
+1.51
+log
+@Fixed store-booting shopkeeper-munging bug.  Introduced version record in save db.  Check version record and if <1, fix any shopkeepers that had been munged.
+@
+text
+@d43 1
+@
+
+
+1.50
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d192 2
+@
+
+
+1.49
+log
+@revised stats-redrawing so that it (hopefully) redraws only what has changed
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+@
+
+
+1.48
+log
+@making invert work in the general case; an initial credits screen; and I forget what else
+@
+text
+@d101 1
+a101 1
+void print_stats(UChar statsmode);
+@
+
+
+1.47
+log
+@hauled a bunch of code from one section to another, and moved some consts to DB
+@
+text
+@d28 1
+d49 2
+d65 1
+@
+
+
+1.46
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d27 4
+a30 4
+Boolean About_Form_HandleEvent(EventPtr e);
+Boolean Inv_Form_HandleEvent(EventPtr e);
+void invOrEqu_drop(Short item);
+void refill_lamp();
+d32 1
+a32 1
+Boolean Equ_Form_HandleEvent(EventPtr e);
+d61 1
+d376 2
+a377 2
+Boolean bool_roff_recall(Short mon_num) SEC_3;
+void roff_recall(Short mon_num, Char *buf) SEC_3;
+@
+
+
+1.45
+log
+@crash recovery, maybe
+@
+text
+@d381 7
+a387 1
+void page_scroll_field(FormPtr frm, FieldPtr fld, DirectionType dir);
+@
+
+
+1.44
+log
+@backed out of mess-with-py-record change, I think.  notes on crash recovery
+@
+text
+@d525 2
+@
+
+
+1.43
+log
+@messing around with py record: always exists, sometimes zeroed, always locked during gameplay
+@
+text
+@a524 2
+Boolean py_record_lock(Boolean unlocked) SEC_5;
+void checkpoint_me() SEC_5;
+a527 1
+
+@
+
+
+1.42
+log
+@add option to clear the monster memory
+@
+text
+@d525 2
+d530 1
+@
+
+
+1.41
+log
+@Guess The Verb: directional-foo prints what you're doing in message area.
+@
+text
+@d181 1
+@
+
+
+1.40
+log
+@fixed same-sector-new-level screen-redraw bug
+@
+text
+@d73 1
+a73 1
+void set_statsbar_loc();
+d90 1
+a90 1
+Boolean message_clear();
+@
+
+
+1.39
+log
+@fixed sell-unknown-item-to-store bug.  most forms navigable via keyboard now.
+@
+text
+@d285 1
+a285 1
+void check_view() SEC_3;
+@
+
+
+1.38
+log
+@tweaked notice
+@
+text
+@d359 1
+@
+
+
+1.37
+log
+@fixed relative-move bug, might have fixed same-panel-next-level bug,
+some sound added, command-count recognizes 'delete' now,
+app goes to dead-end form for wrong OS or missing database at startup.
+@
+text
+@d5 1
+a5 1
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+@
+
+
+1.36
+log
+@corrosion bug might be fixed
+last message shown always has at least cur/max hitpoints visible (overlaid)
+inventory now displays weight (optionally)
+added a preference to move status bar to top of screen
+@
+text
+@d60 1
+d489 1
+@
+
+
+1.35
+log
+@sing this corrosion to me (fixed corrode-inventory-item bug)
+@
+text
+@d72 1
+d81 1
+@
+
+
+1.34
+log
+@mumble
+@
+text
+@d249 2
+a250 2
+Short inven_damage(Boolean (*typ)(), Short perc) SEC_1;
+//Short inven_damage(UChar typ, Short perc) SEC_1;
+@
+
+
+1.33
+log
+@rough cut of top-score list
+@
+text
+@d41 1
+d43 1
+@
+
+
+1.32
+log
+@genocide scroll works
+@
+text
+@d39 2
+a40 2
+Boolean Store_Form_HandleEvent(EventPtr e);
+Boolean Haggle_Form_HandleEvent(EventPtr e);
+d523 3
+@
+
+
+1.31
+log
+@user can rebind hardware buttons
+@
+text
+@d46 1
+d424 1
+a424 1
+Boolean genocide() SEC_2;
+@
+
+
+1.30
+log
+@can access Recall from Look now
+@
+text
+@d51 1
+@
+
+
+1.29
+log
+@added non-compact view for stores
+@
+text
+@d34 1
+d73 1
+@
+
+
+1.28
+log
+@fixed ring-wearing
+@
+text
+@d42 1
+a42 1
+void store_list_tens(Short dir) SEC_4;
+@
+
+
+1.27
+log
+@added 'inscribe', rearranged menus
+@
+text
+@d494 1
+@
+
+
+1.26
+log
+@wands, staffs mostly tested, recharge works, throw works
+@
+text
+@d54 1
+d273 1
+a273 1
+void scribe_object() SEC_3;
+d275 1
+a275 1
+void inscribe(Short iptr, Char *str) SEC_3;
+@
+
+
+1.25
+log
+@continued work on spells
+@
+text
+@d30 1
+a30 1
+void refill_lamp(Short ignored);
+d53 1
+a53 1
+
+d213 1
+a213 1
+void magic_treasure(Short x, Short level) SEC_2;
+d387 1
+a387 1
+Short ident_spell() SEC_2;
+d404 1
+a404 1
+Boolean recharge(Short num) SEC_2;
+@
+
+
+1.24
+log
+@scrolls enabled, spells direction selector added
+@
+text
+@d84 1
+@
+
+
+1.23
+log
+@fixed some bugs: messages from actions that make you exit from
+inventory/equipment should now occur on time (instead of the following
+turn); level advancement works; blindness and cure blindness both work
+on time.  speeded up the redraw-whole-screen thing (now have a recalc,
+refresh, and faster recalc_refresh combo.  code needs cleaning up now..)
+@
+text
+@d466 1
+a466 1
+void cast_helper(Short result, Short choice, Short chance) SEC_3;
+d470 1
+a470 1
+void pray_helper(Short result, Short choice, Short chance) SEC_3;
+d513 8
+@
+
+
+1.22
+log
+@Death - now you die and go to a tombstone page and can print Character Record to a memo
+@
+text
+@d31 1
+d52 1
+d71 2
+a72 1
+void refresh();
+d256 1
+d426 1
+@
+
+
+1.21
+log
+@fixed the buy-out-an-item store bug, maybe
+@
+text
+@d50 1
+d83 1
+d182 1
+@
+
+
+1.20
+log
+@added scrambling of magic-item names (except scrolls), only partly tested
+@
+text
+@d139 2
+a140 1
+void storeinvcopy(inven_record *to_rec, Short to_index, Short from_index);
+d178 1
+@
+
+
+1.19
+log
+@you can now: quit; attack instead of running; be given a default name
+@
+text
+@d174 3
+a177 1
+
+@
+
+
+1.18
+log
+@added saving
+@
+text
+@d122 1
+d164 10
+a173 10
+void recall_cmove_or(Short index, ULong or_me);
+void recall_set_cmove(Short index, ULong val);
+void recall_spells_or(Short index, ULong val);
+void recall_set_spells(Short index, ULong val);
+void recall_increment_kills(Short index);
+void recall_increment_deaths(Short index);
+void recall_cdefense_or(Short index, UShort or_me);
+void recall_set_wake(Short index, UChar val);
+void recall_set_ignore(Short index, UChar val);
+void recall_increment_attacks(Short index, Short attindex);
+d292 1
+d465 1
+@
+
+
+1.17
+log
+@adding GPL comment
+@
+text
+@d494 4
+@
+
+
+1.16
+log
+@command count sorta works
+@
+text
+@d1 23
+@
+
+
+1.15
+log
+@overview map sorta works
+@
+text
+@d50 1
+d52 1
+a52 1
+#define unmessage() message(0)
+@
+
+
+1.14
+log
+@added Preferences, maybe half of them work
+@
+text
+@d26 2
+@
+
+
+1.13
+log
+@just another random checkpoint
+@
+text
+@d23 3
+d44 1
+@
+
+
+1.12
+log
+@ok Recall working for town monsters, may still have bugs for dungeon critters
+@
+text
+@d22 1
+d46 5
+@
+
+
+1.11
+log
+@'click to identify' Recall is sorta working, sorta buggy
+@
+text
+@d314 1
+a314 1
+Char roff_recall(Short mon_num, Char *buf) SEC_3;
+@
+
+
+1.10
+log
+@trying to fix the panel thing, still a problem.  but you can see yourself.
+@
+text
+@d28 1
+d34 1
+@
+
+
+1.9
+log
+@working on dungeon.c / command loop foo
+@
+text
+@d35 1
+a35 1
+void setscreen(Short col, Short row, Short ch);
+@
+
+
+1.8
+log
+@working on main command input
+@
+text
+@d27 2
+d39 1
+a39 1
+void slide_dir(Short x, Short y);
+d45 1
+d454 1
+a454 1
+void creatures(Short attack) SEC_4;
+@
+
+
+1.7
+log
+@continuing slow accretion (scrolls.c, du partial dungeon.c)
+@
+text
+@d23 4
+d41 1
+a41 1
+void print_stats(Char statsmode);
+d105 4
+a108 4
+void invy_set_number(inven_type *iptr, Short index, UChar n); // fixed
+void invy_set_flags(inven_type *iptr, Short index, ULong n);
+void invy_set_p1(inven_type *iptr, Short index, Short n);
+void invy_set_cost(inven_type *iptr, Short index, Long cost);
+d110 8
+a117 7
+			    Char tohit, Char todam, Char toac);
+void invy_set_index(inven_type *iptr, Short index, UShort val);
+void invy_delete(Short item_val);
+void invy_set_name2(inven_type *iptr, Short index, UChar val);
+void invy_insert(Short locn, inven_type *copyme);
+void invy_set_ident(inven_type *iptr, Short index, UChar ident);
+void blank_objident();
+d119 2
+a120 2
+void object_ident_or(Short index, UChar or_me);
+void object_ident_nand(Short index, UChar nand_me);
+d240 1
+@
+
+
+1.6
+log
+@mages can gain spells now
+(note: there is a tiny memory leak in learn_the_spell, form_spell.c)
+@
+text
+@d210 1
+@
+
+
+1.5
+log
+@adding spell/prayer selection forms
+@
+text
+@d21 2
+d196 1
+@
+
+
+1.4
+log
+@cleaned up creature.c and stuff
+@
+text
+@d19 2
+d190 6
+d400 1
+a400 1
+void cast(Short item_val) SEC_3;
+d404 1
+a404 1
+void pray(Short item_val) SEC_3;
+d436 1
+@
+
+
+1.3
+log
+@store: selling implemented
+@
+text
+@d33 1
+a33 1
+void print_stats(Boolean siwdcc);
+d116 1
+d428 6
+@
+
+
+1.2
+log
+@Haggling in the purchase direction is mostly working (don't try sell though)
+@
+text
+@d421 2
+d425 2
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d16 3
+d122 1
+d415 8
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

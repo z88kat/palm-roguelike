@@ -1,0 +1,423 @@
+head	1.3;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2006.08.13.05.47.23;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2006.08.13.04.47.25;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2006.08.08.03.49.45;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>How to play kMoria</title>
+
+<style type="text/css" media="screen">@@import "../3col.css";</style>
+
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>Playing kMoria</h1>
+  <p><i>all about the main screen</i></p>
+</div>
+
+<div class="content">
+
+    <h2> Starting Out </h2>
+
+<p> When you start the application you will first have to
+<a href="play_chargen.php">generate a character</a>. </p>
+
+<p> Then you will start out in the town.  If you are not familiar with
+Moria or want a refresher, here is a very brief intro to what you will
+see.  When you are done, continue with <a href="play.php">how to play</a>. </p>
+
+<h2>What You See</h2>
+
+<p> When you finish creating your character, you will see a screen
+split into two parts.  The main part represents a portion of the
+dungeon level you're on.  The bottom part contains your status
+information and/or recent messages. </p>
+<p>
+<img alt="town" src="../images/kMoria/pl1.gif">
+<br><i>we start at a random location in the town</i> </p>
+
+<h2> Status information </h2>
+
+<p> To make more of the dungeon visible, your status information has
+been compacted.  The top line displays either your six stats, or your
+armor class and cash.  (You can write a "!" in Graffiti to toggle
+between the two.)  The bottom line displays your experience level,
+total experience points, mana, and maximum/current hit points.  <!--
+no need to change: -->
+<p>
+<img alt="stats 1" src="../images/kMoria/pl2a.gif"> </p>
+<p>
+<img alt="stats 2" src="../images/kMoria/pl2b.gif"> </p>
+
+<p> Stats: These are the standard (S)trength, (In)telligence,
+(W)isdom, (D)exterity, (C)onstitution, and (Ch)arisma.  They were
+generated randomly initially, then modified somewhat by your choices
+in character creation.  It is possible to have exceptional,
+e.g. 18/99, values.  A value of 18/25 (for example) is shown as
+reverse-video <b>25</b>. </p>
+
+<p> Armor class (AC): Higher is better.  Put on some armor in the <a
+href="play.php#inventory">inventory</a> screen. </p>
+<p> Cash ($): You can use this to buy things in the stores. </p>
+<p> Current depth ("50 feet"): This shows what dungeon level you are
+on. </p>
+<p> Experience level (L), experience points (x): You get points for
+killing monsters, depending on the type of monster and your current
+level of experience.  You do not get points for killing town
+inhabitants, even if they were asking for it. </p>
+<p> Mana: You need to have mana to use a spell or prayer.  It will
+regenerate slowly after you use it. </p>
+<p> Hit points (hp): The current value is on the right.  It will regenerate
+up to the maximum value (on the left).  If your current hit points drop to 0
+or below, you die. </p>
+
+<h2> Dungeon view </h2>
+
+<p> You are represented by an at-sign "<b>@@</b>".  You start out in
+the town, which has various stores as well as a staircase leading into
+the dungeon.  The town also contains various uncongenial inhabitants.
+To enter a store, just move on top of its numbered doorway.  (I will
+explain <a href="play.php#move">how to move</a> in the next section.)  To
+enter the dungeon, move onto its entrance and write <b>&gt;</b> to
+descend the stairs; be sure to wield a light source so that you can
+find your way out again. </p>
+
+<p> The dungeon levels in Moria tend to be large.  Be patient as a new
+level is generated.  You may wish to change to the smaller <a
+href="play.php#font">font</a> so that you can see more.  This game does not
+have persistent levels; if you descend from level A to level B and
+then ascend to A again, it will be a new fully-stocked random map. </p>
+<p>
+<img alt="town" src="../images/kMoria/pl1.gif">
+<img alt="town R" src="../images/kMoria/pl3a.gif">
+<img alt="town L" src="../images/kMoria/pl3b.gif">
+<img alt="stairs" src="../images/kMoria/pl3c.gif">
+<br><i>east end of town... zoom out... move to the west end... zoom in... we're at the stairs</i> </p>
+
+<p> When you are in the dungeon, walls are "<b>#</b>" and lighted
+tiles are "<b>.</b>".  You may see monsters, represented by letters of
+the alphabet.  You can attack them by walking into them. </p>
+
+<p> Items: In your wanderings you will also encounter items that you
+can pick up; these are represented by various symbols such as ! and ?;
+you pick them up by walking on them, and you can use them from your <a
+href="play.php#inventory">inventory</a> screen. </p>
+
+<p> To find out more about your surroundings: The <a
+href="play.php#whatsthat">What's that</a> command will identify any letter,
+symbol, or number that you tap on, and (if it is a type of monster)
+will recall what you have learned so far about it.  The <a
+href="play.php#look">look</a> command lets you choose a direction to look in,
+and will list any interesting things you see there.  Either command
+will also give you access to the "monster memory": kMoria remembers,
+from game to game, what your characters have learned about particular
+monsters (did it kill you, does it breathe fire, is it vulnerable to
+something, how many experience points is it worth to you now, etc). </p>
+
+<p> Doors: You will sometimes encounter closed doors "<b>+</b>" which
+can be <a href="play.php#open">opened</a> or, if it is jammed shut, you can
+try to <a href="play.php#force">force</a> it open bodily.  It may take several
+tries to open a locked door or force a door that is stuck.  If you
+want to wedge a door shut to delay pursuit, you can <a
+href="play.php#spike">spike</a> it with iron spikes, assuming that you are
+carrying some.  Many doors in these mines are cunningly concealed; if
+you think a door ought to exist in one of the eight squares adjacent
+to you, you can <a href="play.php#search">search</a> for it; again, this may
+take several tries.  Open doors "<b>'</b>" can of course be <a
+href="play.php#close">closed</a> again, unless forced and broken. </p>
+
+<p> Stairs: Down staircases <b>&gt;</b> and up staircases <b>&lt;</b>
+are conveniently represented by the same symbol that you must write to
+<a href="play.php#scend">ascend or descend</a> them. </p>
+
+<p> Digging: You may see a vein of valuable metal "<b>$</b>" embedded
+in a wall.  You can try to <a href="play.php#dig">dig</a> this out.  It will
+take a long time unless you are wielding a suitable mining implement
+such as a pick or shovel.  Some kinds of rock are harder to dig
+through than others; there is a <a href="play.php#prefs">preference</a> that
+will draw the easier minerals as "<b>%</b>". </p>
+
+<p> Traps: From time to time you may run into a trap "<b>^</b>".
+There are various kinds of traps, but I'll let you find out about them
+on your own.  You can find traps by <a href="play.php#search">searching</a>,
+and you can also attempt to <a href="play.php#disarm">disarm</a> a trap. </p>
+
+<p> To alleviate the tedium, some of these commands can be
+auto-repeated ("dig until you are done or are interrupted by
+something").  There is also a "do whatever I just did <a
+href="play.php#again">again</a>" command. </p>
+
+<p> Ok, that's the brief introduction.  On to
+<a href="play.php">how to play</a>. </p>
+
+</div>
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+</body>
+</html>
+@
+
+
+1.2
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+@
+
+
+1.1
+log
+@commit everything before massive style change
+@
+text
+@d1 3
+a3 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+d6 5
+a10 5
+<title>How to play kMoria: main screen</title>
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+d14 8
+a21 44
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">kMoria: looking at the main screen</h3>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      <!-- -->
+      <tr><td class="sidehead">
+	kMoria Stuff </td></tr>
+      <tr><td class="side"> <a href="index.php">
+	  What is kMoria?</a> </td></tr>
+      <tr><td class="side"> <a href="whatsnew.php">
+	  What's new</a> </td></tr>
+      <tr><td class="side"> <a href="download.php">
+	  Download kMoria</a> </td></tr>
+      <tr><td class="side">
+	  <a href="play.php">How to play</a>
+	<br>- <a href="play_chargen.php">character creation</a>
+	<br>- <b>brief intro</b>
+       </td></tr>
+      <tr><td class="side"> <a href="source.php">
+	  How to get source</a> </td></tr>
+      <?php include ("../hostedby.txt") ?>
+    </table></td>
+
+    <!-- main area table -->
+    <td class="body" valign=top>
+    <!-- ----- this is the interesting part of the page ----- -->
+
+    <h4> Starting Out </h4>
+
+<P> When you start the application you will first have to
+<a href="play_chargen.php">generate a character</a>.  (Follow
+that link to see out how it's done.)
+d23 4
+a26 1
+<P> Then you will start out in the town.  If you are not familiar with
+d28 1
+a28 5
+see.  When you are done, continue with <a href="play.php">how to play</a>.
+    
+</td></tr></table>
+
+<P>
+d30 1
+a30 1
+<h3>What You See</h3>
+d32 1
+a32 1
+<P> When you finish creating your character, you will see a screen
+d35 2
+a36 2
+information and/or recent messages.
+<P>
+d38 1
+a38 1
+<br><i>we start at a random location in the town</i>
+d40 1
+a40 1
+<h3> Status information </h3>
+d42 1
+a42 1
+<P> To make more of the dungeon visible, your status information has
+d48 4
+a51 4
+<P>
+<img alt="stats 1" src="../images/kMoria/pl2a.gif">
+<P>
+<img alt="stats 2" src="../images/kMoria/pl2b.gif">
+d53 1
+a53 1
+<P> Stats: These are the standard (S)trength, (In)telligence,
+d58 1
+a58 1
+reverse-video <b>25</b>.
+d60 6
+a65 6
+<P> Armor class (AC): Higher is better.  Put on some armor in the <a
+href="play.php#inventory">inventory</a> screen.
+<P> Cash ($): You can use this to buy things in the stores.
+<P> Current depth ("50 feet"): This shows what dungeon level you are
+on.
+<P> Experience level (L), experience points (x): You get points for
+d68 4
+a71 4
+inhabitants, even if they were asking for it.
+<P> Mana: You need to have mana to use a spell or prayer.  It will
+regenerate slowly after you use it.
+<P> Hit points (hp): The current value is on the right.  It will regenerate
+d73 1
+a73 1
+or below, you die.
+d75 1
+a75 1
+<h3> Dungeon view </h3>
+d77 1
+a77 1
+<P> You are represented by an at-sign "<b>@@</b>".  You start out in
+d84 1
+a84 1
+find your way out again.
+d86 1
+a86 1
+<P> The dungeon levels in Moria tend to be large.  Be patient as a new
+d90 2
+a91 2
+then ascend to A again, it will be a new fully-stocked random map.
+<P>
+d96 1
+a96 1
+<br><i>east end of town... zoom out... move to the west end... zoom in... we're at the stairs</i>
+d98 1
+a98 1
+<P> When you are in the dungeon, walls are "<b>#</b>" and lighted
+d100 1
+a100 1
+the alphabet.  You can attack them by walking into them.
+d102 1
+a102 1
+<P> Items: In your wanderings you will also encounter items that you
+d105 1
+a105 1
+href="play.php#inventory">inventory</a> screen.
+d107 1
+a107 1
+<P> To find out more about your surroundings: The <a
+d116 1
+a116 1
+something, how many experience points is it worth to you now, etc).
+d118 1
+a118 1
+<P> Doors: You will sometimes encounter closed doors "<b>+</b>" which
+d128 1
+a128 1
+href="play.php#close">closed</a> again, unless forced and broken.
+d130 1
+a130 1
+<P> Stairs: Down staircases <b>&gt;</b> and up staircases <b>&lt;</b>
+d132 1
+a132 1
+<a href="play.php#scend">ascend or descend</a> them.
+d134 1
+a134 1
+<P> Digging: You may see a vein of valuable metal "<b>$</b>" embedded
+d139 1
+a139 1
+will draw the easier minerals as "<b>%</b>".
+d141 1
+a141 1
+<P> Traps: From time to time you may run into a trap "<b>^</b>".
+d144 1
+a144 1
+and you can also attempt to <a href="play.php#disarm">disarm</a> a trap.
+d146 1
+a146 1
+<P> To alleviate the tedium, some of these commands can be
+d149 1
+a149 1
+href="play.php#again">again</a>" command.
+d151 2
+a152 2
+<P> Ok, that's the brief introduction.  On to
+<a href="play.php">how to play</a>.
+d154 1
+a154 2
+      <P>
+      <!-- ----- end of the interesting part of the page ----- -->
+d156 8
+a163 3
+<!-- footer table -->
+<?php include ("../footer.txt") ?>
+<!-- end footer table -->
+a164 1
+<address>i0lanthe@@users.sourceforge.net</address>
+a165 1
+Last modified: Wed Jan  9 17:24:40 EST 2002
+d167 1
+a167 1
+<?php $hitsfile = "play_intro.hits"; include ("../counter.php")?>
+@
+

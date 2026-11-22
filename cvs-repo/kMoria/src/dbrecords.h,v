@@ -1,0 +1,162 @@
+head	1.4;
+access;
+symbols
+	Release-2002_03_29:1.4
+	Release-2002_01_12:1.4
+	Release-2002_01_02:1.4
+	Release-2002_01_01:1.4
+	Release-2001_12_19:1.4
+	Release-2001_08_04:1.4
+	Release-2001_07_02:1.4
+	Release-2001_06_16:1.3
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.4
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.11.04.02.13.39;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.43.45;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.43.45;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+/* These are the ones that the GAME will use and not the database-builder */
+/* Keep this up to date with respect to dbrecords.h */
+
+// THis might also want to contain all the MAXLEN_foo !!!
+
+void newrec_messagelog(); /* use if no SaveDB exists */
+void add_message_to_log(Char *msg, everything *env);
+void print_message_log(everything *env);
+void copy_player_title(Short pclass, Short plevel, Char *buf);
+void generate_background(Char *buf, everything *env);
+ULong get_player_exp(Short plevel);
+void newrec_playerhp(); /* use if no SaveDB exists */
+void write_player_hp(Short plevel, UShort hp);
+void reset_player_hp(); /* use on character creation if SaveDB exists */
+UShort get_player_hp(Short plevel);
+UChar rgold_adj(Short owner_race, Short player_race);
+void copy_spell_name(Short spell, Char *buf);
+void newrec_spellorder(); /* use if no SaveDB exists */
+void reset_spell_order(); /* use on character creation if SaveDB exists */
+void write_spell_order(Short new_spell, everything *env);
+Short get_spell_order(Short i);
+/* NOTE - Need a routine to get the store owner record */
+/* NOTE - Need a routine to get the store type record */
+/* NOTE - Need a routine to get the store inventory records */
+/* NOTE - Need a routine to get the treasure (object) type records */
+void copy_spec_name(Short spec, Char *buf);
+/* NOTE - Need a routine to get the creature (monster) type records */
+/* NOTE - Need a routine to get the monster attacks record */
+void copy_color(Short i, Char *buf);
+void copy_mushroom(Short i, Char *buf);
+void copy_wood(Short i, Char *buf);
+void copy_metal(Short i, Char *buf);
+void copy_rock(Short i, Char *buf);
+void copy_amulet(Short i, Char *buf);
+void copy_syllable(Short i, Char *buf);
+UShort get_normal_tab(Short i);
+@
+
+
+1.3
+log
+@tweaked notice
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+@
+
+
+1.2
+log
+@adding GPL comment
+@
+text
+@d5 1
+a5 1
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 23
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

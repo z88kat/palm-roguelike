@@ -1,0 +1,48 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	Release-2001_08_06:1.1.1.1
+	Release-2001_06_15:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2000.08.27.17.34.13;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.34.13;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@#define CHAR_BIT 8
+#define BITMASK(b) (1 << ((b) % CHAR_BIT))
+#define BITSLOT(b) ((b) / CHAR_BIT)
+#define BITSET(a, b) ((a)[BITSLOT(b)] |= BITMASK(b))
+#define BITTEST(a, b) ((a)[BITSLOT(b)] & BITMASK(b))
+@
+
+
+1.1.1.1
+log
+@iLarn - Ularn port for PalmOS - initial code checkin
+@
+text
+@@

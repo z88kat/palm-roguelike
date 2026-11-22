@@ -1,0 +1,669 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.05.31.00.23.06;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.23.06;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>kMoria Button Survey</title>
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="http://roguelike-palm.sourceforge.net/green.css" media="screen">
+  </head>
+
+  <body>
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3>kMoria Button Survey</h3>
+<P> <i>This <a href="../survey/index.php">survey</a> is about <a
+href="../kMoria/index.php">kMoria</a> (Moria ported to PalmOS),
+part of the <a href="../index.php">Roguelikes for PalmOS</a> project
+hosted at <a href="http://sourceforge.net">SourceForge</a>.</i>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+<hr>
+<img src="../survey/buttons_names.gif" alt="[picture of buttons]">
+
+<table>
+<!-- -->
+<tr>
+	<td colspan="3"><b>Date Book</b></td>
+</tr>
+
+<tr><td><font>---</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%a1;>&nbsp;$%a1;%</td>
+<td>$a1;</td></tr>
+   
+<tr><td><font>n, s, e, w</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%a2;>&nbsp;$%a2;%</td>
+<td>$a2;</td></tr>
+   
+<tr><td><font>map</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%a3;>&nbsp;$%a3;%</td>
+<td>$a3;</td></tr>
+   
+<tr><td><font>look</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%a4;>&nbsp;$%a4;%</td>
+<td>$a4;</td></tr>
+   
+<tr><td><font>inventory</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%a5;>&nbsp;$%a5;%</td>
+<td>$a5;</td></tr>
+   
+<tr><td><font>magic</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%a6;>&nbsp;$%a6;%</td>
+<td>$a6;</td></tr>
+   
+<tr><td><font>search</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/black.gif"
+    height=10 width=$%a7;>&nbsp;$%a7;%</td>
+<td>$a7;</td></tr>
+
+<tr><td><font>srch mode</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%a8;>&nbsp;$%a8;%</td>
+<td>$a8;</td></tr>
+   
+<tr><td><font>rest</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%a9;>&nbsp;$%a9;%</td>
+<td>$a9;</td></tr>
+   
+<tr><td><font>dig</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%a10;>&nbsp;$%a10;%</td>
+<td>$a10;</td></tr>
+   
+<tr><td><font>force</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%a11;>&nbsp;$%a11;%</td>
+<td>$a11;</td></tr>
+   
+<tr><td><font>change font</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%a12;>&nbsp;$%a12;%</td>
+<td>$a12;</td></tr>
+
+<tr><td><font>other</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%a13;>&nbsp;$%a13;%</td>
+<td>$a13;</td></tr>
+   
+<!--   
+<tr><td><font>blah</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/black
+    height=10 width=$%a14;>&nbsp;$%a14;%</td>
+<td>$a14;</td></tr>
+-->
+
+<tr>
+	<td colspan="3"><b>Address</b></td>
+</tr>
+
+<tr><td><font>---</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%b1;>&nbsp;$%b1;%</td>
+<td>$b1;</td></tr>
+   
+<tr><td><font>n, s, e, w</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%b2;>&nbsp;$%b2;%</td>
+<td>$b2;</td></tr>
+   
+<tr><td><font>map</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%b3;>&nbsp;$%b3;%</td>
+<td>$b3;</td></tr>
+   
+<tr><td><font>look</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%b4;>&nbsp;$%b4;%</td>
+<td>$b4;</td></tr>
+   
+<tr><td><font>inventory</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%b5;>&nbsp;$%b5;%</td>
+<td>$b5;</td></tr>
+   
+<tr><td><font>magic</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%b6;>&nbsp;$%b6;%</td>
+<td>$b6;</td></tr>
+   
+<tr><td><font>search</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/black.gif"
+    height=10 width=$%b7;>&nbsp;$%b7;%</td>
+<td>$b7;</td></tr>
+
+<tr><td><font>srch mode</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%b8;>&nbsp;$%b8;%</td>
+<td>$b8;</td></tr>
+   
+<tr><td><font>rest</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%b9;>&nbsp;$%b9;%</td>
+<td>$b9;</td></tr>
+   
+<tr><td><font>dig</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%b10;>&nbsp;$%b10;%</td>
+<td>$b10;</td></tr>
+   
+<tr><td><font>force</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%b11;>&nbsp;$%b11;%</td>
+<td>$b11;</td></tr>
+   
+<tr><td><font>change font</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%b12;>&nbsp;$%b12;%</td>
+<td>$b12;</td></tr>
+
+<tr><td><font>other</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%b13;>&nbsp;$%b13;%</td>
+<td>$b13;</td></tr>
+
+
+
+<tr>
+	<td colspan="3"><b>Up</b></td>
+</tr>
+
+<tr><td><font>---</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%c1;>&nbsp;$%c1;%</td>
+<td>$c1;</td></tr>
+   
+<tr><td><font>n, s, e, w</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%c2;>&nbsp;$%c2;%</td>
+<td>$c2;</td></tr>
+   
+<tr><td><font>map</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%c3;>&nbsp;$%c3;%</td>
+<td>$c3;</td></tr>
+   
+<tr><td><font>look</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%c4;>&nbsp;$%c4;%</td>
+<td>$c4;</td></tr>
+   
+<tr><td><font>inventory</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%c5;>&nbsp;$%c5;%</td>
+<td>$c5;</td></tr>
+   
+<tr><td><font>magic</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%c6;>&nbsp;$%c6;%</td>
+<td>$c6;</td></tr>
+   
+<tr><td><font>search</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/black.gif"
+    height=10 width=$%c7;>&nbsp;$%c7;%</td>
+<td>$c7;</td></tr>
+
+<tr><td><font>srch mode</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%c8;>&nbsp;$%c8;%</td>
+<td>$c8;</td></tr>
+   
+<tr><td><font>rest</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%c9;>&nbsp;$%c9;%</td>
+<td>$c9;</td></tr>
+   
+<tr><td><font>dig</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%c10;>&nbsp;$%c10;%</td>
+<td>$c10;</td></tr>
+   
+<tr><td><font>force</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%c11;>&nbsp;$%c11;%</td>
+<td>$c11;</td></tr>
+   
+<tr><td><font>change font</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%c12;>&nbsp;$%c12;%</td>
+<td>$c12;</td></tr>
+
+<tr><td><font>other</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%c13;>&nbsp;$%c13;%</td>
+<td>$c13;</td></tr>
+
+
+
+<tr>
+	<td colspan="3"><b>Down</b></td>
+</tr>
+
+<tr><td><font>---</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%d1;>&nbsp;$%d1;%</td>
+<td>$d1;</td></tr>
+   
+<tr><td><font>n, s, e, w</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%d2;>&nbsp;$%d2;%</td>
+<td>$d2;</td></tr>
+   
+<tr><td><font>map</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%d3;>&nbsp;$%d3;%</td>
+<td>$d3;</td></tr>
+   
+<tr><td><font>look</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%d4;>&nbsp;$%d4;%</td>
+<td>$d4;</td></tr>
+   
+<tr><td><font>inventory</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%d5;>&nbsp;$%d5;%</td>
+<td>$d5;</td></tr>
+   
+<tr><td><font>magic</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%d6;>&nbsp;$%d6;%</td>
+<td>$d6;</td></tr>
+   
+<tr><td><font>search</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/black.gif"
+    height=10 width=$%d7;>&nbsp;$%d7;%</td>
+<td>$d7;</td></tr>
+
+<tr><td><font>srch mode</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%d8;>&nbsp;$%d8;%</td>
+<td>$d8;</td></tr>
+   
+<tr><td><font>rest</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%d9;>&nbsp;$%d9;%</td>
+<td>$d9;</td></tr>
+   
+<tr><td><font>dig</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%d10;>&nbsp;$%d10;%</td>
+<td>$d10;</td></tr>
+   
+<tr><td><font>force</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%d11;>&nbsp;$%d11;%</td>
+<td>$d11;</td></tr>
+   
+<tr><td><font>change font</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%d12;>&nbsp;$%d12;%</td>
+<td>$d12;</td></tr>
+
+<tr><td><font>other</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%d13;>&nbsp;$%d13;%</td>
+<td>$d13;</td></tr>
+
+
+
+
+
+<tr>
+	<td colspan="3"><b>To Do List</b></td>
+</tr>
+
+<tr><td><font>---</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%e1;>&nbsp;$%e1;%</td>
+<td>$e1;</td></tr>
+   
+<tr><td><font>n, s, e, w</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%e2;>&nbsp;$%e2;%</td>
+<td>$e2;</td></tr>
+   
+<tr><td><font>map</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%e3;>&nbsp;$%e3;%</td>
+<td>$e3;</td></tr>
+   
+<tr><td><font>look</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%e4;>&nbsp;$%e4;%</td>
+<td>$e4;</td></tr>
+   
+<tr><td><font>inventory</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%e5;>&nbsp;$%e5;%</td>
+<td>$e5;</td></tr>
+   
+<tr><td><font>magic</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%e6;>&nbsp;$%e6;%</td>
+<td>$e6;</td></tr>
+   
+<tr><td><font>search</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/black.gif"
+    height=10 width=$%e7;>&nbsp;$%e7;%</td>
+<td>$e7;</td></tr>
+
+<tr><td><font>srch mode</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%e8;>&nbsp;$%e8;%</td>
+<td>$e8;</td></tr>
+   
+<tr><td><font>rest</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%e9;>&nbsp;$%e9;%</td>
+<td>$e9;</td></tr>
+   
+<tr><td><font>dig</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%e10;>&nbsp;$%e10;%</td>
+<td>$e10;</td></tr>
+   
+<tr><td><font>force</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%e11;>&nbsp;$%e11;%</td>
+<td>$e11;</td></tr>
+   
+<tr><td><font>change font</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%e12;>&nbsp;$%e12;%</td>
+<td>$e12;</td></tr>
+
+<tr><td><font>other</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%e13;>&nbsp;$%e13;%</td>
+<td>$e13;</td></tr>
+
+
+
+
+
+
+<tr>
+	<td colspan="3"><b>Memo Pad</b></td>
+</tr>
+
+<tr><td><font>---</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%f1;>&nbsp;$%f1;%</td>
+<td>$f1;</td></tr>
+   
+<tr><td><font>n, s, e, w</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%f2;>&nbsp;$%f2;%</td>
+<td>$f2;</td></tr>
+   
+<tr><td><font>map</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%f3;>&nbsp;$%f3;%</td>
+<td>$f3;</td></tr>
+   
+<tr><td><font>look</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%f4;>&nbsp;$%f4;%</td>
+<td>$f4;</td></tr>
+   
+<tr><td><font>inventory</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%f5;>&nbsp;$%f5;%</td>
+<td>$f5;</td></tr>
+   
+<tr><td><font>magic</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%f6;>&nbsp;$%f6;%</td>
+<td>$f6;</td></tr>
+   
+<tr><td><font>search</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/black.gif"
+    height=10 width=$%f7;>&nbsp;$%f7;%</td>
+<td>$f7;</td></tr>
+
+<tr><td><font>srch mode</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%f8;>&nbsp;$%f8;%</td>
+<td>$f8;</td></tr>
+   
+<tr><td><font>rest</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%f9;>&nbsp;$%f9;%</td>
+<td>$f9;</td></tr>
+   
+<tr><td><font>dig</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%f10;>&nbsp;$%f10;%</td>
+<td>$f10;</td></tr>
+   
+<tr><td><font>force</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%f11;>&nbsp;$%f11;%</td>
+<td>$f11;</td></tr>
+   
+<tr><td><font>change font</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%f12;>&nbsp;$%f12;%</td>
+<td>$f12;</td></tr>
+
+<tr><td><font>other</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%f13;>&nbsp;$%f13;%</td>
+<td>$f13;</td></tr>
+
+
+
+
+
+
+<tr>
+	<td colspan="3"><b>Calculator</b></td>
+</tr>
+
+<tr><td><font>---</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%g1;>&nbsp;$%g1;%</td>
+<td>$g1;</td></tr>
+   
+<tr><td><font>n, s, e, w</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%g2;>&nbsp;$%g2;%</td>
+<td>$g2;</td></tr>
+   
+<tr><td><font>map</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%g3;>&nbsp;$%g3;%</td>
+<td>$g3;</td></tr>
+   
+<tr><td><font>look</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%g4;>&nbsp;$%g4;%</td>
+<td>$g4;</td></tr>
+   
+<tr><td><font>inventory</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%g5;>&nbsp;$%g5;%</td>
+<td>$g5;</td></tr>
+   
+<tr><td><font>magic</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%g6;>&nbsp;$%g6;%</td>
+<td>$g6;</td></tr>
+   
+<tr><td><font>search</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/black.gif"
+    height=10 width=$%g7;>&nbsp;$%g7;%</td>
+<td>$g7;</td></tr>
+
+<tr><td><font>srch mode</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%g8;>&nbsp;$%g8;%</td>
+<td>$g8;</td></tr>
+   
+<tr><td><font>rest</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%g9;>&nbsp;$%g9;%</td>
+<td>$g9;</td></tr>
+   
+<tr><td><font>dig</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%g10;>&nbsp;$%g10;%</td>
+<td>$g10;</td></tr>
+   
+<tr><td><font>force</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%g11;>&nbsp;$%g11;%</td>
+<td>$g11;</td></tr>
+   
+<tr><td><font>change font</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%g12;>&nbsp;$%g12;%</td>
+<td>$g12;</td></tr>
+
+<tr><td><font>other</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%g13;>&nbsp;$%g13;%</td>
+<td>$g13;</td></tr>
+
+
+
+
+
+<tr>
+	<td colspan="3"><b>Find</b></td>
+</tr>
+
+<tr><td><font>---</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%h1;>&nbsp;$%h1;%</td>
+<td>$h1;</td></tr>
+   
+<tr><td><font>n, s, e, w</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%h2;>&nbsp;$%h2;%</td>
+<td>$h2;</td></tr>
+   
+<tr><td><font>map</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%h3;>&nbsp;$%h3;%</td>
+<td>$h3;</td></tr>
+   
+<tr><td><font>look</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%h4;>&nbsp;$%h4;%</td>
+<td>$h4;</td></tr>
+   
+<tr><td><font>inventory</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%h5;>&nbsp;$%h5;%</td>
+<td>$h5;</td></tr>
+   
+<tr><td><font>magic</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%h6;>&nbsp;$%h6;%</td>
+<td>$h6;</td></tr>
+   
+<tr><td><font>search</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/black.gif"
+    height=10 width=$%h7;>&nbsp;$%h7;%</td>
+<td>$h7;</td></tr>
+
+<tr><td><font>srch mode</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif"
+    height=10 width=$%h8;>&nbsp;$%h8;%</td>
+<td>$h8;</td></tr>
+   
+<tr><td><font>rest</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/orange.gif"
+    height=10 width=$%h9;>&nbsp;$%h9;%</td>
+<td>$h9;</td></tr>
+   
+<tr><td><font>dig</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif"
+    height=10 width=$%h10;>&nbsp;$%h10;%</td>
+<td>$h10;</td></tr>
+   
+<tr><td><font>force</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif"
+    height=10 width=$%h11;>&nbsp;$%h11;%</td>
+<td>$h11;</td></tr>
+   
+<tr><td><font>change font</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif"
+    height=10 width=$%h12;>&nbsp;$%h12;%</td>
+<td>$h12;</td></tr>
+
+<tr><td><font>other</font></td>
+<td><img src="http://roguelike-palm.sourceforge.net/survey/purple.gif"
+    height=10 width=$%h13;>&nbsp;$%h13;%</td>
+<td>$h13;</td></tr>
+
+
+<!-- -->
+<tr>
+	<td colspan="2" align="CENTER">Total:&nbsp;$tot;</td>
+</tr>
+</table>
+
+<P> If you have some thoughts that are not covered in this survey you can
+send email, or write your idea on the
+<a href="http://roguelike-palm.sourceforge.net/wiki/">WikiWiki</a> (a set of
+web pages that anyone can modify without knowing any html).
+    <hr>
+    <address><a href="mailto:i0lanthe@@users.sourceforge.net">email</a></address>
+<!-- Created: Wed Aug  2 17:13:41 EDT 2000 -->
+<!-- hhmts start -->
+Last modified: Sun Apr  1 21:32:49 EDT 2001
+<!-- hhmts end -->
+  </body>
+</html>
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

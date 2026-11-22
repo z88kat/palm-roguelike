@@ -1,0 +1,745 @@
+head	1.3;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2006.08.13.05.47.22;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2006.08.13.04.47.25;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2006.08.08.03.49.45;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>kMoria in Color</title>
+
+<style type="text/css" media="screen">@@import "../3col.css";</style>
+
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>kMoria in color</h1>
+  <p><i>how to configure color using kMoriaUtil</i></p>
+</div>
+
+
+<div class="content">
+  <h2></h2>
+<p>
+ To configure color you need kMoriaUtil.prc.  You should have received
+it in the same zip file as kMoria.prc; if you got kMoria some other way, go <a
+href="download.php">download</a> the zip file to get kMoriaUtil, then install it</p>
+
+
+<p>
+Find your kMoriaUtil and tap on it:
+</p>
+<p>
+<img src="../images/kMoria/color/15.gif" alt="apps screen">
+</p>
+
+<p>
+When you enter kMoriaUtil, you'll see four buttons: things,
+things-to-creatures, colors-to-creatures, and creatures.  (There's
+also a note at the bottom saying that you can press the scroll-down
+button to return to this screen.)  
+
+<p><i>In short, "things" assigns colors to ASCII symbols; "things to
+creatures" quickly assigns colors to monsters according to the
+monster's ASCII symbol; "colors to creatures" quickly (re)assigns
+colors of monsters that have a color in their name, like "Red Frog";
+when you've done all those, "creatures" is for individually assigning
+colors to any monster that you're not yet satisfied with.</i>
+
+<p>
+<img src="../images/kMoria/color/01.gif" alt="kMoriaUtil">
+</p>
+<p>
+First, you should press Things.
+This is what you see when you press Things:
+<br><img src="../images/kMoria/color/02.gif" alt="ASCII symbols used in kMoria">
+<br> a screen listing all of
+the ASCII symbols in the game.  As you know, the non-alphabetic
+symbols correspond to different classes of items (such as walls, potions,
+weapons), and the alphabetic symbols correspond to different classes of
+monsters (such as ants, frogs, jellies, people).  In this screen, you can
+assign colors to <b>symbols</b> (so you are assigning colors to
+classes of items).
+Tap a symbol to select it.  Let's select <b>#</b> now, which represents a wall.
+</p>
+
+<p>
+
+<img src="../images/kMoria/color/03.gif" alt="color palette selector">
+</p>
+
+<p>
+When you select a symbol, you will see a standard palette.
+The title bar lets you know that you picked "# - a stone wall".
+You can tap on a color to assign it to that symbol.
+<br>
+If you'd rather use RGB sliders instead of a palette,
+there's a control in the lower right corner to switch to sliders.
+Let's try it.
+</p>
+
+<p>
+
+<img src="../images/kMoria/color/04.gif" alt="color slider selector">
+</p>
+<p>
+This is what the slider screen looks like.  You can set
+individual red / green / blue values, and the color is
+displayed above (the color selected here is a boring gray).
+<br> Once you've got a color selected, from the palette screen
+or the slider screen, hit OK.
+</p>
+<p>
+<img src="../images/kMoria/color/05.gif" alt="colored ASCII symbols">
+</p>
+<p>
+When you hit OK, you go back to where you were before,
+the symbols screen.  This is what it might look like
+after you've chosen colors for a few things: <b># % $ * J</b>
+(granite, softer rock, money, gems, and jelly-type monsters).
+<br> If you plan to play with a black background instead of
+white, press the Up button
+(you know, that hardware button between address and todo)
+to toggle the background color:
+</p>
+<p>
+<img src="../images/kMoria/color/06.gif" alt="colored symbols on black">
+</p>
+<p>
+You can press the Up button again to go back to white.
+<br> Or you can press the Down button to get back to the main
+screen.... let's do that.
+</p>
+
+<p>
+Back at the main screen.  We assigned colors to a few symbols (above);
+for example, I made "%" red and "J" purple.  Each letter in the
+alphabet represents a kind of monster; J represents jellies.
+<br> There is another screen later on where you can color each
+<b>kind</b> of monster (white jelly, grape jelly, etc).  This is very
+tedious because there are many kinds of monsters.  So there are two
+features in this utility that let you color a bunch of similar monsters
+at once.  The first is the "Things-&gt;Creatures" button, and this
+will set every monster to be the color of the letter that represents it.
+Since we made J purple, when we hit this button, all of the
+creatures represented by J will become purple.  (I'll talk about
+the second feature later.)
+<br> Let's press "Things-&gt;Creatures" now.
+
+</p>
+<p>
+<img src="../images/kMoria/color/01.gif" alt="kMoriaUtil">
+</p>
+<p>
+
+
+
+When you press "Things-&gt;Creatures", you get this request for
+confirmation: "should monsters in Things override all of Creatures,
+or just the undefined (black/white) creatures?"
+</p>
+
+<p>
+I'll explain.  <b>Suppose</b> you had already skipped ahead, and
+colored some particular <i>kinds of monsters</i>.  Suppose you made
+the Black Frog black, and the Red Jelly red.  Then you said "man, this
+is too tedious", and you went back and colored some <i>letters</i> in
+Things, and you happened to make the 'J' purple and the 'f' green.
+Then you came here.  If you hit <b>All</b>, then all jellies would
+turn purple like the J, <i>even the Red Jelly</i>.  If you hit
+<b>Undef</b>, then the Red Jelly would stay red, but any other jellies
+that you had not colored yet would turn purple.  (Unfortunately,
+either way the Black Frog is going to turn green with the rest of the
+'f' frogs, because it is black-or-white and the utility, not being
+very smart, thinks it is undefined.)
+</p>
+
+<p>
+Since <i>we</i> have not colored any individual kinds of
+creatures yet, it doesn't matter whether we use All or Undef.
+Let's press All.
+</p>
+<p>
+
+<img src="../images/kMoria/color/07.gif" alt="override query">
+</p>
+<p>
+
+
+Ok, we've pressed Things-&gt;Creatures, and we told it to set
+all the creatures according to the color of their letters.
+Let's skip ahead just for a second, to the fourth button, Creatures.
+It will display the results of coloring the creatures.
+</p>
+<p>
+<img src="../images/kMoria/color/01.gif" alt="kMoriaUtil">
+</p>
+<p>
+This is what you see if you press Creatures now:  
+</p>
+<p>
+<img src="../images/kMoria/color/08.gif" alt="white letters on black">
+</p>
+
+<p>
+This is also
+the screen where you would select a specific kind of monster to
+be colored individually, but we're not going to do that yet;
+we're just here to look at it.
+<br>Let's go back to the main screen (hit the Down button
+to get out of here).
+</p>
+<p>
+
+
+Back in the main screen.  I mentioned there were two features to
+speed things up; I'll explain the second one now.  As you might
+already know, Moria has a lot of monsters that have color-words
+in their names, like White Jelly and Red Frog and so on.
+Clearly there should be a way to say "make the White things white and
+the Red things red"... and to say what color "white" is.
+Well, here is the way:
+<br>Press "Color-&gt;Creatures".
+</p>
+<p>
+<img src="../images/kMoria/color/01.gif" alt="kMoriaUtil main screen">
+</p>
+<p>
+
+
+This is where you go when you press "Color-&gt;Creatures".
+</p>
+<p>
+<img src="../images/kMoria/color/09.gif" alt="assigning colors to color names">
+</p>
+<p> At the left there is a column showing the results on white background,
+and a column showing the results on black background, which right now
+is black on black.
+<br> Tap on the color name to select that color.  Then, you can either
+set the little R/G/B controls here, and watch the text change as
+you do so, or, you can tap Palette to select any color from the palette
+(the same kind of palette that you saw before).
+<br> I will just show you the results of setting each color-word
+to some color that I deem reasonable for a dark background.
+</p>
+
+<p>
+<img src="../images/kMoria/color/10.gif" alt="assigned colors to color names">
+</p>
+<p>
+Here we are, still in "Color-&gt;Creatures", and I have set all of
+the colors for the sake of example.
+<br>("Black" is now set to a dark gray... FYI, any color
+that you leave as true "000000" black will be drawn in WHITE if you
+are playing on a dark background, and you may have noticed above
+that that will happen on the Things and Creatures screens
+too when you set the background to black.)
+<br> Let's hit Ok because we're done here.
+</p>
+<p>
+<img src="../images/kMoria/color/11.gif" alt="override query">
+</p>
+<p>
+We hit Ok in the color-to-creatures screen, and we see the same
+sort of request for confirmation.
+<br> This time it <b>does</b> matter what I
+press.  Remember that earlier in this little demo, I set "J" to purple,
+and then I told it to set all monsters to the color of their letters.
+So right now <i>all jellies are still purple</i>.  I don't want the Green
+Jelly and the Red Jelly and the White Jelly and the Yellow Jelly to be
+purple!  So let's hit All.
+</p>
+<p>
+
+
+Ok.  We've been through the first three steps: Things, Things to
+creatures, and Colors to creatures.  The fourth button beckons.
+</p>
+<p>
+<img src="../images/kMoria/color/01.gif" alt="kMoriaUtil main screen">
+</p>
+<p>
+Let's go look at Creatures now and see how much is colored.
+</p>
+<p>
+<img src="../images/kMoria/color/12.gif" alt="alphabet soup">
+</p>
+<p>
+We're in the Creatures screen now and the display background is set to
+black (remember you can toggle that with the Up button).
+<br> You can tap on the symbol of a monster to change that monster's
+color - let's pick the very first one, <b>p</b>...
+</p>
+<p>
+<img src="../images/kMoria/color/13.gif" alt="assigning color to a monster">
+</p>
+<p>
+We selected the first p, which turns out to be a Filthy Street Urchin,
+as you can see by the titlebar.  I've selected a new color for it,
+orange.  I'll hit Ok now.
+</p>
+
+<p>
+<img src="../images/kMoria/color/14.gif" alt="alphabet soup">
+</p>
+<p>
+And the p in the upper left corner is now orange.  You can see how
+this might be a bit tedious, eh.
+<br> Let's leave things as they are for now, and go look at kMoria.
+</p>
+</div>
+
+<div class="content">
+<h2>How does kMoria look now?</h2>
+
+<p>I hit the Applications silkscreen button to go back to the launcher.
+I'll start up kMoria now.)
+</p>
+<p>
+<img src="../images/kMoria/color/15.gif" alt="kMoria in color">
+</p>
+<p>
+
+
+Here we are in kMoria.
+</p>
+<p>
+<img src="../images/kMoria/color/16.gif" alt="kMoria in color">
+</p>
+<p> (Remember, if you haven't set the Preferences yet,
+go to the far right menu, select Preferences, and check the Color checkbox
+so that you'll be using the colors you just defined.  In the same place,
+you can set the background to black, or leave it white if you prefer.)
+<br> Well, I see that the town looks boring, because there are still
+many un-colored symbols.
+<br> I'll go back to kMoriaUtil and set a few more things
+(<b>123456.&lt;&gt;pppp</b>) and then return to kMoria.
+</p>
+<p>
+<img src="../images/kMoria/color/17.gif" alt="kMoria in color">
+</p>
+<p>
+
+
+This is the same town, after I've set colors for more of the symbols.
+I'll walk around in the town so that you can see some more.
+</p>
+<p>
+<img src="../images/kMoria/color/18.gif" alt="kMoria in color">
+</p>
+<p>
+
+
+Notice that I set some of the p's to red so that I can tell which ones
+to avoid and which ones are harmless.
+</p>
+<p>
+<img src="../images/kMoria/color/19.gif" alt="kMoria in color">
+</p>
+<p>
+
+
+I'm still walking around in the town, and I just found the stairs.
+Let's go down into the dungeon.
+</p>
+<p>
+<img src="../images/kMoria/color/20.gif" alt="kMoria in color">
+</p>
+<p>
+
+
+ Here we are in the Mines of Moria.  "Weather is lovely - Wish you were here"
+(Let's switch to the larger font.)  There's a kobold...
+</p>
+<p>
+<img src="../images/kMoria/color/21.gif" alt="kMoria in color">
+</p>
+<p>
+
+Elsewhere.  That white w really is a white worm mass.  The gold ($)
+and the easier-to-dig rock seams (%) are nicely colored.
+
+</p>
+<p>
+<img src="../images/kMoria/color/22.gif" alt="kMoria in color">
+</p>
+<p>
+
+
+By the way, if you want to see the %'s, go to Preferences and
+turn on "Highlight/notice mineral seams".  If you don't want to see
+them, leave it off.
+
+</p>
+
+</div>
+
+<div class="content">
+<h2>How can I share these colors?</h2>
+<p>
+The colors are stored in kMoriaColorDB.pdb.  So, if you want to send
+your colors to a friend, beam them that database.  (There are various
+apps you can use for beaming arbitrary databases...  I suggest trying
+<a href="http://nosleepsoftware.sourceforge.net/index.php?page=download">Filez</a>, which is
+freeware.  Install Filez on your own device beforehand.  Beam the
+Filez application to your friend using the default application
+launcher, and then use Filez to beam any database you like.)
+</p>
+<p> The kMoriaColorDB database is owned by kMoria, and not by the
+utility application kMoriaUtil.  So you'll be able to delete
+kMoriaUtil when you are done with it and not lose your colorings.
+(I've probably forgotten to set the backup bit on kMoriaColorDB,
+though, so you may find that it doesn't get backed up in Windows.  If
+my absentmindedness distresses you, Filez will let you turn on the
+backup bit for an arbitrary database.)
+</p>
+</div>
+
+
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+</body>
+</html>
+@
+
+
+1.2
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+@
+
+
+1.1
+log
+@commit everything before massive style change
+@
+text
+@d1 5
+a5 2
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+d7 4
+a10 4
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+d12 1
+a12 1
+<body bgcolor="#ccffcc">
+d14 4
+a17 37
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">kMoria in color</h3>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      <!-- -->
+      <tr><td class="sidehead">
+	kMoria Stuff </td></tr>
+      <tr><td class="side"> <a href="index.php">
+	  All about kMoria</a> </td></tr>
+      <tr><td class="side"> <a href="source.php">
+	  How to get source</a> </td></tr>
+      <?php include ("../hostedby.txt") ?>
+    </table></td>
+
+    <!-- main area table -->
+    <td class="body" valign=top>
+    <!-- ----- this is the interesting part of the page ----- -->
+
+
+This document describes how to configure color in <a
+href="index.php">kMoria</a> using the utility application
+"kMoriaUtil".  You should have received it in the same zip file as
+kMoria.prc; if you got kMoria from someone else, you can <a
+href="download.php">download the zip file</a>, dig out kMoriaUtil.prc,
+and install it.
+a18 2
+    
+</td></tr></table>
+d20 6
+a25 1
+<hr>
+d27 2
+a28 2
+<table bgcolor="#ccffcc">
+<tr><td>
+d30 6
+a35 4
+</td><td>
+<img src="../images/kMoria/color/15.gif">
+</td></tr>
+<tr><td bgcolor="#ccffff">
+d39 14
+a52 6
+button to return to this screen.)
+<br> First, you should press Things.
+</td><td>
+<img src="../images/kMoria/color/01.gif">
+</td></tr>
+<tr><td bgcolor="#ccffcc">
+d54 1
+d57 2
+a58 2
+symbols correspond to broad classes of items (such as walls, potions,
+weapons), and the alphabetic symbols correspond to broad classes of
+d60 12
+a71 8
+assign colors to <b>symbols</b>.  Select a symbol by tapping on it.
+<br>
+Let's tap on the <b>#</b> now, which represents a wall.
+</td><td>
+<img src="../images/kMoria/color/02.gif">
+</td></tr>
+<tr><td bgcolor="#ccffff">
+Ok, after selecting a symbol, you will see a standard palette.
+d75 10
+a84 10
+But suppose you'd rather use RGB sliders?
+There's a control in the lower right corner to switch the
+color-chooser screen between palette and sliders.  Let's try that.
+<!-- (developer note: there is an API call to get this nice palette
+screen, although I heard a rumor that it might crash old Prisms, so,
+er, let me know if this is the case.) -->
+</td><td>
+<img src="../images/kMoria/color/03.gif">
+</td></tr>
+<tr><td bgcolor="#ccffcc">
+d90 5
+a94 4
+</td><td>
+<img src="../images/kMoria/color/04.gif">
+</td></tr>
+<tr><td bgcolor="#ccffff">
+d99 2
+a100 3
+<br> But suppose you're planning to play with a black background,
+instead of a white background.  You'd like to see how these
+colors look.  You can press the Up button
+d102 7
+a108 6
+to toggle the background color...
+</td><td><img src="../images/kMoria/color/05.gif">
+</td></tr>
+<tr><td bgcolor="#ccffcc">
+... After pressing the Up button, this is how it looks:
+<br> You can press the Up button again to go back to white.
+d111 1
+a111 1
+</td><td><img src="../images/kMoria/color/06.gif">
+d113 4
+a116 7
+</td></tr>
+<tr><td bgcolor="#ccffff">
+Ok, here we are, back at the main screen, after a tour of the
+Things button, which let us assign colors to symbols.
+For example, I made "%" red and "J" purple.
+<br> Each letter in the alphabet represents a kind of monster;
+J represents jellies.
+d119 3
+a121 3
+tedious because there are a zillion of them.  So there are two
+features in this utility that let you color a bunch of things at once.
+The first is the "Things-&gt;Creatures" button, and this
+d128 7
+a134 1
+</td><td><img src="../images/kMoria/color/01.gif">
+a135 2
+</td></tr>
+<tr><td bgcolor="#ccffcc">
+d139 1
+d141 2
+a142 1
+<blockquote> I'll explain.  <b>Suppose</b> you had already skipped ahead, and
+d152 3
+a154 2
+'f' frogs, because it is black-or-white and the utility is not really
+very smart.)  Got it?  Ok.</blockquote>
+d156 2
+a157 1
+<br> Since <i>we</i> have not colored any individual kinds of
+d160 7
+a167 3
+</td><td><img src="../images/kMoria/color/07.gif">
+</td></tr>
+<tr><td bgcolor="#ccffff">
+d172 13
+a184 4
+</td><td><img src="../images/kMoria/color/01.gif">
+</td></tr>
+<tr><td bgcolor="#ccffcc">
+This is what you see if you press Creatures now.  This is also
+d190 4
+a193 3
+</td><td><img src="../images/kMoria/color/08.gif">
+</td></tr>
+<tr><td bgcolor="#ccffff">
+d202 7
+a208 3
+</td><td><img src="../images/kMoria/color/01.gif">
+</td></tr>
+<tr><td bgcolor="#ccffcc">
+d210 5
+a214 1
+<br> At the left there is a column showing the results on white background,
+d223 6
+a228 3
+</td><td><img src="../images/kMoria/color/09.gif">
+</td></tr>
+<tr><td bgcolor="#ccffff">
+d237 5
+a241 3
+</td><td><img src="../images/kMoria/color/10.gif">
+</td></tr>
+<tr><td bgcolor="#ccffcc">
+d250 4
+a253 3
+</td><td><img src="../images/kMoria/color/11.gif">
+</td></tr>
+<tr><td bgcolor="#ccffff">
+d256 11
+a266 4
+<br> Let's go look at Creatures now and see how much is colored.
+</td><td><img src="../images/kMoria/color/01.gif">
+</td></tr>
+<tr><td bgcolor="#ccffcc">
+d271 5
+a275 3
+</td><td><img src="../images/kMoria/color/12.gif">
+</td></tr>
+<tr><td bgcolor="#ccffff">
+d279 6
+a284 3
+</td><td><img src="../images/kMoria/color/13.gif">
+</td></tr>
+<tr><td bgcolor="#ccffcc">
+d288 7
+a294 4
+</td><td><img src="../images/kMoria/color/14.gif">
+</td></tr>
+<tr><td bgcolor="#ccffff">
+(I hit the Applications silkscreen button to go back to the launcher.
+d296 7
+a302 3
+</td><td><img src="../images/kMoria/color/15.gif">
+</td></tr>
+<tr><td bgcolor="#ccffcc">
+d304 5
+a308 1
+<br> (Remember, if you haven't set the Preferences yet,
+d316 7
+a322 3
+</td><td><img src="../images/kMoria/color/16.gif">
+</td></tr>
+<tr><td bgcolor="#ccffff">
+d325 7
+a331 3
+</td><td><img src="../images/kMoria/color/17.gif">
+</td></tr>
+<tr><td bgcolor="#ccffcc">
+d334 7
+a340 3
+</td><td><img src="../images/kMoria/color/18.gif">
+</td></tr>
+<tr><td bgcolor="#ccffff">
+d343 7
+a349 3
+</td><td><img src="../images/kMoria/color/19.gif">
+</td></tr>
+<tr><td bgcolor="#ccffcc">
+a350 3
+</td><td><img src="../images/kMoria/color/20.gif">
+</td></tr>
+<tr><td bgcolor="#ccffff">
+d352 6
+a357 3
+</td><td><img src="../images/kMoria/color/21.gif">
+</td></tr>
+<tr><td bgcolor="#ccffcc">
+d360 9
+a368 1
+<br> By the way, if you want to see the %'s, go to Preferences and
+d372 3
+a374 4
+</td><td><img src="../images/kMoria/color/22.gif">
+</td></tr></table>
+<P>
+Some further details:
+d376 3
+a378 1
+<P>
+d386 2
+a387 2
+
+<P> The kMoriaColorDB database is owned by kMoria, and not by the
+d394 4
+d399 8
+a407 2
+<hr>
+<address></address>
+a408 1
+Last modified: Tue Jan  8 17:04:21 EST 2002
+d410 3
+a412 1
+</body> </html>
+@
+

@@ -1,0 +1,58 @@
+This license appears in main.c, and is copied here for your convenience.
+
+/**********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                          *
+ * This file is                                                       *
+ * copyright (C) 1985-2001 Robert A. Koeneke, Jimmey Wayne Todd,      *
+ * James E. Wilson, Bridget Spitznagel. (see BELOW for full credits)  *
+ *                                                                    *
+ * This program is freeware.  You can redistribute it and/or modify   *
+ * it (provided that this notice and the full credits are retained),  *
+ * but it CANNOT be distributed for profit.                           *
+ **********************************************************************/
+/*********************************************************************
+ *  FULL CREDITS for Moria:                                          *
+ *                                                                   *
+ *       Designer and Programmer : Robert Alan Koeneke               *
+ *                                 University of Oklahoma            *
+ *                                                                   *
+ *       Assistant Programmers   : Jimmey Wayne Todd                 *
+ *                                 University of Oklahoma            *
+ *                                                                   *
+ *                                 Gary D. McAdoo                    *
+ *                                 University of Oklahoma            *
+ *                                                                   *
+ *       UNIX Port               : James E. Wilson                   *
+ *                                 UC Berkeley                       *
+ *                                 wilson@kithrup.com                *
+ *                                                                   *
+ *       MSDOS Port              : Don Kneller                       *
+ *                                 1349 - 10th ave                   *
+ *                                 San Francisco, CA 94122           *
+ *                                 kneller@cgl.ucsf.EDU              *
+ *                                 ...ucbvax!ucsfcgl!kneller         *
+ *                                 kneller@ucsf-cgl.BITNET           *
+ *                                                                   *
+ *       BRUCE Moria             : Christopher Stuart                *
+ *                                 Monash University                 *
+ *                                 Melbourne, Victoria, AUSTRALIA    *
+ *                                 cjs@moncsbruce.oz                 *
+ *                                                                   *
+ *       Amiga Port              : Corey Gehman                      *
+ *                                 Clemson University                *
+ *                                 cg377170@eng.clemson.edu          *
+ *                                                                   *
+ *       Version 5.5             : David Grabiner                    *
+ *                                 Harvard University                *
+ *                                 grabiner@math.harvard.edu         *
+ *                                                                   *
+ *       PalmOS Port             : Bridget Spitznagel                *
+ *                                 Carnegie Mellon University        *
+ *                                 i0lanthe@yahoo.com                *
+ *                                                                   *
+ *   Moria may be copied and modified freely as long as the above    *
+ *   credits are retained.  No one who-so-ever may sell or market    *
+ *   this software in any form without the expressed written consent *
+ *   of the author Robert Alan Koeneke.                              *
+ *                                                                   *
+ *********************************************************************/

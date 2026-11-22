@@ -1,0 +1,189 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.05.31.00.22.58;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.58;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>iRogue Movement Survey</title>
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+  </head>
+
+  <body>
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3>iRogue Movement Survey</h3>
+<P> <i>This <a href="../survey/index.php">survey</a> is about the PalmOS game 
+<a href="../iRogue/index.php">iRogue</a>,
+part of the <a href="../index.php">Roguelikes for PalmOS</a> project
+hosted at <a href="http://sourceforge.net">SourceForge</a>.</i>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table>
+<!-- -->
+<tr>
+	<td colspan="3"><b>Preferred way to move</b></td>
+</tr>
+<tr>
+	<td><font>tap on screen</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif" height=10 width=$%a1;>&nbsp;$%a1;%</td>
+ <td>$a1;</td>
+</tr>
+<tr>
+	<td><font>hardware buttons</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif" height=10 width=$%a2;>&nbsp;$%a2;%</td>
+ <td>$a2;</td>
+</tr>
+<tr>
+	<td><font>both</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif" height=10 width=$%a3;>&nbsp;$%a3;%</td>
+ <td>$a3;</td>
+</tr>
+<tr>
+	<td><font>keyboard</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif" height=10 width=$%a4;>&nbsp;$%a4;%</td>
+ <td>$a4;</td>
+</tr>
+
+
+<!-- -->
+<tr>
+	<td colspan="3"><b>Screen-scrolling preferences</b></td>
+</tr>
+<tr>
+	<td><font>rogue always centered</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif" height=10 width=$%b1;>&nbsp;$%b1;%</td>
+ <td>$b1;</td>
+</tr>
+<tr>
+	<td><font>rogue mostly centered</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif" height=10 width=$%b2;>&nbsp;$%b2;%</td>
+ <td>$b2;</td>
+</tr>
+<tr>
+	<td><font>screen stays still</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif" height=10 width=$%b3;>&nbsp;$%b3;%</td>
+ <td>$b3;</td>
+</tr>
+<tr>
+	<td><font>huh?</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif" height=10 width=$%b4;>&nbsp;$%b4;%</td>
+ <td>$b4;</td>
+</tr>
+
+
+<!-- -->
+<tr>
+	<td colspan="3"><b>Running preferences</b></td>
+</tr>
+<tr>
+	<td><font>run and follow turns</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif" height=10 width=$%c1;>&nbsp;$%c1;%</td>
+ <td>$c1;</td>
+</tr>
+<tr>
+	<td><font>just run</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif" height=10 width=$%c2;>&nbsp;$%c2;%</td>
+ <td>$c2;</td>
+</tr>
+<tr>
+	<td><font>walk</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif" height=10 width=$%c3;>&nbsp;$%c3;%</td>
+ <td>$c3;</td>
+</tr>
+<tr>
+	<td><font>huh?</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif" height=10 width=$%c4;>&nbsp;$%c4;%</td>
+ <td>$c4;</td>
+</tr>
+
+<!-- -->
+<tr>
+	<td colspan="3"><b>Desired font size</b></td>
+</tr>
+<tr>
+	<td><font>normal is ok</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif" height=10 width=$%d1;>&nbsp;$%d1;%</td>
+ <td>$d1;</td>
+</tr>
+<tr>
+	<td><font>smaller size wanted</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif" height=10 width=$%d2;>&nbsp;$%d2;%</td>
+ <td>$d2;</td>
+</tr>
+
+
+<!-- -->
+<tr>
+	<td colspan="3"><b>Desired movement system</b></td>
+</tr>
+<tr>
+	<td><font>donut is ok</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif" height=10 width=$%e1;>&nbsp;$%e1;%</td>
+ <td>$e1;</td>
+</tr>
+<tr>
+	<td><font>rogue-centered wanted</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif" height=10 width=$%e2;>&nbsp;$%e2;%</td>
+ <td>$e2;</td>
+</tr>
+
+
+<!-- -->
+<tr>
+	<td colspan="2" align="CENTER">Total:&nbsp;$tot;</td>
+</tr>
+</table>
+
+    <hr>
+    <address><a href="mailto:i0lanthe@@users.sourceforge.net">email</a></address>
+<!-- Created: Wed Aug  2 17:13:41 EDT 2000 -->
+<!-- hhmts start -->
+Last modified: Thu Aug 10 16:23:33 EDT 2000
+<!-- hhmts end -->
+  </body>
+</html>
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

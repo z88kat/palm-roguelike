@@ -1,0 +1,195 @@
+head	1.1;
+access;
+symbols
+	Release-2002_03_29:1.1
+	Release-2002_01_12:1.1
+	Release-2002_01_02:1.1
+	Release-2002_01_01:1.1
+	Release-2001_12_19:1.1
+	Release-2001_08_04:1.1
+	Release-2001_07_02:1.1
+	Release-2001_06_16:1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2000.11.09.06.19.12;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@added scrambling of magic-item names (except scrolls), only partly tested
+@
+text
+@#include <Pilot.h>
+#include "kMoria.h"
+
+#include "constant.h"
+#include "records.h"
+
+extern DmOpenRef MoriaDB;
+
+
+Char *my_amulets[MAX_AMULETS] = {
+  "Amber","Driftwood","Coral","Agate","Ivory","Obsidian",
+  "Bone","Brass","Bronze","Pewter","Tortoise Shell"
+};
+Char *my_rocks[MAX_ROCKS] = {
+  "Alexandrite","Amethyst","Aquamarine","Azurite","Beryl","Bloodstone",
+  "Calcite","Carnelian","Corundum","Diamond","Emerald","Fluorite","Garnet",
+  "Granite","Jade","Jasper","Lapis Lazuli","Malachite","Marble","Moonstone",
+  "Onyx","Opal","Pearl","Quartz","Quartzite","Rhodonite","Ruby","Sapphire",
+  "Tiger Eye","Topaz","Turquoise","Zircon"
+};
+Char *my_woods[MAX_WOODS] = {
+  "Aspen","Balsa","Banyan","Birch","Cedar","Cottonwood","Cypress","Dogwood",
+  "Elm","Eucalyptus","Hemlock","Hickory","Ironwood","Locust","Mahogany",
+  "Maple","Mulberry","Oak","Pine","Redwood","Rosewood","Spruce","Sycamore",
+  "Teak","Walnut",
+};
+Char *my_metals[MAX_METALS] = {
+  "Aluminum","Cast Iron","Chromium","Copper","Gold","Iron","Magnesium",
+  "Molybdenum","Nickel","Rusty","Silver","Steel","Tin","Titanium","Tungsten",
+  "Zirconium","Zinc","Aluminum-Plated","Copper-Plated","Gold-Plated",
+  "Nickel-Plated","Silver-Plated","Steel-Plated","Tin-Plated","Zinc-Plated"
+};
+Char *my_colors[MAX_COLORS] = {
+/* Do not move the first three */
+  "Icky Green", "Light Brown", "Clear",
+  "Azure","Blue","Blue Speckled","Black","Brown","Brown Speckled","Bubbling",
+  "Chartreuse","Cloudy","Copper Speckled","Crimson","Cyan","Dark Blue",
+  "Dark Green","Dark Red","Gold Speckled","Green","Green Speckled","Grey",
+  "Grey Speckled","Hazy","Indigo","Light Blue","Light Green","Magenta",
+  "Metallic Blue","Metallic Red","Metallic Green","Metallic Purple","Misty",
+  "Orange","Orange Speckled","Pink","Pink Speckled","Puce","Purple",
+  "Purple Speckled","Red","Red Speckled","Silver Speckled","Smoky",
+  "Tangerine","Violet","Vermilion","White","Yellow"
+};
+Char *my_mushrooms[MAX_MUSH] = {
+  "Blue","Black","Black Spotted","Brown","Dark Blue","Dark Green","Dark Red",
+  "Ecru","Furry","Green","Grey","Light Blue","Light Green","Plaid","Red",
+  "Slimy","Tan","White","White Spotted","Wooden","Wrinkled","Yellow",
+};
+Char *my_syllables[MAX_SYLLABLES] = {
+  "a","ab","ag","aks","ala","an","ankh","app",
+  "arg","arze","ash","aus","ban","bar","bat","bek",
+  "bie","bin","bit","bjor","blu","bot","bu",
+  "byt","comp","con","cos","cre","dalf","dan",
+  "den","doe","dok","eep","el","eng","er","ere","erk",
+  "esh","evs","fa","fid","for","fri","fu","gan",
+  "gar","glen","gop","gre","ha","he","hyd","i",
+  "ing","ion","ip","ish","it","ite","iv","jo",
+  "kho","kli","klis","la","lech","man","mar",
+  "me","mi","mic","mik","mon","mung","mur","nej",
+  "nelg","nep","ner","nes","nis","nih","nin","o",
+  "od","ood","org","orn","ox","oxy","pay","pet",
+  "ple","plu","po","pot","prok","re","rea","rhov",
+  "ri","ro","rog","rok","rol","sa","san","sat",
+  "see","sef","seh","shu","ski","sna","sne","snik",
+  "sno","so","sol","sri","sta","sun","ta","tab",
+  "tem","ther","ti","tox","trol","tue","turs","u",
+  "ulk","um","un","uni","ur","val","viv","vly",
+  "vom","wah","wed","werg","wex","whon","wun","x",
+  "yerg","yp","zun"
+};
+Char *my_special_names[SN_ARRAY_SIZE] = {
+	CNIL,			"(R)",			"(RA)",
+	"(RF)",			"(RC)",			"(RL)",
+	"(HA)",			"(DF)",			"(SA)",
+	"(SD)",			"(SE)",			"(SU)",
+	"(FT)",			"(FB)",			"of Free Action",
+	"of Slaying",		"of Clumsiness",	"of Weakness",
+	"of Slow Descent",	"of Speed",		"of Stealth",
+	"of Slowness",		"of Noise",		"of Great Mass",
+	"of Intelligence",	"of Wisdom",		"of Infra-Vision",
+	"of Might",		"of Lordliness",	"of the Magi",
+	"of Beauty",		"of Seeing",		"of Regeneration",
+	"of Stupidity",		"of Dullness",		"of Blindness",
+	"of Timidness",		"of Teleportation",	"of Ugliness",
+	"of Protection",	"of Irritation",	"of Vulnerability",
+	"of Enveloping",	"of Fire",		"of Slay Evil",
+	"of Dragon Slaying",	"(Empty)",		"(Locked)",
+	"(Poison Needle)",	"(Gas Trap)",		"(Explosion Device)",
+	"(Summoning Runes)",	"(Multiple Traps)",	"(Disarmed)",
+	"(Unlocked)",		"of Slay Animal"
+};
+
+
+
+void newrec_magics_names()
+{
+  ULong uniqueID;
+  VoidHand rec;
+  Ptr p;
+  ULong size = 0, offset;
+  UInt index;
+  Short i;
+  size += MAX_AMULETS * MAXLEN_AMULETS;
+  size += MAX_ROCKS * MAXLEN_ROCKS;
+  size += MAX_WOODS * MAXLEN_WOODS;
+  size += MAX_METALS * MAXLEN_METALS;
+  size += MAX_COLORS * MAXLEN_COLORS;
+  size += MAX_MUSH * MAXLEN_MUSH;
+  size += MAX_SYLLABLES * MAXLEN_SYLLABLES;
+  size += SN_ARRAY_SIZE * MAXLEN_SPECNAME;
+  size *= sizeof(Char);
+
+  uniqueID = REC_MAGICS;
+  if (0 == DmFindRecordByID(MoriaDB, uniqueID, &index))
+    DmRemoveRecord(MoriaDB, index);      // EX TERM IN ATE !
+  index = DmNumRecords(MoriaDB);
+  rec = DmNewRecord(MoriaDB, &index, size);
+  p = MemHandleLock(rec);
+  if (!p) goto cleanup;
+  // print stuff to it.  actually DmStrCopy might be a smarter idea.
+  DmSet(p, 0, size, 0); // so that we have null padding after runty strings!
+  offset = 0;
+  // Wonder if this will work.
+  for (i = 0 ; i < MAX_AMULETS ; i++, offset += MAXLEN_AMULETS)
+    DmStrCopy(p, offset, my_amulets[i]);
+  for (i = 0 ; i < MAX_ROCKS ; i++, offset += MAXLEN_ROCKS)
+    DmStrCopy(p, offset, my_rocks[i]);
+  for (i = 0 ; i < MAX_WOODS ; i++, offset += MAXLEN_WOODS)
+    DmStrCopy(p, offset, my_woods[i]);
+  for (i = 0 ; i < MAX_METALS ; i++, offset += MAXLEN_METALS)
+    DmStrCopy(p, offset, my_metals[i]);
+  for (i = 0 ; i < MAX_COLORS ; i++, offset += MAXLEN_COLORS)
+    DmStrCopy(p, offset, my_colors[i]);
+  for (i = 0 ; i < MAX_MUSH ; i++, offset += MAXLEN_MUSH)
+    DmStrCopy(p, offset, my_mushrooms[i]);
+  for (i = 0 ; i < MAX_SYLLABLES ; i++, offset += MAXLEN_SYLLABLES)
+    DmStrCopy(p, offset, my_syllables[i]);
+  for (i = 0 ; i < SN_ARRAY_SIZE ; i++, offset += MAXLEN_SPECNAME)
+    DmStrCopy(p, offset, my_special_names[i]);
+
+  /*
+  for (i = 0 ; i < MAX_AMULETS ; i++, offset += MAXLEN_AMULETS)
+    DmWrite(p, offset, my_amulets[i], sizeof(Char) * MAXLEN_AMULETS);
+  for (i = 0 ; i < MAX_ROCKS ; i++, offset += MAXLEN_ROCKS)
+    DmWrite(p, offset, my_rocks[i], sizeof(Char) * MAXLEN_ROCKS);
+  for (i = 0 ; i < MAX_WOODS ; i++, offset += MAXLEN_WOODS)
+    DmWrite(p, offset, my_woods[i], sizeof(Char) * MAXLEN_WOODS);
+  for (i = 0 ; i < MAX_METALS ; i++, offset += MAXLEN_METALS)
+    DmWrite(p, offset, my_metals[i], sizeof(Char) * MAXLEN_METALS);
+  for (i = 0 ; i < MAX_COLORS ; i++, offset += MAXLEN_COLORS)
+    DmWrite(p, offset, my_colors[i], sizeof(Char) * MAXLEN_COLORS);
+  for (i = 0 ; i < MAX_MUSH ; i++, offset += MAXLEN_MUSH)
+    DmWrite(p, offset, my_mushrooms[i], sizeof(Char) * MAXLEN_MUSH);
+  for (i = 0 ; i < MAX_SYLLABLES ; i++, offset += MAXLEN_SYLLABLES)
+    DmWrite(p, offset, my_syllables[i], sizeof(Char) * MAXLEN_SYLLABLES);
+  for (i = 0 ; i < SN_ARRAY_SIZE ; i++, offset += MAXLEN_SPECNAME)
+    DmWrite(p, offset, my_special_names[i], sizeof(Char) * MAXLEN_SPECNAME);
+  */
+ cleanup:
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaDB, index, true);
+  DmSetRecordInfo(MoriaDB, index, NULL, &uniqueID); // set its uid!
+}
+@

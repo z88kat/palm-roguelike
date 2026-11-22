@@ -1,0 +1,79 @@
+head	1.2;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2006.08.13.04.47.24;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.31;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.31;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@converting from tables to CSS
+@
+text
+@     <p>
+      <A href="http://sourceforge.net">
+	<IMG src="http://sourceforge.net/sflogo.php?group_id=6932&type=1"
+	width="88" height="31" border="0" alt="SourceForge Logo"></A>
+	<br>
+      
+	<a href="http://sourceforge.net/project/?group_id=6932" title="roguelike-palm project page at SourceForge">
+	Project page</a>
+	<br>
+
+     </p>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 11
+a11 13
+      <tr><td class="sidehead">
+	Roguelikes for PalmOS </td></tr>
+      <tr><td class="side"> <A href="http://roguelike-palm.sourceforge.net">
+	  home page</A>
+      </td></tr>
+      <tr><td class="side"> <a href="http://sourceforge.net/project/?group_id=6932">
+	  project page</a>
+      </td></tr>
+      <tr><td class="side"> 
+	  <A href="http://sourceforge.net">
+	  <IMG src="http://sourceforge.net/sflogo.php?group_id=6932&type=1"
+	  width="88" height="31" border="0" alt="SourceForge Logo"></A>
+      </td></tr>
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

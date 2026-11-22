@@ -1,0 +1,53 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	pre-internationalization_20040113:1.1.1.1
+	Release-2002_05_10-on-Handera-branch:1.1.1.1
+	Release-2001_07_01-on-Handera-branch:1.1.1.1
+	Release-2001_04_26-Handera-branch:1.1.1.1.0.2
+	Release-2001_04_26:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2000.06.15.21.16.41;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.06.15.21.16.41;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@application { "iRogue" RoGe }
+
+/* This app has four code resources: code #1 with all unannotated
+   functions, #2 with functions placed in the "sec_lib" section,
+   and #3 and #4 in "sec_1" and "sec_2".  */
+
+multiple code { sec_lib sec_1 sec_2 }
+@
+
+
+1.1.1.1
+log
+@iRogue import
+@
+text
+@@

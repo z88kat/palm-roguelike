@@ -1,0 +1,302 @@
+head	1.7;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.5
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2006.08.13.05.47.22;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2006.08.13.04.47.24;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2006.08.08.06.13.24;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2006.08.08.03.45.50;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2002.03.30.00.18.21;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.05.31.04.25.12;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.43;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.43;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>iRogue: Rogue for PalmOS</title>
+<style type="text/css" media="screen">@@import "../3col.css";</style>
+
+<!-- <link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">  -->
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>iRogue</h1>
+  <p><i>a Rogue variant for PalmOS</i></p>
+</div>
+
+
+<div class="content">
+  <h2>What is iRogue?</h2>
+<p>
+ iRogue is a game for the <a href="http://www.palm.com">
+PalmPilot</a> (or other handheld computer that runs the Palm OS).
+It is open-source freeware available under the 
+<a href="http://www.gnu.org/copyleft/gpl.html">GPL</a>.  
+It is derived from two versions of
+	<a href="http://roguelikes.sauceforge.net/pub/rogue/index.html">
+rogue</a> (rogue 5.3-clone and urogue).
+</p>
+  <h2>Ok, what is Rogue?</h2>
+<p>
+ Rogue is old, for a computer game.  This means that either
+(a) you have never heard of it or (b) you get all misty-eyed and
+nostalgic when reminded of it.  Its many descendants are known as
+	<a href="http://roguelikes.sauceforge.net/pub/index.html">"rogue-like" games</a>.
+ These games are text-based and have a familiar premise: wander around
+in a dungeon, collect treasure, deal with bad-tempered monsters, try
+to finish a quest.
+</p>
+</div>
+
+<div class="content">
+  <h2>Screenshots</h2>
+<p>
+<img src="../images/iRogue/1welcome.gif" alt="monochrome"> <img src="../images/iRogue/1welcome_c.gif" alt="color"></p>
+</div>
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+<!-- this document tentatively valid HTML Tue Aug 8 2006 -->
+
+</body>
+</html>
+@
+
+
+1.6
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+a7 1
+
+d30 1
+a30 1
+<a href="http://www.win.tue.nl/games/roguelike/rogue/index.html">
+d37 2
+a38 2
+nostalgic when reminded of it.  Its many descendants are known as <a
+href="http://www.win.tue.nl/games/roguelike/">"rogue-like" games</a>.
+@
+
+
+1.5
+log
+@first pass at a TABLE-FREE layout
+@
+text
+@d12 1
+a12 2
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+a52 13
+
+	<h2>iRogue Info</h2>
+<p>
+<a href="index.php">What is iRogue?</a> <br>
+<a href="whatsnew.php">Current status</a> <br>
+<a href="download.php">Download iRogue</a> <br>
+<a href="play.php">How to play</a> <br>
+<a href="source.php">How to get source</a>
+</p>
+
+
+
+
+@
+
+
+1.4
+log
+@commit everything before massive style change
+@
+text
+@d1 3
+a3 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+d7 5
+a11 2
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+d17 10
+a26 43
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">iRogue</h3>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      
+      <!-- -->
+      <tr><td class="sidehead">
+	iRogue Stuff </td></tr>
+      <tr><td class="side">
+	  <b>What is iRogue?</b> </td></tr>
+      <tr><td class="side"> <a href="whatsnew.php">
+	  What's new</a> </td></tr>
+      <tr><td class="side"> <a href="download.php">
+	  Download iRogue</a> </td></tr>
+      <tr><td class="side"> <a href="play.php">
+	  How to play</a> </td></tr>
+      <tr><td class="side"> <a href="source.php">
+	  How to get source</a> </td></tr>
+      <?php include ("../hostedby.txt") ?>
+      <?php include ("../activesurveys.txt") ?>
+      <?php include ("../roguelikegames.txt") ?>
+</table>
+</td>
+
+<!-- main area table -->
+<td class="body" valign=top>
+<a name="news"></a>
+<!-- ----- this is the interesting part of the page ----- -->
+<h3>What is iRogue?</h3>
+<!-- ----- end of the interesting part of the page ----- -->
+<P> iRogue is a game for the <a href="http://www.palm.com">
+d33 4
+a36 6
+
+<P><center><img src="../images/iRogue/1welcome.gif">&nbsp;<img src="../images/iRogue/1welcome_c.gif"></center>
+
+<h3>Ok, what is Rogue?</h3>
+
+<P> Rogue is old, for a computer game.  This means that either
+d43 30
+a72 11
+</td>
+</tr>
+</table>
+
+<!-- footer table -->
+<?php include ("../footer.txt") ?>
+<table>  <tr><td>
+    If this page is unreadable, disabling style sheets may help.
+</td></tr>
+</table>
+<!-- end footer table -->
+a73 1
+<address>i0lanthe@@users.sourceforge.net</address>
+a74 1
+Last modified: Thu May 31 00:15:18 EDT 2001
+d76 3
+a78 1
+<?php $hitsfile = "index.hits"; include ("../counter.php")?>
+@
+
+
+1.3
+log
+@checkpointing web before kMoria 0.15 update
+@
+text
+@d7 2
+@
+
+
+1.2
+log
+@more tweaking for iRogue 1.0.0
+@
+text
+@d14 1
+a14 1
+    <h3>iRogue</h3>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d60 1
+a60 1
+<P><center><img src="../images/iRogue/1welcome.gif"></center>
+d85 1
+a85 1
+Last modified: Fri Aug  4 15:51:25 EDT 2000
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

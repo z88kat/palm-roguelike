@@ -1,0 +1,354 @@
+head	1.8;
+access;
+symbols
+	Release-2001_08_06:1.8
+	Release-2001_06_15:1.8;
+locks; strict;
+comment	@ * @;
+
+
+1.8
+date	2001.06.15.00.23.33;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.05.01.04.41.33;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.01.17.22.09.00;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.10.15.22.03.22;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.10.14.23.16.50;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.14.04.19.22;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.10.14.03.00.31;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.10.14.01.59.20;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.8
+log
+@draw stairs and you in (non-color) map-view
+@
+text
+@#include "palm.h"
+#include "iLarnRsc.h"
+#include "Globals.h"
+
+/***********************************************************************
+ * This form is the select-thing-from-inventory form.
+ * It is used when you list your inventory, and in the trading post.
+ *
+ * When player selects an item, buttons are enabled or disabled (and may
+ * also be re-labeled) to let him/her do the actions appropriate to that
+ * type of item and to his/her current location.
+ * There is also a cancel button.
+ * If the player hits a variably-labeled button, we call a routine that
+ * figures out (based on item type) what the action is supposed to be.
+ **********************************************************************/
+
+extern Short in_store;
+Short inventory_item; // (a to z) - 'a' .. index into env->iven, etc.
+extern Short inventory_select_numItems; // to help w/ keyboard support
+
+Boolean InvSelect_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  ListPtr lst;
+  FormPtr frm;
+  CharPtr label;
+  Char c;
+  Short selected_btn, k, s;
+  Boolean took_time;
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* ...init form... */
+    init_inventory_select(frm, (in_store==STORE_TPOST));
+    // incorporates FrmDrawForm!
+    inventory_item = -1;
+    handled = true;
+    break;
+
+  case lstSelectEvent:
+    frm = FrmGetActiveForm();
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_i));
+    label = LstGetSelectionText(lst, e->data.lstSelect.selection);
+    if (label) inventory_item = label[0] - 'a';
+    else inventory_item = -1; // bug if this happens
+    //    inventory_item = e->data.lstSelect.selection;
+    specialize_labels(frm, inventory_item, (in_store==STORE_TPOST));
+    handled = true;
+    break;
+
+  case keyDownEvent:
+    // hardware button -- or else graffiti.
+    frm = FrmGetActiveForm();
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_i));
+    switch(e->data.keyDown.chr) {
+    case pageUpChr:
+      if (LstScrollList(lst, winUp, 11)) {//there're 11 items visible at a time
+	LstSetSelection(lst, -1);
+	inventory_item = -1;
+      }
+      handled = true;
+      break;
+    case pageDownChr:
+      if (LstScrollList(lst, winDown, 11)) {
+	LstSetSelection(lst, -1);
+	inventory_item = -1;
+      }
+      handled = true;
+      break;
+    default:
+      // Add some keyboard support: write a letter to select the item.
+      c = e->data.keyDown.chr;
+      if (c >= 'a' && c <= 'z') {
+	// Find the line starting with this letter. Lines in order with gaps.
+	s = inventory_select_numItems;
+	inventory_item = -1;
+	while (s > -1) {
+	  label = LstGetSelectionText(lst, s);
+	  if (label && (label[0] == c)) {
+	    LstSetSelection(lst, s);
+	    inventory_item = label[0] - 'a';
+	    break;
+	  }
+	  s--;
+	}
+	if (inventory_item == -1) LstSetSelection(lst, -1);
+	specialize_labels(frm, inventory_item, (in_store==STORE_TPOST));
+	handled = true;
+      } else {
+	// Keyboard support for buttons.  Woo hoo.
+	ControlPtr btn;
+	Word objid = -1;
+	switch(c) {
+	case '\n': case '1': case 'S': objid = btn_if_frob;   break;
+	case 'D':  case '2': objid = btn_if_drop;   break;
+	case 'W':  case '3': objid = btn_if_wield;  break;
+	case 'C':  case 'X': objid = btn_i_cancel;  break;
+	}
+	if (objid != -1) {
+	  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, objid));
+	  if (btn->attr.usable) 
+	    CtlHitControl(btn); // kind of silly, I could just dispatch it..
+	  handled = true;
+	}
+      }
+      break;
+    }
+    break;
+
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    switch(e->data.ctlSelect.controlID) {
+    case btn_if_frob:
+      if (in_store == STORE_TPOST && inventory_item != -1) {
+	// pop up something to sell it..
+	// then, we have to redo the darned inventory, probably
+	if (tpost_sell_item(inventory_item)) {
+	  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_i));
+	  k = LstGetSelection(lst);
+	  remove1_inventory_select(frm, k);
+	}
+	break;
+      }
+      // if we're not in the TPOST then we just fall through.
+    case btn_if_drop:
+    case btn_if_wield:
+      selected_btn = e->data.ctlSelect.controlID - btn_if_frob;
+      free_inventory_select(frm);
+      LeaveForm(); // LeaveForm(true);
+      /* It is important to do 'stuff' AFTER LeaveForm for msg to display */
+      message_clear();
+      if (inventory_item != -1) {
+	// Do The Right Thing
+	took_time = deduce_task(inventory_item, selected_btn);
+	if (took_time)
+	  start_of_Play_Level_loop();
+	//else if (env->pending_splash)
+	//	  show_messages();  // FrmPopupForm(SplashForm);
+      }
+      handled = true;
+      break;
+    case btn_i_cancel:
+      free_inventory_select(frm);
+      LeaveForm();
+      if (in_store == STORE_TPOST)
+	print_stats(); // in case you spent money
+      handled = true;
+      break;
+    }
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+@
+
+
+1.7
+log
+@get iLarn to compile with sdk 3.5 so's I can add color...
+@
+text
+@d19 2
+d27 2
+a28 1
+  Short selected_btn, k;
+d71 37
+@
+
+
+1.6
+log
+@fixed pulverization scroll timing issue?
+@
+text
+@d1 1
+a1 1
+#include <Pilot.h>
+d56 1
+a56 1
+      if (LstScrollList(lst, up, 11)) {// there are 11 items visible at a time
+d63 1
+a63 1
+      if (LstScrollList(lst, down, 11)) {
+@
+
+
+1.5
+log
+@eliminated (fossilized) global argument
+@
+text
+@d97 1
+a97 3
+	// hm, I wonder if this will do the right thing.
+	if (took_time) {
+	  // let's see if this works....  might be overkill.
+a98 1
+	}
+d103 1
+a103 2
+      //      i_used_too_much_heap();
+      break; // end of btn_i_ok !!!!
+d106 1
+a106 2
+      LeaveForm(); // LeaveForm(true);
+      //      message_clear(); // do I need this?
+a109 1
+      //      i_used_too_much_heap();
+@
+
+
+1.4
+log
+@revising messages to have --more--.  sort of half working.
+@
+text
+@d16 1
+a16 1
+extern struct everything *env;
+d33 1
+a33 1
+    init_inventory_select(frm, (in_store==STORE_TPOST), env);
+d46 1
+a46 1
+    specialize_labels(frm, inventory_item, (in_store==STORE_TPOST), env);
+d79 1
+a79 1
+	if (tpost_sell_item(inventory_item, env)) {
+d82 1
+a82 1
+	  remove1_inventory_select(frm, k, env);
+d96 1
+a96 1
+	took_time = deduce_task(inventory_item, selected_btn, env);
+d113 1
+a113 1
+	print_stats(env); // in case you spent money
+@
+
+
+1.3
+log
+@can eat drugs from inventory now.  also some bug fixes
+@
+text
+@d93 1
+a93 1
+      message(0);
+a99 1
+	  // or maybe just need to move above do_splash into 'else'
+d101 3
+a103 2
+	} else if (env->pending_splash)
+	  do_splash_form(env);  // FrmPopupForm(SplashForm);
+d111 1
+a111 1
+      //      message(0); // do I need this?
+@
+
+
+1.2
+log
+@inventory and question-form actions should take a turn now
+(e.g. wear, wield, quaff, read, burn ...)
+This may have introduced new bugs
+@
+text
+@d111 3
+a113 1
+      message(0);
+@
+
+
+1.1
+log
+@reorganization of existing code
+@
+text
+@d26 1
+d86 1
+d94 11
+a104 2
+      if (inventory_item != -1)
+	deduce_task(inventory_item, selected_btn, env); // Do The Right Thing
+a105 3
+      // hm, I wonder if this will do the right thing.
+      if (env->pending_splash)
+	do_splash_form(env);  // FrmPopupForm(SplashForm);
+@
+

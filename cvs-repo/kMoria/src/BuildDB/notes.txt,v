@@ -1,0 +1,52 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	Release-2002_03_29:1.1.1.1
+	Release-2002_01_12:1.1.1.1
+	Release-2002_01_02:1.1.1.1
+	Release-2002_01_01:1.1.1.1
+	Release-2001_12_19:1.1.1.1
+	Release-2001_08_04:1.1.1.1
+	Release-2001_07_02:1.1.1.1
+	Release-2001_06_16:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2000.08.27.17.46.15;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.46.15;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@With just the two object records: 17110 B  (objects   are 17110 B)  2 recs
+Add the two creature records:     28706 B  (creatures are 11596 B)  4 recs
+Add the tlevel, mlevel, sortobj:  29632 B                           7 recs
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

@@ -1,0 +1,1003 @@
+head	1.15;
+access;
+symbols
+	Release-2001_08_06:1.15
+	Release-2001_06_15:1.14
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.15
+date	2001.08.05.03.25.14;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2001.05.11.23.43.12;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2001.05.09.02.54.41;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2001.05.01.04.41.33;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2001.01.17.22.09.00;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2000.10.15.22.03.22;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2000.10.14.23.16.50;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2000.10.14.04.19.22;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2000.10.14.03.00.31;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2000.10.14.01.59.20;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.10.13.03.26.15;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.08.31.06.11.31;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.08.31.05.32.33;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.08.31.05.15.55;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.34.35;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.34.35;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.15
+log
+@moved scores into saveDB; unique ids no longer used in iLarnDB; next, beaming
+@
+text
+@/*********************************************************************
+ * iLarn - Larn adapted for the PalmPilot.                           *
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+ * iLarn is derived from Ularn by Phil Cordier                       *
+ * which in turn was based on Larn by Noah Morgan                    *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+#include "palm.h"
+#include "Globals.h"
+#include "iLarnRsc.h"
+
+
+static void you_dont_have(Char x) SEC_2;
+static void make_it_fit(CharPtr buf, Short avail_space, Short maxbuflen) SEC_2;
+
+Char ** inventory_select_items;
+Short inventory_select_numItems;
+
+
+/*
+ * just to print a message that you don't have something
+ * (which probably should never happen anyway)
+ */
+static void you_dont_have(Char x)
+{
+  Char buf[30];
+  StrPrintF(buf, "You don't have item %c!", x);
+  message(buf);
+}
+
+/*
+ *  Drop object k, or print a message if you can't
+ */
+void drop_object(Short k)
+{
+  Short itm;
+  Short playerx = env->playerx;
+  Short playery = env->playery;
+
+  if ((k<0) || (k>=NINVT)) return; // success or failure? you decide
+  itm = env->iven[k];
+  if (!itm) { 
+    you_dont_have(k+'a');
+    return;
+  }
+  if (env->item[playerx][playery]) { 
+    message("There's something here already"); 
+    return;
+  }
+  if (playery==MAXY-1 && playerx==33) 
+    // can't drop items on the entrance
+    return;
+  
+  env->item[playerx][playery] = itm;
+  env->iarg[playerx][playery] = env->ivenarg[k];
+  
+  message("You drop:"); 
+  show3(k); // print the item
+  env->know[playerx][playery] = 0;  
+  env->iven[k]=0;
+  if (env->cdude[WIELD]==k)     env->cdude[WIELD] = -1;
+  if (env->cdude[WEAR]==k)      env->cdude[WEAR] = -1;
+  if (env->cdude[SHIELD]==k)    env->cdude[SHIELD] = -1;
+  adjustcvalues(itm, env->ivenarg[k], true);
+  recalc();
+  /* say dropped an item so wont ask to pick it up right away */
+  env->dropflag = true;
+  return;
+}
+
+/*
+ * Take off armor.  This is done via commandline/menu, not inventory-screen
+ */
+Boolean takeoff()
+{
+  if (env->cdude[SHIELD] != -1) { 
+    env->cdude[SHIELD] = -1; 
+    message("Your shield is off");
+  } else if (env->cdude[WEAR] != -1) { 
+    env->cdude[WEAR] = -1; 
+    message("Your armor is off"); 
+  } else {
+    message("You aren't wearing any armor");
+    return false;
+  }
+  recalc();
+  //  print_stats();
+  return true;
+}
+
+
+/*
+ *  This curtails a string making it small enough to fit an available space
+ */
+static void make_it_fit(CharPtr buf, Short avail_space, Short maxbuflen)
+{
+  Boolean fits;
+  Int length_msg, width_msg;
+  length_msg = StrLen(buf);
+  width_msg = avail_space;
+  FntCharsInWidth(buf, &width_msg, &length_msg, &fits);
+  if (!fits) {
+    width_msg -= 14; /* make room for ducklings, er, "..." */
+    FntCharsInWidth(buf, &width_msg, &length_msg, &fits);
+    if (length_msg+5 > maxbuflen)
+      length_msg -= 5; /* to be sure.  actually this will never happen? */
+    buf[length_msg+1] = '.';
+    buf[length_msg+2] = '.';
+    buf[length_msg+3] = '.';
+    buf[length_msg+4] = '\0';
+  }
+}
+
+/*
+ *  Free some space that we used in the inventory-selection form
+ */
+#define free_me(a)  h = MemPtrRecoverHandle((a)); if (h) MemHandleFree(h);
+void free_inventory_select(FormPtr frm)
+{
+  ListPtr lst;
+  Short i;
+  VoidHand h;
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_i));
+  LstSetListChoices(lst, NULL, 0);
+  for (i = 0 ; i < inventory_select_numItems ; i++) {
+    free_me(inventory_select_items[i]);
+  }
+  if (inventory_select_numItems > 0) {
+    free_me(inventory_select_items);
+  }
+}
+#undef free_me
+/*
+ *  Initialize the inventory-selection form
+ *  which is also used by the trading post, incidentally
+ */
+void init_inventory_select(FormPtr frm, Boolean t)
+{
+  ListPtr lst;
+  Short numItems, i, k;
+  ControlPtr btn;
+  Char my_buf[80]; // whatever show3_cp needs plus maybe 10
+
+  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_i_cancel));
+  if (t) {
+    // we're not just an inventory list, we're a trading post.
+    CtlSetLabel(btn, "Exit");
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_frob));
+    CtlSetLabel(btn, "Sell");
+  } else {
+    CtlSetLabel(btn, "Cancel");
+  }
+
+  // allocate list
+  for (i = 0, numItems = 0 ; i < NINVT ; i++)
+    if (env->iven[i])
+      numItems++;
+  if (!numItems && !t)
+    LeaveForm(); //LeaveForm(true); // aiee!  bug out! (this should not happen)
+  inventory_select_items = (Char **) md_malloc(sizeof(Char *) * numItems);
+  inventory_select_numItems = numItems; // for freeing
+
+  // put stuff in list
+  for (i = 0, k = 0 ; i < NINVT && k < numItems ; i++) {
+    if (env->iven[i]) {
+      // copy a description to my_buf
+      show3_cp(i, my_buf);
+      make_it_fit(my_buf, 160, 80); // add "...\0" at end of fitting-ness.
+      inventory_select_items[k] = (Char *) md_malloc(sizeof(Char) *
+						     (StrLen(my_buf)+1) );
+      StrCopy(inventory_select_items[k], my_buf); // watch that index.
+      k++;
+    }
+  }
+  // Yay.
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_i));
+  LstSetListChoices(lst, inventory_select_items, numItems);
+  LstSetSelection(lst, -1);
+
+  FrmDrawForm(frm);
+  if (!t) {
+    StrPrintF(my_buf, "Time left: %ld mobuls", get_mobuls());
+    WinDrawChars(my_buf, StrLen(my_buf), 2, 141);
+  }
+}
+
+/*
+ *  Remove an item from the inventory-selection form
+ *  (in its character as a trading post)
+ */
+void remove1_inventory_select(FormPtr frm, Short k)
+{
+  // leave 0 to k-1 intact...
+  // free k
+  // move k+1 to k, etc.
+  // decrement length
+  Short i;
+  VoidHand h;
+  ListPtr lst;
+  if (k < 0 || k >= inventory_select_numItems) return; // OOB
+  h = MemPtrRecoverHandle(inventory_select_items[k]);
+  if (h) 
+    MemHandleFree(h);
+  for (i = k ; i < inventory_select_numItems-1 ; i++)
+    inventory_select_items[i] = inventory_select_items[i+1];
+  inventory_select_numItems--;
+  // redraw!
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_i));
+  LstSetListChoices(lst, inventory_select_items, inventory_select_numItems);
+  LstSetSelection(lst, -1);
+  LstDrawList(lst);
+  specialize_labels(frm, -1, true); // clear sell-button and value
+}
+
+/*
+ *  Differentiate between the inventory-selection form's original use
+ *  and its trading post alter ego.
+ *  Also, if the former, what item you have selected determins what
+ *  'verbs' are available to you on the buttons.
+ */
+void specialize_labels(FormPtr frm, Short k, Boolean t)
+{
+  Short itm;
+  ControlPtr btn;
+  Short k_worn;
+  //  Char buf[40];
+  if (!t) {
+    RectangleType r;
+    RctSetRectangle(&r, 0, 141, 100, 12);
+    WinEraseRectangle(&r, 0);
+  }
+  if ((k<0) || (k>=NINVT)) {
+    // disable everything (feature)
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_frob));
+    CtlHideControl(btn);
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_drop));
+    CtlHideControl(btn);
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_wield));
+    CtlHideControl(btn);
+    tpost_print_value(-1); // clear 'value'
+    return;
+  }
+  if (t) {
+    // we're not just an inventory list, we're a trading post.
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_frob));
+    //    CtlSetLabel(btn, "Sell"); // already set
+    CtlShowControl(btn);
+    // also, print the value of  k  at: 40, 141
+    tpost_print_value(k);
+    return;
+  }
+  itm = env->iven[k];
+  // Ok, the middle button is ALWAYS drop. (turn off if no item selected.)
+  // The third button, IF it is turned on, is ALWAYS wield.
+  //  or unwield.....
+  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_wield));
+  if (env->cdude[WIELD] != k)  CtlSetLabel(btn, "wield");
+  else                         CtlSetLabel(btn, "put up");
+
+  switch(itm) {
+  case OLEATHER:  
+  case OCHAIN:  
+  case OPLATE:	
+  case OSTUDLEATHER:
+  case ORING:		
+  case OSPLINT:	
+  case OPLATEARMOR:	
+  case OELVENCHAIN:
+  case OSSPLATE:
+  case OSHIELD:
+    // Note that I'm NOT being clever about 'wear' vs 'takeoff' applicability.
+    // hey, neither is Ularn.
+    k_worn = (itm == OSHIELD) ? env->cdude[SHIELD] : env->cdude[WEAR];
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_frob));
+    if (k_worn == k) {
+      CtlSetLabel(btn, "doff");
+      CtlShowControl(btn); // WEAR
+    } else if (k_worn == -1 &&
+	       !((itm == OSHIELD) &&
+		 (env->cdude[WIELD] != -1) &&
+		 (env->iven[env->cdude[WIELD]] == O2SWORD))) {
+      CtlSetLabel(btn, "wear");
+      CtlShowControl(btn); // WEAR
+    } else {
+      CtlHideControl(btn);
+    }
+    //    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_drop));
+    //    CtlShowControl(btn); // drop
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_wield));
+    CtlShowControl(btn); // wield
+    break;
+  case OBOOK:
+  case OSCROLL:
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_frob));
+    CtlSetLabel(btn, "read");
+    CtlShowControl(btn); // READ
+    //    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_drop));
+    //    CtlShowControl(btn); // drop
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_wield));
+    if (itm==OBOOK)  CtlShowControl(btn); // wield
+    else             CtlHideControl(btn); //
+    break;
+  case OPOTION:
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_frob));
+    CtlSetLabel(btn, "quaff");
+    CtlShowControl(btn); // QUAFF
+    //    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_drop));
+    //    CtlShowControl(btn); // drop
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_wield));
+    CtlHideControl(btn); //
+    break;
+  case OCOOKIE: case OSPEED: case OSHROOMS: case OACID: case OHASH: case OCOKE:
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_frob));
+    CtlSetLabel(btn, "eat");
+    CtlShowControl(btn); // EAT
+    //    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_drop));
+    //    CtlShowControl(btn); // drop
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_wield));
+    CtlShowControl(btn); // wield
+    break;
+  default:
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_frob));
+    if (env->cdude[WIELD] != k)
+      CtlSetLabel(btn, "wield");
+    else
+      CtlSetLabel(btn, "put up");
+    if (!((itm == O2SWORD) && (env->cdude[SHIELD] != -1)))
+      CtlShowControl(btn); // WIELD (surprise)
+    else
+      CtlHideControl(btn);
+    //    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_drop));
+    //    CtlShowControl(btn); // drop
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_wield));
+    CtlHideControl(btn); //
+    break;
+  }
+  // You can drop any kind of item - unless the ground is occupied.
+  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_drop));
+  if (env->item[env->playerx][env->playery])
+    CtlHideControl(btn); // drop
+  else
+    CtlShowControl(btn); // drop
+
+}
+
+/* 
+ *  Above, we specialized the button labels according to what item
+ *  in the inventory was selected.  When the user hits a button,
+ *  then, we have to do the "appropriate thing" to the item
+ *  which thus depends on what the item is.
+ *
+ * Anything can be dropped.
+ * Anything can be wielded except: scroll, potion
+ * Certain objects can be worn: <list>
+ * Two kinds can be read: book,    scroll
+ * One kind can be quaffed:                potion
+ * One kind can be eaten:                          cookie
+ *
+ * deduce-task returns true if the action took a turn.
+ */
+Boolean deduce_task(Short k, Short btn012)
+{
+  Short itm;
+  if ((k<0) || (k>=NINVT) || (btn012 < 0) || (btn012 > 2)) {
+    message("doing nothing");
+    return false; // invalid inventory item or action, do nothing
+  }
+  itm = env->iven[k];
+  // Ok, the middle button is ALWAYS drop. (turn off if no item selected.)
+  // The third button, IF it is turned on, is ALWAYS wield.  or unwield.
+  if (btn012 == 1) {
+    if (env->cdude[TIMESTOP])
+      return false; // can't drop stuff while time stopped
+    drop_object(k);
+    // (has been recalc'd already)
+    return true;
+  }
+  if ((btn012 == 2) && (itm != OSCROLL) && (itm != OPOTION)) {
+  wieldmebaby:
+    if (env->cdude[WIELD] != k) {
+      if ( (env->cdude[SHIELD] != -1) && (itm == O2SWORD) ){
+	message("But one arm is busy with your shield!");
+	return false;
+      }
+      env->cdude[WIELD] = k;
+      env->cdude[LANCEDEATH] = (itm == OLANCE);  
+      message("wielded");
+    } else {
+      env->cdude[WIELD] = -1;
+      env->cdude[LANCEDEATH] = false;
+      message("un-wielded");
+    }
+    recalc();
+    //    print_stats();
+    return true;
+  }
+  switch(itm) {
+  case OLEATHER:  
+  case OCHAIN:  
+  case OPLATE:	
+  case OSTUDLEATHER:
+  case ORING:		
+  case OSPLINT:	
+  case OPLATEARMOR:	
+  case OELVENCHAIN:
+  case OSSPLATE:
+    if (env->cdude[WEAR] == k) { 
+      env->cdude[WEAR] = -1; 
+      message("Your armor is off"); 
+    } else if (env->cdude[WEAR] != -1) { 
+      message("You're already wearing some armor");
+      return false;
+    } else {
+      env->cdude[WEAR] = k;
+      message("worn");
+    }
+    recalc();
+    //    print_stats();
+    return true;
+    break;
+  case OSHIELD:
+    if (env->cdude[SHIELD] == k) { 
+      env->cdude[SHIELD] = -1; 
+      message("Your shield is off");
+    } else if (env->cdude[SHIELD] != -1) { 
+      message("You're already wearing a shield");
+      return false;
+    } else if ((env->cdude[WIELD] != -1) &&
+	       (env->iven[env->cdude[WIELD]] == O2SWORD)) { 
+      message("You're already using a 2handed sword");
+      return false;
+    } else {
+      env->cdude[SHIELD] = k;
+      message("worn");
+    }
+    recalc();
+    //    print_stats();
+    return true;
+    break;
+  case OBOOK:
+    if (!env->cdude[TIMESTOP]) {
+      if (readbook(env->ivenarg[k])) {
+	env->iven[k] = 0;
+	return true;
+      }
+    }
+    break;
+  case OSCROLL:
+    if (!env->cdude[TIMESTOP]) {
+      Boolean take_time = (env->ivenarg[k] != R_PULVR);
+      if (read_scroll(env->ivenarg[k])) {
+	env->iven[k] = 0;
+	return take_time;// are you !(the 1 scroll type that needs a direction)
+      }
+    }
+    break;
+  case OPOTION:
+    if (!env->cdude[TIMESTOP]) {
+      quaffpotion(env->ivenarg[k]);
+      env->iven[k] = 0;
+      return true;
+    }
+    break;
+  case OCOOKIE:
+    if (!env->cdude[TIMESTOP]) {
+      ocookie();
+      env->iven[k] = 0;
+      return true;
+    }
+    break;
+  case OSPEED:
+    if (!env->cdude[TIMESTOP]) {
+      drug_speed();
+      env->iven[k] = 0;
+      return true;
+    }
+    break;
+  case OSHROOMS:
+    if (!env->cdude[TIMESTOP]) {
+      drug_shrooms();
+      env->iven[k] = 0;
+      return true;
+    }
+    break;
+  case OACID:
+    if (!env->cdude[TIMESTOP]) {
+      drug_acid();
+      env->iven[k] = 0;
+      return true;
+    }
+    break;
+  case OHASH:
+    if (!env->cdude[TIMESTOP]) {
+      drug_hash();
+      env->iven[k] = 0;
+      return true;
+    }
+    break;
+  case OCOKE:    
+    if (!env->cdude[TIMESTOP]) {
+      drug_coke();
+      env->iven[k] = 0;
+      return true;
+    }
+    break;
+  default:
+    goto wieldmebaby;
+    break;
+  }
+  return false;
+}
+@
+
+
+1.14
+log
+@off by one
+@
+text
+@d295 1
+d443 2
+a444 1
+    } else if (env->iven[env->cdude[WIELD]] == O2SWORD) { 
+@
+
+
+1.13
+log
+@recalc/stats are smarter about updating AC and WC.  demons are properly invisible (always and not just in the easy case to test).
+@
+text
+@d219 1
+a219 1
+  for (i = k ; i < inventory_select_numItems ; i++)
+@
+
+
+1.12
+log
+@get iLarn to compile with sdk 3.5 so's I can add color...
+@
+text
+@d102 1
+a102 1
+  print_stats();
+d408 1
+a408 1
+    print_stats();
+d432 1
+a432 1
+    print_stats();
+d450 1
+a450 1
+    print_stats();
+@
+
+
+1.11
+log
+@fixed pulverization scroll timing issue?
+@
+text
+@d23 1
+a23 1
+#include "Pilot.h"
+@
+
+
+1.10
+log
+@eliminated (fossilized) global argument
+@
+text
+@d463 1
+d466 1
+a466 1
+	return true;
+@
+
+
+1.9
+log
+@revising messages to have --more--.  sort of half working.
+@
+text
+@d27 1
+d49 1
+a49 1
+void drop_object(Short k, struct everything *env)
+d73 1
+a73 1
+  show3(k, env); // print the item
+d79 2
+a80 2
+  adjustcvalues(itm, env->ivenarg[k], true, env);
+  recalc(env);
+d89 1
+a89 1
+Boolean takeoff(struct everything *env)
+d101 2
+a102 2
+  recalc(env);
+  print_stats(env);
+d152 1
+a152 1
+void init_inventory_select(FormPtr frm, Boolean t, struct everything *env)
+d182 1
+a182 1
+      show3_cp(i, my_buf, env);
+d197 1
+a197 1
+    StrPrintF(my_buf, "Time left: %ld mobuls", get_mobuls(env));
+d206 1
+a206 1
+void remove1_inventory_select(FormPtr frm, Short k, struct everything *env)
+d227 1
+a227 1
+  specialize_labels(frm, -1, true, env); // clear sell-button and value
+d236 1
+a236 1
+void specialize_labels(FormPtr frm, Short k, Boolean t, struct everything *env)
+d255 1
+a255 1
+    tpost_print_value(-1, env); // clear 'value'
+d264 1
+a264 1
+    tpost_print_value(k, env);
+d375 1
+a375 1
+Boolean deduce_task(Short k, Short btn012, struct everything *env)
+d388 1
+a388 1
+    drop_object(k, env);
+d407 2
+a408 2
+    recalc(env);
+    print_stats(env);
+d431 2
+a432 2
+    recalc(env);
+    print_stats(env);
+d449 2
+a450 2
+    recalc(env);
+    print_stats(env);
+d455 1
+a455 1
+      if (readbook(env->ivenarg[k],env)) {
+d463 1
+a463 1
+      if (read_scroll(env->ivenarg[k],env)) {
+d471 1
+a471 1
+      quaffpotion(env->ivenarg[k],env);
+d478 1
+a478 1
+      ocookie(env);
+d485 1
+a485 1
+      drug_speed(env);
+d492 1
+a492 1
+      drug_shrooms(env);
+d499 1
+a499 1
+      drug_acid(env);
+d506 1
+a506 1
+      drug_hash(env);
+d513 1
+a513 1
+      drug_coke(env);
+@
+
+
+1.8
+log
+@can eat drugs from inventory now.  also some bug fixes
+@
+text
+@d71 1
+a71 1
+  add_to_splash("You drop:",env); 
+@
+
+
+1.7
+log
+@inventory and question-form actions should take a turn now
+(e.g. wear, wield, quaff, read, burn ...)
+This may have introduced new bugs
+@
+text
+@d88 1
+a88 1
+void takeoff(struct everything *env)
+d98 1
+a98 1
+    return;
+d102 1
+d131 1
+d140 4
+a143 3
+    h = MemPtrRecoverHandle(inventory_select_items[i]);
+    if (h) 
+      MemHandleFree(h);
+a144 3
+  h = MemPtrRecoverHandle(inventory_select_items);
+  if (h) 
+    MemHandleFree(h);
+d146 1
+a146 1
+
+d325 1
+a325 1
+  case OCOOKIE:
+d478 35
+@
+
+
+1.6
+log
+@reorganization of existing code
+@
+text
+@d371 2
+d374 1
+a374 1
+void deduce_task(Short k, Short btn012, struct everything *env)
+d379 1
+a379 1
+    return; // invalid inventory item or action, do nothing
+d385 5
+a389 4
+    if (!env->cdude[TIMESTOP]) {
+      drop_object(k, env); // NOTE i need a cmd to drop $$$
+      // (has been recalc'd already)
+    } return;
+d396 1
+a396 1
+	return;
+d408 1
+a408 1
+    return;
+d425 1
+d432 1
+d440 1
+d443 1
+d450 1
+d454 1
+a454 1
+      if (readbook(env->ivenarg[k],env))
+d456 2
+d462 1
+a462 1
+      if (read_scroll(env->ivenarg[k],env))
+d464 2
+d472 1
+d479 1
+d486 1
+@
+
+
+1.5
+log
+@* added message log (has a bug in that dead people leave a message or two
+for the next character, but I don't think anyone cares.)
+* fixed Discretion preference to work with expanded awareness
+* added Fight (like in rogue, more or less)
+* got rid of -L18 preference
+@
+text
+@d156 1
+a156 1
+  Char my_buf[120]; // actually 80 should be plenty
+@
+
+
+1.4
+log
+@fixed some inventory wielding silliness
+@
+text
+@d173 1
+a173 1
+    LeaveForm(true); // aiee!  bug out! (this should not happen)
+@
+
+
+1.3
+log
+@maybe fix so you can't destroy walls in the town
+@
+text
+@d269 5
+d292 3
+a294 1
+    } else if (k_worn == -1) {
+d313 2
+a314 2
+    if (itm==OBOOK)   CtlShowControl(btn); // wield
+    else              CtlHideControl(btn); //
+d336 8
+a343 2
+    CtlSetLabel(btn, "wield");
+    CtlShowControl(btn); // WIELD (surprise)
+d381 1
+a381 1
+  // The third button, IF it is turned on, is ALWAYS wield.
+d390 12
+a401 3
+    if ( (env->cdude[SHIELD] != -1) && (itm == O2SWORD) ){
+      message("But one arm is busy with your shield!");
+      return;
+a402 2
+    env->cdude[WIELD] = k;
+    env->cdude[LANCEDEATH] = (itm == OLANCE);  
+a404 1
+    message("wielded");
+d435 1
+a435 1
+    } else if (env->cdude[WIELD] == O2SWORD) { 
+@
+
+
+1.2
+log
+@enable armor/shield removal from inv; disable drop button when tile occupied
+@
+text
+@a404 2
+      recalc(env);
+      print_stats(env);
+d407 2
+a419 2
+      recalc(env);
+      print_stats(env);
+d422 2
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d239 1
+d282 1
+d284 11
+a294 4
+    CtlSetLabel(btn, "wear");
+    CtlShowControl(btn); // WEAR
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_drop));
+    CtlShowControl(btn); // drop
+d303 2
+a304 2
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_drop));
+    CtlShowControl(btn); // drop
+d313 2
+a314 2
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_drop));
+    CtlShowControl(btn); // drop
+d322 2
+a323 2
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_drop));
+    CtlShowControl(btn); // drop
+d331 2
+a332 2
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_if_drop));
+    CtlShowControl(btn); // drop
+d337 7
+d398 4
+a401 1
+    if (env->cdude[WEAR] != -1) { 
+d411 4
+a414 1
+    if (env->cdude[SHIELD] != -1) { 
+@
+
+
+1.1.1.1
+log
+@iLarn - Ularn port for PalmOS - initial code checkin
+@
+text
+@@

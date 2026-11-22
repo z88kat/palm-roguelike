@@ -1,0 +1,89 @@
+head	1.2;
+access;
+symbols
+	Release-2002_03_29:1.2
+	Release-2002_01_12:1.2
+	Release-2002_01_02:1.2
+	Release-2002_01_01:1.2
+	Release-2001_12_19:1.2
+	Release-2001_08_04:1.2;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2001.07.04.20.01.57;	author uid28407;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.07.03.20.16.42;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@two-way conversion - seems to work ok on linux
+@
+text
+@CC = gcc
+CFLAGS = -g -O2 -Wall
+TARGET1 = pdb2moria
+TARGET2 = moria2pdb
+OBJS = swap.o xor.o header.o rec.c
+OBJS1 = $(OBJS) to-umoria.o $(TARGET1).o
+OBJS2 = $(OBJS) from-umoria.o $(TARGET2).o
+
+all: $(TARGET1) $(TARGET2)
+
+$(TARGET1): $(OBJS1)
+	$(CC) -o $(TARGET1) $(OBJS1)
+
+$(TARGET2): $(OBJS2)
+	$(CC) -o $(TARGET2) $(OBJS2)
+
+depend:
+	makedepend -Y  *.c
+
+clean:
+	rm -f *.o $(TARGET1) $(TARGET2)
+
+# Generic Rules
+
+#%.o : %.c
+#	$(CC) -c $(CFLAGS) $<
+#	$(CC) -c $(FLAGS) $(IPATHS) $<
+# DO NOT DELETE
+
+from-umoria.o: defs.h xor.h swap.h rec.h
+header.o: defs.h swap.h to-umoria.h
+moria2pdb.o: defs.h swap.h header.h rec.h from-umoria.h
+pdb2moria.o: defs.h swap.h header.h rec.h to-umoria.h
+rec.o: defs.h xor.h swap.h
+swap.o: swap.h
+to-umoria.o: defs.h xor.h swap.h rec.h
+xor.o: swap.h
+@
+
+
+1.1
+log
+@add savefile converter (kMoria to Umoria 5.5.2)
+@
+text
+@d3 5
+d9 1
+a9 1
+all: convert
+d11 11
+a21 2
+convert: main.o
+	$(CC) -o convert main.o
+d30 8
+@
+

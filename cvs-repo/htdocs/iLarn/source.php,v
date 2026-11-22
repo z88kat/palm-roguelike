@@ -1,0 +1,323 @@
+head	1.7;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.5
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2006.08.13.05.47.22;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2006.08.13.04.47.24;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2006.08.08.03.46.43;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2002.03.30.00.18.21;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.07.02.06.08.41;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.05.31.23.23.50;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.39;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.39;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>Source for iLarn</title>
+
+<style type="text/css" media="screen">@@import "../3col.css";</style>
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>iLarn source code</h1>
+</div>
+
+<div class="content">
+
+      <h2>Where's the source?</h2>
+
+      <p> Go to the <a href="http://sourceforge.net/projects/roguelike-palm/">
+	Roguelikes for PalmOS</a> project page on SourceForge.
+	Download the "iLarn module" (it should be listed in the
+	File Releases section).</p>
+
+      <h2>What do I need to compile it?</h2>
+      <p> I've used prc-tools 2.0.  I'm running Linux.</p>
+
+      <p> You can get <a href="http://www.palmos.com/dev/tools/gcc/">
+      prc-tools</a> from <a href="http://www.palmsource.com/developers/">
+      palmsource.com</a>.  Follow their
+      directions for installation.  You will need
+      <a href="http://www.ardiri.com/index.php?redir=palm&amp;cat=pilrc">
+      PilRC</a> as well (version 2.7b or greater).</p>
+
+      <p> <b>SDK</b> - The current version of iLarn uses SDK 3.5 or
+      higher.  (Or, in the unlikely event that you want to compile for
+      PalmOS 2.0, SDK 2; to compile for OS 2.0 you will also need to
+      change which definition of CFLAGS is commented-out in the
+      Makefile.)  Prior to iLarn 0.25 I used SDK 3.1 (the upgrade
+      involved some header file changes.)</p>
+
+      <p> <b>multigen</b> - Since iLarn is large, it has "multiple
+      code resources" and uses multigen.  You might want to read about
+      that in the prc-tools documentation.</p>
+
+      <p> <b>emulator</b> - The safest place to test software is in a <a
+      href="http://www.palmos.com/dev/tools/emulator/">Palm emulator</a>.  You
+      will need a ROM image to use it.</p>
+
+</div>
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+<!-- this document tentatively valid HTML Tue Aug 8 2006 -->
+
+</body>
+</html>
+@
+
+
+1.6
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+@
+
+
+1.5
+log
+@commit everything before massive style change
+@
+text
+@d1 3
+a3 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+d7 3
+a9 4
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+d13 7
+a19 40
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">iLarn: where to get source</h3>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      
+      <!-- -->
+      <tr><td class="sidehead">
+	iLarn Stuff </td></tr>
+      <tr><td class="side"> <a href="index.php">
+	  What is iLarn?</a> </td></tr>
+      <tr><td class="side"> <a href="whatsnew.php">
+	  What's new</a> </td></tr>
+      <tr><td class="side"> <a href="download.php">
+	  Download iLarn</a> </td></tr>
+      <tr><td class="side"> <a href="play.php">How to play</a>;
+	  <a href="town.php">town</a></td></tr>
+      <tr><td class="side">
+	  <b>How to get source</b> </td></tr>
+      <?php include ("../hostedby.txt") ?>
+      <?php include ("../activesurveys.txt") ?>
+      <?php include ("../roguelikegames.txt") ?>
+</table>
+</td>
+
+<!-- main area table -->
+<td valign=top>
+      <!-- ----- this is the interesting part of the page ----- -->
+      <h3>Where can I get the source for iLarn?</h3>
+d21 2
+a22 2
+      <P> Go to the <a href="http://sourceforge.net/projects/roguelike-palm/">
+	Roguelikes for PalmOS</a> project summary page on SourceForge.
+d24 1
+a24 1
+	File Releases section).
+d26 6
+a31 7
+      <h3>What do I need to compile it?</h3>
+      <P> iLarn requires prc-tools 2.0.  We compile under Linux, but
+      other unices will probably also work.
+
+      <P> You can get <a href="http://www.palmos.com/dev/tech/tools/gcc/">
+      prc-tools 2.0</a> from <a href="http://www.palmos.com">
+      palmos.com</a>.  Follow their
+d33 2
+a34 2
+      <a href="http://www.ardiri.com/index.cfm?redir=palm&cat=pilrc">
+      PilRC</a> as well.
+d36 25
+a60 23
+      <P> <b>SDK</b> - Old versions of iLarn (prior to 0.25) use SDK
+3.1 (or, in the unlikely event that you want to compile for PalmOS
+2.0, SDK 2; to compile for OS 2.0 you will also need to change which
+definition of CFLAGS is commented-out in the Makefile) and will be
+fairly unhappy if you try SDK 3.5 instead due to header file changes.
+<br> For 0.25 and later you should have no problems using the 3.5 SDK.
+
+<P> <b> multigen </b> - Since iLarn is large, it has "multiple code
+resources" and uses multigen.  You might want to read about that in
+the prc-tools documentation.
+
+<P> <b>emulator</b> - It is a good idea to have one.  You can get POSE
+from palmos.com if you don't already have it.
+
+<!-- ----- end of the interesting part of the page ----- -->
+
+</td>
+</tr>
+</table>
+
+<!-- footer table -->
+<?php include ("../footer.txt") ?>
+<!-- end footer table -->
+a61 1
+<address>i0lanthe@@users.sourceforge.net</address>
+a62 1
+Last modified: Sat Jun 16 18:13:46 EDT 2001
+d64 3
+a66 1
+<?php $hitsfile = "source.hits"; include ("../counter.php")?>
+@
+
+
+1.4
+log
+@checkpointing web before kMoria 0.15 update
+@
+text
+@d7 2
+@
+
+
+1.3
+log
+@in the middle of release/update
+@
+text
+@d14 1
+a14 1
+    <h3>iLarn: where to get source</h3>
+@
+
+
+1.2
+log
+@make note of which SDK is used
+@
+text
+@d67 6
+a72 9
+      <P> <b>SDK</b> - The current version of iLarn uses SDK 3.1 (or, in the
+unlikely event that you want to compile for PalmOS 2.0, SDK 2; to
+compile for OS 2.0 you will also need to change which definition of
+CFLAGS is commented-out in the Makefile).
+<br> Future versions of iLarn <i>will</i> use SDK 3.5 but getting this
+to happen is, alas, a work in progress.  The current CVS snapshot,
+available from somewhere the sourceforge project page, compiles with
+3.5 but is buggy; the resulting iLarn.prc should be used only in a
+Palm emulator.
+d93 1
+a93 1
+Last modified: Thu May 31 19:24:22 EDT 2001
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d67 18
+a84 9
+      <P> Since iLarn is large, it has "multiple code resources" and
+      uses multigen.  You might want to read about that in the prc-tools
+      documentation.
+
+      <P> You may also want xcopilot, a Unix/X11 PalmPilot emulator.
+      The xcopilot page is at <a href="http://xcopilot.cuspy.com/">
+      http://xcopilot.cuspy.com/</a> and should have everything you
+      need except a ROM image.
+      <!-- ----- end of the interesting part of the page ----- -->
+d96 1
+a96 1
+Last modified: Fri Oct 13 15:05:22 EDT 2000
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

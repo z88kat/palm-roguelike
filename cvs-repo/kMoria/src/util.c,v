@@ -1,0 +1,340 @@
+head	1.9;
+access;
+symbols
+	Release-2002_03_29:1.9
+	Release-2002_01_12:1.9
+	Release-2002_01_02:1.8
+	Release-2002_01_01:1.8
+	Release-2001_12_19:1.8
+	Release-2001_08_04:1.6
+	Release-2001_07_02:1.5
+	Release-2001_06_16:1.3
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.9
+date	2002.01.12.21.13.14;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2001.11.30.23.44.42;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.08.02.06.50.36;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.06.29.04.08.45;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.02.28.06.37.25;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.11.04.02.13.40;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.44.41;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.44.41;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.9
+log
+@handera support is mostly working now
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+/* #include "palm.h" That's all this file REALLY needs... */
+#include "kMoria.h"
+
+/**********************************************************************
+  Tell the Palm to act like the user tapped the given button...
+  Return true if we did (a very few callers would like to know)
+**********************************************************************/
+Boolean hit_button_if_usable(FormPtr frm, Word btn_index)
+{
+  ControlPtr btn;
+  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_index));
+  if (btn->attr.usable)
+    CtlHitControl(btn);
+  return (btn->attr.usable);
+}
+
+
+/**********************************************************************
+                       UPDATE_FIELD_SCROLLERS
+ IN:
+ frm, fld, up_scroller, down_scroller = various UI doodads
+ OUT:
+ nothing
+ PURPOSE:
+ Update the given scroller widgets (for the given field 
+ (in the given form)), according to whether the field is scrollable
+ in the "up" and "down" directions.
+ **********************************************************************/
+void update_field_scrollers(FormPtr frm, FieldPtr fld,
+			    Word up_scroller, Word down_scroller) 
+{
+  Boolean u, d;
+  u = FldScrollable(fld, winUp);
+  d = FldScrollable(fld, winDown);
+  FrmUpdateScrollers(frm, 
+		     FrmGetObjectIndex(frm, up_scroller),
+		     FrmGetObjectIndex(frm, down_scroller),
+		     u, d);
+  return;
+}
+
+
+/**********************************************************************
+                       PAGE_SCROLL_FIELD
+ IN:
+ frm, fld = various UI doodads
+ dir = whether to scroll 'fld' up or down
+ OUT:
+ PURPOSE:
+ Call this to scroll the field 'fld' up/down by one "page".
+ (The caller should call update_field_scrollers immediately afterward.)
+ **********************************************************************/
+#ifndef I_AM_COLOR
+void page_scroll_field(FormPtr frm, FieldPtr fld, DirectionType dir)
+#else /* I_AM_COLOR */
+void page_scroll_field(FormPtr frm, FieldPtr fld, WinDirectionType dir)
+#endif /* I_AM_COLOR */
+{
+  Word linesToScroll;
+
+  /* how many lines can we scroll? */
+  if (FldScrollable(fld, dir)) {
+    linesToScroll = FldGetVisibleLines(fld) - 1;
+    FldScrollField(fld, linesToScroll, dir);
+  }
+
+  return;
+}
+
+
+/* how to exit a popup form that you can enter from more than one place */
+void LeaveForm()
+{
+   FormPtr frm;
+   frm = FrmGetActiveForm();
+   FrmEraseForm (frm);
+   FrmDeleteForm (frm);
+   FrmSetActiveForm (FrmGetFirstForm ());
+#ifndef I_AM_OS_2
+   if (IsVGA) {
+     Word curfrm =  FrmGetActiveFormID();
+     if (curfrm == MainForm)
+       move_gsi(FrmGetActiveForm(), true);
+   }
+#endif
+}
+
+
+/***************************************************************
+                   md_malloc
+ IN:
+ n = size to allocate
+ OUT:
+ pointer to the locked chunk
+ PURPOSE:
+ Allocate and lock a moveable chunk of memory.
+****************************************************************/
+Char * md_malloc(Int n)
+{
+  VoidHand h;
+  VoidPtr p;
+
+  h = MemHandleNew((ULong) n); /* will this cast work??  apparently. */
+  if (!h) {
+    /* the caller might want to check this and die. */
+    return NULL;
+  }
+
+  p = MemHandleLock(h);
+  MemSet(p, n, 0); /* just to make really sure the memory is zeroed */
+  return p;
+}
+
+
+
+// Caller must promise that buf+len has at least 20 chars.
+void seconds_to_string(ULong seconds, Char *buf, Short start)
+{
+  DateTimeType datetime;
+  Short len;
+  len = start;
+  if (len)
+    buf[len++] = ' ';
+  TimSecondsToDateTime(seconds, &datetime); // see DateTime.h
+  DateToAscii(datetime.month, datetime.day, datetime.year,
+	      PrefGetPreference(prefDateFormat), buf+len);
+  len = StrLen(buf);
+  buf[len++] = ' ';
+  TimeToAscii(datetime.hour, datetime.minute,
+	      PrefGetPreference(prefTimeFormat), buf+len);
+}
+@
+
+
+1.8
+log
+@better msgs on floor-change; sped up repeated delay; fewer keypress in spellbk
+@
+text
+@d91 7
+@
+
+
+1.7
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@d15 15
+@
+
+
+1.6
+log
+@random tinkering, and prep for multi-user
+@
+text
+@d13 2
+a14 1
+#include "palm.h"
+@
+
+
+1.5
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d102 19
+@
+
+
+1.4
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000,2001 Bridget Spitznagel                        *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+@
+
+
+1.3
+log
+@tweaked notice
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d24 1
+a24 1
+#include <Pilot.h>
+d40 2
+a41 2
+  u = FldScrollable(fld, up);
+  d = FldScrollable(fld, down);
+d60 1
+d62 3
+@
+
+
+1.2
+log
+@adding GPL comment
+@
+text
+@d5 1
+a5 1
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 23
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

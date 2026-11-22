@@ -1,0 +1,137 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.05.31.00.22.35;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.35;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<?
+#####################################################################
+#
+# Counter
+#
+$version = "0,21";
+#
+# Released under the terms of the GNU General Public License.
+# Please refer to the README file for more information.
+#####################################################################
+
+#####################################################################
+# PLEASE EDIT THE FOLLOWING VARIABLES:
+#####################################################################
+
+# Counter style: Text counter or image counter. If you want a text
+# counter, write "text". If you want an image counter, write "image".
+#$counterstyle = "image";
+$counterstyle = "text";
+
+# Invisible: If you want this counter script to count the number of
+# hits, but you DON'T want the number of hits to be displayed on
+# your page, then say "yes" here. Otherwise say "no".
+$invisible = "no";
+
+#####################################################################
+# NO MORE EDITING NECESSARY. However, if you want to use other
+# images files than the ones included with this script, you should
+# edit the variables below. You also need to edit the variables
+# below if you want to place the hits file and the images directory
+# outside the counter directory.
+# NORMALLY YOU DO NOT NEED TO CHANGE ANYTHING BELOW HERE.
+#####################################################################
+
+# The height and width of the digit image files. You don't need to
+# change these unless you decide to use other image files than the
+# ones that came with this scripts.
+$height = "19";
+$width = "15";
+
+# The full path to the hits file. No trailing slash ("/").
+# If the hits file is in the same directory as this script, you
+# can leave this blank.
+if (!isset($hitsfile)) {
+$hitsfile = "";
+}
+
+# The full path to the images directory. No trailing slash ("/").
+# If the images directory is in the same directory as this script,
+# you can leave this blank.
+if (!isset($images)) {
+$images = "../images/misc";
+}
+
+$reset_date = "Feb 10 2001";
+
+# THAT'S IT!
+
+
+
+
+
+
+
+if (!$hitsfile) $hitsfile = dirname(__FILE__)."/hits";
+if (!$images) $images = dirname(__FILE__)."/images";
+$images = str_replace($DOCUMENT_ROOT, "", $images);
+
+$hits = file($hitsfile);
+$hits = $hits[0] + 1;
+
+# Opening the hits file and writing the number of hits:
+$fp = fopen($hitsfile, "w");
+fwrite($fp, $hits);
+
+if ($invisible != "yes") {
+	# Text counter
+	if ($counterstyle == "text") {
+echo "(";
+		echo $hits;
+echo " visitors since ";
+#echo $reset_date;
+echo "the last counter meltdown";
+echo ")";
+	}
+
+	# Image counter
+	else {
+		$digit = strval($hits);
+		for ($i = 0; $i < strlen($hits); $i++) {
+			echo "<img src=$images/$digit[$i].gif height=$height width=$width alt=$hits>";
+		}
+	}
+}
+?>
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

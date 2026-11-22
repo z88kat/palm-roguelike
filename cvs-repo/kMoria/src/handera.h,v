@@ -1,0 +1,85 @@
+head	1.4;
+access;
+symbols
+	Release-2002_03_29:1.4
+	Release-2002_01_12:1.4;
+locks; strict;
+comment	@ * @;
+
+
+1.4
+date	2002.01.12.21.13.14;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2002.01.10.01.33.49;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2002.01.08.19.32.55;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2002.01.05.18.46.50;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@handera support is mostly working now
+@
+text
+@void init_display_size() SEC_2;
+void PrvMoveForm(Boolean draw) SEC_7;
+void handera_rotate() SEC_7;
+void move_gsi(FormPtr frm, Boolean draw);
+@
+
+
+1.3
+log
+@fixing bugs (handera display tweaks; store list crash; --more--ing for show-invis...
+@
+text
+@d4 1
+@
+
+
+1.2
+log
+@handera support is mostly working, for some value of mostly
+@
+text
+@a0 3
+void PrvMoveObject(FormPtr frmP, UInt objid, Coord y_diff, Boolean draw) SEC_7;
+Short PrvResizeList(FormPtr frm, UInt objid, UInt bot_oid, Coord y_dif) SEC_7;
+void PrvResizeField(FormPtr frm, UInt objid, Coord y_diff) SEC_7;
+a1 3
+void update_display_size() SEC_7;
+Short adjust_form_size(Boolean draw) SEC_7;
+Short adjust_form_position(Boolean draw) SEC_7;
+@
+
+
+1.1
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@d2 1
+a2 1
+void PrvResizeList(FormPtr frm, UInt objid, UInt bot_objid, Coord y_dif) SEC_7;
+d4 1
+a4 1
+void init_display_size() SEC_7;
+d9 1
+@
+

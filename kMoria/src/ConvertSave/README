@@ -1,0 +1,62 @@
+Here is some C code that is supposed to translate a kMoriaSaveDB.pdb
+file to/from the Umoria 5.5.2 save file format.
+
+This program is released under the GPL (see
+http://www.gnu.org/copyleft/gpl.html) because I used some source code
+from another GPL program which I did not write.  (I did not really use
+source code from Moria (which has a different License that is probably
+incompatible with GPL.. you know, one of them is a morning person, the
+other isn't, squeezes the toothpaste in the middle of the tube..
+*both* of them leave hair in the sink..); just knowledge of how the
+save files are laid out.)
+
+I have tried it out, only on Linux, and only on one save file.  This
+single data point works.  So, I am including this code in the source
+distribution as a rudimentary example for interested people to
+improve.  This code is "unsupported" - I will not act on bug reports
+unless they are accompanied by a patch.  (If it does not work for your
+platform, fix it and send me a patch.  If you do not know C, learn C
+first, then fix it, then send me the patch; or talk another kMoria
+user into fixing it.)
+
+Use:
+
+When converting FROM pdb file TO umoria save file, it needs an
+existing pdb file, and it will create the umoria save file from
+scratch. [1]
+
+When converting TO pdb file FROM umoria save file, it needs an
+existing umoria save file, AND, it also needs an existing pdb file
+which will be MODIFIED. [2]  (Since there is no guarantee that this
+program will work, better make a copy of this sacrificial pdb file in
+case something goes wrong.)  Any old version of the save file will do,
+as long as it is the same character. [3]
+
+If you convert a pdb file to a umoria save file, and then convert it
+right back to a pdb file, the two pdb files (old and new) should not
+differ at all.  If they do differ, probably something is wrong.
+
+
+[1] Well, except for the character background string ("You are the
+first child of a Guildsman.  You are a well liked child." etc), which
+I skipped (and replaced with some gibberish) and didn't get around to
+not skipping.  If you want to tinker, feel free to make this work.
+
+[2] Obviously this is not the "right" way for a conversion program to
+act, but for a rough start it was certainly easier to do it this way.
+PalmOS database files have a header, then some information about where
+each record *is* and what the unique ids are, then all the records.
+The records in the save database are all basically of constant length
+(except for that character background string, which will be different
+for different characters), so we can just reach into that file and
+write new stuff into the records without really having to think about
+the header.  If you want to do some advanced tinkering, you can revise
+the program so that it just writes out a new database file from
+scratch (just make sure to get the unique ids right; kMoria uses them,
+not the record index number, to look up records).
+
+[3] And if it is not the same character, the new character will be
+stuck with the same character background string (and, at the moment,
+the same top-scores list) as the old character.  That string is not
+touched, because it is variable length and would require cleverness.
+

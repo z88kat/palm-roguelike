@@ -1,0 +1,351 @@
+head	1.12;
+access;
+symbols
+	Release-2001_08_06:1.12
+	Release-2001_06_15:1.11;
+locks; strict;
+comment	@ * @;
+
+
+1.12
+date	2001.08.05.03.25.14;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2001.06.08.04.12.02;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2001.05.05.21.02.12;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2001.05.05.20.26.20;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2001.05.01.04.41.33;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.05.01.00.15.50;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.04.03.05.21.14;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.10.15.22.03.22;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.10.14.23.16.50;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.14.04.19.22;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.10.14.03.00.31;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.10.14.01.59.20;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.12
+log
+@moved scores into saveDB; unique ids no longer used in iLarnDB; next, beaming
+@
+text
+@#include "palm.h"
+#include "iLarnRsc.h"
+#include "Globals.h"
+
+/***********************************************************************
+ * For most kinds of items, when you walk on them, you get to choose
+ * up to 4 possible actions.  This is the form that lets you select
+ * which action to perform.  The buttons are relabeled or disabled
+ * according to the kind of item.
+ ***********************************************************************/
+
+Boolean dspchQuestionForm(Short button) SEC_2;
+extern Char question_hotkeys[4];
+extern Short in_store;
+Boolean Question_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  Boolean took_time = false;
+  Short i, j;
+  //  CharPtr tmpstr;
+  //  ControlPtr btn; 
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    FrmDrawForm(frm);
+    setupQuestionForm(frm);
+    /* // for testing interesting api calls, when I was experimenting
+       // with HandEra support in iRogue.
+    {
+      RectangleType r;
+      Char buf[40];
+      //      FrmGetFormBounds(frm, &r);
+      WinGetWindowBounds(&r);
+      StrPrintF(buf, "%d %d, %d %d", r.topLeft.x, r.topLeft.y,
+		r.extent.x, r.extent.y);
+      WinDrawChars(buf, StrLen(buf), 5, 15);
+    }
+    */
+    handled = true;
+    break;
+
+  case keyDownEvent:
+    // Act like we pressed a button.  For keyboard support.
+    frm = FrmGetActiveForm();
+    i = -1;
+    for (j = 0 ; j < 4 ; j++) {
+      if ((e->data.keyDown.chr == '1' + j) ||
+	  (e->data.keyDown.chr == question_hotkeys[j]))
+	i = btn_qst_1 + j;
+    }
+    if (i == -1) return handled;
+    else {
+      ControlPtr btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, i));
+      if (btn->attr.usable) 
+	CtlHitControl(btn);
+      handled = true;
+    }
+    break;
+
+  case ctlSelectEvent:
+    LeaveForm(); // LeaveForm(false);
+    handled = true;
+ //  print_stats(env); // why is this here? because the form was not redrawing?
+    switch(e->data.ctlSelect.controlID) {
+    case btn_qst_1:
+      took_time = dspchQuestionForm(btn_qst_1 - btn_qst_1);
+      break;
+    case btn_qst_2:
+      took_time = dspchQuestionForm(btn_qst_2 - btn_qst_1);
+      break;
+    case btn_qst_3:
+      took_time = dspchQuestionForm(btn_qst_3 - btn_qst_1);
+      break;
+    case btn_qst_ign:
+      took_time = dspchQuestionForm(btn_qst_ign - btn_qst_1);
+      break;
+    }
+    env->dropflag = true;
+    start_of_Play_Level_loop(); // make it ALWAYS take time!
+    // [Errr.  There's just one problem with this; in_store gets reset. Fixed]
+    // ... because really we jumped to the popup while IN the middle of
+    // that.. and setting dropflag will make us pick up where we left off....
+    //
+    // this is how i used to be, but really Ularn makes them ALL take time! :
+    //    if (false && took_time) {
+    //      env->dropflag = true;
+    //      start_of_Play_Level_loop();
+    //    }
+    //    // else if (env->pending_splash)
+    //    //      show_messages();  // FrmPopupForm(SplashForm);
+    break;
+
+  default:
+    break;
+  }
+  return handled;
+}
+@
+
+
+1.11
+log
+@fixed DND-store-not-initialized (yep, it was small and stupid)
+@
+text
+@d29 12
+@
+
+
+1.10
+log
+@can keyboard first letter of 4-button question form labels
+@
+text
+@d14 1
+d70 1
+d75 6
+a80 6
+    if (false && took_time) {
+      env->dropflag = true;
+      start_of_Play_Level_loop();
+    }
+    // else if (env->pending_splash)
+    //      show_messages();  // FrmPopupForm(SplashForm);
+@
+
+
+1.9
+log
+@tinkering with map.  fixed keyboard running bug
+@
+text
+@d13 1
+a13 1
+
+d19 3
+a21 1
+  Short i;
+d35 4
+a38 7
+    switch(e->data.keyDown.chr) {
+    case '1': i = btn_qst_1; break;
+    case '2': i = btn_qst_2; break;
+    case '3': i = btn_qst_3; break;
+    case '4': i = btn_qst_ign; break;
+    default:
+      return handled;
+d40 2
+a41 1
+    if (i != -1) {
+@
+
+
+1.8
+log
+@get iLarn to compile with sdk 3.5 so's I can add color...
+@
+text
+@d12 2
+@
+
+
+1.7
+log
+@tweak tweak
+@
+text
+@d1 1
+a1 1
+#include <Pilot.h>
+@
+
+
+1.6
+log
+@when you step on a popup-item, (1) it always takes time, (2) AFTER you answer.
+@
+text
+@d17 1
+d25 20
+@
+
+
+1.5
+log
+@eliminated (fossilized) global argument
+@
+text
+@d44 7
+a50 2
+    if (took_time) {
+      // let's see if this works....  might be overkill.
+@
+
+
+1.4
+log
+@revising messages to have --more--.  sort of half working.
+@
+text
+@d11 1
+a11 1
+extern struct everything *env;
+d22 1
+a22 1
+    setupQuestionForm(frm, env);
+d32 1
+a32 1
+      took_time = dspchQuestionForm(btn_qst_1 - btn_qst_1, env);
+d35 1
+a35 1
+      took_time = dspchQuestionForm(btn_qst_2 - btn_qst_1, env);
+d38 1
+a38 1
+      took_time = dspchQuestionForm(btn_qst_3 - btn_qst_1, env);
+d41 1
+a41 1
+      took_time = dspchQuestionForm(btn_qst_ign - btn_qst_1, env);
+@
+
+
+1.3
+log
+@can eat drugs from inventory now.  also some bug fixes
+@
+text
+@d48 3
+a50 2
+    } else if (env->pending_splash)
+      do_splash_form(env);  // FrmPopupForm(SplashForm);
+@
+
+
+1.2
+log
+@inventory and question-form actions should take a turn now
+(e.g. wear, wield, quaff, read, burn ...)
+This may have introduced new bugs
+@
+text
+@d29 1
+a29 1
+    print_stats(env);
+@
+
+
+1.1
+log
+@reorganization of existing code
+@
+text
+@d16 1
+d32 1
+a32 1
+      dspchQuestionForm(btn_qst_1 - btn_qst_1, env);
+d35 1
+a35 1
+      dspchQuestionForm(btn_qst_2 - btn_qst_1, env);
+d38 1
+a38 1
+      dspchQuestionForm(btn_qst_3 - btn_qst_1, env);
+d41 1
+a41 1
+      dspchQuestionForm(btn_qst_ign - btn_qst_1, env);
+d44 6
+a49 2
+    if (env->pending_splash)
+      do_splash_form(env); // FrmPopupForm(SplashForm); // will this work?
+@
+

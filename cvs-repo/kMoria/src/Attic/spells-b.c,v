@@ -1,0 +1,259 @@
+head	1.2;
+access;
+symbols
+	start:1.1.1.1 vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.2
+date	2000.11.04.02.13.40;	author i0lanthe;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.45.05;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.45.05;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@adding GPL comment
+@
+text
+@#include <Pilot.h>
+//#include "kMoriaRsc.h"
+#include "kMoria.h"
+#include "lock-externs.h"
+/* 
+   hp,cure,remove
+   lose,slow_poison   <-- lose_exp is my problem child
+   detect_inv2
+   restore
+ */
+
+/* Change players hit points in some manner		-RAK-	*/
+Boolean hp_player(Short num)
+{
+  Boolean res;
+
+  res = false;
+  if (pymisc.chp < pymisc.mhp) {
+    pymisc.chp += num;
+    if (pymisc.chp > pymisc.mhp) {
+      pymisc.chp = pymisc.mhp;
+      pymisc.chp_frac = 0;
+    }
+    print_stats(true); //    prt_chp();
+
+    num = num / 5;
+    if (num < 3) {
+      if (num == 0) message("You feel a little better.");
+      else	      message("You feel better.");
+    } else {
+      if (num < 7) message("You feel much better.");
+      else	     message("You feel very good.");
+    }
+    res = true;
+  }
+  return res;
+}
+
+
+/* Cure players confusion				-RAK-	*/
+Boolean cure_confusion()
+{
+  Boolean cure;
+
+  cure = false;
+  if (pyflags.confused > 1) {
+    pyflags.confused = 1;
+    cure = true;
+  }
+  return cure;
+}
+
+
+/* Cure players blindness				-RAK-	*/
+Boolean cure_blindness()
+{
+  Boolean cure;
+
+  cure = false;
+  if (pyflags.blind > 1) {
+    pyflags.blind = 1;
+    cure = true;
+  }
+  return cure;
+}
+
+
+/* Cure poisoning					-RAK-	*/
+Boolean cure_poison()
+{
+  Boolean cure;
+
+  cure = false;
+  if (pyflags.poisoned > 1) {
+    pyflags.poisoned = 1;
+    cure = true;
+  }
+  return cure;
+}
+
+/* Cure the players fear				-RAK-	*/
+Boolean remove_fear()
+{
+  Boolean result;
+
+  result = false;
+  if (pyflags.afraid > 1) {
+    pyflags.afraid = 1;
+    result = true;
+  }
+  return result;
+}
+
+/* Lose a strength point.				-RAK-	*/
+void lose_str()
+{
+  if (!pyflags.sustain_str) {
+    dec_stat (A_STR);
+    message("You feel very sick.");
+  }
+  else
+    message("You feel sick for a moment,  it passes.");
+}
+
+
+
+/* Lose an intelligence point.				-RAK-	*/
+void lose_int()
+{
+  if (!pyflags.sustain_int) {
+    dec_stat(A_INT);
+    message("You become very dizzy.");
+  }
+  else
+    message("You become dizzy for a moment,  it passes.");
+}
+
+
+/* Lose a wisdom point.					-RAK-	*/
+void lose_wis()
+{
+  if (!pyflags.sustain_wis) {
+    dec_stat(A_WIS);
+    message("You feel very naive.");
+  }
+  else
+    message("You feel naive for a moment,  it passes.");
+}
+
+
+/* Lose a dexterity point.				-RAK-	*/
+void lose_dex()
+{
+  if (!pyflags.sustain_dex) {
+    dec_stat(A_DEX);
+    message("You feel very sore.");
+  }
+  else
+    message("You feel sore for a moment,  it passes.");
+}
+
+
+/* Lose a constitution point.				-RAK-	*/
+void lose_con()
+{
+  if (!pyflags.sustain_con) {
+    dec_stat(A_CON);
+    message("You feel very sick.");
+  }
+  else
+    message("You feel sick for a moment,  it passes.");
+}
+
+
+/* Lose a charisma point.				-RAK-	*/
+void lose_chr()
+{
+  if (!pyflags.sustain_chr) {
+    dec_stat(A_CHR);
+    message("Your skin starts to itch.");
+  }
+  else
+    message("Your skin itches briefly.");
+}
+
+
+/* Slow Poison						-RAK-	*/
+Boolean slow_poison()
+{
+  Boolean slow;
+  struct flags *f_ptr;
+
+  slow = false;
+  f_ptr = &pyflags;
+  if (pyflags.poisoned > 0) {
+    pyflags.poisoned = pyflags.poisoned / 2;
+    if (pyflags.poisoned < 1)	pyflags.poisoned = 1;
+    slow = true;
+    message("The effect of the poison has been reduced.");
+  }
+  return slow;
+}
+
+
+/* Detect Invisible for period of time			-RAK-	*/
+void detect_inv2(Short amount)
+{
+  pyflags.detect_inv += amount;
+}
+
+
+/* Restores any drained experience			-RAK-	*/
+Boolean restore_level()
+{
+  Boolean restore;
+
+  restore = false;
+  if (pymisc.max_exp > pymisc.exp) {
+    restore = true;
+    message("You feel your life energies returning.");
+    /* this While loop is not redundant, prt_exp may reduce the exp level */
+    while (pymisc.exp < pymisc.max_exp) {
+      pymisc.exp = pymisc.max_exp;
+      print_stats(true);//prt_experience();
+    }
+  }
+  return restore;
+}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

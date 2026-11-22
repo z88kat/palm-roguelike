@@ -1,0 +1,376 @@
+head	1.7;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.5
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2006.08.13.05.47.23;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2006.08.13.04.47.25;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2006.08.08.03.49.45;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2002.03.30.00.18.21;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.07.02.06.08.41;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.06.30.23.13.24;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.50;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.50;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>kMoria</title>
+
+<style type="text/css" media="screen">@@import "../3col.css";</style>
+
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>kMoria</h1>
+  <p><i>Moria for PalmOS</i></p>
+</div>
+
+
+<div class="content">
+  <h2>What is kMoria?</h2>
+<p> kMoria is a port of 
+      <a href="http://www-math.bgsu.edu/~grabine/moria.html">Unix
+	 Moria 5.5.2</a> for the Palm OS.  It is freeware available
+under the <a href="LICENSE">same terms</a> as Moria (<a
+href="license.txt">in short</a>, you can redistribute, modify,
+distribute modifications (and you do not have to release the source),
+but you cannot sell it).</p>
+
+<p> kMoria is in "alpha".  Everything is pretty much implemented, and
+a lot of stuff has been tested by me and a horde of self-appointed
+alpha testers, but there may still be serious bugs.  <i>Caveat
+emptor.</i></p>
+
+<p> In addition to my page about <a href="play.php">how to play</a>,
+you can download the <i>original manual</i> in either <a
+href="manual/moria-manual.pdb">doc</a> reader format or in <a
+href="manual/moria-manual.txt">ascii</a> --- note that it is formatted
+to fit your handheld screen, but not <i>edited</i> to reflect any
+changes in the ported game.</p>
+</div>
+<div class="content">
+      <h2>Ok, what is Moria?</h2>
+<p> Moria is a roguelike game.  (If you have been to the other pages
+in this project, you were probably expecting that.)  Moria was written
+about a million years ago (well, 1983 or so) on a VMS system (raise
+your hand if you have ever used VMS) by Robert Alan Koeneke with the
+assistance of Jimmey Wayne Todd as well as Gary D. McAdoo, and was
+ported to Unix by James E. Wilson, and several other platforms by
+several other people, and is currently maintained in version 5.5.x by
+David Grabiner.  You can read 
+<a href="http://www.hut.fi/~eye/roguelike/moria.html">more history</a>
+here.</p>
+</div>
+<div class="content">
+      <h2>How does it compare to other games on this site?</h2>
+<p> Moria is a larger / more complex game than Rogue or Ularn, but
+it is the same basic type of game (i.e. "rogue-like").  In addition to
+character classes, there are different character species.  The dungeon
+levels themselves are larger in area.  You have a wider range of possible
+actions (such as digging new tunnels).  Like Ularn, there is a town level
+with shops.  Like Rogue (unlike Ularn) if you revisit a dungeon level, it
+will not be the same place that you left but instead is generated from scratch.
+Your mission should you choose to accept it is to find and kill the Balrog
+(that's all the plot there is; sorry).<p>
+<p> If you need help or spoilers you are in more luck with this game.
+There are pages of Moria spoilers somewhere on the web.  I suggest
+using <a href="http://www.google.com">google</a>.</p>
+</div>
+<div class="content">
+      <h2>Are you porting Angband?</h2>
+
+<p> Nah.  You are welcome to port Angband yourself.  Let me know if you do.  :)</p>
+
+</div>
+
+
+
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+</body>
+</html>
+@
+
+
+1.6
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+@
+
+
+1.5
+log
+@commit everything before massive style change
+@
+text
+@d1 3
+a3 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+d6 6
+a11 5
+<title>kMoria (working title)</title>
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+d14 9
+a22 44
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">kMoria</h3>
+<!-- <br>(working title.  There is already an Imoria.) -->
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      
+      <!-- -->
+      <tr><td class="sidehead">
+	kMoria Stuff </td></tr>
+      <tr><td class="side">
+	  <b>What is kMoria?</b> </td></tr>
+      <tr><td class="side"> <a href="whatsnew.php">
+	  What's new</a> </td></tr>
+      <tr><td class="side"> <a href="download.php">
+	  Download kMoria</a> </td></tr>
+      <tr><td class="side"> <a href="play.php">
+	  How to play</a></td></tr>
+      <tr><td class="side"> <a href="source.php">
+	  How to get source</a> </td></tr>
+      <tr><td class="side"> <a href="color.php">
+          Configuring color</a> </td></tr>
+      <?php include ("../hostedby.txt") ?>
+      <?php include ("../activesurveys.txt") ?>
+      <?php include ("../roguelikegames.txt") ?>
+</table>
+</td>
+
+<!-- main area table -->
+<td valign=top>
+      <!-- ----- this is the interesting part of the page ----- -->
+      <h3>What is kMoria?</h3>
+      <P> kMoria is a port of 
+d24 5
+a28 6
+	 Moria 5.5.2</a>
+      for the Palm OS.
+It is freeware available under the <a href="LICENSE">same terms</a> as
+Moria (<a href="license.txt">in short</a>, you can redistribute,
+modify, distribute modifications (and you do not have to release the
+source), but you are <b>not</b> allowed to <b>sell</b> it).
+d30 1
+a30 1
+<P> kMoria is in "alpha".  Everything is pretty much implemented, and
+d33 1
+a33 9
+emptor.</i>
+
+<P> Here is a page about <a href="play.php">how to play</a>.
+
+<P>Note:
+If you would like the original manual (formatted to fit your handheld screen,
+but not <i>edited</i> to reflect any changes in the ported game!)
+you can get it in <a href="manual/moria-manual.pdb">doc</a> reader
+format or in <a href="manual/moria-manual.txt">ascii</a>.
+d35 10
+a44 3
+      <h4>Ok, what is Moria?</h4>
+
+<P> Moria is a roguelike game.  (If you have been to the other pages
+d53 5
+a57 5
+here.
+
+      <h4>Compare to other games on this site?</h4>
+
+<P> Moria is a larger / more complex game than Rogue or Ularn, but
+d65 2
+a66 2
+(that's all the plot there is; sorry).
+<P> If you need help or spoilers you are in more luck with this game.
+d68 4
+a71 1
+using <a href="http://www.google.com">google</a>.
+d73 1
+a73 1
+      <h4>Are you porting Angband?</h4>
+d75 1
+a75 2
+<P> You are welcome to port Angband yourself.  Let me know if you do.
+;-)
+a76 1
+<!-- ----- end of the interesting part of the page ----- -->
+a77 3
+</td>
+</tr>
+</table>
+a78 3
+<!-- footer table -->
+<?php include ("../footer.txt") ?>
+<!-- end footer table -->
+d80 9
+a88 1
+<address>i0lanthe@@users.sourceforge.net</address>
+a89 1
+Last modified: Sun Dec 14 01:05:42 EST 2003
+d91 1
+a91 1
+<?php $hitsfile = "index.hits"; include ("../counter.php")?>
+@
+
+
+1.4
+log
+@checkpointing web before kMoria 0.15 update
+@
+text
+@d7 2
+d70 5
+d121 1
+a121 1
+Last modified: Wed Jan  9 17:37:42 EST 2002
+@
+
+
+1.3
+log
+@in the middle of release/update
+@
+text
+@d13 1
+a13 1
+    <h3>kMoria</h3>
+d40 2
+d114 1
+a114 1
+Last modified: Sat Jun 30 19:39:32 EDT 2001
+@
+
+
+1.2
+log
+@blah
+@
+text
+@d54 4
+a57 7
+      It is freeware available under <a href="license.txt">the same terms</a>
+ as Moria (in short,
+you can redistribute, modify, distribute modifications, but you are not
+allowed to make money without first getting the permission of the
+original author; who is not me; so good luck).
+
+      <h3>Status</h3>
+d60 3
+a62 2
+a lot of stuff has been tested by me, but there may still be serious
+bugs.  <i>Caveat emptor.</i>
+d67 14
+a80 4
+      <h4>why kMoria?</h4>
+<P> It is called "kMoria" because there is already an
+"Imoria".  (Why have I been prefixing an 'i' to previous games?
+Well, it is a nice letter and near the front end of the alphabet.)
+d94 7
+a100 1
+      <!-- ----- end of the interesting part of the page ----- -->
+d112 1
+a112 1
+Last modified: Sat Jan 27 18:03:05 EST 2001
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d54 5
+a58 2
+      It is open-source freeware available under the 
+      <a href="http://www.gnu.org/copyleft/gpl.html">GPL</a>.  
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

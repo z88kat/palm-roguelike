@@ -1,0 +1,303 @@
+head	1.7;
+access;
+symbols
+	Release-2002_03_29:1.7
+	Release-2002_01_12:1.7
+	Release-2002_01_02:1.6
+	Release-2002_01_01:1.6
+	Release-2001_12_19:1.6
+	Release-2001_08_04:1.5
+	Release-2001_07_02:1.5
+	Release-2001_06_16:1.3;
+locks; strict;
+comment	@ * @;
+
+
+1.7
+date	2002.01.04.00.01.26;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.03.27.06.46.54;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.01.27.00.53.03;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@hiding magic numbers
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+#include "kMoria.h"
+
+extern Short snowcrash;
+static void explain_error();
+
+Boolean SnowCrash_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    FrmDrawForm(frm);
+    /* this must be AFTER draw form */
+    explain_error();
+    handled = true;
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+static void explain_error()
+{
+  Char buf[80];
+  Short dy = LINE_HEIGHT, y = dy+1;
+  switch(snowcrash) { // see main.c StartApplication
+  case 1:    // compiled for OS2, running on OS3
+  case 2:    // compiled for OS3, running on OS2
+    StrPrintF(buf, "This PRC was compiled for OS %d.x", snowcrash+1);
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    y += dy;
+    StrPrintF(buf, "It will not work on your %d.x handheld.", 4-snowcrash);
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    y += dy+3;
+    StrPrintF(buf, "You need a different PRC:", snowcrash+1);
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    y += dy;
+    StrPrintF(buf, "Download kMoria ZIP file from");
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    y += dy;
+    StrPrintF(buf, "http://roguelike-palm.sourceforge.net");
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    y += dy+3;
+    StrPrintF(buf, "Unzip, then install \"kMoria%sprc\"",
+	      ((snowcrash==2)?"OS2.":"."));
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    y += dy;
+    StrPrintF(buf, "and \"kMoriaDB.pdb\" only.");
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    y += dy;
+    y += dy;
+    StrPrintF(buf, "yes, I know, it is a pain.  sorry.");
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    y += dy;
+    y += dy;
+    StrPrintF(buf, " -- i0lanthe@@yahoo.com");
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    break;
+  case 3:  // missing database
+    StrPrintF(buf, "kMoria needs its database.");
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    y += dy;
+    StrPrintF(buf, "Please install \"kMoriaDB.pdb\"");
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    y += dy+3;
+    StrPrintF(buf, "If you don't have this file,");
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    y += dy;
+    StrPrintF(buf, "download kMoria ZIP file from");
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    y += dy;
+    StrPrintF(buf, "http://roguelike-palm.sourceforge.net");
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    y += dy+3;
+    StrPrintF(buf, "Unzip, and install the .pdb file.");
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    y += dy;
+    y += dy;
+    StrPrintF(buf, " -- i0lanthe@@yahoo.com");
+    WinDrawChars(buf, StrLen(buf), 0, y);
+    break;
+  }
+
+}
+@
+
+
+1.6
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@d43 1
+a43 1
+  Short y = 12;
+d49 1
+a49 1
+    y += 11;
+d52 1
+a52 1
+    y += 14;
+d55 1
+a55 1
+    y += 11;
+d58 1
+a58 1
+    y += 11;
+d61 1
+a61 1
+    y += 14;
+d65 1
+a65 1
+    y += 11;
+d68 2
+a69 2
+    y += 11;
+    y += 11;
+d72 2
+a73 2
+    y += 11;
+    y += 11;
+d80 1
+a80 1
+    y += 11;
+d83 1
+a83 1
+    y += 14;
+d86 1
+a86 1
+    y += 11;
+d89 1
+a89 1
+    y += 11;
+d92 1
+a92 1
+    y += 14;
+d95 2
+a96 2
+    y += 11;
+    y += 11;
+@
+
+
+1.5
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@a12 1
+#include "palm.h"
+a13 2
+#include "lock-externs.h"
+#include "kMoriaRsc.h"
+@
+
+
+1.4
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000,2001 Bridget Spitznagel                        *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+@
+
+
+1.3
+log
+@fixed minor stupidity
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d24 1
+a24 1
+#include <Pilot.h>
+@
+
+
+1.2
+log
+@tweaked notice
+@
+text
+@d77 1
+a77 1
+	      ((snowcrash==1)?"OS2.":"."));
+@
+
+
+1.1
+log
+@fixed relative-move bug, might have fixed same-panel-next-level bug,
+some sound added, command-count recognizes 'delete' now,
+app goes to dead-end form for wrong OS or missing database at startup.
+@
+text
+@d5 1
+a5 1
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+@
+

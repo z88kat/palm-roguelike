@@ -1,0 +1,338 @@
+head	1.1;
+access;
+symbols
+	Release-2002_03_29:1.1
+	Release-2002_01_12:1.1
+	Release-2002_01_02:1.1
+	Release-2002_01_01:1.1
+	Release-2001_12_19:1.1
+	Release-2001_08_04:1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.07.04.20.01.57;	author uid28407;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@two-way conversion - seems to work ok on linux
+@
+text
+@// this file is public domain
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "swap.h"
+
+#define NOISY 1
+
+int Noisy = 0;
+
+unsigned char xb = 0;
+
+void set_xor_byte(unsigned char uc)
+{
+  xb = uc;
+}
+
+void xwrite_by(FILE *fout, unsigned char *uc, int n)
+{
+  int i;
+  unsigned char ctmp;
+  for (i = 0 ; i < n ; i++) {
+    ctmp = uc[i];
+    xb = (xb ^ ctmp);
+    fwrite(&xb, 1, 1, fout);
+  }
+}
+void xcopy_by(FILE *fout, FILE *fin, int n)
+{
+  int i;
+  unsigned char ctmp;
+#ifdef NOISY
+    if (Noisy)
+      printf("at %ld: ",ftell(fout));
+#endif
+  for (i = 0 ; i < n ; i++) {
+    fread(&ctmp, 1, 1, fin);
+#ifdef NOISY
+    if (Noisy)
+      printf("%d ",ctmp);
+#endif
+    xb = (xb ^ ctmp);
+    fwrite(&xb, 1, 1, fout);
+  }
+#ifdef NOISY
+  if (Noisy)
+    printf("\n");
+#endif
+}
+// Write at most n characters of (supposed to be null terminated) string
+void xwrite_str(FILE *fout, char *str, int n)
+{
+  int i;
+  str[n-1] = '\0'; // just to be sure.
+  for (i = 0 ; i < n ; i++) {
+    xb = (xb ^ str[i]);
+    fwrite(&xb, 1, 1, fout);
+    if (str[i] == '\0')
+      break;
+  }
+}
+void xwrite_sh(FILE *fout, unsigned short *us, int n)
+{
+  int i;
+  unsigned short ustmp;
+  unsigned char tmp;
+  for (i = 0 ; i < n ; i++) {
+    ustmp = us[i];
+    tmp = (ustmp & 0xff); // throw away the high byte
+    xb = (xb ^ tmp);
+    fwrite(&xb, 1, 1, fout);
+    //
+    ustmp = ustmp >> 8;
+    tmp = (ustmp & 0xff);
+    xb = (xb ^ tmp);
+    fwrite(&xb, 1, 1, fout);
+  }
+}
+void xcopy_sh(FILE *fout, FILE *fin, int n)
+{
+  int i;
+  unsigned short ustmp;
+  unsigned char tmp;
+  for (i = 0 ; i < n ; i++) {
+    ustmp = in_word(fin);
+    tmp = (ustmp & 0xff); // throw away the high byte
+    xb = (xb ^ tmp);
+    fwrite(&xb, 1, 1, fout);
+    //
+    ustmp = ustmp >> 8;
+    tmp = (ustmp & 0xff);
+    xb = (xb ^ tmp);
+    fwrite(&xb, 1, 1, fout);
+  }
+}
+void xwrite_lo(FILE *fout, unsigned long *ul, int n)
+{
+  int i;
+  unsigned long ultmp;
+  unsigned char tmp;
+  for (i = 0 ; i < n ; i++) {
+    ultmp = ul[i];
+    tmp = (ultmp & 0xff);
+    xb = (xb ^ tmp);
+    fwrite(&xb, 1, 1, fout);
+    //
+    ultmp = ultmp >> 8;
+    tmp = (ultmp & 0xff);
+    xb = (xb ^ tmp);
+    fwrite(&xb, 1, 1, fout);
+    //
+    ultmp = ultmp >> 8;
+    tmp = (ultmp & 0xff);
+    xb = (xb ^ tmp);
+    fwrite(&xb, 1, 1, fout);
+    //
+    ultmp = ultmp >> 8;
+    tmp = (ultmp & 0xff);
+    xb = (xb ^ tmp);
+    fwrite(&xb, 1, 1, fout);
+  }
+}
+void xcopy_lo(FILE *fout, FILE *fin, int n)
+{
+  int i;
+  unsigned long ultmp;
+  unsigned char tmp;
+  for (i = 0 ; i < n ; i++) {
+    ultmp = in_long(fin);
+    tmp = (ultmp & 0xff);
+    xb = (xb ^ tmp);
+    fwrite(&xb, 1, 1, fout);
+    //
+    ultmp = ultmp >> 8;
+    tmp = (ultmp & 0xff);
+    xb = (xb ^ tmp);
+    fwrite(&xb, 1, 1, fout);
+    //
+    ultmp = ultmp >> 8;
+    tmp = (ultmp & 0xff);
+    xb = (xb ^ tmp);
+    fwrite(&xb, 1, 1, fout);
+    //
+    ultmp = ultmp >> 8;
+    tmp = (ultmp & 0xff);
+    xb = (xb ^ tmp);
+    fwrite(&xb, 1, 1, fout);
+  }
+}
+
+
+
+
+void xread_by(FILE *fin, unsigned char *uc, int n)
+{
+  int i;
+  unsigned char ctmp;
+  for (i = 0 ; i < n ; i++) {
+    fread(&ctmp, 1, 1, fin);
+    uc[i] = (xb ^ ctmp);
+    xb = ctmp;
+  }
+}
+
+
+// Read at most n characters of (supposed to be null terminated) string
+void xread_str(FILE *fin, char *buf, int n)
+{
+  int i;
+  unsigned char ctmp, c;
+  for (i = 0 ; i < n ; i++) {
+    fread(&ctmp, 1, 1, fin);
+    c = (xb ^ ctmp);
+    xb = ctmp;
+    buf[i] = c;
+    if (c == '\0') return;
+  }
+}
+
+// Read at most n characters of (supposed to be null terminated) string
+void xuncopy_str(FILE *fout, FILE *fin, int n)
+{
+  int i;
+  unsigned char ctmp, c;
+#ifdef NOISY
+  if (Noisy)
+    printf("\"");
+#endif
+  for (i = 0 ; i < n ; i++) {
+    fread(&ctmp, 1, 1, fin);
+    c = (xb ^ ctmp);
+#ifdef NOISY
+  if (Noisy)
+    printf("%c", c);
+#endif
+    xb = ctmp;
+    fwrite(&c, 1, 1, fout);
+    if (c == '\0') break;
+  }
+  // caller may need to pad the rest of 'n', or skip over it.
+#ifdef NOISY
+  if (Noisy)
+    printf("\"\n");
+#endif
+}
+
+
+void xuncopy_by(FILE *fout, FILE *fin, int n)
+{
+  int i;
+  unsigned char ctmp, c;
+#ifdef NOISY
+    if (Noisy)
+      printf("at %ld: ",ftell(fin));
+#endif
+  for (i = 0 ; i < n ; i++) {
+    fread(&ctmp, 1, 1, fin);
+    c = (xb ^ ctmp);
+    xb = ctmp;
+    fwrite(&c, 1, 1, fout);
+#ifdef NOISY
+    if (Noisy)
+      printf("%d ",c);
+#endif
+  }
+#ifdef NOISY
+  if (Noisy)
+    printf("\n");
+#endif
+}
+// do NOT do "in_"anything, it will mess up the xoring order.
+// do "out_"things instead.
+
+void xuncopy_sh(FILE *fout, FILE *fin, int n)
+{
+  int i, j;
+  unsigned short ustmp = 0;
+  unsigned char c[2], ctmp;
+  for (i = 0 ; i < n ; i++) {
+    // low byte will be in 0
+    for (j = 0 ; j < 2 ; j++) {
+      fread(&ctmp, 1, 1, fin);
+      c[j] = (xb ^ ctmp);
+      xb = ctmp;
+    }
+    // combine, and possibly swap on the way out
+    ustmp = c[0] | (c[1] << 8);
+    out_word(fout, ustmp);
+  }
+}
+
+
+void xread_sh(FILE *fin, unsigned short *us, int n)
+{
+  int i, j;
+  unsigned short ustmp = 0;
+  unsigned char ctmp, c[2];
+  for (i = 0 ; i < n ; i++) {
+    // low byte will be in 0
+    for (j = 0 ; j < 2 ; j++) {
+      fread(&ctmp, 1, 1, fin);
+      c[j] = (xb ^ ctmp);
+      xb = ctmp;
+    }
+    // combine, and possibly swap on the way out
+    ustmp = c[0] | (c[1] << 8);
+    us[i] = ustmp; //SwapWord(ustmp);
+  }
+}
+
+
+void xuncopy_lo(FILE *fout, FILE *fin, int n)
+{
+  int i, j;
+  unsigned long ultmp = 0;
+  unsigned char ctmp, c[4];
+  for (i = 0 ; i < n ; i++) {
+    // low byte will be in 0
+    for (j = 0 ; j < 4 ; j++) {
+      fread(&ctmp, 1, 1, fin);
+      c[j] = (xb ^ ctmp);
+      xb = ctmp;
+    }
+    // combine, and possibly swap on the way out
+    ultmp = c[0] | (c[1] << 8) | (c[2] << 16) |  (c[3] << 24);
+    out_long(fout, ultmp);
+  }
+}
+
+
+void xread_lo(FILE *fin, unsigned long *ul, int n)
+{
+  int i, j;
+  unsigned long ultmp = 0;
+  unsigned char ctmp, c[4];
+  for (i = 0 ; i < n ; i++) {
+    // low byte will be in 0
+    for (j = 0 ; j < 4 ; j++) {
+      fread(&ctmp, 1, 1, fin);
+      c[j] = (xb ^ ctmp);
+      xb = ctmp;
+    }
+    // combine, and possibly swap on the way out
+    ultmp = c[0] | (c[1] << 8) | (c[2] << 16) |  (c[3] << 24);
+    ul[i] = ultmp; // SwapLong(ultmp);
+  }
+}
+@

@@ -1,0 +1,127 @@
+head	1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2006.08.08.03.57.17;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@added iLarn
+@
+text
+@iLarn-RGB
+A_ 66cc99 altar
+B_ book
+C_ chest
+c_ cookie
+D_ door
+E_ entrance
+F_ fountain
+f_ dead fountain
+H_ home
+L_ LRS
+M_ mirror
+O_ open door
+P_ none
+S_ shop
+T_ throne
+t_ dead throne
+V_ volcano
+@@ you
+! potion
+? scroll
+# wall
+$ bank
+% stair
+^ trap
+& statue
+* gold
+( weapon
+) weapon
++ college
+= shop
+] armor
+[ armor
+/ wand
+| ring
+< gem
+{ belt
+. thingie  The rest are monsters
+A 
+a 
+b 
+C 
+c 
+d 
+E 
+e 
+F 
+f 
+G 
+g 
+H 
+h 
+I 
+i 
+J 
+j 
+K 
+k 
+L 
+l 
+M 
+m 
+N 
+n 
+O 
+o 
+P 
+p 
+Q 
+q 
+R 
+r 
+S 
+s 
+T 
+t 
+U 
+u 
+V 
+v 
+W 
+w 
+X 
+x 
+Y 
+y 
+Z 
+z 
+Dg 
+Dp 
+Ds 
+Dr 
+Db 
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+8 
+9 
+0 
+@

@@ -1,0 +1,299 @@
+head	1.3;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.3
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2006.08.08.03.46.43;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2002.03.30.00.18.21;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.42;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.42;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@commit everything before massive style change
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<title>Color for iLarn</title>
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+</head>
+<body>
+
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">iLarn: how to set color</h3>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      
+      <!-- -->
+      <tr><td class="sidehead">
+	iLarn Stuff </td></tr>
+      <tr><td class="side"> <a href="index.php">
+	  What is iLarn?</a> </td></tr>
+      <tr><td class="side">
+	  <b>What's new</b> </td></tr>
+      <tr><td class="side"> <a href="download.php">
+	  Download iLarn</a> </td></tr>
+      <tr><td class="side"> <a href="play.php">How to play</a>;
+	  <a href="town.php">town</a></td></tr>
+      <tr><td class="side"> <a href="source.php">
+	  How to get source</a> </td></tr>
+      <?php include ("../hostedby.txt") ?>
+      <?php include ("../activesurveys.txt") ?>
+      <?php include ("../roguelikegames.txt") ?>
+</table>
+</td>
+
+<!-- main area table -->
+<td class="body" valign=top>
+      <!-- ----- this is the interesting part of the page ----- -->
+      <h3>How do I set colors in iLarn?</h3>
+<P> First, three requirements must be met
+<dl>
+      <dt>Version
+
+      <dd> You must have iLarn version 0.24 or later.  Note that 0.24
+is an alpha version and probably fairly buggy - if this disturbs you,
+wait a while for a stable release.
+
+      <dt>Hardware
+<dd> Obviously you will also need a color PalmOS device (or an emulator
+with a color ROM).
+
+      <dt>Preferences
+<dd> You must go to the Preferences screen in iLarn.  You will see a
+"Color" checkbox, if your OS thinks that it can
+support color.  It will be unchecked by default.  You should check it.
+<br> If you want the background color of the screen to be black
+(instead of "white") you should also check the "Invert" checkbox.
+    This feature has some known cosmetic bugs: a couple spots of white,
+    e.g. after the graffiti shift-state changes.
+Let me know if it has any more serious problems on your device.
+</dl>
+      <h4>Definition Memo</h4>
+
+<P> Ok, now you are ready for the hard part.  You must write a Memo
+(you know, those things in the MemoPad application) that will tell
+iLarn what colors you want to see.
+<P> Here is a very short memo to test the color.
+<ol>
+<li> Go to MemoPad.
+<li> Hit the New button to start a new Memo.
+<li> Write <tt>iLarn-RGB</tt>
+<li> Write the newline Graffiti (./) to start a new line.
+<li> Write <tt>@@ ff0000</tt>
+<li> Write the newline Graffiti (./) to start a new line.
+</ul>
+Your memo looks like this:
+<br><tt>iLarn-RGB</tt>
+<br><tt>@@ ff0000</tt>
+<P> Now go to iLarn.  If you have the color preference turned on,
+your '@@' <b>should</b> be red now.  If it is not, you have a problem
+that this page is not going to help you with (send me email).
+
+      <h3>Ok, it worked, now what?</h3>
+<P> iLarn will expect each line in the iLarn-RGB memo to tell it
+how to color some particular symbol.
+<P> So far, your memo has only one line, which says to color the '@@'
+red.  For each symbol whose color you want to set, you will add a line
+to that memo.
+      <h4>What do you mean, "ff0000 is red"</h4>
+<P> There are many ways to describe a color.  The way that iLarn understands
+is this: a six-digit hexadecimal number, where the first two digits say
+how much "red" to add, the middle two digits are how much "green", and
+the last two digits are how much "blue".
+<P> <i>Hexadecimal?</i> The digits you can use in a hexadecimal number
+are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f.  (or A,B,C,D,E,F.
+Upper or lower case is ok.)
+<P> Suppose you have a room with equal amounts of red, green, and blue
+light bulbs, and this number is going to tell you what bulbs to turn
+on.
+<br> <tt>000000</tt> is no red, no green, and no blue.  That means no lights
+are turned on and you get a pitch BLACK room.
+<br> <tt>ffffff</tt> is the highest number you can have.  All the lights are on and
+you get more-or-less WHITE light.
+<br> <tt>ff0000</tt> tells you to turn on only the red lights and leave the others off.
+This makes the room fairly bright but it's all RED.
+<br> <tt>00ff00</tt> tells you to turn on all the green lights and leave the others off.  Green.
+<br> <tt>0000ff</tt> tells you to turn on all the blue lights and leave the others off.  Blue.
+<br> <tt>ffff00</tt> .. turn on all the red and all the green, and you get YELLOW.  Surprise.
+<br> <tt>ff00ff</tt> .. red and blue.  Magenta.
+<br> <tt>00ffff</tt> .. green and blue.  Cyan.
+      <h4>Enlightenment</h4>
+
+<P> Now you understand what that number means, or else you are tired
+of hearing about it and want to get on with the game.  If you would
+like to see some virtual "paint chips" that are labeled with their
+numbers, there is a nice page at another site with colors <a
+href="http://www.lynda.com/hexv.html">by value</a> (arranged form
+light to dark) or <a href="http://www.lynda.com/hexh.html">by hue</a>
+(arranged by color).  Note: these same colors might tend to look
+lighter or darker on your PalmOS device, but you'll at least get some
+idea.
+
+<P> So take a look at your iLarn screen.  Decide what colors you
+would like the walls to be, etc.  Then add some lines to
+your memo:
+<blockquote>
+<tt># 000099</tt>
+<br><tt>? 660099</tt>
+<br><tt>! 009900</tt>
+</blockquote>
+Anything that you write <i>after</i> the number, up to the end of the line, will be ignored for your convenience.  So you could write:
+<blockquote>
+<tt>@@ ff0000 This sentence is ignored!</tt>
+<br><tt># 000099  ...walls are dark blue</tt>
+<br><tt>? 660099    scrolls are some nasty purple or other</tt>
+<br><tt>! 009900   potions are green</tt>
+</blockquote>
+If you write a very long comment, it may take up several rows of text
+in the MemoPad, but I am sure you know that it is not <i>a new
+line</i> until you write that Graffiti newline character (or hit
+Return or Enter, whatever it's called, on your keyboard, or whatever).
+So, do not forget to do that, even at the end of a long remark, or
+you'll wonder why the symbol in your next definition isn't getting
+colored.
+
+<P> You can colorize any number of monsters and objects, also,
+and it does not matter what order your lines are in.  Anything that you
+do not colorize will remain black (or of course white if you have
+the Invert option turned on in Preferences).
+<blockquote>
+<tt>G 00ff00 this monster is green</tt>
+<br><tt>D 999999  all dragons are gray</tt>
+<br><tt>D_ ffff00 this door is yellow</tt>
+</blockquote>
+
+      <h4>special case #1</h4>
+
+<P> <i>D_ ?</i> Where did that underscore come from?
+<br> Thanks for reminding
+me.  If you have been playing iLarn for a while, you might have noticed
+that objects like scrolls, potions, doors, fountains, thrones, etc., are
+drawn in white-on-black, and that some letters (which are monsters when
+they are black-on-white) do <i>double duty</i> as objects (when you see
+them as white-on-black).  If you want to set the color of an <b>object</i>
+like a door, and its symbol is a letter (A to Z, a to z), put an
+underscore <b>_</b> right after the letter and iLarn will know you
+mean a door rather than a dragon.
+<br> These are the letters that are used for objects: ABCDEFHLMOPSTVcfostu
+
+      <h4>special case #2</h4>
+
+<P> <i> all dragons?  I want to make red dragons red and green dragons
+green!</i> Fine fine.  I was expecting that.  If you write just "D
+999999" (or whatever color), all dragons will be that color.  But you
+can also individually colorize some or all of the six kinds of dragons
+('w'hite, 'b'ronze, 'g'reen, 's'ilver, 'p'latinum, 'r'ed, in no
+particular order).  Just make an additional line with "D" followed by
+the initial letter of the particular kind of dragon.  Here's an
+example to make red dragons red, green dragons green, and all other
+dragons gray.
+<blockquote>
+<tt>D 999999   dragons are gray by default</tt>
+<br><tt>Dr ff0000   red dragons are bright red</tt>
+<br><tt>Dg 00cc00  green dragons are medium-green</tt>
+</blockquote>
+You can define colors for Dw, Db, Ds, and Dp too, but I am too lazy to
+make this example any longer.
+
+      <h4>in conclusion</h4>
+
+<P> If you arrive at a set of colors that you are particularly happy with,
+you can try posting it on the <a href="../wiki/">wiki</a> to share with
+other people.
+
+<P> If you encounter any problems, let me know and I will attempt to
+remedy them.  I do not have a color device, though my emulator claims
+that this colorization will work.  (Thanks to those who have helped
+debug iRogue, from which most of this color implementation was
+"reused" wholesale.)
+
+      <!-- ----- end of the interesting part of the page ----- -->
+
+</td>
+</tr>
+</table>
+
+<!-- footer table -->
+<?php include ("../footer.txt") ?>
+<!-- end footer table -->
+
+<address>i0lanthe@@users.sourceforge.net</address>
+<!-- hhmts start -->
+Last modified: Sun May  6 14:19:59 EDT 2001
+<!-- hhmts end -->
+<?php $hitsfile = "color.hits"; include ("../counter.php")?>
+</body>
+</html>
+@
+
+
+1.2
+log
+@checkpointing web before kMoria 0.15 update
+@
+text
+@d7 2
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d14 1
+a14 1
+    <h3>iLarn: how to set color</h3>
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

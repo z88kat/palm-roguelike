@@ -1,0 +1,45 @@
+head	1.1;
+access;
+symbols
+	pre-internationalization_20040113:1.1.2.1
+	Release-2002_05_10-on-Handera-branch:1.1.2.1
+	Release-2001_07_01-on-Handera-branch:1.1.2.1
+	Release-2001_04_26-Handera-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.07.02.03.16.48;	author i0lanthe;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.07.02.03.16.48;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file handera.h was initially added on branch Release-2001_04_26-Handera-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@extras for handera foo
+@
+text
+@a0 2
+#include "Handera/Vga.h"
+
+@
+

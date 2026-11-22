@@ -1,0 +1,185 @@
+head	1.5;
+access;
+symbols
+	Release-2002_03_29:1.5
+	Release-2002_01_12:1.5
+	Release-2002_01_02:1.4
+	Release-2002_01_01:1.4
+	Release-2001_12_19:1.4
+	Release-2001_08_04:1.2
+	Release-2001_07_02:1.2;
+locks; strict;
+comment	@ * @;
+
+
+1.5
+date	2002.01.04.03.45.44;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.11.30.05.06.17;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.06.29.04.08.45;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.06.26.02.42.37;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@just tidying up
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2001 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+#include "kMoria.h"
+
+
+void qWinEraseRectangle(RectanglePtr r, Word cornerDiam)
+{
+  if (my_prefs.black_bg)
+    WinDrawRectangle(r, cornerDiam);
+  else
+    WinEraseRectangle(r, cornerDiam);
+}
+void qWinDrawLine(short x1, short y1, short x2, short y2)
+{
+  if (my_prefs.black_bg)
+    WinEraseLine(x1, y1, x2, y2);
+  else
+    WinDrawLine(x1, y1, x2, y2);
+}
+void qWinEraseLine(short x1, short y1, short x2, short y2)
+{
+  if (my_prefs.black_bg)
+    WinDrawLine(x1, y1, x2, y2);
+  else
+    WinEraseLine(x1, y1, x2, y2);
+}
+void qWinDrawChars(CharPtr chars, Word len, SWord x, SWord y)
+{
+  if (my_prefs.black_bg)
+    WinDrawInvertedChars(chars, len, x, y);
+  else
+    WinDrawChars(chars, len, x, y);
+}
+void qWinDrawInvertedChars(CharPtr chars, Word len, SWord x, SWord y)
+{
+  if (my_prefs.black_bg)
+    WinDrawChars(chars, len, x, y);
+  else
+    WinDrawInvertedChars(chars, len, x, y);
+}
+
+
+// Draw text centered around x_mid, at y.
+void WinDrawChars_ctr(Char *buf, Short len, Short x_mid, Short y)
+{
+  Short x, width;
+  width = FntCharsWidth(buf, len);
+  x = x_mid - width / 2;
+  if (x < 0) x = 0;
+  WinDrawChars(buf, len, x, y);
+}
+
+// Draw text right-justified to x_right, at y.
+void WinDrawChars_rj(Char *buf, Short len, Short x_right, Short y)
+{
+  Short x, width;
+  width = FntCharsWidth(buf, len);
+  x = x_right - width;
+  if (x < 0) x = 0;
+  WinDrawChars(buf, len, x, y);
+}
+@
+
+
+1.4
+log
+@moving extern decls around
+@
+text
+@d51 21
+@
+
+
+1.3
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@a14 1
+extern MoriaPreferenceType my_prefs;
+@
+
+
+1.2
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@a12 1
+#include "palm.h"
+@
+
+
+1.1
+log
+@making invert work in the general case; an initial credits screen; and I forget what else
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000,2001 Bridget Spitznagel                        *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+a12 1
+
+@
+

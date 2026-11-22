@@ -1,0 +1,683 @@
+head	1.6;
+access;
+symbols
+	Release-2001_08_06:1.6
+	Release-2001_06_15:1.5
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.6
+date	2001.08.05.03.25.14;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.05.09.02.54.41;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.05.01.04.41.33;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.15.22.03.22;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.10.14.23.16.50;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.35.10;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.35.10;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@moved scores into saveDB; unique ids no longer used in iLarnDB; next, beaming
+@
+text
+@/*********************************************************************
+ * iLarn - Ularn adapted for the PalmPilot.                          *
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+ * iLarn is derived from Ularn by Phil Cordier                       *
+ * which in turn was based on Larn by Noah Morgan                    *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+
+#include "palm.h"
+#include "Globals.h"
+extern Short diroffx[];
+extern Short diroffy[];
+
+// SPHERES OF ANNIHILATION
+
+//struct sphere spheres[MAXSPHERE]; // how many is enough? 6 bytes apiece
+// I should just make this a database record, entirely! !!
+
+// don't forget to save these when we leave the application.
+
+// also check on: case 33 in speldamage in cast.c
+
+/*
+ *	Routine to annihilate all monsters around player (playerx,playery)
+ *	annihilate() 	
+ *
+ *	Gives player experience, but no dropped objects
+ *	Returns the experience gained from all monsters killed    nah.
+ */
+void annihilate()
+{
+  Short i,j, playerx = env->playerx, playery = env->playery;
+  Boolean some = false;
+  Char *p;
+  Char buf[80];
+
+  for (i = playerx - 1 ; i <= playerx + 1 ; i++) {
+    for (j = playery - 1 ; j <= playery + 1 ; j++) {
+      if (vxy(&i, &j)) continue; // out of bounds
+      if (! env->mitem[i][j]) continue; // no monster is there
+      p = &(env->mitem[i][j]);
+      if (*p < DEMONLORD) {
+	//	k += monster[*p].experience;	 // uh oh; can I access this?
+	some = true;
+	clobberm(*p);
+	*p = env->know[i][j] = 0;
+      }
+      else {
+	StrPrintF(buf, "The %s barely escapes annihilation!", m_name(*p));
+	message(buf);
+	env->hitp[i][j] = (env->hitp[i][j] >> 1) + 1;  // lose 1/2 hitpts
+      }
+    }
+  }
+  if (some)
+    message("You hear loud screams of agony!");	
+  return;
+}
+
+/*
+ *		Function to create a new sphere of annihilation
+ *	newsphere(x,y,dir,lifetime)  
+ *		int x,y,dir,lifetime;
+ *
+ *	Enter with the coordinates of the sphere in x,y
+ *	  the direction (0-8 diroffx format) in dir, and the lifespan of the
+ *	  sphere in lifetime (in turns)
+ *
+ * if you have no suggestion for the index, i should be -1
+ */
+void newsphere(Short x, Short y, Short dir, Short life, Short i)
+{
+  UInt recindex = SPHERES_RECORD;
+  VoidHand vh;
+  VoidPtr p;
+  //  Err err;
+  //ULong uniqueID = REC_SPHERES;
+  struct sphere *spp;
+  struct sphere sp_tmp;
+
+  Short j, m, sp_i=-1, min_i=0, min_len=99;
+  Boolean kept;
+  //  struct sphere *sp;
+  Char buf[80];
+
+  if (dir >= 9) dir=0; // no movement if direction not found
+
+  // find an unused sphere index, sp_i
+  if (i != -1) sp_i = i; // someone gave us a hint
+  else {
+    // find an empty slot, or evict the next to die
+    //if (DmFindRecordByID(iLarnDB, uniqueID, &recindex)) return;
+    if (DmNumRecords(iLarnDB) <= recindex) return;
+    vh = DmQueryRecord(iLarnDB, recindex);
+    p = MemHandleLock(vh);
+    if (!p) return;
+    spp = (struct sphere *) p;
+    for (j = 0 ; j < MAXSPHERE ; j++) {
+      if (spp[j].lifetime <= 0) {
+	sp_i = j;
+	break;
+      } else if (spp[j].lifetime < min_len) {
+	min_len = spp[j].lifetime;
+	min_i = j;
+      }
+    }
+    MemHandleUnlock(vh);
+    if (sp_i == -1) {
+      sp_i = min_i;
+      rmsp(sp_i, spp[sp_i].x, spp[sp_i].y); // kill the evicted sphere
+    }
+  }
+  //  StrPrintF(buf, "dir %d life %d i %d", dir, life, sp_i);
+  //  message(buf);
+
+  // ok, we're ready to rumble.
+  i = 0;
+
+  if (env->level == 0) {
+    vxy(&x,&y); // don't go out of bounds
+  } else {
+    x = min( max (x, 1), MAXX-2);
+    y = min( max (y, 1), MAXY-2);
+  }
+  
+  kept = false;
+  if (env->item[x][y]==OANNIHILATION) {
+    // collision of spheres detonates them
+    message("Two spheres of annihilation collide!");
+    message("You hear a great earth shaking blast!"); 
+    //      beep();
+    rmsp(sp_i, x, y);;  // remove this sphere (do I need to?)
+    rmsphere(x, y);;   // and the other sphere
+    sphboom(x, y);;    // blow up stuff around sphere
+    // sphere does not survive
+  } else if (env->item[x][y] == OLRS ) {
+    rmsp(sp_i, x, y);;
+    env->item[x][y] = 0;
+    update_screen_cell(x, y);
+    nap(1200);
+    //      beep();
+    env->item[x][y] = OLRS;
+    update_screen_cell(x, y);
+    message("You curse: \"DEATH and TAXES!\""); 
+    add_tax(19930813L, true);
+    // sphere does not survive
+  } else if ( has_object(OSPHTALISMAN) ) {
+    // sphere can't be dispelled + player can't be annihilated
+    kept = true;
+    // sphere is kept
+  } else if (env->mitem[x][y] >= DEMONLORD) {
+    // demons dispel spheres
+    m = env->mitem[x][y];
+    i = env->hitp[x][y];
+    env->know[x][y] = 1; 
+    //      show1cell(x,y);	            // show the demon (ha ha)
+    update_screen_cell(x,y);
+    StrPrintF(buf, "The %s dispels the sphere!", m_name(m));
+    message(buf);
+    //      beep(); 
+    rmsp(sp_i, x, y);;
+    env->mitem[x][y] = m;
+    env->hitp[x][y] = i;
+    env->know[x][y] = 0; 
+    // sphere does not survive
+  } else if (env->mitem[x][y] == DISENCHANTRESS) {
+    // disenchantress cancels spheres
+    m = env->mitem[x][y];
+    StrPrintF(buf, "The %s causes cancellation of the sphere!", m_name(m));
+    message(buf);
+    //      beep();
+    rmsp(sp_i, x,y);;
+    sphboom(x,y);;
+    // sphere does not survive
+  } else if (env->cdude[CANCELLATION]) {
+    // cancellation cancels spheres
+    message("As the cancellation takes effect,");
+    message("you hear a great earth shaking blast!"); 
+    //      beep();
+    rmsp(sp_i, x,y);;
+    sphboom(x,y);;
+    // sphere does not survive
+  } else if (env->playerx==x && env->playery==y) {
+    // collision of sphere and player!
+    message("AIEEEeeeee.....");
+    message("You have been enveloped by the");
+    message("zone of nothingness!");
+    //      beep(); 
+    rmsp(sp_i, x,y);;
+    nap(4000);  
+    died(258, true);
+    // sphere does not survive (well, neither do you)
+  } else {
+    kept = true;
+    // sphere is kept
+  }
+  // ok, is the sphere still around?
+  if (kept) {
+    env->item[x][y] = OANNIHILATION;  
+    env->mitem[x][y] = 0;  
+    env->know[x][y] = 1;
+    //      show1cell(x,y);	// show the new sphere
+    update_screen_cell(x,y);
+    sp_tmp.x = x;  
+    sp_tmp.y = y;  
+    sp_tmp.lev = env->level;
+    sp_tmp.dir = dir;  
+    sp_tmp.lifetime = life;  
+    // now, write the record
+    //if (DmFindRecordByID(iLarnDB, uniqueID, &recindex)) return;
+    if (DmNumRecords(iLarnDB) <= recindex) return;
+    vh = DmGetRecord(iLarnDB, recindex); // since we're going to modify it
+    p = MemHandleLock(vh);
+    if (!p) return;
+    // write sp_tmp to the ith index
+    DmWrite(p, sizeof(struct sphere) * sp_i, &sp_tmp, sizeof(struct sphere));
+    MemPtrUnlock(p);
+    DmReleaseRecord(iLarnDB, recindex, true);
+
+    env->cdude[SPHCAST] += 1; // keep track of number of active spheres
+  }
+}
+
+/*
+ *	rmsphere(x,y)	Function to delete a sphere of annihilation from list
+ *		int x,y;
+ *
+ *	Enter with the coordinates of the sphere (on current level)
+ */
+void rmsphere(Short x, Short y)
+{
+  UInt recindex = SPHERES_RECORD;
+  VoidHand vh;
+  VoidPtr p;
+  //  Err err;
+  //ULong uniqueID = REC_SPHERES;
+  struct sphere *spp;
+  Short j;
+
+  //if (DmFindRecordByID(iLarnDB, uniqueID, &recindex)) return;
+  if (DmNumRecords(iLarnDB) <= recindex) return;
+  vh = DmQueryRecord(iLarnDB, recindex);
+  p = MemHandleLock(vh);
+  if (!p) return;
+  spp = (struct sphere *) p;
+  for (j = 0 ; j < MAXSPHERE ; j++) {
+    if (spp[j].lifetime <= 0)
+      continue;
+    if ( (env->level == spp[j].lev) && (x == spp[j].x) && (y == spp[j].y) ) {
+      /* delete from list */
+      MemHandleUnlock(vh);
+      rmsp(j, x, y);
+      return;
+    }
+  }
+  MemHandleUnlock(vh);
+}
+
+
+void rmsp(Short i, Short x, Short y)
+{
+  UInt recindex = SPHERES_RECORD;
+  VoidHand vh;
+  VoidPtr p;
+  //  Err err;
+  //ULong uniqueID = REC_SPHERES;
+  //  struct sphere *spp;
+  struct sphere sp_tmp = {0,0,0,0,0}; //  sp_tmp.lifetime = 0;
+
+  env->item[x][y] = env->mitem[x][y] = 0;  
+  env->know[x][y]=1;
+  //  show1cell(x,y);  	// show the now missing sphere
+  update_screen_cell(x,y);
+  env->cdude[SPHCAST] -= 1;	
+
+  //if (DmFindRecordByID(iLarnDB, uniqueID, &recindex)) return;
+  if (DmNumRecords(iLarnDB) <= recindex) return;
+  vh = DmGetRecord(iLarnDB, recindex); // since we're going to modify it
+  p = MemHandleLock(vh);
+  if (!p) return;
+  // write sp_tmp to the ith index
+  DmWrite(p, sizeof(struct sphere) * i, &sp_tmp, sizeof(struct sphere));
+  MemPtrUnlock(p);
+  DmReleaseRecord(iLarnDB, recindex, true);
+}
+
+/*
+ *	sphboom(x,y)	Function to perform the effects of a sphere detonation
+ *		int x,y;
+ *
+ *	Enter with the coordinates of the blast, Returns no value
+ */
+void sphboom(Short x, Short y)
+{
+  Short i,j;
+  Long *c = env->cdude;
+
+  if (c[HOLDMONST]) c[HOLDMONST] = 1;
+  if (c[CANCELLATION]) c[CANCELLATION] = 1;
+  for (j = max(1, x-2) ; j < min(x+3 , MAXX-1) ; j++)
+    for (i = max(1, y-2) ; i < min(y+3 , MAXY-1) ; i++) {
+      env->item[j][i] = env->mitem[j][i] = 0;
+      //      show1cell(j,i);
+      update_screen_cell(x,y);
+      if (has_object(OSPHTALISMAN))
+	return;
+      if (env->playerx == j && env->playery == i) {
+	//	beep();
+	message("You were too close to the sphere!");
+	nap(3000);
+	died(283, true); // player killed in explosion
+      }
+    }
+}
+
+
+
+/*
+ *	movsphere() 	Function to look for and move spheres of annihilation
+ *
+ *	This function works on the sphere linked list, first duplicating the list
+ *	(the act of moving changes the list), then processing each sphere in order
+ *	to move it.  They eat anything in their way, including stairs, volcanic
+ *	shafts, potions, etc, except for upper level demons, who can dispel
+ *	spheres.
+ *	No value is returned.
+ */
+//#define SPHMAX 20	/* maximum number of spheres movsphere can handle */
+void movsphere()
+{
+  UInt recindex = SPHERES_RECORD;
+  VoidHand vh;
+  VoidPtr p;
+  //  Err err;
+  //ULong uniqueID = REC_SPHERES;
+  struct sphere *spp;
+  //  struct sphere sp_tmp;
+
+  Short j, x, y, dir, len=0;
+  // look through sphere list.
+  //if (DmFindRecordByID(iLarnDB, uniqueID, &recindex)) return;
+  if (DmNumRecords(iLarnDB) <= recindex) return;
+  vh = DmQueryRecord(iLarnDB, recindex);
+  p = MemHandleLock(vh);
+  if (!p) return;
+  spp = (struct sphere *) p;
+  for (j = 0 ; j < MAXSPHERE ; j++) {
+    if (spp[j].lifetime <= 0) continue; // this slot's not actually in use
+    if (spp[j].lev == env->level) {
+      x = spp[j].x;
+      y = spp[j].y;
+      dir = spp[j].dir;
+      len = spp[j].lifetime - 1; // age the sphere
+      if ((len <= 0) || (env->item[x][y] != OANNIHILATION)) {
+	rmsp(j, x, y); // i THINK that Get is ok while a Query is open
+	continue;
+      }
+      // move the sphere
+      switch(rnd((Short)max(7,env->cdude[INTELLIGENCE]>>1))) {
+      case 1:
+      case 2:
+	// the sphere wins free of your control!
+	dir = rnd(8);
+      default:
+	rmsp(j, x, y); // i THINK that Get is ok while a Query is open
+	newsphere(x + diroffx[dir], y + diroffy[dir], dir, len, j);
+      }
+    }
+  }
+  MemHandleUnlock(vh);
+}
+
+// don't leave them hanging about for the next player...
+// well, it would be fun in a cruel sort of way
+void clearspheres()
+{
+  UInt recindex = SPHERES_RECORD;
+  VoidHand vh;
+  VoidPtr p;
+  //ULong uniqueID = REC_SPHERES;
+  Int size;
+
+  size = sizeof(struct sphere) * MAXSPHERE;
+  //if (DmFindRecordByID(iLarnDB, uniqueID, &recindex)) return;
+  if (DmNumRecords(iLarnDB) <= recindex) return;
+  vh = DmGetRecord(iLarnDB, recindex);
+  p = MemHandleLock(vh);
+  if (!p) return;
+  DmSet(p, 0, size, 0);  // set it all to 0.  i think that will work.
+  MemPtrUnlock(p);
+  DmReleaseRecord(iLarnDB, recindex, true);
+}
+@
+
+
+1.5
+log
+@recalc/stats are smarter about updating AC and WC.  demons are properly invisible (always and not just in the easy case to test).
+@
+text
+@d88 1
+a88 1
+  UInt recindex;
+d92 1
+a92 1
+  ULong uniqueID = REC_SPHERES;
+d107 2
+a108 1
+    if (DmFindRecordByID(iLarnDB, uniqueID, &recindex)) return;
+d225 2
+a226 1
+    if (DmFindRecordByID(iLarnDB, uniqueID, &recindex)) return;
+d247 1
+a247 1
+  UInt recindex;
+d251 1
+a251 1
+  ULong uniqueID = REC_SPHERES;
+d255 2
+a256 1
+  if (DmFindRecordByID(iLarnDB, uniqueID, &recindex)) return;
+d277 1
+a277 1
+  UInt recindex;
+d281 1
+a281 1
+  ULong uniqueID = REC_SPHERES;
+d291 2
+a292 1
+  if (DmFindRecordByID(iLarnDB, uniqueID, &recindex)) return;
+d346 1
+a346 1
+  UInt recindex;
+d350 1
+a350 1
+  ULong uniqueID = REC_SPHERES;
+d356 2
+a357 1
+  if (DmFindRecordByID(iLarnDB, uniqueID, &recindex)) return;
+d392 1
+a392 1
+  UInt recindex;
+d395 1
+a395 1
+  ULong uniqueID = REC_SPHERES;
+d399 2
+a400 1
+  if (DmFindRecordByID(iLarnDB, uniqueID, &recindex)) return;
+@
+
+
+1.4
+log
+@get iLarn to compile with sdk 3.5 so's I can add color...
+@
+text
+@d161 1
+a161 1
+  } else if ( has_object(OSPHTALISMAN) >= 0 ) {
+d316 2
+a317 1
+      if (has_object(OSPHTALISMAN) >= 0)	return;
+@
+
+
+1.3
+log
+@eliminated (fossilized) global argument
+@
+text
+@d24 2
+a25 2
+#include <Pilot.h>
+#include <Globals.h>
+@
+
+
+1.2
+log
+@revising messages to have --more--.  sort of half working.
+@
+text
+@d45 1
+a45 1
+void annihilate(struct everything *env)
+d60 1
+a60 1
+	clobberm(*p, env);
+d86 1
+a86 2
+void newsphere(Short x, Short y, Short dir, Short life, Short i,
+	       struct everything *env)
+d124 1
+a124 1
+      rmsp(sp_i, spp[sp_i].x, spp[sp_i].y, env); // kill the evicted sphere
+d146 3
+a148 3
+    rmsp(sp_i, x, y, env);;  // remove this sphere (do I need to?)
+    rmsphere(x, y, env);;   // and the other sphere
+    sphboom(x, y, env);;    // blow up stuff around sphere
+d151 1
+a151 1
+    rmsp(sp_i, x, y, env);;
+d153 1
+a153 1
+    update_screen_cell(x, y, env);
+d157 1
+a157 1
+    update_screen_cell(x, y, env);
+d159 1
+a159 1
+    add_tax(19930813L, true, env);
+d161 1
+a161 1
+  } else if ( has_object(OSPHTALISMAN, env) >= 0 ) {
+d171 1
+a171 1
+    update_screen_cell(x,y,env);
+d175 1
+a175 1
+    rmsp(sp_i, x, y, env);;
+d186 2
+a187 2
+    rmsp(sp_i, x,y, env);;
+    sphboom(x,y, env);;
+d194 2
+a195 2
+    rmsp(sp_i, x,y, env);;
+    sphboom(x,y, env);;
+d203 1
+a203 1
+    rmsp(sp_i, x,y, env);;
+d205 1
+a205 1
+    died(258, true, env);
+d217 1
+a217 1
+    update_screen_cell(x,y,env);
+d243 1
+a243 1
+void rmsphere(Short x, Short y, struct everything *env)
+d264 1
+a264 1
+      rmsp(j, x, y, env);
+d272 1
+a272 1
+void rmsp(Short i, Short x, Short y, struct everything *env)
+d285 1
+a285 1
+  update_screen_cell(x,y,env);
+d304 1
+a304 1
+void sphboom(Short x, Short y, struct everything *env)
+d315 2
+a316 2
+      update_screen_cell(x,y,env);
+      if (has_object(OSPHTALISMAN, env) >= 0)	return;
+d321 1
+a321 1
+	died(283, true, env); // player killed in explosion
+d339 1
+a339 1
+void movsphere(struct everything *env)
+d364 1
+a364 1
+	rmsp(j, x, y, env); // i THINK that Get is ok while a Query is open
+d374 2
+a375 2
+	rmsp(j, x, y, env); // i THINK that Get is ok while a Query is open
+	newsphere(x + diroffx[dir], y + diroffy[dir], dir, len, j, env);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d65 1
+a65 1
+	add_long_to_splash(buf, env);
+d144 2
+a145 2
+    add_to_splash("Two spheres of annihilation collide!", env);
+    add_to_splash("You hear a great earth shaking blast!", env); 
+d159 1
+a159 1
+    add_to_splash("You curse: \"DEATH and TAXES!\"", env); 
+d174 1
+a174 1
+    add_long_to_splash(buf, env);
+d185 1
+a185 1
+    add_long_to_splash(buf, env);
+d192 2
+a193 2
+    add_to_splash("As the cancellation takes effect,", env);
+    add_to_splash("you hear a great earth shaking blast!", env); 
+d201 2
+a202 2
+    add_to_splash("You have been enveloped by the",env);
+    add_to_splash("zone of nothingness!", env);
+@
+
+
+1.1.1.1
+log
+@iLarn - Ularn port for PalmOS - initial code checkin
+@
+text
+@@

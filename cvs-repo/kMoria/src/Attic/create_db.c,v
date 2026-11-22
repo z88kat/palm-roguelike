@@ -1,0 +1,187 @@
+head	1.2;
+access;
+symbols
+	start:1.1.1.1 vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.2
+date	2000.11.04.02.13.39;	author i0lanthe;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.43.58;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.43.58;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@adding GPL comment
+@
+text
+@#include <Pilot.h>
+//#include <Globals.h>
+#include "MoriaCreateRsc.h"
+#include "dbrecords.h"
+
+
+Boolean Main_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    FrmDrawForm(frm);
+    handled = true;
+    break;
+
+  case ctlSelectEvent:
+    switch(e->data.ctlSelect.controlID) {
+    case btn_ok:
+      if (0 == FrmAlert(NukeP))
+	RebuildDatabase(); // if it returns false, pop up an error message
+      handled = true;
+      break;
+    }
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+
+/*****************************************************************************
+ *                      ApplicationHandleEvent                               *
+ *****************************************************************************/
+static Boolean ApplicationHandleEvent(EventPtr e)
+{
+    FormPtr frm;
+    Word    formId;
+    Boolean handled = false;
+
+    if (e->eType == frmLoadEvent) {
+	formId = e->data.frmLoad.formID;
+	frm = FrmInitForm(formId);
+	FrmSetActiveForm(frm);
+
+	switch(formId) {
+	case MainForm:
+	    FrmSetEventHandler(frm, Main_Form_HandleEvent);
+	    break;
+	}
+	handled = true;
+    }
+
+    return handled;
+}
+
+
+/*****************************************************************************
+ *                      StartApplication                                     *
+ *****************************************************************************/
+/* moved to the head of the class */
+static Word StartApplication(void)
+{
+  Word error;
+  //  error = OpenDatabase();
+  //  if (error) return error;
+  /*   error = checkAppInfo(); */
+  /*   if (error) return error; */
+
+  FrmGotoForm(MainForm);
+  return 0;
+}
+
+
+/*****************************************************************************
+ *                      StopApplication                                      *
+ *****************************************************************************/
+static void StopApplication(void)
+{
+  FrmSaveAllForms();
+  FrmCloseAllForms();
+
+}
+
+
+/*****************************************************************************
+ *                      EventLoop                                            *
+ *****************************************************************************/
+
+/* The main event loop */
+
+
+static void EventLoop(void)
+{
+    Word err;
+    EventType e;
+     
+    do {
+	EvtGetEvent(&e, evtWaitForever);
+	  if (! SysHandleEvent (&e))
+	    if (! MenuHandleEvent (NULL, &e, &err))
+	      if (! ApplicationHandleEvent (&e))
+		FrmDispatchEvent (&e);
+    } while (e.eType != appStopEvent);
+}
+
+
+/* Main entry point; it is unlikely you will need to change this except to
+   handle other launch command codes */
+/*****************************************************************************
+ *                      PilotMain                                            *
+ *****************************************************************************/
+DWord PilotMain(Word cmd, Ptr cmdPBP, Word launchFlags)
+{
+    Word err;
+
+    if (cmd == sysAppLaunchCmdNormalLaunch) {
+
+      err = StartApplication();
+      if (err) return err;
+
+      EventLoop();
+      StopApplication();
+
+    } else {
+      return sysErrParamErr;
+    }
+
+    return 0;
+}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

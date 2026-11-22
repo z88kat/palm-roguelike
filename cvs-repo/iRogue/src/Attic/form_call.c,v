@@ -1,0 +1,203 @@
+head	1.1;
+access;
+symbols
+	pre-internationalization_20040113:1.1.2.1
+	Release-2001_04_26-Handera-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2004.01.13.07.57.50;	author i0lanthe;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2004.01.13.07.57.50;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file form_call.c was initially added on branch Release-2001_04_26-Handera-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@call an item as with 'c' command
+@
+text
+@a0 162
+/*********************************************************************
+ * iRogue - Rogue adapted for the PalmPilot.                         *
+ * Copyright (C) 1999 Bridget Spitznagel                             *
+ * Note: This program is derived from rogue 5.3-clone for Linux.     *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+
+#include "iRogue.h"
+
+extern Short inventory_item;
+
+#define CALL_NO_KIND -1
+Short call_which_kind = CALL_NO_KIND;
+struct id *call_id_table = NULL;
+
+static Boolean init_call_form(Short index, Char *title) SEC_1;
+
+Boolean Call_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  Char new_title[40];
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+#ifndef I_AM_OS_2
+    if (IsVGA) {
+      Short y_diff;
+      VgaFormModify(frm, vgaFormModify160To240);
+      y_diff = adjust_form_size(true);
+      // move buttons
+      PrvMoveObject(frm, btn_call_ok, y_diff, false);
+      PrvMoveObject(frm, btn_call_cancel, y_diff, false);
+    }
+#endif
+    if (init_call_form(inventory_item, new_title)) {
+      FrmCopyTitle(frm, new_title);
+      // if (call_id_table[call_which_kind].id_status != CALLED) {
+      // usr_form_init(frm, field_call, NULL, MAX_TITLE_LENGTH); } else
+      usr_form_init(frm, field_call, call_id_table[call_which_kind].title,
+		    MAX_TITLE_LENGTH);
+      // XXXX need to strip the space from the end
+    }
+    FrmDrawForm(frm);
+    handled = true;
+    break;
+
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) {
+      Short y_diff;
+      update_display_size();
+      y_diff = adjust_form_size(true);
+      // redraw the "new" screen too...  don't ask me whether this will work
+      frm = FrmGetActiveForm();
+      // move buttons
+      PrvMoveObject(frm, btn_call_ok, y_diff, false);
+      PrvMoveObject(frm, btn_call_cancel, y_diff, false);
+      FrmDrawForm(frm);
+    }
+    break;
+#endif
+
+  case ctlSelectEvent:
+    switch(e->data.ctlSelect.controlID) {
+    case btn_call_ok:
+      frm = FrmGetActiveForm();
+      if (call_which_kind != CALL_NO_KIND) {
+	Short tlen;
+	Char *t = call_id_table[call_which_kind].title;
+	usr_form_update(frm, field_call, t, MAX_TITLE_LENGTH-1);
+	t[MAX_TITLE_LENGTH-1] = '\0';
+	tlen = StrLen(t);
+	if (t[tlen-1] != ' ') {
+	  if (tlen >= MAX_TITLE_LENGTH-1) tlen = MAX_TITLE_LENGTH-2;
+	  t[tlen] = ' ';
+	  t[tlen+1] = '\0';
+	}
+      }
+      LeaveForm();
+
+      {
+	object *obj;
+	Char desc[DCOLS];
+	fighter *rogue = sotu->roguep;
+	if ((obj = get_nth_object(inventory_item, &rogue->pack))) {
+	  get_desc(obj, desc);
+	  message(desc);
+	}
+      }
+
+      handled = true;
+      break;
+    case btn_call_cancel:
+      // do nothing
+      LeaveForm();
+      handled = true;
+      break;
+    }
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+static Boolean init_call_form(Short index, Char *title)
+{
+  fighter *rogue = sotu->roguep;
+  object *obj;
+
+  call_which_kind = CALL_NO_KIND;
+  if (index < 0)
+    return false;
+  /* the inventory select form should make this impossible */
+  if (!(obj = get_nth_object(index, &rogue->pack))) {
+    LeaveForm();
+    message("no such item.");
+    return false;
+  }
+  /* the inventory select form should make this impossible */
+  if (!(obj->what_is & (SCROLL | POTION | WAND | RING))) {
+    LeaveForm();
+    message("surely you already know what that's called");
+    return false;
+  }
+
+  call_which_kind = obj->which_kind;
+  call_id_table = get_id_table(obj);
+  
+  StrPrintF(title, "Call this");
+  switch(obj->what_is) {
+  case WAND: 
+    StrCat(title, sotu->is_wood[obj->which_kind] ? " staff" : " wand"); 
+    break;
+  case POTION: StrCat(title, " potion"); break;
+  case RING: StrCat(title, " ring"); break;
+  case SCROLL: StrCat(title, " scroll"); break;
+  }
+  StrCat(title, ":");
+  return true;
+}
+@
+

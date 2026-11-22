@@ -1,0 +1,150 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.05.31.00.22.49;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.49;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@--more--
+Do you really want to quit?  This will kill your current character.
+Hello again...
+I see no monster there
+I see no way down
+It seems that I am out of memory *and* orange smoke.  Sorry.
+Saving...
+Someone has rifled your pockets!
+The cloud of orange smoke dissipates.
+The orange smoke slowly clears.
+You are at Wit's End
+You are consumed by a dark hunger
+You crumble to dust in the sunlight!
+You don't recall how you got here.
+You feel distressingly light-headed.
+You feel shaky, weak in the knees.
+You feel.. strangely hungry
+You win!!
+a cloak of darkness falls around you
+a gush of water hits you on the head
+a small dart hit you in the shoulder
+a strange white mist envelops you and you fall asleep
+already wielding a cursed weapon
+died of hypothermia
+died of starvation
+don't you think you've gone down far  enough?
+everything looks SO boring now
+hm, that was strangely unsatisfying
+hmm, this potion tastes like slime-mold juice
+killed by a dart
+no such item.
+nothing happens
+nothing is visible there
+oh wow, everything seems so cosmic
+pack full
+pack too full
+pack too heavy
+the acid splashes harmlessly against your armor
+the dancing blue light fades away!
+the flame flickers and fades
+the ice cracks and melts
+the monster freezes
+the monsters around you freeze
+the nerve gas paralyzed you
+the rust vanishes instantly
+the scroll turns to dust as you pick it up
+the trap failed
+the veil of darkness lifts
+there's already something there
+there's no ring on that hand
+this is a scroll of identify
+this scroll seems to have a map on it
+this tastes great, you feel warm all over
+wearing eight rings already
+what a trippy feeling
+you are being held
+you are caught in a bear trap
+you are frozen --more-- you can move again
+you are still stuck in the bear trap
+you begin to feel better
+you begin to feel much better
+you can't read that
+you can't see to read the scroll
+you can't wear that
+you can't zap with that
+you can't, it appears to be cursed
+you can't, it's cursed
+you faint --more-- you can move again
+you fall asleep
+you feel a chill
+you feel a strange sense of loss
+you feel a wrenching sensation in your gut
+you feel as though someone is watching over you
+you feel confused
+you feel in touch with the universal oneness
+you feel stronger now, what bulging muscles!
+you feel very sick now
+you feel weaker
+you feel yourself moving much faster
+you feel yourself slowing down
+you feel yourself speeding up
+you fell asleep
+you float gently to the ground
+you have a strange feeling for a moment, then it passes
+you have nothing to drop
+you hear a faint cry of anguish in the distance
+you hear a high pitched humming noise
+you hear a maniacal laughter in the distance
+you hear something...
+you overflow!
+you sense hostility
+you start to float in the air
+you're floating in the air!
+your acne seems to have disappeared
+your armor and sword are covered with dancing blue light
+your armor glows blue for a moment
+your armor is covered by a shimmering gold shield
+your armor is covered with dancing blue light
+your armor shatters!
+your armor weakens
+your hands tingle
+your purse feels lighter
+your ring glows red
+your ring shines with a plaid glow
+your skin crawls
+your way is magically blocked
+yuk, that food tasted awful
+yum, that tasted good
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

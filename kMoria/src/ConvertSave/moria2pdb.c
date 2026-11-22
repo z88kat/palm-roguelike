@@ -1,0 +1,101 @@
+/*
+ * cryptic converter, (c) 2001 Bridget Spitznagel
+ * Reads in a moria.save type of file (for umoria 5.5.2) and MODIFIES an
+ * existing kMoriaSaveDB.pdb type of file, which is assumed to belong
+ * to the same character.
+ * Tested on one Linux machine.  It works for me.  Your mileage may vary.
+ *
+ * Because this program uses a little code from the pilot-link utils,
+ * it inherits the GPL - you can get a copy of the GPL from
+ * http://www.gnu.org/copyleft/gpl.html
+ * */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+#include "defs.h"
+#include "swap.h"
+#include "header.h"
+#include "rec.h"
+#include "from-umoria.h"
+
+///////////////////////////////////////////////////////////////////////
+
+int TotalRecords;
+// record entry descriptors
+
+rec_entry_descr *reds;
+
+
+int
+main(int argc, char** argv)
+{
+  FILE *fin, *fout;
+  //  DWORD numRecs;
+  //  int recNum = 0;
+  //  struct rec0 r0;
+  //  long start_position;
+
+  printf("%s (for Umoria 5.5.2 / kMoria savefile-version 0x01)\n", argv[0]);
+  if (argc < 3) {
+    fprintf(stderr,"Reads a moria.save, modifies an EXISTING kMoriaSaveDB.pdb\n");
+    fprintf(stderr,"Use at your own risk!\n");
+    fprintf(stderr,"usage: %s in.save clobber.pdb\n",argv[0]);
+    exit(2);
+  }
+
+  if ( ! SwapChoose()) {
+    printf("\nfailed to select proper byte swapping algorithm");
+#if UNIX
+    printf("\n");
+#endif
+    exit(1);
+  }
+
+  // " You want open, lseek, read and write "
+  // low level calls will let me modify the fout.
+  // Make fout an fd instead of a FILE*.
+
+  fout = fopen(argv[2], "r+b");
+  if (fout==0) {
+    printf("can't open %s for read/write\n", argv[2]);
+    exit(2);
+  }
+  fseek(fout, 0L, SEEK_SET); // make sure we start at the beginning
+  // turn off buffering, see if that helps
+  setbuf(fout, NULL);
+
+  // we read in all the offsets and record uids.
+  read_preamble(fout);
+
+  sort_offsets(fout);
+
+  fin = fopen(argv[1], "rb");
+  if (fin==0) {
+    printf("can't open %s for read\n", argv[1]);
+    exit(2);
+  }
+
+  read_version_info(fin);
+#ifdef NOISY
+  printf("read version info ok\n");
+#endif
+
+  
+  read_character(fout, fin);
+#ifdef NOISY
+  printf("read character ok\n");
+#endif
+  // we are apparently ok up to here
+  read_dungeon(fout, fin);
+#ifdef NOISY
+  printf("read dungeon ok\n");
+#endif
+
+  fclose(fin);
+  fclose(fout);
+  exit(0);
+}
+

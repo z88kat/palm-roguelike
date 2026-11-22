@@ -1,0 +1,1222 @@
+head	1.17;
+access;
+symbols
+	Release-2002_03_29:1.17
+	Release-2002_01_12:1.15
+	Release-2002_01_02:1.14
+	Release-2002_01_01:1.14
+	Release-2001_12_19:1.14
+	Release-2001_08_04:1.13
+	Release-2001_07_02:1.11
+	Release-2001_06_16:1.8;
+locks; strict;
+comment	@ * @;
+
+
+1.17
+date	2002.03.29.01.17.36;	author i0lanthe;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2002.03.27.04.21.06;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2002.01.12.01.38.09;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2001.08.02.06.50.36;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2001.07.11.02.35.01;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2001.07.01.22.34.33;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2001.06.29.04.08.45;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2001.06.16.18.55.05;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.05.24.04.24.15;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.05.22.03.01.54;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.05.22.01.26.48;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.05.22.00.59.32;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.02.28.06.37.25;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.01.11.06.27.08;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.11.05.20.24.48;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.17
+log
+@keep autosave from interrupting autorepeat commands, i hope
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+#include "kMoria.h"
+
+static void create_save_structs() SEC_5;
+static Boolean create_py_rec() SEC_5;
+static Boolean read_py_rec() SEC_5;
+static void read_save_structs() SEC_5;
+
+// 16 Jun 2001 - trying to figure out what I was up to last month.
+// looks like I was implementing both of:
+// add a boolean to py_rec
+// add a new "boolean" record
+// I will go with the latter (simpler, lamer) and see if I can make it work.
+// Commenting out the former stuff.
+// The crash record is essentially like a lock file (e.g. netscape).
+
+// This function is called as soon as we have found the save database.
+// This function will return "true" if a crash record exists, that is,
+// if the last game session crashed.  It will return false, and create
+// a crash record, otherwise.
+// ...If I were smart I would have save files carry version info too.
+Boolean recover_crash()
+{
+  ULong uniqueID, mydate;
+  UInt index;
+  VoidHand vh;
+  VoidPtr p;
+  // This should return true IFF there exists a "crash" record.
+  uniqueID = REC_CRASHED;
+  if (0 == DmFindRecordByID(MoriaSaveDB, uniqueID, &index))
+    return true;
+  // If a crash record does NOT exist, it should CREATE it and return false.
+  index = DmNumRecords(MoriaSaveDB);
+  vh = DmNewRecord(MoriaSaveDB, &index, sizeof(ULong));
+  p = MemHandleLock(vh);
+  mydate = TimGetSeconds(); // (for no particular reason.  it's not used.)
+  if (p) {
+    DmWrite(p, 0, &mydate, sizeof(ULong));
+  }
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaSaveDB, index, true);
+  DmSetRecordInfo(MoriaSaveDB, index, NULL, &uniqueID); // set its uid!
+  return false;
+}
+
+// This function is called when we exit the game "gracefully".
+// It will delete the crash record.  We expect that this is not called
+// when the game crashes, thus, if the crash record exists at game start,
+// then the previous session crashed.
+void didnt_crash()
+{
+  ULong uniqueID;
+  UInt index;
+  // Delete the "crash" record to show that we didn't crash.
+  uniqueID = REC_CRASHED;
+  if (0 == DmFindRecordByID(MoriaSaveDB, uniqueID, &index))
+    // this is the expected case.  there's a bug if we don't find it.
+    DmRemoveRecord(MoriaSaveDB, index);
+}
+
+void rest_on(Short rest_num);
+void maybe_checkpoint()
+{
+  // Call this every thousand turns or so, and maybe when you ascend/descend
+  // or gain a level/spell or things like that.
+  Short old_command_count = command_count;
+  Short old_pack_heavy = pack_heavy;
+  Short old_rest = pyflags.rest;
+  Boolean old_find_flag = find_flag;
+  Boolean was_searching = ((pyflags.status & PY_SEARCH) != 0);
+
+  save_char();
+  // Undo the things that save_char did (hm does order matter?)
+  command_count = old_command_count;
+  pack_heavy = old_pack_heavy; change_speed(pack_heavy);
+  find_flag = old_find_flag;
+  if (old_rest) rest_on(old_rest);
+  if (was_searching) search_on(); // "searching" message will flash; alas.
+}
+
+Boolean save_char()
+{
+  if (MoriaSaveDB == NULL) return false;
+
+  disturb(true, false);		/* Turn off resting and searching. */
+  change_speed(-pack_heavy);	/* Fix the speed */
+  pack_heavy = 0;
+
+  create_save_structs();
+  // maybe need to write bytes:  major version, minor version, patchlevel
+  return create_py_rec(); // yay.
+}
+
+Boolean load_char()
+{
+  Short sversion = get_savefile_version();
+  Boolean found_me = false; // saved char does not exist..
+
+  if (read_py_rec()) {
+    read_save_structs();
+    found_me = true;
+  }
+
+  // Check the save file version.
+  if (sversion < MoriaSaveDBVersion)
+    perform_conversion(sversion, found_me);
+
+  return found_me;
+}
+
+
+// Dude.  I get a fatal error when the record does not exist.  WHY.
+void antisave_char()
+{
+  ULong uniqueID;
+  UInt index;
+
+  uniqueID = REC_PY;
+  if (MoriaSaveDB != NULL)
+    if (0 == DmFindRecordByID(MoriaSaveDB, uniqueID, &index))
+      DmRemoveRecord(MoriaSaveDB, index);      // EX TERM IN ATE !
+}
+
+typedef struct my_save_struct
+{
+  ULong spell_learned;
+  ULong spell_worked;
+  ULong spell_forgotten;
+  ULong town_seed; // skip randes_seed
+  ULong current_time; // use TimGetWhatever
+  ULong birth_date; // in create.c
+  Long turn;
+  Long total_points; // call total_points() to calc this
+  Short missile_ctr;
+  Short inven_ctr;
+  Short inven_weight;
+  Short equip_ctr;
+  Short tcptr;
+  Short mfptr;
+  Boolean total_winner;
+  Boolean death;
+  // Skipping: panic_save, noscore.
+  Char died_from[25];
+  // Also save the previous-message-foo!
+} my_save;
+my_save my_save_info;
+typedef struct floor_save_struct
+{
+  Short dun_level;
+  Short char_row;
+  Short char_col;
+  Short mon_tot_mult;
+  Short cur_height;
+  Short cur_width;
+  Short max_panel_rows;
+  Short max_panel_cols;
+} floor_save;
+floor_save floor_save_info;
+
+
+static void create_save_structs()
+{
+  my_save_info.spell_learned = spell_learned;     
+  my_save_info.spell_worked = spell_worked;
+  my_save_info.spell_forgotten = spell_forgotten;
+  my_save_info.town_seed = town_seed;
+  my_save_info.current_time = TimGetSeconds();
+  my_save_info.birth_date = birth_date;
+  my_save_info.turn =  turn;
+  my_save_info.total_points = total_points();
+  my_save_info.missile_ctr = missile_ctr;
+  my_save_info.inven_ctr = inven_ctr;
+  my_save_info.inven_weight = inven_weight;
+  my_save_info.equip_ctr = equip_ctr;
+  my_save_info.tcptr = tcptr;
+  my_save_info.mfptr = mfptr;
+  my_save_info.total_winner = total_winner;
+  my_save_info.death = death;  // Skipping: panic_save, noscore.
+  StrNCopy(my_save_info.died_from, died_from, 25);
+  floor_save_info.dun_level = dun_level;
+  floor_save_info.char_row = char_row;
+  floor_save_info.char_col = char_col;
+  floor_save_info.mon_tot_mult = mon_tot_mult;
+  floor_save_info.cur_height = cur_height;
+  floor_save_info.cur_width = cur_width;
+  floor_save_info.max_panel_rows = max_panel_rows;
+  floor_save_info.max_panel_cols = max_panel_cols;
+}
+static void read_save_structs()
+{
+  spell_learned   = my_save_info.spell_learned;     
+  spell_worked    = my_save_info.spell_worked;
+  spell_forgotten = my_save_info.spell_forgotten;
+  town_seed       = my_save_info.town_seed;
+  //  current_time    = my_save_info.TimGetSeconds();
+  birth_date      = my_save_info.birth_date;
+  turn            = my_save_info.turn;
+  max_score       = my_save_info.total_points;
+  missile_ctr     = my_save_info.missile_ctr;
+  inven_ctr       = my_save_info.inven_ctr;
+  inven_weight    = my_save_info.inven_weight;
+  equip_ctr       = my_save_info.equip_ctr;
+  tcptr       = my_save_info.tcptr;
+  mfptr       = my_save_info.mfptr;
+  total_winner    = my_save_info.total_winner;
+  death           = my_save_info.death;
+  StrNCopy(died_from, my_save_info.died_from, 25);
+  dun_level      = floor_save_info.dun_level;
+  char_row       = floor_save_info.char_row;
+  char_col       = floor_save_info.char_col;
+  mon_tot_mult   = floor_save_info.mon_tot_mult;
+  cur_height     = floor_save_info.cur_height;
+  cur_width      = floor_save_info.cur_width;
+  max_panel_rows = floor_save_info.max_panel_rows;
+  max_panel_cols = floor_save_info.max_panel_cols;
+}
+// Create the py storage record (will delete it if it already exists)
+static Boolean create_py_rec()
+{
+  Boolean ok = false;/*, crashed = false; */
+  ULong uniqueID;
+  UInt index;
+  VoidHand vh;
+  VoidPtr p;
+  ULong size = sizeof(struct flags) + sizeof(struct stats);
+  size += sizeof(struct misc);
+  size += sizeof(UChar) * (MAX_SPELLS+1);
+  size += sizeof(Short) * MAX_PLAYER_LEVEL;
+  size += sizeof(my_save) + sizeof(floor_save);
+  /*    size += sizeof(Boolean); */
+
+  // Delete existing py record
+  uniqueID = REC_PY;
+  if (0 == DmFindRecordByID(MoriaSaveDB, uniqueID, &index))
+    DmRemoveRecord(MoriaSaveDB, index);      // EX TERM IN ATE !
+  index = DmNumRecords(MoriaSaveDB);
+  vh = DmNewRecord(MoriaSaveDB, &index, size);
+  p = MemHandleLock(vh);
+  if (p) {
+    Short offset = 0;
+    // Write things.
+    DmWrite(p, offset, &pymisc, sizeof(struct misc));
+    offset += sizeof(struct misc);
+    DmWrite(p, offset, &pystats, sizeof(struct stats));
+    offset += sizeof(struct stats);
+    DmWrite(p, offset, &pyflags, sizeof(struct flags));
+    offset += sizeof(struct flags);
+    //  player_hp;
+    DmWrite(p, offset, player_hp, sizeof(Short) * MAX_PLAYER_LEVEL);
+    offset += sizeof(Short) * MAX_PLAYER_LEVEL;
+    //  spell_order;
+    DmWrite(p, offset, spell_order, sizeof(UChar) * (MAX_SPELLS+1));
+    offset += sizeof(UChar) * (MAX_SPELLS+1);
+    //  my_save;
+    DmWrite(p, offset, &my_save_info, sizeof(my_save));
+    offset += sizeof(my_save);
+    //  floor_save;
+    DmWrite(p, offset, &floor_save_info, sizeof(floor_save));
+    offset += sizeof(floor_save);
+    /*      DmWrite(p, offset, &crashed, sizeof(Boolean));
+            offset += sizeof(Boolean); */
+    ok = true;
+  }
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaSaveDB, index, true);
+  DmSetRecordInfo(MoriaSaveDB, index, NULL, &uniqueID); // set its uid!
+  return ok;
+}
+static Boolean read_py_rec()
+{
+  UInt recindex;
+  VoidHand vh;
+  VoidPtr p; /*, p0; */
+  Err err;
+  ULong uniqueID;
+  /*    Boolean b=true, crashed; */
+  //
+  uniqueID = REC_PY;
+  err = DmFindRecordByID(MoriaSaveDB, uniqueID, &recindex);
+  if (err) return false; // didn't find it
+  vh = DmQueryRecord(MoriaSaveDB, recindex); /* DmGetRecord(..) */
+  p = MemHandleLock(vh); /* p0 = p; */
+  if (!p) return false;   // we're in some kind of trouble
+
+  // Ok now read a whole bunch of stuff.
+  err = MemMove(&pymisc, p, sizeof(struct misc));
+  if (err) { MemHandleUnlock(vh); return false; }
+  p += sizeof(struct misc);
+  err = MemMove(&pystats, p, sizeof(struct stats));
+  if (err) { MemHandleUnlock(vh); return false; }
+  p += sizeof(struct stats);
+  err = MemMove(&pyflags, p, sizeof(struct flags));
+  if (err) { MemHandleUnlock(vh); return false; }
+  p += sizeof(struct flags);
+  err = MemMove(player_hp, p, sizeof(Short) * MAX_PLAYER_LEVEL);
+  if (err) { MemHandleUnlock(vh); return false; }
+  p += sizeof(Short) * MAX_PLAYER_LEVEL;
+  err = MemMove(spell_order, p, sizeof(UChar) * (MAX_SPELLS+1));
+  if (err) { MemHandleUnlock(vh); return false; }
+  p += sizeof(UChar) * (MAX_SPELLS+1);
+  err = MemMove(&my_save_info, p, sizeof(my_save));
+  if (err) { MemHandleUnlock(vh); return false; }
+  p += sizeof(my_save);
+  err = MemMove(&floor_save_info, p, sizeof(floor_save));
+  if (err) { MemHandleUnlock(vh); return false; }
+
+  /*    p += sizeof(floor_save);
+        crashed = ((Boolean *) p)[0];
+        DmWrite(p0, p - p0, &b, sizeof(Boolean));     // will it work? */
+
+  MemHandleUnlock(vh);
+  /*    DmReleaseRecord(MoriaSaveDB, recindex, true);
+	DmSetRecordInfo(MoriaSaveDB, recindex, NULL, &uniqueID); // set uid!
+	return (!crashed); */
+  return true; 
+}
+/*
+// Create the miscsave storage record (will delete it if it already exists)
+static Boolean create_miscsave_rec()
+{
+  Boolean ok = false;
+  ULong uniqueID;
+  UInt index;
+  VoidHand vh;
+  VoidPtr p;
+  ULong 
+  // Delete existing miscsave record
+  uniqueID = REC_MISCSAVE;
+  if (0 == DmFindRecordByID(MoriaSaveDB, uniqueID, &index))
+    DmRemoveRecord(MoriaSaveDB, index);      // EX TERM IN ATE !
+  index = DmNumRecords(MoriaSaveDB);
+  vh = DmNewRecord(MoriaSaveDB, &index, size);
+  p = MemHandleLock(vh);
+  if (p) {
+    Short offset = 0;
+    // Write things.
+    ok = true;
+  }
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaSaveDB, index, true);
+  DmSetRecordInfo(MoriaSaveDB, index, NULL, &uniqueID); // set its uid!
+  return ok;
+}
+
+*/
+
+
+
+@
+
+
+1.16
+log
+@save file should be checkpointed every 200 turns now (2000 if mega-resting)
+@
+text
+@d77 1
+d84 2
+a85 1
+  // Undo the things that save_char did
+d88 1
+a89 1
+  if (old_rest) rest_on(old_rest);
+@
+
+
+1.15
+log
+@Split Preferences into two parts, add 3 new prefs, may have introduced bugs
+@
+text
+@d72 17
+d94 1
+a94 1
+  disturb(1, 0);		/* Turn off resting and searching. */
+d102 1
+@
+
+
+1.14
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@d75 2
+d110 3
+a112 2
+  if (0 == DmFindRecordByID(MoriaSaveDB, uniqueID, &index))
+    DmRemoveRecord(MoriaSaveDB, index);      // EX TERM IN ATE !
+@
+
+
+1.13
+log
+@random tinkering, and prep for multi-user
+@
+text
+@a12 1
+#include "palm.h"
+a13 1
+#include "lock-externs.h"
+@
+
+
+1.12
+log
+@gah!  stupid me.
+@
+text
+@d336 3
+@
+
+
+1.11
+log
+@Fixed store-booting shopkeeper-munging bug.  Introduced version record in save db.  Check version record and if <1, fix any shopkeepers that had been munged.
+@
+text
+@d99 1
+a99 1
+  return true;
+@
+
+
+1.10
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d87 12
+a98 2
+  if (!read_py_rec()) return false; // saved char does not exist..
+  read_save_structs();
+d101 2
+@
+
+
+1.9
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000,2001 Bridget Spitznagel                        *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+@
+
+
+1.8
+log
+@detect crashes, pop up a form to kill or attempt-to-recover character
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d24 1
+a24 1
+#include <Pilot.h>
+@
+
+
+1.7
+log
+@crash recovery, maybe
+@
+text
+@d33 13
+a45 1
+// The crash record is just like a lock file (e.g. netscape).
+d69 5
+a78 1
+
+d209 1
+a209 1
+  Boolean ok = false, crashed = false;
+d219 2
+a220 2
+  size += sizeof(Boolean);
+  //  size += sizeof(Char) * 240;
+d249 2
+a250 6
+    DmWrite(p, offset, &crashed, sizeof(Boolean));
+    offset += sizeof(Boolean);
+    //  don't forget history_block..
+    //    DmWrite(p, offset, &pyflags, sizeof(struct flags));
+    //    offset += sizeof(struct flags);
+    //    DmStrCopy(p, offset, history_block); // hm, hope that works
+d262 1
+a262 2
+  VoidPtr p0, p;
+  //  Char *hist;
+d265 1
+a265 1
+  Boolean b=true, crashed;
+d270 2
+a271 2
+  vh = DmGetRecord(MoriaSaveDB, recindex);
+  p = p0 = MemHandleLock(vh);
+a294 1
+  p += sizeof(floor_save);
+d296 3
+a298 2
+  crashed = ((Boolean *) p)[0];
+  DmWrite(p0, p - p0, &b, sizeof(Boolean));     // will it work?
+d301 4
+a304 3
+  DmReleaseRecord(MoriaSaveDB, recindex, true);
+  DmSetRecordInfo(MoriaSaveDB, recindex, NULL, &uniqueID); // set its uid!
+  return (!crashed);
+@
+
+
+1.6
+log
+@backed out of mess-with-py-record change, I think.  notes on crash recovery
+@
+text
+@d33 37
+d193 1
+a193 1
+  Boolean ok = false;
+d203 1
+d233 2
+d250 1
+a250 1
+  VoidPtr p;
+d254 1
+d259 2
+a260 2
+  vh = DmQueryRecord(MoriaSaveDB, recindex);
+  p = MemHandleLock(vh);
+d284 5
+a288 3
+  //  p += sizeof(floor_save);
+  //  hist = (Char *) p;
+  //  StrNCopy(history_block, p, 240);
+d290 3
+a292 1
+  return true;
+@
+
+
+1.5
+log
+@getting py record to work again...
+@
+text
+@a26 1
+#include "save.h"
+d28 2
+a29 3
+static void update_save_structs() SEC_5;
+static void create_py_rec() SEC_5;
+static Boolean write_py_rec() SEC_5;
+d31 1
+a31 1
+static Boolean read_save_structs() SEC_5;
+a32 82
+
+// this is read from only in this file
+static VoidPtr locked_py_rec = NULL;
+
+
+// called at start
+Boolean load_char()
+{
+  Boolean ok = false;
+  if (read_py_rec()) {
+    read_save_structs(); // check for zeroed record or dead character, too:
+    ok = (my_save_info.current_time != 0) && !death;
+  }
+  if (!ok) {
+    // saved char does not exist.. create its record and lock it
+    create_py_rec();
+    py_record_lock(true);
+    return false;
+  }
+
+  if (false /* crash detected */ ) { //    recover....
+    new_level_flag = true;
+    dun_level = 0;
+    // Test this and tweak it until it works.
+    // Basically I want it to send the character to town level.
+  }
+  return true;
+}
+
+// this is called when no py record exists, or it is deemed screwy
+static void create_py_rec()
+{
+  ULong uniqueID;
+  UInt index;
+  VoidHand vh;
+  VoidPtr p;
+  ULong size = sizeof(struct flags) + sizeof(struct stats);
+  size += sizeof(struct misc);
+  size += sizeof(UChar) * (MAX_SPELLS+1);
+  size += sizeof(Short) * MAX_PLAYER_LEVEL;
+  size += sizeof(my_save) + sizeof(floor_save);
+  //  size += sizeof(Char) * 240;
+  uniqueID = REC_PY;
+  // if we've been called, either no such record exists or
+  // it exists and is screwed up, so delete it first.
+  if (0 == DmFindRecordByID(MoriaSaveDB, uniqueID, &index))
+    DmRemoveRecord(MoriaSaveDB, index);
+  index = DmNumRecords(MoriaSaveDB);
+  vh = DmNewRecord(MoriaSaveDB, &index, size);
+  p = MemHandleLock(vh);
+  if (p)
+    DmSet(p, 0, size, 0);
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaSaveDB, index, true);
+  DmSetRecordInfo(MoriaSaveDB, index, NULL, &uniqueID);
+}
+
+// called to lock on creation or start, and (from lock.c) to unlock on exit
+Boolean py_record_lock(Boolean unlocked) // called from lock.c, unlocked=false
+{
+  ULong uniqueID;
+  static UInt index;
+  static VoidHand vh;
+  //  VoidPtr p;
+  if (unlocked) {
+    // lock record
+    uniqueID = REC_PY;
+    if (0!=DmFindRecordByID(MoriaSaveDB, uniqueID, &index)) return false;
+    vh = DmGetRecord(MoriaSaveDB, index);
+    locked_py_rec = MemHandleLock(vh);
+  } else {
+    // unlock record
+    if (locked_py_rec != NULL) {
+      locked_py_rec = NULL;
+      MemHandleUnlock(vh);
+      DmReleaseRecord(MoriaSaveDB, index, true);
+    }
+  }
+  return true;
+}
+
+// called on exit
+d39 1
+a39 1
+  update_save_structs();
+d41 1
+a41 1
+  return write_py_rec(); // yay.
+d43 7
+a49 2
+
+// called to "clean up" a dead character
+d52 2
+a53 12
+  ULong size = sizeof(struct flags) + sizeof(struct stats);
+  size += sizeof(struct misc);
+  size += sizeof(UChar) * (MAX_SPELLS+1);
+  size += sizeof(Short) * MAX_PLAYER_LEVEL;
+  size += sizeof(my_save) + sizeof(floor_save);
+  if (!locked_py_rec) {
+    py_record_lock(false);
+    create_py_rec();
+    py_record_lock(true);
+  } else
+  DmSet(locked_py_rec, 0, size, 0);
+}
+d55 3
+a57 5
+// called whenever it seems like a good idea
+void checkpoint_me()
+{
+  update_save_structs();
+  write_py_rec();
+a58 19
+/*
+#define CKPT_spell_learned 0
+void chpt_misc_ulong(Short offset, ULong n)
+{
+  DmWrite(locked_py_rec, offset, &n, sizeof(ULong));
+}
+void chpt_misc_long(Short offset, Long n)
+{
+  DmWrite(locked_py_rec, offset, &n, sizeof(Long));
+}
+void chpt_misc_short(Short offset, Short n)
+{
+  DmWrite(locked_py_rec, offset, &n, sizeof(Short));
+}
+void chpt_misc_boolean(Short offset, Boolean n)// use to turn panic_save on
+{
+  DmWrite(locked_py_rec, offset, &n, sizeof(Boolean));
+}
+*/
+d60 1
+a60 9
+// NOTES ON "panic_save" PROACTIVE CRASH RECOVERY keeping pointers up to date..
+// NOTE: invy_insert, invy_delete  modify inven_ctr
+//       wear_wield_etc, takeoff, py_attack   modify equip_ctr
+// how about tcptr and mfptr.  (misc1.c;  misc1.c and moria3.c)
+//       popt, pusht.  popm, delete_monster, fix2_delete_monster.
+// it would be ok if each of these simply wrote through to the record.
+// add some functions in lock.c to do this (well, one function and
+// some #define offsets.  AND I'll have to keep the record open; sigh.)
+static void update_save_structs()
+d62 52
+a113 21
+  my_save_info.spell_learned = spell_learned;     /* form_spell.c, misc3.c */
+  my_save_info.spell_worked = spell_worked;  /* magic.c, prayer.c */
+  my_save_info.spell_forgotten = spell_forgotten;  /* misc3.c */
+  my_save_info.town_seed = town_seed;  // basically a constant
+  my_save_info.current_time = TimGetSeconds();  // what do I use this for?
+  my_save_info.birth_date = birth_date;  // basically a constant
+  my_save_info.turn =  turn;  /* dungeon.c */
+  my_save_info.total_points = total_points(); /* computed from
+						 max_exp, max_dlv, au,
+						 dun_level, inventory  */
+  my_save_info.missile_ctr = missile_ctr; /* misc2.c */
+  my_save_info.inven_ctr = inven_ctr; // see above
+  my_save_info.inven_weight = inven_weight; /* lots of places!
+					       dungeon, form_inv, misc3,
+					       moria1,3,4 */
+  my_save_info.equip_ctr = equip_ctr; /* form_inv.c, moria1,3.c */
+  my_save_info.tcptr = tcptr; /* misc1.c */
+  my_save_info.mfptr = mfptr; /* misc1.c, moria3.c */
+  my_save_info.total_winner = total_winner; /* moria1,3 */
+  //  my_save_info.panic_save = false;
+  //  my_save_info.unused = false;
+d116 1
+a116 1
+  floor_save_info.dun_level = dun_level; // lots of places for these three
+d119 2
+a120 2
+  floor_save_info.mon_tot_mult = mon_tot_mult; /* creature, dungeon, moria3 */
+  floor_save_info.cur_height = cur_height; // these four are sort of constant
+d125 1
+a125 2
+// Returns true if there is no need to recover from crash.
+static Boolean read_save_structs()
+d131 1
+a131 1
+  //current_time    = my_save_info.TimGetSeconds();
+a151 6
+  /*
+  if (my_save_info.panic_save)
+    return false;
+  else
+  */
+    return true;
+d154 1
+a154 2
+extern VoidPtr locked_py_rec; // see lock.c
+static Boolean write_py_rec()
+d156 49
+a204 28
+  Short offset = 0;
+  VoidPtr p = locked_py_rec;
+  if (p == NULL)
+    return false;
+  // Write things.
+  DmWrite(p, offset, &pymisc, sizeof(struct misc));
+  offset += sizeof(struct misc);
+  DmWrite(p, offset, &pystats, sizeof(struct stats));
+  offset += sizeof(struct stats);
+  DmWrite(p, offset, &pyflags, sizeof(struct flags));
+  offset += sizeof(struct flags);
+  //  player_hp;
+  DmWrite(p, offset, player_hp, sizeof(Short) * MAX_PLAYER_LEVEL);
+  offset += sizeof(Short) * MAX_PLAYER_LEVEL;
+  //  spell_order;
+  DmWrite(p, offset, spell_order, sizeof(UChar) * (MAX_SPELLS+1));
+  offset += sizeof(UChar) * (MAX_SPELLS+1);
+  //  my_save;
+  DmWrite(p, offset, &my_save_info, sizeof(my_save));
+  offset += sizeof(my_save);
+  //  floor_save;
+  DmWrite(p, offset, &floor_save_info, sizeof(floor_save));
+  offset += sizeof(floor_save);
+  //  don't forget history_block..
+  //    DmWrite(p, offset, &pyflags, sizeof(struct flags));
+  //    offset += sizeof(struct flags);
+  //    DmStrCopy(p, offset, history_block); // hm, hope that works
+  return true;
+a205 2
+
+
+d208 2
+d211 1
+d213 8
+a220 5
+  //  Char *hist;
+
+  if (!py_record_lock(true)) return false;
+  p = locked_py_rec;
+  if (!p) return false;   // (should not happen)
+d224 1
+a224 1
+  if (err) return false;
+d227 1
+a227 1
+  if (err) return false;
+d230 1
+a230 1
+  if (err) return false;
+d233 1
+a233 1
+  if (err) return false;
+d236 1
+a236 1
+  if (err) return false;
+d239 1
+a239 1
+  if (err) return false;
+d242 1
+a242 1
+  if (err) return false;
+d246 1
+@
+
+
+1.4
+log
+@messing around with py record: always exists, sometimes zeroed, always locked during gameplay
+@
+text
+@d30 1
+a30 1
+static Boolean create_py_rec() SEC_5;
+d44 4
+a47 2
+  if (read_py_rec())
+    ok = (my_save_info.current_time != 0);
+d98 1
+a98 1
+  VoidPtr p;
+d131 5
+d200 1
+a200 1
+  my_save_info.unused = false;
+d240 1
+d244 1
+d252 2
+a253 1
+  if (locked_py_rec == NULL)
+@
+
+
+1.3
+log
+@tweaked notice
+@
+text
+@d27 1
+d29 1
+a29 1
+static void create_save_structs() SEC_5;
+d31 1
+d33 1
+a33 1
+static void read_save_structs() SEC_5;
+d35 80
+d121 1
+a121 1
+  create_save_structs();
+d123 1
+a123 1
+  return create_py_rec(); // yay.
+d125 29
+a153 1
+Boolean load_char()
+d155 1
+a155 3
+  if (!read_py_rec()) return false; // saved char does not exist..
+  read_save_structs();
+  return true;
+d157 1
+a157 2
+// Dude.  I get a fatal error when the record does not exist.  WHY.
+void antisave_char()
+d159 1
+a159 6
+  ULong uniqueID;
+  UInt index;
+
+  uniqueID = REC_PY;
+  if (0 == DmFindRecordByID(MoriaSaveDB, uniqueID, &index))
+    DmRemoveRecord(MoriaSaveDB, index);      // EX TERM IN ATE !
+d161 1
+d163 9
+a171 1
+typedef struct my_save_struct
+d173 21
+a193 52
+  ULong spell_learned;
+  ULong spell_worked;
+  ULong spell_forgotten;
+  ULong town_seed; // skip randes_seed
+  ULong current_time; // use TimGetWhatever
+  ULong birth_date; // in create.c
+  Long turn;
+  Long total_points; // call total_points() to calc this
+  Short missile_ctr;
+  Short inven_ctr;
+  Short inven_weight;
+  Short equip_ctr;
+  Short tcptr;
+  Short mfptr;
+  Boolean total_winner;
+  Boolean death;
+  // Skipping: panic_save, noscore.
+  Char died_from[25];
+  // Also save the previous-message-foo!
+} my_save;
+my_save my_save_info;
+typedef struct floor_save_struct
+{
+  Short dun_level;
+  Short char_row;
+  Short char_col;
+  Short mon_tot_mult;
+  Short cur_height;
+  Short cur_width;
+  Short max_panel_rows;
+  Short max_panel_cols;
+} floor_save;
+floor_save floor_save_info;
+
+
+static void create_save_structs()
+{
+  my_save_info.spell_learned = spell_learned;     
+  my_save_info.spell_worked = spell_worked;
+  my_save_info.spell_forgotten = spell_forgotten;
+  my_save_info.town_seed = town_seed;
+  my_save_info.current_time = TimGetSeconds();
+  my_save_info.birth_date = birth_date;
+  my_save_info.turn =  turn;
+  my_save_info.total_points = total_points();
+  my_save_info.missile_ctr = missile_ctr;
+  my_save_info.inven_ctr = inven_ctr;
+  my_save_info.inven_weight = inven_weight;
+  my_save_info.equip_ctr = equip_ctr;
+  my_save_info.tcptr = tcptr;
+  my_save_info.mfptr = mfptr;
+  my_save_info.total_winner = total_winner;
+d196 1
+a196 1
+  floor_save_info.dun_level = dun_level;
+d199 2
+a200 2
+  floor_save_info.mon_tot_mult = mon_tot_mult;
+  floor_save_info.cur_height = cur_height;
+d205 2
+a206 1
+static void read_save_structs()
+d212 1
+a212 1
+  //  current_time    = my_save_info.TimGetSeconds();
+d233 4
+d239 2
+a240 1
+static Boolean create_py_rec()
+d242 27
+a268 49
+  Boolean ok = false;
+  ULong uniqueID;
+  UInt index;
+  VoidHand vh;
+  VoidPtr p;
+  ULong size = sizeof(struct flags) + sizeof(struct stats);
+  size += sizeof(struct misc);
+  size += sizeof(UChar) * (MAX_SPELLS+1);
+  size += sizeof(Short) * MAX_PLAYER_LEVEL;
+  size += sizeof(my_save) + sizeof(floor_save);
+  //  size += sizeof(Char) * 240;
+  // Delete existing py record
+  uniqueID = REC_PY;
+  if (0 == DmFindRecordByID(MoriaSaveDB, uniqueID, &index))
+    DmRemoveRecord(MoriaSaveDB, index);      // EX TERM IN ATE !
+  index = DmNumRecords(MoriaSaveDB);
+  vh = DmNewRecord(MoriaSaveDB, &index, size);
+  p = MemHandleLock(vh);
+  if (p) {
+    Short offset = 0;
+    // Write things.
+    DmWrite(p, offset, &pymisc, sizeof(struct misc));
+    offset += sizeof(struct misc);
+    DmWrite(p, offset, &pystats, sizeof(struct stats));
+    offset += sizeof(struct stats);
+    DmWrite(p, offset, &pyflags, sizeof(struct flags));
+    offset += sizeof(struct flags);
+    //  player_hp;
+    DmWrite(p, offset, player_hp, sizeof(Short) * MAX_PLAYER_LEVEL);
+    offset += sizeof(Short) * MAX_PLAYER_LEVEL;
+    //  spell_order;
+    DmWrite(p, offset, spell_order, sizeof(UChar) * (MAX_SPELLS+1));
+    offset += sizeof(UChar) * (MAX_SPELLS+1);
+    //  my_save;
+    DmWrite(p, offset, &my_save_info, sizeof(my_save));
+    offset += sizeof(my_save);
+    //  floor_save;
+    DmWrite(p, offset, &floor_save_info, sizeof(floor_save));
+    offset += sizeof(floor_save);
+    //  don't forget history_block..
+    //    DmWrite(p, offset, &pyflags, sizeof(struct flags));
+    //    offset += sizeof(struct flags);
+    //    DmStrCopy(p, offset, history_block); // hm, hope that works
+    ok = true;
+  }
+  MemPtrUnlock(p);
+  DmReleaseRecord(MoriaSaveDB, index, true);
+  DmSetRecordInfo(MoriaSaveDB, index, NULL, &uniqueID); // set its uid!
+  return ok;
+d270 2
+a273 2
+  UInt recindex;
+  VoidHand vh;
+d275 1
+d277 4
+a280 9
+  Err err;
+  ULong uniqueID;
+  //
+  uniqueID = REC_PY;
+  err = DmFindRecordByID(MoriaSaveDB, uniqueID, &recindex);
+  if (err) return false; // didn't find it
+  vh = DmQueryRecord(MoriaSaveDB, recindex);
+  p = MemHandleLock(vh);
+  if (!p) return false;   // we're in some kind of trouble
+d284 1
+a284 1
+  if (err) { MemHandleUnlock(vh); return false; }
+d287 1
+a287 1
+  if (err) { MemHandleUnlock(vh); return false; }
+d290 1
+a290 1
+  if (err) { MemHandleUnlock(vh); return false; }
+d293 1
+a293 1
+  if (err) { MemHandleUnlock(vh); return false; }
+d296 1
+a296 1
+  if (err) { MemHandleUnlock(vh); return false; }
+d299 1
+a299 1
+  if (err) { MemHandleUnlock(vh); return false; }
+d302 1
+a302 1
+  if (err) { MemHandleUnlock(vh); return false; }
+a305 1
+  MemHandleUnlock(vh);
+@
+
+
+1.2
+log
+@rough cut of top-score list
+@
+text
+@d5 1
+a5 1
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+@
+
+
+1.1
+log
+@added saving
+@
+text
+@d69 1
+a69 1
+  Long total_points; // mumble.  this must be calculated.
+d106 1
+a106 1
+  my_save_info.total_points = 0; // = total_points;
+d134 1
+a134 1
+  //  total_points    = my_save_info.total_points;
+@
+

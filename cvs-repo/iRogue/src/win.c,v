@@ -1,0 +1,105 @@
+head	1.1;
+access;
+symbols
+	pre-internationalization_20040113:1.1.2.3
+	Release-2002_05_10-on-Handera-branch:1.1
+	Release-2001_07_01-on-Handera-branch:1.1
+	Release-2001_04_26-Handera-branch:1.1.0.2
+	Release-2001_04_26:1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.04.27.03.56.38;	author i0lanthe;	state Exp;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2003.11.03.19.40.00;	author i0lanthe;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2003.11.04.14.32.53;	author i0lanthe;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2004.01.13.07.47.21;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@'easy' way to update screen independent of being inverted
+@
+text
+@#include "palm.h"
+#include "librogue.h"
+
+extern RoguePreferenceType my_prefs;
+
+void qWinEraseRectangle(RectanglePtr r, Word cornerDiam)
+{
+  if (my_prefs.black_bg)
+    WinDrawRectangle(r, cornerDiam);
+  else
+    WinEraseRectangle(r, cornerDiam);
+}
+void qWinDrawLine(short x1, short y1, short x2, short y2)
+{
+  if (my_prefs.black_bg)
+    WinEraseLine(x1, y1, x2, y2);
+  else
+    WinDrawLine(x1, y1, x2, y2);
+}
+void qWinDrawChars(CharPtr chars, Word len, SWord x, SWord y)
+{
+  if (my_prefs.black_bg)
+    WinDrawInvertedChars(chars, len, x, y);
+  else
+    WinDrawChars(chars, len, x, y);
+}
+@
+
+
+1.1.2.1
+log
+@moving files around
+@
+text
+@d2 1
+a2 1
+#include "prototypes.h"
+@
+
+
+1.1.2.2
+log
+@reorganizing header files
+@
+text
+@d1 2
+a2 1
+#include "iRogue.h"
+@
+
+
+1.1.2.3
+log
+@added on-board color frobbing.  la la la.
+@
+text
+@d19 1
+a19 1
+void qWinDrawChars(const Char *chars, Word len, SWord x, SWord y)
+@
+
+

@@ -1,0 +1,92 @@
+head	1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2006.08.08.03.45.50;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@commit everything before massive style change
+@
+text
+@---------
+| 1.0.0 |
+---------
+(summary of changes in 0.45, 0.46, 0.47)
+
+Color.
+
+You can get black background (even if you do not have color) by
+checking the "Invert" box in Preferences.
+
+New preference to automatically sort your inventory.
+
+New preference to show pie slices on the screen (may still be buggy).
+
+Top score list can be viewed any time via the menu.
+
+Menus and the Preferences screen are reorganized just to confuse you.
+
+The screen scrolls sooner, before you run out of 'walk' donut in east/west.
+
+Fixed the "hardware scroll-buttons in object creation form" bug.
+
+Created some bugs: When the screen is black-background, the Graffiti
+shift indicator leaves white behind itself (e.g. if you tap for
+punctuation).
+
+--------
+| 0.42 |
+--------
+
+New preference: Small font, if selected, lets you see more of the
+dungeon at a time.
+
+New preference: Rogue-relative navigation, if selected, centers the
+movement donut/pie around your '@@'. Try it in combination with the
+centered screen option, or not.
+
+New items on Wiz menu: More flexible saving/restoring. If you are
+frustrated because you die a lot (or get emotionally attached to a
+character) you might like this.
+
+minor bug fixes including death by starvation.
+
+--------
+| 0.41 |
+--------
+
+Fixed some bugs related to integer division (healing potions, scores). 
+
+Top ten list allows multiple entries per player. Wizard scores are not
+recorded.
+
+If you have played an earlier version than 0.40, you know that there
+used to be two files iRogue.prc and iRogue_Library.prc. The game is
+now one file (because we are at last compiling with prc-tools 2.0 and
+multigen), so you can delete the old Library from your PalmPilot as
+soon as you install the new iRogue.prc.
+
+In Preferences, you can indicate that you would like the screen to
+stay "centered" around your rogue. This is off by default (flickering
+is sometimes visible and may annoy) but be sure to try it out; many
+people requested it.
+
+You can move using the classic "hjklyubn". This is probably only of
+interest if you have a keyboard.
+
+You can bind "inventory" to a hardware button. 
+
+Fixed some bugs, e.g. throwing a cursed object. @

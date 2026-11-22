@@ -1,0 +1,68 @@
+head	1.3;
+access;
+symbols
+	Release-2001_08_06:1.3
+	Release-2001_06_15:1.2;
+locks; strict;
+comment	@ * @;
+
+
+1.3
+date	2001.08.05.03.25.14;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.05.05.20.26.20;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.03.01.06.34;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@moved scores into saveDB; unique ids no longer used in iLarnDB; next, beaming
+@
+text
+@void qWinEraseRectangle(RectanglePtr r, Word cornerDiam) SEC_5;
+void qWinDrawLine(short x1, short y1, short x2, short y2) SEC_5;
+void qWinEraseLine(short x1, short y1, short x2, short y2) SEC_5;
+void qWinDrawChars(CharPtr chars, Word len, SWord x, SWord y) SEC_5;
+@
+
+
+1.2
+log
+@tinkering with map.  fixed keyboard running bug
+@
+text
+@d1 4
+a4 4
+void qWinEraseRectangle(RectanglePtr r, Word cornerDiam) SEC_L;
+void qWinDrawLine(short x1, short y1, short x2, short y2) SEC_L;
+void qWinEraseLine(short x1, short y1, short x2, short y2) SEC_L;
+void qWinDrawChars(CharPtr chars, Word len, SWord x, SWord y) SEC_L;
+@
+
+
+1.1
+log
+@inverted-screen (black background) possible but 4-button popup is still white
+@
+text
+@d1 4
+a4 4
+void qWinEraseRectangle(RectanglePtr r, Word cornerDiam);
+void qWinDrawLine(short x1, short y1, short x2, short y2);
+void qWinEraseLine(short x1, short y1, short x2, short y2);
+void qWinDrawChars(CharPtr chars, Word len, SWord x, SWord y);
+@
+

@@ -1,0 +1,2198 @@
+head	1.12;
+access;
+symbols
+	pre-internationalization_20040113:1.12.2.17
+	Release-2002_05_10-on-Handera-branch:1.12.2.10
+	Release-2001_07_01-on-Handera-branch:1.12.2.9
+	Release-2001_04_26-Handera-branch:1.12.0.2
+	Release-2001_04_26:1.12
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.12
+date	2001.04.27.03.49.32;	author i0lanthe;	state Exp;
+branches
+	1.12.2.1;
+next	1.11;
+
+1.11
+date	2001.04.25.04.11.16;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2001.03.08.02.39.03;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2001.03.06.02.59.43;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2001.02.27.06.08.43;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.02.26.04.35.12;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.02.25.00.37.11;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.02.24.05.28.19;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.02.24.03.25.02;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.08.21.04.32.35;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.08.19.02.00.20;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.06.15.21.16.47;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.06.15.21.16.47;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+1.12.2.1
+date	2001.05.28.02.39.20;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.2;
+
+1.12.2.2
+date	2001.05.30.15.06.34;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.3;
+
+1.12.2.3
+date	2001.06.19.00.32.36;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.4;
+
+1.12.2.4
+date	2001.06.19.01.04.11;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.5;
+
+1.12.2.5
+date	2001.06.19.01.32.03;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.6;
+
+1.12.2.6
+date	2001.06.19.01.48.09;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.7;
+
+1.12.2.7
+date	2001.06.29.01.37.30;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.8;
+
+1.12.2.8
+date	2001.07.02.02.19.30;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.9;
+
+1.12.2.9
+date	2001.07.02.03.14.01;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.10;
+
+1.12.2.10
+date	2002.05.10.22.33.15;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.11;
+
+1.12.2.11
+date	2003.11.03.07.51.54;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.12;
+
+1.12.2.12
+date	2003.11.03.19.16.22;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.13;
+
+1.12.2.13
+date	2003.11.04.14.32.53;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.14;
+
+1.12.2.14
+date	2003.11.04.16.02.06;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.15;
+
+1.12.2.15
+date	2003.11.04.17.02.49;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.16;
+
+1.12.2.16
+date	2004.01.12.03.46.36;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.17;
+
+1.12.2.17
+date	2004.01.13.07.47.21;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.12
+log
+@odds and ends
+@
+text
+@/*********************************************************************
+ * iRogue - Rogue adapted for the PalmPilot.                         *
+ * Copyright (C) 1999 Bridget Spitznagel                             *
+ * Note: This program is derived from rogue 5.3-clone for Linux.     *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+/*
+ * main.c
+ *
+ * Ye Olde rogue comment:
+ *
+ * This source herein may be modified and/or distributed by anybody who
+ * so desires, with the following restrictions:
+ *    1.)  No portion of this notice shall be removed.
+ *    2.)  Credit shall not be taken for the creation of this source.
+ *    3.)  This code is not to be traded, sold, or used for personal
+ *         gain or profit.
+ *
+ */
+
+#include "palm.h"
+#include "iRogueRsc.h"
+#include "Globals.h"
+
+#include "rogue.h"
+
+extern struct state_of_the_union * sotu;
+extern Boolean do_make_new_level;
+
+
+#define abs(a)                                  (((a) >= 0) ? (a) : (-(a)))
+#define sgn(x) ( (x) >= 0 ? 1 : -1 )
+
+
+// some stuff that used to be in iRogue.c:
+Boolean to_the_biteme = false;
+Short direction;
+Short task;
+Short inventory_item;
+Short count = 0;
+Short revivify_which = 0;
+UChar revivify_p = STATUS_NORMAL; // == 0, do not revivify
+Boolean whatsit_p = false;
+// end of stuff
+extern void LeaveForm(); // iRogue.c
+extern Boolean topten_just_browsing;
+
+
+/**********************************************************************
+                       INIT_GAME
+ IN:
+ various globals
+ OUT:
+ nothing
+ PURPOSE:
+ Do all the allocation and initialization needed to begin a session.
+ (Later, we will check for a save file, and load the character
+ information from it into the allocated and initialized space.)
+ **********************************************************************/
+void init_game() {
+  seed_random();
+  alloc_and_init_sotu();
+  alloc_id_arrays();
+  mix_colors();
+  get_wand_and_ring_materials();
+}
+
+/**********************************************************************
+                       MAKE_NEW_LEVEL
+ IN:
+ various globals
+ OUT:
+ nothing
+ PURPOSE:
+ Make a new dungeon map; place objects, monsters, etc., in it.
+ It is called whenever the rogue goes up/down a level (via stairs or
+ trapdoor), and at the start of a session IF no save file is found
+ (whatever sort of space is allocated here had better also be
+ allocated by the reload function or someone will be unhappy later...)
+ NOTE: This must be called AFTER the MainForm is drawn - this is
+ why there is that global variable do_make_new_level kicking around.
+ **********************************************************************/
+/* I hope none of these allocate space that chuvmey doesn't. */
+extern RoguePreferenceType my_prefs;
+void make_new_level() {
+  clear_level(sotu);
+  make_level(); /* Illegal instruction: 100a */
+  put_objects(); 
+  put_stairs(sotu); 
+  add_traps(sotu); 
+  put_mons(); 
+  put_player(sotu->party_room, sotu); 
+  print_stats(STAT_ALL, sotu); 
+
+  // aggravate!
+  if (sotu->ring_flags & RING_AGGRAVATE) {
+    if (sotu->ring_flags & RING_ESP)
+      message("you sense hostility", sotu);
+    // I should also do this when you put the ring on,  But I'm not.
+    aggravate(sotu);
+  }
+
+  // Also, if we are interested in autosaving, this is the time for it.
+  //  message("Autosaving...", sotu);
+  if (my_prefs.autosave_on)
+    save_character(sotu, 0);
+}
+
+
+
+/*****************************************************************************
+ *                                                                           *
+ *                start of a dungeon level                                   *
+ *                                                                           *
+ *****************************************************************************/
+static void start_of_Play_Level_loop() {
+
+  sotu->interrupted = false;
+  /*
+  if (hit_message[0]) {
+    message(hit_message, 1);
+    hit_message[0] = 0;
+  }
+  */
+
+  if (sotu->trap_door) {
+    /* not sure about this - from use of '>' */
+    free_old_level(sotu);
+    do_feep(300, 9);
+    make_new_level();
+    move_visible_window(sotu->roguep->col, sotu->roguep->row, true);
+    /* end not sure */
+    sotu->trap_door = 0;
+    // XXX Crosshairs
+    if (my_prefs.crosshairs_on) draw_crosshairs();
+    return;
+  }
+/*    move(rogue->row, rogue->col); */
+  refresh();
+
+}
+
+
+
+/*****************************************************************************
+               Main Help Handle Cmd
+
+  Caller had darn well better check 'c' is a reasonable character
+  c = e->data.keyDown.chr    OR    c = e->data.menu.itemID - 4000
+  Returns:  "handled"                           
+*****************************************************************************/
+static Boolean main_help_handle_cmd(Char c) {
+  FormPtr frm;
+  to_the_biteme = false;
+  frm = FrmGetActiveForm();
+
+  check_message();
+
+  /* Implemented:    m   d s i f F e q r z w t P R T W < >
+     Not impl.:    .   ,   (requires rest(), kick_into_pack())
+           also,   c
+   */
+  /* Removed:        d         e q r   w   P R
+   */
+
+  switch(c) {
+  case '>':
+  case pageDownChr:
+    if (drop_check(sotu)) {
+      free_old_level(sotu);
+      do_feep(300, 9);
+      make_new_level();
+      move_visible_window(sotu->roguep->col, sotu->roguep->row, true);
+    }
+    return true;
+  case '<':
+  case pageUpChr:
+    if (check_up()) {
+      free_old_level(sotu);
+      do_feep(400, 9);
+      make_new_level();
+      move_visible_window(sotu->roguep->col, sotu->roguep->row, true);
+    }
+    return true;
+  case 'm':
+    direction = NO_DIRECTION;
+    task = INV_MOVE;
+    FrmPopupForm(DirectionForm);
+    return true;
+  case 'F':
+    to_the_biteme = true;
+    /* FALL THROUGH to 'f' !!! */
+  case 'f':
+    direction = NO_DIRECTION;
+    task = INV_FIGHT;
+    FrmPopupForm(DirectionForm);
+    return true;
+  case 'i':
+    /* Inventory */
+    if (sotu->roguep->pack.next_object != NULL) {
+      inventory_item = -1;
+      task = INV_DROP;
+      FrmPopupForm(InvSelectForm);
+    } else {
+      message("your pack is empty\n", sotu);
+    }
+    return true;
+    /*
+      case 'c':
+      inventory_item = -1;
+      task = INV_CALL;
+      FrmPopupForm(InvSelectForm);
+      return true;
+      */
+  case 's':
+    search( ((count > 0) ? count : 1), false);
+    count = 0;
+    /*    search(1, false); */
+    return true;
+  case '.':
+    rest( (count > 0) ? count : 1 );
+    count = 0;
+    /*    rest(1); */
+    return true;
+  case ',':
+    kick_into_pack();
+    return true;
+  case 'Q':
+    /* do an Alert-thingy to Confirm, then:
+    killed_by((object *) 0, QUIT);
+    */
+    if (0 == FrmAlert(QuitP)) {
+      killed_by((object *) 0, QUIT, sotu);
+      FrmPopupForm(TopTenForm);
+    }
+    return true;
+  case '^':
+    direction = NO_DIRECTION;
+    task = INV_IDTRAP;
+    FrmPopupForm(DirectionForm);
+    return true;
+  case 't':
+    inventory_item = -1;
+    direction = NO_DIRECTION;
+    task = INV_THROW;
+    FrmPopupForm(DirectionForm);
+    return true; // hello, why was this false?
+  case 'z':
+    inventory_item = -1;
+    direction = NO_DIRECTION;
+    task = INV_ZAP;
+    FrmPopupForm(DirectionForm);
+    return true; // hello, why was this false?
+  // re-added the following so that people can use palm keyboards :-)
+  case 'h':
+    one_move_rogue(WEST, true, my_prefs.stay_centered);
+    return true;
+  case 'j':
+    one_move_rogue(SOUTH, true, my_prefs.stay_centered);
+    return true;
+  case 'k':
+    one_move_rogue(NORTH, true, my_prefs.stay_centered);
+    return true;
+  case 'l':
+    one_move_rogue(EAST, true, my_prefs.stay_centered);
+    return true;
+  case 'y':
+    one_move_rogue(NORTHWEST, true, my_prefs.stay_centered);
+    return true;
+  case 'u':
+    one_move_rogue(NORTHEAST, true, my_prefs.stay_centered);
+    return true;
+  case 'b':
+    one_move_rogue(SOUTHWEST, true, my_prefs.stay_centered);
+    return true;
+  case 'n':
+    one_move_rogue(SOUTHEAST, true, my_prefs.stay_centered);
+    return true;
+  case 'H':
+    multiple_move_rogue_Ctrl(WEST, my_prefs.dave_mode);
+    return true;
+  case 'J':
+    multiple_move_rogue_Ctrl(SOUTH, my_prefs.dave_mode);
+    return true;
+  case 'K':
+    multiple_move_rogue_Ctrl(NORTH, my_prefs.dave_mode);
+    return true;
+  case 'L':
+    multiple_move_rogue_Ctrl(EAST, my_prefs.dave_mode);
+    return true;
+  case 'Y':
+    multiple_move_rogue_Ctrl(NORTHWEST, my_prefs.dave_mode);
+    return true;
+  case 'U':
+    multiple_move_rogue_Ctrl(NORTHEAST, my_prefs.dave_mode);
+    return true;
+  case 'B':
+    multiple_move_rogue_Ctrl(SOUTHWEST, my_prefs.dave_mode);
+    return true;
+  case 'N':
+    multiple_move_rogue_Ctrl(SOUTHEAST, my_prefs.dave_mode);
+    return true;
+  }
+  return false;
+}
+
+
+/**********************************************************************
+
+                       MAIN FORM
+
+**********************************************************************/
+
+
+static Boolean maybe_scroll_screen(Short x, Short y, Short count);
+static void rogue_relativize(Short *x, Short *y);
+//void clear_crosshairs(); // display.c
+extern Boolean crosshairs_dirty;
+Boolean Main_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+/*   Boolean last_was_digit; */
+  Short tmp_x, tmp_y, click_dir, dist;
+  Boolean do_run = true;
+  Boolean do_crosshairs = false;
+  Char buf[40];
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* mine */
+    /** place any form-initialization stuff here **/
+    /** init_game(); should go somewhere ELSE. */
+    /* b/c this stuff will be called when we return from a popup. ? */
+    /* end mine */
+    FrmDrawForm(frm);
+    clear(true); // to make color background start out right.  I hope.
+
+    if (do_make_new_level) {
+      // (startup) We did not find an autosave image in the database, or
+      //     the rogue that it represents is dead, or,
+      // (during play) we went up or down a dungeon level
+      do_make_new_level = false;
+      make_new_level();
+      message("Welcome to iRogue", sotu);
+    } else {
+      // (startup) We found a 'live' autosave image, or
+      // (during play) we were requested to load a saved rogue.
+      clear_level(sotu);
+      load_character(sotu, revivify_which);
+      revivify_which = 0;
+      if (revivify_p != STATUS_NORMAL)
+	do_revivify(sotu); // inflict a penalty, maybe.
+      ring_stats(true, sotu); // recalculate some calculated parts of sotu
+      /* let's see if this will fly..  not bad. */
+      move_visible_window(sotu->roguep->col, sotu->roguep->row, true);
+      if (sotu->cur_room != PASSAGE)
+	light_up_room(sotu->cur_room, sotu);
+      else {
+	light_passage(sotu->roguep->row, sotu->roguep->col, sotu);
+	mvaddch(sotu->roguep->row, sotu->roguep->col, sotu->roguep->fchar);
+      }
+      print_stats(STAT_ALL, sotu);
+      /* ok, done loading character! */
+    }
+    crosshairs_dirty = false;
+    //    StrPrintF(buf, "Welcome to iRogue");
+    // 171 = << 187 = >>
+    // 249 is a pretty nice character.  also 165 and 167 (amuletish?)
+    /*
+    for (tmp_x = 165, tmp_y = 0 ; tmp_y < 32 ; ) {
+      buf[tmp_y++] = tmp_x++;
+      buf[tmp_y++] = ' ';
+    }
+    buf[tmp_y] = 0;
+    message(buf, sotu);
+    */
+    //    message("Welcome to iRogue", sotu);
+    start_of_Play_Level_loop();
+
+    handled = true;
+    goto SKIP_THE_REST;
+    break;
+
+  case menuEvent:
+    MenuEraseStatus(NULL); /* clear menu status from display */
+    // if there's a --more-- we need to show the next message
+    whatsit_p = false;
+    if (sotu->last_old_message_shown < SAVED_MSGS-1) {
+      check_message();  // clear the old message
+      message(0, sotu); // show the next buffered message
+      //      message(0, sotu); // try to show a second one, but maybe fail
+      handled = true;
+      count = 0;
+      goto SKIP_THE_REST;
+    }
+    switch(e->data.menu.itemID) {
+
+    case menu_mainAbout:
+      FrmPopupForm(AboutForm);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainMoveInstruct:
+      FrmHelp(MoveStr);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainWiztog:
+      handled = true;
+      // IF character hasn't been a wizard before, warn / ask for confirmation.
+      if (!(sotu->score_status & STATUS_WASWIZ) && !sotu->wizard)
+	if (0 == FrmAlert(WizardP))
+	  goto SKIP_THE_REST; // player said "oops, cancel"
+      sotu->wizard = !sotu->wizard;
+      sotu->score_status |= STATUS_WASWIZ;
+      check_message(); 
+      if (sotu->wizard)
+	message("wizard on", sotu);
+      else
+	message("wizard off", sotu);
+      goto SKIP_THE_REST;
+    case menu_mainWiz:
+      check_message();
+      if (sotu->wizard)
+	FrmPopupForm(WizForm);
+      else
+	message("nice try", sotu);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainAutosave:
+      save_character(sotu, 0);
+      message("autosaved.", sotu);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainSave:
+      //      check_message();
+      FrmPopupForm(SnapshotForm);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainRestore:
+      //      check_message();
+      FrmPopupForm(RevivifyForm);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainSettings:
+      FrmPopupForm(PrefsForm);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainBindings:
+      FrmPopupForm(HwButtonsForm);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainGraffiti:
+      SysGraffitiReferenceDialog(referenceDefault);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainWhatsit:
+      check_message();
+      message("tap on a character for clarification", sotu);
+      whatsit_p = true;
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainFont:
+      if (toggle_itsy())
+	move_visible_window(sotu->roguep->col, sotu->roguep->row, true);
+      else
+	FrmAlert(FontAlert);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainRefresh:
+      // Redraw the screen, centered; and the stats; also clear the message
+      move_visible_window(sotu->roguep->col, sotu->roguep->row, true);
+      print_stats(STAT_ALL, sotu); 
+      check_message();
+      // XXX Crosshairs
+      //      if (my_prefs.crosshairs_on) draw_crosshairs();
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainMap:
+      FrmPopupForm(MapForm);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainMsgs:
+      FrmPopupForm(MsgLogForm);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainScores:
+      topten_just_browsing = true;
+      FrmPopupForm(TopTenForm);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainScroll:
+      direction = NO_DIRECTION;
+      task = SCROLL_WINDOW;
+      FrmPopupForm(DirectionForm);
+      handled = true;
+      goto SKIP_THE_REST;
+    default:
+      /* this is a Monstrous Hack. */
+      tmp_x = e->data.menu.itemID - MAGIC_MENU_NUMBER;
+      if (tmp_x > 0 && tmp_x < 128)
+	handled = main_help_handle_cmd((Char) tmp_x);
+      /*      StrPrintF(buf, "you typed %c", e->data.menu.itemID - 4000);
+	      message(buf, sotu); */
+      count = 0;
+    }
+    handled = true;
+    break;
+
+  case keyDownEvent:
+    // if there's a --more-- we need to show the next message
+    whatsit_p = false;
+    if (sotu->last_old_message_shown < SAVED_MSGS-1) {
+      check_message();  // clear the old message
+      message(0, sotu); // show the next buffered message
+      //      message(0, sotu); // try to show a second one, but maybe fail
+      handled = true;
+      count = 0;
+      goto SKIP_THE_REST;
+    }
+    /* graffiti or up/down hardware button. */
+    /* I farmed this out so that the Monstrous Hack menu can use it too. */    
+    handled = main_help_handle_cmd(e->data.keyDown.chr);
+    if (handled)
+      count = 0;
+    else if ('0' <= e->data.keyDown.chr
+	     && e->data.keyDown.chr <= '9') {
+      if (count <= 0) {
+	count = e->data.keyDown.chr - '0';
+      } else if (count <= 9) {
+	count = count * 10 + e->data.keyDown.chr - '0';
+      } else {
+	count = 99; /* maxed-out */
+      } // xxx Hey, I need to make "backspace" work too.
+      check_message();
+      StrPrintF(buf, "count: %d", count);
+      message(buf, sotu);
+      handled = true;
+      goto SKIP_THE_REST;
+    }
+    break;
+
+  case penDownEvent:
+    // if there's a --more-- we need to show the next message
+    if (sotu->last_old_message_shown < SAVED_MSGS-1) {
+      check_message();  // clear the old message
+      message(0, sotu); // show the next buffered message
+      //      message(0, sotu); // try to show a second one, but maybe fail
+      handled = true;
+      count = 0;
+      goto SKIP_THE_REST;
+    }
+    if (whatsit_p) {
+      explain_it(e->screenX, e->screenY, sotu);
+      whatsit_p = false;
+      goto SKIP_THE_REST;
+    }
+    check_message();
+    /* xxxx Rogue-relative:  need to change some stuff around here.  */
+    tmp_x = e->screenX - 80;
+    tmp_y = e->screenY - 80;
+    // First, if scroll mode is on, AND the tap is on the edge of screen,
+    // calculate the screen-relative direction,
+    // and iff we can scroll any further in that direction,
+    // scroll and consider yourself done (goto not-wasting-a-turn.)
+    // (Let's just pull all that out into a "maybe_scroll_screen"
+    // and have it return a boolean.)
+    if (my_prefs.scroll_mode &&	(abs(tmp_x) > 70 || abs(tmp_y) > 70))
+      if (maybe_scroll_screen(tmp_x, tmp_y, count)) {
+	handled = true;
+	count = 0;
+	goto SKIP_THE_REST;
+      }
+    // Next, decide whether to be screen-relative or rogue-relative.
+    if (my_prefs.rogue_relative)
+      rogue_relativize(&tmp_x, &tmp_y);
+    dist = tmp_x * tmp_x + tmp_y * tmp_y;
+    // (rogue relative tmp_x and tmp_y may range from -160 to 160 !!!
+    // but this should not matter since we got rid of scroll-mode already!)
+    // Calculate the direction.
+    // Decide whether to search, walk, or run.
+    if (dist < my_prefs.walk_search_border * 10
+               * my_prefs.walk_search_border * 10) {
+      /*       message("searching", sotu);  */
+      do_feep(200,9);
+      search( ((count > 0) ? count : 1), false);
+      handled = true;
+      count = 0;
+      break;
+    } else if (dist < my_prefs.run_walk_border * 10
+	              * my_prefs.run_walk_border * 10) {
+      do_run = false;
+    }
+    if ((abs(tmp_x)) > 2 * (abs(tmp_y))) {
+      click_dir = tmp_x > 0 ? EAST : WEST;
+    } else if ((abs(tmp_y)) > 2 * (abs(tmp_x))) {
+      click_dir = tmp_y > 0 ? SOUTH : NORTH;
+    } else {
+      if (tmp_y > 0)
+	click_dir = tmp_x > 0 ? SOUTHEAST : SOUTHWEST;
+      else
+	click_dir = tmp_x > 0 ? NORTHEAST : NORTHWEST;	
+    }
+    // we have already handled the scroll-mode case.
+    if (my_prefs.run_on && do_run) {
+      multiple_move_rogue_Ctrl(click_dir, my_prefs.dave_mode); /*stop when interesting*/
+      do_feep(200,9);
+    } else {
+      one_move_rogue(click_dir, true, my_prefs.stay_centered); /* tap tap tap tap */
+      do_feep(200,9);
+    }
+    // XXX Crosshairs
+    if (my_prefs.crosshairs_on) do_crosshairs = true;
+
+    handled = true;
+    count = 0;
+    break;
+
+  default:
+    break;
+  }
+/*   last_was_digit = false; */
+
+  start_of_Play_Level_loop();
+  if (do_crosshairs) draw_crosshairs(); // cleverly we wait til after refresh()
+  check_hit_message();
+
+  /* don't do anything after this point! */
+SKIP_THE_REST:
+
+  return handled;
+}
+
+
+
+
+
+// x, y range from 70 to 80 in absolute value (but may be positive or neg.)
+// they are screen-relative, and represent where you tapped.
+static Boolean maybe_scroll_screen(Short tmp_x, Short tmp_y, Short count)
+{
+  Short scroll_dir;
+  // Calculate the direction of the tap.
+  if ((abs(tmp_x)) > 2 * (abs(tmp_y))) { // mostly x
+    scroll_dir = tmp_x > 0 ? EAST : WEST;
+  } else if ((abs(tmp_y)) > 2 * (abs(tmp_x))) { // mostly y
+    scroll_dir = tmp_y > 0 ? SOUTH : NORTH;
+  } else { // mostly diagonal
+    if (tmp_y > 0) { // south-something
+      scroll_dir = tmp_x > 0 ? SOUTHEAST : SOUTHWEST;
+    } else { // north-something
+      scroll_dir = tmp_x > 0 ? NORTHEAST : NORTHWEST;	
+    }
+  }
+  // If we can scroll in that direction, then do so and return true.
+  // Else return false.
+  if (scroll_window(scroll_dir, max(1, count))) {
+    refresh();
+    return true;
+  } else
+    return false;
+}
+
+// Convert x,y from screen relative coordinates (ranging -80 to 80)
+// to rogue-relative coordinates (ranging -160 to 160)
+static void rogue_relativize(Short *x, Short *y)
+{
+  Short rx, ry;
+  Short tap_x = *x + 80;
+  Short tap_y = *y + 80;
+  // first, where the heck is the rogue?
+  what_x_y(sotu->roguep->row, sotu->roguep->col, &rx, &ry);
+  // HOWEVER, that is one corner of the cell, and we want the "center",
+  // whatever that means.  I should fix what_x_y to do that.
+  *x = tap_x - rx;
+  *y = tap_y - ry;
+}
+
+
+
+
+
+
+/* This should only be called for:
+   e->eType is keyDownEvent,
+   keyDown.modifiers does not include poweredOnKeyMask
+*/
+/*
+Short hardware_dudes[8] = {
+  HWB_THROW, // up ... why are throw/zap not working, I wonder.
+  HWB_ZAP, // down
+  HWB_NOOP, // calc
+  HWB_MAP, // find
+  HWB_W, // date
+  HWB_N, // addr
+  HWB_S, // todo
+  HWB_E // memo
+};
+*/
+Boolean buttonsHandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  Boolean took_time = true;
+  Short dispatch_type = 0;
+
+  /*
+  if (!(ChrIsHardKey(e->data.keyDown.chr))
+      && (e->data.keyDown.chr != findChr)
+      && (e->data.keyDown.chr != pageUpChr)
+      && (e->data.keyDown.chr != pageDownChr))
+    return false; // it's NOT a hardware button.. probably graffiti.
+  */
+  // I've decided that "if (!(ChrIsHardKey(e->data.keyDown.chr)) ..)" is 
+  // not so good, since that includes hardPowerChr, hardCradleChr etc.!
+  if ( ((e->data.keyDown.chr < hard1Chr) || (e->data.keyDown.chr > hard4Chr))
+       && (e->data.keyDown.chr != calcChr)
+       && (e->data.keyDown.chr != findChr)
+       && (e->data.keyDown.chr != pageUpChr)
+       && (e->data.keyDown.chr != pageDownChr))
+    return false; // it's NOT a hardware button.. probably graffiti.
+
+  // <incs>/UI/Chars.h is useful....   ChrIsHardKey(c)
+  // hard[1-4]Chr, calcChr, findChr.
+  check_message();
+  switch (e->data.keyDown.chr) {
+  case hard1Chr:      // datebook
+    dispatch_type = my_prefs.hardware[0];
+    break;
+  case hard2Chr:      // address
+    dispatch_type = my_prefs.hardware[1];
+    break;
+  case hard3Chr:      // todo
+    dispatch_type = my_prefs.hardware[2];
+    break;
+  case hard4Chr:      // memos
+    dispatch_type = my_prefs.hardware[3];
+    break;
+  case pageUpChr:
+    dispatch_type = my_prefs.hardware[4];
+    break;
+  case pageDownChr:
+    dispatch_type = my_prefs.hardware[5];
+    break;
+  case calcChr:
+    dispatch_type = my_prefs.hardware[6];
+    break;
+  case findChr:
+    dispatch_type = my_prefs.hardware[7];
+    break;
+  default:
+    return false;
+  }
+
+
+  if (FrmGetActiveFormID() != MainForm) {
+    // IF the key is not bound, return false, else return TRUE to MASK it.
+    // unless it is up/down.
+    took_time = false;
+    if (FrmGetActiveFormID() == MapForm && dispatch_type != HWB_NOOP) {
+      // any bound key will dismiss the map form.
+      LeaveForm();
+      return true;
+    } else
+      return ( dispatch_type != HWB_NOOP &&
+	       e->data.keyDown.chr != pageUpChr &&
+	       e->data.keyDown.chr != pageDownChr );
+  }
+
+  // OK, we ARE in the main form.  
+  switch (dispatch_type) {
+  case HWB_NOOP:
+    return false;
+    // n = 1 e = 3 s = 5 w = 7
+    // x = {1 2 3 4} -> x * 2 - 1
+  case HWB_N:
+  case HWB_S:
+  case HWB_E:
+  case HWB_W:
+    one_move_rogue(dispatch_type * 2 - 1, true, my_prefs.stay_centered);
+    //    do_feep(200,9); // maybe take this out
+    handled = true;
+    break;
+  case HWB_UP:
+    handled = main_help_handle_cmd('<');
+    break;
+  case HWB_DOWN:
+    handled = main_help_handle_cmd('>');
+    break;
+  case HWB_SEARCH:
+    do_feep(200,9);
+    search(10, false); // handled = main_help_handle_cmd('s');
+    handled = true;
+    break;
+  case HWB_REST:
+    //    do_feep(200,9);
+    rest(10); // handled = main_help_handle_cmd('.');
+    handled = true;
+    break;
+  case HWB_THROW:
+    handled = main_help_handle_cmd('t');
+    break;
+  case HWB_ZAP:
+    handled = main_help_handle_cmd('z');
+    break;
+  case HWB_INV:
+    handled = main_help_handle_cmd('i');
+    break;
+  case HWB_MAP:
+    FrmPopupForm(MapForm);
+    handled = true;
+    took_time = false;
+    break;
+  case HWB_SCROLL:
+    count = 5;
+    direction = NO_DIRECTION;
+    task = SCROLL_WINDOW;
+    FrmPopupForm(DirectionForm);
+    handled = true;
+    took_time = false;
+    break;
+  }
+  // do that loop thing too.  yeah.
+  if (handled && took_time) {
+    count = 0;
+    start_of_Play_Level_loop();
+    check_hit_message();
+  }
+  return handled;
+}
+
+
+
+
+
+
+
+
+
+/**********************************************************************
+                       INIT_DIRECTION_SELECT_LIST
+ IN:
+ frm = the direction select form
+ zap = whether to initialize a list for 'throw' or for 'zap'
+ various globals
+ OUT:
+ nothing
+ PURPOSE:
+ This is called when the direction select form is initialized.
+ It initializes the popup list with inventory items that are
+ appropriate for "zapping" or "throwing".
+ **********************************************************************/
+Char ** direction_select_items;
+Short direction_select_numItems;
+static void init_direction_select_list(FormPtr frm, Boolean zap) {
+  ListPtr lst; // popup list: list_d
+  ControlPtr ctl; // popup trigger: popup_d
+  CharPtr label;
+  Char buf[80];
+  object *obj;
+  Word i, numItems = 0;
+  Char cur_ichar = 'a';
+
+  for (obj = sotu->roguep->pack.next_object ; obj != NULL ; obj = obj->next_object) {
+    obj->ichar = cur_ichar++; /* re-order the inventory letters */
+    if (cur_ichar > 'z')
+      cur_ichar = 'A';
+    if ( (zap && ((obj->what_is & WAND)
+		  || ((obj->what_is & WEAPON)
+		      && (obj->o_flags & O_ZAPPED))))
+	 || ((!zap && (obj->what_is & WEAPON)
+	      && (obj->o_flags & O_MISSILE)))  ) {
+      numItems++;
+    }
+  }
+  /* Hey!  Who's freeing this puppy? */
+  direction_select_items = (Char **) md_malloc(sizeof(Char *) * numItems);
+  for (obj = sotu->roguep->pack.next_object, i = 0 ;
+       (obj != NULL && i < numItems) ;
+       obj = obj->next_object) {
+    if (   (zap  && ((obj->what_is & WAND)
+		  || ((obj->what_is & WEAPON)
+		      && (obj->o_flags & O_ZAPPED))))
+	   || ((!zap && (obj->what_is & WEAPON)
+		 && (obj->o_flags & O_MISSILE)))  ) {
+      buf[0] = obj->ichar; 
+      buf[1] = ')';
+      buf[2] = ' ';
+      get_desc_brief(obj, buf+3, sotu); /* er.  will it overflow 80 chars? */
+      /* Insert inventory code to truncate it to a reasonable length? */
+      make_it_fit(buf, 140, 80);
+      direction_select_items[i] = md_malloc(sizeof(Char)*(StrLen(buf)+1));
+      // malloc failed
+      ErrNonFatalDisplayIf ( (direction_select_items[i] == NULL),
+			     "XXXXXX SERIOUS EVIL");
+      StrCopy(direction_select_items[i], buf);
+
+      i++;
+    }
+  }
+
+  lst = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, list_d));
+  LstSetListChoices(lst, direction_select_items, numItems);
+  if (numItems > 0) {
+    if (numItems > 10) numItems = 10;
+    LstSetHeight(lst, numItems);
+  }
+  LstSetSelection (lst, 0);
+  ctl = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, popup_d));
+  label = LstGetSelectionText (lst, 0);
+  if (label) {
+    if (label[0] > 'Z')
+      inventory_item = label[0] - 'a';
+    else
+      inventory_item = label[0] - 'A';
+  }
+  CtlSetLabel(ctl, label);
+  LstSetSelection(lst, 0);
+}
+
+/*****************************************************************************
+ *                                                                           *
+ *                                                                           *
+ *                                                                           *
+ *****************************************************************************/
+static void init_direction_select(FormPtr frm, Short task) {
+/*   ControlPtr btn; */
+  ControlPtr ctl; // popup trigger: popup_d.  Hide it by default.
+  ctl = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, popup_d));
+  CtlHideControl(ctl);
+  switch(task) {
+  case INV_ZAP:
+    FrmCopyTitle(frm, "zap:  direction?");
+    /* example of changing a label: */
+    /*     btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_d_cancel)); */
+    /*     CtlSetLabel(btn, "NO ZAP"); */
+    if (inventory_item == -1)
+      init_direction_select_list(frm, true);
+    break;
+  case INV_THROW:
+    FrmCopyTitle(frm, "throw:  direction?");
+    if (inventory_item == -1)
+      init_direction_select_list(frm, false);
+    break;
+  case INV_MOVE:
+    FrmCopyTitle(frm, "move:  direction?");
+    break;
+  case INV_FIGHT:
+    FrmCopyTitle(frm, "fight:  direction?");
+    break;
+  case INV_IDTRAP:
+    FrmCopyTitle(frm, "i.d. trap:  direction?");
+    break;
+  case SCROLL_WINDOW:
+    FrmCopyTitle(frm, "scroll view:  direction?");
+    break;
+  }
+}
+
+/*****************************************************************************
+ *                                                                           *
+ *                                                                           *
+ *                                                                           *
+ *****************************************************************************/
+Boolean Direction_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  ListPtr lst;
+  ControlPtr ctl;
+  CharPtr txt;
+  static Boolean pick_item = false;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* mine */
+    /** place any form-initialization stuff here **/
+    pick_item = (inventory_item == -1) ? true : false;
+    init_direction_select(frm, task);
+    /* end mine */	
+    FrmDrawForm(frm);
+    if ((task == INV_ZAP || task == INV_THROW) && pick_item) {
+      ctl = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, popup_d));
+      CtlShowControl(ctl);
+    }
+    handled = true;
+    break;
+
+  case popSelectEvent:
+    frm = FrmGetActiveForm();
+    if (e->data.popSelect.listID == list_d) {
+      if (pick_item && (task == INV_ZAP || task == INV_THROW)) {
+	lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_d));
+	txt = LstGetSelectionText (lst, e->data.popSelect.selection);
+	if (txt[0]) {
+	  inventory_item = txt[0] - 'a'; // dangerous
+	} else {
+	  inventory_item = -1;
+	}
+      }
+    }
+    /*      handled = true; */
+    break;
+
+  case ctlSelectEvent:
+    direction = -1;
+    switch(e->data.ctlSelect.controlID) {
+    case btn_d_n:
+      direction = NORTH;
+      break;
+    case btn_d_ne:
+      direction = NORTHEAST;
+      break;
+    case btn_d_e:
+      direction = EAST;
+      break;
+    case btn_d_se:
+      direction = SOUTHEAST;
+      break;
+    case btn_d_s:
+      direction = SOUTH;
+      break;
+    case btn_d_sw:
+      direction = SOUTHWEST;
+      break;
+    case btn_d_w:
+      direction = WEST;
+      break;
+    case btn_d_nw:
+      direction = NORTHWEST;
+      break;
+    case btn_d_cancel:
+      direction = NO_DIRECTION;
+      break;
+    default:
+      break;
+    }
+    if (direction != -1) {
+      LeaveForm();
+      if (direction != NO_DIRECTION) {
+	switch(task) {
+	  /*
+	    case INV_ZAP:
+	    case INV_THROW:
+	    inventory_item = -1;
+	    FrmPopupForm(InvSelectForm);
+	    break;
+	  */
+	case INV_ZAP:
+	  /* inventory_item should be set already */
+	  if (inventory_item != -1) {
+	    if (zapp(direction, inventory_item, sotu))
+	      reg_move();
+	  }
+	  break;
+	case INV_THROW:
+	  /* inventory_item should be set already */
+	  if (inventory_item != -1) {
+	    if (throw(direction, inventory_item, sotu))
+	      reg_move();
+	  }
+	  break;
+	case INV_MOVE:
+	  /* replacing move_onto() */
+	  one_move_rogue(direction, false, my_prefs.stay_centered);
+	  break;
+	case INV_FIGHT:
+	  fight(direction, to_the_biteme); /* true = to-the-death */
+	  break;
+	case INV_IDTRAP:
+	  id_trap(direction, sotu);
+	  break;
+	case SCROLL_WINDOW:
+	  scroll_window(direction, max(1, count));
+	  count = 0;
+	  break;
+	}
+      }
+      handled = true;
+    }
+    break;
+
+  default:
+    break;
+  }
+    
+  return handled;
+}
+@
+
+
+1.12.2.1
+log
+@attempting to make iRogue less dependent on display size
+@
+text
+@a40 1
+#include "handera.h"
+a352 2
+    if (IsVGA)
+      VgaFormModify(frm, vgaFormModify160To240);
+a401 16
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) {
+      // need to clear the "old" screen first?
+      // set height, width, etc
+      update_display_size();
+      // redraw the "new" screen
+      move_visible_window(sotu->roguep->col, sotu->roguep->row, true);
+      print_stats(STAT_ALL, sotu); 
+      check_message();
+    }
+    handled = true;
+    goto SKIP_THE_REST;
+    break;
+#endif
+
+a997 2
+    if (IsVGA)
+      VgaFormModify(frm, vgaFormModify160To240);
+@
+
+
+1.12.2.2
+log
+@maybe get handera to use the right font and dungeon-terminal size
+@
+text
+@a41 2
+extern Short ScrWidth; // display.c
+extern Short ScrHeight;
+d595 2
+a596 2
+    tmp_x = e->screenX - ScrWidth/2;
+    tmp_y = e->screenY - ScrHeight/2;
+d704 2
+a705 2
+  Short tap_x = *x + ScrWidth/2;
+  Short tap_y = *y + ScrHeight/2;
+@
+
+
+1.12.2.3
+log
+@attempting to fix: inventory string truncation; 'whatsit' bounds; Map Form
+@
+text
+@d927 1
+a927 3
+      //      make_it_fit(buf, 140, 80);
+      make_it_fit(buf, ((140/2)*(ScrWidth/2))/(160/4) ,  80);
+
+@
+
+
+1.12.2.4
+log
+@attempting to fix: walk/search/run donut factor; crosshairs
+@
+text
+@a43 1
+extern Short WalkMagic;
+d619 2
+a620 2
+    if (dist < my_prefs.walk_search_border * WalkMagic
+               * my_prefs.walk_search_border * WalkMagic) {
+@
+
+
+1.12.2.5
+log
+@don't pop up the throw/zap form if there is nothing to throw/zapmake!
+@
+text
+@a170 1
+static Short projectable_exists(Boolean zap, Boolean stop_at_one);
+d224 1
+a224 1
+      message("your pack is empty", sotu);
+d262 4
+a265 8
+    if (projectable_exists(false, true)) {
+      inventory_item = -1;
+      direction = NO_DIRECTION;
+      task = INV_THROW;
+      FrmPopupForm(DirectionForm);
+    } else {
+      message("you have no projectile weapons", sotu);
+    }
+d268 4
+a271 8
+    if (projectable_exists(true, true)) {
+      inventory_item = -1;
+      direction = NO_DIRECTION;
+      task = INV_ZAP;
+      FrmPopupForm(DirectionForm);
+    } else {
+      message("you have nothing to zap", sotu);
+    }
+d873 2
+a874 35
+/**********************************************************************
+                       INIT_DIRECTION_SELECT_LIST
+ IN:
+ zap = whether to check for things to 'throw' or for 'zap'
+ existsp = we just want to know "are there 0 or non-zero"
+ various globals
+ OUT:
+ number of things that are specially meant to be 'thrown' or 'zapped'
+ PURPOSE:
+ This is called when the direction select form's list is initialized,
+ to figure out the number of items on it, and also to determine whether
+ to let that form pop up at all.
+ **********************************************************************/
+// if (zap) return the number of zappable things in inventory
+// else return the number of missile types in inventory
+static Short projectable_exists(Boolean zap, Boolean stop_at_one)
+{
+  Char cur_ichar = 'a';
+  Short numItems = 0;
+  object *obj = sotu->roguep->pack.next_object;
+  for ( ; obj != NULL ; obj = obj->next_object) {
+    obj->ichar = cur_ichar++; /* re-order the inventory letters */
+    if (cur_ichar > 'z')
+      cur_ichar = 'A';
+    if ( (zap && ((obj->what_is & WAND)
+		  || ((obj->what_is & WEAPON)
+		      && (obj->o_flags & O_ZAPPED))))
+	 || ((!zap && (obj->what_is & WEAPON)
+	      && (obj->o_flags & O_MISSILE)))  ) {
+      if (stop_at_one) return 1;
+      numItems++;
+    }
+  }
+  return numItems;
+}
+d892 1
+a892 2
+static void init_direction_select_list(FormPtr frm, Boolean zap)
+{
+d899 1
+d901 12
+a912 2
+  numItems = projectable_exists(zap, false);
+
+@
+
+
+1.12.2.6
+log
+@fixed version number; fixed bound buttons clearing 'message' in non-main form
+@
+text
+@d771 1
+a816 1
+  check_message();
+@
+
+
+1.12.2.7
+log
+@blah
+@
+text
+@a422 1
+      frob_display_size(true);
+a424 1
+      refresh(); // probably need this
+d428 1
+a428 1
+    //    handled = true;
+a446 11
+    case menu_mainJump:
+      // This menu item is for debugging only!!!
+      {
+	Char buf[40];
+	Coord         x, y;
+	WinGetDisplayExtent(&x, &y);
+	StrPrintF(buf, "%d %d", x, y);
+	WinDrawChars(buf, StrLen(buf), 20, 20);
+      }
+      handled = true;
+      goto SKIP_THE_REST;
+d1054 1
+a1054 1
+    if (IsVGA) {
+a1055 2
+      frob_display_size(false);
+    }
+a1062 13
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) {
+      update_display_size();
+      frob_display_size(true);
+      // redraw the "new" screen too...  don't ask me whether this will work
+      // we won't move any buttons in this one, I think
+      frm = FrmGetActiveForm();
+      FrmDrawForm(frm);
+    }
+    break;
+#endif
+@
+
+
+1.12.2.8
+log
+@mostly working for handera
+@
+text
+@d366 1
+a366 1
+    if (IsVGA) {
+a367 4
+      // set height, width, etc
+      update_display_size();
+      adjust_form_size(true);
+    }
+d423 1
+a423 1
+      adjust_form_size(true);
+d1069 1
+a1069 1
+      adjust_form_position(false);
+a1070 2
+    //   adjust_form_position(false); // temporarily ADDED for DEBUGGING
+
+d1083 3
+a1085 2
+      // I am not sure whether adjust_form_position will work after drawn.
+      // Perhaps it will if I call FrmEraseForm first?
+a1086 2
+      FrmEraseForm(frm);
+      adjust_form_position(true);
+a1087 1
+      // Also, will I have to do that CtlShowControl again after? or not?
+@
+
+
+1.12.2.9
+log
+@fixup to make sure still compiles for OS2 (compiles, yes, tested, no)
+@
+text
+@a40 1
+#ifndef I_AM_OS_2
+a41 1
+#endif
+a365 1
+#ifndef I_AM_OS_2
+a371 1
+#endif
+d454 1
+a454 2
+      // This menu item is (was) for debugging only!!!
+      /*
+a461 1
+      */
+a1070 1
+#ifndef I_AM_OS_2
+a1074 1
+#endif
+@
+
+
+1.12.2.10
+log
+@Danger!  I combined a UChar and a Boolean in sotu into a UInt called 'conduct'!
+@
+text
+@d481 1
+a481 1
+      if (!(sotu->conduct & STATUS_WASWIZ) && !IS_WIZARD)  // if (!(sotu->score_status & STATUS_WASWIZ) && !sotu->wizard)
+d484 2
+a485 4
+      // sotu->wizard = !sotu->wizard; sotu->score_status |= STATUS_WASWIZ;
+      sotu->conduct |= CONDUCT_WASWIZ;
+      if (IS_WIZARD) sotu->conduct &= ~CONDUCT_ISWIZ;
+      else           sotu->conduct |=  CONDUCT_ISWIZ;
+d487 1
+a487 1
+      if (IS_WIZARD) //if (sotu->wizard)
+d494 1
+a494 1
+      if (IS_WIZARD)
+@
+
+
+1.12.2.11
+log
+@tweak tweak
+@
+text
+@d357 1
+a357 1
+  Char buf[60];  //  Char buf[40]; // make it 60 for show_time_and_volts.
+a477 4
+    case menu_mainTime:
+      show_time_and_volts(buf);
+      message(buf, sotu);
+      break;
+@
+
+
+1.12.2.12
+log
+@take ancient lingering 'sotu' arguments out, everywhere (relic of library code)
+@
+text
+@d81 1
+a81 2
+void init_game()
+{
+d106 2
+a107 3
+void make_new_level()
+{
+  clear_level();
+d110 2
+a111 2
+  put_stairs(); 
+  add_traps(); 
+d113 2
+a114 2
+  put_player(sotu->party_room); 
+  print_stats(STAT_ALL); 
+d119 1
+a119 1
+      message("you sense hostility");
+d121 1
+a121 1
+    aggravate();
+d125 1
+a125 1
+  //  message("Autosaving...");
+d127 1
+a127 1
+    save_character(0);
+d137 1
+a137 2
+static void start_of_Play_Level_loop()
+{
+d149 1
+a149 1
+    free_old_level();
+d174 1
+a174 2
+static Boolean main_help_handle_cmd(Char c)
+{
+d191 2
+a192 2
+    if (drop_check()) {
+      free_old_level();
+d201 1
+a201 1
+      free_old_level();
+d227 1
+a227 1
+      message("your pack is empty");
+d255 1
+a255 1
+      killed_by((object *) 0, QUIT);
+d271 1
+a271 1
+      message("you have no projectile weapons");
+d281 1
+a281 1
+      message("you have nothing to zap");
+d385 1
+a385 1
+      message("Welcome to iRogue");
+d389 2
+a390 2
+      clear_level();
+      load_character(revivify_which);
+d393 2
+a394 2
+	do_revivify(); // inflict a penalty, maybe.
+      ring_stats(true); // recalculate some calculated parts of sotu
+d398 1
+a398 1
+	light_up_room(sotu->cur_room);
+d400 1
+a400 1
+	light_passage(sotu->roguep->row, sotu->roguep->col);
+d403 1
+a403 1
+      print_stats(STAT_ALL);
+d416 1
+a416 1
+    message(buf);
+d418 1
+a418 1
+    //    message("Welcome to iRogue");
+d435 1
+a435 1
+      print_stats(STAT_ALL); 
+d449 2
+a450 2
+      message(0); // show the next buffered message
+      //      message(0); // try to show a second one, but maybe fail
+d480 1
+a480 1
+      message(buf);
+d494 1
+a494 1
+	message("wizard on");
+d496 1
+a496 1
+	message("wizard off");
+d503 1
+a503 1
+	message("nice try");
+d507 2
+a508 2
+      save_character(0);
+      message("autosaved.");
+d535 1
+a535 1
+      message("tap on a character for clarification");
+d549 1
+a549 1
+      print_stats(STAT_ALL); 
+d580 1
+a580 1
+	      message(buf); */
+d591 2
+a592 2
+      message(0); // show the next buffered message
+      //      message(0); // try to show a second one, but maybe fail
+d613 1
+a613 1
+      message(buf);
+d623 2
+a624 2
+      message(0); // show the next buffered message
+      //      message(0); // try to show a second one, but maybe fail
+d630 1
+a630 1
+      explain_it(e->screenX, e->screenY);
+d660 1
+a660 1
+      /*       message("searching");  */
+d987 1
+a987 1
+      get_desc_brief(obj, buf+3); /* er.  will it overflow 80 chars? */
+d1026 1
+a1026 2
+static void init_direction_select(FormPtr frm, Short task)
+{
+d1177 1
+a1177 1
+	    if (zapp(direction, inventory_item))
+d1184 1
+a1184 1
+	    if (throw(direction, inventory_item))
+d1196 1
+a1196 1
+	  id_trap(direction);
+@
+
+
+1.12.2.13
+log
+@reorganizing header files
+@
+text
+@d36 5
+a40 1
+#include "iRogue.h"
+@
+
+
+1.12.2.14
+log
+@reorganization continues...
+@
+text
+@a711 96
+/**********************************************************************
+                       EXPLAIN_IT
+ IN:
+ x,y that the player tapped on
+ various globals
+ OUT:
+ nothing
+ PURPOSE:
+ display what the thing is
+**********************************************************************/
+extern Short ScrHeight;
+extern Short ScrMsgHt;
+extern Short ScrStatsHt;
+void explain_it(Short x, Short y)
+{
+  Short row, col, mch, ch;
+  //  Char buf[10];
+
+  if (y < ScrMsgHt) // 22 or less, for 160x160
+    message("message window");
+  else if (y >= ScrHeight - ScrStatsHt) // 137 or more, for 160x160
+    message("vital statistics of your rogue");
+  else {
+    ch = what_row_col(x, y, &row, &col);
+    //    ch = mvinch(row, col);
+    if (Is_Alpha(ch)) {
+      if (ch > 'Z')
+	mch = 26 + (ch - 'a'); // 97=='a' 65=='A'
+      else
+	mch = ch - 'A';
+      print_mon_name(mch);
+    } else {
+      switch(ch) {
+      case ' ':
+	message("nothing is visible there");
+	return;
+      case '?':
+	message("scroll");
+	return;
+      case '!':
+	message("potion");
+	return;
+      case '*':
+	message("some gold");
+	return;
+      case -80:
+	// FOODCHAR
+	message("some food");
+	return;
+      case '/':
+	message("wand");
+	return;
+      case ']':
+	message("armor");
+	return;
+      case ')':
+	message("weapon");
+	return;
+      case '=':
+	message("ring");
+	return;
+      case ',':
+	message("amulet");
+	return;
+      case '.':
+	message("the floor");
+	return;
+      case '+':
+	message("door");
+	return;
+      case '#':
+	message("tunnel");
+	return;
+      case '|':
+      case -105:
+	// EMDASH
+	message("wall");
+	return;
+      case '^':
+	message("trap");
+	return;
+      case '%':
+	message("stairs");
+	return;
+      case '@@':
+	message("that's you");
+	return;
+      default:
+	//	StrPrintF(buf, "%d", ch);
+	message("...beats me");
+	//      message(buf);
+	return;
+      }
+    }
+  }
+}
+@
+
+
+1.12.2.15
+log
+@splitting iRogue.c into form_[blah].c
+@
+text
+@d37 3
+@
+
+
+1.12.2.16
+log
+@tidying up globally
+@
+text
+@d41 1
+@
+
+
+1.12.2.17
+log
+@added on-board color frobbing.  la la la.
+@
+text
+@a477 13
+    case menu_mainColor:
+#ifdef I_AM_COLOR
+      {
+	DWord version;
+	FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
+	if (version >= 0x03503000L) {
+	  FrmPopupForm(ThingForm);
+	  break;
+	}
+      }
+#endif
+      message("sorry, no color available");
+      break;
+a720 71
+void explain_ch(void (*explain)(const Char*), Short ch)
+{
+  Short mch;
+  if (Is_Alpha(ch)) {
+    if (ch > 'Z')
+      mch = 26 + (ch - 'a'); // 97=='a' 65=='A'
+    else
+      mch = ch - 'A';
+    print_mon_name(explain, mch);
+  } else {
+    switch(ch) {
+    case ' ':
+      (*explain)("nothing is visible there");
+      return;
+    case '?':
+      (*explain)("scroll");
+      return;
+    case '!':
+      (*explain)("potion");
+      return;
+    case '*':
+      (*explain)("some gold");
+      return;
+    case -80: case FOODCHAR:
+      // FOODCHAR
+      (*explain)("some food");
+      return;
+    case '/':
+      (*explain)("wand");
+      return;
+    case ']':
+      (*explain)("armor");
+      return;
+    case ')':
+      (*explain)("weapon");
+      return;
+    case '=':
+      (*explain)("ring");
+      return;
+    case ',':
+      (*explain)("amulet");
+      return;
+    case '.':
+      (*explain)("the floor");
+      return;
+    case '+':
+      (*explain)("door");
+      return;
+    case '#':
+      (*explain)("tunnel");
+      return;
+    case '|':
+    case -105: case EMDASH:
+      // EMDASH
+      (*explain)("wall");
+      return;
+    case '^':
+      (*explain)("trap");
+      return;
+    case '%':
+      (*explain)("stairs");
+      return;
+    case '@@':
+      (*explain)("that's you");
+      return;
+    default:
+      (*explain)("...beats me");
+      return;
+    }
+  }
+}
+d723 1
+a723 1
+  Short row, col, ch;
+d732 70
+a801 1
+    explain_ch(&message, ch);
+a805 1
+
+@
+
+
+1.11
+log
+@mask bound hardware buttons in non-main forms
+@
+text
+@d770 2
+a771 1
+  if (FrmGetActiveFormID() != MainForm)
+d774 10
+a783 3
+    return ( dispatch_type != HWB_NOOP &&
+	     e->data.keyDown.chr != pageUpChr &&
+	     e->data.keyDown.chr != pageDownChr );
+@
+
+
+1.10
+log
+@can set background color with _ in memo now
+@
+text
+@d722 1
+d728 9
+d769 9
+@
+
+
+1.9
+log
+@fixed centered-screen crosshairs redraw problem; added inventory-sort option
+@
+text
+@d352 1
+a352 1
+    /* end mine */	
+d354 1
+@
+
+
+1.8
+log
+@fixed SOME of the pie-slices-not-redrawing-properly issues
+@
+text
+@d25 2
+d341 1
+d628 1
+a628 1
+    if (my_prefs.crosshairs_on) draw_crosshairs();
+d640 1
+@
+
+
+1.7
+log
+@add pref to draw pie slices, and make screen scroll 'sooner' based on donut
+@
+text
+@d330 2
+a331 1
+void clear_crosshairs(); // display.c
+d379 1
+a379 1
+
+d488 1
+a488 1
+      if (my_prefs.crosshairs_on) draw_crosshairs();
+a616 2
+    // XXX Crosshairs
+    clear_crosshairs(); // display.c
+@
+
+
+1.6
+log
+@bug fixes, hw-scrolling in object creation, can view top score list anytime
+@
+text
+@d147 2
+d330 1
+d336 1
+a336 1
+  Short tmp_x, tmp_y, click_dir;
+d460 4
+d486 2
+d588 1
+d593 2
+a594 2
+    if ((abs(tmp_x) < my_prefs.walk_search_border*10) && 
+	(abs(tmp_y) < my_prefs.walk_search_border*10)) {
+d601 2
+a602 2
+    } else if ((abs(tmp_x) < my_prefs.run_walk_border*10) &&
+	       (abs(tmp_y) < my_prefs.run_walk_border*10)) {
+a605 1
+      /* mostly x, move in the x direction */
+a607 1
+      /* mostly y */
+d610 1
+a610 3
+      /* closer to diagonal */
+      if (tmp_y > 0) {
+	/* southish */
+d612 1
+a612 2
+      } else {
+	/* northish */
+a613 1
+      }
+d616 2
+d625 3
+@
+
+
+1.5
+log
+@moving code around.. tweaking..
+@
+text
+@d59 1
+a411 1
+      //      break; // unnecessary
+a415 1
+      //      break;
+a429 1
+      //      break;
+a437 1
+      //      break;
+a456 1
+      //      break;
+a460 1
+      //      break;
+a466 1
+      //      break;
+d468 1
+a468 2
+      if (toggle_itsy()) {
+	// Redraw the screen!!  (does this do the right thing?  not quite..)
+d470 1
+a470 1
+      } else {
+a471 1
+      }
+d474 7
+a480 1
+      // break;
+a484 1
+      //      break;
+d489 5
+a493 1
+      //      break;
+a499 1
+      //      break;
+@
+
+
+1.4
+log
+@compiles with sdk3.5; user-configurable color
+@
+text
+@d43 18
+d122 944
+@
+
+
+1.3
+log
+@still working on save/restore
+@
+text
+@d34 1
+a34 2
+#include "Pilot.h"
+#include "callback.h"
+@
+
+
+1.2
+log
+@working on save: autosave works, revivify from top-ten works, still need menu items for restoring 'live' checkpoints, still need info-display in revivify form
+@
+text
+@d101 1
+a101 1
+    save_character(sotu);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d79 1
+d98 4
+@
+
+
+1.1.1.1
+log
+@iRogue import
+@
+text
+@@

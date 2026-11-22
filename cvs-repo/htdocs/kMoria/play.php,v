@@ -1,0 +1,1798 @@
+head	1.7;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.5
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2006.08.13.05.47.23;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2006.08.13.04.47.25;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2006.08.08.03.49.45;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2002.03.30.00.18.21;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.10.20.17.06.30;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.07.02.06.08.41;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.54;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.54;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>How to play kMoria</title>
+
+<style type="text/css" media="screen">@@import "../3col.css";</style>
+
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>Playing kMoria</h1>
+  <p><i>screenshots are from v. 0.13 - preferences screen has changed in 0.14</i></p>
+</div>
+
+
+<div class="content">
+  <h2>the premise</h2>
+<p>
+    Hopefully you're familiar with rogue-like games
+    already.  They are text-based games which have a familiar premise
+    --- wander around in a dungeon, collect treasure,
+    beat up bad-tempered critters, try to finish a quest.
+</p
+<p> Your goal in this game is to defeat the Balrog, who lives deep
+    in the mines of Moria.
+</p>
+
+
+
+<a name="see"></a>
+
+<h2>Starting Out</h2>
+
+<p> When you start the application you will first have to
+<a href="play_chargen.php">generate a character</a>.  (Follow
+that link to see out how it's done.) </p>
+
+<p> Then you will start out in the town.  If you are not familiar with
+Moria or want a refresher, first read the very <a
+href="play_intro.php">brief intro</a> to what you see on the main
+screen.  When you've looked over that, come back here and I'll
+tell you how to move around and do things. </p>
+
+
+
+
+
+<?php include ("playnavigation.txt") ?>
+</div>
+
+<div class="content">
+<a name="move"></a>
+
+<h2> Moving Around </h2>
+
+<p> (If you have played <a href="../iRogue/">iRogue</a> or <a
+href="../iLarn/">iLarn</a>, you can skip this section, since movement
+in kMoria is similar.) </p>
+
+<p>
+First, imagine that the screen is a compass.  At the top of the screen
+is north.  Imagine that this compass is divided like a pie into eight
+slices: N, NE, E, SE, S, SW, W, NW.  The slices meet in the center of
+the screen.  Tap within a slice, and that is the direction you will
+move in.  (If you have the "relative move" preference enabled, the
+center of the pie is at your "@@"; otherwise the pie is centered on the
+screen regardless of where the "@@" is located.  The rest of these
+instructions will assume the latter.) </p>
+
+<p> <img src="../images/kMoria/pie.gif" alt="[pie-sliced screen]"> </p>
+
+<p> Ok.  You got the pie?  I am going to complicate it now.  If you
+tap too close to the center of the screen, nothing will happen.
+Moving outward... If you tap moderately close to the center of the
+screen, you will move one square at a time.  If you tap far from the
+center of the screen (near the edge of the screen), you will move
+several squares -- you keep moving until you are adjacent to something
+"interesting". </p>
+
+<p> <img src="../images/kMoria/circles-pie.gif" alt="[concentric-sliced screen]"> </p>
+
+<p> So there's a pie of what-direction-you-move, and there are some
+concentric circles of what-happens-when-you-tap.  You can adjust the
+size of these circles via the <a href="#prefs">Preferences</a> menu
+item, depending on what you think is deserving of more screen
+real-estate. </p>
+
+<p> Oh, yeah: to attack a monster "hand-to-hand", with whatever weapon
+you're currently wielding, you just try to move onto its square.  If
+it is immediately to your west, tap on the west side of the screen,
+etc., and you should see a message such as "You hit the Large White
+Snake. MORE" (if it does say MORE, tap once anywhere to see the next
+set of messages). </p>
+
+<p> If you don't want to attack hand-to-hand; you can stand at a greater
+distance and cast spells, throw/shoot missile weapons, and aim magic
+wands. </p>
+
+<p> <i>Keyboard users: type hjklyubn to move around, HJKLYUBN to run.
+(You can also use cursor keys, if you don't mind moving like a rook
+instead of a queen.)</i> </p>
+
+
+
+<?php include ("playnavigation.txt") ?>
+</div>
+
+<div class="content">
+<a name="menus"></a>
+<a name="showmenu"></a>
+
+<h2> 'Show' menu </h2>
+
+<p> The Show menu has commands that show you information.  None of these
+commands will take up a turn in the game. </p>
+
+<p> Some menu items have a character in parentheses.  These commands
+can performed by writing that Graffiti character (in addition to using
+the menu). </p>
+
+<p> <img src="../images/kMoria/menu-show.gif" alt="[Show menu]">
+<br><i>go to the Show menu</i> </p>
+<dl>
+<dt> <b>Map</b> /M
+
+<dd> In the middle part of the screen, you can only see a part of the
+level that you're currently exploring.  The "Map" menu item will
+display an Overview Map of the entire level.
+
+<br> This map has two modes - the character mode shows anything that
+seems important (such as you, staircases, treasure and other objects,
+etc.) but it doesn't really show how to get there from here.  The
+outline mode shows the rooms and tunnels that you have explored, so
+you can see how to get there (but it does not show the items that are
+there).  Tap on the Mode square to change mode and tap on the Exit
+square to exit the map.  Tap on the @@ square to make your own
+    position blink (if currently visible).
+
+<br> Because dungeon levels are so large, the map has two halves: left
+and right.  It will always start up showing the half that you are in,
+but if you are viewing (say) the left half, you can tap on the right
+side of the screen and the map will change to the right half.  There is
+some overlap in the middle.
+
+<br><i>Keyboard users: You can also type </i>M<i> to get to the
+Overview Map.  In the map: </i>m<i> to switch between ascii and
+graphical mode; </i>space<i> to view the other half of the map;
+    </i>@@<i> to make your character's location blink;
+</i>x<i> to exit</i>.
+
+<dt> <b>Message Log</b> /L
+
+<dd> The message log shows the last n messages that appeared on the
+screen, in case you missed one.
+<br> <i>Keyboard users: </i>pageup/pagedown<i> to scroll, </i>space<i>
+to scroll down; hit return to exit</i>
+    
+<dt><b>Your Stats</b> /Y
+<dd> This shows more-detailed information about your character.  It is
+the same as the final "Your Character" screen in <a
+href="play_chargen.php"> character generation</a>.  You can change
+your name here, and see how much experience is required for the next
+experience level.  Tap the lower half of the screen to toggle the
+information displayed there.
+
+<br> <i>Keyboard users: </i>space<i> to toggle the information; hit return to exit</i>
+
+<dt> (/) <a name="whatsthat"></a><b>What's that?</b>
+<dd> Tap on any symbol to identify it.  If it is a monster, you
+will see a summary of everything your character (<i>and</i> his/her
+predecessors) remembers about this kind of monster.
+<br> You can also write a symbol, such as "p", to see a summary of
+all monsters you've encountered that were represented by "p"; tap Next
+to view the next monster of that type.
+<br> <i>Keyboard users: </i>n<i> for next monster; scrolling as usual;
+hit return to exit</i>
+
+<dt> (?) <a name="look"></a><b>Look</b>
+
+<dd> Look in a given direction.  This will print anything interesting
+that you see there, and highlight the symbol on the screen that is
+being described.  If a monster is being described, you can tap the "R"
+button to see the information you remember about the monster.  Tap on
+the screen to go on to the next interesting item, or tap the "X"
+button to exit the look mode.
+<br> <i>Keyboard users: </i>r<i> to recall; </i>space<i> for the next item;
+</i>x<i> to exit</i>
+
+<dt> (-) <b>Next Sector</b>
+
+<dd> This will slide your view of the dungeon in the direction that
+you indicate (so that you can look at the next screen to the east, for
+example).
+
+<dt> <b>Instructions</b>
+
+<dd> ...Don't exist yet.
+
+<dt> <b>About kMoria</b>
+
+<dd> This is the "About" screen that you find in all normal applications.
+It reports the version you are running, in case you need to know,
+as well as the license and history of the game.
+<br> <i>Keyboard users: hit return to exit</i>
+
+
+<dt> <b>High Scores</b>
+
+<dd> This allows you to view past high scores (without dying).  There
+might be many pages of scores if you have played a lot.. tap the More
+button to go to the next page.  (The down hardware button will also go
+to the next page, and the up hardware button will go back to the
+beginning.)  Tap the "Done" button when you are tired of looking at
+them.
+<br> <i>Keyboard users: scrolling as usual, or use </i>&lt; and &gt;<i>;
+hit return to exit</i>
+
+<dt> <b>Quit</b>
+
+<dd> This will kill your current character (after the obligatory "are
+you SURE?") and allow you to start over, after viewing your tombstone
+and the high scores list.
+
+</dl>
+
+<?php include ("playnavigation.txt") ?>
+
+</div>
+
+<div class="content">
+<a name="pickmenu"></a>
+<h2> 'Pick' menu </h2>
+
+<p> The Pick menu has all the commands that present a list of things
+for you to pick &amp; choose. </p>
+
+<p> <img src="../images/kMoria/menu-pick.gif" alt="[Pick menu]">
+<br><i>go to the Pick menu</i> </p>
+
+<dl>
+<dt> (i) <b>Inventory</b>
+
+<dd> This will take you to the <a href="#inventory">inventory dialog</a>.
+
+<dt> (e) <b>Equipment</b>
+
+<dd> This will take you to the <a href="#equipment">equipment dialog</a>.
+
+<dt> (m) <b>Magic spell</b>
+
+<dd> If you are of an appropriate character class, this allows you to
+cast a magic spell.  Some spells have directional effects.
+
+<br> <i>Keyboard users: (1) In the "Read Which Book?" form, you can select
+books by letter, e.g. </i>a<i> to read your first book.  (2) In the
+"Recite Which?" form, you can select spells by letter, e.g. </i>a<i>
+to cast Magic Missile.</i>
+<br> <i>Button users: (1) <b>If</b> you use any hardware buttons, you can
+select books by app button, e.g. </i>Datebook<i> to select your first
+book, </i>Memopad<i> to select your fourth book.  (2) You can
+assign spell buttons via Set--&gt;<a href="#shwbs">SpellBtns</a>
+on the main menu.</i>
+
+<dt> (p) <b>Pray</b>
+
+<dd> If you are of an appropriate character class, this allows you to
+say a prayer.  Some prayers have directional effects.  <i>All notes for
+(m) apply to (p).</i>
+
+<dt> (G) <b>Gain spells</b>
+
+<dd> If you are able to learn spells or prayers, this command will let
+you do so.  Wizards get to select a new spell, whereas priests'
+prayers are chosen for them at random.
+<br> <i>Keyboard users: in the "Learn Which Spell?" form, you can
+select spells by the letter listed, e.g., type </i>a<i> to learn Magic
+Missile.</i>
+
+<dt> (t) <b>Throw</b>
+
+<dd> Throw an object in your inventory.
+
+<dt> (a) <b>Aim wand</b>
+
+<dd> Fire a wand.
+
+<dt> (z) <b>Zap staff</b>
+
+<dd> Fire a staff.
+<br> <i>Keyboard users: throw, aim, zap are like the inventory screen.</i>
+
+<dt> ({) <b>Inscribe</b>
+
+<dd> Write an inscription on an item.
+<br> <i>Keyboard users: select by letter, hit return, type inscription,
+hit return.</i>
+</dl>
+
+<?php include ("playnavigation.txt") ?>
+
+</div>
+
+<div class="content">
+<a name="heremenu"></a>
+<h2> 'Here' menu </h2>
+
+<p> The theme of the Here menu commands is things that you do right
+where you are, not in a particular direction
+(as opposed to the Near menu of directional commands). </p>
+<p> <img src="../images/kMoria/menu-here.gif" alt="[Here menu]">
+<br><i>go to the Here menu</i> </p>
+
+<a name="numeric"></a>
+
+<p> Certain commands can be repeated <i>n</i> times.  (rest, search,
+open, force, spike, dig, disarm.)  To do this, write a number (1 to
+99).  Then write the letter of the command.  You will perform the
+command that many times unless the situation changes (e.g. if a
+monster attacks you, you stop). </p>
+
+<a name="again"></a>
+
+<p> In addition, if you want to do a command "<b>again</b>", there is
+a special unlisted command "<b>g</b>" that will repeat <i>whatever you
+just did:</i> for example, "cast a magic missile to the northwest" or
+"throw/fire an arrow to the south" or "force the door to the east". </p>
+
+<dl>
+<dt> (x) <b>Exchange</b>
+
+<dd> Before trying this, you should acquire two weapons (call them A
+and B, perhaps they are a dagger and a shovel), and you should wield
+one of them; if you view your equipment you see that A is your primary
+weapon.  Then try Exchange.  Now A is your spare weapon and you have
+no primary weapon.  Wield B.  B is now your primary weapon, and
+Exchange will switch between B and A.  You can see that, once you have
+your equipment set up properly, this command can save you some hassle.
+
+<dt> (R) <b>Rest</b>
+
+<dd> Do nothing for a while, to regain hit points and mana faster than
+you would while exerting yourself.  This command can take a <a
+href="#numeric">numeric argument</a> to rest for N turns or until
+interrupted.  If you did not give it an argument, you will have a choice
+of resting either a fixed number of turns or until you are fully rested.
+
+<br> <i>Keyboard users: in "Rest how many turns?" type </i>0, 1, 2, or 3<i>
+to select 0, 10, 20, Max.</i>
+
+<br> <i>Button users: in "Rest how many turns?" the 4 application buttons are
+bound to the four choices, e.g. </i>Datebook<i> for 0.</i> 
+    
+<dt> (s) <a name="search"></a><b>Search</b>
+
+<dd> Search for hidden doors and traps, for a turn.  This command can
+take a <a href="#numeric">numeric argument</a> to search for N turns,
+or until interrupted or something is found in one of the 8 surrounding
+squares.
+<dt> (#) <b>Search mode</b>
+
+<dd> When search mode is on, you automatically spend an extra turn in
+searching every time you perform an action.  (So when you run down a
+corridor in search mode, you move one square, then search for one
+turn, etc.)  This mode will be terminated automatically in appropriate
+situations, such as when you notice a monster.
+
+   
+<dt> (&lt;) <a name="scend"></a> <b>Ascend</b>
+
+<dd> Climb an up staircase <b>&lt;</b> to the level 50 feet above.
+
+<dt> (&gt;) <b>Descend</b>
+
+<dd> Climb a down staircase <b>&gt;</b> to the level 50 feet below.
+</dl>
+
+</div>
+
+<div class="content">
+<a name="nearmenu"></a>
+
+<h2> 'Near' commands menu </h2>
+
+<p> These commands all require you to choose a particular square near
+(adjacent to) you.  When you issue the command, you will be given
+pie-lines to indicate that you should tap in a slice to choose a direction. </p>
+<p> <img src="../images/kMoria/menu-near.gif" alt="[Near menu]">
+<br><i>go to the Near menu</i> </p>
+<dl>
+
+<dt> (c)    <a name="close"></a> <b>Close</b>
+
+<dd> Close an open door <b>'</b> (unless it is broken).
+
+
+<dt> (o)    <a name="open"></a> <b>Open</b>
+
+<dd> Open a closed door <b>+</b> (your attempt can fail if it is
+jammed or locked).  This command can take a <a href="#numeric">numeric
+argument</a> to attempt opening up to N times, or until interrupted.
+
+
+<dt> (f)    <a name="force"></a> <b>Force</b>
+
+<dd> Force open a closed door <b>+</b> (your attempt may fail).  This
+command can take a <a href="#numeric">numeric argument</a> to attempt
+opening up to N times, or until interrupted.  You may be thrown off
+balance which will interrupt your effort, but you can use the <b>g</b>
+command to "do it <a href="#again">again</a>".
+
+
+<dt> (S)    <a name="spike"></a> <b>Spike</b>
+
+<dd> Jam a closed door <b>+</b> with iron spikes (if you are carrying
+some).  This command can take a <a href="#numeric">numeric
+argument</a> to jam with N spikes, which are better than 1 (but less
+than N times as good; there is a point of diminishing returns).
+
+
+<dt> (d)    <a name="dig"></a> <b>Dig</b>
+
+<dd> Dig in rubble <b>:</b>, or wall <b>#</b>, or weak mineral seam
+<b>%</b>, or valuable metal vein <b>$</b>.  This will be highly
+ineffective unless you are wielding an appropriate implement
+(e.g. pick or shovel) as primary weapon.  (If you have such an
+implement and just forgot to wield it, kMoria will usually remind you.)
+This command can take a <a href="#numeric">numeric argument</a> (and
+you will want to give it one, like 10 or 20) to dig for N turns or
+until interrupted or the square is clear.
+
+<dt> ( ) <b>Move onto</b>
+
+<dd> Type a space " " if you want to move onto an adjacent tile
+without picking up a item that is lying there.
+<!--  (buggy.  try turning off pick-up in the preferences instead.) -->
+
+<dt> (^)    <a name="disarm"></a> <b>Disarm</b>
+
+<dd> Disarm a trap.  This command can take a 
+<a href="#numeric">numeric argument</a> to attempt disarming up to N times,
+or until interrupted.  It is possible to set off a trap accidentally while
+attempting to disarm it..
+
+</dl>
+
+</div>
+
+<div class="content">
+    <h2> 'Set' commands menu </h2>
+
+<p> These commands don't take a turn.  They let you set various options. </p>
+<p> <img src="../images/kMoria/menu-set2.gif" alt="[Set menu]">
+<br><i>go to the Set menu</i> </p>
+<dl>
+<dt> <b>Preferences</b> /R
+
+<dd> The <a href="#prefs">Preferences dialog</a> allows you to customize various options: the relevant
+standard options from Moria plus a few extras.
+
+<dt> <b>Buttons</b> /B
+
+<dd> The <a href="#hwbs">Buttons dialog</a> allows you to customize the hardware buttons.
+
+<dt> <b>Repeaters</b>
+
+<dd> You can set certain repeatable commands (search, dig, open,
+disarm, force) to auto-repeat if you like, via this dialog.  Just
+check the boxes of the desired commands.  Suppose you check "disarm";
+then whenever you try to disarm a trap, unless you have already given
+it a count, it will automatically use a count of 99.  To abort, tap
+the screen or hit a bound button (keyboard users should be
+able to hit any key to interrupt).
+    
+<dt> <b>Spell Btns</b>
+
+<dd> Suppose you have bound a button to "magic" - you hit that button
+to cast a spell or to pray.  That takes you to the screen listing all
+of your books (there can be up to 4 of them).  The books are now
+conveniently linked to the four main hardware buttons - once you are
+on that screen, hit Datebook for the first book, ..., or MemoPad for
+the fourth book.  Then you are on the spell/prayer screen...
+    <br> Well, you can choose to bind the spells and prayers to
+hardware buttons also, via the <a href="#shwbs">Spell Btns</a> dialog.
+
+<dt> <a name="font"></a><b>Font</b> /F 
+
+<dd> This will toggle between the two available font sizes: normal,
+and flyspeck.  The flyspeck font will allow you to see more of the
+dungeon level at a time and (if your eyes and lighting are good
+enough) this is probably the better one to use.
+
+</dl>
+
+</div>
+
+<div class="content">
+    <h2> Other Menus </h2>
+
+<p> There are menu options in a couple of other screens in this game. </p>
+<p>In your inventory screen, there is an option "Un/Compact".  This
+will switch between giving each item a single line (and probably
+truncating its description), or giving each item enough lines to show
+its full description (well, to a maximum of two lines, but that should
+really be enough).  There is also an option to show weights.  If you
+have a character who is not very strong, and you reach the limit of
+what you can carry, this might be useful to help decide what to
+discard. </p>
+
+<p> In the store screen, there is a similar Un/Compact option that
+will switch between giving each item one line or two lines (regardless
+of description length).  There is also an Un/Haggle option.  <b>This
+option turns off Haggling.</b> If you don't mind suffering a mark-up
+in return for not having to bargain with the shopkeeper, try this
+option.  (If you like to get the best possible price for an item, or
+find the comments amusing, you can ignore this option.) </p>
+
+
+
+
+<?php include ("playnavigation.txt") ?>
+
+</div>
+
+<div class="content">
+<a name="inventory"></a>
+<h2> Inventory </h2>
+
+<!-- NOTE - need to describe the menu item -->
+ <p>
+<img src="../images/kMoria/pl5a-2.gif" alt="compact inventory">
+<img src="../images/kMoria/pl5a-3.gif" alt="inventory">
+<br><i>write <b>i</b> to see your inventory</i> </p>
+
+<p> Adventurers tend to collect things.  Where do they go?  Your pack.
+How do you do something with them once they are there? </p>
+
+<p> To do something to an item in your inventory, select "Inventory"
+from the Commands menu (or write "<strong>i</strong>", lower-case I.)
+A window will pop up with a list of your inventory.  Select any item,
+either by tapping, or by writing its index letter (<b>b</b> in the
+example shown below).  This should cause some buttons to appear,
+labeled with relevant actions.  Tap the button of your choice to
+perform that action.
+<br><img src="../images/kMoria/pl5b-2.gif" alt="">
+<img src="../images/kMoria/pl5c-2.gif" alt="">
+<br><i>we select b and then tap <b>wear</b></i> </p>
+<p> Note that performing these actions takes time, and you can't see what's
+going on out there because you have your head in your pack or something. </p>
+<p> You can switch from the Inventory to the Equipment screen by
+tapping on the "[E]" in the lower right corner; this doesn't take any time. </p>
+<p>
+<img src="../images/kMoria/pl5d-2.gif" alt="">
+<img src="../images/kMoria/pl5e-2.gif" alt="">
+<img src="../images/kMoria/pl5f-2.gif" alt="">
+<br><i>keep tapping <b>wear</b>/<b>wield</b> until everything is equipped!
+finally, tap <b>[E]</b>...</i> </p>
+<p> When you are finished, tap Done. </p>
+
+<p> <i>Keyboard users: type an index letter, e.g. </i>b<i> to select
+the second item.  Hit return (or type </i>1<i> for the first button)
+to wear/wield it.  You can type </i>2<i> for the "drop" button,
+</i>3<i> for the "throw" button, </i>9<i> for the "Done" button,
+and </i>0<i> for the [E] Equipment button.
+<br> The Equipment screen is similar.  Index letter to select,
+1 to take off, 2 to drop, 9 for done, 0 for inventory.</i> </p>
+
+</div>
+
+<div class="content">
+<a name="equipment"></a>
+<h2> Equipment </h2> <!-- NOTE - pictures are out of date -->
+
+<p> It is said: "Do not go into the dungeon naked or the monsters will laugh at you." </p>
+
+<p> To do something to an item in your Equipment, select "Equipment"
+from the Commands menu, or write "<strong>e</strong>".  (Or, if you are in
+Inventory, tap the <b>[E]</b> button.)
+A window will pop up with a list of your equipped inventory.  Select any item.
+This should cause some buttons to appear, labeled with relevant
+actions.  Tap the button of your choice to perform that action. </p>
+<p>
+<img src="../images/kMoria/pl5g-2.gif" alt="">
+<img src="../images/kMoria/pl5h-2.gif" alt="">
+<br><i>select an item to see that it can be taken off or dropped.. tap <b>Done</b></i> </p>
+<p> Note that these actions take time.  
+Remember the "e<b>x</b>change" command to save a turn when swapping weapons. </p>
+<p>
+<img src="../images/kMoria/pl5i.gif" alt="">
+<img src="../images/kMoria/pl5j.gif" alt="">
+<img src="../images/kMoria/pl5k.gif" alt="">
+<br><i>here we try writing <b>x</b> to exchange weapons.. then write <b>e</b> to see equipment
+<br> we had a primary and no spare... now we have a spare and no primary,
+we could wield a new primary weapon</i> </p>
+
+<p> You can switch from the Equipment to the Inventory screen by
+tapping on the "[In]" in the lower right corner. </p>
+<p> When you are finished, tap Done. </p>
+
+
+<?php include ("playnavigation.txt") ?>
+
+</div>
+
+<div class="content">
+<a name="prefs"></a>
+<h2> Preferences </h2>
+
+<p> As I mentioned above, there is a Preferences item on the Options
+menu which will allow you to set various things, including the size of
+those "what am I doing when I tap somewhere" circles. </p>
+
+<!-- <p> <img src="../images/kMoria/pl6.gif" alt="preferences"> -->
+<p> <img src="../images/kMoria/prefs.gif" alt="preferences"> </p>
+
+<p> The preferences screen also allows you to: </p>
+<ul>
+<li>
+Set the default font size ("big" normal font, or teensy flyspeck font.)
+You can still change it at whim with '/F', but it will tend to start out
+using the font size you select here.
+<li>
+Turn on/off "relative movement".  If this is on, the pie/donut is
+centered around the @@; if this is off, the pie/donut is fixed in place,
+centered on the screen.
+<li>
+Turn on/off "circles".  This is experimental.  It will draw the
+borders of the movement donut, overlaid on the dungeon view.  This
+might be helpful or a distraction.
+    <br> <img src="../images/kMoria/circles.gif" alt="[concentric-circles screen]">
+<li>
+Turn on/off sound.  There are two places to turn it off.  One is "Game
+Sound" under "General" in the PalmOS "Prefs" application.  (That
+will turn off sound for all games that bother to pay attention.)  The
+other is the "Sound" checkbox you see here.  If either one of these is
+'off', kMoria will be silent; if you want sound, therefore, they must
+both be 'on'.  Not that I have actually put any sound into the game yet.
+<li>
+    Turn on "invert" - if this is on, the background will be black,
+    and everything in the dungeon will be drawn in white.
+<li>
+    Turn on "color" - this is only possible (visible) if you've chosen to
+    <a href="color.php">define a set of colors</a>.
+    If it is visible, it will appear below "invert".
+    
+    <li>
+    Turn off "running" altogether, so that you move only one square at
+a time no matter how far from the center you tap.  Then the following
+options will not be of interest.
+    <ul>
+<li>
+Turn off "cut known corners".  When you are running, kMoria is smart
+enough to cut corners in twisty passages that you have previously
+explored.  But maybe you don't want it to.
+<li>
+Turn off "examine potential corners".  When you are running,
+kMoria assumes you do not want to cut a suspected corner in a twisty
+passage that you have not previously explored.  But maybe you know better.
+<li>
+Turn on "stop when map sector changes".  When running, this will cause
+you to stop running as soon you have run onto the next screen: a cautious
+player will turn this option on in case there were monsters just out of sight.
+<li>
+Turn on "run through open doors".  You may want to stop to close them.
+Or, you may want to stop to search (where there is one door, often there
+are more doors that are concealed).  If you don't want to do these things,
+you can turn this option off.
+        </ul>
+<li>
+Turn on "prompt to pick up objects".  If you don't want to pick up
+    absolutely every object you encounter, you would turn this on.
+<li>
+Turn on "highlight mineral seams".  This is an option for those who like
+digging.  It will display the weaker types of mineral as <b>%</b>;
+the ones you probably don't want to bother tunneling through are
+still <b>#</b>.  Watch out for cave-ins.
+    <li> You can also move the "stats" bar to the top of the screen.
+</ul>
+<p>
+Not offered: "centered" scrolling to keep the rogue in the center of
+the screen.  If you have played Unix Moria, you know that
+even there the dungeon levels are divided into panels (to fit in your
+xterm) and you move about within the panels.  Playing on your handheld
+is just the same (except that the panels are smaller) so call this
+"an authentic experience" and call me "lazy" </p>
+
+
+<?php include ("playnavigation.txt") ?>
+
+</div>
+
+<div class="content">
+<a name="hwbs"></a>
+<h2> Hardware Buttons </h2>
+<!-- <p> <img src="../images/kMoria/buttons.gif" alt="[buttons]">
+<img src="../images/kMoria/buttons2.gif" alt="[buttons]"> -->
+<p> <img src="../images/kMoria/hwb0.gif" alt="[buttons]"> </p>
+
+<p> You have the option of rebinding the four application buttons, the
+up/down scroll buttons, and the silkscreened calculator and find
+buttons.  You can rebind some, all, or none.  Once you have made some
+choices, check the "use these settings" box to turn it on.  (If you
+ever want to turn the rebinding off temporarily, all you have to do is
+uncheck the box.  kMoria will remember your settings but won't use
+them.) </p>
+
+<p> You have a fixed set of choices for each button.  (The dashed
+choice you see at the top is "don't rebind this button", i.e. let the
+button do whatever it ordinarily would.) </p>
+
+<p> To bind a button:  First, select that button (on the left).
+Then, select something from the list (on the right).  Let's select "Addr" and then select "west".
+<br>
+<img src="../images/kMoria/hwb1.gif" alt="[buttons]">
+<img src="../images/kMoria/hwb4.gif" alt="[buttons]">
+<img src="../images/kMoria/hwb5.gif" alt="[buttons]"> </p>
+<p> As you can see, "west" appears next to the button that we bound it
+to.  Thrilled with this accomplishment, we go on to bind the other
+directions, and show off a couple of the other bindable commands... (see
+second picture in that row).
+In the third picture in that row, we see how to unbind a button:
+<br> If you want to <b>un</b>bind a button, select it, and then select
+"---".  We had bound Memo to font, now we unbind it, and so now if we
+hit Memo during the game we would just go to the MemoPad application. </p>
+
+
+</div>
+
+<div class="content">
+<a name="shwbs"></a>
+
+<h2> Spell Btns </h2>
+
+<p> Ok, suppose that you have some hardware buttons bound to some
+commands, but you really want to be able to fire off a spell as a
+three-button sequence (like you can in regular desktop Moria).  Hit
+Menu in the dungeon, then hit Set, then select Spell Btns and you will
+be in this exciting new screen. </p>
+
+<p> <img src="../images/kMoria/spellbtns.gif" alt="[spell btns]">
+<img src="../images/kMoria/spellbtns2.gif" alt="[spell btns]">
+<img src="../images/kMoria/spellbtns3.gif" alt="[spell btns]"> </p>
+
+<p> When you are casting spells: The books are already bound to the
+four application buttons.  How about the spells/prayers in each book?
+You get to choose how to bind each particular spell (or whether to
+bind it at all). </p>
+
+<p> First, select the button that you wish to bind.  Here we select
+Memo.  Then, select the spell that you want to bind to that button.
+Here we select Magic Missile.  Then you will see "a" (the index letter
+of the spell we selected) appear next to Memo, just as you see in the
+second picture.  (To <b>un</b>bind the button, select the button, and
+then tap on -None-.)  Suppose we have bound "Todo" to "magic" in the
+Hardware buttons screen: then to cast a magic missile with button
+presses, we would hit "Todo" (then the screen of books comes up) then
+hit "Datebook" (to select the first book) then hit "Memo" (which is
+the step that we just defined here). </p>
+
+<p> (If I lost you on "hit 'Datebook'" I will reiterate: the
+four app buttons are bound to spellbooks, in the books screen.
+Datebook will select the first book, Address will select the second,
+Todo will select the third, Memo will select the fourth.  If you have
+four.)</p>
+
+<p> What about spells from the other books?  In the lower right corner
+there is a list of the 8 books.  (You can get to this screen no matter
+what character class you are playing, and you can bind any spells in
+any books, so if you know what the spells do and which ones you find
+most useful, go ahead and bind them once and for all.)  We started out
+on the first Mage book.  To get to the next Mage book, tap on the list
+in the lower right corner, and select the next item in the popup list.
+This changes the spell list - and we see the third picture.  We can
+bind these spells as desired, and then go on to the next book... </p>
+
+
+<!-- <p> If you have read this far and still haven't decided whether to
+download the game, you can take <a href="town.php">a whirlwind tour
+of the town</a> while you make up your mind.  There is a picture of
+each store and a brief description of how to do things at it. -->
+
+</div>
+
+<div class="content">
+<h2>help!</h2>
+
+<p> Need help with gameplaying strategy? <br>
+<i><?php include("../quotes.php"); ?></i> </p>
+<!-- <p> You will have to read the source.
+(Or find a spoiler page for the right version of Unix Moria.  "The truth
+is out there.") -->
+<p> You could consult the experts on the Moria
+<a href="http://groups.google.com/groups?group=rec.games.roguelike.moria">newsgroup</a>.
+
+</p>
+</div>
+
+
+<div class="content">
+  <h2>Screenshots</h2>
+<p>
+<img src="../images/iRogue/1welcome.gif" alt="monochrome"> <img src="../images/iRogue/1welcome_c.gif" alt="color"></p>
+</div>
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+</body>
+</html>
+@
+
+
+1.6
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+@
+
+
+1.5
+log
+@commit everything before massive style change
+@
+text
+@d1 3
+a3 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+d7 4
+a10 4
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+d14 4
+a17 38
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">kMoria: instructions for game play</h3>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      <!-- -->
+      <tr><td class="sidehead">
+	kMoria Stuff </td></tr>
+      <tr><td class="side"> <a href="index.php">
+	  What is kMoria?</a> </td></tr>
+      <tr><td class="side"> <a href="whatsnew.php">
+	  What's new</a> </td></tr>
+      <tr><td class="side"> <a href="download.php">
+	  Download kMoria</a> </td></tr>
+      <tr><td class="side">
+	  <b>How to play</b>
+	<br>- <a href="play_chargen.php">character creation</a>
+	<br>- <a href="play_intro.php">brief intro</a>
+       </td></tr>
+      <tr><td class="side"> <a href="source.php">
+	  How to get source</a> </td></tr>
+      <?php include ("../hostedby.txt") ?>
+    </table></td>
+
+    <!-- main area table -->
+    <td class="body" valign=top>
+    <!-- ----- this is the interesting part of the page ----- -->
+a18 1
+    <h4> How to play kMoria </h4>
+d20 4
+a23 1
+    <P> Hopefully you're familiar with rogue-like games
+d27 2
+a28 1
+<P> Your goal in this game is to defeat the Balrog, who lives deep
+d30 1
+a31 5
+    <P>These instructions are updated for 0.13.
+    They are not up to date for 0.14 yet - I need to take new
+    screenshots of the preferences screen, which looks different now.
+    
+</td></tr></table>
+a32 1
+<P>
+d36 1
+a36 1
+<h3>Starting Out</h3>
+d38 1
+a38 1
+<P> When you start the application you will first have to
+d40 1
+a40 1
+that link to see out how it's done.)
+d42 1
+a42 1
+<P> Then you will start out in the town.  If you are not familiar with
+d46 4
+a49 1
+tell you how to move around and do things.
+a50 1
+<a name="move"></a>
+a51 1
+<P>
+d53 4
+d58 1
+a58 1
+<h3> Moving Around </h3>
+d60 1
+a60 1
+<P> (If you have played <a href="../iRogue/">iRogue</a> or <a
+d62 1
+a62 1
+in kMoria is similar.)
+d64 1
+a64 1
+<P>
+d72 1
+a72 1
+instructions will assume the latter.)
+d74 1
+a74 1
+<P> <img src="../images/kMoria/pie.gif" alt="[pie-sliced screen]">
+d76 1
+a76 1
+<P> Ok.  You got the pie?  I am going to complicate it now.  If you
+d82 1
+a82 1
+"interesting".
+d84 1
+a84 1
+<P> <img src="../images/kMoria/circles-pie.gif" alt="[concentric-sliced screen]">
+d86 1
+a86 1
+<P> So there's a pie of what-direction-you-move, and there are some
+d90 1
+a90 1
+real-estate.
+d92 1
+a92 1
+<P> Oh, yeah: to attack a monster "hand-to-hand", with whatever weapon
+d97 3
+a99 2
+set of messages).
+<P> If you don't want to attack hand-to-hand; you can stand at a greater
+d101 1
+a101 1
+wands.
+d103 1
+a103 1
+<P> <i>Keyboard users: type hjklyubn to move around, HJKLYUBN to run.
+d105 6
+a110 1
+instead of a queen.)</i>
+d112 1
+a112 1
+<P>
+d116 1
+a116 3
+<?php include ("playnavigation.txt") ?>
+
+<h3> 'Show' menu </h3>
+d118 2
+a119 2
+<P> The Show menu has commands that show you information.  None of these
+commands will take up a turn in the game.
+d121 1
+a121 1
+<P> Some menu items have a character in parentheses.  These commands
+d123 1
+a123 1
+the menu).
+d125 2
+a126 2
+<P> <img src="../images/kMoria/menu-show.gif" alt="[Show menu]">
+<br><i>go to the Show menu</i>
+d142 1
+d149 1
+a149 1
+<P><i>Keyboard users: You can also type </i>M<i> to get to the
+d159 1
+a159 1
+<P> <i>Keyboard users: </i>pageup/pagedown<i> to scroll, </i>space<i>
+d170 1
+a170 1
+<P> <i>Keyboard users: </i>space<i> to toggle the information; hit return to exit</i>
+d172 1
+a172 1
+<dt> (/) <a name="whatsthat"><b>What's that?</b></a>
+d179 1
+a179 1
+<P> <i>Keyboard users: </i>n<i> for next monster; scrolling as usual;
+d182 1
+a182 1
+<dt> (?) <a name="look"><b>Look</b></a>
+d190 1
+a190 1
+<P> <i>Keyboard users: </i>r<i> to recall; </i>space<i> for the next item;
+d208 1
+a208 1
+<P> <i>Keyboard users: hit return to exit</i>
+d219 1
+a219 1
+<P> <i>Keyboard users: scrolling as usual, or use </i>&lt; and &gt;<i>;
+d230 5
+d236 4
+a239 4
+<?php include ("playnavigation.txt") ?>
+<h3> 'Pick' menu </h3>
+<P> The Pick menu has all the commands that present a list of things
+for you to pick &amp; choose.
+d241 2
+a242 2
+<P> <img src="../images/kMoria/menu-pick.gif" alt="[Pick menu]">
+<br><i>go to the Pick menu</i>
+d247 1
+a247 2
+<dd> This will take you to the inventory dialog.  I will describe that more
+<a href="#inventory">below</a>.
+d251 1
+a251 2
+<dd> This will take you to the equipment dialog.  I will describe that more
+<a href="#inventory">below</a>.
+d258 1
+a258 1
+<P> <i>Keyboard users: (1) In the "Read Which Book?" form, you can select
+d262 1
+a262 1
+<P> <i>Button users: (1) <b>If</b> you use any hardware buttons, you can
+d265 1
+a265 1
+assign spell buttons via Set--&gt;<a href="#spellbtns">SpellBtns</a>
+d279 1
+a279 1
+<P> <i>Keyboard users: in the "Learn Which Spell?" form, you can
+d294 1
+a294 1
+<P> <i>Keyboard users: throw, aim, zap are like the inventory screen.</i>
+d299 1
+a299 1
+<P> <i>Keyboard users: select by letter, hit return, type inscription,
+d302 6
+d309 3
+a311 3
+<?php include ("playnavigation.txt") ?>
+<h3> 'Here' menu </h3>
+<P> The theme of the Here menu commands is things that you do right
+d313 3
+a315 3
+(as opposed to the Near menu of directional commands).
+<P> <img src="../images/kMoria/menu-here.gif" alt="[Here menu]">
+<br><i>go to the Here menu</i>
+a317 1
+<a name="again"></a>
+d319 1
+a319 1
+<P> Certain commands can be repeated <i>n</i> times.  (rest, search,
+d323 1
+a323 1
+monster attacks you, you stop).
+d325 3
+a327 1
+<P> In addition, if you want to do a command "<b>again</b>", there is
+d330 1
+a330 1
+"throw/fire an arrow to the south" or "force the door to the east".
+d350 2
+a351 1
+<P> <i>Keyboard users: in "Rest how many turns?" type </i>0, 1, 2, or 3<i>
+d353 3
+a355 2
+<P> <i>Button users: in "Rest how many turns?" the 4 application buttons are
+bound to the four choices, e.g. </i>Datebook<i> for 0.</i>
+d357 1
+a357 1
+<dt> (s) <a name="search"><b>Search</b></a>
+d363 1
+a363 1
+<dt> (#) <b>Search mode</b></a>
+d372 1
+a372 1
+<dt> (&lt;) <a name="scend"> <b>Ascend</b></a>
+d380 4
+d386 3
+a388 2
+    <h3> 'Near' commands menu </h3>
+<P> These commands all require you to choose a particular square near
+d390 3
+a392 3
+pie-lines to indicate that you should tap in a slice to choose a direction.
+<P> <img src="../images/kMoria/menu-near.gif" alt="[Near menu]">
+<br><i>go to the Near menu</i>
+d395 1
+a395 1
+<dt> (c)    <a name="close"> <b>Close</b></a>
+d400 1
+a400 1
+<dt> (o)    <a name="open"> <b>Open</b></a>
+d407 1
+a407 1
+<dt> (f)    <a name="force"> <b>Force</b></a>
+d416 1
+a416 1
+<dt> (S)    <a name="spike"> <b>Spike</b></a>
+d424 1
+a424 1
+<dt> (d)    <a name="dig"> <b>Dig</b></a>
+d441 1
+a441 1
+<dt> (^)    <a name="disarm"> <b>Disarm</b></a>
+d449 9
+a457 4
+    <h3> 'Set' commands menu </h3>
+<P> These commands don't take a turn.  They let you set various options.
+<P> <img src="../images/kMoria/menu-set2.gif" alt="[Set menu]">
+<br><i>go to the Set menu</i>
+d461 1
+a461 2
+<dd> The Preferences dialog allows you to customize various options.
+I'll go over that <a href="#prefs">below</a>.  You get the relevant
+d466 1
+a466 2
+<dd> The Buttons dialog allows you to customize the hardware buttons.
+I'll go over that <a href="#hwbs">below</a>.
+d478 1
+a478 1
+<dt> <a name="spellbtns"><b>Spell Btns</b></a>
+d487 1
+a487 2
+hardware buttons also, and this is the place to do it.  I guess I
+should cover this in more detail <a href="#shwbs">below</a>.
+d489 1
+a489 1
+<dt> <a name="font"><b>Font</b> /F </a>
+a496 1
+    <h3> Other Menus </h3>
+d498 7
+a504 2
+<P> There are menu options in a couple of other screens in this game.
+<P>In your inventory screen, there is an option "Un/Compact".  This
+d511 1
+a511 1
+discard.
+d513 1
+a513 1
+<P> In the store screen, there is a similar Un/Compact option that
+d519 2
+a520 1
+find the comments amusing, you can ignore this option.)
+a522 1
+<P>
+d524 5
+d530 1
+a530 1
+<?php include ("playnavigation.txt") ?>
+a531 1
+<h3> Inventory </h3>
+d533 1
+a533 1
+
+d536 1
+a536 1
+<br><i>write <b>i</b> to see your inventory</i>
+d538 2
+a539 2
+<P> Adventurers tend to collect things.  Where do they go?  Your pack.
+How do you do something with them once they are there?
+d541 1
+a541 1
+<P> To do something to an item in your inventory, select "Inventory"
+d550 6
+a555 6
+<br><i>we select b and then tap <b>wear</b></i>
+<P> Note that performing these actions takes time, and you can't see what's
+going on out there because you have your head in your pack or something.
+<P> You can switch from the Inventory to the Equipment screen by
+tapping on the "[E]" in the lower right corner; this doesn't take any time.
+<P>
+d560 2
+a561 2
+finally, tap <b>[E]</b>...</i>
+<P> When you are finished, tap Done.
+d563 1
+a563 1
+<P> <i>Keyboard users: type an index letter, e.g. </i>b<i> to select
+d569 3
+a571 1
+1 to take off, 2 to drop, 9 for done, 0 for inventory.</i>
+d573 3
+a575 1
+<h3> Equipment </h3> <!-- NOTE - pictures are out of date -->
+d577 1
+a577 1
+Do not go into the dungeon naked or the monsters will laugh at you.
+d579 1
+a579 1
+<P> To do something to an item in your Equipment, select "Equipment"
+d584 2
+a585 2
+actions.  Tap the button of your choice to perform that action.
+<P>
+d588 4
+a591 4
+<br><i>select an item to see that it can be taken off or dropped.. tap <b>Done</b></i>
+<P> Note that these actions take time.  
+Remember the "e<b>x</b>change" command to save a turn when swapping weapons.
+<P>
+d597 5
+a601 1
+we could wield a new primary weapon</i>
+a602 3
+<P> You can switch from the Equipment to the Inventory screen by
+tapping on the "[In]" in the lower right corner.
+<P> When you are finished, tap Done.
+a603 2
+<P>
+<a name="prefs"></a>
+d606 1
+a606 1
+<h3> Preferences </h3>
+d608 5
+a612 1
+<P> As I mentioned above, there is a Preferences item on the Options
+d614 1
+a614 1
+those "what am I doing when I tap somewhere" circles.
+d616 2
+a617 2
+<!-- <P> <img src="../images/kMoria/pl6.gif" alt="preferences"> -->
+<P> <img src="../images/kMoria/prefs.gif" alt="preferences">
+d619 1
+a619 1
+<P> The preferences screen also allows you to:
+d645 3
+a647 4
+    Turn on "color" - this is only possible (visible) if you have
+    defined a set of colors to use.  <a href="color.php">See instructions
+    for how to do this.</a> If it is visible, it will be right below
+    "invert".
+d682 1
+d688 2
+a689 1
+"an authentic experience" and call me "lazy"
+a690 2
+<P>
+<a name="hwbs"></a>
+d693 6
+a698 2
+<h3> Hardware Buttons </h3>
+<!-- <P> <img src="../images/kMoria/buttons.gif" alt="[buttons]">
+d700 1
+a700 1
+<P> <img src="../images/kMoria/hwb0.gif" alt="[buttons]">
+d702 1
+a702 1
+<P> You have the option of rebinding the four application buttons, the
+d708 1
+a708 1
+them.)
+d710 1
+a710 1
+<P> You have a fixed set of choices for each button.  (The dashed
+d712 1
+a712 1
+button do whatever it ordinarily would.)
+d714 1
+a714 1
+<P> To bind a button:  First, select that button (on the left).
+d719 2
+a720 2
+<img src="../images/kMoria/hwb5.gif" alt="[buttons]">
+<P> As you can see, "west" appears next to the button that we bound it
+d727 1
+a727 1
+hit Memo during the game we would just go to the MemoPad application.
+d730 3
+d735 1
+a735 1
+<h3> Spell Btns </h3>
+d737 1
+a737 1
+<P> Ok, suppose that you have some hardware buttons bound to some
+d741 1
+a741 1
+be in this exciting new screen.
+d743 1
+a743 1
+<P> <img src="../images/kMoria/spellbtns.gif" alt="[spell btns]">
+d745 1
+a745 1
+<img src="../images/kMoria/spellbtns3.gif" alt="[spell btns]">
+d747 1
+a747 1
+<P> When you are casting spells: The books are already bound to the
+d750 1
+a750 1
+bind it at all).
+d752 1
+a752 1
+<P> First, select the button that you wish to bind.  Here we select
+d761 1
+a761 1
+the step that we just defined here).
+d763 1
+a763 1
+<blockquote> (If I lost you on "hit 'Datebook'" I will reiterate: the
+d767 1
+a767 1
+four.)</blockquote>
+d769 1
+a769 1
+<P> What about spells from the other books?  In the lower right corner
+d777 1
+a777 1
+bind these spells as desired, and then go on to the next book...
+d780 1
+a780 1
+<!-- <P> If you have read this far and still haven't decided whether to
+d785 4
+a788 1
+<h3>help!</h3>
+d790 3
+a792 3
+<P> Need help with gameplaying strategy?
+<blockquote><i><?php include("../quotes.php"); ?></i></blockquote>
+<!-- <P> You will have to read the source.
+d795 1
+a795 1
+<P> You could consult the experts on the Moria
+a796 2
+      <P>
+      <!-- ----- end of the interesting part of the page ----- -->
+d798 18
+a815 3
+<!-- footer table -->
+<?php include ("../footer.txt") ?>
+<!-- end footer table -->
+a816 1
+<address>i0lanthe@@users.sourceforge.net</address>
+a817 1
+Last modified: Sat Jan 12 18:31:07 EST 2002
+d819 1
+a819 1
+<?php $hitsfile = "play.hits"; include ("../counter.php")?>
+@
+
+
+1.4
+log
+@checkpointing web before kMoria 0.15 update
+@
+text
+@d7 2
+d38 4
+a41 2
+	  <b>How to play</b> <!-- ;
+	  <a href="town.php">town</a> --> </td></tr>
+d44 1
+@
+
+
+1.3
+log
+@foo
+@
+text
+@d14 1
+a14 1
+    <h3>kMoria: instructions for game play</h3>
+d55 3
+a57 5
+    <P>These instructions are "new &amp; improved with <b>even more</b>
+    screenshots" for version 0.09. <!-- which will be available "as soon as
+    I get my act together".  Man, this page just keeps getting bigger. -->
+    (The new shots are a nice mismatched white.)
+    <br> <i>(yep, this has not been updated for 0.11 yet)</i>
+a63 1
+<?php include ("playnavigation.txt") ?>
+d65 1
+a65 1
+<h3>What You See</h3>
+d68 2
+a69 114
+<a href="play_chargen.php">generate a character</a>.
+
+<P> Then you will see a screen split into two parts.  The main part
+represents a portion of the dungeon level you're on.  The bottom part
+contains your status information and/or recent messages.
+<P>
+<img alt="town" src="../images/kMoria/pl1.gif">
+<br><i>we start at a random location in the town</i>
+
+<h3> Status information </h3>
+
+<P> To make more of the dungeon visible, your status information has
+been compacted.  The top line displays either your six stats, or your
+armor class and cash.  The bottom line displays your experience level,
+total experience points, mana, and maximum/current hit points.
+
+<P>
+<img alt="stats 1" src="../images/kMoria/pl2a.gif">
+<P>
+<img alt="stats 2" src="../images/kMoria/pl2b.gif">
+
+<P> Stats: These are the standard (S)trength, (In)telligence,
+(W)isdom, (D)exterity, (C)onstitution, and (Ch)arisma.  They were
+generated randomly initially, then modified somewhat by your choices
+in character creation.  It is possible to have exceptional,
+e.g. 18/99, values.  A value of 18/xx is shown as reverse-video
+<b>xx</b>.
+
+<P> Armor class (AC): Higher is better.  Put on some armor in the <a
+href="#inventory">inventory</a> screen.
+<P> Cash ($): You can use this to buy things in the stores.
+<P> Current depth ("50 feet"): This shows what dungeon level you are
+on.
+<P> Experience level (L), experience points (x): You get points for
+killing monsters, depending on the type of monster and your current
+level of experience.  You do not get points for killing town
+inhabitants, even if they were asking for it.
+<P> Mana: You need to have mana to use a spell or prayer.  It will
+regenerate slowly after you use it.
+<P> Hit points (hp): The current value is on the right.  It will regenerate
+up to the maximum value (on the left).  If your current hit points drop to 0
+or below, you die.
+<P>
+
+<h3> Dungeon view </h3>
+
+<P> You are represented by an at-sign "<b>@@</b>".  You start out in
+the town, which has various stores as well as a staircase leading into
+the dungeon.  The town also contains various uncongenial inhabitants.
+To enter a store, just move on top of its numbered doorway.  (I will
+explain <a href="#move">how to move</a> in the next section.)  To
+enter the dungeon, move onto its entrance and write <b>&gt;</b> to
+descend the stairs; be sure to wield a light source so that you can
+find your way out again.
+
+<P> The dungeon levels in Moria tend to be large.  Be patient as a new
+level is generated.  You may wish to change to the smaller font so
+that you can see more.  This game does not have persistent levels; if
+you descend from level A to level B and then ascend to A again, it
+will be a new fully-stocked random map.
+<P>
+<img alt="town" src="../images/kMoria/pl1.gif">
+<img alt="town R" src="../images/kMoria/pl3a.gif">
+<img alt="town L" src="../images/kMoria/pl3b.gif">
+<img alt="stairs" src="../images/kMoria/pl3c.gif">
+<br><i>east end of town... zoom out... move to the west end... zoom in... we're at the stairs</i>
+
+<P> When you are in the dungeon, walls are "<b>#</b>" and lighted
+tiles are "<b>.</b>".  You may see monsters, represented by letters of
+the alphabet.  You can attack them by walking into them.
+
+<P> Items: In your wanderings you will also encounter items that you
+can pick up; these are represented by various symbols; you pick them
+up by walking on them, and you can use them from your <a
+href="#inventory">inventory</a> screen.
+
+<P> To find out more about your surroundings: The <a
+href="#whatsthat">What's that</a> command will identify any letter,
+symbol, or number that you tap on, and (if it is a type of monster)
+will recall what you have learned so far about it.  The <a
+href="#look">look</a> command lets you choose a direction to look in,
+and will list any interesting things you see there.  Either command
+will also give you access to the "monster memory": kMoria remembers,
+from game to game, what your characters have learned about particular
+monsters (did it kill you, does it breathe fire, how many points is it
+worth, etc).
+
+<P> Doors: You will sometimes encounter closed doors "<b>+</b>" which
+can be <a href="#open">opened</a> or, if it is jammed shut, you can
+try to <a href="#force">force</a> it open bodily.  It may take several
+tries to open a locked door or force a door that is stuck.  If you
+want to wedge a door shut to delay pursuit, you can <a
+href="#spike">spike</a> it with iron spikes, assuming that you are
+carrying some.  Many doors in these mines are cunningly concealed; if
+you think a door ought to exist in one of the eight squares adjacent
+to you, you can <a href="#search">search</a> for it; again, this may
+take several tries.  Open doors "<b>'</b>" can of course be <a
+href="#close">closed</a> again, unless forced and broken.
+
+<P> Stairs: Down staircases <b>&gt;</b> and up staircases <b>&lt;</b>
+are conveniently represented by the same symbol that you must write to
+<a href="#scend">ascend or descend</a> them.
+
+<P> Digging: You may see a vein of valuable metal "<b>$</b>" embedded
+in a wall.  You can try to <a href="#dig">dig</a> this out.  It will
+take a long time unless you are wielding a suitable mining implement
+such as a pick or shovel.  Some kinds of rock are harder to dig
+through than others; there is a <a href="#prefs">preference</a> that
+will draw the easier minerals as "<b>%</b>".
+
+<P> Traps: From time to time you may run into a trap "<b>^</b>".
+There are various kinds of traps, but I'll let you find out about them
+on your own.  You can find traps by <a href="#search">searching</a>,
+and you can also attempt to <a href="#disarm">disarm</a> a trap.
+d71 5
+d126 5
+d150 3
+a152 3
+<dd> In the middle part of the screen, you can only see a part of the level
+that you're currently exploring.  The "Map" menu item will display a
+map of the entire level.
+d160 3
+a162 2
+square to exit the map.
+<br> Because dungeon levels are so large the map has two halves: left
+d168 6
+d178 2
+d183 5
+a187 3
+the same as the final "Your Character" screen in <a href="play_chargen.php">
+character generation</a>.  You can change your name here, and see how
+much experience is required for the next experience level.
+d189 3
+a191 2
+<a name="whatsthat">
+<dt> (/) <b>What's that?</b></a>
+d195 5
+d201 1
+a201 2
+<a name="look">
+<dt> (?) <b>Look</b></a>
+d209 2
+d220 1
+a220 1
+<dd> Don't exist yet.
+d225 4
+d238 2
+d254 1
+d274 10
+d287 2
+a288 1
+say a prayer.  Some prayers have directional effects.
+d295 3
+d310 1
+d315 2
+d328 1
+d335 6
+d359 6
+a364 3
+
+    <a name="search">
+<dt> (s) <b>Search</b></a>
+d378 2
+a379 2
+    <a name="scend">
+<dt> (&lt;) <b>Ascend</b></a>
+d396 2
+a397 2
+    <a name="close">
+<dt> (c) <b>Close</b></a>
+d401 2
+a402 2
+    <a name="open">
+<dt> (o) <b>Open</b></a>
+d408 2
+a409 2
+    <a name="force">
+<dt> (f) <b>Force</b></a>
+d414 2
+a415 1
+balance which will interrupt your effort.
+d417 2
+a418 2
+    <a name="spike">
+<dt> (S) <b>Spike</b></a>
+d425 2
+a426 2
+    <a name="dig">
+<dt> (d) <b>Dig</b></a>
+d431 5
+a435 4
+(e.g. pick or shovel) as primary weapon.  This command can take a <a
+href="#numeric">numeric argument</a> (and you will want to give it
+one, like 10 or 20) to dig for N turns or until interrupted or the
+square is clear.
+d440 4
+a443 4
+without picking up a item that is lying there.  (buggy.  try turning off
+pick-up in the preferences instead.)
+    <a name="disarm">
+<dt> (^) <b>Disarm</b></a>
+d448 1
+a448 1
+    attempting to disarm it..
+d474 2
+a475 3
+the screen or hit a bound button (note: if you have a keyboard, I am
+not sure whether hitting a keyboard key will interrupt, so you may
+find that you have to tap the screen instead).
+d477 1
+a477 1
+<dt> <b>Spell Btns</b>
+d489 1
+a489 1
+<dt> <b>Font</b> /F
+d492 1
+a492 1
+and flyspeck.  The flyspeck font will allow you to see more the
+d495 1
+d511 5
+a515 5
+of description length).  There is also an Un/Haggle option.  This
+option turns off Haggling.  If you don't mind suffering a mark-up in
+return for not having to bargain with the shopkeeper, try this option.
+(If you like to get the best possible price for an item, or find the
+comments amusing, you can ignore this option.)
+d546 1
+a546 2
+tapping on the "[E]" in the lower right corner.
+<P> When you are finished, tap Done.
+d553 1
+d555 9
+a563 2
+<h3> Equipment </h3>
+<!-- NOTE - pictures are out of date -->
+d592 1
+d594 2
+a595 2
+<a name="prefs">
+<h3> Preferences </h3></a>
+d631 3
+a633 3
+    defined a set of colors to use.  <a href="../previews/">See
+    instructions for
+    how to do this.</a> If it is visible, it will be right below "invert".
+d766 1
+a766 1
+<P> Want "spoilers" for kMoria? 
+d768 1
+a768 1
+<P> You will have to read the source.
+d770 4
+a773 2
+is out there.")
+      
+d782 1
+a782 1
+Last modified: Sat Aug  4 13:58:04 EDT 2001
+@
+
+
+1.2
+log
+@in the middle of release/update
+@
+text
+@d55 3
+a57 3
+    <P>These instructions are "new &amp; improved with EVEN MORE
+    screenshots" for version 0.09 which will be available "as soon as
+    I get my act together".  Man, this page just keeps getting bigger.
+d59 1
+d823 1
+a823 1
+Last modified: Sat Jun 30 20:54:58 EDT 2001
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d54 6
+d178 1
+a178 2
+will draw the easier minerals as "<b>%</b>".  Diligent miners should
+take care not to make the roof unstable and subject to collapse.
+d503 1
+a503 1
+<P> <img src="../images/kMoria/menu-set.gif" alt="[Set menu]">
+d517 23
+d550 8
+a557 5
+<P>In your inventory screen, there is an option "Un/Compact".  This will
+switch between giving each item a single line (and probably truncating
+its description), or giving each item enough lines to show its full
+description (well, to a maximum of two lines, but that should really
+be enough).
+d562 1
+a562 1
+option turns off Haggling.  If you don't mind a slight mark-up in
+d643 2
+a644 1
+<P> <img src="../images/kMoria/pl6.gif" alt="preferences">
+d669 9
+d708 1
+d722 3
+a724 2
+<P> <img src="../images/kMoria/buttons.gif" alt="[buttons]">
+<img src="../images/kMoria/buttons2.gif" alt="[buttons]">
+d732 1
+a732 5
+them.)  
+<!-- There's an example above in case you're not feeling very
+creative.
+
+<P> <img src="../images/kMoria/8buttons2.gif" alt="[buttons]"> -->
+d736 64
+a799 2
+button do whatever it ordinarily would.)  I tried to pick a reasonable
+set of commands.
+d822 1
+a822 1
+Last modified: Fri Jan 12 20:30:57 EST 2001
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

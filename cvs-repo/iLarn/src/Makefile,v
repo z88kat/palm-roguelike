@@ -1,0 +1,587 @@
+head	1.16;
+access;
+symbols
+	Release-2001_08_06:1.16
+	Release-2001_06_15:1.15
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.16
+date	2001.08.05.03.25.14;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2001.05.05.20.26.20;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2001.05.03.01.06.34;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2001.05.03.00.45.38;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2001.05.01.04.41.33;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2000.10.15.22.03.22;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2000.10.15.20.51.56;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2000.10.15.19.35.18;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2000.10.14.23.16.50;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2000.10.14.04.19.22;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2000.10.14.01.59.20;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.10.13.03.26.15;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.09.03.03.28.23;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.09.03.02.54.35;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.08.28.01.15.22;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.34.10;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.34.10;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.16
+log
+@moved scores into saveDB; unique ids no longer used in iLarnDB; next, beaming
+@
+text
+@TARGET = iLarn
+APPNAME = "iLarn"
+APPID = "Larn"
+# NOTE: I have registered this app id.
+
+# how to split?  hm
+FORMO = form_about.o form_cast.o form_evader.o form_hwbuttons.o \
+  form_invselect.o form_lrs.o form_map.o form_messagelog.o form_pad.o \
+  form_pickch.o form_prefs.o form_question.o form_score.o form_store.o \
+  form_trans.o
+OBJS1 = alloc_env.o cast.o create.o dead.o display.o global.o inv.o main.o \
+        md_malloc.o monster.o movem.o moveplayer.o obj.o object.o \
+        object_actions.o object_actions_cont.o pickchar.o random.o regen.o \
+        savelev.o sphere.c stats.o store.o sum.o util.o \
+	color.o win.o beam.o
+OBJS = $(FORMO) $(OBJS1) $(TARGET)-sections.o
+
+INCS = iLarnRsc.h Globals.h larn_prototypes.h types.h
+
+CC = m68k-palmos-gcc
+#CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+##CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+CFLAGS = -Wall -g -O2 -palmos3.5 -DNON_INTERNATIONAL -DI_AM_COLOR
+
+PILRC = pilrc
+#OBJRES = m68k-palmos-obj-res
+BUILDPRC = build-prc
+
+#SHRINC = /usr/local/pilot/sdk/sdk/include/Core/
+
+all: iLarn.prc
+
+.S.o:
+	$(CC) $(TARGETFLAGS) -c $<
+
+.c.s:
+	$(CC) $(CSFLAGS) $<
+
+$(TARGET).prc: $(TARGET) bin.stamp
+	$(BUILDPRC) $(TARGET).def $(TARGET) *.bin
+
+$(TARGET): $(OBJS) $(TARGET)-sections.ld
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(TARGET)-sections.ld
+
+bin.stamp: $(TARGET).rcp $(TARGET).pbm Font56.txt
+	$(PILRC) $(TARGET).rcp .
+	touch bin.stamp
+
+$(TARGET)-sections.o: $(TARGET)-sections.s
+	$(CC) -c $(TARGET)-sections.s
+
+$(TARGET)-sections.s $(TARGET)-sections.ld: $(TARGET).def
+	multigen $(TARGET).def
+
+
+send: $(TARGET).prc
+	$(PILOTXFER) -i $(TARGET).prc
+
+depend:
+	makedepend -Y  *.c
+#	makedepend -Y -I/usr/local/pilot/m68k-palmos/include/ -I$(SHRINC) -I$(SHRINC)/UI -I$(SHRINC)/System  -I$(SHRINC)/Hardware *.c
+
+dingy:
+	-rm -f *.[oa] $(TARGET)
+
+clean:
+	-rm -f *.[oa] $(TARGET) *.bin bin.stamp *.grc Makefile.bak
+
+veryclean: clean
+	-rm -f $(TARGET).prc pilot.ram pilot.scratch *.ld *.s
+
+# DO NOT DELETE
+
+alloc_env.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+alloc_env.o: sections.h
+cast.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+cast.o: sections.h iLarnRsc.h
+color.o: palm.h sections.h defines.h types.h color.h
+create.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+create.o: sections.h
+dead.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+dead.o: sections.h iLarnRsc.h
+display.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+display.o: sections.h iLarnRsc.h win.h
+form_about.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_about.o: larn_prototypes.h sections.h
+form_cast.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_cast.o: larn_prototypes.h sections.h
+form_evader.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_evader.o: larn_prototypes.h sections.h
+form_hwbuttons.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_hwbuttons.o: larn_prototypes.h sections.h
+form_invselect.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_invselect.o: larn_prototypes.h sections.h
+form_lrs.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_lrs.o: larn_prototypes.h sections.h
+form_map.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_map.o: larn_prototypes.h sections.h
+form_messagelog.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_messagelog.o: larn_prototypes.h sections.h
+form_pad.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_pad.o: larn_prototypes.h sections.h
+form_pickch.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_pickch.o: larn_prototypes.h sections.h
+form_prefs.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_prefs.o: larn_prototypes.h sections.h color.h
+form_question.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_question.o: larn_prototypes.h sections.h
+form_score.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_score.o: larn_prototypes.h sections.h
+form_store.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_store.o: larn_prototypes.h sections.h
+form_trans.o: palm.h iLarnRsc.h Globals.h header.h defines.h types.h
+form_trans.o: larn_prototypes.h sections.h
+global.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+global.o: sections.h
+inv.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+inv.o: sections.h iLarnRsc.h
+main.o: palm.h callback.h iLarnRsc.h Globals.h header.h defines.h types.h
+main.o: larn_prototypes.h sections.h
+md_malloc.o: palm.h
+monster.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+monster.o: sections.h iLarnRsc.h
+movem.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+movem.o: sections.h
+moveplayer.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+moveplayer.o: sections.h
+obj.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+obj.o: sections.h
+object.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+object.o: sections.h iLarnRsc.h
+object_actions.o: palm.h Globals.h header.h defines.h types.h
+object_actions.o: larn_prototypes.h sections.h iLarnRsc.h
+object_actions_cont.o: palm.h Globals.h header.h defines.h types.h
+object_actions_cont.o: larn_prototypes.h sections.h
+pickchar.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+pickchar.o: sections.h
+random.o: palm.h
+regen.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+regen.o: sections.h
+savelev.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+savelev.o: sections.h bit.h
+sphere.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+sphere.o: sections.h
+stats.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+stats.o: sections.h win.h
+store.o: palm.h Globals.h header.h defines.h types.h larn_prototypes.h
+store.o: sections.h iLarnRsc.h
+sum.o: palm.h
+util.o: palm.h defines.h types.h
+win.o: palm.h sections.h defines.h types.h win.h
+@
+
+
+1.15
+log
+@tinkering with map.  fixed keyboard running bug
+@
+text
+@d15 1
+a15 1
+	color.o win.o
+@
+
+
+1.14
+log
+@inverted-screen (black background) possible but 4-button popup is still white
+@
+text
+@d78 1
+a78 1
+color.o: palm.h sections.h defines.h types.h
+d84 1
+a84 1
+display.o: sections.h iLarnRsc.h
+d146 1
+a146 1
+stats.o: sections.h
+d151 1
+@
+
+
+1.13
+log
+@adding color to iLarn!
+@
+text
+@d15 1
+a15 1
+	color.o
+@
+
+
+1.12
+log
+@get iLarn to compile with sdk 3.5 so's I can add color...
+@
+text
+@d14 2
+a15 1
+        savelev.o sphere.c stats.o store.o sum.o util.o
+d74 12
+a85 8
+cast.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+cast.o: iLarnRsc.h
+create.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+dead.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+dead.o: iLarnRsc.h
+display.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+display.o: iLarnRsc.h
+form_about.o: iLarnRsc.h Globals.h header.h defines.h types.h
+d87 1
+a87 1
+form_cast.o: iLarnRsc.h Globals.h header.h defines.h types.h
+d89 1
+a89 1
+form_evader.o: iLarnRsc.h Globals.h header.h defines.h types.h
+d91 1
+a91 1
+form_hwbuttons.o: iLarnRsc.h Globals.h header.h defines.h types.h
+d93 1
+a93 1
+form_invselect.o: iLarnRsc.h Globals.h header.h defines.h types.h
+d95 5
+a99 5
+form_lrs.o: iLarnRsc.h Globals.h header.h defines.h types.h larn_prototypes.h
+form_lrs.o: sections.h
+form_map.o: iLarnRsc.h Globals.h header.h defines.h types.h larn_prototypes.h
+form_map.o: sections.h
+form_messagelog.o: iLarnRsc.h Globals.h header.h defines.h types.h
+d101 3
+a103 3
+form_pad.o: iLarnRsc.h Globals.h header.h defines.h types.h larn_prototypes.h
+form_pad.o: sections.h
+form_pickch.o: iLarnRsc.h Globals.h header.h defines.h types.h
+d105 3
+a107 3
+form_prefs.o: iLarnRsc.h Globals.h header.h defines.h types.h
+form_prefs.o: larn_prototypes.h sections.h
+form_question.o: iLarnRsc.h Globals.h header.h defines.h types.h
+d109 1
+a109 1
+form_score.o: iLarnRsc.h Globals.h header.h defines.h types.h
+d111 1
+a111 1
+form_store.o: iLarnRsc.h Globals.h header.h defines.h types.h
+d113 1
+a113 1
+form_trans.o: iLarnRsc.h Globals.h header.h defines.h types.h
+d115 5
+a119 4
+global.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+inv.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+inv.o: iLarnRsc.h
+main.o: callback.h iLarnRsc.h Globals.h header.h defines.h types.h
+d121 6
+a126 4
+monster.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+monster.o: iLarnRsc.h
+movem.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+moveplayer.o: Globals.h header.h defines.h types.h larn_prototypes.h
+d128 23
+a150 15
+obj.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+object.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+object.o: iLarnRsc.h
+object_actions.o: Globals.h header.h defines.h types.h larn_prototypes.h
+object_actions.o: sections.h iLarnRsc.h
+object_actions_cont.o: Globals.h header.h defines.h types.h larn_prototypes.h
+object_actions_cont.o: sections.h
+pickchar.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+regen.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+savelev.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+savelev.o: bit.h
+sphere.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+stats.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+store.o: Globals.h header.h defines.h types.h larn_prototypes.h sections.h
+store.o: iLarnRsc.h
+@
+
+
+1.11
+log
+@eliminated (fossilized) global argument
+@
+text
+@d11 5
+a15 6
+OBJS1 = dead.o store.o savelev.o cast.o nap.o object_actions.o sphere.c
+OBJS2 = object_actions_cont.o main.o regen.o create.o inv.o \
+       object.o movem.o moveplayer.o util.o
+OBJS3 = random.o stats.o display.o md_malloc.o obj.o \
+       monster.o pickchar.o alloc_env.o  global.o sum.o
+OBJS = $(OBJS1) $(OBJS2) $(OBJS3) $(FORMO) $(TARGET)-sections.o
+d21 2
+a22 1
+CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.10
+log
+@bug fixes continue
+@
+text
+@d21 2
+a22 2
+CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+#CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.9
+log
+@fixed some bugs -
+ some object actions sometimes create monsters - if they do, don't take a turn
+    (except read a scroll still does)   also, /F font should not take a turn
+ "drop gold" sets dropflag
+ intelligent monsters no longer get stuck in south wall
+@
+text
+@d21 2
+a22 2
+#CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.8
+log
+@revising messages to have --more--.  sort of half working.
+@
+text
+@d21 2
+a22 2
+CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+#CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.7
+log
+@can eat drugs from inventory now.  also some bug fixes
+@
+text
+@d21 2
+a22 2
+#CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.6
+log
+@reorganization of existing code
+@
+text
+@d21 2
+a22 2
+CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+#CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.5
+log
+@* added message log (has a bug in that dead people leave a message or two
+for the next character, but I don't think anyone cares.)
+* fixed Discretion preference to work with expanded awareness
+* added Fight (like in rogue, more or less)
+* got rid of -L18 preference
+@
+text
+@d7 4
+d16 1
+a16 1
+OBJS = $(OBJS1) $(OBJS2) $(OBJS3) $(TARGET)-sections.o
+d21 2
+a22 2
+#CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+d80 30
+@
+
+
+1.4
+log
+@fixed monsters not moving during run bug I think
+@
+text
+@d17 2
+a18 2
+CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+#CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.3
+log
+@centered movement
+@
+text
+@d17 2
+a18 2
+#CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.2
+log
+@fooling around with the popup messages
+@
+text
+@d17 2
+a18 2
+CFLAGS = -Wall -g -O2 -I. -palmos2 -DI_AM_OS_2
+#CFLAGS = -Wall -g -O2 -I. -palmos3.1 -DNON_INTERNATIONAL
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d69 1
+a69 1
+cast.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+d71 2
+a72 3
+create.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+data.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+dead.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+d74 4
+a77 3
+display.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+global.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+inv.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+d79 1
+a79 5
+jump_island.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+jump_island2.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+lib_object.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+lib_object.o: iLarnRsc.h
+main.o: callback.h iLarnRsc.h Globals.h header-test.h types.h
+d81 7
+a87 5
+monster.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+movem.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+moveplayer.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+obj.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+object.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+d89 1
+a89 1
+object_actions.o: Globals.h header-test.h types.h larn_prototypes.h
+d91 1
+a91 1
+object_actions_cont.o: Globals.h header-test.h types.h larn_prototypes.h
+d93 7
+a99 6
+old-monster.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+pickchar.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+regen.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+savelev.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+stats.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+store.o: Globals.h header-test.h types.h larn_prototypes.h sections.h
+a100 2
+write_my_db_recs.o: Globals.h header-test.h types.h larn_prototypes.h
+write_my_db_recs.o: sections.h
+@
+
+
+1.1.1.1
+log
+@iLarn - Ularn port for PalmOS - initial code checkin
+@
+text
+@@

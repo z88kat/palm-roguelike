@@ -1,0 +1,48 @@
+head	1.1;
+access;
+symbols
+	Release-2002_03_29:1.1
+	Release-2002_01_12:1.1
+	Release-2002_01_02:1.1
+	Release-2002_01_01:1.1
+	Release-2001_12_19:1.1
+	Release-2001_08_04:1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.07.04.20.01.57;	author uid28407;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@two-way conversion - seems to work ok on linux
+@
+text
+@// this file is public domain
+
+void set_xor_byte(unsigned char uc);
+void xwrite_by(FILE *fout, unsigned char *uc, int n);
+void xcopy_by(FILE *fout, FILE *fin, int n);
+void xwrite_str(FILE *fout, char *str, int n);
+void xwrite_sh(FILE *fout, unsigned short *us, int n);
+void xcopy_sh(FILE *fout, FILE *fin, int n);
+void xwrite_lo(FILE *fout, unsigned long *ul, int n);
+void xcopy_lo(FILE *fout, FILE *fin, int n);
+
+void xread_by(FILE *fin, unsigned char *uc, int n);
+void xread_str(FILE *fin, char *buf, int n);
+void xuncopy_str(FILE *fout, FILE *fin, int n);
+void xuncopy_by(FILE *fout, FILE *fin, int n);
+void xuncopy_sh(FILE *fout, FILE *fin, int n);
+void xread_sh(FILE *fin, unsigned short *us, int n);
+void xuncopy_lo(FILE *fout, FILE *fin, int n);
+void xread_lo(FILE *fin, unsigned long *ul, int n);
+@

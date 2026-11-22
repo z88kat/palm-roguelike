@@ -1,0 +1,35 @@
+head	1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2006.08.08.03.59.52;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@commit everything before massive style change
+@
+text
+@Total votes:410
+9 69 133 193
+71 52 113 138 29
+87 235 81
+12 360 12
+79 288 25
+332 31 28
+332 30 28
+258 118 19
+271 77 44
+44 175 118 37 5 14
+@

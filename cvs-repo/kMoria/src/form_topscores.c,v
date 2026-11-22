@@ -1,0 +1,868 @@
+head	1.16;
+access;
+symbols
+	Release-2002_03_29:1.16
+	Release-2002_01_12:1.16
+	Release-2002_01_02:1.11
+	Release-2002_01_01:1.11
+	Release-2001_12_19:1.11
+	Release-2001_08_04:1.10
+	Release-2001_07_02:1.8
+	Release-2001_06_16:1.6;
+locks; strict;
+comment	@ * @;
+
+
+1.16
+date	2002.01.08.19.32.55;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2002.01.06.20.45.21;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2002.01.05.18.46.50;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2002.01.04.21.52.52;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2002.01.04.03.45.44;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2001.08.01.02.59.13;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2001.07.31.00.30.34;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.03.27.06.30.43;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.01.23.17.49.56;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.01.11.06.58.52;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.01.11.06.27.08;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.12.23.17.44.58;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.16
+log
+@handera support is mostly working, for some value of mostly
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+#include "kMoria.h"
+
+
+static void draw_topscores_header() SEC_6;
+
+extern Boolean came_from_generation;
+extern Long death_date;
+Boolean Scores_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+#ifndef I_AM_OS_2
+    if (IsVGA) PrvMoveForm(false);
+#endif
+    FrmDrawForm(frm);
+    if (!death) {
+      ControlPtr btn;
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_scores_ok));
+      CtlSetLabel(btn, "- Done -");
+      CtlShowControl(btn);
+    }
+    draw_topscores(true);
+    handled = true;
+    break;
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) PrvMoveForm(true);
+    return true;
+#endif
+
+  case keyDownEvent:
+    // hardware button -- or else graffiti.
+    switch(e->data.keyDown.chr) {
+    case pageUpChr: case '<':
+      draw_topscores(true);
+      handled = true;
+      break;
+    case pageDownChr: case '>': case ' ':
+      draw_topscores(false);
+      handled = true;
+      break;
+    case '\n': // should be the same as if btn_scores_ok
+      LeaveForm();
+      if (death) FrmGotoForm(CharRaceForm);
+      // else we're still alive and were viewing a popup on top of MainForm!
+      handled = true;
+      break;
+    default:
+      break;
+    }
+    break;
+
+  case ctlSelectEvent:
+    switch(e->data.ctlSelect.controlID) {
+    case btn_scores_ok:
+      LeaveForm();
+      if (death) FrmGotoForm(CharRaceForm);
+      // else we're still alive and were viewing a popup on top of MainForm!
+      handled = true;
+      break;
+    case btn_scores_next:
+      draw_topscores(false);
+      handled = true;
+      break;
+    }
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+
+// was:  Rank Points Name Sex Race Class Lvl Killed By
+// now:  Rank Score [Sex] Race Class Level
+//        [Name]
+//         [Killed by]
+extern high_scores score;
+
+
+static void draw_topscores_header()
+{
+  Char buf[80];
+  Short x, y;
+  RectangleType r;
+  FormPtr frm = FrmGetActiveForm();
+  FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, btn_scores_ok), &r);
+  x = r.topLeft.y - 1; // 146
+  RctSetRectangle(&r, 0, ROW_1, SCR_WIDTH, x-ROW_1); // 0, 15, 160, 146-15
+  WinEraseRectangle(&r, 0);
+
+  ///////////////////////////////////////////////////////////////
+  //     v---right justified    v---right justified
+  // 0  +17  +42  +10+42  +32  +15
+  y = ROW_1; // "Rank"=20 "Points"=25 "S."=7 "Race"=19 "Class"=20 "Level"=22
+  x = 0;
+  StrPrintF(buf, "Rank"); // left-justify // width: 20
+  WinDrawChars(buf, StrLen(buf), x, y); // 1234567 might be enough for points.
+  x += FntCharsWidth("000 12345678 ", 13);// width of rank+points = 17 + 42.
+  StrPrintF(buf, "Points "); // right-justify above points column
+  WinDrawChars_rj(buf, StrLen(buf), x, y);
+  StrPrintF(buf, " S."); // center over gender
+  WinDrawChars(buf, StrLen(buf), x, y);//S looks better sorta centered
+  x += FntCharsWidth("M ",2); // width of "M " = 10
+  StrPrintF(buf, "Race"); // left-justify
+  WinDrawChars(buf, StrLen(buf), x, y);
+  x += FntCharsWidth("Half-Troll ", 11);//Half-Troll=42;
+  StrPrintF(buf, "Class"); // left-justify
+  WinDrawChars(buf, StrLen(buf), x, y);
+  x = SCR_WIDTH;
+  StrPrintF(buf, "Level"); // right-justify!
+  WinDrawChars_rj(buf, StrLen(buf), x, y);
+  WinDrawLine(0, y+LINE_HEIGHT-1, SCR_WIDTH, y+LINE_HEIGHT-1);
+}
+
+// Revised for multi-record score database
+// Returns index of the next one to draw..
+Short draw_topscores(Boolean reset)
+{
+  static Short i = 0;
+  VoidHand vh;
+  VoidPtr p = NULL;
+  Short scores_ctr, x_0 = 3*FntCharWidth(' '); // 6
+  high_scores *score;
+  //
+  Char buf[80];
+  UChar prace, pclass;
+  Short x, y, y_max, diedlen = FntCharsWidth(" died: ",7);
+  Boolean terse;
+  //
+  RectangleType r;
+  FormPtr frm = FrmGetActiveForm();
+  FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, btn_scores_ok), &r);
+  y_max = r.topLeft.y; // 147
+  //
+  scores_ctr = DmNumRecords(MoriaScoreDB);
+  // no need for a version info record, I think I can put it in db header.
+  if (scores_ctr <= 0) {
+    WinDrawChars("None", 4, ROW_1+LINE_HEIGHT/2, ROW_1+LINE_HEIGHT/2);
+    return -1;
+  }
+  draw_topscores_header();
+  StrPrintF(buf, "n/%d  ", scores_ctr);
+  WinDrawChars_rj(buf, StrLen(buf), SCR_WIDTH, SCR_HEIGHT-(LINE_HEIGHT+1));
+  y = ROW_1 + LINE_HEIGHT+1;
+  x = 0;
+  if (reset || (i >= scores_ctr)) i = 0;
+  for ( ; i < scores_ctr ; i++) {
+    vh = DmQueryRecord(MoriaScoreDB, i);
+    p = MemHandleLock(vh);
+    score = (high_scores *) p;
+    terse = false;
+    if (x_0 + diedlen
+	+ FntCharsWidth(score->died_from, StrLen(score->died_from))
+	+ FntCharsWidth(score->name, StrLen(score->name)) < SCR_WIDTH)
+      terse = true; // add "died: " line 2, or "killed by: " line3.
+    // Check whether we will have enough room.
+    // We will take 2 lines if terse, 3 lines if !terse.  Button at y_max.
+    if ((y + (terse ? 2 : 3)*LINE_HEIGHT) > y_max) {
+      MemHandleUnlock(vh);
+      break; // when we go to the next page, start with *this* value of i..
+    }
+    // Ok, we have enough space to print this record.
+    // Line 1: Numbers
+    // Skip to line 2: Name
+    y += LINE_HEIGHT-1;
+    x = x_0;
+    WinDrawChars(score->name, StrLen(score->name), x, y);
+    if (terse) {
+      StrPrintF(buf, "died: %s", score->died_from);
+      WinDrawChars_rj(buf, StrLen(buf), SCR_WIDTH, y);
+    }
+    y -= LINE_HEIGHT-1;
+    // Skip back to line 1
+    x = 0;
+    StrPrintF(buf, "%d", i+1); // Rank
+    if (score->source == MAX_UCHAR) // we got this from a beam!
+      WinDrawInvertedChars(buf, StrLen(buf), x, y);
+    else
+      WinDrawChars(buf, StrLen(buf), x, y);
+    x += FntCharsWidth("000 12345678 ", 13);
+    StrPrintF(buf, "%ld ", score->points); // Score
+    WinDrawChars_rj(buf, StrLen(buf), x, y);
+    buf[0] = ((score->race_class_sex & 0x1) ? 'M' : 'F'); // Gender
+    WinDrawChars(buf, 1, x, y);
+    x += FntCharsWidth("M ",2); // 8+2 = 10
+    prace = (score->race_class_sex >> 4) & 0x7;;
+    StrPrintF(buf, "%s", race[prace].trace); // Race
+    WinDrawChars(buf, StrLen(buf), x, y);
+    x += FntCharsWidth("Half-Troll ", 11);//Half-Troll=42;
+    pclass = (score->race_class_sex >> 1) & 0x7;
+    StrPrintF(buf, "%s", class[pclass].title); // Class  
+    WinDrawChars(buf, StrLen(buf), x, y);
+    x = SCR_WIDTH; // for right-justified column.  at right edge of screen.
+    StrPrintF(buf, "%d", score->lev); // Level (experience, not dungeon)
+    WinDrawChars_rj(buf, StrLen(buf), x, y);
+    // Skip over line 2:
+    y += LINE_HEIGHT-1;
+    // Line 3: COD
+    if (!terse) {
+      y += LINE_HEIGHT;
+      x = x_0 * 2;
+      StrPrintF(buf, "killed by: %s", score->died_from);
+      WinDrawChars(buf, StrLen(buf), x, y);
+    }
+    WinDrawGrayLine(0, y+LINE_HEIGHT, SCR_WIDTH, y+LINE_HEIGHT);  
+    y += LINE_HEIGHT+1;
+    MemHandleUnlock(vh);
+  }
+  return i;
+}
+@
+
+
+1.15
+log
+@changing magic #define's to calculations (for handera)
+@
+text
+@a16 1
+static Short draw_topscores(Boolean reset) SEC_6;
+d138 1
+a138 1
+static Short draw_topscores(Boolean reset)
+d206 1
+a206 1
+    x += FntCharsWidth("M ",2); // 10
+@
+
+
+1.14
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@d107 4
+a110 1
+  RctSetRectangle(&r, 0, ROW_1, SCR_WIDTH, 146-ROW_1); // 0, 15, 160, 146-15
+d116 1
+a116 1
+  y = ROW_1;
+d118 8
+a125 9
+  StrPrintF(buf, "Rank"); // left-justify
+  WinDrawChars(buf, StrLen(buf), x, y);
+  x += 17 + 42; // width of "<rank> <points> "
+  StrPrintF(buf, "Points"); // right-justify to 17+42
+  WinDrawChars(buf, StrLen(buf), x - 27, y); // was "Score ", width 25
+  StrPrintF(buf, "S."); // left-justify
+  WinDrawChars(buf, StrLen(buf), x+1, y);//S looks better if we sorta center it
+  x += 10; // width of "M "
+  WinDrawChars(buf, StrLen(buf), x, y);
+d128 1
+a128 1
+  x += 42; // width of "Half-Troll "
+d132 2
+a133 2
+  StrPrintF(buf, "Level"); // right-justify   ("Lvl" is 12 pixels but looks
+  WinDrawChars(buf, StrLen(buf), x - 22, y); // really weird in this font.)
+d144 1
+a144 1
+  Short scores_ctr;
+d149 1
+a149 1
+  Short x, y, diedlen;
+d152 5
+d160 1
+a160 1
+    WinDrawChars("None", 4, 20, 20);
+d164 2
+a165 2
+  StrPrintF(buf, "n/%d", scores_ctr);
+  WinDrawChars(buf, StrLen(buf), SCR_WIDTH-25, 148);
+a172 1
+    diedlen = FntCharsWidth(score->died_from, StrLen(score->died_from));
+d174 4
+a177 3
+    if (6 + diedlen + 21 + 2 + FntCharsWidth(score->name,
+					     StrLen(score->name)) < SCR_WIDTH)
+      terse = true; // add "died: " (21) line 2, or "killed by: " (38), line3.
+d179 2
+a180 2
+    // We will take 22 height if terse, 33 height if !terse.  Button at 147.
+    if ((y + (terse ? 2 : 3)*LINE_HEIGHT) > 147) {
+d188 1
+a188 1
+    x = 6;
+d192 1
+a192 1
+      WinDrawChars(buf, StrLen(buf), SCR_WIDTH-(diedlen+21), y);
+d202 3
+a204 4
+    x += 17 + 42; // for right-justified column.  width of "000 00000000 "
+    StrPrintF(buf, "%ld", score->points); // Score
+    // Width of a [0-9]+ string in the standard font = 5 * StrLen. ' ' is 2 pix
+    WinDrawChars(buf, StrLen(buf), x-(5*StrLen(buf)+2), y);
+d207 1
+a207 1
+    x += 10; // width of "M "
+d211 1
+a211 1
+    x += 42; // width of "Half-Troll "
+d217 1
+a217 1
+    WinDrawChars(buf, StrLen(buf), x-5*StrLen(buf), y);
+d223 1
+a223 1
+      x = 13;
+@
+
+
+1.13
+log
+@still working on hiding magic constants
+@
+text
+@d30 3
+d43 6
+@
+
+
+1.12
+log
+@just tidying up
+@
+text
+@d98 1
+a98 1
+  RctSetRectangle(&r, 0, 15, 160, 146-15); // left, top, width, height
+d104 1
+a104 1
+  y = 15;
+d120 1
+a120 1
+  x = 160;
+d123 1
+a123 1
+  WinDrawLine(0, y+10, 160, y+10);
+d149 2
+a150 2
+  WinDrawChars(buf, StrLen(buf), 160-25, 148);
+  y = 15 + 12;
+d160 1
+a160 1
+					     StrLen(score->name)) < 160)
+d164 1
+a164 1
+    if ((y + (terse ? 22 : 33)) > 147) {
+d171 1
+a171 1
+    y += 10;
+d176 1
+a176 1
+      WinDrawChars(buf, StrLen(buf), 160-(diedlen+21), y);
+d178 1
+a178 1
+    y -= 10;
+d200 1
+a200 1
+    x = 160; // for right-justified column.  at right edge of screen.
+d204 1
+a204 1
+    y += 10;
+d207 1
+a207 1
+      y += 11;
+d212 2
+a213 2
+    WinDrawGrayLine(0, y+11, 160, y+11);  
+    y += 12;
+@
+
+
+1.11
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@a217 100
+/*
+static Short draw_topscores_old(Boolean reset)
+{
+  static Short i = 0;
+  ULong uniqueID = REC_TOPSCORES;
+  UInt index;
+  VoidHand vh;
+  VoidPtr p = NULL;
+  Short scores_ctr, *tmp;
+  high_scores *scores;
+  //
+  Char buf[80];
+  UChar prace, pclass;
+  Short x, y, diedlen;
+  Boolean terse;
+  //
+  if (0 != DmFindRecordByID(MoriaSaveDB, uniqueID, &index)) {
+    WinDrawChars("None", 4, 20, 20);
+    return -1;
+  }
+  vh = DmQueryRecord(MoriaSaveDB, index);
+  p = MemHandleLock(vh);
+  tmp = (Short *) p;
+  scores_ctr = tmp[0];
+  scores = (high_scores *) &(tmp[1]);
+
+  if (scores_ctr <= 0) {
+    WinDrawChars("None", 4, 20, 20);
+    return -1;
+  }
+  draw_topscores_header();
+  StrPrintF(buf, "n/%d", scores_ctr);
+  WinDrawChars(buf, StrLen(buf), 160-25, 148);
+
+  y = 15 + 12;
+  x = 0;
+
+  if (reset || (i >= scores_ctr)) i = 0;
+
+  for ( ; i < scores_ctr ; i++) {
+    diedlen = FntCharsWidth(scores[i].died_from, StrLen(scores[i].died_from));
+    terse = false;
+    if (6 + diedlen + 21 + 2 + FntCharsWidth(scores[i].name,
+					     StrLen(scores[i].name)) < 160)
+      terse = true; // add "died: " (21) line 2, or "killed by: " (38), line3.
+    // Check whether we will have enough room.
+    // We will take 22 height if terse, 33 height if !terse.  Button at 147.
+    if ((y + (terse ? 22 : 33)) > 147)
+      break; // when we go to the next page, start with *this* value of i..
+    // Ok, we have enough space to print this record.
+    // Line 1: Numbers
+    // Skip to line 2: Name
+    y += 10;
+    x = 6;
+    WinDrawChars(scores[i].name, StrLen(scores[i].name), x, y);
+    if (terse) {
+      StrPrintF(buf, "died: %s", scores[i].died_from);
+      WinDrawChars(buf, StrLen(buf), 160-(diedlen+21), y);
+    }
+    y -= 10;
+    // Skip back to line 1
+    x = 0;
+    StrPrintF(buf, "%d", i+1); // Rank
+    WinDrawChars(buf, StrLen(buf), x, y);
+    x += 17 + 42; // for right-justified column.  width of "000 00000000 "
+    StrPrintF(buf, "%ld", scores[i].points); // Score
+    // Width of a [0-9]+ string in the standard font = 5 * StrLen. ' ' is 2 pix
+    WinDrawChars(buf, StrLen(buf), x-(5*StrLen(buf)+2), y);
+    buf[0] = ((scores[i].race_class_sex & 0x1) ? 'M' : 'F'); // Gender
+    WinDrawChars(buf, 1, x, y);
+    x += 10; // width of "M "
+    prace = (scores[i].race_class_sex >> 4) & 0x7;;
+    StrPrintF(buf, "%s", race[prace].trace); // Race
+    WinDrawChars(buf, StrLen(buf), x, y);
+    x += 42; // width of "Half-Troll "
+    pclass = (scores[i].race_class_sex >> 1) & 0x7;
+    StrPrintF(buf, "%s", class[pclass].title); // Class  
+    WinDrawChars(buf, StrLen(buf), x, y);
+    x = 160; // for right-justified column.  at right edge of screen.
+    StrPrintF(buf, "%d", scores[i].lev); // Level (experience, not dungeon)
+    WinDrawChars(buf, StrLen(buf), x-5*StrLen(buf), y);
+    // Skip over line 2:
+    y += 10;
+    // Line 3: COD
+    if (!terse) {
+      y += 11;
+      x = 13;
+      StrPrintF(buf, "killed by: %s", scores[i].died_from);
+      WinDrawChars(buf, StrLen(buf), x, y);
+    }
+    WinDrawGrayLine(0, y+11, 160, y+11);  
+    y += 12;
+  }
+
+  MemHandleUnlock(vh);  
+  return i;
+}
+
+
+*/
+@
+
+
+1.10
+log
+@beam an item (untested)
+@
+text
+@a12 1
+#include "palm.h"
+a13 3
+#include "lock-externs.h"
+#include "kMoriaRsc.h"
+#include <Preferences.h> // for date formats
+@
+
+
+1.9
+log
+@working on top-ten conversion (and beaming)
+@
+text
+@d186 4
+a189 1
+    WinDrawChars(buf, StrLen(buf), x, y);
+@
+
+
+1.8
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d130 1
+d135 88
+d318 1
+@
+
+
+1.7
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000,2001 Bridget Spitznagel                        *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+@
+
+
+1.6
+log
+@fixed sell-unknown-item-to-store bug.  most forms navigable via keyboard now.
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d24 1
+a24 1
+#include <Pilot.h>
+@
+
+
+1.5
+log
+@tweaked notice
+@
+text
+@d59 1
+a59 1
+    case pageUpChr:
+d63 1
+a63 1
+    case pageDownChr:
+d67 6
+d82 1
+a82 2
+      if (death)
+	FrmGotoForm(CharRaceForm);
+@
+
+
+1.4
+log
+@corrosion bug might be fixed
+last message shown always has at least cur/max hitpoints visible (overlaid)
+inventory now displays weight (optionally)
+added a preference to move status bar to top of screen
+@
+text
+@d5 1
+a5 1
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+@
+
+
+1.3
+log
+@high score list seems to be working
+@
+text
+@d59 1
+a59 1
+    case pageDownChr:
+d63 1
+a63 1
+    case pageUpChr:
+@
+
+
+1.2
+log
+@rough cut of top-score list
+@
+text
+@d32 1
+a32 1
+static Short draw_topscores(Short i) SEC_6;
+d49 1
+a49 1
+      CtlSetLabel(btn, "Ok");
+d52 1
+a52 1
+    draw_topscores(0);
+d56 16
+d81 4
+d102 1
+d107 4
+d137 1
+a137 1
+static Short draw_topscores(Short i0)
+d139 1
+d149 1
+a149 1
+  Short x, y, i, diedlen;
+d167 2
+d173 1
+a173 1
+  if (i0 >= scores_ctr) i0 = 0;
+d175 1
+a175 1
+  for (i = i0 ; i < scores_ctr ; i++) {
+d178 2
+a179 2
+    if (diedlen + 21 + 2 + FntCharsWidth(scores[i].name,
+					 StrLen(scores[i].name)) < 160)
+@
+
+
+1.1
+log
+@add form for high score list (not fully working yet)
+@
+text
+@d30 3
+a32 1
+static void draw_topscores() SEC_5;
+d46 7
+a52 1
+    draw_topscores();
+a58 3
+      antisave_char(); // delete the save file.  better to do this earlier?..
+      re_init();
+      came_from_generation = true;
+d60 3
+a62 1
+      FrmGotoForm(CharRaceForm);
+d76 7
+a82 1
+static void draw_topscores()
+d85 2
+a86 1
+  Short x, y, i;
+d93 7
+a99 3
+  x += 17 + 42;
+  StrPrintF(buf, "Score"); // right-justify to 17+42
+  WinDrawChars(buf, StrLen(buf), x - 27, y);
+d102 1
+a102 1
+  x += 10 + 42;
+d106 4
+a109 2
+  StrPrintF(buf, "Level"); // right-justify to 160
+  WinDrawChars(buf, StrLen(buf), x - 22, y);
+d111 32
+a142 2
+  /*
+  y += 11;
+a143 3
+  StrPrintF(buf, "123 87654321 M Half-Troll Warrior123"); // takes ~160
+  WinDrawChars(buf, StrLen(buf), x, y);
+  */
+d145 1
+a145 19
+  y += 11;
+  x = 0;
+  StrPrintF(buf, "%d", 123); // Rank
+  WinDrawChars(buf, StrLen(buf), x, y);
+  x += 17 + 42; // for right-justified column.  width of "000 00000000 "
+  StrPrintF(buf, "%d", 12345678); // Score
+  // Width of a [0-9]+ string in the standard font = 5 * StrLen.  ' ' is 2 pix
+  WinDrawChars(buf, StrLen(buf), x-(5*StrLen(buf)+2), y);
+  buf[0] = ((pymisc.male)?'M':'F'); // Gender
+  WinDrawChars(buf, 1, x, y);
+  x += 10; // width of "M "
+  StrPrintF(buf, "%s", "Half-Troll"); // Race
+  WinDrawChars(buf, StrLen(buf), x, y);
+  x += 42; // width of "Half-Troll "
+  StrPrintF(buf, "%s", "Warrior"); // Class  
+  WinDrawChars(buf, StrLen(buf), x, y);
+  x = 160; // for right-justified column.  at right edge of screen.
+  StrPrintF(buf, "%d", 123); // Level
+  WinDrawChars(buf, StrLen(buf), x-5*StrLen(buf), y);
+d147 54
+d202 3
+a205 20
+  i = 1;
+  y += 11;
+  x = 0;
+  StrPrintF(buf, "%d", i); // Rank
+  WinDrawChars(buf, StrLen(buf), x, y);
+  x += 17 + 42; // for right-justified column.  width of "000 00000000 "
+  StrPrintF(buf, "%d", 0); // Score
+  // Width of a [0-9]+ string in the standard font = 5 * StrLen.  ' ' is 2 pix
+  WinDrawChars(buf, StrLen(buf), x-(5*StrLen(buf)+2), y);
+  buf[0] = ((pymisc.male)?'M':'F'); // Gender
+  WinDrawChars(buf, 1, x, y);
+  x += 10; // width of "M "
+  StrPrintF(buf, "%s", race[pymisc.prace].trace); // Race
+  WinDrawChars(buf, StrLen(buf), x, y);
+  x += 42; // width of "Half-Troll "
+  StrPrintF(buf, "%s", class[pymisc.pclass].title); // Class  
+  WinDrawChars(buf, StrLen(buf), x, y);
+  x = 160; // for right-justified column.  at right edge of screen.
+  StrPrintF(buf, "%d", pymisc.lev); // Level
+  WinDrawChars(buf, StrLen(buf), x-5*StrLen(buf), y);
+a206 2
+  return;
+}
+@
+

@@ -1,0 +1,372 @@
+head	1.9;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.7
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.9
+date	2006.08.13.05.47.23;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2006.08.13.04.47.25;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2006.08.08.03.49.45;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2002.03.30.00.18.21;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.10.20.17.06.30;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.07.02.06.08.41;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.06.30.23.13.24;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.05.31.23.23.50;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.55;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.55;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.9
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>Source for kMoria</title>
+
+<style type="text/css" media="screen">@@import "../3col.css";</style>
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>kMoria source code</h1>
+</div>
+
+<div class="content">
+
+      <h2>Where can I get the source?</h2>
+
+      <p> Go to the <a href="http://sourceforge.net/projects/roguelike-palm/">
+	Roguelikes for PalmOS</a> project page on SourceForge.
+	Download the "kMoria module" (it should be listed in the
+	File Releases section).</p>
+
+      <h2>What do I need to compile it?</h2>
+      <p> I've used prc-tools 2.0.  I'm running Linux.</p>
+
+      <p> You can get <a href="http://www.palmos.com/dev/tools/gcc/">
+      prc-tools</a> from <a href="http://www.palmsource.com/developers/">
+      palmsource.com</a>.  Follow their
+      directions for installation.  You will need
+      <a href="http://www.ardiri.com/index.php?redir=palm&amp;cat=pilrc">
+      PilRC</a> as well (version 2.7b or greater).</p>
+
+      <p> <b>SDK</b> - The current version of kMoria uses SDK 3.5 or
+      higher.  (Versions prior to 0.09 use SDK 3.1, and would need header
+      files changed to compile with anything more recent.)</p>
+
+      <p> <b>multigen</b> - Since kMoria is large, it has "multiple
+      code resources" and uses multigen.  You might want to read about
+      that in the prc-tools documentation.</p>
+
+      <p> <b>emulator</b> - The safest place to test software is in a <a
+      href="http://www.palmos.com/dev/tools/emulator/">Palm emulator</a>.  You
+      will need a ROM image to use it.</p>
+
+</div>
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+</body>
+</html>
+@
+
+
+1.8
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+@
+
+
+1.7
+log
+@commit everything before massive style change
+@
+text
+@d1 3
+a3 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+d7 3
+a9 4
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+d13 5
+a17 40
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">kMoria: where to get source</h3>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      
+      <!-- -->
+      <tr><td class="sidehead">
+	kMoria Stuff </td></tr>
+      <tr><td class="side"> <a href="index.php">
+	  What is kMoria?</a> </td></tr>
+      <tr><td class="side"> <a href="whatsnew.php">
+	  What's new</a> </td></tr>
+      <tr><td class="side"> <a href="download.php">
+	  Download kMoria</a> </td></tr>
+      <tr><td class="side"> <a href="play.php">
+	How to play</a></td></tr>
+      <tr><td class="side">
+	  <b>How to get source</b> </td></tr>
+      <?php include ("../hostedby.txt") ?>
+      <?php include ("../activesurveys.txt") ?>
+      <?php include ("../roguelikegames.txt") ?>
+</table>
+</td>
+
+<!-- main area table -->
+<td valign=top>
+      <!-- ----- this is the interesting part of the page ----- -->
+      <h3>Where can I get the source for kMoria?</h3>
+d19 4
+a22 2
+      <P> Go to the <a href="http://sourceforge.net/projects/roguelike-palm/">
+	Roguelikes for PalmOS</a> project summary page on SourceForge.
+d24 4
+a27 1
+	File Releases section).
+d29 3
+a31 7
+      <h3>What do I need to compile it?</h3>
+      <P> kMoria requires prc-tools 2.0.  We compile under Linux, but
+      other unices will probably also work.
+
+      <P> You can get <a href="http://www.palmos.com/dev/tech/tools/gcc/">
+      prc-tools 2.0</a> from <a href="http://www.palmos.com">
+      palmos.com</a>.  Follow their
+d33 2
+a34 2
+      <a href="http://www.ardiri.com/index.cfm?redir=palm&cat=pilrc">
+      PilRC</a> as well.
+d36 22
+a57 24
+      <P> <b> SDK </b> - The latest version of kMoria (in fact 0.09 and later)
+ uses SDK 3.5.
+<P> Versions prior to 0.09 use SDK 3.1.
+<br> If you try to compile those with SDK 3.5 (or, presumably,
+anything later as well), you will get various exciting and mysterious
+compiler errors, because some of the header files supplied by Palm
+have changed, and things like that.
+
+<P> <b> multigen </b> - Since kMoria is large, it has "multiple code
+resources" and uses multigen.  You might want to read about that in
+the prc-tools documentation.
+
+<P> <b>emulator</b> - It is a good idea to have one.  You can get POSE
+from palmos.com if you don't already have it.
+
+      <!-- ----- end of the interesting part of the page ----- -->
+
+</td>
+</tr>
+</table>
+
+<!-- footer table -->
+<?php include ("../footer.txt") ?>
+<!-- end footer table -->
+a58 1
+<address>i0lanthe@@users.sourceforge.net</address>
+a59 1
+Last modified: Sat Jun 30 19:19:51 EDT 2001
+d61 1
+a61 1
+<?php $hitsfile = "source.hits"; include ("../counter.php")?>
+@
+
+
+1.6
+log
+@checkpointing web before kMoria 0.15 update
+@
+text
+@d7 2
+@
+
+
+1.5
+log
+@foo
+@
+text
+@d14 1
+a14 1
+    <h3>kMoria: where to get source</h3>
+@
+
+
+1.4
+log
+@in the middle of release/update
+@
+text
+@d67 3
+a69 4
+      <P> <b> SDK </b> - The latest version of kMoria (that's 0.09) uses
+SDK 3.5.
+
+<P> Previous versions of kMoria use SDK 3.1.
+@
+
+
+1.3
+log
+@blah
+@
+text
+@d67 2
+a68 4
+      <P> <b> SDK </b> - The current version of kMoria uses SDK 3.1
+(or, in the unlikely event that you want to compile for PalmOS 2.0,
+SDK 2; to compile for OS 2.0 you will also need to change which
+definition of CFLAGS is commented-out in the Makefile).
+d70 3
+a72 2
+<br> If you try to compile with SDK 3.5 (or, presumably, anything
+later as well), you will get all kinds of exciting and mysterious
+d74 1
+a74 10
+have changed.
+<br> kMoria will use a more recent SDK "soon", probably in the
+next release, whenever that happens to be.
+ Given that upgrading iLarn in this respect proved
+be a subtle and interesting pain in the neck (among other things,
+some functions became abruptly yet stealthily unhappy about the code
+resource they had always been placed in), I plan to spend a while
+on "regression"ish testing before loosing SDK-3.5 kMoria on innocent
+human test subjects (the ones who keep asking when there will be color).
+
+d95 1
+a95 1
+Last modified: Sat Jun 16 18:23:40 EDT 2001
+@
+
+
+1.2
+log
+@make note of which SDK is used
+@
+text
+@d76 3
+a78 2
+<br> kMoria will doubtless use a more recent SDK in some future
+release, but given that upgrading iLarn in this respect has proven to
+d80 4
+a83 2
+some fuctions became abruptly yet stealthily unhappy about the code
+resource they had always been placed in), do not hold your breath.
+d105 1
+a105 1
+Last modified: Thu May 31 19:22:45 EDT 2001
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d67 23
+a89 8
+      <P> Since kMoria is large, it has "multiple code resources" and
+      uses multigen.  You might want to read about that in the prc-tools
+      documentation.
+
+      <P> You may also want xcopilot, a Unix/X11 PalmPilot emulator.
+      The xcopilot page is at <a href="http://xcopilot.cuspy.com/">
+      http://xcopilot.cuspy.com/</a> and should have everything you
+      need except a ROM image.
+d102 1
+a102 1
+Last modified: Fri Oct 13 15:05:22 EDT 2000
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

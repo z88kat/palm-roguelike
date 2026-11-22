@@ -1,0 +1,157 @@
+head	1.4;
+access;
+symbols
+	Release-2001_08_06:1.4
+	Release-2001_06_15:1.4;
+locks; strict;
+comment	@ * @;
+
+
+1.4
+date	2001.06.14.05.24.27;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.05.01.04.41.33;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.10.15.22.03.22;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.10.14.01.59.20;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@extra keyboard support in various forms (there's still more to do)
+@
+text
+@#include "palm.h"
+#include "iLarnRsc.h"
+#include "Globals.h"
+
+/****************************************************************
+ * This form is used in a couple of cases.
+ * 1. You are a tax evader and
+ *    a) enter DND store (Trading Post will always do business with you), or
+ *    b) enter the bank (and maybe pay your taxes via wire)
+ *
+ * 2. You enter your home.
+ *
+ * Basically (1) this form just prints a bunch of text, and lets you
+ * exit once you have read it.  (If you are in bank and paid taxes,
+ * you exit to the 'real' bank.)
+ * (2) if you have game-terminating condition, makes you win or lose
+ * otherwise just prints text and lets you exit as in (1).
+ ****************************************************************/
+
+extern Short in_store;
+Boolean Evader_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* ...init form... */
+    FrmDrawForm(frm);
+    evader_init(frm, in_store);
+    handled = true;
+    break;
+
+  case keyDownEvent:
+    if (e->data.keyDown.chr == 'X') {
+      ControlPtr btn;
+      frm = FrmGetActiveForm();
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_eva_exit));
+      if (btn->attr.usable) 
+	CtlHitControl(btn);
+      handled = true;
+    }
+    break;
+    
+
+  case ctlSelectEvent:
+    switch(e->data.ctlSelect.controlID) {
+    case btn_eva_exit:
+      // where you go depends on what you owe...
+      LeaveForm(); // LeaveForm(true);
+      if (in_store == STORE_HOME) {
+	// also, figure out how to kill them if time is up
+	if (get_mobuls() < 0)
+	  died(269, true);
+	else if (has_potion_cured())
+	  died(263, true);
+      }
+      if ((in_store == STORE_BANK) && (!OWES_TAXES)) {
+	FrmPopupForm(StoreForm); // go to the real bank form!!!  yay!
+      } else
+	in_store = STORE_NONE;
+      handled = true;
+      break;
+    }
+    break;
+
+  default:
+    break;
+  }
+  return handled;
+}
+@
+
+
+1.3
+log
+@get iLarn to compile with sdk 3.5 so's I can add color...
+@
+text
+@d8 2
+a9 2
+ *    a) enter a store that does not want to do business with you, or
+ *    b) enter the bank and pay your taxes via wire
+d34 12
+@
+
+
+1.2
+log
+@eliminated (fossilized) global argument
+@
+text
+@d1 1
+a1 1
+#include <Pilot.h>
+@
+
+
+1.1
+log
+@reorganization of existing code
+@
+text
+@d19 1
+a19 1
+extern struct everything *env;
+d31 1
+a31 1
+    evader_init(frm, in_store, env);
+d42 4
+a45 4
+	if (get_mobuls(env) < 0)
+	  died(269, true, env);
+	else if (has_potion_cured(env))
+	  died(263, true, env);
+@
+

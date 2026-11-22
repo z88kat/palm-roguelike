@@ -1,0 +1,4392 @@
+head	1.64;
+access;
+symbols
+	Release-2002_03_29:1.64
+	Release-2002_01_12:1.64
+	Release-2002_01_02:1.53
+	Release-2002_01_01:1.52
+	Release-2001_12_19:1.50
+	Release-2001_08_04:1.45
+	Release-2001_07_02:1.41
+	Release-2001_06_16:1.35
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.64
+date	2002.01.12.23.01.25;	author i0lanthe;	state Exp;
+branches;
+next	1.63;
+
+1.63
+date	2002.01.12.21.13.14;	author i0lanthe;	state Exp;
+branches;
+next	1.62;
+
+1.62
+date	2002.01.11.20.53.24;	author i0lanthe;	state Exp;
+branches;
+next	1.61;
+
+1.61
+date	2002.01.11.17.24.20;	author i0lanthe;	state Exp;
+branches;
+next	1.60;
+
+1.60
+date	2002.01.10.02.55.48;	author i0lanthe;	state Exp;
+branches;
+next	1.59;
+
+1.59
+date	2002.01.08.19.32.55;	author i0lanthe;	state Exp;
+branches;
+next	1.58;
+
+1.58
+date	2002.01.06.20.45.21;	author i0lanthe;	state Exp;
+branches;
+next	1.57;
+
+1.57
+date	2002.01.05.18.46.50;	author i0lanthe;	state Exp;
+branches;
+next	1.56;
+
+1.56
+date	2002.01.04.21.52.52;	author i0lanthe;	state Exp;
+branches;
+next	1.55;
+
+1.55
+date	2002.01.04.20.41.07;	author i0lanthe;	state Exp;
+branches;
+next	1.54;
+
+1.54
+date	2002.01.04.00.01.25;	author i0lanthe;	state Exp;
+branches;
+next	1.53;
+
+1.53
+date	2002.01.02.20.15.47;	author i0lanthe;	state Exp;
+branches;
+next	1.52;
+
+1.52
+date	2002.01.01.19.54.30;	author i0lanthe;	state Exp;
+branches;
+next	1.51;
+
+1.51
+date	2002.01.01.02.50.58;	author i0lanthe;	state Exp;
+branches;
+next	1.50;
+
+1.50
+date	2001.12.08.18.45.25;	author i0lanthe;	state Exp;
+branches;
+next	1.49;
+
+1.49
+date	2001.11.30.23.44.42;	author i0lanthe;	state Exp;
+branches;
+next	1.48;
+
+1.48
+date	2001.11.30.05.06.17;	author i0lanthe;	state Exp;
+branches;
+next	1.47;
+
+1.47
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.46;
+
+1.46
+date	2001.10.20.18.14.59;	author i0lanthe;	state Exp;
+branches;
+next	1.45;
+
+1.45
+date	2001.08.04.16.56.17;	author i0lanthe;	state Exp;
+branches;
+next	1.44;
+
+1.44
+date	2001.08.02.06.50.36;	author i0lanthe;	state Exp;
+branches;
+next	1.43;
+
+1.43
+date	2001.07.27.15.41.31;	author i0lanthe;	state Exp;
+branches;
+next	1.42;
+
+1.42
+date	2001.07.26.02.38.39;	author i0lanthe;	state Exp;
+branches;
+next	1.41;
+
+1.41
+date	2001.06.30.17.30.51;	author i0lanthe;	state Exp;
+branches;
+next	1.40;
+
+1.40
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.39;
+
+1.39
+date	2001.06.28.01.33.54;	author i0lanthe;	state Exp;
+branches;
+next	1.38;
+
+1.38
+date	2001.06.26.02.42.37;	author i0lanthe;	state Exp;
+branches;
+next	1.37;
+
+1.37
+date	2001.06.20.05.02.38;	author i0lanthe;	state Exp;
+branches;
+next	1.36;
+
+1.36
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.35;
+
+1.35
+date	2001.03.31.03.33.08;	author i0lanthe;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2001.03.31.00.55.25;	author i0lanthe;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2001.03.30.06.10.47;	author i0lanthe;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2001.03.27.06.30.43;	author i0lanthe;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2001.01.27.00.53.03;	author i0lanthe;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2001.01.26.06.49.41;	author i0lanthe;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2001.01.23.17.49.56;	author i0lanthe;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2001.01.09.23.07.47;	author i0lanthe;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2001.01.09.21.12.01;	author i0lanthe;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2001.01.09.17.19.22;	author i0lanthe;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2001.01.07.20.56.33;	author i0lanthe;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2001.01.01.06.59.10;	author i0lanthe;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2000.12.31.03.57.57;	author i0lanthe;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2000.12.23.04.03.40;	author i0lanthe;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2000.12.21.21.24.43;	author i0lanthe;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2000.11.13.05.58.32;	author i0lanthe;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2000.11.13.05.15.03;	author i0lanthe;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2000.11.04.02.13.39;	author i0lanthe;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2000.11.04.01.46.47;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2000.11.03.05.48.04;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2000.11.03.04.48.22;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2000.11.01.05.01.32;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2000.10.28.22.28.54;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2000.10.28.17.03.40;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2000.10.28.02.57.55;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2000.10.28.01.31.07;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2000.10.26.05.49.38;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2000.10.26.04.25.25;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2000.10.25.04.29.06;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.10.24.03.05.20;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.10.20.04.45.36;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.20.03.38.35;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.10.06.06.32.35;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.44.08;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.44.08;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.64
+log
+@add --more-- before death form
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+#include "kMoria.h"
+
+// these live in lock.c
+extern Short cur_height, cur_width;
+
+
+static void put_char_at(Short row, Short col, Char ch, Boolean bold) SEC_6;
+static void refresh_2() SEC_6; // refresh top 2 lines only
+static void print_stats_large(UInt which_stats);
+static void print_stats_itsy(UInt which_stats);
+static void print_stats_real(UInt which_stats, Boolean large) SEC_5;
+static void print_stats_hp(Short width_used) SEC_5;
+void try_print_status() SEC_5;
+static void draw_circle(Short radius, Short x0, Short y0) SEC_5;
+static void xor_runwalk_circles() SEC_5;
+
+// Ok.  I have how much screen?
+// Top line sometimes taken by messages
+// Bottom two lines taken
+// *** I moved the #define's (for font character sizes) into constant.h
+
+Boolean itsy_on = false;
+Boolean xored_runwalk_on = false;
+
+/* This is the offset to convert character-positions in
+   the "visible" part of the screen represented by 'terminal'
+   to the larger "real" dungeon represented by 'buffer'. */
+Short visible_x = 0, visible_y = 0;
+Short WalkMagic = 10;
+
+#define DROWS MAX_HEIGHT
+#define DCOLS MAX_WIDTH
+
+
+// These are display-dependent now: see constant.h for more comments.
+Int8 visible_h = 13;
+Int8 visible_w = 20;
+Int8 visible_char_h = 10;
+Int8 visible_char_w = 8;
+Int8 visible_h_itsy = 22;
+Int8 visible_w_itsy = 32;
+Int8 visible_char_h_itsy = 6;
+Int8 visible_char_w_itsy = 5;
+Int8 LINE_HEIGHT = 11;
+Short SCR_WIDTH = 160;
+Short SCR_HEIGHT = 160;
+Short MAP_HEIGHT = 133; /* in main screen */
+Short HAG_Y = 80; /* in store2.c */
+Short COL_1 =    0;
+Short COL_2 =   50;
+Short COL_3 =   66;
+Short COL_3a =  98;
+Short COL_31 =  88;
+Short COL_4 =  116;
+Short COL_5 =  136;
+Short ROW_1 =   15;
+Short ROW_2 =   26;
+Short ROW_3 =   70;
+Short ROW_4 =   94;
+// end of formerly-constant things
+
+// MAX_VIS_H and MAX_VIS_W values are for HandEra 330 expanded/rotated screen.
+#define MAX_VIS_H 27 /* xxx Change this if I do Sony 320x320, */
+#define MAX_VIS_W 38 /* xxx or if I do Font56.txt on a HandEra. */
+//Char terminal[visible_h_itsy][visible_w_itsy];
+Char terminal[MAX_VIS_H][MAX_VIS_W];/*relative: model of the screen*/
+Char buffer[DROWS][DCOLS]; /* absolute - a model of the dungeon */
+Boolean screen_dirty; //, stats_dirty = true;
+Boolean lines_dirty[DROWS]; /* absolute */
+Boolean screen_recalced = false;
+
+
+Short words_dirty_x[2];
+Boolean pending_messages;
+Char *old_messages[SAVED_MSGS];
+Short last_old_message_shown;
+extern UInt need_print_stats;
+UChar current_print_stats = CURSTAT_NONE;
+
+
+
+
+
+/*
+ * Switch between the small font and the regular font.
+ * (Do NOT allow the small font if the SDK that I compiled with
+ * is inappropriate for your operating system version.)
+ */
+Boolean toggle_itsy()
+{
+  DWord version;
+  FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
+#ifdef I_AM_OS_2
+  if (version < 0x03000000l) {
+    itsy_on = !itsy_on;
+    return true;
+  } else itsy_on = false;
+#else
+  if (version >= 0x03000000l) {
+    itsy_on = !itsy_on;
+    return true;
+  } else itsy_on = false;
+#endif
+  return false;
+}
+
+Boolean stats_bar_on_bottom = true;
+Short DunTopY = 0; // 0 or <DunLineY+1>
+Short DunBotY = 0; // <DunLineY-1> or 160
+Short DunLineY = 133;//MAP_HEIGHT //where to draw The Line: 133 or 160-133= 27
+Short StatsTopY = 134; // add 4 to be where large stats start... hm
+Short StatsBotY = 160;//add -12 to start itsy stats: 160 or <DunLineY-1>
+// note: the 'word' stats will still be printed at DunTopY.
+
+// caller should decide whether to redraw screen.
+void set_statsbar_loc(Boolean stats_at_top)
+{
+  if (stats_at_top) {
+    StatsTopY = 0;
+    DunLineY = SCR_HEIGHT-MAP_HEIGHT; // 160-133
+    StatsBotY = DunLineY-1;
+    DunTopY = DunLineY+1;
+    DunBotY = SCR_HEIGHT;
+  } else {
+    DunTopY = 0;
+    DunLineY = MAP_HEIGHT; // 133
+    DunBotY = DunLineY-1;
+    StatsTopY = DunLineY+1;
+    StatsBotY = SCR_HEIGHT;
+  }
+  stats_bar_on_bottom = !stats_at_top;
+}
+
+
+// Translate a tap on the screen into absolute-dungeon coordinates.
+// So that the user can ask "what's in this cell?"
+void where_in_dungeon(Short scr_x, Short scr_y, Short *dun_x, Short *dun_y)
+{
+  Short vc_w = itsy_on ? visible_char_w_itsy : visible_char_w;
+  Short vc_h = itsy_on ? visible_char_h_itsy : visible_char_h;
+  if (!stats_bar_on_bottom)
+    scr_y -= DunTopY; // need a slight vertical shift
+  *dun_x = scr_x / vc_w;
+  *dun_y = scr_y / vc_h;
+  *dun_x += visible_x;
+  *dun_y += visible_y;
+  return;
+}
+
+// Draw 1 cell on screen (here row,col are NOT screen-relative.)
+// For making animatedness. If c = 0, it will set cell to 'original' value
+void animate_char(Short y, Short x, Char c, Boolean bold)
+{
+  Short row, col, ch;
+  Short v_h = itsy_on ? visible_h_itsy : visible_h;
+  Short v_w = itsy_on ? visible_w_itsy : visible_w;
+
+  if (y < visible_y || x < visible_x ||
+      y >= visible_y + v_h || x >= visible_x + v_w)
+    return; // the cursor position is not visible on the screen!
+
+  if (c != 0 && FrmGetActiveFormID() == MainForm)
+    lines_dirty[y] = screen_dirty = true;// worst case, refresh will clean up
+
+  row = y - visible_y;
+  col = x - visible_x;
+  
+  ch = terminal[row][col];
+  if (c == 0) c = ch;
+
+#ifdef I_AM_OS_2
+  if (itsy_on) FntSetFont(ledFont);
+#else
+  if (itsy_on) FntSetFont(SmallFont);
+#endif
+#ifdef I_AM_COLOR
+  if (IsColor) { start_color(); }
+#endif //I_AM_COLOR
+
+  put_char_at(row, col, c, bold);
+
+
+#ifdef I_AM_COLOR
+  if (IsColor) { stop_color(); }
+#endif //I_AM_COLOR
+#ifdef I_AM_OS_2
+  if (itsy_on) FntSetFont(stdFont);
+#else
+  if (itsy_on) FntSetFont(BigFont);
+#endif
+
+  terminal[row][col] = ch;
+}
+
+
+/* 
+ *  This will clear the part of the display that belongs to
+ *  "the dungeon".  It also clears 'terminal' since that is
+ *  a representation of the display.
+ *  This should be called before the offset for 'terminal' is
+ *  moved to show a different part of 'buffer'.
+ */
+// Actually, the Moria equivalent of this clears the WHOLE screen.
+void clear_screen() 
+{
+  Short i, j;
+  Short v_h = itsy_on ? visible_h_itsy : visible_h;
+  Short v_w = itsy_on ? visible_w_itsy : visible_w;
+  //  RectangleType r;
+  if (FrmGetActiveFormID() != MainForm) return;
+  v_w = min(v_w, DROWS);
+  v_h = min(v_h, DCOLS);
+
+  /* Clear the physical screen. */
+  //  RctSetRectangle(&r, 0, 0, 160, 134-1);
+  //  WinEraseRectangle(&r, 0);
+
+  /* Update 'terminal' to represent the cleared screen. */
+  screen_dirty = true;
+  for (i = 0 ; i < v_h; i++) {
+    lines_dirty[i+visible_y] = true;
+    for (j = 0; j < v_w; j++) {
+      terminal[i][j] = ' ';
+    }
+  }
+}
+
+void print(Short ch, Short row, Short col) {
+  buffer[row][col] = ch;
+  lines_dirty[row] = true;
+  screen_dirty = true;
+}
+
+
+
+/*
+ * Draw the whole screen, as the player knows it.
+ * On second thought, maybe update but DON'T draw.
+ */
+void recalc_screen()
+{
+  Short row, col;// absolute
+  if (FrmGetActiveFormID() != MainForm) return;
+  clear_screen();
+  for (row = 0 ; row < cur_height ; row++)
+    for (col = 0 ; col < cur_width ; col++)
+      buffer[row][col] = loc_symbol(row, col);
+  //      buffer[row][col] = '^';
+  //  for (row = visible_y, vr = 0 ; vr < visible_h_itsy ; row++, vr++)
+  //    for (col = visible_x, vc = 0 ; vc < visible_w_itsy ; col++, vc++)
+  //      terminal[vr][vc] = buffer[row][col];
+  /*refresh();*/
+  screen_recalced = true;
+}
+/*
+ * The funtion to actually draw a character ch at a col,row position
+ * (row, col are RELATIVE i.e. this is used in model-of-screen)
+ * note the row+1 offset is so that we have a line for msgs.
+ * The character will be drawn in either the small or normal font.
+ *
+ * if color is available and is on,
+ * put_char_at is only called with the draw state pushed,
+ * and it gets popped when finished calling put_char_at.
+ */
+static void put_char_at(Short row, Short col, Char ch, Boolean bold)
+{
+  //  Short cheat, vcheat = itsy_on ? 14 : 5; // center the dungeon vertically
+  //Short cheat, vcheat = itsy_on ? 0 : 0; // center the dungeon vertically
+  Short cheat, vcheat = stats_bar_on_bottom ? 0 : DunTopY;
+  /* the space has already been cleared with clear_line */
+  /* on second thought, no it hasn't. */
+  RectangleType r;
+  Short vc_w = itsy_on ? visible_char_w_itsy : visible_char_w;
+  Short vc_h = itsy_on ? visible_char_h_itsy : visible_char_h;
+
+  RctSetRectangle(&r, col * vc_w, row*vc_h+vcheat,
+		  vc_w, vc_h); /* Left, Top, W, H */
+
+  if (!my_prefs.black_bg || IsColor)
+    WinEraseRectangle(&r, 0);
+  else
+    WinDrawRectangle(&r, 0);
+    
+  // calculate pixel position of "row, col" and put char there
+  cheat = vc_w - FntCharWidth(ch); // center the variable width characters
+
+  if (cheat <= 1)   cheat = 0;
+  else              cheat /= 2;
+
+  if (ch != ' ') {
+
+#ifdef I_AM_COLOR
+  if (IsColor) {
+    WinSetTextColor(get_color(ch, col+visible_x, row+visible_y));
+  }
+#endif
+
+    if (!itsy_on && (ch== 'g' || ch== 'j' || ch== 'p' ||ch == 'q' ||ch == 'y'))
+      vcheat--; // unfortunately, letters with dangling bits are a pain.
+    
+    if (!my_prefs.black_bg || IsColor)
+      WinDrawChars(&ch, 1, col * vc_w + cheat, row * vc_h+vcheat);
+    else
+      WinDrawInvertedChars(&ch, 1, col * vc_w + cheat, row * vc_h+vcheat);
+
+    if (bold)  WinInvertRectangle(&r, 0); /* 0 for square corners */
+  }
+  terminal[row][col] = ch;
+
+}
+
+/*
+ *  Actually redraw the screen.  (if it is 'dirty'.)
+ */
+static void refresh_tail() SEC_5;
+//extern Char last_command; // use this to un-show "detect <foo>" creatures 
+extern previous_state curr_state; // replaces last_command...
+void refresh(Boolean clearall)
+{
+  Short col, line, absline;
+  Short v_h = itsy_on ? visible_h_itsy : visible_h;
+  Short v_w = itsy_on ? visible_w_itsy : visible_w;
+  Short vc_h = itsy_on ? visible_char_h_itsy : visible_char_h;
+  Short vcheat = stats_bar_on_bottom ? 0 : DunTopY;
+  RectangleType r;
+  if (curr_state.mode == MODE_SHOWINVIS) return; // don't overwrite nifty detected creatures
+  if (FrmGetActiveFormID() != MainForm) return;
+  if (!screen_dirty) return;
+  screen_dirty = false;
+  if (screen_recalced) { recalc_and_refresh(); return; }
+
+  if (xored_runwalk_on) {
+    xor_runwalk_circles(); // erase the old one
+    xored_runwalk_on = false;
+  }
+
+#ifdef I_AM_OS_2
+  if (itsy_on) FntSetFont(ledFont);
+#else
+  if (itsy_on) FntSetFont(SmallFont);
+#endif
+#ifdef I_AM_COLOR
+  if (IsColor) { start_color(); }
+#endif //I_AM_COLOR
+
+
+  v_w = min(v_w, cur_width  - visible_x);
+  v_h = min(v_h, cur_height - visible_y);
+  if (v_h > DROWS) v_h = DROWS;
+  if (v_w > DCOLS) v_h = DCOLS;
+
+  for (line = 0 ; line < v_h ; line++) {
+    /* line is RELATIVE, line+visible_y is ABSOLUTE. */
+    absline = line + visible_y;
+    if (absline < 0 || !lines_dirty[absline]) continue;
+    //// this rectangle's y coords must match with put_char_at's...
+    if (clearall) {
+      RctSetRectangle(&r, 0, line*vc_h+vcheat, SCR_WIDTH, vc_h);
+      qWinEraseRectangle(&r, 0);
+    }
+    //// ...ok maybe that worked
+    lines_dirty[absline] = false;
+    for (col = 0; col < v_w; col++) {
+      /* col is RELATIVE, col+visible_x is ABSOLUTE. */
+      if (col+visible_x >= cur_width) break;
+      if (col+visible_x < 0) continue;
+      if (buffer[absline][col+visible_x] != terminal[line][col]) {
+	put_char_at(line, col, buffer[absline][col+visible_x], false);
+      }
+    }
+  }
+  refresh_tail();
+}
+// This is an "optimized" (redundant bits taken out) combo of recalc + refresh
+// to spped up the transition from screen to screen I hope
+void recalc_and_refresh()
+{
+  Short col, line, absline;
+  Short v_h = itsy_on ? visible_h_itsy : visible_h;
+  Short v_w = itsy_on ? visible_w_itsy : visible_w;
+  Word this_form = FrmGetActiveFormID();
+  //  Short vc_h = itsy_on ? visible_char_h_itsy : visible_char_h;
+  //  RectangleType r;
+  if (this_form != MainForm &&
+      this_form != LookForm) return;
+  screen_recalced = false;
+  screen_dirty = false;
+
+#ifdef I_AM_OS_2
+  if (itsy_on) FntSetFont(ledFont);
+#else
+  if (itsy_on) FntSetFont(SmallFont);
+#endif
+#ifdef I_AM_COLOR
+  if (IsColor) { start_color(); }
+#endif //I_AM_COLOR
+
+
+  if (!itsy_on && this_form == MainForm) {
+    // erase that last 1-2 pixels of turds
+    RectangleType r;
+    RctSetRectangle(&r, 0, DunBotY-2, SCR_WIDTH, 2); // xxx still 2 in handera?
+    qWinEraseRectangle(&r, 0);
+  }
+  xored_runwalk_on = false;
+
+  v_w = min(v_w, cur_width  - visible_x);
+  v_h = min(v_h, cur_height - visible_y);
+  v_w = min(v_w, DROWS);
+  v_h = min(v_h, DCOLS);
+
+  for (line = 0 ; line < v_h ; line++) {
+    /* line is RELATIVE, line+visible_y is ABSOLUTE. */
+    absline = line + visible_y;
+    //// this rectangle's y coords must match with put_char_at's...
+    //    RctSetRectangle(&r, 0, line*vc_h, 160, vc_h);
+    //    WinEraseRectangle(&r, 0);
+    //// ...ok cleared
+    lines_dirty[absline] = false; // keep this
+    for (col = 0; col < v_w; col++) {
+      /* col is RELATIVE, col+visible_x is ABSOLUTE. */
+      if (col+visible_x >= cur_width) break;
+      buffer[absline][col+visible_x] = loc_symbol(absline, col+visible_x);
+      put_char_at(line, col, buffer[absline][col+visible_x], false);
+      // (put_char_at takes care of setting terminal[][].)
+    }
+  }
+  refresh_tail();
+}
+
+// clear EVERYTHING, and redraw dungeon and stats
+void nuke_display()
+{
+  RectangleType r;
+  RctSetRectangle(&r, 0, 0, SCR_WIDTH, SCR_HEIGHT);
+  qWinEraseRectangle(&r, 0);
+  get_panel(char_row, char_col, true); // FORCE recalculation of panel
+  recalc_and_refresh(); //	recalc_screen(); refresh(true);
+  //  stats_top_dirty = stats_bot_dirty = true;
+  print_stats_real(STATS_ALL, true);
+}
+
+static void refresh_tail()
+{
+  //  WinDrawLine(0,12,160,12);
+  //  spell_stats(env); // don't forget the spell-status on right hand side.
+#ifdef I_AM_COLOR
+  if (IsColor) { stop_color(); }
+#endif //I_AM_COLOR
+#ifdef I_AM_OS_2
+  if (itsy_on) FntSetFont(stdFont);
+#else
+  if (itsy_on) FntSetFont(BigFont);
+#endif
+
+  // also clean up the line (just above bottom msgline or just above top one)
+  qWinEraseLine(0, DunLineY-1, SCR_WIDTH, DunLineY-1);
+
+  xor_runwalk_circles();
+  xored_runwalk_on = true;
+
+  // oh yeah, this might be a good idea.
+  try_print_status();
+}
+
+static void refresh_2()
+{
+  Short col, line, absline;
+  Short v_w = itsy_on ? visible_w_itsy : visible_w;
+  if (FrmGetActiveFormID() != MainForm) return;
+
+#ifdef I_AM_OS_2
+  if (itsy_on) FntSetFont(ledFont);
+#else
+  if (itsy_on) FntSetFont(SmallFont);
+#endif
+#ifdef I_AM_COLOR
+  if (IsColor) { start_color(); }
+#endif //I_AM_COLOR
+
+  if (xored_runwalk_on) {
+    xor_runwalk_circles(); // erase the old one
+    xored_runwalk_on = false;
+  }
+
+  v_w = min(v_w, cur_width  - visible_x);
+  v_w = min(v_w, DROWS);
+
+  for (line = 0 ; line < 2 ; line++) {
+    /* line is RELATIVE, line+visible_y is ABSOLUTE. */
+    absline = line + visible_y;
+    lines_dirty[absline] = false;
+    // Draw only from the edge of the status words.  Ha.
+    for (col = words_dirty_x[line]; col < v_w; col++) {
+      /* col is RELATIVE, col+visible_x is ABSOLUTE. */
+      if (col+visible_x >= cur_width) break;
+      // if (buffer[absline][col+visible_x] != terminal[line][col]) // no..
+      put_char_at(line, col, buffer[absline][col+visible_x], false);
+    }
+  }
+#ifdef I_AM_COLOR
+  if (IsColor) { stop_color(); }
+#endif //I_AM_COLOR
+#ifdef I_AM_OS_2
+  if (itsy_on) FntSetFont(stdFont);
+#else
+  if (itsy_on) FntSetFont(BigFont);
+#endif
+
+  xor_runwalk_circles();
+  xored_runwalk_on = true;
+  try_print_status();
+}
+
+// Ok... draw_directional needs this...
+void erase_runwalk_circles() SEC_5;
+void erase_runwalk_circles()
+{
+  if (xored_runwalk_on) {
+    xor_runwalk_circles();
+    xored_runwalk_on = false;
+  }
+}
+
+static void xor_runwalk_circles()
+{
+  /* there's a pref to draw run/walk circles.  it's not entirely working. */
+  if (my_prefs.overlay_circles) {
+    static Short center_x = 80, center_y = 80;
+
+    if (!my_prefs.relative_move) {
+      center_x = SCR_WIDTH/2;
+      center_y = SCR_HEIGHT/2;
+    } else {
+      if (!xored_runwalk_on) {
+	Short vcheat = stats_bar_on_bottom ? 0 : DunTopY;
+	Short vc_w = itsy_on ? visible_char_w_itsy : visible_char_w;
+	Short vc_h = itsy_on ? visible_char_h_itsy : visible_char_h;
+	// Center it around the '@@'.  This should match relativize_move.
+	center_x = vc_w/2 + (char_col - visible_x) * vc_w;
+	center_y = vc_h/2 + (char_row - visible_y) * vc_h + vcheat;
+      }
+    }
+
+    draw_circle(my_prefs.walk_center_border * WalkMagic, center_x, center_y);
+    if (my_prefs.run)
+      draw_circle(my_prefs.run_walk_border * WalkMagic, center_x, center_y);
+  }
+}
+
+
+/*
+ * Given input SCREEN coordinates x,y, with center of screen at 0,0,
+ * Translate x,y such that the onscreen location of '@@' is mapped to 0,0
+ */
+void relativize_move(Short *x, Short *y)
+{
+  Short center_x, center_y, vcheat = stats_bar_on_bottom ? 0 : DunTopY;
+  Short vc_w = itsy_on ? visible_char_w_itsy : visible_char_w;
+  Short vc_h = itsy_on ? visible_char_h_itsy : visible_char_h;
+  center_x = vc_w/2 + (char_col - visible_x) * vc_w;
+  center_y = vc_h/2 + (char_row - visible_y) * vc_h + vcheat;
+  *x = (*x + 80) - center_x;
+  *y = (*y + 80) - center_y;
+}
+
+
+// y,x are ABSOLUTE row,col.
+void change_visible_xy(Short x, Short y)
+{
+  y = max(y, 0);
+  x = max(x, 0);
+  y = min(y, cur_height - (itsy_on ? visible_h_itsy : visible_h));
+  x = min(x, cur_width - (itsy_on ? visible_w_itsy : visible_w));
+  if (visible_y == y && visible_x == x) return;  // no change!
+  visible_y = y;
+  visible_x = x;
+  recalc_and_refresh(); //  recalc_screen(); refresh(true);
+
+  // this is like panel_bounds()
+  panel_row_min = visible_y;
+  panel_row_max = visible_y + (itsy_on ? visible_h_itsy : visible_h) - 1;
+  panel_col_min = visible_x;
+  panel_col_max = visible_x + (itsy_on ? visible_w_itsy : visible_w) - 1;
+
+}
+// x and y can be -1, 0, 1.
+static Short dirx[9] = { -1,  0,  1, -1,  0,  1, -1,  0,  1 };
+static Short diry[9] = {  1,  1,  1,  0,  0,  0, -1, -1, -1 };
+void slide_dir(Short dir)
+{
+  Short x, y;
+  dir = max(min(dir,9),1); // keep in bounds [1,9]
+  x = dirx[dir-1];
+  y = diry[dir-1];
+  y *= (itsy_on ? visible_h_itsy : visible_h);
+  x *= (itsy_on ? visible_w_itsy : visible_w);
+  change_visible_xy(x+visible_x,y+visible_y);
+}
+
+
+Boolean get_panel(Short y, Short x, Boolean force)
+{
+  Short screen_width = itsy_on ? visible_w_itsy : visible_w; // unit = cells
+  Short screen_height = itsy_on ? visible_h_itsy : visible_h; // unit = cells
+  Short epsilon_x = 3, epsilon_y = 2; // # of border cells you "can't get to"
+  Short new_visible_x, new_visible_y;
+  Boolean in_new_panel = true;
+  // cur_height and cur_width are the # of cells in CURRENT floor's dimensions
+  if (!(force ||
+	(x < visible_x + epsilon_x) ||
+	(x >= visible_x + screen_width - epsilon_x) ||
+	(y < visible_y + epsilon_y) ||
+	(y >= visible_y + screen_height - epsilon_y)))
+    return false; // no need to change panels
+
+  // CALCULATE X   of top left corner of the panel to move to
+  // This is a little ugly in order to deal with possibly odd screen_width.
+  new_visible_x = ((x - epsilon_x)/screen_width) * screen_width;
+  panel_col = ((x - epsilon_x)/screen_width) * 2; // panels overlap by width/2
+  if ((x - epsilon_x) % screen_width >= screen_width/2) {
+    new_visible_x += screen_width/2;
+    panel_col++;
+  }
+  // Boundary conditions.
+  if (new_visible_x > cur_width - screen_width)
+    new_visible_x = cur_width - screen_width;
+  if (new_visible_x < 0)
+    new_visible_x = 0;
+  // CALCULATE Y   of top left corner of the panel to move to
+  // This is a little ugly in order to deal with possibly odd screen_width.
+  new_visible_y = ((y - epsilon_y)/screen_height) * screen_height;
+  panel_row = ((y - epsilon_y)/screen_height) * 2; // panels overlap by h/2
+  if ((y - epsilon_y) % screen_height >= screen_height/2) {
+    new_visible_y += screen_height/2;
+    panel_row++;
+  }
+  // Boundary conditions.
+  if (new_visible_y > cur_height - screen_height)
+    new_visible_y = cur_height - screen_height;
+  if (new_visible_y < 0)
+    new_visible_y = 0;
+  
+  if (visible_x == new_visible_x && visible_y == new_visible_y)
+    in_new_panel = false; // Ha!  There was no change.  Silly rabbit.
+
+  visible_x = new_visible_x;
+  visible_y = new_visible_y;
+  panel_row_min = visible_y;
+  panel_row_max = visible_y + screen_height - 1;
+  panel_col_min = visible_x;
+  panel_col_max = visible_x + screen_width - 1;
+
+  if (in_new_panel)
+    if (find_bound)
+      end_find(); // stop running, etc.
+
+  // Caller decides whether to recalc_screen & refresh.
+
+  return in_new_panel;
+}
+
+
+/*
+ * Set the buffer value to what it "should" be "now"
+ * but it will get actually drawn when the screen is refreshed
+ */
+//void update_screen_cell(Short j, Short i, struct everything *env)
+
+
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+// Here is the code formerly known as stats.c.
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+/*
+  S00 I00 W00 D00 C00 Ch00  0000 feet
+  L 00 xp 0123456 mana 000 hp 000/000
+  AC 00 Gold ...
+*/
+
+// HEY - revise this so that it just queues up the messages,
+// and have another routine print them at the end of the turn
+// (with --more-- as necessary)
+void count_message(Char *buf)
+{
+  Short i;
+  i = command_count;
+  message(buf);
+  command_count = i;
+}
+void level_message(Char *buf)
+{
+  RectangleType r;
+  Short y;
+  RctSetRectangle(&r, 0, SCR_HEIGHT/2 - visible_char_h,
+		  SCR_WIDTH, 2*visible_char_h);
+  qWinEraseRectangle(&r, 0); /* 0 for square corners */
+  y = SCR_HEIGHT/2 - visible_char_h;
+  qWinDrawLine(0, y, SCR_WIDTH, y);
+  y = SCR_HEIGHT/2 + visible_char_h;
+  qWinDrawLine(0, y, SCR_WIDTH, y);
+  // Perhaps this should be centered.
+  qWinDrawChars(buf, StrLen(buf), 1, (SCR_HEIGHT - visible_char_h)/2);
+  message(buf); // for good measure
+}
+Short brief_comment_y = 128;
+void show_brief_comment(Char *buf) // used in store2.c, spell, inv, equ.
+{
+  clear_brief_comment();
+  if (!buf) return;
+  WinDrawChars(buf, StrLen(buf), 2, brief_comment_y); // xxx handera
+}
+Boolean in_brief_comment(Short x, Short y)
+{ return (y > brief_comment_y && y < brief_comment_y+LINE_HEIGHT); }
+void clear_brief_comment()
+{
+  RectangleType r;// was 0,128,156,11
+  RctSetRectangle(&r, 0, brief_comment_y, SCR_WIDTH-4, LINE_HEIGHT);
+  WinEraseRectangle(&r, 0);       // clear the message space
+}
+
+Boolean in_beaming = false;
+void message(Char *buf)
+{
+  Word curfrm = FrmGetActiveFormID();
+  Short i;
+  Char *tmp;
+  if (curfrm == MainForm ||
+      curfrm == CharSummaryForm ||
+      in_beaming) {    // Log a message for later display
+    if (!buf) return;
+    tmp = old_messages[0];
+    for (i = 0 ; i < SAVED_MSGS-1 ; i++)
+      old_messages[i] = old_messages[i+1];
+    StrNCopy(tmp, buf, SAVED_MSG_LEN-2); /* leave room for \n.. */
+    tmp[SAVED_MSG_LEN-2] = '\0'; /* making sure it's terminated.. */
+    StrCat(tmp, "\n");
+    old_messages[SAVED_MSGS-1] = tmp;
+    // this part is for "--more--" ability:
+    if ((command_count <= 0) ||
+	(0 != StrCompare(old_messages[SAVED_MSGS-1],
+			 old_messages[SAVED_MSGS-2])))
+      // don't --more-- a count_message if it's the same as the previous one
+      last_old_message_shown--;
+    if (last_old_message_shown < 0) // "none of these msgs have been shown"
+      last_old_message_shown = -1;
+    // Remember that we have something to display
+    pending_messages = true;
+    command_count = 0;  // (lame hack!)
+  } else if (curfrm == InvForm || curfrm == EquForm) {
+    // These messages should be printed straightaway.
+    // well, really I should be logging them, too.  in most cases.
+    show_brief_comment(buf);
+    // Make sure there's at least a moment to read it, if we have
+    // several messages to print ("You wear x" "Oops, cursed!" "The foo hits")
+    // SysTaskDelay(SysTicksPerSecond());
+  }
+}
+// a mainform message that we require to be displayed in "real time"
+void alert_message(Char *buf)
+{
+  RectangleType r;
+  if (FrmGetActiveFormID() != MainForm || !buf) return;
+  //  RctSetRectangle(&r,0,134,160,160-134); /* left,top, width and height */
+  //RctSetRectangle(&r,0,StatsTopY,160,StatsBotY-StatsTopY);/* x,y, W, and H */
+  RctSetRectangle(&r, 0, StatsTopY, SCR_WIDTH, LINE_HEIGHT+3); // was +4 xxx
+  qWinEraseRectangle(&r, 0); /* 0 for square corners */
+  qWinDrawChars(buf, StrLen(buf), 1, StatsTopY);
+}
+// Clear the message area
+Boolean message_clear(Boolean really)
+{
+  RectangleType r;
+  //  RctSetRectangle(&r,0,134,160,160-134); /* left,top, width and height */
+  RctSetRectangle(&r, 0, StatsTopY, SCR_WIDTH, StatsBotY-StatsTopY);
+  if (really)
+    qWinEraseRectangle(&r, 0);
+  qWinDrawLine(0, DunLineY, SCR_WIDTH, DunLineY);
+  //print_stats(STATS_QUO);
+  if (last_old_message_shown < SAVED_MSGS-1)  return true;
+  else return false;
+}
+
+/*
+ * Blow away the message queue
+ * (Use this when you die)
+ */
+void preempt_messages()
+{
+  pending_messages = false;
+  last_old_message_shown = SAVED_MSGS - 1;  
+}
+
+// Print up to 2 lines of messages.  make sure you word-wrap.
+// 1. print first message
+// 2. if necessary, word wrap
+// 3. else if second message exists + does not need word wrap, print it too.
+// 4. else if second message does not exist, print teensy stats.
+// 5. print "--more--" if any more messages are in the queue
+void show_messages()
+{
+  Short lines_avail = 2, len_line, len_str, lines_used = 0;
+  Short str_width = SCR_WIDTH;
+  Char *msg;
+
+  RectangleType r;
+  //RctSetRectangle(&r,0,134,160,160-134); /* left,top, width and height */
+  RctSetRectangle(&r, 0, StatsTopY, SCR_WIDTH, StatsBotY-StatsTopY);
+
+  // if there's nothing to print, just print stats.
+  if (last_old_message_shown >= SAVED_MSGS-1) {
+    //    need_print_stats &= ~STATS_WORD;
+    print_stats_real(need_print_stats, true);
+    //  need_print_stats = STATS_NONE; // print_stats_real does this
+  } else {
+    qWinEraseRectangle(&r, 0);
+    qWinDrawLine(0, DunLineY, SCR_WIDTH, DunLineY);
+    while (lines_avail > 0 && last_old_message_shown < SAVED_MSGS-1) {
+      msg = old_messages[last_old_message_shown+1];
+      len_str = StrLen(msg);
+      if (lines_avail <= 1 && FntCharsWidth(msg, len_str-1) > SCR_WIDTH)
+	break; // 1 line avail., message is 2 lines.  Do not print partial msg.
+      while (lines_avail > 0) {
+	len_str = StrLen(msg);
+	len_line = FntWordWrap(msg, SCR_WIDTH);
+	if (len_line >= len_str) { // we have finished the string!
+	  //	  WinDrawChars(msg, len_str-1, 0, 134 + 11*lines_used);
+	  qWinDrawChars(msg, len_str-1, 0, StatsTopY + LINE_HEIGHT*lines_used);
+	  str_width = FntCharsWidth(msg, len_str-1); // remember for print..hp!
+	  lines_avail--; lines_used++;
+	  break;
+	}
+	//	WinDrawChars(msg, len_line, 0, 134 + 11*lines_used);
+	qWinDrawChars(msg, len_line, 0, StatsTopY + LINE_HEIGHT*lines_used);
+	str_width = FntCharsWidth(msg, len_line); // remember for print_s._hp!
+	lines_avail--; lines_used++;
+	msg += len_line;
+      }    // we finished the string, or we ran out of space.
+      last_old_message_shown++;
+    } // finished all messages or ran out of space.
+    if ((last_old_message_shown < SAVED_MSGS-1) ||
+	(curr_state.mode == MODE_SHOWINVIS) || death)
+      show_a_more(lines_used); // prompt for the Any Key with "--more--"
+    else {
+      if (lines_used > 1)	// see if there was room for hit points
+	print_stats_hp(str_width); // this will decide whether to print them
+    }
+    if (lines_used < 2) {
+      //need_print_stats &= ~STATS_WORD; // hey, why is this line here?
+      // probably to prevent flickering during _combat_...
+      print_stats_real(need_print_stats, false);
+      // this should turn on CURSTAT_ITSY in current_print_stats.
+    } else
+      current_print_stats = CURSTAT_MSG;
+  }
+  pending_messages = false;
+  //  need_print_stats = STATS_NONE; // print_stats_real does this
+}
+// This is what prints the MORE in lower right corner of screen.
+// A couple non-display.c routines also would like to use it..
+static const Char more[6] = "MORE ";
+void show_a_more(Short lines_used)
+{
+  DWord version;
+  FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
+#ifdef I_AM_OS_2
+  if (version < 0x03000000l) FntSetFont(ledFont);
+#else
+  if (version >= 0x03000000l) FntSetFont(SmallFont);
+#endif
+  //    WinDrawChars("--more--", 8, 120, 134 + 11*lines_used);
+  //WinDrawChars("MORE", 8, (large ? 130 : 140), 134 + 11*lines_used - 3);
+  qWinDrawChars(more, 4, SCR_WIDTH - FntCharsWidth(more, 5),
+		StatsTopY + LINE_HEIGHT*lines_used - (FntCharHeight()-3));
+#ifdef I_AM_OS_2
+  FntSetFont(stdFont);
+#else
+  FntSetFont(BigFont);
+#endif
+}
+
+// call alloc_message_log initially when all stuff is being allocated..
+// it has to be dynamic so we can play games with pointers in log_message.
+void alloc_message_log()
+{
+  Short i;
+  for (i = 0 ; i < SAVED_MSGS ; i++) {
+    old_messages[i] = (Char *) md_malloc(sizeof(Char) * SAVED_MSG_LEN);
+    old_messages[i][0] = '\0';
+  }
+  // the log is all null strings.. so (we pretend) all of it has been shown
+  last_old_message_shown = SAVED_MSGS - 1;
+}
+void clear_message_log()
+{
+  Short i;
+  for (i = 0 ; i < SAVED_MSGS ; i++)
+    old_messages[i][0] = '\0';
+  // the log is all null strings.. so (we pretend) all of it has been shown
+  last_old_message_shown = SAVED_MSGS - 1;
+}
+
+
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+static Boolean verbing() SEC_6;
+Boolean unverbing = false; // secret switch to turn off Words (once).
+static Boolean verbing()
+{
+  if (unverbing) return (unverbing = false);
+  return ((pyflags.paralysis > 1) ||
+	  (PY_REST & pyflags.status) ||
+	  (command_count > 0) ||
+	  (PY_SEARCH & pyflags.status));
+}
+
+// See prt_stat_block() in misc3.c .. there are other things I should print
+void print_stats(UInt which_stats)
+{
+  need_print_stats |= which_stats;
+  //  if (which_stats & STATS_WORD) words_dirty = true;
+  /*
+  if (which_stats & (STATS_TOGGLE | STATS_GOLD_AC | STATS_STR_ETC))
+    stats_top_dirty = true;
+  if (which_stats & STATS_HP)
+    stats_bot_dirty = true;
+  */
+  // what if STATS_QUO ?
+  return; // let's see if this sorta works.
+}
+
+static void print_stats_real(UInt which_stats, Boolean large)
+{
+  /*  Short voteStrInt = 0, voteGoldAc = 0; */
+  Word this_form = FrmGetActiveFormID();
+  if (this_form != MainForm) return;
+
+  if ((which_stats & STATS_WORD) || verbing()) {
+    update_status_words(); // refresh the top 2 lines, then (re)print words 
+  }
+  which_stats &= ~STATS_WORD;
+  if (which_stats & STATS_STR) {
+    // eliminate the mutually incompatible...
+    if (which_stats & STATS_AC) which_stats &= ~STATS_AC;
+    if (which_stats & STATS_GOLD) which_stats &= ~STATS_AC;
+  }
+  if (large) {
+    if (current_print_stats & (CURSTAT_ITSY | CURSTAT_MSG)) {
+      // ... we need to refresh everything, into the same state it just was
+      if ((which_stats & (STATS_AC | STATS_GOLD)) ||
+	  (!(which_stats & STATS_STR) &&
+	   (current_print_stats & CURSTAT_NOT_STR)))
+	which_stats = STATS_ALLG;
+      else
+	which_stats = STATS_ALL;
+    } else if (!(current_print_stats & CURSTAT_NOT_STR)) {
+      if ((which_stats & STATS_AC) || (which_stats & STATS_GOLD))
+	which_stats |= (STATS_AC | STATS_GOLD);
+    }
+    print_stats_large(which_stats);
+    // remember what state we left the stats in...
+    current_print_stats &= ~(CURSTAT_ITSY|CURSTAT_MSG);
+    if (which_stats & STATS_STR)
+      current_print_stats &= ~CURSTAT_NOT_STR;
+    else if (which_stats & (STATS_AC | STATS_GOLD))
+      current_print_stats |= CURSTAT_NOT_STR;      
+    // else leave it like it is...
+  } else {
+    // itsy should always print EVERYTHING, but which_stat and
+    // current_print_stats will determine which top line it prints.
+    // Well, really it should NOT always print everything, because
+    // when you are in combat, that is flickery too.
+    // The only time it should print not-everything is if
+    // current_print_stats has ITSY on and MSG off
+    print_stats_itsy(which_stats);
+    // remember what state we left the stats in...
+    current_print_stats &= ~CURSTAT_MSG;
+    current_print_stats |= CURSTAT_ITSY;
+    if (which_stats & STATS_STR)
+      current_print_stats &= ~CURSTAT_NOT_STR;
+    else if (which_stats & (STATS_AC | STATS_GOLD))
+      current_print_stats |= CURSTAT_NOT_STR;
+    // else leave it like it is...
+  }
+  need_print_stats = STATS_NONE;
+}
+
+/*
+ * Print two lines of status at the bottom of screen
+ */
+/*
+  How many separate things are there to print:
+  stats, pac, gold, depth, level, exp, cmana, mhp, chp
+*/
+Short statwidth_large[6] = { 5,7,8,6,5,10 };// also, width of "%2d " is 12
+Short statwidth_small[6] = { 5,10,5,5,5,10 };// also, width of "%2d " is 10
+const Char *stat_abbrev[6] = { "S", "In", "W", "D", "C", "Ch" };
+Short statwidth_misc[8] = {1, 30, 115, 21, 21+45, 21+45+43, 160-109, 160-66};
+// LEFT_X 1, GOLD_X 30, DEPTH_X 115, XP_X 21, MANA_X 21+45, HP_X 21+45+43,
+// HP_AT_X 109, MANA_AT_X 66
+//#define LEFT_X 1
+//#define GOLD_X (6*five)/*30*/
+//#define DEPTH_X (23*five)/*115*/
+//#define XP_X 21
+//#define MANA_X (21+45)
+//#define HP_X (21+45+43)
+// used in print_stats_hp _and_ print_stats_itsy ...
+//#define HP_AT_X 109
+//#define MANA_AT_X 66
+static void print_stats_large(UInt which_stats)
+{
+  Char buf[80];
+  Short hi, x, i, tmp, w, depth;
+  Short five=FntCharWidth('0'), space=FntCharWidth(' ');
+  RectangleType r;
+
+  if (FrmGetActiveFormID() != MainForm) return;
+  //  if (!stats_dirty) return;
+  if (which_stats == STATS_NONE) return;
+
+  //  RctSetRectangle(&r,0,StatsTopY,160,StatsBotY-StatsTopY);
+  //  qWinEraseRectangle(&r, 0); /* 0 for square corners */
+
+  /*
+     On the first line, we will be erasing sections of rectangle
+     from y0 = StatsTopY and dy = 11+4.
+     On the first line, we will be erasing sections of rectangle
+     from y0 = hi and dy = 11.. I think..
+  */
+
+  hi = StatsTopY + 4; // xxx 4 = magic number
+  qWinDrawLine(0, DunLineY, SCR_WIDTH, DunLineY);
+  if (which_stats & STATS_STR) {
+    RctSetRectangle(&r,0,StatsTopY,statwidth_misc[2],(hi+LINE_HEIGHT)-StatsTopY);
+    qWinEraseRectangle(&r, 0);
+    x = statwidth_misc[0];
+    // need to print each number at a fixed position, also
+    // subtract 18 if > 18 (and print '00' if 100) and invert the display.
+    //StrPrintF(buf, "S      In      W      D      C      Ch     ");//xxxx
+    //qWinDrawChars(buf, StrLen(buf), x, hi);
+    for (i = 0, w = x ; i < 6 ; i++, w+=2*five+space) {
+      qWinDrawChars(stat_abbrev[i], StrLen(stat_abbrev[i]), w, hi);
+      w += statwidth_large[i];
+      tmp = pystats.use_stat[i];
+      if (tmp > 18) {
+	tmp -= 18;
+	if (tmp > 99) tmp = 0;
+	StrPrintF(buf, (tmp > 9 ? "%d" : "0%d"), tmp);
+	qWinDrawInvertedChars(buf, StrLen(buf), w, hi);
+      } else {
+	StrPrintF(buf, "%d", tmp);
+	qWinDrawChars(buf, StrLen(buf), (tmp > 9) ? w : w+five, hi);
+      }
+    }
+  } else {
+    if (which_stats & STATS_AC) {
+      RctSetRectangle(&r, 0, StatsTopY, statwidth_misc[1],
+		      (hi+LINE_HEIGHT)-StatsTopY);
+      qWinEraseRectangle(&r, 0);
+      StrPrintF(buf, "AC %d", pymisc.dis_ac);
+      qWinDrawChars(buf, StrLen(buf), statwidth_misc[0], hi);
+    }
+    if (which_stats & STATS_GOLD) {
+      RctSetRectangle(&r, statwidth_misc[1], StatsTopY,
+		      statwidth_misc[2]-statwidth_misc[1],
+		      (hi+LINE_HEIGHT)-StatsTopY);
+      qWinEraseRectangle(&r, 0);
+      StrPrintF(buf, "$ %ld", pymisc.au);
+      // allow space for "AC 999  " ...
+      qWinDrawChars(buf, StrLen(buf), statwidth_misc[1], hi);
+    }
+  }
+
+  if (which_stats & STATS_DEPTH) {
+    RctSetRectangle(&r, statwidth_misc[2], StatsTopY,
+		    SCR_WIDTH-statwidth_misc[2], (hi+LINE_HEIGHT)-StatsTopY);
+    qWinEraseRectangle(&r, 0);
+    depth = dun_level * 50;
+    if (depth > 0)
+      StrPrintF(buf, "%d feet", depth);
+    else 
+      StrPrintF(buf, "Town");
+    qWinDrawChars(buf, StrLen(buf), statwidth_misc[2], hi);
+  }
+  // done with first line
+  hi += LINE_HEIGHT;
+
+  if (which_stats & STATS_XP) {
+    RctSetRectangle(&r, 0, hi, statwidth_misc[4], StatsBotY-hi);
+    qWinEraseRectangle(&r, 0); /* 0 for square corners */
+    // player level 12
+    StrPrintF(buf, "L %d", (Short) pymisc.lev);
+    qWinDrawChars(buf, StrLen(buf), statwidth_misc[0], hi);
+    // player experience 1234567
+    StrPrintF(buf, "x %ld", pymisc.exp);
+    qWinDrawChars(buf, StrLen(buf), statwidth_misc[3], hi);
+  }
+  if (which_stats & STATS_MANA) {
+    RctSetRectangle(&r, statwidth_misc[4], hi,
+		    statwidth_misc[5]-statwidth_misc[4], StatsBotY-hi);
+    qWinEraseRectangle(&r, 0); /* 0 for square corners */
+    // mana points 123
+    StrPrintF(buf, "mana %d", pymisc.cmana);
+    qWinDrawChars(buf, StrLen(buf), statwidth_misc[4], hi);
+  }
+  if (which_stats & STATS_HP) {
+    RctSetRectangle(&r, statwidth_misc[5], hi, SCR_WIDTH-statwidth_misc[5],
+		    StatsBotY-hi);
+    qWinEraseRectangle(&r, 0); /* 0 for square corners */
+    // hit points 123/123
+    //  StrPrintF(buf, "hp %d/%d", pymisc.mhp, pymisc.chp);
+    x = statwidth_misc[5];
+    if ((pymisc.cmana <= 99) && (pymisc.mhp > 99) && (StatsBotY == SCR_HEIGHT))
+      x -= five; // Keeps the Graffiti indicator from overwriting last digit
+    StrPrintF(buf, "hp %d/%d", pymisc.chp, pymisc.mhp);
+    if (pymisc.chp < pymisc.mhp / 4) // might want to make this tweakable
+      qWinDrawInvertedChars(buf, StrLen(buf), x, hi);
+    else
+      qWinDrawChars(buf, StrLen(buf), x, hi);
+  }
+  return;
+}
+
+static void print_stats_itsy(UInt which_stats)
+{
+  Char buf[80];
+  Short hi, x, depth;
+  Short i, w, tmp; //, five = visible_char_w_itsy, space = 2;
+  Short five, space;
+  RectangleType r;
+
+  if (FrmGetActiveFormID() != MainForm) return;
+
+#ifdef I_AM_OS_2
+  FntSetFont(ledFont);
+#else
+  FntSetFont(SmallFont);
+#endif
+  five = FntCharWidth('0');
+  space = FntCharWidth(' ');
+  
+  //  hi = 160-12;
+  hi = StatsBotY - 2*visible_char_h_itsy;
+
+  x = statwidth_misc[0];
+  if (which_stats & STATS_STR) {
+    //    StrPrintF(buf, "S      In      W      D      C      Ch     ");//xxxx
+    //    qWinDrawChars(buf, StrLen(buf), x, hi);
+    RctSetRectangle(&r, 0, hi, statwidth_misc[2], FntCharHeight()); // xxx
+    qWinEraseRectangle(&r, 0);
+    for (i = 0, w = x ; i < 6 ; i++, w+=2*five+space) {
+      qWinDrawChars(stat_abbrev[i], StrLen(stat_abbrev[i]), w, hi);
+      w += statwidth_small[i];
+      tmp = pystats.use_stat[i];
+      if (tmp > 18) {
+	tmp -= 18;
+	if (tmp > 99) tmp = 0;
+	StrPrintF(buf, (tmp > 9 ? "%d" : "0%d"), tmp);
+	qWinDrawInvertedChars(buf, StrLen(buf), w, hi);
+      } else {
+	StrPrintF(buf, "%d", tmp);
+	qWinDrawChars(buf, StrLen(buf), (tmp > 9) ? w : w+five, hi);
+      }
+    }
+  } else {
+    StrPrintF(buf, "AC %d  $ %ld", pymisc.dis_ac, pymisc.au);
+    qWinDrawChars(buf, StrLen(buf), x, hi);
+  }
+
+  x += statwidth_misc[2]; //115; a random magic number... same as large stats
+  depth = dun_level * 50;
+  if (depth > 0)
+    StrPrintF(buf, "%d feet", depth);
+  else 
+    StrPrintF(buf, "Town");
+  qWinDrawChars(buf, StrLen(buf), x, hi);
+  // done with first line!
+
+  x = statwidth_misc[0];
+  hi = StatsBotY - visible_char_h_itsy;// hi = 160-6;
+
+  // player level 12
+  StrPrintF(buf, "L %d", (Short) pymisc.lev);
+  qWinDrawChars(buf, StrLen(buf), x, hi);
+  // player experience 1234567
+  x += 4*five; // xxxx still works on Handera!  width(L 00 ) = 5+2+5+5+2 < 20.
+  StrPrintF(buf, "/ %ld", pymisc.exp);
+  qWinDrawChars(buf, StrLen(buf), x, hi);
+  // mana points 123
+  x = SCR_WIDTH - statwidth_misc[7]; // shove mana + hp as far right as poss.
+  StrPrintF(buf, "Mana %d", pymisc.cmana);
+  qWinDrawChars(buf, StrLen(buf), x, hi);
+  // hit points 123/123
+  x = SCR_WIDTH - statwidth_misc[6]; // shove mana + hp as far right as poss.
+  //  StrPrintF(buf, "HP %d/%d", pymisc.mhp, pymisc.chp);
+  if ((pymisc.cmana <= 99) && (pymisc.mhp > 99) && (StatsBotY == SCR_WIDTH))
+    x -= five; // Keep the Graffiti indicator from overwriting last digit
+  StrPrintF(buf, "HP %d/%d", pymisc.chp, pymisc.mhp);
+  if (pymisc.chp < pymisc.mhp / 4) // might want to make this tweakable
+    qWinDrawInvertedChars(buf, StrLen(buf), x, hi);
+  else
+    qWinDrawChars(buf, StrLen(buf), x, hi);
+
+  // this is a test
+  //  try_print_status();
+
+#ifdef I_AM_OS_2
+  FntSetFont(stdFont);
+#else
+  FntSetFont(BigFont);
+#endif
+
+  //  stats_dirty = true;
+  return;
+}
+
+// This duplicates part of the itsy-stats functionality.  "plugh"
+// It will print mana if possible, and as much of hp as it can
+// (at the very least it will print the current hp number).
+// Inefficient (but slowness will not matter because we only do this
+// once and then wait for user action) and/or inelegant at present.
+static void print_stats_hp(Short width_used)
+{
+  Short x, w, len, hi = StatsBotY - visible_char_h_itsy; //160-6;
+  Boolean low, mana = false;
+  Char buf[20];
+  Short five=FntCharWidth('0'), space=FntCharWidth(' ');
+  if (FrmGetActiveFormID() != MainForm) return;
+  //if (width_used > HP_AT_X - 2) return;
+#ifdef I_AM_OS_2
+  FntSetFont(ledFont);
+#else
+  FntSetFont(SmallFont);
+#endif
+
+  low = pymisc.chp < pymisc.mhp / 4; // might want to make this tweakable
+
+  if (width_used <= (SCR_WIDTH - statwidth_misc[7]) - space) {
+    StrPrintF(buf, "Mana %d", pymisc.cmana);
+    qWinDrawChars(buf, StrLen(buf), SCR_WIDTH - statwidth_misc[7], hi);
+    mana = true;
+  }
+  StrPrintF(buf, "HP %d/%d", pymisc.chp, pymisc.mhp);
+  len = StrLen(buf);
+  w = FntCharsWidth(buf, len);
+  // If possible print at usual position, otherwise try: full string right-jus;
+  // full string partly stacked; just numbers stacked.
+  if (width_used < (SCR_WIDTH - statwidth_misc[6]) - space) {
+    x = SCR_WIDTH - statwidth_misc[6];
+    if (pymisc.mhp > 99)  // if there's room, scoot it over a bit:
+      if (width_used < ((SCR_WIDTH - statwidth_misc[6]) - five) - space)
+	if (!mana || (pymisc.cmana <= 99)) // can we crowd into mana's space
+	  x -= five;
+  } else if (width_used < SCR_WIDTH-(w+space))
+    x = SCR_WIDTH - w; // print full string but right justified
+  else {
+    StrPrintF(buf, "%d/%d", pymisc.chp, pymisc.mhp);
+    len = StrLen(buf);
+    w = FntCharsWidth(buf, len);
+    if (width_used < SCR_WIDTH-(w+space)) {
+      x = SCR_WIDTH - w; // print both numbers but stack 'HP' above
+      qWinDrawChars("HP", 2, x, hi);
+    } else {
+      StrPrintF(buf, "%d", pymisc.chp);  // stack cur above max. no 'HP'.
+      len = StrLen(buf);
+      x = SCR_WIDTH - 5*len;//==160-FntCharsWidth(buf, len);
+      if (low)
+	qWinDrawInvertedChars(buf, len, x, hi-visible_char_h_itsy);
+      else
+	qWinDrawChars(buf, len, x, hi-visible_char_h_itsy);
+      StrPrintF(buf, "%d", pymisc.mhp);
+      len = StrLen(buf);
+      x = SCR_WIDTH - FntCharsWidth(buf, len);
+    }
+  }
+  if (low)
+    qWinDrawInvertedChars(buf, len, x, hi);
+  else
+    qWinDrawChars(buf, len, x, hi);
+
+
+#ifdef I_AM_OS_2
+  FntSetFont(stdFont);
+#else
+  FntSetFont(BigFont);
+#endif
+}
+
+// Currently this is called by refresh()
+// and currently it prints at the very top of the screen.
+// these are the one-word status states that were on the bottom line in moria.
+// Note:
+// If something other than 'refresh' calls this, it would be a good
+// idea to re-print the top 2 lines of the dungeon to 'clean up' FIRST.
+// in case there's a word we are no longer printing.
+// (actually it could set those 2 lines to 'dirty' and refresh())
+void update_status_words()
+{
+  try_print_status();
+  refresh_2();
+}
+void try_print_status()
+{
+  Char buf[80];
+  Short hi, len, x, i, maxlen=SCR_WIDTH;//maxlen=120;
+  Boolean display_counts = true;
+
+
+  if (FrmGetActiveFormID() != MainForm) return;
+
+#ifdef I_AM_OS_2
+  FntSetFont(ledFont);
+#else
+  FntSetFont(SmallFont);
+#endif
+  // Test of stats flags:
+  // PoisonedSearchingVslowStudy
+  // HungryBlindConfusedAfraid
+  //  hi = 0;
+  hi = DunTopY;
+  x = 0;
+  words_dirty_x[0] = words_dirty_x[1] = 0;
+  // hunger
+  if (PY_WEAK & pyflags.status) {
+    StrPrintF(buf, "Weak"); // 20
+    len = 4;
+    WinDrawInvertedChars(buf, len, x, hi);
+    x += FntCharsWidth(buf, len);
+  } else if (PY_HUNGRY & pyflags.status) {
+    StrPrintF(buf, "Hungry"); // 30
+    len = 6;
+    WinDrawInvertedChars(buf, len, x, hi);
+    x += FntCharsWidth(buf, len);
+  }
+  // blindness
+  if (PY_BLIND & pyflags.status) {
+    StrPrintF(buf, "Blind"); // 25
+    len = 5;
+    WinDrawInvertedChars(buf, len, x, hi);
+    x += FntCharsWidth(buf, len);
+  }
+  if (PY_CONFUSED & pyflags.status) {
+    StrPrintF(buf, "Confused"); // 40
+    len = 8;
+    WinDrawInvertedChars(buf, len, x, hi);
+    x += FntCharsWidth(buf, len);
+    if (x > maxlen) { words_dirty_x[0] = x; x = 0; hi += visible_char_h_itsy; }
+  }
+  if (PY_FEAR & pyflags.status) {
+    StrPrintF(buf, "Afraid"); // 30
+    len = 6;
+    WinDrawInvertedChars(buf, len, x, hi);
+    x += FntCharsWidth(buf, len);
+    if (x > maxlen) { words_dirty_x[0] = x; x = 0; hi += visible_char_h_itsy; }
+  }
+  if (PY_POISONED & pyflags.status) {
+    StrPrintF(buf, "Poisoned"); // 40
+    len = 8;
+    WinDrawInvertedChars(buf, len, x, hi);
+    x += FntCharsWidth(buf, len);
+    if (x > maxlen) { words_dirty_x[0] = x; x = 0; hi += visible_char_h_itsy; }
+  }
+
+  // this needs to print Searching, Resting, Paralysis, or 'count' status :
+  buf[0] = '\0';
+  if (pyflags.paralysis > 1)
+    StrPrintF(buf, "Paralysed"); // 45
+  else if (PY_REST & pyflags.status) {
+    if (pyflags.rest < 0)
+      StrPrintF(buf, "Rest *");
+    else if (display_counts)
+      StrPrintF(buf, "Rest%s%d", (pyflags.rest>9?" ":" \t"), pyflags.rest);
+    else
+      StrPrintF(buf, "Rest");
+  } else if (command_count > 0) {
+    if (display_counts)
+      StrPrintF(buf, "Repeat%s%d",(command_count>9?" ":" \t"),command_count);
+    else
+      StrPrintF(buf, "Repeat");
+    // pyflags.status |= PY_REPEAT; // ?
+    if (PY_SEARCH & pyflags.status)
+      StrCat(buf, " Search");
+  } else if (PY_SEARCH & pyflags.status)
+    StrPrintF(buf, "Searching"); // 45
+  if (buf[0]) {
+    len = StrLen(buf);
+    WinDrawInvertedChars(buf, len, x, hi);
+    x += FntCharsWidth(buf, len);
+    if (x > maxlen) { words_dirty_x[0] = x; x = 0; hi += visible_char_h_itsy; }
+  }
+
+  // speed
+  i = pyflags.speed;
+  buf[0] = '\0';
+  if (PY_SEARCH & pyflags.status) i--;   /* Search mode. */
+  if (i > 1)        StrPrintF(buf,"SLOW");
+  else if (i == 1)  StrPrintF(buf,"Slow");
+  else if (i == 0)  ;
+  else if (i == -1) StrPrintF(buf,"Fast");
+  else              StrPrintF(buf,"FAST");
+  if (buf[0] != '\0') {
+    len = StrLen(buf);
+    WinDrawInvertedChars(buf, len, x, hi);
+    x += FntCharsWidth(buf, len);
+    if (x > maxlen) { words_dirty_x[0] = x; x = 0; hi += visible_char_h_itsy; }
+  }
+  // this needs fixed:
+  pyflags.status &= ~PY_STUDY;
+  if (pyflags.new_spells != 0) {
+    StrPrintF(buf, "Study"); // 25
+    len = StrLen(buf);
+    WinDrawInvertedChars(buf, len, x, hi);
+    x += FntCharsWidth(buf, len);
+    if (x > maxlen) { words_dirty_x[0] = x; x = 0; hi += visible_char_h_itsy; }
+  }
+
+  if (hi > 0) words_dirty_x[1] = x / visible_char_w_itsy; 
+  words_dirty_x[0] /= visible_char_w_itsy; 
+  
+
+#ifdef I_AM_OS_2
+  FntSetFont(stdFont);
+#else
+  FntSetFont(BigFont);
+#endif
+
+  // this may help us to tidy up later.  nope, doesn't seem to help.  hmmm.
+  /*
+  absline = visible_y;
+  if (x > 0 || hi > 0) {
+    screen_dirty = true;
+    lines_dirty[absline] = true;
+    if (x > 0 && hi > 0) lines_dirty[absline+1] = true;
+  }
+  */
+}
+/* The various FLAGS:
+   hunger:   Weak | Hungry   23,0
+   blind:    Blind           23,7
+   confused: Confused        23,13
+   afraid:   Afraid          23,22
+   poisoned: Poisoned        23,29
+   state:    Paralysed | Rest %-5d | Repeat %-3d | Search | Searching   23,38
+   speed:    Very Slow | Slow | Fast | Very Fast                        23,49
+   study:    Study           23,59
+   depth:    Town level  was 23,65
+Weak   Blind Confused Afraid Poisoned Paralysed  Very Slow Study
+Hungry Blind Confused Afraid Poisoned Repeat 123 Fast      Study
+ */
+
+
+// Draw a circle of radius radius (pixels) without using "sqrt".
+// this is a sad sad little function.  but it doesn't look all that bad really.
+// I've replaced all the "WinDrawLine" with "WinInvertLine" (sigh)
+//   to make 'invert mode' hopefully happy.
+// Ok... this is used ONLY by the xor_runwalk_circles...
+static void my_WinInvertLine(Short x, Short y) SEC_5;
+static void draw_circle(Short radius, Short x0, Short y0)
+{
+  Short x, y, gap=2;
+  if (radius >= min(SCR_HEIGHT,SCR_WIDTH)/2) return;
+
+  for (x = 0, y = radius ; x <= y ; x += gap) {
+    while (x*x + y*y > radius*radius)
+      y--;
+    // draw horizontalish parts
+    my_WinInvertLine( x + x0, y + y0);
+    my_WinInvertLine(-x + x0, y + y0);
+    my_WinInvertLine( x + x0,-y + y0);
+    my_WinInvertLine(-x + x0,-y + y0);
+    // draw verticalish parts	    
+    my_WinInvertLine( y + x0, x + y0);
+    my_WinInvertLine(-y + x0, x + y0);
+    my_WinInvertLine( y + x0,-x + y0);
+    my_WinInvertLine(-y + x0,-x + y0);
+  }
+}
+static void my_WinInvertLine(Short x, Short y)
+{
+  if (x >= 0 && y >= 0 && x <= SCR_WIDTH && y <= SCR_HEIGHT
+      && (stats_bar_on_bottom ? (y < DunLineY) : (y > DunLineY)))
+    WinInvertLine(x, y, x, y);
+}
+
+#define EMDASH 151
+void show_time_and_volts()
+{
+  // dateStringLength = 9, timeStringLength = 9, voltage length = 14...
+  Char buf[60];
+  Short len;
+  //
+  UInt volts_times_100;
+  UInt warn_at, critical_at, max_ticks;
+  UChar battpercent = 0;
+  SysBatteryKind battkind;
+  Boolean plugged_in;
+
+  
+#ifndef I_AM_COLOR
+  // XXXX hey, remember to TEST this, on the old xcopilot or something
+  volts_times_100 = SysBatteryInfo(false, &warn_at, &critical_at, &max_ticks,
+				   &battkind, &plugged_in);
+#else
+  volts_times_100 = SysBatteryInfo(false, &warn_at, &critical_at, &max_ticks,
+				   &battkind, &plugged_in, &battpercent);
+#endif
+
+  seconds_to_string(TimGetSeconds(), buf, 0);
+  len = StrLen(buf);
+  buf[len++] = ' ';
+  if (!plugged_in) {
+    Short v = volts_times_100/100, vdec = volts_times_100 % 100;
+    StrPrintF(buf+len, "  %c   %d%s%d V", EMDASH, v,
+	      (vdec<10 ? ".0" : "."), vdec);
+    if (battpercent) {
+      len = StrLen(buf);
+      StrPrintF(buf+len, " (%d%%)", battpercent);
+    }
+  } else {
+    StrPrintF(buf+len, "  %c   [charging]", EMDASH);
+  }
+  message(buf);
+}
+@
+
+
+1.63
+log
+@handera support is mostly working now
+@
+text
+@d856 1
+a856 1
+	(curr_state.mode == MODE_SHOWINVIS))
+@
+
+
+1.62
+log
+@take out debugging printfs, fix store so fixed-price messages aren't overwritten
+@
+text
+@a58 2
+Short SCR_MIN = 160; /* whichever of w,h is LESS */
+Short SCR_MAX = 160; /* whichever is MORE */
+d540 1
+a540 1
+  if (my_prefs.overlay_circles /*&& !my_prefs.relative_move*/ ) {
+d1478 1
+a1478 1
+  if (radius >= SCR_MIN/2) return;
+@
+
+
+1.61
+log
+@UChars, what was I thinking
+@
+text
+@a144 7
+  { // XXX remove me
+    Char buf[80];
+    StrPrintF(buf, "%d %d, %d, %d %d",
+	      DunTopY, DunBotY, DunLineY, StatsTopY, StatsBotY);
+    WinDrawChars(buf, StrLen(buf), 5, 80);
+    SysTaskDelay(8*SysTicksPerSecond());
+  }
+@
+
+
+1.60
+log
+@various fixes, mostly to 'again'
+@
+text
+@d122 5
+a126 5
+UChar DunTopY = 0; // 0 or <DunLineY+1>
+UChar DunBotY = 0; // <DunLineY-1> or 160
+UChar DunLineY = 133;//MAP_HEIGHT //where to draw The Line: 133 or 160-133= 27
+UChar StatsTopY = 134; // add 4 to be where large stats start... hm
+UChar StatsBotY = 160;//add -12 to start itsy stats: 160 or <DunLineY-1>
+d145 7
+d376 1
+a376 1
+    if (!lines_dirty[absline]) continue;
+d387 1
+@
+
+
+1.59
+log
+@handera support is mostly working, for some value of mostly
+@
+text
+@d149 2
+a150 3
+// I also need a routine to translate a tap on the screen
+// into absolute-dungeon coordinates.
+// This seems to work.
+@
+
+
+1.58
+log
+@changing magic #define's to calculations (for handera)
+@
+text
+@d76 3
+a78 2
+#define MAX_VIS_H 22 /* xxx Change this if I do Sony 320x320, */
+#define MAX_VIS_W 32 /* xxx or if I do Font56.txt on a HandEra. */
+d132 7
+a138 1
+  if (!stats_at_top) {
+a143 6
+  } else {
+    StatsTopY = 0;
+    DunLineY = SCR_HEIGHT-MAP_HEIGHT; // 160-133
+    StatsBotY = DunLineY-1;
+    DunTopY = DunLineY+1;
+    DunBotY = SCR_HEIGHT;
+d226 2
+d364 2
+d423 2
+d501 1
+d722 2
+a723 1
+void show_brief_comment(Char *buf) // used in store form, etc, etc.
+d727 1
+a727 1
+  WinDrawChars(buf, StrLen(buf), 2, 128); // xxx handera
+d730 1
+a730 1
+{ return (y > 128 && y < 128+LINE_HEIGHT); }
+d733 2
+a734 2
+  RectangleType r;
+  RctSetRectangle(&r, 0, 128, SCR_WIDTH-4, LINE_HEIGHT); //was 0,128,156,11
+d1016 2
+a1017 1
+Short statwidth_misc[8] = {1, 30, 115, 21, 21+45, 21+45+43, 109, 66};
+d1058 2
+a1059 2
+    StrPrintF(buf, "S      In      W      D      C      Ch     ");//xxxx
+    qWinDrawChars(buf, StrLen(buf), x, hi);
+d1061 1
+d1149 1
+d1166 6
+a1171 3
+    StrPrintF(buf, "S      In      W      D      C      Ch     ");//xxxx
+    qWinDrawChars(buf, StrLen(buf), x, hi);
+    for (i = 0, w = five ; i < 6 ; i++, w+=2*five+space) {
+a1203 1
+  x += 4*five; // xxxx might not work on Handera
+d1205 1
+d1208 1
+a1209 1
+  // mana points 123
+d1212 1
+a1213 1
+  // hit points 123/123
+@
+
+
+1.57
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@d41 1
+a45 3
+// used in print_stats_hp, should agree with print_stats_itsy
+#define HP_AT_X 109
+#define MANA_AT_X 66
+d70 4
+a73 5
+Short COL_6 =  146; /* col_5 plus two numerals? */
+Int8 ROW_1 =   15;
+Int8 ROW_2 =   26;
+Int8 ROW_3 =   70;
+Int8 ROW_4 =   94;
+d186 1
+a186 2
+  if (itsy_on)
+    FntSetFont(ledFont);
+d188 1
+a188 2
+  if (itsy_on)
+    FntSetFont(USERFONT);
+d191 1
+a191 3
+  if (IsColor) {
+    start_color();
+  }
+d198 1
+a198 3
+  if (IsColor) {
+    stop_color();
+  }
+d201 1
+a201 2
+  if (itsy_on)
+    FntSetFont(stdFont);
+d203 1
+a203 2
+  if (itsy_on)
+    FntSetFont(stdFont);
+d350 1
+a350 2
+  if (itsy_on)
+    FntSetFont(ledFont);
+d352 1
+a352 2
+  if (itsy_on)
+    FntSetFont(USERFONT);
+d355 1
+a355 3
+  if (IsColor) {
+    start_color();
+  }
+d399 1
+a399 2
+  if (itsy_on)
+    FntSetFont(ledFont);
+d401 1
+a401 2
+  if (itsy_on)
+    FntSetFont(USERFONT);
+d404 1
+a404 3
+  if (IsColor) {
+    start_color();
+  }
+d455 1
+a455 3
+  if (IsColor) {
+    stop_color();
+  }
+d458 1
+a458 2
+  if (itsy_on)
+    FntSetFont(stdFont);
+d460 1
+a460 2
+  if (itsy_on)
+    FntSetFont(stdFont);
+d480 1
+a480 2
+  if (itsy_on)
+    FntSetFont(ledFont);
+d482 1
+a482 2
+  if (itsy_on)
+    FntSetFont(USERFONT);
+d485 1
+a485 3
+  if (IsColor) {
+    start_color();
+  }
+d508 1
+a508 3
+  if (IsColor) {
+    stop_color();
+  }
+d511 1
+a511 2
+  if (itsy_on)
+    FntSetFont(stdFont);
+d513 1
+a513 2
+  if (itsy_on)
+    FntSetFont(stdFont);
+d538 2
+a539 1
+      center_x = center_y = 80;
+d551 1
+a551 1
+    draw_circle(my_prefs.walk_center_border * 10, center_x, center_y);
+d553 1
+a553 1
+      draw_circle(my_prefs.run_walk_border * 10, center_x, center_y);
+d868 1
+d876 1
+a876 1
+  if (version >= 0x03000000l) FntSetFont(USERFONT);
+d880 2
+a881 2
+  qWinDrawChars("MORE", 4, SCR_WIDTH - FntCharsWidth("MORE ", 5),
+		StatsTopY + LINE_HEIGHT*lines_used - 3);
+d885 1
+a885 1
+  FntSetFont(stdFont);
+d1006 13
+a1018 6
+#define LEFT_X 1
+#define GOLD_X 30
+#define DEPTH_X 115
+#define XP_X 21
+#define MANA_X (21+45)
+#define HP_X (21+45+43)
+d1023 1
+a1023 1
+  Short five=FntCharsWidth("0",1), space=FntCharsWidth(" ",1);
+d1040 1
+a1040 1
+  hi = StatsTopY + 4;
+d1043 1
+a1043 1
+    RctSetRectangle(&r,0,StatsTopY,DEPTH_X,(hi+LINE_HEIGHT)-StatsTopY);
+d1045 1
+a1045 1
+    x = LEFT_X;
+d1048 1
+a1048 1
+    StrPrintF(buf, "S      In      W      D      C      Ch     ");
+d1065 2
+a1066 1
+      RctSetRectangle(&r, 0, StatsTopY, GOLD_X, (hi+LINE_HEIGHT)-StatsTopY);
+d1069 1
+a1069 1
+      qWinDrawChars(buf, StrLen(buf), LEFT_X, hi);
+d1072 2
+a1073 1
+      RctSetRectangle(&r, GOLD_X, StatsTopY, DEPTH_X-GOLD_X,
+d1078 1
+a1078 1
+      qWinDrawChars(buf, StrLen(buf), GOLD_X, hi);
+d1083 2
+a1084 2
+    RctSetRectangle(&r, DEPTH_X, StatsTopY, SCR_WIDTH-DEPTH_X,
+		    (hi+LINE_HEIGHT)-StatsTopY);
+d1091 1
+a1091 1
+    qWinDrawChars(buf, StrLen(buf), DEPTH_X, hi);
+d1097 1
+a1097 1
+    RctSetRectangle(&r, 0, hi, MANA_X, StatsBotY-hi);
+d1101 1
+a1101 1
+    qWinDrawChars(buf, StrLen(buf), LEFT_X, hi);
+d1104 1
+a1104 1
+    qWinDrawChars(buf, StrLen(buf), XP_X, hi);
+d1107 2
+a1108 1
+    RctSetRectangle(&r, MANA_X, hi, HP_X-MANA_X, StatsBotY-hi);
+d1112 1
+a1112 1
+    qWinDrawChars(buf, StrLen(buf), MANA_X, hi);
+d1115 2
+a1116 1
+    RctSetRectangle(&r, HP_X, hi, SCR_WIDTH-HP_X, StatsBotY-hi);
+d1120 1
+a1120 1
+    x = HP_X;
+d1136 2
+a1137 1
+  Short i, w, tmp, five = visible_char_w_itsy, space = 2;
+d1144 1
+a1144 1
+  FntSetFont(USERFONT);
+d1146 2
+d1152 1
+a1152 1
+  x = 1;
+d1154 1
+a1154 1
+    StrPrintF(buf, "S      In      W      D      C      Ch     ");
+d1156 2
+a1157 3
+    for (i = 0, w = five ; i < 6 ; i++, w+=3*five+space) {
+      // each character in this font is 5 pixels wide.  well, except ' ' is 2.
+      if (i == 1 || i == 5) w += five; // extra letter for In and Ch
+d1174 1
+a1174 1
+  x += 23*five; //115; a random magic number...
+d1181 1
+a1181 1
+  // done with first line
+d1183 2
+a1184 3
+  x = 1;
+  // hi = 160-6;
+  hi = StatsBotY - visible_char_h_itsy;
+d1189 1
+a1189 1
+  x += 4*five;
+d1193 1
+a1193 1
+  x = MANA_AT_X; // same as: x += 45;
+d1197 1
+a1197 1
+  x = HP_AT_X; // same as: x += 43;
+d1201 1
+a1201 1
+    x -= five; // Keeps the Graffiti indicator from overwriting last digit!!
+d1214 1
+a1214 1
+  FntSetFont(stdFont);
+d1231 1
+a1231 1
+  Short five=FntCharsWidth("0",1), space=FntCharsWidth(" ",1);
+d1237 1
+a1237 1
+  FntSetFont(USERFONT);
+d1242 1
+a1242 1
+  if (width_used <= MANA_AT_X - space) {
+d1244 1
+a1244 1
+    qWinDrawChars(buf, StrLen(buf), MANA_AT_X, hi);
+d1252 2
+a1253 2
+  if (width_used < HP_AT_X - space) {
+    x = HP_AT_X;
+d1255 1
+a1255 1
+      if (width_used < (HP_AT_X - five) - space)
+d1289 1
+a1289 1
+  FntSetFont(stdFont);
+d1318 1
+a1318 1
+  FntSetFont(USERFONT);
+d1428 1
+a1428 1
+  FntSetFont(stdFont);
+@
+
+
+1.56
+log
+@still working on hiding magic constants
+@
+text
+@d49 34
+a82 1
+Char terminal[visible_h_itsy][visible_w_itsy];/*relative: model of the screen*/
+d96 4
+d126 1
+a126 1
+UChar DunLineY = MAP_HEIGHT; // where to draw The Line: 133 or 160-133= 27
+d128 1
+a128 1
+UChar StatsBotY = SCR_HEIGHT;//add -12 to start itsy stats: 160 or <DunLineY-1>
+@
+
+
+1.55
+log
+@still working on hiding magic constants
+@
+text
+@d766 1
+a766 1
+  RctSetRectangle(&r, 0, StatsTopY, SCR_WIDTH, LINE_HEIGHT+4); // why 4? xxx
+@
+
+
+1.54
+log
+@hiding magic numbers
+@
+text
+@a41 1
+// From Ularn's constant.h, these are 6*11 down by 6*33 across.
+d346 1
+a346 1
+      RctSetRectangle(&r, 0, line*vc_h+vcheat, 160, vc_h);
+d393 1
+a393 1
+    RctSetRectangle(&r, 0, DunBotY-2, 160, 2);
+d424 1
+a424 1
+  RctSetRectangle(&r, 0, 0, 160, 160);
+d450 1
+a450 1
+  qWinEraseLine(0, DunLineY-1, 160, DunLineY-1);
+d696 2
+a697 1
+  RctSetRectangle(&r, 0, 160/2 - visible_char_h, 160, 2*visible_char_h);
+d699 4
+a702 4
+  y = 160/2 - visible_char_h;
+  qWinDrawLine(0, y, 160, y);
+  y = 160/2 + visible_char_h;
+  qWinDrawLine(0, y, 160, y);
+d704 1
+a704 1
+  qWinDrawChars(buf, StrLen(buf), 1, (160 - visible_char_h)/2);
+a706 6
+void clear_brief_comment()
+{
+  RectangleType r;
+  RctSetRectangle(&r, 0, 128, SCR_WIDTH-4, LINE_HEIGHT); //was 0,128,156,11
+  WinEraseRectangle(&r, 0);       // clear the message space
+}
+d711 1
+a711 1
+  WinDrawChars(buf, StrLen(buf), 2, 128);
+d715 6
+d766 1
+a766 1
+  RctSetRectangle(&r, 0, StatsTopY, 160, 11+4); /* x,y, W, and H */
+a767 2
+  //  if (buf)
+  //    WinDrawChars(buf, StrLen(buf), 1, 134);
+d775 1
+a775 1
+  RctSetRectangle(&r,0,StatsTopY,160,StatsBotY-StatsTopY); /* x,y, W, and H */
+d778 1
+a778 1
+  qWinDrawLine(0,DunLineY,160,DunLineY);
+d803 1
+a803 1
+  Short str_width = 160;
+d808 1
+a808 1
+  RctSetRectangle(&r,0,StatsTopY,160,StatsBotY-StatsTopY); /* x,y, W, and H */
+d817 1
+a817 1
+    qWinDrawLine(0,DunLineY,160,DunLineY);
+d828 1
+a828 1
+	  qWinDrawChars(msg, len_str-1, 0, StatsTopY + 11*lines_used);
+d834 1
+a834 1
+	qWinDrawChars(msg, len_line, 0, StatsTopY + 11*lines_used);
+a863 1
+  Boolean large = false;
+a866 1
+  else large = true;
+a868 1
+  else large = true;
+d872 2
+a873 1
+  qWinDrawChars("MORE", 8, (large ? 130 : 140), StatsTopY + 11*lines_used - 3);
+d1008 1
+d1026 1
+a1026 1
+  qWinDrawLine(0,DunLineY,160,DunLineY);
+d1028 1
+a1028 1
+    RctSetRectangle(&r,0,StatsTopY,DEPTH_X,(hi+11)-StatsTopY);
+d1035 1
+a1035 1
+    for (i = 0, w = x ; i < 6 ; i++, w+=12) {
+d1045 1
+a1045 1
+	qWinDrawChars(buf, StrLen(buf), (tmp > 9) ? w : w+5, hi);
+d1050 1
+a1050 1
+      RctSetRectangle(&r,0,StatsTopY,GOLD_X,(hi+11)-StatsTopY);
+d1056 2
+a1057 1
+      RctSetRectangle(&r,GOLD_X,StatsTopY,DEPTH_X-GOLD_X,(hi+11)-StatsTopY);
+d1066 2
+a1067 1
+    RctSetRectangle(&r,DEPTH_X,StatsTopY,160-DEPTH_X,(hi+11)-StatsTopY);
+d1077 1
+a1077 1
+  hi += 11;
+d1080 1
+a1080 1
+    RctSetRectangle(&r,0,hi,MANA_X,StatsBotY-hi);
+d1090 1
+a1090 1
+    RctSetRectangle(&r,MANA_X,hi,HP_X-MANA_X,StatsBotY-hi);
+d1097 1
+a1097 1
+    RctSetRectangle(&r,HP_X,hi,160-HP_X,StatsBotY-hi);
+d1102 2
+a1103 2
+    if ((pymisc.cmana <= 99) && (pymisc.mhp > 99) && (StatsBotY == 160))
+      x -= 5; // Keeps the Graffiti state indicator from overwriting last digit!!
+a1109 3
+  // xxxxxxxxxxx also need FLAGS: hungry/weak, blind, confused, fear, poisoned,
+  // and also search/rest/speed/study!
+  //  stats_dirty = false;
+d1117 1
+a1117 1
+  Short i, w, tmp;
+d1128 1
+a1128 1
+  hi = StatsBotY - 12;
+d1134 1
+a1134 1
+    for (i = 0, w = 5 ; i < 6 ; i++, w+=3*5+2) {
+d1136 1
+a1136 1
+      if (i == 1 || i == 5) w += 5; // extra letter for In and Ch
+d1145 1
+a1145 1
+	qWinDrawChars(buf, StrLen(buf), (tmp > 9) ? w : w+5, hi);
+d1153 1
+a1153 1
+  x += 115;
+d1164 1
+a1164 1
+  hi = StatsBotY - 6;
+d1169 1
+a1169 1
+  x += 20;
+d1180 2
+a1181 2
+  if ((pymisc.cmana <= 99) && (pymisc.mhp > 99) && (StatsBotY == 160))
+    x -= 5; // Keeps the Graffiti state indicator from overwriting last digit!!
+d1208 1
+a1208 1
+  Short x, w, len, hi = StatsBotY - 6; //160-6;
+d1211 1
+d1222 1
+a1222 1
+  if (width_used <= MANA_AT_X - 2) {
+d1232 1
+a1232 1
+  if (width_used < HP_AT_X - 2) {
+d1235 1
+a1235 1
+      if (width_used < (HP_AT_X - 5) - 2)
+d1237 3
+a1239 3
+	  x -= 5;
+  } else if (width_used < 160-(w+2))
+    x = 160 - w; // print full string but right justified
+d1244 2
+a1245 2
+    if (width_used < 160-(w+2)) {
+      x = 160 - w; // print both numbers but stack 'HP' above
+d1250 1
+a1250 1
+      x = 160 - 5*len;//==160-FntCharsWidth(buf, len);
+d1252 1
+a1252 1
+	qWinDrawInvertedChars(buf, len, x, hi-6);
+d1254 1
+a1254 1
+	qWinDrawChars(buf, len, x, hi-6);
+d1257 1
+a1257 1
+      x = 160 - 5*len;//==160-FntCharsWidth(buf, len);
+d1289 3
+a1291 2
+  Short hi, x, i, maxlen=160;//maxlen=120;
+  //  Short absline;
+d1309 4
+a1312 3
+    StrPrintF(buf, "Weak");
+    WinDrawInvertedChars(buf, StrLen(buf), x, hi);
+    x += 20;
+d1315 3
+a1317 2
+    WinDrawInvertedChars(buf, StrLen(buf), x, hi);
+    x += 30;
+d1322 3
+a1324 2
+    WinDrawInvertedChars(buf, StrLen(buf), x, hi);
+    x += 25;
+d1328 4
+a1331 3
+    WinDrawInvertedChars(buf, StrLen(buf), x, hi);
+    x += 40;
+    if (x > maxlen) { words_dirty_x[0] = x; x = 0; hi += 6; }
+d1335 4
+a1338 3
+    WinDrawInvertedChars(buf, StrLen(buf), x, hi);
+    x += 30;
+    if (x > maxlen) { words_dirty_x[0] = x; x = 0; hi += 6; }
+d1342 4
+a1345 3
+    WinDrawInvertedChars(buf, StrLen(buf), x, hi);
+    x += 40;
+    if (x > maxlen) { words_dirty_x[0] = x; x = 0; hi += 6; }
+d1347 1
+d1349 14
+a1362 16
+  {
+    Boolean display_counts = true;
+    buf[0] = '\0';
+    if (pyflags.paralysis > 1)
+      StrPrintF(buf, "Paralysed"); // 45
+    else if (PY_REST & pyflags.status) {
+      if (pyflags.rest < 0)
+	StrPrintF(buf, "Rest *");
+      else if (display_counts)
+      	StrPrintF(buf, "Rest%s%d", (pyflags.rest>9?" ":" \t"), pyflags.rest);
+      else
+	StrPrintF(buf, "Rest");
+    } else if (command_count > 0) {
+      if (display_counts)
+      	StrPrintF(buf, "Repeat%s%d",(command_count>9?" ":" \t"),command_count);
+      else
+d1364 10
+a1373 10
+      // pyflags.status |= PY_REPEAT; // ?
+      if (PY_SEARCH & pyflags.status)
+	StrCat(buf, " Search");
+    } else if (PY_SEARCH & pyflags.status)
+      StrPrintF(buf, "Searching"); // 45
+    if (buf[0]) {
+      WinDrawInvertedChars(buf, StrLen(buf), x, hi);
+      x += StrLen(buf) * visible_char_w_itsy;
+      if (x > maxlen) { words_dirty_x[0] = x; x = 0; hi += 6; }
+    }
+d1375 1
+d1386 4
+a1389 3
+    WinDrawInvertedChars(buf, StrLen(buf), x, hi);
+    x += StrLen(buf) * 5;
+    if (x > maxlen) { words_dirty_x[0] = x; x = 0; hi += 6; }
+d1395 4
+a1398 3
+    WinDrawInvertedChars(buf, StrLen(buf), x, hi);
+    x += 25;
+    if (x > maxlen) { words_dirty_x[0] = x; x = 0; hi += 6; }
+d1445 1
+a1445 1
+  if (radius >= 80) return;
+d1464 1
+a1464 1
+  if (x >= 0 && y >= 0 && x <= 160 && y <= 160
+@
+
+
+1.53
+log
+@trying another kyocera fix
+@
+text
+@d90 1
+a90 1
+UChar DunLineY = 133; // where to draw The Line: 133 or 160-133= 27
+d92 1
+a92 1
+UChar StatsBotY = 160; // add -12 to start itsy stats: 160 or <DunLineY-1>
+d100 1
+a100 1
+    DunLineY = 133;
+d103 1
+a103 1
+    StatsBotY = 160;
+d106 1
+a106 1
+    DunLineY = 160-133;
+d109 1
+a109 1
+    DunBotY = 160;
+d707 15
+d753 1
+a753 5
+    RectangleType r;
+    RctSetRectangle(&r,0,128,156,11); /* left,top, width and height */
+    WinEraseRectangle(&r, 0); /* 0 for square corners */
+    if (buf)
+      WinDrawChars(buf, StrLen(buf), 1, 128);
+a779 1
+  //  WinDrawLine(0,133,160,133);
+a818 1
+    //    WinDrawLine(0,133,160,133);
+@
+
+
+1.52
+log
+@undraw the donut-circles before draw-directional pie slices
+@
+text
+@d157 1
+a157 1
+    FntSetFont(129);
+d329 1
+a329 1
+    FntSetFont(129);
+d382 1
+a382 1
+    FntSetFont(129);
+d471 1
+a471 1
+    FntSetFont(129);
+d863 1
+a863 1
+  if (version >= 0x03000000l) FntSetFont(129);
+d1119 1
+a1119 1
+  FntSetFont(129);
+d1211 1
+a1211 1
+  FntSetFont(129);
+d1291 1
+a1291 1
+  FntSetFont(129);
+@
+
+
+1.51
+log
+@make donut-circles-drawing preference actually WORK; also found that relativize was offset, fixed it
+@
+text
+@d516 10
+@
+
+
+1.50
+log
+@moving function decls
+@
+text
+@d27 1
+a27 1
+
+d35 1
+d319 4
+d397 1
+d453 4
+a456 21
+  /* I might eventually have a pref to draw run/walk circles. This code works*/
+  if (my_prefs.overlay_circles && !my_prefs.relative_move) {
+    Short center_x = 80, center_y = 80;
+    /*
+    if (my_prefs.relative_move) {
+      // eh, probably this will be right.  Center it around the '@@'
+      center_x = (char_col - visible_x) * (itsy_on ? visible_char_w_itsy :
+					   visible_char_w);
+      center_y = (char_row - visible_y) * (itsy_on ? visible_char_h_itsy :
+					   visible_char_h);
+      // Come to think of it this will make the screen look like utter crap.
+      // Ok - I will not allow circle overlay && relative_move until I
+      // figure out how to resolve this sad little issue.
+      // Also rewrite this to use relativize_move.
+    }
+    */
+    draw_circle(my_prefs.walk_center_border * 10, center_x, center_y);
+    if (my_prefs.run)
+      draw_circle(my_prefs.run_walk_border * 10, center_x, center_y);
+  }
+  // oh yeah, this might be a good idea.  testing........... 
+d479 4
+d511 23
+d535 4
+a538 1
+  try_print_status();
+d541 1
+d549 4
+a552 4
+  center_x = (char_col - visible_x) * (itsy_on ? visible_char_w_itsy :
+				       visible_char_w);
+  center_y = (char_row - visible_y) * (itsy_on ? visible_char_h_itsy :
+				       visible_char_h) + vcheat;
+d1415 2
+d1426 16
+a1441 11
+    WinInvertLine( x + x0, y + y0, x + x0, y + y0);
+    WinInvertLine( x + x0,-y + y0, x + x0,-y + y0);
+    WinInvertLine(-x + x0, y + y0,-x + x0, y + y0);
+    WinInvertLine(-x + x0,-y + y0,-x + x0,-y + y0);
+    // draw verticalish parts
+    WinInvertLine( y + x0, x + y0, y + x0, x + y0);
+    WinInvertLine( y + x0,-x + y0, y + x0,-x + y0);
+    WinInvertLine(-y + x0, x + y0,-y + x0, x + y0);
+    WinInvertLine(-y + x0,-x + y0,-y + x0,-x + y0);
+  }
+  // really I shouldn't draw the part that falls into the message area oh well.
+@
+
+
+1.49
+log
+@better msgs on floor-change; sped up repeated delay; fewer keypress in spellbk
+@
+text
+@d23 1
+a23 1
+static void print_stats_real(UInt which_stats, Boolean large); // SEC_5;
+@
+
+
+1.48
+log
+@moving extern decls around
+@
+text
+@d663 14
+@
+
+
+1.47
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@a17 1
+extern MoriaPreferenceType my_prefs;
+d32 1
+a32 17
+
+/* The screen can have 15 rows, but I took 2 for stats */
+//#define visible_h 11
+#define visible_h 13
+/* You can put about 19.9 m's on a memo line.. so.. we'll have 20 cols */
+#define visible_w 20
+/* Height in pixels of one character ... in this case an 'M' */
+#define visible_char_h 10
+/* Width in pixels of one character ... 160 pixels / 20 col = 8 pix/col */
+#define visible_char_w 8
+
+// itsy is a smaller font
+//#define visible_h_itsy 17
+#define visible_h_itsy 22
+#define visible_w_itsy 32
+#define visible_char_h_itsy 6
+#define visible_char_w_itsy 5
+a34 1
+#define IsColor (found_color && my_prefs.color_on)
+@
+
+
+1.46
+log
+@(slightly broken) rewiring the MainForm event handlers w/ explicit 'mode'
+@
+text
+@a12 9
+#include "palm.h"
+#ifndef I_AM_COLOR
+#include <System/Globals.h> // for font foo
+#define found_color false
+#else /* I_AM_COLOR */
+// nothing needed, apparently
+#include "color.h" // I've added this myself
+#endif /* I_AM_COLOR */
+#include "kMoriaRsc.h"
+a13 2
+#include "lock-externs.h"
+#include "win.h" // for inverting
+@
+
+
+1.45
+log
+@tweaking
+@
+text
+@d331 2
+a332 1
+extern Char last_command; // use this to un-show "detect <foo>" creatures 
+d341 1
+a341 1
+  if (last_command == 'I') return; // don't overwrite nifty detected creatures
+d819 2
+a820 1
+    if ((last_old_message_shown < SAVED_MSGS-1) || (last_command == 'I'))
+@
+
+
+1.44
+log
+@random tinkering, and prep for multi-user
+@
+text
+@d1439 1
+a1439 1
+  UInt8 battpercent = 0;
+@
+
+
+1.43
+log
+@can now beam 'hello world' ha ha ha
+@
+text
+@d1442 1
+a1442 2
+  //
+  DateTimeType datetime;
+d1453 1
+a1453 8
+  TimSecondsToDateTime(TimGetSeconds(), &datetime); // see DateTime.h
+  len = 0;
+  DateToAscii(datetime.month, datetime.day, datetime.year,
+	      PrefGetPreference(prefDateFormat), buf+len);
+  len = StrLen(buf);
+  buf[len++] = ' ';
+  TimeToAscii(datetime.hour, datetime.minute,
+	      PrefGetPreference(prefTimeFormat), buf+len);
+@
+
+
+1.42
+log
+@tweaking, tinkering; adding /T to show current time and voltage..
+@
+text
+@d691 1
+d698 2
+a699 1
+      curfrm == CharSummaryForm) {    // Log a message for later display
+@
+
+
+1.41
+log
+@tweaking
+@
+text
+@d1427 48
+@
+
+
+1.40
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d35 1
+a35 1
+static void print_stats_real(UInt which_stats, Boolean large) SEC_5;
+d786 1
+a786 1
+    need_print_stats &= ~STATS_WORD;
+d823 2
+a824 1
+      need_print_stats &= ~STATS_WORD;
+d885 1
+d888 1
+d913 2
+a914 1
+  if (FrmGetActiveFormID() != MainForm) return;
+@
+
+
+1.39
+log
+@revised stats-redrawing so that it (hopefully) redraws only what has changed
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000,2001 Bridget Spitznagel                        *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+d788 1
+a788 1
+    need_print_stats = STATS_NONE;
+d825 1
+d827 1
+a827 1
+      current_print_stats = CURSTAT_ITSY;
+d830 1
+a830 1
+  need_print_stats = STATS_NONE;
+d895 1
+a895 1
+  need_print_stats = which_stats;
+d922 1
+a922 1
+    if (current_print_stats & CURSTAT_ITSY) {
+d930 3
+d936 1
+a936 1
+    current_print_stats &= ~CURSTAT_ITSY;
+d940 1
+a940 1
+      current_print_stats &= CURSTAT_NOT_STR;      
+d945 4
+d951 2
+a952 1
+    current_print_stats &= ~CURSTAT_ITSY;
+d956 1
+a956 1
+      current_print_stats &= CURSTAT_NOT_STR;
+d959 1
+d1029 1
+a1029 1
+      StrPrintF(buf, "$ %ld", pymisc.dis_ac, pymisc.au);
+@
+
+
+1.38
+log
+@making invert work in the general case; an initial credits screen; and I forget what else
+@
+text
+@d44 3
+a46 3
+static void print_stats_large(Boolean siwdcc);
+static void print_stats_itsy(Boolean siwdcc);
+static void print_stats_real(UChar which_stats, Boolean large) SEC_5;
+d91 1
+a91 1
+Boolean screen_dirty, stats_dirty = true;
+a95 1
+Boolean words_dirty = true;
+d100 2
+a101 1
+extern UChar need_print_stats;
+d462 2
+a463 2
+  stats_dirty = true;
+  print_stats_real(STATS_QUO, true);
+d733 1
+a733 1
+    qWinEraseRectangle(&r, 0); /* 0 for square corners */
+d735 1
+a735 1
+      qWinDrawChars(buf, StrLen(buf), 1, 128);
+d799 1
+a799 1
+    need_print_stats = STATS_QUO;
+d836 2
+a837 2
+    }
+    else stats_dirty = true;
+d840 1
+a840 1
+  need_print_stats = STATS_QUO;
+d903 1
+a903 1
+void print_stats(UChar which_stats)
+d906 8
+a913 2
+  if (which_stats & STATS_WORD) words_dirty = true;
+  stats_dirty = true;
+d916 2
+a917 1
+static void print_stats_real(UChar which_stats, Boolean large)
+a918 2
+  static Boolean was_siwdcc = true;
+  Boolean change = true;
+d921 2
+a922 23
+  /*
+  // decide what to show for first line of stats
+  // I can add more if statements and stuff, should we have a 3rd stats option
+  if (which_stats & STATS_STR_ETC)
+    voteStrInt++; //   was_siwdcc = true;
+  if (which_stats & STATS_GOLD_AC)
+    voteGoldAc++; //   was_siwdcc = false;    
+  if (which_stats & STATS_TOGGLE) {
+    if (!was_siwdcc) voteStrInt++;
+    else             voteGoldAc++;
+  }
+  if (which_stats & STATS_QUO)
+    ; // we only care about refreshing the bottom line
+
+  // Ok, the vote is taken.  You must have a majority to win....
+  if (voteStrInt > voteGoldAc)
+    was_siwdcc = true;
+  else if (voteStrInt > voteGoldAc)
+    was_siwdcc = false;
+  else
+    ;  // Here I add a bias for sameness: if there is a tie, do not change!
+  */
+  if (words_dirty || verbing()) {
+a923 1
+    words_dirty = false;
+d925 6
+a930 13
+  if ((which_stats & STATS_STR_ETC) && (which_stats & STATS_GOLD_AC))
+    was_siwdcc = !was_siwdcc; // it will get the user's attention, I reckon
+  else if (which_stats & STATS_STR_ETC)
+    was_siwdcc = true;
+  else if (which_stats & STATS_GOLD_AC)
+    was_siwdcc = false;
+  else if (which_stats == STATS_TOGGLE)
+    was_siwdcc = !was_siwdcc;
+  else if (which_stats & STATS_HP)
+      ; // don't toggle
+  else change = false;
+  if (change) stats_dirty = true; // better force it to redraw
+
+d932 29
+a960 3
+    print_stats_large(was_siwdcc);
+  } else
+    print_stats_itsy(was_siwdcc);
+d966 4
+d971 7
+a977 1
+static void print_stats_large(Boolean siwdcc)
+d984 12
+a995 6
+  if (!stats_dirty) return;
+  //  RctSetRectangle(&r,0,134,160,160-134); /* left,top, width and height */
+  RctSetRectangle(&r,0,StatsTopY,160,StatsBotY-StatsTopY); /* x,y, W, and H */
+  qWinEraseRectangle(&r, 0); /* 0 for square corners */
+  //  WinDrawLine(0,133,160,133);
+  qWinDrawLine(0,DunLineY,160,DunLineY);
+a996 3
+  // Tap bottom line of screen to toggle what the first line says
+  
+  //hi = 138;
+d998 5
+a1002 3
+
+  x = 1;
+  if (siwdcc) { // I need to do this differently.
+a1004 4
+    //    StrPrintF(buf, "S00 In00 W00 D00 C00 Ch00");
+    // '\x80' is the whitespace with width 5 (same as a digit).
+    //    StrPrintF(buf,
+    //"S\x80\x80 In\x80\x80 W\x80\x80 D\x80\x80 C\x80\x80 Ch\x80\x80 ");
+d1021 13
+a1033 2
+    StrPrintF(buf, "AC %d  $ %ld", pymisc.dis_ac, pymisc.au);
+    qWinDrawChars(buf, StrLen(buf), x, hi);
+d1036 10
+a1045 7
+  x += 115;
+  depth = dun_level * 50;
+  if (depth > 0)
+    StrPrintF(buf, "%d feet", depth);
+  else 
+    StrPrintF(buf, "Town");
+  qWinDrawChars(buf, StrLen(buf), x, hi);
+a1046 1
+  x = 1;
+d1049 31
+a1079 22
+  // player level 12
+  StrPrintF(buf, "L %d", (Short) pymisc.lev);
+  qWinDrawChars(buf, StrLen(buf), x, hi);
+  x += 20;
+  // player experience 1234567
+  StrPrintF(buf, "x %ld", pymisc.exp);
+  qWinDrawChars(buf, StrLen(buf), x, hi);
+  x += 45;
+  // mana points 123
+  StrPrintF(buf, "mana %d", pymisc.cmana);
+  qWinDrawChars(buf, StrLen(buf), x, hi);
+  x += 43;
+  // hit points 123/123
+  //  StrPrintF(buf, "hp %d/%d", pymisc.mhp, pymisc.chp);
+  if ((pymisc.cmana <= 99) && (pymisc.mhp > 99) && (StatsBotY == 160))
+    x -= 5; // Keeps the Graffiti state indicator from overwriting last digit!!
+  StrPrintF(buf, "hp %d/%d", pymisc.chp, pymisc.mhp);
+  if (pymisc.chp < pymisc.mhp / 4) // might want to make this tweakable
+    qWinDrawInvertedChars(buf, StrLen(buf), x, hi);
+  else
+    qWinDrawChars(buf, StrLen(buf), x, hi);
+
+d1082 1
+a1082 1
+  stats_dirty = false;
+d1086 1
+a1086 1
+static void print_stats_itsy(Boolean siwdcc)
+d1104 1
+a1104 12
+  if (siwdcc) {
+    // Dude!  Fix this!  Do that same inverse-video stats thing too.
+    /*
+    StrPrintF(buf, "S%d In%d W%d D%d C%d Ch%d", 
+	      pystats.max_stat[0],
+	      pystats.max_stat[1],
+	      pystats.max_stat[2],
+	      pystats.max_stat[3],
+	      pystats.max_stat[4],
+	      pystats.max_stat[5]);
+    WinDrawChars(buf, StrLen(buf), x, hi);
+    */
+a1105 4
+    //    StrPrintF(buf, "S00 In00 W00 D00 C00 Ch00");
+    // '\x80' is the whitespace with width 5 (same as a digit).
+    //StrPrintF(buf,
+    //     "S\x80\x80 In\x80\x80 W\x80\x80 D\x80\x80 C\x80\x80 Ch\x80\x80 ");
+d1170 1
+a1170 1
+  stats_dirty = true;
+@
+
+
+1.37
+log
+@monster colors are kind of working now, maybe (for white background)
+@
+text
+@d27 1
+d35 2
+d74 1
+d199 1
+a199 1
+  if (found_color && my_prefs.color_on) {
+d208 1
+a208 1
+  if (found_color && my_prefs.color_on) {
+d304 5
+a308 1
+  WinEraseRectangle(&r, 0); /* 0 for square corners */
+d319 1
+a319 1
+  if (found_color && my_prefs.color_on) {
+d325 4
+a328 2
+      // unfortunately, letters with dangling bits are a pain.
+      WinDrawChars(&ch, 1, col * vc_w + cheat, row * vc_h+vcheat-1);
+d330 2
+a331 1
+      WinDrawChars(&ch, 1, col * vc_w + cheat, row * vc_h+vcheat);
+d366 1
+a366 1
+  if (found_color && my_prefs.color_on) {
+d382 1
+a382 1
+      WinEraseRectangle(&r, 0);
+d419 1
+a419 1
+  if (found_color && my_prefs.color_on) {
+d429 1
+a429 1
+    WinEraseRectangle(&r, 0);
+d459 1
+a459 1
+  WinEraseRectangle(&r, 0);
+d471 1
+a471 1
+  if (found_color && my_prefs.color_on) {
+d483 2
+d524 1
+a524 1
+  if (found_color && my_prefs.color_on) {
+d545 1
+a545 1
+  if (found_color && my_prefs.color_on) {
+d733 1
+a733 1
+    WinEraseRectangle(&r, 0); /* 0 for square corners */
+d735 1
+a735 1
+      WinDrawChars(buf, StrLen(buf), 1, 128);
+d749 1
+a749 1
+  WinEraseRectangle(&r, 0); /* 0 for square corners */
+d752 1
+a752 1
+  WinDrawChars(buf, StrLen(buf), 1, StatsTopY);
+d761 1
+a761 1
+    WinEraseRectangle(&r, 0);
+d763 1
+a763 1
+  WinDrawLine(0,DunLineY,160,DunLineY);
+d801 1
+a801 1
+    WinEraseRectangle(&r, 0);
+d803 1
+a803 1
+    WinDrawLine(0,DunLineY,160,DunLineY);
+d814 1
+a814 1
+	  WinDrawChars(msg, len_str-1, 0, StatsTopY + 11*lines_used);
+d820 1
+a820 1
+	WinDrawChars(msg, len_line, 0, StatsTopY + 11*lines_used);
+d858 1
+a858 1
+  WinDrawChars("MORE", 8, (large ? 130 : 140), StatsTopY + 11*lines_used - 3);
+d975 1
+a975 1
+  WinEraseRectangle(&r, 0); /* 0 for square corners */
+d977 1
+a977 1
+  WinDrawLine(0,DunLineY,160,DunLineY);
+d993 1
+a993 1
+    WinDrawChars(buf, StrLen(buf), x, hi);
+d1001 1
+a1001 1
+	WinDrawInvertedChars(buf, StrLen(buf), w, hi);
+d1004 1
+a1004 1
+	WinDrawChars(buf, StrLen(buf), (tmp > 9) ? w : w+5, hi);
+d1009 1
+a1009 1
+    WinDrawChars(buf, StrLen(buf), x, hi);
+d1018 1
+a1018 1
+  WinDrawChars(buf, StrLen(buf), x, hi);
+d1025 1
+a1025 1
+  WinDrawChars(buf, StrLen(buf), x, hi);
+d1029 1
+a1029 1
+  WinDrawChars(buf, StrLen(buf), x, hi);
+d1033 1
+a1033 1
+  WinDrawChars(buf, StrLen(buf), x, hi);
+d1041 1
+a1041 1
+    WinDrawInvertedChars(buf, StrLen(buf), x, hi);
+d1043 1
+a1043 1
+    WinDrawChars(buf, StrLen(buf), x, hi);
+d1086 1
+a1086 1
+    WinDrawChars(buf, StrLen(buf), x, hi);
+d1095 1
+a1095 1
+	WinDrawInvertedChars(buf, StrLen(buf), w, hi);
+d1098 1
+a1098 1
+	WinDrawChars(buf, StrLen(buf), (tmp > 9) ? w : w+5, hi);
+d1103 1
+a1103 1
+    WinDrawChars(buf, StrLen(buf), x, hi);
+d1112 1
+a1112 1
+  WinDrawChars(buf, StrLen(buf), x, hi);
+d1121 1
+a1121 1
+  WinDrawChars(buf, StrLen(buf), x, hi);
+d1125 1
+a1125 1
+  WinDrawChars(buf, StrLen(buf), x, hi);
+d1129 1
+a1129 1
+  WinDrawChars(buf, StrLen(buf), x, hi);
+d1137 1
+a1137 1
+    WinDrawInvertedChars(buf, StrLen(buf), x, hi);
+d1139 1
+a1139 1
+    WinDrawChars(buf, StrLen(buf), x, hi);
+d1176 1
+a1176 1
+    WinDrawChars(buf, StrLen(buf), MANA_AT_X, hi);
+d1198 1
+a1198 1
+      WinDrawChars("HP", 2, x, hi);
+d1204 1
+a1204 1
+	WinDrawInvertedChars(buf, len, x, hi-6);
+d1206 1
+a1206 1
+	WinDrawChars(buf, len, x, hi-6);
+d1213 1
+a1213 1
+    WinDrawInvertedChars(buf, len, x, hi);
+d1215 1
+a1215 1
+    WinDrawChars(buf, len, x, hi);
+d1381 2
+d1392 4
+a1395 4
+    WinDrawLine( x + x0, y + y0, x + x0, y + y0);
+    WinDrawLine( x + x0,-y + y0, x + x0,-y + y0);
+    WinDrawLine(-x + x0, y + y0,-x + x0, y + y0);
+    WinDrawLine(-x + x0,-y + y0,-x + x0,-y + y0);
+d1397 4
+a1400 4
+    WinDrawLine( y + x0, x + y0, y + x0, x + y0);
+    WinDrawLine( y + x0,-x + y0, y + x0,-x + y0);
+    WinDrawLine(-y + x0, x + y0,-y + x0, x + y0);
+    WinDrawLine(-y + x0,-x + y0,-y + x0,-x + y0);
+@
+
+
+1.36
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d29 1
+d48 1
+d194 6
+d201 7
+d282 4
+d307 1
+d309 7
+d346 1
+d354 7
+d407 7
+d459 5
+d471 2
+d510 7
+d531 5
+d543 2
+@
+
+
+1.35
+log
+@Guess The Verb: directional-foo prints what you're doing in message area.
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d24 2
+a25 1
+#include <Pilot.h>
+d27 3
+@
+
+
+1.34
+log
+@mumble
+@
+text
+@d125 1
+a125 1
+void set_statsbar_loc()
+d127 1
+a127 1
+  if (!my_prefs.stats_at_top) {
+d140 1
+a140 1
+  stats_bar_on_bottom = !my_prefs.stats_at_top;
+d353 1
+d356 2
+a357 2
+  if (FrmGetActiveFormID() != MainForm &&
+      FrmGetActiveFormID() != LookForm) return;
+d368 1
+a368 1
+  if (!itsy_on) {
+d667 2
+a668 1
+  RctSetRectangle(&r,0,StatsTopY,160,StatsBotY-StatsTopY); /* x,y, W, and H */
+d675 1
+a675 1
+Boolean message_clear()
+d680 1
+a680 1
+  if (false)
+@
+
+
+1.33
+log
+@tweak: make hit points usually not overwritten by graffiti state indicator
+@
+text
+@d1080 1
+a1080 1
+  Boolean low; 
+d1095 1
+d1102 1
+a1102 1
+  if (width_used < HP_AT_X - 2)
+d1104 5
+a1108 1
+  else if (width_used < 160-(w+2))
+@
+
+
+1.32
+log
+@fixed sell-unknown-item-to-store bug.  most forms navigable via keyboard now.
+@
+text
+@d955 2
+d1051 2
+@
+
+
+1.31
+log
+@tweaked notice
+@
+text
+@d655 3
+@
+
+
+1.30
+log
+@fixed relative-move bug, might have fixed same-panel-next-level bug,
+some sound added, command-count recognizes 'delete' now,
+app goes to dead-end form for wrong OS or missing database at startup.
+@
+text
+@d5 1
+a5 1
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+@
+
+
+1.29
+log
+@animating throw, fire-bolt, fire-ball, breath attack
+@
+text
+@d35 1
+a35 1
+static void refresh_2() SEC_5; // refresh top 2 lines only
+d481 1
+a481 1
+ * Given input SCREEN coordinates x,y,
+d486 1
+a486 1
+  Short center_x, center_y;
+d490 3
+a492 3
+				       visible_char_h);
+  *x -= center_x;
+  *y -= center_y;
+@
+
+
+1.28
+log
+@corrosion bug might be fixed
+last message shown always has at least cur/max hitpoints visible (overlaid)
+inventory now displays weight (optionally)
+added a preference to move status bar to top of screen
+@
+text
+@d172 3
+a179 1
+
+@
+
+
+1.27
+log
+@user can rebind hardware buttons
+@
+text
+@d39 1
+d75 4
+a85 1
+Boolean was_siwdcc = true;
+d116 27
+d151 2
+d265 2
+a266 1
+  Short cheat, vcheat = itsy_on ? 0 : 0; // center the dungeon vertically
+d305 1
+d329 1
+a329 1
+      RctSetRectangle(&r, 0, line*vc_h, 160, vc_h);
+d365 7
+d394 12
+d647 1
+a647 1
+    // well, really I should be logging them, too.
+d660 2
+a661 1
+  RctSetRectangle(&r,0,134,160,160-134); /* left,top, width and height */
+d663 3
+a665 2
+  if (buf)
+    WinDrawChars(buf, StrLen(buf), 1, 134);
+d671 2
+a672 1
+  RctSetRectangle(&r,0,134,160,160-134); /* left,top, width and height */
+d675 2
+a676 1
+  WinDrawLine(0,133,160,133);
+d701 1
+d705 2
+a706 1
+  RctSetRectangle(&r,0,134,160,160-134); /* left,top, width and height */
+d710 1
+d715 2
+a716 1
+    WinDrawLine(0,133,160,133);
+d726 3
+a728 1
+	  WinDrawChars(msg, len_str-1, 0, 134 + 11*lines_used);
+d732 3
+a734 1
+	WinDrawChars(msg, len_line, 0, 134 + 11*lines_used);
+d742 6
+a747 1
+    if (lines_used < 2)
+d749 1
+d770 2
+a771 1
+  WinDrawChars("MORE", 8, (large ? 130 : 140), 134 + 11*lines_used - 3);
+d825 1
+d855 2
+a856 2
+  if (which_stats & STATS_GOLD_AC)
+    was_siwdcc = false;
+d859 2
+d863 1
+a863 1
+  else if (which_stats == STATS_HP)
+d886 2
+a887 1
+  RctSetRectangle(&r,0,134,160,160-134); /* left,top, width and height */
+d889 2
+a890 1
+  WinDrawLine(0,133,160,133);
+d894 2
+a895 1
+  hi = 138;
+d976 2
+a977 1
+  hi = 160-12;
+d1025 1
+d1027 2
+a1028 1
+  hi = 160-6;
+d1037 1
+a1037 1
+  x += 45;
+d1041 1
+a1041 1
+  x += 43;
+d1063 66
+d1158 2
+a1159 2
+  hi = 0;
+  //  hi = 160-6;
+@
+
+
+1.26
+log
+@can access Recall from Look now
+@
+text
+@d144 9
+d154 8
+@
+
+
+1.25
+log
+@rearranged menus, fixed search-mode
+@
+text
+@d34 1
+d115 1
+a115 1
+// This has not been debugged.
+d127 21
+a205 3
+
+
+
+d301 2
+a302 1
+  if (FrmGetActiveFormID() != MainForm) return;
+d389 2
+a390 1
+    for (col = 0; col < v_w; col++) {
+a392 2
+      // save effort...
+      //      if (words_dirty_x[line] && col > words_dirty_x[line]) break;
+d974 1
+a975 1
+  try_print_status();
+@
+
+
+1.24
+log
+@equipment display improved
+@
+text
+@d38 1
+a38 1
+static void try_print_status() SEC_5;
+d82 1
+d372 4
+a375 3
+      if (buffer[absline][col+visible_x] != terminal[line][col]) {
+	put_char_at(line, col, buffer[absline][col+visible_x], false);
+      }
+a535 1
+    // Rats, I wonder why the "you can learn spells" is absent
+d545 5
+a549 1
+    last_old_message_shown--;
+d554 1
+a554 1
+    command_count = 0;  // (What a hack!)
+d557 1
+d697 8
+a704 1
+
+d741 1
+a741 1
+  if (words_dirty) {
+d788 3
+a790 3
+    StrPrintF(buf,
+	     "S\x80\x80 In\x80\x80 W\x80\x80 D\x80\x80 C\x80\x80 Ch\x80\x80 ");
+    //StrPrintF(buf, "S      In      W      D      C      Ch     ");
+d876 1
+a876 1
+    //    StrPrintF(buf, "S      In      W      D      C      Ch     ");
+d879 2
+a880 2
+    StrPrintF(buf,
+	     "S\x80\x80 In\x80\x80 W\x80\x80 D\x80\x80 C\x80\x80 Ch\x80\x80 ");
+d958 1
+a958 1
+static void try_print_status()
+d977 1
+d998 1
+a998 1
+    if (x > maxlen) { x = 0; hi += 6; }
+d1004 1
+a1004 1
+    if (x > maxlen) { x = 0; hi += 6; }
+d1010 1
+a1010 1
+    if (x > maxlen) { x = 0; hi += 6; }
+d1013 27
+a1039 5
+  if (false) {
+    StrPrintF(buf, "Searching"); // 45
+    WinDrawInvertedChars(buf, StrLen(buf), x, hi);
+    x += 45;
+    if (x > maxlen) { x = 0; hi += 6; }
+d1053 1
+a1053 1
+    if (x > maxlen) { x = 0; hi += 6; }
+d1061 1
+a1061 1
+    if (x > maxlen) { x = 0; hi += 6; }
+d1063 4
+@
+
+
+1.23
+log
+@continued work on spells
+@
+text
+@d774 4
+a777 1
+    StrPrintF(buf, "S      In      W      D      C      Ch     ");
+d863 1
+a863 1
+    StrPrintF(buf, "S      In      W      D      C      Ch     ");
+d865 3
+@
+
+
+1.22
+log
+@scrolls enabled, spells direction selector added
+@
+text
+@d227 1
+d235 1
+d632 16
+a647 4
+    if (last_old_message_shown < SAVED_MSGS-1) {
+      DWord version;
+      Boolean large = false;
+      FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
+d649 2
+a650 2
+      if (version < 0x03000000l) FntSetFont(ledFont);
+      else large = true;
+d652 2
+a653 2
+      if (version >= 0x03000000l) FntSetFont(129);
+      else large = true;
+d655 2
+a656 2
+      //    WinDrawChars("--more--", 8, 120, 134 + 11*lines_used);
+      WinDrawChars("MORE", 8, (large ? 130 : 140), 134 + 11*lines_used - 3);
+d658 1
+a658 1
+      FntSetFont(stdFont);
+d660 1
+a660 1
+      FntSetFont(stdFont);
+a661 7
+    }
+    if (lines_used < 2)
+      print_stats_real(need_print_stats, false);
+    else stats_dirty = true;
+  }
+  pending_messages = false;
+  need_print_stats = STATS_QUO;
+@
+
+
+1.21
+log
+@fixed some bugs: messages from actions that make you exit from
+inventory/equipment should now occur on time (instead of the following
+turn); level advancement works; blindness and cure blindness both work
+on time.  speeded up the redraw-whole-screen thing (now have a recalc,
+refresh, and faster recalc_refresh combo.  code needs cleaning up now..)
+@
+text
+@d139 1
+a139 1
+  RectangleType r;
+d277 1
+a277 1
+  Short vc_h = itsy_on ? visible_char_h_itsy : visible_char_h;
+d936 1
+a936 1
+  Short absline;
+@
+
+
+1.20
+log
+@Death - now you die and go to a tombstone page and can print Character Record to a memo
+@
+text
+@d77 1
+d143 2
+a144 2
+  RctSetRectangle(&r, 0, 0, 160, 134-1);
+  WinEraseRectangle(&r, 0);
+d181 1
+d226 2
+a227 1
+void refresh()
+d232 2
+d237 1
+a248 2
+  // I forget why I drew it bottom-to-top... 
+//    for (line = v_h - 1; line >= 0; line--) {
+d253 6
+d268 46
+d410 1
+a410 2
+  recalc_screen();
+  refresh();
+a433 3
+// XXX Odd behavior, when you enter a room from the left, only the
+// part in the left half of the screen is lit.  is this due to wackiness
+// in "what panel am I in"??
+d731 2
+@
+
+
+1.19
+log
+@'you can gain spells' message in generation
+@
+text
+@d34 1
+d38 1
+d80 1
+d287 39
+d638 1
+d669 4
+a672 1
+
+d757 6
+a762 2
+  StrPrintF(buf, "hp %d/%d", pymisc.mhp, pymisc.chp);
+  WinDrawChars(buf, StrLen(buf), x, hi);
+a769 1
+
+d774 1
+d789 1
+d798 18
+d845 2
+a846 1
+  StrPrintF(buf, "HP %d/%d", pymisc.mhp, pymisc.chp);
+d852 3
+d864 126
+@
+
+
+1.18
+log
+@made inventory/equip actions take time (buggy); made AC display update
+@
+text
+@d575 8
+@
+
+
+1.17
+log
+@adding GPL comment
+@
+text
+@d513 1
+d593 2
+a594 1
+
+d596 1
+d598 20
+d619 1
+a619 6
+  switch (which_stats) {
+  case STATS_QUO: break;
+  case STATS_TOGGLE:
+    was_siwdcc = !was_siwdcc;
+    break;
+  case STATS_GOLD_AC:
+d621 1
+a621 2
+    break;
+  case STATS_STR_ETC:
+d623 5
+a627 2
+    break;
+  }
+d633 1
+d658 2
+a659 1
+    StrPrintF(buf, "S00 In00 W00 D00 C00 Ch00");
+@
+
+
+1.16
+log
+@command count sorta works
+@
+text
+@d1 23
+@
+
+
+1.15
+log
+@semi-fixed some message/stats untidiness
+@
+text
+@d401 7
+d430 1
+@
+
+
+1.14
+log
+@overview map sorta works
+@
+text
+@d50 1
+a50 1
+Boolean screen_dirty;
+d314 3
+a316 1
+
+d447 2
+a448 1
+  WinEraseRectangle(&r, 0);
+d476 3
+d483 2
+a484 1
+    // should erase the rectangle . . .
+d525 1
+d555 3
+a557 1
+  need_print_stats = which_stats; return; // let's see if this sorta works.
+a560 1
+  RectangleType r;
+a577 3
+    RctSetRectangle(&r,0,134,160,160-134); /* left,top, width and height */
+    WinEraseRectangle(&r, 0); /* 0 for square corners */
+    WinDrawLine(0,133,160,133);
+d590 1
+d593 4
+d655 1
+d727 1
+@
+
+
+1.13
+log
+@added Preferences, maybe half of them work
+@
+text
+@d665 1
+@
+
+
+1.12
+log
+@just another random checkpoint
+@
+text
+@d9 2
+d37 1
+a37 1
+Boolean itsy_on = true;
+a53 1
+extern Boolean find_bound; // "Running: stop when map sector changes"
+d242 34
+a275 2
+  //  draw_circle(60, 80, 80);
+  //  draw_circle(10, 80, 80);
+@
+
+
+1.11
+log
+@ha!  panel redrawing works.  rock on
+@
+text
+@d11 2
+d52 6
+a89 7
+  //  Short v_h = itsy_on ? visible_h_itsy : visible_h;
+  //  Short v_w = itsy_on ? visible_w_itsy : visible_w;
+  // what screen position is visible_x at
+  // visible_y is at x,0
+  //  scr_y -= 13; // allow for whatever space the message line takes
+  //  *dun_x = scr_x / (160 / v_w);
+  //  *dun_y = scr_y / (160 / v_h);
+a115 1
+  //  RctSetRectangle(&r, 0, 12, 160, 114);
+a128 5
+  //  setscreen(row, col, ch);
+  //}
+  // col,row = x,y
+  //void setscreen(Short row, Short col, Short ch)
+  //{
+a129 1
+  //  buffer_bold[row][col] = false;
+a143 1
+  //  Short vr, vc;// relative
+d216 2
+a217 1
+  // I forget why I drew it bottom-to-top... //    for (line = v_h - 1; line >= 0; line--) {
+d240 3
+a242 1
+
+a250 2
+  //  y = min(y, DROWS - (itsy_on ? visible_h_itsy : visible_h));
+  //  x = min(x, DCOLS - (itsy_on ? visible_w_itsy : visible_w));
+a274 4
+  //  y = max(min(y,1),-1);
+  //  x = max(min(x,1),-1);
+  //  y *= (itsy_on ? visible_h_itsy : visible_h)/2;
+  //  x *= (itsy_on ? visible_w_itsy : visible_w)/2;
+a281 1
+extern Boolean find_bound; // "Running: stop when map sector changes"
+a341 62
+/*
+Boolean get_panel_old(Short y, Short x, Boolean force)
+{
+  Boolean changed_panel = false;
+  Short tmp;
+  Short v_h = itsy_on ? visible_h_itsy : visible_h;
+  Short v_w = itsy_on ? visible_w_itsy : visible_w;
+
+  if (!force &&
+      y >= panel_row_min + 2 && y <= panel_row_max - 2 &&
+      x >= panel_col_min + 3 && x <= panel_col_max - 3)
+    return false; // leave it like it is, never mind the turpentine.
+
+  if (force ||
+      ((y < panel_row_min + 2) && (panel_row_min > 0  )) ||
+      ((y > panel_row_max - 2) && (panel_row_max < MAX_HEIGHT))) {
+    // move to a "panel" that we are "in"
+    // I SHOULD ACTUALLY %by and /by "v_h/2".  However check and
+    // see if that would be an odd number which might make things suck.
+    tmp = (y - v_h/4) % v_h; // the subtract1/4 is a centering refinement
+    if (tmp > v_h/2) tmp -= v_h/2; // can't just %v_h/2 since v_h may be odd
+    panel_row_min = (y - v_h/4) - tmp;
+    if (panel_row_min < 0) panel_row_min = 0;
+    panel_row_max = panel_row_min + v_h - 1;
+    // I suppose we should incidentally set:
+    panel_row = ((y - v_h/4)/(v_h/2)); // warning warning brain asleep
+    changed_panel = true;
+    // So, um, since the LARGE font is NOT an exact divisor of the dungeon,
+    // I should ALSO check that panel_row_max does not run over the end.
+    if (panel_row_max > MAX_HEIGHT) {
+      panel_row_min -= panel_row_max - MAX_HEIGHT;
+      panel_row_max = MAX_HEIGHT;
+    }
+  }
+  if (force ||
+      ((x < panel_col_min + 3) && (panel_col_min > 0  )) ||
+      ((x > panel_col_max - 3) && (panel_col_max < MAX_HEIGHT))) {
+    // same "I SHOULD ACTUALLY" holds here too.
+    tmp = (x - v_w/4) % v_w; // the subtract1/4 is a centering refinement
+    if (tmp > v_w/2) tmp -= v_w/2; // can't just %v_w/2 since v_w may be odd
+    panel_col_min = (x - v_w/4) - tmp;
+    if (panel_col_min < 0) panel_col_min = 0;
+    panel_col_max = panel_col_min + v_w - 1;
+    if (panel_col_max > MAX_WIDTH) {
+      panel_col_min -= panel_col_max - MAX_WIDTH;
+      panel_col_max = MAX_WIDTH;
+    }
+    panel_col = ((x - v_w/4)/(v_w/2)); // warning warning brain asleep
+    changed_panel = true;
+  }
+  if (changed_panel) {
+    if (find_bound)
+      end_find(); // turn off run flag, and correct the light
+    change_visible_xy(panel_row_min, panel_col_min); // XXX will this DTRT?
+  }
+  // oh yeah:
+  visible_y = panel_row_min;
+  visible_x = panel_col_min;
+  return changed_panel;
+}
+*/
+
+d363 36
+a398 5
+/*
+ * Print a one-line message at top of screen
+ */
+Boolean message_dirty;
+void message_top(Char *buf)
+d401 2
+a402 2
+
+  RctSetRectangle(&r,0,0,160,13); /* left,top, width and height */
+d404 13
+a416 6
+  if (buf) {
+    WinDrawLine(0,12,160,12);
+    WinDrawChars(buf, StrLen(buf), 1, 0);
+    message_dirty = true;
+  }
+  // else... have the screen-drawer draw the top line!!!  yeah.
+d419 5
+a423 1
+void unmessage_top()
+d425 3
+a427 8
+  Short col, line, absline;
+  Short v_h = itsy_on ? 2 : 1; // how many lines to redraw
+  Short v_w = itsy_on ? visible_w_itsy : visible_w;
+  RectangleType r;
+  if (!message_dirty) return;
+  message_dirty = false;
+  RctSetRectangle(&r,0,0,160,13); /* left,top, width and height */
+  WinEraseRectangle(&r, 0); /* 0 for square corners */
+d429 39
+d469 2
+a470 2
+  if (itsy_on)
+    FntSetFont(ledFont);
+d472 2
+a473 2
+  if (itsy_on)
+    FntSetFont(129);
+d475 2
+a476 10
+  // I forget why I drew it bottom-to-top... //    for (line = v_h - 1; line >= 0; line--) {
+  for (line = 0 ; line < v_h ; line++) {
+    /* line is RELATIVE, line+visible_y is ABSOLUTE. */
+    absline = line + visible_y;
+    for (col = 0; col < v_w; col++) {
+      /* col is RELATIVE, col+visible_x is ABSOLUTE. */
+      if (col+visible_x < cur_width)
+	put_char_at(line, col, buffer[absline][col+visible_x], false);
+    }
+  }
+d478 1
+a478 2
+  if (itsy_on)
+    FntSetFont(stdFont);
+d480 1
+a480 2
+  if (itsy_on)
+    FntSetFont(stdFont);
+d482 6
+d490 3
+a492 5
+// HEY - revise this so that it just queues up the messages,
+// and have another routine print them at the end of the turn
+// (with --more-- as necessary)
+Boolean was_siwdcc = true;
+void message(Char *buf)
+d494 4
+a497 21
+  Word curfrm = FrmGetActiveFormID();
+  if (curfrm == MainForm) {
+    // The MainForm messages are the only ones we should cache & --more-- for.
+    if (buf) {
+      //    WinDrawLine(0,12,160,12);
+      message_dirty = true;
+      print_stats(STATS_QUO);
+      WinDrawChars(buf, StrLen(buf), 1, 134);
+    } else {
+      message_dirty = false;
+      print_stats(STATS_QUO);
+    }
+  } else if (curfrm == InvForm || curfrm == EquForm) {
+    // These messages should be printed straightaway.
+    RectangleType r;
+    RctSetRectangle(&r,0,128,156,11); /* left,top, width and height */
+    WinEraseRectangle(&r, 0); /* 0 for square corners */
+    if (buf) {
+      WinDrawChars(buf, StrLen(buf), 1, 128);
+      message_dirty = true;      
+    } else message_dirty = false;
+d499 2
+a501 2
+// xxx Note to self - I should make a queue of messages
+//     and a popup window to display them in.
+d504 6
+d514 4
+d522 1
+d535 7
+a541 5
+  RctSetRectangle(&r,0,134,160,160-134); /* left,top, width and height */
+  WinEraseRectangle(&r, 0); /* 0 for square corners */
+  WinDrawLine(0,133,160,133);
+  if (message_dirty) print_stats_itsy(was_siwdcc);
+  else               print_stats_large(was_siwdcc);
+d685 23
+a707 19
+/****************************************************
+
+ *		 Fake Functions
+
+ ****************************************************/
+
+
+// This is supposed to tell you whether an absolute coordinate is
+// currently visible on the screen.
+// THis is in misc1.c
+//Boolean panel_contains(Short a, Short b)
+//{
+//  return true;
+//}
+// THis is in misc1.c
+//Boolean get_panel(Short row, Short col, Boolean foo)
+//{
+//  return true;
+//}
+@
+
+
+1.10
+log
+@running sort of works (leaves the odd '@@' around), painful w/o preferences
+@
+text
+@d295 61
+d413 1
+a413 1
+
+@
+
+
+1.9
+log
+@'click to identify' Recall is sorta working, sorta buggy
+@
+text
+@d246 1
+@
+
+
+1.8
+log
+@eh, well, you can move around (and so can monsters) but panel/redraw is buggy
+@
+text
+@d80 4
+a83 2
+  Short v_h = itsy_on ? visible_h_itsy : visible_h;
+  Short v_w = itsy_on ? visible_w_itsy : visible_w;
+d86 5
+a90 3
+  scr_y -= 13; // allow for whatever space the message line takes
+  *dun_x = scr_x / v_w;
+  *dun_y = scr_y / v_h;
+@
+
+
+1.7
+log
+@trying to fix the panel thing, still a problem.  but you can see yourself.
+@
+text
+@d139 2
+a140 1
+ * Draw the whole screen, as the player knows it
+d155 1
+a155 1
+  refresh();
+d258 1
+d291 1
+d302 1
+a302 1
+      ((y > panel_row_max - 2) && (panel_row_max < 160))) {
+d306 4
+a309 3
+    panel_row_min = y - (y % v_h);
+    if (panel_row_min + v_h/2 < y)
+      panel_row_min += v_h/2; // each 'panel' step is really half a screen.
+d316 4
+a319 1
+    // I AM NOT CURRENTLY, later I will kick myself-of-the-present for this
+d323 1
+a323 1
+      ((x > panel_col_max - 3) && (panel_col_max < 160))) {
+d325 4
+a328 3
+    panel_col_min = x - (x % v_w);
+    if (panel_col_min + v_w/2 < x)
+      panel_col_min += v_w/2; // each 'panel' step is really half a screen.
+d330 4
+@
+
+
+1.6
+log
+@working on dungeon.c / command loop foo
+@
+text
+@d124 6
+a129 4
+void print(Short ch, Short col, Short row) { setscreen(col, row, ch); }
+// col,row = x,y
+void setscreen(Short col, Short row, Short ch)
+{
+d257 7
+d284 55
+d623 10
+a632 8
+Boolean panel_contains(Short a, Short b)
+{
+  return true;
+}
+Boolean get_panel(Short row, Short col, Boolean foo)
+{
+  return true;
+}
+@
+
+
+1.5
+log
+@working on main command input
+@
+text
+@d257 3
+a259 1
+void slide_dir(Short x, Short y)
+d261 6
+a266 2
+  y = max(min(y,1),-1);
+  x = max(min(x,1),-1);
+d561 5
+a565 1
+  return false;
+@
+
+
+1.4
+log
+@spellbooks / holy books can be browsed
+@
+text
+@d378 1
+a378 1
+void print_stats(Char which_stats)
+@
+
+
+1.3
+log
+@mages can gain spells now
+(note: there is a tiny memory leak in learn_the_spell, form_spell.c)
+@
+text
+@d351 1
+d362 1
+@
+
+
+1.2
+log
+@cleaned up creature.c and stuff
+@
+text
+@d343 3
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d351 1
+a351 1
+      print_stats(was_siwdcc);
+d355 1
+a355 1
+      print_stats(was_siwdcc);
+d373 1
+a373 1
+void print_stats(Boolean siwdcc)
+d378 13
+a390 2
+
+  was_siwdcc = siwdcc;
+d394 2
+a395 2
+  if (message_dirty) print_stats_itsy(siwdcc);
+  else               print_stats_large(siwdcc);
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

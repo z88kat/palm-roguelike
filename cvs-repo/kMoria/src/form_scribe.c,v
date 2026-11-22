@@ -1,0 +1,411 @@
+head	1.13;
+access;
+symbols
+	Release-2002_03_29:1.13
+	Release-2002_01_12:1.13
+	Release-2002_01_02:1.7
+	Release-2002_01_01:1.7
+	Release-2001_12_19:1.7
+	Release-2001_08_04:1.4
+	Release-2001_07_02:1.4
+	Release-2001_06_16:1.2;
+locks; strict;
+comment	@ * @;
+
+
+1.13
+date	2002.01.12.23.04.10;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2002.01.12.21.13.14;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2002.01.08.19.32.55;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2002.01.05.18.46.50;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2002.01.04.00.01.26;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2002.01.03.18.47.15;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.12.08.19.37.56;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.10.20.18.14.59;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.01.06.02.32.08;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.13
+log
+@oops remove debug statement
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+#include "kMoria.h"
+
+/* Form for inscribing an already selected object. 
+   Note that inscribing should not take a turn whether cancelled or not. */
+//extern Short needed_direction_item; // this is the selected item
+extern previous_state curr_state; // replaces needed_directional_item
+
+static void init_scribe_fld(FormPtr frm) SEC_6;
+static void commit_scribe_fld(FormPtr frm, Short item_val) SEC_6;
+
+Boolean Scribe_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  Char chr;
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* ...init form... */
+    init_scribe_fld(frm);
+#ifndef I_AM_OS_2
+    if (IsVGA) PrvMoveForm(false);
+#endif
+    FrmDrawForm(frm);
+    scribe_draw();
+    FrmSetFocus(frm, FrmGetObjectIndex(frm, field_sb));
+    handled = true;
+    break;
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) PrvMoveForm(true);
+    return true;
+#endif
+
+  case keyDownEvent:
+    frm = FrmGetActiveForm();
+    chr = e->data.keyDown.chr;
+    if (chr == '\n') {
+      hit_button_if_usable(frm, btn_sb_ok);
+      handled = true;
+    }
+    break;
+
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    switch(e->data.ctlSelect.controlID) {
+    case btn_sb_ok:
+      commit_scribe_fld(frm, curr_state.item);
+      LeaveForm();
+      //      needed_direction_item = -1;
+      handled = true;
+      break;
+    case btn_sb_cancel:
+      LeaveForm();
+      //      needed_direction_item = -1;
+      handled = true;
+      break;
+    }
+
+  default:
+    break;
+  }
+  return handled;
+}
+
+
+void scribe_draw()
+{
+  Char buf[160], *p;
+  Word wwlen, wwpixels=SCR_WIDTH-4;//156;
+  Short x=2, y=ROW_1, lines = 0;
+
+  Short item_val = curr_state.item;
+
+  // Print up to 3 lines of "Inscribing <original object>"
+  StrPrintF(buf, "Inscribing ");
+  p = buf + StrLen(buf);
+  objdes(p, &inventory[item_val], true);
+  p = buf;
+  wwlen = 0;
+  wwpixels -= 2*x; // leave margins
+  while (lines < 3 && StrLen(p) > 0) {
+    wwlen = FntWordWrap(p, wwpixels);
+    WinDrawChars(p, wwlen, x, y+LINE_HEIGHT*lines);
+    p += wwlen;
+    lines++;
+  }
+  // print old inscription if any
+  if (inventory[item_val].inscrip[0] != '\0') {
+    StrPrintF(buf, "Replace %s", inventory[item_val].inscrip);
+    WinDrawChars(buf, StrLen(buf), x, y+3*LINE_HEIGHT);
+    WinDrawChars("New", 3,  3, y+4*LINE_HEIGHT);
+  }
+}
+
+
+static void init_scribe_fld(FormPtr frm)
+{
+  VoidHand h;
+  VoidPtr p;
+  FieldPtr fld;
+  // allocate memory for field, I hope.
+  h = MemHandleNew(sizeof(Char) * INSCRIP_SIZE);
+  p = MemHandleLock(h);
+  ((Char *)p)[0] = '\0';
+  MemPtrUnlock(p);
+  fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_sb));
+  FldSetTextHandle(fld, (Handle) h);
+}
+
+static void commit_scribe_fld(FormPtr frm, Short item_val)
+{
+  FieldPtr fld;
+  CharPtr textp;
+  // Copy contents of field
+  fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_sb));
+  textp = FldGetTextPtr(fld); // if (textP) ...
+  textp[INSCRIP_SIZE - 1] = '\0';
+  DmStrCopy(inventory, item_val*sizeof(inven_type)+I_inscrip, textp);
+  // Get rid of the field
+  FldReleaseFocus(fld);
+  FldSetSelection(fld, 0, 0);
+  FldFreeMemory(fld);
+}
+@
+
+
+1.12
+log
+@handera support is mostly working now
+@
+text
+@a40 1
+move_gsi(frm, true); // xxx testing
+@
+
+
+1.11
+log
+@handera support is mostly working, for some value of mostly
+@
+text
+@d41 1
+@
+
+
+1.10
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@a19 1
+static void init_scribe(Short item_val) SEC_6;
+d39 1
+a39 1
+    init_scribe(curr_state.item);
+d82 1
+a82 1
+static void init_scribe(Short item_val)
+d87 2
+@
+
+
+1.9
+log
+@hiding magic numbers
+@
+text
+@d36 3
+d44 6
+@
+
+
+1.8
+log
+@beginning handerification
+@
+text
+@d78 1
+a78 1
+  Short x=2, y=15, lines = 0;
+@
+
+
+1.7
+log
+@made fields more keyboard-friendly...
+@
+text
+@d77 1
+a77 1
+  Word wwlen, wwpixels=156;
+d89 1
+a89 1
+    WinDrawChars(p, wwlen, x, y+11*lines);
+d96 2
+a97 2
+    WinDrawChars(buf, StrLen(buf), x, y+3*11);
+    WinDrawChars("New", 3,  3, y+4*11);
+@
+
+
+1.6
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@d28 1
+d38 1
+d40 9
+@
+
+
+1.5
+log
+@(slightly broken) rewiring the MainForm event handlers w/ explicit 'mode'
+@
+text
+@a12 2
+#include "palm.h"
+//#include "kMoriaRsc.h"
+a13 2
+#include "lock-externs.h"
+#include "kMoriaRsc.h"
+@
+
+
+1.4
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d21 2
+a22 1
+extern Short needed_direction_item; // this is the selected item
+d40 1
+a40 1
+    init_scribe(needed_direction_item);
+d48 1
+a48 1
+      commit_scribe_fld(frm, needed_direction_item);
+d50 1
+a50 1
+      needed_direction_item = -1;
+d55 1
+a55 1
+      needed_direction_item = -1;
+@
+
+
+1.3
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000,2001 Bridget Spitznagel                        *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+@
+
+
+1.2
+log
+@tweaked notice
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d24 1
+a24 1
+#include <Pilot.h>
+@
+
+
+1.1
+log
+@odds and ends
+@
+text
+@d5 1
+a5 1
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+@
+

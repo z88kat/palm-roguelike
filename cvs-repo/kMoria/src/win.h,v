@@ -1,0 +1,35 @@
+head	1.1;
+access;
+symbols
+	Release-2002_03_29:1.1
+	Release-2002_01_12:1.1
+	Release-2002_01_02:1.1
+	Release-2002_01_01:1.1
+	Release-2001_12_19:1.1
+	Release-2001_08_04:1.1
+	Release-2001_07_02:1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.06.26.02.42.37;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@making invert work in the general case; an initial credits screen; and I forget what else
+@
+text
+@void qWinEraseRectangle(RectanglePtr r, Word cornerDiam);
+void qWinDrawLine(short x1, short y1, short x2, short y2);
+void qWinEraseLine(short x1, short y1, short x2, short y2);
+void qWinDrawChars(CharPtr chars, Word len, SWord x, SWord y);
+void qWinDrawInvertedChars(CharPtr chars, Word len, SWord x, SWord y);
+@

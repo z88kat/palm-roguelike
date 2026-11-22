@@ -1,0 +1,220 @@
+head	1.1;
+access;
+symbols
+	pre-internationalization_20040113:1.1.2.1
+	Release-2001_04_26-Handera-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2003.11.04.17.02.49;	author i0lanthe;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2003.11.04.17.02.49;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file form_messagelog.c was initially added on branch Release-2001_04_26-Handera-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@splitting iRogue.c into form_[blah].c
+@
+text
+@a0 179
+/*********************************************************************
+ * iRogue - Rogue adapted for the PalmPilot.                         *
+ * Copyright (C) 1999 Bridget Spitznagel                             *
+ * Note: This program is derived from rogue 5.3-clone for Linux.     *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+
+#include "iRogue.h"
+
+
+static void init_msglog_view(FormPtr frm) SEC_1;
+
+Boolean MsgLog_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  FieldPtr fld;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* mine */
+    /** place any form-initialization stuff here **/
+    init_msglog_view(frm /*, inventory_not_messages*/);
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_iv));
+    update_field_scrollers(frm, fld, repeat_iv_up, repeat_iv_down);
+    /*if (!inventory_not_messages)
+      FrmCopyTitle(frm, "Message Log");*/
+    /* end mine */	
+#ifndef I_AM_OS_2
+    if (IsVGA) {
+      Short y_diff;
+      VgaFormModify(frm, vgaFormModify160To240);
+      y_diff = adjust_form_size(false);
+      // move buttons
+      PrvMoveObject(frm, btn_iv_ok, y_diff, false);
+      PrvMoveObject(frm, repeat_iv_up, y_diff, false);
+      PrvMoveObject(frm, repeat_iv_down, y_diff,false);
+      PrvResizeField(frm, field_iv, y_diff);
+      update_field_scrollers(frm, fld, repeat_iv_up, repeat_iv_down);
+    }
+#endif
+    FrmDrawForm(frm);
+    handled = true;
+    break;
+
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) {
+      Short y_diff;
+      update_display_size();
+      y_diff = adjust_form_size(true);
+      // redraw the "new" screen too...  don't ask me whether this will work
+      frm = FrmGetActiveForm();
+      // move buttons
+      PrvMoveObject(frm, btn_iv_ok, y_diff, true);
+      PrvMoveObject(frm, repeat_iv_up, y_diff, true);
+      PrvMoveObject(frm, repeat_iv_down, y_diff, true);
+      PrvResizeField(frm, field_iv, y_diff);
+      fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_iv));
+      update_field_scrollers(frm, fld, repeat_iv_up, repeat_iv_down);
+      FrmDrawForm(frm);
+    }
+    break;
+#endif
+
+  case ctlSelectEvent:
+    switch(e->data.ctlSelect.controlID) {
+    case btn_iv_ok:
+      LeaveForm();
+      handled = true;
+      break;
+    }
+    break;
+
+  case ctlRepeatEvent:
+    /*     "Repeating controls don't repeat if handled is set true." */
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_iv));
+    switch(e->data.ctlRepeat.controlID) {
+    case repeat_iv_up:
+      FldScrollField(fld, 1, winUp);
+      update_field_scrollers(frm, fld, repeat_iv_up, repeat_iv_down);
+      break;
+    case repeat_iv_down:
+      FldScrollField(fld, 1, winDown);
+      update_field_scrollers(frm, fld, repeat_iv_up, repeat_iv_down);
+      break;
+    }
+    break;
+
+  case keyDownEvent:
+    /* hardware button -- or else graffiti. */
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_iv));
+    switch(e->data.keyDown.chr) {
+    case pageUpChr:
+      page_scroll_field(frm, fld, winUp);
+      update_field_scrollers(frm, fld, repeat_iv_up, repeat_iv_down);
+      handled = true;
+      break;
+    case pageDownChr:
+      page_scroll_field(frm, fld, winDown);
+      update_field_scrollers(frm, fld, repeat_iv_up, repeat_iv_down);
+      handled = true;
+      break;
+    }
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+/**********************************************************************
+                       INIT_msglog_VIEW
+ IN:
+ frm = a form that has a text-view widget
+ various globals
+ OUT:
+ nothing
+ PURPOSE:
+ Initializes the displayed form 'frm' with
+ a list of the last SAVED_MSGS messages.
+ Called when frm is being initialized.
+ **********************************************************************/
+extern VoidHand view_TextHandle; // in inventory.c
+/* possibly not large enough */
+#define BIG_NUMBER 2048
+static void init_msglog_view(FormPtr frm)
+{
+  FieldPtr fld;
+  CharPtr txtP;
+  Short i;
+
+  /* Get the text field 'field_iv' */
+  fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_iv));
+
+  /* not sure whether to try to free old handles */
+  if (view_TextHandle != NULL) {
+    /* MemHandleFree(view_TextHandle); // bus error.. erk.  leak? */
+  }
+
+  /* Create a mem. handle and lock it */
+  view_TextHandle = MemHandleNew(BIG_NUMBER);
+  txtP = MemHandleLock(view_TextHandle);
+
+  /* Use MemMove and/or MemSet to copy text to the mem. handle */
+  for (i = 0 ; i < SAVED_MSGS ; i++) {
+    MemMove(txtP, sotu->old_messages[i], StrLen(sotu->old_messages[i])+1);
+    txtP += StrLen(sotu->old_messages[i]);
+  }
+
+  /* Unlock the handle.  Set the field to display the handle's text. */
+  MemHandleUnlock(view_TextHandle);
+  FldSetTextHandle(fld, (Handle) view_TextHandle);
+
+  /* update scrollers... oo er. */
+}
+#undef BIG_NUMBER
+@
+

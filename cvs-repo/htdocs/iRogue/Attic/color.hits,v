@@ -1,0 +1,37 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2006.08.08.06.13.53;	author i0lanthe;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2006.08.08.03.45.50;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@i don't think anything is using these?
+@
+text
+@179@
+
+
+1.1
+log
+@commit everything before massive style change
+@
+text
+@@
+

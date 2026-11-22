@@ -1,0 +1,235 @@
+head	1.6;
+access;
+symbols
+	Release-2001_08_06:1.6
+	Release-2001_06_15:1.6;
+locks; strict;
+comment	@ * @;
+
+
+1.6
+date	2001.06.14.05.24.27;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.05.01.04.41.33;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.10.15.22.03.22;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.14.23.16.50;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.10.14.04.19.22;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.10.14.01.59.20;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@extra keyboard support in various forms (there's still more to do)
+@
+text
+@#include "palm.h"
+#include <CharAttr.h> /* for IsDigit */
+#include "iLarnRsc.h"
+#include "Globals.h"
+/***********************************************************************
+ * This form is used when player enters the LRS office.
+ * If you do not owe taxes, this form is quite boring.
+ * Otherwise,
+ * There is a field that lets you enter a numeric amount
+ * to pay off some or all of your taxes.
+ ***********************************************************************/
+
+Boolean Lrs_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  FieldPtr fld;
+  Word chr;
+  VoidHand h;
+  VoidPtr p;
+  CharPtr textp;
+  Short len, objid;
+  ControlPtr btn;
+  Long gold;
+  //  Boolean ok;
+    
+    // CALLBACK_PROLOGUE
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* ...init form... */
+    // allocate memory for field, I hope.
+    h = MemHandleNew(sizeof(Char) * 12);
+    p = MemHandleLock(h);
+    ((Char *)p)[0] = '\0';
+    MemPtrUnlock(p);
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, fld_lrs_amt));
+    FldSetTextHandle(fld, (Handle) h);
+    FrmDrawForm(frm);
+    //    bank_lrs_init(frm, (in_store == STORE_BANK), env);
+    lrs_init_or_refresh(frm);
+    handled = true;
+    break;
+
+  case keyDownEvent:
+    chr = e->data.keyDown.chr;
+    handled = true;
+    // first, some keyboard support.
+    objid = -1;
+    if (chr == 'P')       objid = btn_lrs_dp;
+    else if (chr == 'R')  objid = btn_lrs_wd;
+    else if (chr == 'X')  objid = btn_lrs_cancel;
+    // Else objid remains -1.
+    if (objid != -1) {
+      frm = FrmGetActiveForm();
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, objid));
+      if (btn->attr.usable) 
+	CtlHitControl(btn);
+      return handled;
+    }
+    // filter out all non-handled, i.e. non-numeric, characters.
+    if ( IsDigit(GetCharAttr(), chr) ||
+	 (chr == backspaceChr)       ||
+	 (chr == leftArrowChr)       ||
+	 (chr == rightArrowChr) )
+      handled = false;
+    break;
+
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, fld_lrs_amt));
+    switch(e->data.ctlSelect.controlID) {
+    case btn_lrs_wd:
+      // bank transfer
+      lrs_req_trans(frm);
+      handled = true;
+      break;
+    case btn_lrs_dp:
+      // cash payment
+      len = FldGetTextLength(fld);
+      if (len > 0) {
+	textp = FldGetTextPtr(fld);
+	gold = StrAToI(textp);
+	if (gold > 0)
+	  lrs_pay_cash(frm, gold);
+	FldDelete(fld, 0, len); // clear the field
+      }
+      // I probably want to do this
+      FldReleaseFocus(fld);
+      FldSetSelection(fld, 0, 0);
+      handled = true;
+      break;
+    case btn_lrs_cancel:
+      // hope these do the right thing.
+      FldReleaseFocus(fld);
+      FldSetSelection(fld, 0, 0);
+      FldFreeMemory(fld);
+      LeaveForm(); // LeaveForm(true);
+      //      i_used_too_much_heap();
+      //      message_clear(); // do I need this?
+      print_stats(); // in case you spent money
+      handled = true;
+      break;
+    }
+    break;
+
+  default:
+    break;
+  }
+
+    // CALLBACK_EPILOGUE
+
+  return handled;
+}
+@
+
+
+1.5
+log
+@get iLarn to compile with sdk 3.5 so's I can add color...
+@
+text
+@d22 2
+a23 1
+  Short len;
+d48 15
+a63 2
+    handled = true;
+    chr = e->data.keyDown.chr;
+@
+
+
+1.4
+log
+@eliminated (fossilized) global argument
+@
+text
+@d1 1
+a1 1
+#include <Pilot.h>
+@
+
+
+1.3
+log
+@revising messages to have --more--.  sort of half working.
+@
+text
+@a11 1
+extern struct everything *env;
+d42 1
+a42 1
+    lrs_init_or_refresh(frm, env);
+d63 1
+a63 1
+      lrs_req_trans(frm, env);
+d73 1
+a73 1
+	  lrs_pay_cash(frm, env, gold);
+d89 1
+a89 1
+      print_stats(env); // in case you spent money
+@
+
+
+1.2
+log
+@can eat drugs from inventory now.  also some bug fixes
+@
+text
+@d89 1
+a89 1
+      //      message(0); // do I need this?
+@
+
+
+1.1
+log
+@reorganization of existing code
+@
+text
+@d89 2
+@
+

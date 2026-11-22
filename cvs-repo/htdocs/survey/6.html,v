@@ -1,0 +1,189 @@
+head	1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2006.08.08.03.59.52;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@commit everything before massive style change
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>Random Hardware Survey</title>
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+  </head>
+
+  <body>
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3>Random Hardware Survey</h3>
+<P> <i>This <a href="index.php">survey</a> is in the
+<a href="../index.php">Roguelikes for PalmOS</a> project
+hosted at <a href="http://sourceforge.net">SourceForge</a>.</i>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<form action="http://roguelike-palm.sourceforge.net/cgi-bin/vote.pl" method=get>
+<!-- 'value' must be the name of a section in the config file -->
+<input type="hidden" name="name" value="rndhw">
+
+<P> This is a random hardware survey, because I'm curious.
+
+<P>
+<b>My PalmOS version is</b><br>
+<input type="Radio" name="a" value="1">
+ 2.* or lower (ye olde PalmPilot Personal/Professional)<br>
+<input type="Radio" name="a" value="2">
+ 3.0, 3.1, 3.3... <br>
+<input type="Radio" name="a" value="3">
+ 3.5 <br>
+<input type="Radio" name="a" value="4">
+ 4.* or higher
+
+<P>
+<b>I mostly want support for</b><br>
+<input type="Radio" name="b" value="1">
+ iRogue<br>
+<input type="Radio" name="b" value="2">
+ iLarn<br>
+<input type="Radio" name="b" value="3">
+ kMoria<br>
+<input type="Radio" name="b" value="4">
+ most/all of the above<br>
+<input type="Radio" name="b" value="5">
+ none of the above; in fact I'm not sure why I'm filling out this survey
+
+<P>
+I have a keyboard and want keyboard support/shortcuts<br>
+<input type="Radio" name="c" value="1">
+ Yes<br>
+<input type="Radio" name="c" value="2">
+ No<br>
+<input type="Radio" name="c" value="3">
+ maybe<br>
+
+<P>
+I have a HandEra 330 (or will definitely get one soon) and want
+support<br>
+
+<input type="Radio" name="d" value="1">
+ Yes<br>
+<input type="Radio" name="d" value="2">
+ No<br>
+<input type="Radio" name="d" value="3">
+ maybe<br>
+
+<P>
+I have a Sony Clie NewFunkySerialNumber (or will definitely get one soon)
+and want support<br>
+<input type="Radio" name="e" value="1">
+ Yes<br>
+<input type="Radio" name="e" value="2">
+ No<br>
+<input type="Radio" name="e" value="3">
+ maybe<br>
+
+<P>
+Funky support: I want to retract the HandEra virtual graffiti area and
+get <a href="http://roguelike-palm.sourceforge.net/previews/handera-emu2.gif">
+extra-tall dungeon</a><br>
+<input type="Radio" name="f" value="1">
+ Don't care / don't have the hardware (HandEra)<br>
+<input type="Radio" name="f" value="2">
+ Yes<br>
+<input type="Radio" name="f" value="3">
+ No<br>
+
+<P>
+Funky support: I want to retract the HandEra virtual graffiti area and
+<i>rotate the screen</i> for an extra-wide dungeon [no screen shot
+available at this time]<br>
+<input type="Radio" name="g" value="1">
+ Don't care / don't have the hardware (HandEra)<br>
+<input type="Radio" name="g" value="2">
+ Yes<br>
+<input type="Radio" name="g" value="3">
+ No<br>
+
+<P>
+Funky support: I want my device's spiffy
+<a href="http://roguelike-palm.sourceforge.net/previews/handera-emu1.gif">
+hi-res small font</a> and not the default "'w'?  that inkblot is a 'w'?"
+lo-res small font.<br>
+<input type="Radio" name="h" value="1">
+ Don't care / don't have the hardware (HandEra/Clie)<br>
+<input type="Radio" name="h" value="2">
+ Yes<br>
+<input type="Radio" name="h" value="3">
+ No<br>
+
+<P>
+Funky support: I want support for the Jog Dial / Jog Wheel, and/or
+any other wacky extra buttons that I happen to rejoice in the possession
+of.<br>
+<input type="Radio" name="i" value="1">
+ Don't care / don't have the hardware (HandEra/Clie)<br>
+<input type="Radio" name="i" value="2">
+ Yes.  And I will go and describe 'zactly what I want it for,
+<a href="http://roguelike-palm.sourceforge.net/wiki/">on the wiki</a>.
+<br>
+<input type="Radio" name="i" value="3">
+ No<br>
+
+
+<P>
+Anti funky support: If I Ran The Zoo, I would rather have you
+(i0lanthe) spend time on <br>
+<input type="Radio" name="j" value="1">
+ [whatever funky hardware support I selected above]<br>
+<input type="Radio" name="j" value="2">
+ Porting another game<br>
+<input type="Radio" name="j" value="3">
+ Debugging the game(s) I care about<br>
+<input type="Radio" name="j" value="4">
+ Graduating (hi Mom)<br>
+<input type="Radio" name="j" value="5">
+ Trying just one hit off the EverQuest pipe (hi [REDACTED])<br>
+<input type="Radio" name="j" value="6">
+ <a href="http://roguelike-palm.sourceforge.net/wiki/">Other</a><br>
+
+<P> 
+
+<br>
+<input type=submit value="Submit">
+<input type=reset value="Reset">
+<a href="http://roguelike-palm.sourceforge.net/cgi-bin/vote.pl?name=rndhw&action=view">
+Result</a>
+
+
+</form>
+
+    <hr>
+    <address><a href="mailto:i0lanthe@@users.sourceforge.net">email</a></address>
+<!-- Created: Wed Aug  2 17:13:41 EDT 2000 -->
+<!-- hhmts start -->
+Last modified: Sat Aug  4 02:44:38 EDT 2001
+<!-- hhmts end -->
+  </body>
+</html>
+@

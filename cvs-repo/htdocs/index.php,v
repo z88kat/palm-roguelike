@@ -1,0 +1,634 @@
+head	1.10;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.8
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.10
+date	2006.08.13.05.47.22;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2006.08.13.04.47.24;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2006.08.08.04.01.06;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2002.05.11.05.11.53;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2002.05.10.01.38.41;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2002.03.30.00.18.21;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.10.20.17.06.29;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.07.02.06.08.41;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.05.31.04.02.17;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.32;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.32;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.10
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>Roguelikes for PalmOS</title>
+
+<style type="text/css" media="screen">@@import "3col.css";</style>
+
+<!-- <link rel="stylesheet" type="text/css" name="greenstyle"
+      href="green.css" media="screen"> -->
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+
+<body>
+
+<div class="content">
+  <h1>Roguelikes for PalmOS</h1>
+  <p><i>mission: to port roguelike games to PalmOS devices.</i></p>
+</div>
+
+<div class="content">
+  <h2>~ News ~</h2>
+  <p><b>August, 2006</b> - I've converted the website from tables to CSS for a cleaner look, and fixed any dead external links.  (Games maintenance?  Maybe when the kids are sleeping through the night, for which I'm not holding my breath.)
+</p>
+
+  <p><b>1 Nov 2003</b> -
+   Released a new version of <a href="http://paleohack.berlios.de/">PaleoHack</a> (hosted at berlios.de) and caught up on email.</p>
+  <p><b>11 May 2002</b> -
+   Released experimental branch iRogue 1.1.1 with support for graphical tiles; requires OS 3.5 or later.  Tilesets can be created with the <b>dbIcon+</b>
+    utility (freeware) available from 
+    <a href="http://www.pimlicosoftware.com/utilities.htm">Pimlico Software</a>.
+</p>
+<p><b> 29 March 2002</b> -
+    Released kMoria 0.15.  Mostly bug fixes, a few requested features.
+</p>
+
+    <p><a href="oldnews.php">--more--</a></p>
+
+</div>
+
+<div class="content">
+	<h2>Screenshots</h2>
+	<p>
+
+<a href="iRogue/index.php" title="iRogue"><img src="images/iRogue/1welcome.gif" alt="[iRogue]"></a>
+<a href="iLarn/index.php" title="iLarn"><img src="images/iLarn/6potion1.gif" alt="[iLarn]"></a>
+<a href="kMoria/index.php" title="kMoria"><img src="images/kMoria/cg3c.gif" alt="[kMoria]"></a>
+
+</p>
+</div>
+
+<!--
+<div class="content">
+	<a href="index.php" title="Back to the index...">&lt; Return to Roguelikes for PalmOS</a> &nbsp;::&nbsp; <a href="http://sourceforge.net" title="">Go to SourceForge</a>
+</div>
+-->
+
+<div id="navAlpha">
+     <?php include ("navAlphaTop.txt") ?>
+
+     <?php include ("navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+     <?php include ("navBeta.txt") ?>
+</div>
+
+
+<!-- 3-column CSS layout by BlueRobot.com -->
+
+</body>
+</html>
+@
+
+
+1.9
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+d25 1
+a25 1
+  <p><b>August 7, 2006</b> - Website maintenance: pruning dead links and updating the layout.  (Games maintenance?  Maybe when the kids are sleeping through the night.)
+@
+
+
+1.8
+log
+@commit everything before massive style change
+@
+text
+@d1 3
+a3 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+d7 5
+a11 3
+<!-- <base href=""> -->
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="green.css" media="screen">
+d14 1
+d17 14
+a30 104
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h2 class="header">"Roguelikes for PalmOS" Porting Project</h2>
+    
+     <i>to port roguelike games to Palm
+    and Palm-compatible devices.</i>
+    
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<!-- just a comment --> 
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      
+      <!-- -->
+      <tr><td class="sidehead"> Stuff here </td></tr>
+      <tr><td class="side"> <a href="index.php">News</a></td></tr>
+      <tr><td class="side"> 
+	<img src="images/iRogue/iRogue-logo.gif" alt="[ @@ ]">
+	<a href="iRogue/index.php">iRogue</a> </td></tr>
+      <tr><td class="side">
+	<img src="images/iLarn/iLarn-logo.gif" alt="[ i ]">
+	<a href="iLarn/index.php">iLarn</a> <!-- ..
+	<a href="iLarn/alpha.html">beta</a> -->
+	 </td>
+      </tr>
+      <tr><td class="side">
+      <img src="images/kMoria/kMoria-logo2.gif" alt="[ @@ B ]">
+      <a href="kMoria/index.php">kMoria</a>
+      </td>
+      </tr>
+      <tr><td class="side">
+      <a href="color.php">About color</a>
+      </td>
+      </tr>
+
+      <tr><td class="sidehead"> Hosted by </td></tr>
+      <tr><td class="side"> <A href="http://sourceforge.net">
+	<IMG src="http://sourceforge.net/sflogo.php?group_id=6932&type=1"
+	width="88" height="31" border="0" alt="SourceForge Logo"></A>
+	</td>
+      </tr>
+      <tr><td class="side">
+	<a href="http://sourceforge.net/project/?group_id=6932">
+	This Project's page</a>
+	</td>
+      </tr>
+      <!--
+      <tr><td class="sidehead"> Mailing Lists </td></tr>
+      <tr><td class="side"> <a href="http://lists.sourceforge.net/mailman/listinfo/roguelike-palm-announce">announcement</a> </td></tr>
+      <tr><td class="side"> <a href="http://lists.sourceforge.net/mailman/listinfo/roguelike-palm-devel">developers</a> </td></tr>
+      <tr><td class="side"> <a href="http://lists.sourceforge.net/mailman/listinfo/roguelike-palm-users">users</a> </td></tr>
+      -->
+      <?php include ("activesurveys.txt") ?>
+      <?php include ("roguelikegames.txt") ?>
+    </table>
+    </td>
+
+    <td class="body" valign=top>
+	<a name="news"></a>
+	<h3>News</h3>
+<P><b>8 Feb 2004</b> -
+    Some folks have sent me patches, expect some new versions "soon".
+<br> IF YOU ARE STILL USING <b>Handera</b> STAND UP AND BE COUNTED.
+<br> IF YOU ARE STILL USING <b>OS 2</b> SHOUT IT OUT.
+<br> Unless I hear from some folks, the OS 2 support and the Handera
+support may be "end-of-life"ed in future releases.  Send
+email to i0lanthe@@users.sourceforge.net if you care. :-)
+<P><b>1 Nov 2003</b> -
+    Back in business (with a little
+    <a href="http://www-2.cs.cmu.edu/~sprite/IMG_0873-crop2.jpg">help</a>).
+    There's a new version of <a href="http://paleohack.berlios.de/">PaleoHack</a>
+    out and I'll be working on something-or-other here next
+    and catching up on email.  slowly.  :)
+<P><b>23 May 2003</b> -
+    What with one thing and another, I haven't been doing any
+    recreational programming for A Long Time, as you can see from
+    the lack of updates.  Alas.  I hope to get back to it again at
+    some point (and, er, maybe even reply to email while I'm at it).
+    In the meantime for your amusement here are two
+    screenshots of <a href="baby.html">the project</a> that has been
+    occupying me instead.
+<P><b>28 Aug 2002</b> - 
+    (I know, you are all sad that I haven't released a new kMoria yet.)
+    I have been working on <a href="http://paleohack.berlios.de/">PaleoHack</a>
+    though.
+<P><b>11 May 2002</b> -
+    iRogue 1.1.1 is out with one new feature that is either fabulous
+    or heretical depending on who you talk to.
+    (1.1.x is the current "experimental" branch of iRogue.)
+    The new feature is support for graphical tiles.  Currently this
+    is available for OS 3.5 and up.  I've tested it on a IIIc, and a
+    couple of grayscale ROMs in the emulator, and nothing dire happened,
+    but no guarantees.
+    <br> A set of sample tiles is included but you will probably want
+    to revise them yourself.  This can be done with the <b>dbIcon+</b>
+d33 39
+a71 139
+    The sample tiles look just like ASCII characters, so if
+    you've been missing DOS, you can make the '@@' into a smiley face
+    and touch up a couple other characters to look like old times.
+    Or you can make more drastic / artistic modifications.
+    <br> The tile feature was "inspired" by 
+    <a href="http://www.pimlicosoftware.com/datebk5.htm">DateBk5</a>
+    (which the dbIcon+
+    utility is really intended for), a nice shareware application whose
+    proceeds benefit wildlife conservation.
+<P><b>9 May 2002</b> -
+    Yes, I'm still alive, sheesh.  (What?  You want to see me release
+    something?)
+    <br> Here's a <a href="http://paleohack.berlios.de/">port of
+    Hack 1.0.3</a> that I've had on the back burner since.. hm.. July '01.
+    (Don't get all excited, it's a pre-alpha,
+    and should only be run in
+    <a href="http://www.palmos.com/dev/tools/emulator/">POSE</a>.)
+    Due to the oldschoolness of the Hack license, "PaleoHack" is being
+    hosted at <a href="http://developer.berlios.de/">BerliOS</a> in 
+    <a href="http://developer.berlios.de/projects/paleohack/">its
+    own project</a> (not here in the roguelike-palm project on SourceForge).
+    I figured I should mention it here so that interested folks can find it
+    to bookmark.
+    <br>(In case you care, the roguelike-palm project has a "green"
+    stylesheet and the PaleoHack project has an "orange like BerliOS"
+    stylesheet
+    so that most people will be able to tell at a glance which site is which;
+    although, ow, I may need to rethink this, that's a really fierce orange.)
+
+<P><b> 29 March 2002</b> -
+    kMoria 0.15.  Mostly bug fixes, a few requested features.
+    Might crash less during farming now (this fix has only been tested
+in completely rigged situations, so let me know if it works in the field).
+<P><b> 12 January 2002 </b> -
+    kMoria 0.14.  This is a "new features, new bugs" release.
+    <a href="http://www.handera.com">HandEra</a> 330 support.
+    A couple of new preferences.
+    Some more bugs that were introduced in 0.12 are fixed.
+    See the list of <a href="kMoria/whatsnew.php">changes</a> for
+    more details.
+
+    <P><b> 1 January 2002 </b> -
+    kMoria 0.13.  This is a minor bugfix release.  It fixes a bug
+introduced in 0.12 and a couple of older deficiencies.
+    
+
+    <!-- -->
+
+    <P>You see a pile of yellowing <a href="oldnews.php">Old News</a> here.
+    <hr>
+	<h3>Available Games</h3> <!-- 16 oct 2000 -->
+	<P> We have two playable games and are working on a third:
+    <table>
+      <tr>
+	<td class="sidehead" valign=top>
+	<h3>iRogue</h3>
+	</td>
+	<td class="sidehead" valign=top>
+	<h3>iLarn</h3>
+	</td>
+	<td class="sidehead" valign=top>
+	<h3>kMoria</h3>
+	</td>
+      </tr>
+      <tr>
+	<td class="body" valign=top>
+	iRogue is a port of Rogue derived from rogue-clone 5.3
+	and urogue.
+	</td>
+	<td class="body" valign=top>
+	iLarn is a port of Ularn.
+	</td>
+	<td class="body" valign=top>
+        kMoria is a port of Unix Moria 5.5.2.
+	</td>
+      </tr>
+      <tr>
+	<td class="body" valign=top>
+	<b>Status</b>
+	<br> Available for download.
+	<br> <a href="iRogue/index.php">More about iRogue</a>.
+	</td>
+
+	<td class="body" valign=top>
+	<b>Status</b>
+	<br> Available for download.
+	<br><a href="iLarn/index.php">More about iLarn.</a>
+	<!--
+	(screen shots need updating a bit for 0.20, if only because the
+        status bar got rearranged.) -->
+	</td>
+	<td class="body" valign=top>
+	<b>Status</b>
+<br> Available for download
+	<br>(for the intrepid)<!--Testing &amp; debugging.-->
+	<br><a href="kMoria/index.php">More about kMoria</a>.
+	</td>
+	</tr>
+	<tr>
+	  <td class="body" valign=top>
+	  <img src="images/iRogue/1welcome.gif" alt="[iRogue]">
+	  </td>
+	  <td class="body" valign=top>
+	  <img src="images/iLarn/6potion1.gif" alt="[iLarn]">
+	  </td>
+	  <td class="body" valign=top>
+	  <img src="images/kMoria/cg3c.gif" alt="[kMoria]">
+	  </td>
+	</tr>
+
+</table>      
+<?php
+$a = array("iRogue", "iLarn", "kMoria");
+srand((double)microtime()*1000000);
+$select=rand(0, count($a)-1);
+$d = $a[$select];
+echo "Your ".$d." fortune for today: <i>";
+$quotefile = $d."/quotes.dat";
+include("quotes.php");
+echo "</i>\n";
+?>
+    </td>
+  </tr>
+</table>
+<!-- footer table -->
+<?php include ("footer.txt") ?>
+<table>  <tr><td>
+    If this page is unreadable, disabling style sheets may help.
+</td></tr>
+</table>
+<!-- end footer table -->
+
+<address>i0lanthe@@users.sourceforge.net</address>
+<!-- hhmts start -->
+Last modified: Sun Feb  8 14:23:36 EST 2004
+<!-- hhmts end -->
+<?php $hitsfile = "index.hits"; $images = "images/misc"; ?>
+<?php include ("counter.php")?>
+<hr>
+@
+
+
+1.7
+log
+@posted Hack notice
+@
+text
+@d8 1
+d81 46
+a126 1
+
+d252 1
+a252 1
+Last modified: Sat Jan 12 18:36:05 EST 2002
+@
+
+
+1.6
+log
+@I forget
+@
+text
+@d80 21
+a116 20
+<P><b> 19 December 2001 </b> -
+    To celebrate the U.S. release of Fellowship of the Ring
+    (&lt;saturday night live&gt;<i>It was better than Cats.  I'll see it
+    again and again.</i>&lt;/snl&gt;), there is a
+    new kMoria release: 0.12.  You should read the list of
+    <a href="kMoria/whatsnew.php">changes</a>, but the one you're probably
+    most interested in is the new "again" command 'g'.  This should
+    speed up spell-based combat and door-bashing.
+    <br> (Color me fanboy but I <i>will</i> be seeing FotR several more times.)
+    <br> (ok, girl, whatever.)
+<P><b> 18 December 2001 </b> -
+If you're running kMoria light-on-black and don't want to make
+your own color file from scratch, you can try
+<a href="kMoria/kMoriaColorDB.pdb">this one</a>.
+I don't have a dark-on-white one lying around but if there's
+demand I could cook one up by next year (heh).
+<br> Meanwhile, I should have an unstable release of kMoria
+out shortly.  The "do that again" command is in but
+I think I'll wait on Handera support til the following release.
+(Break one thing at a time.. yeah..)
+@
+
+
+1.5
+log
+@checkpointing web before kMoria 0.15 update
+@
+text
+@d80 4
+@
+
+
+1.4
+log
+@foo
+@
+text
+@d15 1
+a15 1
+    <h2>"Roguelikes for PalmOS" Porting Project</h2>
+d46 1
+a46 1
+      <img src="images/kMoria/kMoria-logo.gif" alt="[ @@ B ]">
+d80 32
+a111 30
+    <P> <b> 23 August 2001 </b> - Anti-news: There won't be anything new
+for a bit (I have to finish re-rewriting a talk, then go to Europe for a
+week - oh the humanity :-)  but fear not, sometime in September I will have
+free time and computer access again and possibly even answer some of
+the mail that has already been sitting in my inbox for a month (oops).
+    <P> <b> 8 August 2001 </b> <br> Fixed the survey result labels.  (Oops.)
+<br> Hey, check out <a href="http://moriaweb.2y.net/cgi-bin/moria.pl">this
+guy's Moria server</a>...
+    <P> <b> 4 August 2001</b>
+    <br> kMoria 0.11 is out.  There are <a href="kMoria/whatsnew.php">new
+    features</a> that people requested.  They have been tested...
+    somewhat.  Let me know if anything goes wrong.
+    <br> Oh, there's also a new <a href="http://roguelike-palm.sourceforge.net/survey/6.html">survey</a> for no good reason.
+    <P> <b> 11 July 2001</b>
+    <br> Released kMoria 0.10 real quick to fix a bug introduced in 0.09
+    (conservation of bug mass: fix many small bugs, create one big bug).
+    Sorry, I really should have caught this one myself.
+    <P> <b> 1? 2? July 2001</b>
+    <br> Released:
+    <br> iRogue 1.1.0 (dev. branch) - adds HandEra 330 support,
+    in theory, I don't have one myself.
+    <br> kMoria 0.09 (alpha) - <a href="http://roguelike-palm.sourceforge.net/previews/">color</a> and button stuff and bug fixes.
+    There are (probably) more bugs to fix and (certainly) more
+    requested features to add, but I think I will take a break for a bit
+    and go play outside in {the sun, traffic} as one's elders used to urge.
+    (Well, not right this minute, since there is neither sun nor traffic
+    at such an hour.)
+    <P> <b> 29 June 2001</b>
+<br> <a href="http://roguelike-palm.sourceforge.net/wiki/index.php?Previews">
+Vaporware of the Week</a> because people have been asking what is up. 
+d160 2
+a161 1
+<br> Testing &amp; debugging.
+d201 1
+a201 1
+Last modified: Sat Aug  4 14:35:00 EDT 2001
+@
+
+
+1.3
+log
+@in the middle of release/update
+@
+text
+@d80 27
+a109 30
+   <P> <b> 16 June 2001</b>
+    <br> I released that iLarn 0.25 alpha.
+    Also, this morning I got
+    kMoria crash "recovery" to work on my new lab rabbit (a discounted
+    Palm IIIc which has now
+    undergone more soft resets before 2 pm than most people see all year),
+    so I have put out an updated version, kMoria 0.08,
+    even though there is <a href="kMoria/whatsnew.php">nothing else
+    exciting to say about it</a>.
+    
+    <P> <b> 14 June 2001</b>
+
+    <br> Not all of the bugs are out of color iLarn, but I think,
+    maybe, the serious <i>new</i> bugs (that you don't really want to
+    hear about) are gone again.  I'll try and release an
+    alpha shortly.
+    <br> There is a very short <a href="survey/5.html">new survey</a>
+    for iLarn.  Go forth, select radio buttons.
+    Meanwhile, I turned off the color survey.
+    <br> Attn. keyboard users: Not that there are many of us.
+    iLarn has some keyboard shortcuts that are
+    <a href="iLarn/keyboard.php">documented</a>.  (kMoria also has a
+    bunch of keyboard shortcuts that I will "eventually"
+    document.  iRogue still doesn't.)
+        <P> <b> 12 June 2001</b>
+    <br> I did indeed release "stable" iRogue 1.0.0 though I forgot to
+    actually mention that here at the time.  <br> An m505 user has submitted
+    a noninverted (white background) color scheme for folks with a
+    color/nonbacklit screen: <a href="color_schemes/iRogue-RGB_2.txt">get
+    it here</a> (thanks to John Brooks).
+d198 1
+a198 1
+Last modified: Sat Jun 16 18:35:17 EDT 2001
+a202 1
+<script language=javascript src="http://ss.webring.yahoo.com/navbar?f=j&y=i0lanthe&u=98337908010285153"></script>
+@
+
+
+1.2
+log
+@updated for iRogue 1.0.0 release
+@
+text
+@d80 12
+a91 8
+	<P> <b> 30 May 2001</b>
+    <br> The <a href="wiki/">wiki</a> seems to have been a casualty of
+    the recent minor SourceForge turmoil.  I have stuck it into a
+    database this time instead of the file system in the hopes that this
+    will not happen a third time.
+    <br> I will be updating the iRogue documentation (such as it is) and
+    releasing a "stable" version shortly, which will not actually be
+    any different from "development" version 0.47.
+d93 23
+a115 7
+    	<P> <b> 27 April 2001</b>
+    <br> New release with minor changes: iRogue 0.47, still trying to
+get the color / black-background combination right.  Let me know if it
+works this time.
+    <P> <b> 2 April 2001</b>
+	<br> New release: kMoria 0.07, see <a href="kMoria/whatsnew.php">what's new</a>.
+	<br> New survey for kMoria users (and prospective users): <a href="survey/4.html">buttons</a>.
+d201 1
+a201 1
+Last modified: Wed May 30 21:03:48 EDT 2001
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d35 1
+a35 1
+      <tr><td class="side"> <a href="index.php">News</a> and <a href="wiki/index.php?MinorNews">minor news</a> </td></tr>
+d50 5
+d80 10
+a89 1
+	<P> <b> 27 April 2001</b>
+d181 1
+a181 1
+Last modified: Thu Apr 26 23:49:52 EDT 2001
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

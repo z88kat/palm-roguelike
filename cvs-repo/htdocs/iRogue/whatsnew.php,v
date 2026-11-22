@@ -1,0 +1,485 @@
+head	1.9;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.7
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.9
+date	2006.08.13.05.47.22;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2006.08.13.04.47.24;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2006.08.08.06.13.25;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2006.08.08.03.45.50;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2002.05.11.05.55.08;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2002.03.30.00.18.21;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.07.02.06.08.41;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.05.31.04.02.17;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.47;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.47;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.9
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>What's new in iRogue</title>
+
+<style type="text/css" media="screen">@@import "../3col.css";</style>
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>iRogue status</h1>
+</div>
+
+<div class="content">
+      <h2>What's new in the current version?</h2>
+<p> Note: iRogue will now use the <i>major.minor.patchlevel</i>
+version numbering (even minor versions = stable, odd minor versions =
+development) which seems to be the hip thing to do these days.
+The latest development version of iRogue is: 1.1.1.
+The latest stable version of iRogue is: 1.0.0.</p>
+
+      <h2>What's new in 1.1.1</h2>
+<p> Support for graphical tiles (currently restricted to OS 3.5 and higher)
+<br> This has been requested several times.  iRogue can now use 9x10 icons
+(same as DateBk5 or Action Names) in place of ASCII characters.  However,
+since my artistic ability is negligible, it is up to y'all to create a
+nice-looking set of tiles (consult the README file in this release for further
+instructions).
+</p>
+      <h2> What's new in 1.1.0</h2>
+<p> These are new features that were not in 1.0.0:</p>
+<ul>
+  <li> Added some HandEra 330 support
+  <br> + can minimize the virtual silk screen for 33% more dungeon height
+  <br> + use the much nicer OS-provided font for 'small font'
+  <br> + those wacky new icon sizes
+  <br> + probably some other thing that I forget
+  <br> - screen rotation is not supported in this release
+<li> Minor bug fixes (these will be plowed into bugfix release 1.0.1 in the "stable" branch)
+  <br>- make 'zap' check to see whether you <i>have</i> any wands.
+  <br>- make messages not clear when hardware button pressed in popup forms. heh.  (maybe you noticed this if you, e.g., scrolled the text in the top-ten list
+    using the hardware up/down buttons.)
+  <br>- increment FontID, maybe this will fix problem reported for Kyocera.
+    Or, maybe not.  Who knows.
+</ul>
+
+      <h2> What was new in 1.0.0</h2>
+<p><i>(1.0.0 is just 0.47, relabelled.  These are the changes
+since the 0.42 release.)</i></p>
+<ul>
+<li> <a href="../color.php">Color</a> defined by the user.
+<li> You can get black background (even if you do not have color) by
+  checking the "Invert" box in Preferences.
+<li> New preference to automatically sort your inventory.
+<li> New preference to show pie slices on the screen (may still be buggy).
+<li> Top score list can be viewed any time via the menu.
+<li> Menus and the Preferences screen are reorganized just to confuse you.
+<li> Fixed some bugs
+<br>  The screen scrolls sooner, before you run out of 'walk' donut in east/west.
+<br>  Fixed the "hardware scroll-buttons in object creation form" bug.
+<li> Created some bugs
+<br>  When the screen is black-background, the Graffiti shift indicator
+  leaves white behind itself (e.g. if you tap for punctuation).
+</ul>
+
+
+<!--      <h4> What was new in 0.42</h4>
+<p>
+<br> New preference: Small font, if selected, lets you see more of the
+dungeon at a time.
+
+<br> New preference: Rogue-relative navigation, if selected, centers
+the movement donut/pie around your '@@'.  Try it in combination with
+the centered screen option, or not.
+
+<br> New items on Wiz menu: More flexible saving/restoring.  If you
+are frustrated because you die a lot (or get emotionally attached to a
+character) you might like this.
+
+<br> minor bug fixes including death by starvation.
+</p>
+-->
+</div>
+<div class="content">
+      <h2>Bugs</h2>
+      <p> Please <a href="mailto:i0lanthe@@users.sourceforge.net">report any bugs
+you find</a> and they will be fixed as time permits.</p>
+
+<!--      <p> The game may not be "well balanced" (a number of monsters,
+weapons, and armors were added in a previous version).  If something
+seems particularly unfair, let us know and we will continue to tweak. -->
+
+      <p> iRogue comes with absolutely no warranty.  The worst case
+for a buggy application is a hard reset which means losing everything
+since your last backup.  Caveat emptor.</p>
+
+<!--
+      <h2>What's new in the next version?</h2>
+
+<p> Maybe I'll add more features in the development branch 1.1.*.
+Some gameplay suggestions have been made (ack!  Passive voice.  Shoot
+me now), and I hear that some people have this new-fangled 320x320
+Sony Clie... heh.  <p> Or maybe I'll get some yard work done.  Tough
+decision.</p>
+-->
+
+</div>
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+<!-- this document tentatively valid HTML Tue Aug 8 2006 -->
+
+</body>
+</html>
+@
+
+
+1.8
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+@
+
+
+1.7
+log
+@first pass at a TABLE-FREE layout
+@
+text
+@d9 1
+a9 2
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+@
+
+
+1.6
+log
+@commit everything before massive style change
+@
+text
+@d1 3
+a3 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+d7 2
+a8 2
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+d14 7
+a20 44
+<!-- a dither-free green palette: ccffcc  99ff99  66cc99  66ff66 -->
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">iRogue: status</h3>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      
+      <!-- -->
+      <tr><td class="sidehead">
+	iRogue Stuff </td></tr>
+      <tr><td class="side"> <a href="index.php">
+	  What is iRogue?</a> </td></tr>
+      <tr><td class="side"> 
+	  <b>What's new</b> </td></tr>
+      <tr><td class="side"> <a href="download.php">
+	  Download iRogue</a> </td></tr>
+      <tr><td class="side"> <a href="play.php">
+	  How to play</a> </td></tr>
+      <tr><td class="side"> <a href="source.php">
+	  How to get source</a> </td></tr>
+      <?php include ("../hostedby.txt") ?>
+      <?php include ("../activesurveys.txt") ?>
+      <?php include ("../roguelikegames.txt") ?>
+</table>
+</td>
+
+<!-- main area table -->
+<td class="body" valign=top>
+  <a name="news"></a>
+      <!-- ----- this is the interesting part of the page ----- -->
+
+      <h3>What's new in the current version?</h3>
+<P> Note: iRogue will now use the <i>major.minor.patchlevel</i>
+d23 2
+d26 2
+a27 7
+<P> The latest development version of iRogue is: 1.1.1.
+<P> The latest stable version of iRogue is: 1.0.0.
+
+      <h4>What's new in 1.1.1</h4>
+<P> One feature..
+<ul>
+<li> Support for graphical tiles (currently restricted to OS 3.5 and higher)
+d33 3
+a35 3
+</ul>
+      <h4> What's new in 1.1.0</h4>
+<P> These are new features that were not in 1.0.0:
+d51 3
+a53 3
+      <h4> What was new in 1.0.0</h4>
+<P><i>(1.0.0 is just 0.47, relabelled.  These are the changes
+since the 0.42 release.)</i>
+d70 1
+d72 1
+d85 1
+d87 5
+d93 1
+a93 5
+      <h3>Bugs</h3>
+      <P> Please <a href="mailto:i0lanthe@@yahoo.com">report any bugs
+you find</a> and they will be fixed as time permits.
+
+<!--      <P> The game may not be "well balanced" (a number of monsters,
+d97 3
+a99 4
+      <P> iRogue comes with absolutely no warranty.  In the worst
+case, a buggy application <i>could</i> force you to <b>hard</b>-reset
+and lose everything since your last backup.  Caveat emptor.
+
+d101 2
+a102 1
+      <h3>What's new in the next version?</h3>
+d104 1
+a104 1
+<P> Maybe I'll add more features in the development branch 1.1.*.
+d107 3
+a109 2
+Sony Clie... heh.  <P> Or maybe I'll get some yard work done.  Tough
+decision.
+d111 1
+a111 1
+      <!-- ----- end of the interesting part of the page ----- -->
+d113 8
+a120 3
+</td>
+</tr>
+</table>
+a121 5
+<!-- footer table -->
+<?php include ("../footer.txt") ?>
+<!-- end footer table -->
+
+<address>i0lanthe@@users.sourceforge.net</address>
+a122 1
+Last modified: Mon Jul  2 00:51:37 EDT 2001
+d124 3
+a126 1
+<?php $hitsfile = "whatsnew.hits"; include ("../counter.php")?>
+@
+
+
+1.5
+log
+@updated for iRogue 1.1.1 release
+@
+text
+@d7 2
+@
+
+
+1.4
+log
+@checkpointing web before kMoria 0.15 update
+@
+text
+@d57 1
+a57 1
+<P> The latest development version of iRogue is: 1.1.0.
+d60 10
+@
+
+
+1.3
+log
+@in the middle of release/update
+@
+text
+@d15 1
+a15 1
+    <h3>iRogue: status</h3>
+@
+
+
+1.2
+log
+@updated for iRogue 1.0.0 release
+@
+text
+@d57 1
+a58 1
+<P> The previous version of iRogue is: 0.42 (stable), 0.47 (development).
+d60 18
+a77 1
+      <h4> What's new in 1.0.0</h4>
+d126 5
+a130 2
+<P> Development version 1.1.* will probably incorporate support for
+HandEra's totally freaky screen size.
+d144 1
+a144 1
+Last modified: Wed May 30 21:18:21 EDT 2001
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d53 25
+a77 1
+      <P> The current stable version of iRogue is: 0.42.
+d79 2
+a80 6
+<br> (There is also the more recent, but not stable, alpha version
+0.47.  There's a summary of the features added so far <a
+href="http://roguelike-palm.sourceforge.net/wiki/index.php?MinorNews">here</a>, sort of a moving target.  There is a <a href="color.php">draft</a>
+explaining how to set colors.</a>)
+
+<P> New preference: Small font, if selected, lets you see more of the
+d83 1
+a83 1
+<P> New preference: Rogue-relative navigation, if selected, centers
+d87 1
+a87 1
+<P> New items on Wiz menu: More flexible saving/restoring.  If you
+d91 2
+a92 25
+<P> minor bug fixes including death by starvation.
+
+      <h4> Things that were new in the previous version</h4>
+
+      <P> 0.41: Fixed some bugs related to integer division (healing
+          potions, scores).
+      <P> Top ten list allows multiple entries per player.
+          Wizard scores are not recorded.
+
+<P> If you have played an earlier version than 0.40, you know
+that there used to be two files iRogue.prc and iRogue_Library.prc.
+The game is now one file (because we are at last compiling with
+prc-tools 2.0 and multigen), so you can delete the old Library from
+your PalmPilot as soon as you install the new iRogue.prc.
+
+      <P> In Preferences, you can indicate that you would like the
+screen to stay "centered" around your rogue.  This is off by default
+(flickering is sometimes visible and may annoy) but be sure to try it
+out; many people requested it.
+      
+      <P> You can move using the classic "hjklyubn".  This is probably
+only of interest if you have a keyboard.
+      
+      <P> You can bind "inventory" to a hardware button.
+      <P> Fixed some bugs, e.g. throwing a cursed object.
+d95 2
+d98 1
+a98 5
+      <P> 0.42 seems to be reasonably stable.  Please <a
+href="mailto:i0lanthe@@yahoo.com">report any bugs you find</a> and they
+will be fixed as time permits.
+
+      <P> The game may not be "well balanced" (a number of monsters,
+d100 1
+a100 1
+seems particularly unfair, let us know and we will continue to tweak.
+d106 1
+d109 2
+a110 7
+<P> I am working on iLarn and kMoria at present, and my thesis, so no
+new iRogue version planned at the moment.  If you would like to make
+your own modifications <a href="source.php">feel free</a>.  (You can
+even send patches and stuff if you want to share your happiness...
+e.g. folks have suggested (a) a graphical tiles option, and (b) a
+grayscale overlay of the <a href="play.php#move">donut/pie</a>, both
+of which I am steadfastly ignoring in favor of thesis.)
+d124 1
+a124 1
+Last modified: Tue Feb 27 01:44:21 EST 2001
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

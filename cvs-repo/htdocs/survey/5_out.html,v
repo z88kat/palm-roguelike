@@ -1,0 +1,87 @@
+head	1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2006.08.08.03.59.52;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@commit everything before massive style change
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>iLarn 4-button-form Survey</title>
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+  </head>
+
+  <body>
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3>iLarn 4-button-form Survey</h3>
+<P> <i>This <a href="../survey/index.php">survey</a> is about the PalmOS game 
+<a href="../iLarn/index.php">iLarn</a>,
+part of the <a href="../index.php">Roguelikes for PalmOS</a> project
+hosted at <a href="http://sourceforge.net">SourceForge</a>.</i>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table>
+<!-- -->
+<tr>
+	<td colspan="3"><b>4-button-form Preference</b></td>
+</tr>
+<tr>
+	<td><font>Don't care</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/blue.gif" height=10 width=$%a1;>&nbsp;$%a1;%</td>
+ <td>$a1;</td>
+</tr>
+<tr>
+	<td><font>Don't change it!</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/yellow.gif" height=10 width=$%a2;>&nbsp;$%a2;%</td>
+ <td>$a2;</td>
+</tr>
+<tr>
+	<td><font>Put <b>all</b> "take it" on the right</font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/green.gif" height=10 width=$%a3;>&nbsp;$%a3;%</td>
+ <td>$a3;</td>
+</tr>
+<tr>
+	<td><font>Put <b>all</b> "take it" on the <b>left</b></font></td>
+	<td><img src="http://roguelike-palm.sourceforge.net/survey/red.gif" height=10 width=$%a4;>&nbsp;$%a4;%</td>
+ <td>$a4;</td>
+</tr>
+
+<!-- -->
+<tr>
+	<td colspan="2" align="CENTER">Total:&nbsp;$tot;</td>
+</tr>
+</table>
+
+    <hr>
+    <address><a href="mailto:i0lanthe@@users.sourceforge.net">email</a></address>
+<!-- Created: Wed Aug  2 17:13:41 EDT 2000 -->
+<!-- hhmts start -->
+Last modified: Thu Aug 10 16:23:33 EDT 2000
+<!-- hhmts end -->
+  </body>
+</html>
+@

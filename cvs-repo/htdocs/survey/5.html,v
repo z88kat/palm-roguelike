@@ -1,0 +1,109 @@
+head	1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2006.08.08.03.59.52;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@commit everything before massive style change
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>iLarn 4-button-form Survey</title>
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+  </head>
+
+  <body>
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3>iLarn 4-button-form Survey</h3>
+<P> <i>This <a href="index.php">survey</a> is about the PalmOS game 
+<a href="../iLarn/index.php">iLarn</a>,
+part of the <a href="../index.php">Roguelikes for PalmOS</a> project
+hosted at <a href="http://sourceforge.net">SourceForge</a>.</i>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<form action="http://roguelike-palm.sourceforge.net/cgi-bin/vote.pl" method=get>
+<!-- 'value' must be the name of a section in the config file -->
+<input type="hidden" name="name" value="fourbtn">
+
+<P> When you walk onto a "thing" in iLarn, a little form pops up with
+2, 3, or 4 buttons on it.  Here are some examples of the little form...
+<br>
+<img src="all2btn.gif" alt="[2 buttons]">
+<img src="all3btn.gif" alt="[3 buttons]">
+<img src="all4btn.gif" alt="[4 buttons]">
+<br> (generic item, building entrance, stairs) (chest, book, fountain) (altar,
+potion, scroll)
+
+<P> Some of these forms have a "take it" button.  It is always in the
+top row.  But... Some forms have it on the left, and some on the
+right.  The question of the day is, should the "take it" button be in
+the <i>same place</i> for all forms (and, if so, which place).
+
+<P>
+<b>Your preference is</b><br>
+<input type="Radio" name="a" value="1">
+ I really don't care.  Go ahead and change stuff (just this once)
+ if other people want that.<br>
+<input type="Radio" name="a" value="2">
+ I like things exactly the way they are shown above, and might be a little upset
+ if they are changed. <br>
+<input type="Radio" name="a" value="3">
+ I care about consistency across all of the forms.  The Generic Item
+ (which has two buttons, "take" and
+ "ignore") should have its "take" button move to the right, directly
+ above the "ignore" button.  That way, <b>all</b> of the "take" buttons will
+ be on the upper <b>right</b> (and only that form will change).
+
+ <br>
+<input type="Radio" name="a" value="4">
+ I care about consistency across all of them.  However, I want all of
+ the "take" buttons to be on the upper <b>left</b>.  This way,
+ although some other forms will have to change, the Generic Item form
+ will still look the same (and will match the other two-button forms).
+ 
+<P>
+(Why do the two-button forms look like that?  With the buttons far
+apart they may be easier to hit right in a moving vehicle (ask a silly
+question, ...))
+
+<br>
+<input type=submit value="Submit">
+<input type=reset value="Reset">
+<a href="http://roguelike-palm.sourceforge.net/cgi-bin/vote.pl?name=fourbtn&action=view">
+Result</a>
+
+
+</form>
+
+    <hr>
+    <address><a href="mailto:i0lanthe@@users.sourceforge.net">email</a></address>
+<!-- Created: Wed Aug  2 17:13:41 EDT 2000 -->
+<!-- hhmts start -->
+Last modified: Thu Aug 10 16:23:40 EDT 2000
+<!-- hhmts end -->
+  </body>
+</html>
+@

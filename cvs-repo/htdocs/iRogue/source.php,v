@@ -1,0 +1,341 @@
+head	1.8;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.6
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.8
+date	2006.08.13.05.47.22;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2006.08.13.04.47.24;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2006.08.08.06.13.25;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2006.08.08.03.45.50;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2002.03.30.00.18.21;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.05.31.23.23.50;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.05.31.04.02.17;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.46;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.46;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.8
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>Source for iRogue</title>
+
+<style type="text/css" media="screen">@@import "../3col.css";</style>
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>iRogue source code</h1>
+</div>
+
+<div class="content">
+
+      <h2>Where's the source?</h2>
+
+      <p> Go to the <a href="http://sourceforge.net/projects/roguelike-palm/">
+	Roguelikes for PalmOS</a> project page on SourceForge.
+	Download the "iRogue module" (it should be listed in the
+	File Releases section).</p>
+
+      <h2>What do I need to compile it?</h2>
+      <p> I've used prc-tools 2.0.  I'm running Linux.</p>
+
+      <p> You can get <a href="http://www.palmos.com/dev/tools/gcc/">
+      prc-tools</a> from <a href="http://www.palmsource.com/developers/">
+      palmsource.com</a>.  Follow their
+      directions for installation.  You will need
+      <a href="http://www.ardiri.com/index.php?redir=palm&amp;cat=pilrc">
+      PilRC</a> as well (version 2.7b or greater).</p>
+
+      <p> <b>SDK</b> - The current version of iRogue uses SDK 3.5 or
+      higher (or, in the unlikely event that you want to compile for
+      PalmOS 2.0, SDK 2; to compile for OS 2.0 you will also need to
+      change which definition of CFLAGS is commented-out in the
+      Makefile).</p>
+
+      <p> <b>multigen</b> - Since iRogue is large, it has "multiple
+      code resources" and uses multigen.  You might want to read about
+      that in the prc-tools documentation.</p>
+
+      <p> <b>emulator</b> - The safest place to test software is in a <a
+      href="http://www.palmos.com/dev/tools/emulator/">Palm emulator</a>.  You
+      will need a ROM image to use it.</p>
+
+</div>
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+<!-- this document tentatively valid HTML Tue Aug 8 2006 -->
+
+</body>
+</html>
+@
+
+
+1.7
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+@
+
+
+1.6
+log
+@first pass at a TABLE-FREE layout
+@
+text
+@d9 1
+a9 2
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+d46 3
+a48 4
+      <p> <b>emulator</b> - You can get a Palm emulator <a
+      href="http://www.palmos.com/dev/tools/emulator/">here</a> (you
+      will need a ROM image to use it).  Emulators are handy for
+      testing software on.</p>
+@
+
+
+1.5
+log
+@commit everything before massive style change
+@
+text
+@d1 3
+a3 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+d7 2
+a8 2
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+d14 3
+a16 41
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">iRogue: where to get source</h3>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      
+      <!-- -->
+      <tr><td class="sidehead">
+	iRogue Stuff </td></tr>
+      <tr><td class="side"> <a href="index.php">
+	  What is iRogue?</a> </td></tr>
+      <tr><td class="side"> <a href="whatsnew.php">
+	  What's new</a> </td></tr>
+      <tr><td class="side"> <a href="download.php">
+	  Download iRogue</a> </td></tr>
+      <tr><td class="side"> <a href="play.php">
+	  How to play</a> </td></tr>
+      <tr><td class="side">
+	  <b>How to get source</b> </td></tr>
+      <?php include ("../hostedby.txt") ?>
+      <?php include ("../activesurveys.txt") ?>
+      <?php include ("../roguelikegames.txt") ?>
+</table>
+</td>
+
+<!-- main area table -->
+<td class="body" valign=top>
+  <a name="news"></a>
+      <!-- ----- this is the interesting part of the page ----- -->
+      <h3>Where can I get the source for iRogue?</h3>
+d18 1
+a18 4
+      <P> Go to the <a href="http://sourceforge.net/projects/roguelike-palm/">
+	Roguelikes for PalmOS</a> project summary page on SourceForge.
+	Download the "iRogue module" (it should be listed in the
+	File Releases section).
+d20 1
+a20 10
+      <h3>What do I need to compile it?</h3>
+      <P> iRogue requires prc-tools 2.0.  We compile under Linux, but
+      other unices will probably also work.
+
+      <P> You can get <a href="http://www.palmos.com/dev/tech/tools/gcc/">
+      prc-tools 2.0</a> from <a href="http://www.palmos.com">
+      palmos.com</a>.  Follow their
+      directions for installation.  You will need
+      <a href="http://www.ardiri.com/index.cfm?redir=palm&cat=pilrc">
+      PilRC</a> as well (we are using version 2.7b).
+d22 4
+a25 4
+      <P> <b>SDK</b> - The current version of iRogue uses SDK 3.5 (or,
+in the unlikely event that you want to compile for PalmOS 2.0, SDK 2;
+to compile for OS 2.0 you will also need to change which definition of
+CFLAGS is commented-out in the Makefile).
+d27 2
+a28 3
+      <P> <b>multigen</b> - Since iRogue is large, it has "multiple
+code resources" and uses multigen.  You might want to read about that
+in the prc-tools documentation.
+d30 6
+a35 2
+<P> <b>emulator</b> - You can get a Palm emulator <a
+href="http://www.palmos.com/dev/tech/tools/emulator/">here</a> (you will need a ROM image to use it).  Emulators are handy for testing software on.
+d37 25
+a61 4
+<!--      <P> You may also want xcopilot, a Unix/X11 PalmPilot emulator.
+      The xcopilot page is at <a href="http://xcopilot.cuspy.com/">
+      http://xcopilot.cuspy.com/</a> and should have everything you
+      need except a ROM image. -->
+d63 2
+a64 5
+      <!-- ----- end of the interesting part of the page ----- -->
+
+</td>
+</tr>
+</table>
+d66 1
+a66 3
+<!-- footer table -->
+<?php include ("../footer.txt") ?>
+<!-- end footer table -->
+a67 5
+<address>i0lanthe@@users.sourceforge.net</address>
+<!-- hhmts start -->
+Last modified: Thu May 31 19:24:18 EDT 2001
+<!-- hhmts end -->
+<?php $hitsfile = "source.hits"; include ("../counter.php")?>
+@
+
+
+1.4
+log
+@checkpointing web before kMoria 0.15 update
+@
+text
+@d7 2
+@
+
+
+1.3
+log
+@make note of which SDK is used
+@
+text
+@d14 1
+a14 1
+    <h3>iRogue: where to get source</h3>
+@
+
+
+1.2
+log
+@updated for iRogue 1.0.0 release
+@
+text
+@d68 8
+a75 3
+      <P> Since iRogue is large, it has "multiple code resources" and
+      uses multigen.  You might want to read about that in the prc-tools
+      documentation.
+d77 1
+a77 1
+<P> You can also get a Palm emulator <a
+d97 1
+a97 1
+Last modified: Wed May 30 21:26:06 EDT 2001
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d72 4
+a75 1
+      <P> You may also want xcopilot, a Unix/X11 PalmPilot emulator.
+d78 1
+a78 1
+      need except a ROM image.
+d92 1
+a92 1
+Last modified: Tue Feb 27 01:41:26 EST 2001
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

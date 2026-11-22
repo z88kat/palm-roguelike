@@ -1,0 +1,550 @@
+head	1.3;
+access;
+symbols
+	start:1.1.1.1 vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.3
+date	2001.02.24.04.19.17;	author i0lanthe;	state dead;
+branches;
+next	1.2;
+
+1.2
+date	2001.02.24.03.25.02;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.06.15.21.16.43;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.06.15.21.16.43;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@level.c += lib_level.c
+@
+text
+@/*********************************************************************
+ * iRogue - Rogue adapted for the PalmPilot.                         *
+ * Copyright (C) 1999 Bridget Spitznagel                             *
+ * Note: This program is derived from rogue 5.3-clone for Linux.     *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+
+#include "palm.h"
+#include "librogue.h"
+
+
+/* t must be some local variable where this is used.. */
+#define swap(x,y) {t = x; x = y; y = t;}
+
+/* Moved make_room back into ../level.c !!! */
+
+/***************************************************************
+                   PUT_DOOR
+ IN:
+ rm = a room
+ dir = which wall to put the door in
+ row,col = (return) the location the door was put in
+ sotu = various globals (dungeon, cur_level)
+ OUT:
+ nothing (row,col)
+ PURPOSE:
+ Place a door in the indicated wall of the given room, reporting
+ to the caller the door's location.  Possibly, hide the door.
+****************************************************************/
+void put_door(room * rm, Short dir, Short * row, Short * col,
+	      struct state_of_the_union * sotu)
+{
+  Short wall_width;
+  UShort ** dungeon = sotu->dungeon;
+
+  wall_width = (rm->is_room & R_MAZE) ? 0 : 1;
+
+  switch(dir) {
+  case UP:
+  case DOWN:
+    *row = ((dir == UP) ? rm->top_row : rm->bottom_row);
+    do {
+      *col = get_rand(rm->left_col+wall_width,
+		      rm->right_col-wall_width);
+    } while (!(dungeon[*row][*col] & (HORWALL | TUNNEL)));
+    break;
+  case RIGHT:
+  case LEFT:
+    *col = (dir == LEFT) ? rm->left_col : rm->right_col;
+    do {
+      *row = get_rand(rm->top_row+wall_width,
+		      rm->bottom_row-wall_width);
+    } while (!(dungeon[*row][*col] & (VERTWALL | TUNNEL)));
+    break;
+  }
+  if (rm->is_room & R_ROOM) {
+    dungeon[*row][*col] = DOOR;
+  }
+  if ((sotu->cur_level > 2) && rand_percent(HIDE_PERCENT)) {
+    dungeon[*row][*col] |= HIDDEN;
+  }
+  rm->doors[dir/2].door_row = *row;
+  rm->doors[dir/2].door_col = *col;
+
+}
+
+
+/**********************************************************************
+                       MASK_ROOM
+ IN:
+ rn = number of room-area
+ row, col = return location fitting the mask, if one is found
+ mask = some attribute of a dungeon square...
+ sotu = various globals
+ OUT:
+ true if a square fitting the mask is found (row,col indicate location)
+ false if no square is found that fits the mask
+ PURPOSE:
+ Search the room-area to see if a particular kind of square is present
+ there, and if it is, return one location of such a square.
+ Actually, this is used ONLY by fill_it in level.c, to find whether
+ there is a 'TUNNEL' in the room-area.
+ **********************************************************************/
+Boolean mask_room(Short rn, Short * row, Short * col, UShort mask,
+		  struct state_of_the_union *sotu)
+{
+  Short i, j;
+  UShort ** dungeon = sotu->dungeon;
+  room * rooms = sotu->rooms;
+
+  for (i = rooms[rn].top_row; i <= rooms[rn].bottom_row; i++) {
+    for (j = rooms[rn].left_col; j <= rooms[rn].right_col; j++) {
+      if (dungeon[i][j] & mask) {
+	*row = i;
+	*col = j;
+	return(true);
+      }
+    }
+  }
+  return(false);
+}
+
+/***************************************************************
+                   HIDE_BOXED_PASSAGE
+ IN:
+ row1,col1 = one end
+ row2,col2 = the other end
+ n = number of points to (try to) hide the passage at
+ sotu = various globals (
+ OUT:
+ nothing
+ PURPOSE:
+ This will make some random square(s) of the passage "hidden",
+ usually.
+****************************************************************/
+void hide_boxed_passage(Short row1, Short col1,
+			Short row2, Short col2, 
+			Short n,
+			struct state_of_the_union * sotu)
+{
+  Short i, j, t;
+  Short row, col, row_cut, col_cut;
+  Short h, w;
+  UShort ** dungeon = sotu->dungeon;
+
+  if (n <= 0)
+    return;
+
+  if (sotu->cur_level > 2) {
+    if (row1 > row2) {
+      swap(row1, row2);
+    }
+    if (col1 > col2) {
+      swap(col1, col2);
+    }
+    h = row2 - row1;
+    w = col2 - col1;
+
+    if ((w >= 5) || (h >= 5)) {
+      row_cut = ((h >= 2) ? 1 : 0);
+      col_cut = ((w >= 2) ? 1 : 0);
+
+      for (i = 0; i < n; i++) {
+	for (j = 0; j < 10; j++) {
+	  row = get_rand(row1 + row_cut, row2 - row_cut);
+	  col = get_rand(col1 + col_cut, col2 - col_cut);
+	  if (dungeon[row][col] == TUNNEL) {
+	    dungeon[row][col] |= HIDDEN;
+	    break;
+	  }
+	}
+      }
+    }
+  }
+}
+
+
+
+/***************************************************************
+                   DRAW_SIMPLE_PASSAGE
+ IN:
+ row1, col1 = one end
+ row2, col2 = the other end
+ dir = left/right or up/down
+ sotu = various globals (dungeon)
+ OUT:
+ nothing
+ PURPOSE:
+ Draw a simple passage  ----|______ between the two endpoints,
+ and maybe hide part of it. 
+****************************************************************/
+void draw_simple_passage(Short row1, Short col1, 
+			 Short row2, Short col2,
+			 Short dir,
+			 struct state_of_the_union * sotu)
+{
+  Short i, middle, t;
+  UShort ** dungeon = sotu->dungeon;
+
+  if ((dir == LEFT) || (dir == RIGHT)) {
+    if (col1 > col2) {
+      swap(row1, row2);
+      swap(col1, col2);
+    }
+    /* decide where to zigzag */
+    middle = get_rand(col1+1, col2-1);
+    /* make the three segments of the passage */
+    for (i = col1+1; i != middle; i++) {
+      dungeon[row1][i] = TUNNEL;
+    }
+    for (i = row1; i != row2; i += (row1 > row2) ? -1 : 1) {
+      dungeon[i][middle] = TUNNEL;
+    }
+    for (i = middle; i != col2; i++) {
+      dungeon[row2][i] = TUNNEL;
+    }
+  } else {
+    if (row1 > row2) {
+      swap(row1, row2);
+      swap(col1, col2);
+    }
+    /* decide where to zigzag */
+    middle = get_rand(row1+1, row2-1);
+    /* make the three segments of the passage */
+    for (i = row1+1; i != middle; i++) {
+      dungeon[i][col1] = TUNNEL;
+    }
+    for (i = col1; i != col2; i += (col1 > col2) ? -1 : 1) {
+      dungeon[middle][i] = TUNNEL;
+    }
+    for (i = middle; i != row2; i++) {
+      dungeon[i][col2] = TUNNEL;
+    }
+  }
+  if (rand_percent(HIDE_PERCENT)) {
+    hide_boxed_passage(row1, col1, row2, col2, 1, sotu);
+  }
+}
+
+
+
+/***************************************************************
+                   DROP_CHECK
+ IN:
+ sotu = various globals (cur_level, wizard, dungeon, rogue, levitate)
+ OUT:
+ true if the rogue can go down a level from here.
+ PURPOSE:
+ Basically, return true if you can go down stairs (you are a
+ wizard or standing on stairs, and you haven't hit bottom.)
+****************************************************************/
+Boolean drop_check(struct state_of_the_union * sotu) 
+{
+  if (sotu->cur_level >= 99) {
+    message("don't you think you've gone down far  enough?", sotu);
+    return false; /* come, let's be reasonable */
+  }
+  if (sotu->wizard) {
+    return true;
+  }
+  if (sotu->dungeon[sotu->roguep->row][sotu->roguep->col] & STAIRS) {
+    if (sotu->levitate
+	|| (sotu->ring_flags & RING_LEVITATE)) {
+      message("you're floating in the air!", sotu);
+      return false;
+    }
+    return true;
+  }
+  message("I see no way down", sotu);
+  return false;
+}
+
+/***************************************************************
+                   HP_RAISE
+ IN:
+ sotu = various globals (wizard)
+ OUT:
+ number of hit points to add to character
+ PURPOSE:
+ Return hit points to add.  (hp was int.  used in level and spec_hit,
+ when the character goes up a level... or drops 2 and goes up 1...)
+****************************************************************/
+Short hp_raise(struct state_of_the_union * sotu)
+{
+  Short hp;
+  
+  hp = (sotu->wizard ? 10 : get_rand(3, 10));
+  return(hp);
+}
+
+
+/* Are the two rooms in the same row? */
+static Boolean same_row(Short room1, Short room2) SEC_L;
+static Boolean same_row(Short room1, Short room2) 
+{ 
+  return((room1 / 3) == (room2 / 3)); 
+}
+/* Are the two rooms in the same column? */
+static Boolean same_col(Short room1, Short room2) SEC_L;
+static Boolean same_col(Short room1, Short room2) 
+{
+  return((room1 % 3) == (room2 % 3)); 
+}
+
+
+/***************************************************************
+                   CONNECT_ROOMS
+ IN:
+ room1, room2 = the rooms to attempt to connect
+ sotu = various globals (rooms)
+ OUT:
+ true if the connection was successful
+ PURPOSE:
+ Connect rooms... return false if they're impossible to connect.
+ (If they're connectable, 4% chance of making two connections.)
+****************************************************************/
+Boolean connect_rooms(Short room1, Short room2, 
+		      struct state_of_the_union * sotu) 
+{
+  Short row1, col1, row2, col2, dir;
+  room * rooms = sotu->rooms;
+
+  if ((!(rooms[room1].is_room & (R_ROOM | R_MAZE))) ||
+      (!(rooms[room2].is_room & (R_ROOM | R_MAZE)))) {
+    /* Can't connect non-rooms. */
+    return false;
+  }
+
+  /* Figure out how the rooms are oriented wrt each other. */
+  if (same_row(room1, room2) &&
+      (rooms[room1].left_col > rooms[room2].right_col)) {
+    put_door(&rooms[room1], LEFT, &row1, &col1, sotu);
+    put_door(&rooms[room2], RIGHT, &row2, &col2,sotu);
+    dir = LEFT;
+  } else if (same_row(room1, room2) &&
+	     (rooms[room2].left_col > rooms[room1].right_col)) {
+    put_door(&rooms[room1], RIGHT, &row1, &col1, sotu);
+    put_door(&rooms[room2], LEFT, &row2, &col2, sotu);
+    dir = RIGHT;
+  } else if (same_col(room1, room2) &&
+	     (rooms[room1].top_row > rooms[room2].bottom_row)) {
+    put_door(&rooms[room1], UP, &row1, &col1, sotu);
+    put_door(&rooms[room2], DOWN, &row2, &col2, sotu);
+    dir = UP;
+  } else if (same_col(room1, room2) &&
+	     (rooms[room2].top_row > rooms[room1].bottom_row)) {
+    put_door(&rooms[room1], DOWN, &row1, &col1, sotu);
+    put_door(&rooms[room2], UP, &row2, &col2, sotu); /* BROKEN? */
+    dir = DOWN;
+  } else {
+    /* Can't connect rooms that aren't NSEW-adjacent. */
+    return false;
+  }
+
+  /* Connect them.  4% chance of extra connecting passage(s). */
+  do {
+    draw_simple_passage(row1, col1, row2, col2, dir, sotu);
+  } while (rand_percent(4));
+
+  rooms[room1].doors[dir/2].oth_room = room2;
+  rooms[room1].doors[dir/2].oth_row = row2;
+  rooms[room1].doors[dir/2].oth_col = col2;
+
+  rooms[room2].doors[(((dir+4)%DIRS)/2)].oth_room = room1;
+  rooms[room2].doors[(((dir+4)%DIRS)/2)].oth_row = row1;
+  rooms[room2].doors[(((dir+4)%DIRS)/2)].oth_col = col1;
+  return true;
+}
+
+
+
+/***************************************************************
+                   CLEAR_LEVEL
+ IN:
+ sotu = various globals (rooms, traps, dungeon, ...)
+ OUT:
+ nothing
+ PURPOSE:
+ This is called when you go up/down to a new level.  It will clear
+ various things in preparation for generating the new level.
+****************************************************************/
+void clear_level(struct state_of_the_union * sotu) 
+{
+  Short i, j;
+
+  for (i = 0; i < MAXROOMS; i++) {
+    sotu->rooms[i].is_room = R_NOTHING;
+    for (j = 0; j < 4; j++) {
+      sotu->rooms[i].doors[j].oth_room = NO_ROOM;
+    }
+  }
+  for (i = 0; i < MAX_TRAPS; i++) {
+    sotu->traps[i].trap_type = NO_TRAP;
+  }
+  for (i = 0; i < DROWS; i++) {
+    for (j = 0; j < DCOLS; j++) {
+      sotu->dungeon[i][j] = NOTHING;
+    }
+  }
+  sotu->detect_monster = sotu->see_invisible = false;
+  sotu->being_held = sotu->bear_trap = false;
+  sotu->party_room = NO_ROOM;
+  sotu->roguep->row = sotu->roguep->col = -1;
+  clear();  /* XXX need a clear() for the pilot */
+}
+
+
+
+
+/* Put player in level --- try to avoid room 'nr'. */
+/* The stuff it calls is in room.c and monster.c mostly. XXXX */
+void put_player(Short nr, struct state_of_the_union *sotu)
+{
+  Short rn = nr, misses;
+  Short row, col;
+  fighter *rogue = sotu->roguep;
+
+  for (misses = 0; ((misses < 2) && (rn == nr)); misses++) {
+    gr_row_col(&row, &col, (FLOOR | TUNNEL | OBJECT | STAIRS), sotu);
+    rn = get_room_number(row, col, sotu->rooms);
+  }
+  rogue->row = row;
+  rogue->col = col;
+
+  if (sotu->dungeon[rogue->row][rogue->col] & TUNNEL) {
+    sotu->cur_room = PASSAGE;
+  } else {
+    sotu->cur_room = rn;
+  }
+  if (sotu->cur_room != PASSAGE) {
+    light_up_room(sotu->cur_room, sotu);
+  } else {
+    light_passage(rogue->row, rogue->col, sotu);
+  }
+  wake_room(get_room_number(rogue->row, rogue->col, sotu->rooms), 1, 
+	    rogue->row, rogue->col, sotu);
+  if (sotu->new_level_message) {
+    message(sotu->new_level_message, sotu);
+    sotu->new_level_message = 0;
+  }
+  mvaddch(rogue->row, rogue->col, rogue->fchar);
+
+  check_rogue_position(rogue, true);
+//  move_visible_window(rogue->row, rogue->col, true); /* TESTING.... */
+
+}
+
+/* could be static */
+static Short get_exp_level(Long e, struct state_of_the_union *sotu) SEC_L;
+static Short get_exp_level(Long e, struct state_of_the_union *sotu) {
+  Short i;
+
+  for (i = 0; i < (MAX_EXP_LEVEL - 1); i++) {
+    if (sotu->level_points[i] > e) {
+      break;
+    }
+  }
+  return(i+1);
+}
+/* used in many places */
+void add_exp(Int e, Boolean promotion, struct state_of_the_union *sotu) {
+  Char mbuf[40];
+  Short new_exp;
+  Short i, hp;
+  fighter * rogue = sotu->roguep;
+
+  rogue->exp_points += e;
+
+  if (rogue->exp_points >= sotu->level_points[rogue->exp-1]) {
+    new_exp = get_exp_level(rogue->exp_points, sotu);
+    if (rogue->exp_points > MAX_EXP) {
+      rogue->exp_points = MAX_EXP + 1;
+    }
+    for (i = rogue->exp+1; i <= new_exp; i++) {
+      StrPrintF(mbuf, "welcome to level %d", i);
+      message(mbuf, sotu);
+      if (promotion) {
+	hp = hp_raise(sotu);
+	rogue->hp_current += hp;
+	rogue->hp_max += hp;
+      }
+      rogue->exp = i;
+      print_stats(STAT_HP | STAT_EXP, sotu);
+    }
+  } else {
+    print_stats(STAT_EXP, sotu);
+  }
+}
+@
+
+
+1.2
+log
+@compiles with sdk3.5; user-configurable color
+@
+text
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d23 1
+a23 1
+#include "Pilot.h"
+@
+
+
+1.1.1.1
+log
+@iRogue import
+@
+text
+@@

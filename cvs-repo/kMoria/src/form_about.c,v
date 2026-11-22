@@ -1,0 +1,642 @@
+head	1.16;
+access;
+symbols
+	Release-2002_03_29:1.16
+	Release-2002_01_12:1.16
+	Release-2002_01_02:1.11
+	Release-2002_01_01:1.10
+	Release-2001_12_19:1.10
+	Release-2001_08_04:1.8
+	Release-2001_07_02:1.8
+	Release-2001_06_16:1.5
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.16
+date	2002.01.08.19.32.55;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2002.01.06.20.45.21;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2002.01.05.18.46.50;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2002.01.04.03.45.43;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2002.01.04.00.01.25;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2002.01.02.20.15.47;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2001.11.30.02.58.38;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.06.26.02.42.37;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.03.27.22.49.22;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.03.27.06.30.43;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.11.04.02.13.39;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.44.44;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.44.44;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.16
+log
+@handera support is mostly working, for some value of mostly
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+#include "kMoria.h"
+
+
+Boolean About_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+#ifndef I_AM_OS_2
+    if (IsVGA) PrvMoveForm(false);
+#endif
+    FrmDrawForm(frm);
+    handled = true;
+    break;
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) PrvMoveForm(true);
+    return true;
+#endif
+
+  case ctlSelectEvent:
+    switch(e->data.ctlSelect.controlID) {
+    case btn_about_ok:
+      LeaveForm();
+      handled = true;
+      break;
+    case btn_about_more:
+      //      FrmHelp(AboutStr);
+      FrmPopupForm(IntroForm); // let's try that.
+      handled = true;
+      break;
+    case btn_about_credits:
+      FrmHelp(CreditStr);
+      handled = true;
+      break;
+    }
+    break;
+
+  case keyDownEvent:
+    switch(e->data.keyDown.chr) {
+    case '\n': case 'd':
+      LeaveForm();
+      handled = true;
+      break;
+    case 'v': case 'c': case 'i':      
+      FrmHelp(AboutStr);
+      handled = true;
+      break;
+    }
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+
+
+static void print_intro_stuff() SEC_3;
+Boolean Intro_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+#ifndef I_AM_OS_2
+    if (IsVGA) PrvMoveForm(false);
+#endif
+    FrmDrawForm(frm);
+    print_intro_stuff();
+    handled = true;
+    break;
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) PrvMoveForm(true);
+    return true;
+#endif
+
+  case penDownEvent: case keyDownEvent:
+    LeaveForm();
+    handled = true;
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+
+
+
+static void print_intro_stuff()
+{
+  Char buf[80];
+  Short x=2, y=0, dy=LINE_HEIGHT, maxx=SCR_WIDTH-4, len;
+  StrPrintF(buf, "kMoria ©2000-02, Moria ©1985-94");
+  len = StrLen(buf);
+  WinDrawChars_ctr(buf, len, maxx/2, y);
+  y += dy;
+#ifdef I_AM_OS_2
+  FntSetFont(ledFont);
+#else
+  FntSetFont(SmallFont);
+#endif
+  x = 2;
+  dy = visible_char_h_itsy + 1;
+  y += dy/2;
+
+  StrPrintF(buf, "Designer and programmer of Moria:");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "Robert Alan Koeneke");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  y += dy/2;
+  StrPrintF(buf, "Assistant programmers: ");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "Jimmey Wayne Todd, Gary D. McAdoo");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  y += dy/2;
+  StrPrintF(buf, "UNIX Port: James E. Wilson");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  y += dy/2;
+  StrPrintF(buf, "MSDOS Port: Don Kneller");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "BRUCE Moria: Christopher Stuart");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "Amiga Port: Corey Gehman");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  y += dy/2;
+  StrPrintF(buf, "Version 5.5: David J. Grabiner");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "PalmOS Port: Bridget Spitznagel");
+  WinDrawChars(buf, StrLen(buf), x, y);
+
+  y = SCR_HEIGHT - (dy*7 + 2);
+  StrPrintF(buf, "Moria may be copied and modified");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "freely as long as the above");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "credits are retained.  No one");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "who-so-ever may sell or market");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "this software without the express");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "written consent of the author");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "Robert Alan Koeneke.");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  
+#ifdef I_AM_OS_2
+  FntSetFont(stdFont);
+#else
+  FntSetFont(BigFont);
+#endif
+
+}
+
+// Fabulous.  This would all fit on an expanded screen in DEFAULT font
+// for HandEra 330.  Need to tweak the line wrapping for the last part tho'.
+@
+
+
+1.15
+log
+@changing magic #define's to calculations (for handera)
+@
+text
+@d78 1
+a78 1
+static void print_intro_stuff() SEC_7;
+@
+
+
+1.14
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@d88 3
+d96 6
+d128 1
+a128 1
+  FntSetFont(USERFONT);
+d168 1
+a168 1
+  y = 160 - (dy*7 + 2);
+d193 1
+a193 1
+  FntSetFont(stdFont);
+@
+
+
+1.13
+log
+@just tidying up
+@
+text
+@d25 3
+d31 6
+@
+
+
+1.12
+log
+@hiding magic numbers
+@
+text
+@d102 1
+a102 1
+  Short x=2, y=0, dy=LINE_HEIGHT, maxx=SCR_WIDTH-4, len, w;
+d105 1
+a105 2
+  w = FntCharsWidth(buf, len);
+  WinDrawChars(buf, len, (maxx-w)/2, y);
+@
+
+
+1.11
+log
+@trying another kyocera fix
+@
+text
+@a97 109
+// keep in mind this form is 2,2 156,156
+/*
+static void print_intro_stuff_old()
+{
+  Char buf[80];
+  Short x=2, y=2, dx = 5, dy=11, maxx=156, maxy=156, len, w;
+  StrPrintF(buf, "kMoria 0.09 - port of Umoria 5.5");
+  len = StrLen(buf);
+  w = FntCharsWidth(buf, len);
+  WinDrawChars(buf, len, (maxx-w)/2, y);
+  y += dy;
+  StrPrintF(buf, "© 1985 Robert Alan Koeneke");
+  len = StrLen(buf);
+  w = FntCharsWidth(buf, len);
+  x = (maxx-w)/2;
+  WinDrawChars(buf, len, x, y);
+  y += dy;
+  StrPrintF(buf, "© 1989-94 James E. Wilson");
+  WinDrawChars(buf, StrLen(buf), x, y);  
+  y += dy;
+  StrPrintF(buf, "© 2000 Bridget Spitznagel");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy + dy/2;
+
+#ifdef I_AM_OS_2
+  FntSetFont(ledFont);
+#else
+  FntSetFont(USERFONT);
+#endif
+
+  x = 2;
+  dy = 6;
+  StrPrintF(buf, "Programmers:");
+  len = StrLen(buf);
+  w = FntCharsWidth(buf, len);
+  WinDrawChars(buf, len, x, y);
+  StrPrintF(buf, "Robert A. Koeneke");
+  WinDrawChars(buf, StrLen(buf), x+dx+w, y);
+  y += dy;
+  StrPrintF(buf, "Jimmey Wayne Todd");
+  WinDrawChars(buf, StrLen(buf), x+dx+w, y);
+  y += dy+dy+dy/2;
+  StrPrintF(buf, "UNIX Port:");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  StrPrintF(buf, "James E. Wilson");
+  WinDrawChars(buf, StrLen(buf), x+dx+w, y);
+  y += dy+dy+dy/2;
+  StrPrintF(buf, "Version 5.5:");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  StrPrintF(buf, "David J. Grabiner");
+  WinDrawChars(buf, StrLen(buf), x+dx+w, y);
+  y -= 3*dy + 2*(dy/2);
+  StrPrintF(buf, "(University of Oklahoma)");
+  len = StrLen(buf);
+  w = FntCharsWidth(buf, len);
+  WinDrawChars(buf, len, maxx-w, y);
+  y += dy+dy+dy/2;
+  StrPrintF(buf, "(Cygnus Support)");
+  len = StrLen(buf);
+  w = FntCharsWidth(buf, len);
+  WinDrawChars(buf, len, maxx-w, y);
+  y += dy+dy+dy/2;
+  StrPrintF(buf, "(Harvard University)");
+  len = StrLen(buf);
+  w = FntCharsWidth(buf, len);
+  WinDrawChars(buf, len, maxx-w, y);
+  dy++;
+  y += dy+dy/2;
+  StrPrintF(buf, "Moria may be copied and modified");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "freely as long as the above");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "credits are retained.  No one");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "who-so-ever may sell or market");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "this software without the express");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "written consent of the author");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+  StrPrintF(buf, "Robert Alan Koeneke.");
+  WinDrawChars(buf, StrLen(buf), x, y);
+  y += dy;
+
+  
+#ifdef I_AM_OS_2
+  FntSetFont(stdFont);
+#else
+  FntSetFont(stdFont);
+#endif
+
+}
+*/
+
+/*         kMoria 0.09
+  "© 1985 Robert Alan Koeneke
+   © 1989-94 James E. Wilson
+   © 2000 Bridget Spitznagel
+
+
+
+
+ */
+d102 2
+a103 2
+  Short x=2, y=0, /* dx = 5, */ dy=11, maxx=156, /* maxy=156, */ len, w;
+  StrPrintF(buf, "kMoria ©2000-01, Moria ©1985-94");
+d114 1
+a114 1
+  dy = 7;
+d180 3
+@
+
+
+1.10
+log
+@tidying up, also make Instructions menu item not take time
+@
+text
+@d125 1
+a125 1
+  FntSetFont(129);
+d220 1
+a220 1
+  FntSetFont(129);
+@
+
+
+1.9
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@d99 1
+d196 1
+d211 1
+a211 1
+  Short x=2, y=0, dx = 5, dy=11, maxx=156, maxy=156, len, w;
+@
+
+
+1.8
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@a12 1
+#include "palm.h"
+a13 2
+#include "lock-externs.h"
+#include "kMoriaRsc.h"
+@
+
+
+1.7
+log
+@making invert work in the general case; an initial credits screen; and I forget what else
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000,2001 Bridget Spitznagel                        *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+d39 2
+a40 1
+      FrmHelp(AboutStr);
+d102 1
+a102 1
+static void print_intro_stuff()
+d209 81
+@
+
+
+1.6
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d80 139
+@
+
+
+1.5
+log
+@fixed same-sector-new-level screen-redraw bug
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d24 1
+a24 1
+#include <Pilot.h>
+@
+
+
+1.4
+log
+@fixed sell-unknown-item-to-store bug.  most forms navigable via keyboard now.
+@
+text
+@d53 4
+@
+
+
+1.3
+log
+@tweaked notice
+@
+text
+@d56 13
+@
+
+
+1.2
+log
+@adding GPL comment
+@
+text
+@d5 1
+a5 1
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 23
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

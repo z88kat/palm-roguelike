@@ -1,0 +1,353 @@
+head	1.13;
+access;
+symbols
+	Release-2002_03_29:1.13
+	Release-2002_01_12:1.13
+	Release-2002_01_02:1.11
+	Release-2002_01_01:1.11
+	Release-2001_12_19:1.11
+	Release-2001_08_04:1.10
+	Release-2001_07_02:1.8
+	Release-2001_06_16:1.4
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.13
+date	2002.01.12.01.38.09;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2002.01.05.18.46.50;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2001.08.02.06.50.36;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2001.07.31.00.30.34;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2001.07.01.22.34.33;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.06.30.17.32.46;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.06.20.01.56.43;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.11.04.02.13.39;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.09.30.03.37.12;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.44.06;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.44.06;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.13
+log
+@Split Preferences into two parts, add 3 new prefs, may have introduced bugs
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+#ifndef __KMORIA_GLOBALS_H__
+#define __KMORIA_GLOBALS_H__
+
+/* This is the master include file that includes everything else now.
+   Why?  To make it easier to use cstar (long story).
+   Note not every c file needs every header file,
+   e.g. some don't need kMoriaRsc.h or wacky API headers. */
+
+#include "palm.h" /* practically everyone needs this */
+#ifndef I_AM_OS_2
+#include "Handera/Vga.h" /* some need this too */
+#endif
+
+/* Yes, I have registered this Creator ID.  Yay. */
+#define MoriaAppType 'Mria'
+#define MoriaDBType  'Data'
+#define MoriaSaveDBType  'Save'
+#define MoriaColorDBType  'Data'
+#define MoriaScoreDBType  'Data'
+#define MoriaAppID   'Mria'
+extern DmOpenRef       MoriaDB;
+extern DmOpenRef       MoriaSaveDB;
+extern DmOpenRef       MoriaScoreDB; /* don't need it open all the time. */
+#define MoriaDBName "kMoriaDB"
+#define MoriaSaveDBName "kMoriaSaveDB"
+#define MoriaScoreDBName "kMoriaScoreDB"
+#define MoriaColorDBName "kMoriaColorDB"
+#define MoriaColorDBVersion 0x01
+#define MoriaSaveDBVersion 0x02
+
+#define MoriaAppPrefID 0x00
+/*#define MoriaAppPrefVersion 0x01*/
+/* added stuff after name: */
+//#define MoriaAppPrefVersion 0x02
+/* added stuff after hw_spells: */
+#define MoriaAppPrefVersion 0x03
+
+#include "kMoriaRsc.h" /* anyone referring to UI entities needs this */
+
+/* everyone needs these: */
+#include "sections.h"
+#include "constant.h"
+#include "types.h"
+#include "prototypes.h"
+#include "records.h"
+#include "lock-externs.h"
+
+/* only a few folks need these: */
+#include "win.h" /* only display.c actually needs it */
+#include <CharAttr.h> /* only form_store.c and main.c, for IsDigit */
+#include <DLServer.h> /* misc5.c, needed for user name */
+#include <Graffiti.h> /* only dungeon.c and main.c, and just for GrfGetState */
+#include <Preferences.h> /* form_{death,topscores}.c, preferred date format */
+#include <SysEvtMgr.h> /* only dungeon.c, in order to interrupt 'rest' */
+#ifndef I_AM_OS_2
+#include "handera.h"
+#endif
+#ifdef I_AM_COLOR
+#include "color.h" /* only display.c needs it */
+#include <SystemMgr.h> /* for misc5.c; I think it's needed for user name */
+#else
+#include <System/Globals.h> /* only display.c and main.c need it, for fonts */
+#include <SystemMgr.rh> /* for misc5.c; needed for user name */
+#define found_color false
+#endif /* I_AM_COLOR */
+
+
+
+#endif
+@
+
+
+1.12
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@d46 3
+a48 1
+#define MoriaAppPrefVersion 0x02
+@
+
+
+1.11
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@d22 3
+d65 3
+d76 1
+@
+
+
+1.10
+log
+@random tinkering, and prep for multi-user
+@
+text
+@d16 4
+d21 3
+a23 1
+// Yes, I have registered this Creator ID.  Yay.
+d32 1
+a32 1
+extern DmOpenRef       MoriaScoreDB; // don't really need it open all the time.
+d41 2
+a42 2
+//#define MoriaAppPrefVersion 0x01
+// added stuff after name:
+d45 1
+d47 1
+a47 1
+// also do some includes, perhaps.
+d53 18
+@
+
+
+1.9
+log
+@working on top-ten conversion (and beaming)
+@
+text
+@d20 1
+a20 1
+#define MoriaSaveDBType  'Data'
+@
+
+
+1.8
+log
+@Fixed store-booting shopkeeper-munging bug.  Introduced version record in save db.  Check version record and if <1, fix any shopkeepers that had been munged.
+@
+text
+@d22 1
+d26 1
+d29 1
+d32 1
+a32 1
+#define MoriaSaveDBVersion 0x01
+@
+
+
+1.7
+log
+@tweaking/color
+@
+text
+@d29 1
+@
+
+
+1.6
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d21 1
+d27 2
+@
+
+
+1.5
+log
+@hauled a bunch of code from one section to another, and moved some consts to DB
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+@
+
+
+1.4
+log
+@tweaked notice
+@
+text
+@d39 3
+a41 1
+#define MoriaAppPrefVersion 0x01
+@
+
+
+1.3
+log
+@adding GPL comment
+@
+text
+@d5 1
+a5 1
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+@
+
+
+1.2
+log
+@fixed stupid bug in fill_cave, generated levels should look more sane now
+@
+text
+@d1 23
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d5 1
+d9 1
+a9 1
+#define MoriaAppID   'Larn'
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

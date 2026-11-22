@@ -1,0 +1,256 @@
+head	1.2;
+access;
+symbols
+	start:1.1.1.1 vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.2
+date	2000.08.28.01.15.22;	author i0lanthe;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.35.04;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.35.04;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@fooling around with the popup messages
+@
+text
+@#ifndef __ILARN_PROTOTYPES_H__
+#define __ILARN_PROTOTYPES_H__
+#include "sections.h"
+
+// memory allocation
+Char * md_malloc(Int n);
+
+// drawing to screen
+void am_i_on_level_0(Boolean yes);
+void add_to_splash(Char *msg, struct everything *env);
+void print_splash(struct everything *env);
+void message(Char *buf); // needs help
+void print_stats(struct everything *env);
+void clear_visible() ; // really that should be 'static' but I'm TESTING.
+void setscreen(Short row, Short col, Short ch); // to add an updated cell
+void update_screen_cell(Short j, Short i, struct everything *env);
+void recalc_screen(struct everything *env);
+void refresh(); // to draw all updates
+void check_player_position(Short playerx, Short playery);
+void move_visible_window(Short left_x, Short top_y, Boolean centered);
+void showcell(Short x, Short y, struct everything *env);
+void see_invisible();
+void unsee_invisible();
+void got_larneye();
+void ungot_larneye();
+// random number gen
+void seed_random();
+Int rnd(Int y);
+Int rund(Int y);
+
+void pick_char(Short i, struct everything *env);
+// create.c
+void makeplayer(Short selected_class, struct everything *env);
+void newcavelevel(Short x, struct everything *env);
+void eat(Short x0, Short y0, struct everything * env);
+Boolean fillmonst(Char what, struct everything *env); // false on failure
+void sethp(Boolean flg, struct everything *env);
+
+// global.c
+void raisehp(Short x, struct everything *env);
+void raisemhp(Short x, struct everything *env);
+void raisemspells(Short x, struct everything *env);
+void losemspells(Short x, struct everything *env);
+void raiselevel(struct everything *env);
+void loselevel(struct everything *env);
+void raiseexperience(Long x, struct everything *env);
+void loseexperience(Long x, struct everything *env);
+void losehp(Short x, struct everything *env);
+void losemhp(Short x, struct everything *env);
+Short makemonst(Short lev, struct everything *env);
+void positionplayer(struct everything *env);
+void recalc(struct everything *env);
+void creategem(struct everything *env);
+void adjustcvalues(Short itm, Short arg, Boolean draw, struct everything *env);
+Short has_object(Short what, struct everything *env);
+Boolean take(Short itm, Short arg, Boolean noisy, struct everything *env);
+
+
+// obj.c (these were macros in header.h)
+Char newpotion();
+Char newscroll();
+Char newleather(Boolean hardgame);
+Char newchain();
+Char newplate(Boolean hardgame);
+Char newdagger();
+Char newsword(Boolean hardgame);
+void disappear(Short x, Short y, struct everything *env);
+
+void init_scroll_potion(Boolean mister_know_it_all);
+void know_scroll(Short j);
+void know_potion(Short j);
+Char * get_Of_scroll(Short j, Boolean store);
+Char * get_Of_potion(Short j, Boolean store);
+Char * get_objectname(Short j);
+void show3(Short index, struct everything *env);
+void show3_cp(Short index, Char *buf, struct everything *env);
+
+// data.c: monstor accessors
+Boolean m_genocidedP(Short i);
+Short m_hitpoints(Short i);
+Char *m_name(Short i);
+Short m_intelligence(Short i);
+void m_set_genocided(Short i, Boolean b);
+
+// monster.c
+void ifblind(Short x, Short y, struct everything *env);
+void createmonster(Short mon, struct everything *env);
+void createitem(Short it, Long arg, struct everything *env);
+Short fullhit(Short xx, struct everything *env);
+void dropgold(Short amount, struct everything *env);
+void something(Short lev, struct everything *env);
+Short newobject(Short lev, Short *i, struct everything *env);
+Boolean vxy(Short *x, Short *y);
+void hitmonster(Short x, Short y, struct everything *env);
+Short hitm(Short x, Short y, Short amt, struct everything *env);
+void hitplayer(Short x, Short y, struct everything *env);
+void checkloss(Short x, struct everything *env);
+void munge_lastmonst(Char * mname);
+Char * read_lastmonst();
+
+// util.c
+void do_feep(Long frq, UInt dur);
+
+// moveplayer.c
+void unmoveplayer(struct everything *env);
+void showplayer(Short playerx, Short playery);
+void run(Short dir, struct everything *env);
+Short moveplayer(Short dir, struct everything *env);
+void a_better_run(Short dir, struct everything *env);
+
+
+
+//object.c
+Boolean lookforobject(Short auto_pray, struct everything *env);
+
+//movem.c
+void movemonst(struct everything *env);
+
+
+// object_actions.. more
+void ocookie(struct everything *env);
+void obrasslamp(struct everything *env);
+void odesecrate(struct everything *env);
+void omoney(ULong amnt, struct everything *env);
+void ojustpr(struct everything *env);
+void othrone_pry(Boolean two, struct everything *env);
+void othrone_sit(Boolean two, struct everything *env);
+void odeadthrone(struct everything *env);
+void ochest(struct everything *env);
+void ofountain_drink(struct everything *env);
+void ofountain_wash(struct everything *env);
+// object_actions
+void ovoldown(struct everything *env);
+void ovolup(struct everything *env);
+void oentrance(struct everything *env);
+void oopendoor(struct everything *env);
+void oclosedoor(struct everything *env);
+void oelevator(Boolean up, struct everything *env);
+void ostairs(Boolean up, struct everything *env);
+void opit(struct everything *env);
+Boolean readbook(Short arg, struct everything *env);
+void oteleport(Boolean err, struct everything *env);
+void enchantarmor(struct everything *env);
+void enchweapon(struct everything *env);
+Boolean read_scroll(Short typ, struct everything *env);
+void enlighten(Short dyl, Short dyh, Short dxl, Short dxh,
+	       struct everything *env);
+void spill(struct everything *env);
+void quaffpotion(Short pot, struct everything *env);
+void adjtime(Long time, struct everything *env);
+
+// regen.c
+void regen(struct everything *env);
+
+// inv.c
+void drop_object(Short k, struct everything *env);
+void takeoff(struct everything *env);
+  // don't forget DROP_DOUGH
+void free_inventory_select(FormPtr frm);
+void init_inventory_select(FormPtr frm, Boolean t, struct everything *env);
+void remove1_inventory_select(FormPtr frm, Short k, struct everything *env);
+void specialize_labels(FormPtr frm, Short inventory_item, Boolean t,
+		       struct everything *env);
+void deduce_task(Short k, Short btn012, struct everything *env);
+
+void nap(Short x);
+
+// store
+Boolean owes_taxes2();
+void dndstore_init(FormPtr frm);
+//void dndstore_gold(Int gold);
+void dndstore_buy2(FormPtr frm, Short store_item, struct everything *env);
+void dndstore_list_tens(FormPtr frm, Short plus);
+void dndstore_btns(FormPtr frm, struct everything *env);
+void store_cleanup(FormPtr frm, struct everything *env);
+void college_init(FormPtr frm, struct everything *env);
+void college_mumble(Long gold);
+void college_enroll(FormPtr frm, Short store_item, struct everything *env);
+void bank_init(FormPtr frm, struct everything *env);
+void bank_mumble(struct everything *env);
+void bank_sell(FormPtr frm, Char inv_i, Short list_j, struct everything *env);
+Boolean bank_transact(Long amt, Boolean deposit, struct everything *env);
+void bank_trans_init(FormPtr frm, Boolean bank, struct everything *env);
+void tpost_print_value(Short k, struct everything *env);
+Boolean tpost_sell_item(Short k, struct everything *env);
+
+
+// savelev
+void save_all(struct everything *env);
+void unrestore(struct everything *env);
+Boolean restore_all(struct everything *env);
+void savelevel(struct everything *env);
+Boolean getlevel(struct everything *env);
+
+
+void bank_interest(struct everything *env);
+void dndstore_buy(FormPtr frm, Short store_item, struct everything *env);
+
+void died(Short cod, Boolean show_scores, struct everything *env);
+
+
+
+
+
+#endif
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@iLarn - Ularn port for PalmOS - initial code checkin
+@
+text
+@@

@@ -1,0 +1,78 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	Release-2001_08_06:1.1.1.1
+	Release-2001_06_15:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2000.08.27.17.34.12;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.34.12;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@Missing parts of gtime:
+
+A command to display elapsed time, in main.c
+
+    StrPrintF(buf, "\nElapsed time is %d.  You have %d mobuls left",
+	    (long)((env->gtime+99)/100+1),(long)((TIMELIMIT-env->gtime)/100));
+
+
+low bit used in movem.c... ok...
+
+nap? no.
+
+object.c !!!
+	time warp, case 7:
+	case 7:	
+		i = -rnd(1500) ;            /* time warp */
+	        if( is_male ) i += 300;    /* fast wie im richtigen Leben ;-*/
+		gtime += i;
+
+		if (i >= 0)
+		  lprintf("\nYou went forward in time by %d mobuls",
+                        (long)((i+99)/100));
+		else
+		  lprintf("\nYou went backward in time by %d mobuls",
+                        (long)(-(i+99)/100));
+		adjtime((long)i);/* adjust time for time warping */
+		return;
+    also, adjtime itself.
+
+when you go 'home', gtime is examined and compared to TIMELIMIT
+
+regen increments it... ok....
+hm, in savelev, we have "lasttime = gtime"
+also remember to use it in scores.c
+
+ok, store.c needs help with gemvalue.  put that in obj.c also!!@
+
+
+1.1.1.1
+log
+@iLarn - Ularn port for PalmOS - initial code checkin
+@
+text
+@@

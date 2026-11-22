@@ -1,0 +1,393 @@
+head	1.12;
+access;
+symbols
+	Release-2002_03_29:1.12
+	Release-2002_01_12:1.12
+	Release-2002_01_02:1.12
+	Release-2002_01_01:1.12
+	Release-2001_12_19:1.12
+	Release-2001_08_04:1.11
+	Release-2001_07_02:1.11
+	Release-2001_06_16:1.9
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.12
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2001.03.27.22.49.22;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.01.05.22.43.25;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.01.05.20.09.31;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.12.23.04.03.40;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.11.04.02.13.40;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.26.04.43.34;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.10.26.04.25.25;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.44.12;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.44.12;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.12
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@/**********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                          *
+ * This file is                                                       *
+ * copyright (C) 1985-2001 Robert A. Koeneke, Jimmey Wayne Todd,      *
+ * James E. Wilson, Bridget Spitznagel. (see main.c for full credits) *
+ *                                                                    *
+ * This program is freeware.  You can redistribute it and/or modify   *
+ * it (provided that this notice and the full credits are retained),  *
+ * but it CANNOT be distributed for profit.                           *
+ **********************************************************************/
+#include "kMoria.h"
+
+
+// Working on first pass through this... !
+
+/* Add a comment to an object description.		-CJS- */
+// This should be handled in a form!  See form_scribe.c
+/*
+void scribe_object()
+{
+  Short item_val, j; // item_val;
+  Char out_val[80], tmp_str[80];
+
+  objdes(tmp_str, &inventory[item_val], true);
+  StrPrintF(out_val, "Inscribing %s", tmp_str);
+  message(out_val);
+  if (inventory[item_val].inscrip[0] != '\0')
+    StrPrintF(out_val, "Replace %s New inscription:",
+	      inventory[item_val].inscrip);
+  else
+    StrCopy(out_val, "Inscription: ");
+  j = 78 - StrLen(tmp_str);
+  if (j > 12)
+    j = 12;
+  ;      //      prt(out_val, 0, 0); // xxx not implemented yet
+  if(0)//      if (get_string(out_val, 0, (Short) StrLen(out_val), j)) // xxx not implemented yet
+    inscribe(item_val, out_val);
+}
+*/
+
+/* Append an additional comment to an object description.	-CJS- */
+void add_inscribe(inven_type *i_ptr, Short index, UChar type)
+{
+  invy_set_ident(i_ptr, index, i_ptr[index].ident | type);
+}
+
+/* Replace any existing comment in an object description with a new one. CJS*/
+// See form_scribe.c ...
+//void inscribe(Short iptr, Char *str)
+//{
+//  if (StrLen(str) >= INSCRIP_SIZE)
+//    str[INSCRIP_SIZE-1] = '\0'; // truncate!
+//  DmStrCopy(inventory, iptr*sizeof(inven_type)+I_inscrip, str);
+//}
+
+
+/* We need to reset the view of things.			-CJS- */
+Boolean check_view()
+{
+  Short i, j, c_ptr, d_ptr;
+  Boolean recalced = false;
+
+  c_ptr = char_row*MAX_WIDTH+char_col;
+  /* Check for new panel		   */
+  if (get_panel(char_row, char_col, false)) {
+    recalc_screen();
+    recalced = true;
+  }
+  /* Move the light source		   */
+  move_light(char_row, char_col, char_row, char_col);
+  /* A room of light should be lit.	 */
+  if (cave_fval[c_ptr] == LIGHT_FLOOR) {
+    if ((pyflags.blind < 1) && !(cave_light[c_ptr] & LIGHT_pl))
+      light_room(char_row, char_col);
+  }
+  /* In doorway of light-room?		   */
+  else if ((cave_light[c_ptr] & LIGHT_lr) && (pyflags.blind < 1)) {
+    for (i = (char_row - 1); i <= (char_row + 1); i++)
+      for (j = (char_col - 1); j <= (char_col + 1); j++) {
+	d_ptr = i*MAX_WIDTH+j;
+	if ((cave_fval[d_ptr] == LIGHT_FLOOR)
+	    && !(cave_light[d_ptr] & LIGHT_pl))
+	  light_room(i, j);
+      }
+  }
+  return recalced;
+}
+@
+
+
+1.11
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@a10 2
+#include "palm.h"
+//#include "kMoriaRsc.h"
+a11 1
+#include "lock-externs.h"
+@
+
+
+1.10
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d1 10
+a10 27
+/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * Copyright (C) 2000,2001 Bridget Spitznagel, James E. Wilson,      *
+ *  Robert A. Koeneke.                                               *
+ *                                                                   *
+ * This program is derived from Umoria 5.5.2.  Umoria is:            *
+ *  "Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+ *   This software may be copied and distributed for educational,    *
+ *   research, and not for profit purposes provided that this        *
+ *   copyright and statement are included in all such copies."       *
+ *                                                                   *
+ * kMoria is free software; you can redistribute it and/or           *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+@
+
+
+1.9
+log
+@fixed same-sector-new-level screen-redraw bug
+@
+text
+@d3 2
+a4 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d28 1
+a28 1
+#include <Pilot.h>
+@
+
+
+1.8
+log
+@tweaked notice
+@
+text
+@d77 1
+a77 1
+void check_view()
+d79 2
+a80 1
+  Short i, j, c_ptr, d_ptr;;
+d84 1
+a84 1
+  if (get_panel(char_row, char_col, false))
+d86 2
+d105 1
+@
+
+
+1.7
+log
+@added 'inscribe', rearranged menus
+@
+text
+@d5 5
+a9 2
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d11 1
+a11 1
+ * This program is free software; you can redistribute it and/or     *
+@
+
+
+1.6
+log
+@bug fixes, 'drop all?' for multiple items
+@
+text
+@d33 2
+a34 1
+// This should be handled in a form!
+d37 1
+a37 1
+  Short item_val, j;
+d40 6
+a45 18
+  if (inven_ctr > 0 || equip_ctr > 0) {
+    if (get_item(&item_val, "Which one? ", 0, INVEN_ARRAY_SIZE, CNIL, CNIL)) {
+      objdes(tmp_str, &inventory[item_val], true);
+      StrPrintF(out_val, "Inscribing %s", tmp_str);
+      message(out_val);
+      if (inventory[item_val].inscrip[0] != '\0')
+	StrPrintF(out_val, "Replace %s New inscription:",
+		  inventory[item_val].inscrip);
+      else
+	StrCopy(out_val, "Inscription: ");
+      j = 78 - StrLen(tmp_str);
+      if (j > 12)
+	j = 12;
+      ;      //      prt(out_val, 0, 0); // xxx not implemented yet
+      if(0)//      if (get_string(out_val, 0, (Short) StrLen(out_val), j)) // xxx not implemented yet
+	inscribe(item_val, out_val);
+    }
+  }
+d47 7
+a53 1
+    message("You are not carrying anything to inscribe.");
+d55 1
+d64 7
+a70 6
+void inscribe(Short iptr, Char *str)
+{
+  if (StrLen(str) >= INSCRIP_SIZE)
+    str[INSCRIP_SIZE-1] = '\0'; // truncate!
+  DmStrCopy(inventory, iptr*sizeof(inven_type)+I_inscrip, str);
+}
+@
+
+
+1.5
+log
+@fixed some bugs: messages from actions that make you exit from
+inventory/equipment should now occur on time (instead of the following
+turn); level advancement works; blindness and cure blindness both work
+on time.  speeded up the redraw-whole-screen thing (now have a recalc,
+refresh, and faster recalc_refresh combo.  code needs cleaning up now..)
+@
+text
+@d83 2
+a84 3
+  if (get_panel(char_row, char_col, false)) // so does this, like, work?? xxxx
+    recalc_screen();//    prt_map(); // xxx not implemented yet
+    //    refresh(true);//    prt_map(); // xxx not implemented yet
+@
+
+
+1.4
+log
+@adding GPL comment
+@
+text
+@d85 1
+a85 1
+    //    refresh();//    prt_map(); // xxx not implemented yet
+@
+
+
+1.3
+log
+@squash some creatures bugs
+@
+text
+@d1 23
+@
+
+
+1.2
+log
+@trying to fix the panel thing, still a problem.  but you can see yourself.
+@
+text
+@d61 1
+a62 1
+    recalc_screen();//    prt_map(); // xxx not implemented yet
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d60 3
+a62 2
+  if(0)//  if (get_panel(char_row, char_col, false)) // xxx not implemented yet
+    ;//    prt_map(); // xxx not implemented yet
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

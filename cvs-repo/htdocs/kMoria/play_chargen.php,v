@@ -1,0 +1,434 @@
+head	1.5;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.3
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2006.08.13.05.47.23;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2006.08.13.04.47.25;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2006.08.08.03.49.45;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2002.03.30.00.18.21;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.50;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.50;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>How to begin playing kMoria</title>
+
+<style type="text/css" media="screen">@@import "../3col.css";</style>
+
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>kMoria character generation</h1>
+  <p><i>pretty straightforward really</i></p>
+</div>
+
+<div class="content">
+    <h2>Choose your race</h2>
+
+    <p><img alt="choose race" src="../images/kMoria/cg1.gif"></p>
+
+    <p> The first step is to select your.. er.. species, I suppose.
+     You have a choice of human, half-elf, elf, halfling, gnome,
+    dwarf, half-orc, and half-troll.</p>
+
+    <p> Your species determines the professions to which you may be
+    admitted and influences your general appearance, abilities, and
+    physical characteristics.</p>
+
+</div>
+
+<div class="content">
+    <h2>Choose your sex</h2>
+
+    <p><img alt="choose sex" src="../images/kMoria/cg2.gif"> </p>
+
+    <p> Next you must select a gender (fear not, this will only affect
+    your character's height and weight, and perhaps your own state of
+    mind).  Your choices are the traditional male and female. </p>
+
+    <p> (You can also tap Quit to return to the first screen.) </p>
+
+
+</div>
+
+<div class="content">
+    <h2>Accept this roll?</h2>
+
+    <p> <img alt="reroll" src="../images/kMoria/cg3a.gif"></p>
+
+    <p> kMoria will roll a bunch of imaginary dice and present you
+    with this rather cluttered screen.</p>
+    
+    <p> At the top of the screen, you can now see your social class;
+    age, height, and weight; stats; attack/defense modifiers and base
+    armor class.  You will chiefly be interested in the stats.</p>
+
+    <p> At the bottom of the screen, you can see a brief description
+    of your character.</p>
+
+    <p> You may either keep this set of numbers, or re-roll in the hopes
+    of higher stats (or a more amusing description).</p>
+
+</div>
+
+<div class="content">
+    <h2>Now pick a class</h2>
+    <p>
+    <img alt="reroll again" src="../images/kMoria/cg3b.gif">
+      
+    <img alt="accept roll" src="../images/kMoria/cg3c.gif">
+    
+    <img alt="pick class" src="../images/kMoria/cg4.gif">
+    </p>
+
+    <p> At the top of the screen you see the numbers which you
+    have just confirmed.  At the bottom you have a choice of career; your
+    character class, when chosen, will modify your stats slightly
+    and will determine your initial ability in a set of skills
+    which you can see in the next screen. </p>
+
+    <p> Depending on your species, you can select from some or all of:
+    warrior, mage, priest, rogue, ranger, paladin. </p>
+
+    <p> (You can also tap Quit to return to the first screen.) </p>
+    
+</div>
+
+<div class="content">
+    <h2>Your Character</h2>
+
+    <p> <img alt="your character" src="../images/kMoria/cg5a.gif"> </p>
+
+    <p> At the top of the screen you see the set of numbers from
+    the previous
+    screen, slightly modified by your choice of profession. </p> 
+
+    <p> At the bottom of the screen, you see some additional information.
+    Tap in this area to switch between your vital statistics and
+    your skills. </p> 
+    
+    <p> <img alt="see skills" src="../images/kMoria/cg5b.gif"> </p> 
+    
+    <p> Skills each have a value in this range: very bad, bad,
+    poor, fair, good, very good, excellent, and superb. </p> 
+
+    <p> Your vital statistics include information that will be visible in
+    the status bar during game play, in addition to: the amount of
+    experience required to reach the next level, and your maximum
+    mana points. </p> 
+
+    <p> (You can also tap Quit to return to the first screen.) </p> 
+    
+    <p> <img alt="write name" src="../images/kMoria/cg5c.gif"> </p> 
+    
+    <p> On the top part of the screen, you may notice that you can
+give your character a name.  (If you do not, your PalmOS user name
+will be used by default.  I know you can be more creative than that.) </p> 
+
+    <p> The creation process is complete as soon as you tap Done.
+    Go find out <a href="play.php">how to play</a>... </p> 
+
+    <p> (You can also tap Quit to throw away this character and return to the first screen.) </p> 
+
+</div>
+
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+</body>
+</html>
+@
+
+
+1.4
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+@
+
+
+1.3
+log
+@commit everything before massive style change
+@
+text
+@d1 3
+a3 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+d7 4
+a10 4
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+d14 105
+a118 155
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">kMoria: instructions for character generation</h3>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      <!-- -->
+      <tr><td class="sidehead">
+	kMoria Stuff </td></tr>
+      <tr><td class="side"> <a href="index.php">
+	  What is kMoria?</a> </td></tr>
+      <tr><td class="side"> <a href="whatsnew.php">
+	  What's new</a> </td></tr>
+      <tr><td class="side"> <a href="download.php">
+	  Download kMoria</a> </td></tr>
+      <tr><td class="side">
+	  <a href="play.php">How to play</a>
+	<br>- <b>character creation</b>
+	<br>- <a href="play_intro.php">brief intro</a>
+       </td></tr>
+      <tr><td class="side"> <a href="source.php">
+	  How to get source</a> </td></tr>
+      <?php include ("../hostedby.txt") ?>
+    </table></td>
+
+    <!-- main area table -->
+    <td class="body" valign=top>
+    <!-- ----- this is the interesting part of the page ----- -->
+
+    <h4> Character Generation </h4>
+    <P> Before you can play kMoria, you must create your character.
+The game will lead you through the process step by step.
+    
+    <P> (When you're done reading this, go back to <a
+href="play.php">how to play</a> kMoria.)
+</td></tr></table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr><td class="side">&nbsp</td><td class="sidehead">&nbsp</td></tr> <!-- -->
+  <tr>
+    <td class="side">
+	<img alt="choose race" src="../images/kMoria/cg1.gif">
+    </td>
+    <td class="side">
+    <h4>Choose your race</h4>
+	<P> The first step is to select your.. er.. species, I suppose
+    (since it doesn't seem like half-elves, half-orcs, and
+    half-trolls are fertile).
+    
+	<P> You have a choice of human, half-elf, elf, halfling, gnome,
+	dwarf, half-orc, and half-troll.
+	<P> Your species determines the professions to which you may be
+	admitted and influences your general appearance, abilities, and
+	physical characteristics.
+    </td>
+  </tr>
+  <tr><td class="side">&nbsp</td><td class="sidehead">&nbsp</td></tr> <!-- -->
+  <tr>
+    <td class="side">
+	<img alt="choose sex" src="../images/kMoria/cg2.gif">
+    </td>
+    <td class="side">
+	<h4>Choose your sex</h4>
+	<P> Next you must select a gender (fear not, this will only affect
+	your character's height and weight, and perhaps your own state of
+	mind).  Your choices are the traditional male and female.
+	<P> (You can also tap Quit to return to the first screen.)
+    </td>
+  </tr>
+  <tr><td class="side">&nbsp</td><td class="sidehead">&nbsp</td></tr> <!-- -->
+  <tr>
+    <td class="side">
+	<img alt="reroll" src="../images/kMoria/cg3a.gif">
+    </td>
+    <td class="side">
+	<h4>Accept this roll?</h4>
+	<P> kMoria will roll a bunch of imaginary dice and present you
+	with this rather cluttered screen.
+	
+	<P> At the top of the screen, you can now see your social class;
+	age, height, and weight; stats; attack/defense modifiers and base
+	armor class.  You will chiefly be interested in the stats.
+	<P> At the bottom of the screen, you can see a brief description
+	of your character.
+	<P> You may either keep this set of numbers, or re-roll in the hopes
+	of higher stats (or a more amusing description).
+    </td>
+  </tr>
+  <tr><td class="side">
+  	<img alt="reroll again" src="../images/kMoria/cg3b.gif">
+      </td><td class="side">
+	<img alt="accept roll" src="../images/kMoria/cg3c.gif">
+      </td><tr>
+  <tr><td class="side">&nbsp</td><td class="sidehead">&nbsp</td></tr> <!-- -->
+  <tr>
+    <td class="side">
+	<img alt="pick class" src="../images/kMoria/cg4.gif">
+    </td>
+    <td class="side">
+	<h4>Now pick a class</h4>
+	<P> At the top of the screen you see the numbers which you
+	have just confirmed.  At the bottom you have a choice of career; your
+	character class, when chosen, will modify your stats slightly
+	and will determine your initial ability in a set of skills
+	which you can see in the next screen.
+	<P> Depending on your species, you can select from some or all of:
+	warrior, mage, priest, rogue, ranger, paladin.
+	<P> (You can also tap Quit to return to the first screen.)
+    </td>
+  </tr>
+  <tr><td class="side">&nbsp</td><td class="sidehead">&nbsp</td></tr> <!-- -->
+  <tr>
+    <td class="side">
+	<img alt="your character" src="../images/kMoria/cg5a.gif">
+    </td>
+    <td class="side">
+	<h4>Your Character</h4>
+	<P> At the top of the screen you see the set of numbers from
+	the previous
+	screen, slightly modified by your choice of profession.
+	<P> At the bottom of the screen, you see some additional information.
+	Tap in this area to switch between your vital statistics and
+	your skills.
+    </td>
+  </tr>
+  <tr>
+    <td class="side">
+	<img alt="see skills" src="../images/kMoria/cg5b.gif">
+    </td>
+    <td class="side">
+	<P> Skills each have a value in this range: very bad, bad,
+	poor, fair, good, very good, excellent, and superb.
+	<P> Your vital statistics include information that will be visible in
+	the status bar during game play, in addition to: the amount of
+	experience required to reach the next level, and your maximum
+	mana points.
+	<P> (You can also tap Quit to return to the first screen.)
+    </td>
+  </tr>
+  <tr>
+    <td class="side">
+    <img alt="write name" src="../images/kMoria/cg5c.gif">
+    </td>
+    <td class="side">
+    <P> On the top part of the screen, you may notice that you can
+d120 18
+a137 11
+will be used by default.  I know you can be more creative than that.)
+    <P> The creation process is complete as soon as you tap Done.
+    <a href="play.php">What's next?</a>
+    <P> (You can also tap Quit to throw away this character and return to the first screen.)
+  </tr>
+</table>
+      <!-- ----- end of the interesting part of the page ----- -->
+
+<!-- footer table -->
+<?php include ("../footer.txt") ?>
+<!-- end footer table -->
+a138 1
+<address>i0lanthe@@users.sourceforge.net</address>
+a139 1
+Last modified: Wed Jan  9 17:24:28 EST 2002
+d141 1
+a141 1
+<?php $hitsfile = "play_chargen.hits"; include ("../counter.php")?>
+@
+
+
+1.2
+log
+@checkpointing web before kMoria 0.15 update
+@
+text
+@d7 2
+d38 4
+a41 1
+	  <a href="play.php">How to play</a></td></tr>
+d44 1
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d14 1
+a14 1
+    <h3>kMoria: instructions for character generation</h3>
+d176 1
+a176 1
+Last modified: Sun Dec  3 20:45:02 EST 2000
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

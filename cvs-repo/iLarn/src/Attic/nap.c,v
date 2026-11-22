@@ -1,0 +1,94 @@
+head	1.2;
+access;
+symbols
+	start:1.1.1.1 vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.2
+date	2001.05.01.04.41.33;	author i0lanthe;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.34.53;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.34.53;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@get iLarn to compile with sdk 3.5 so's I can add color...
+@
+text
+@/*********************************************************************
+ * iLarn - Ularn adapted for the PalmPilot.                          *
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+ * iLarn is derived from Ularn by Phil Cordier                       *
+ * which in turn was based on Larn by Noah Morgan                    *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+
+//#include "any headers i might need"
+#include "Pilot.h"
+
+/*
+ *	routine to take a nap for n milliseconds  - not very exciting.
+ */
+void nap(Short x)
+{
+  Short delay = SysTicksPerSecond(); /* we want ticks * n / 1000 */
+  if (x <= 0) return;
+  /* also, "make sure the output buffer is flushed" */
+  if (x < 1000) {
+    delay *= x;
+    delay /= 1000;
+  } else {
+    x /= 1000; /* this will truncate but who cares */
+    delay *= x;
+  }
+  SysTaskDelay(delay);
+}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@
+
+
+1.1.1.1
+log
+@iLarn - Ularn port for PalmOS - initial code checkin
+@
+text
+@@

@@ -1,0 +1,64 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.05.31.00.22.35;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.35;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<?php
+/* PHP RANDOM QUOTES (03/2000)
+by Mathias Daval (cyberlp@@cybercable.fr)
+This script allows you to display quotes at random.
+Instructions: 
+1. Insert this file wherever you want to display your banners:
+      <?php require('quotes_eng.inc'); ?>
+2. Change the path to "quotes.dat" if necessary.
+3. Put your quotes in "quotes.dat": 
+          quote1
+          quote2
+
+4. This is it! */
+
+srand((double)microtime()*1000000);
+if (!isset($quotefile)) {
+  $quotefile="quotes.dat";
+}
+$quotes=file($quotefile);
+$select=rand(0, count($quotes)-1);
+echo "$quotes[$select]";
+
+?>@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

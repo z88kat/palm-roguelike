@@ -1,0 +1,593 @@
+head	1.1;
+access;
+symbols
+	Release-2002_03_29:1.1
+	Release-2002_01_12:1.1
+	Release-2002_01_02:1.1
+	Release-2002_01_01:1.1
+	Release-2001_12_19:1.1
+	Release-2001_08_04:1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.07.04.20.01.57;	author uid28407;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@two-way conversion - seems to work ok on linux
+@
+text
+@/*
+ * cryptic converter, (c) 2001 Bridget Spitznagel
+ * Reads in a kMoriaSaveDB.pdb type of file, and writes a moria.save type of
+ * file (for umoria 5.5.2).
+ * Tested on one Linux machine.  It works for me.  Your mileage may vary.
+ *
+ * note: this does not print out the history strings yet: just deadbeef.
+ *       it also does not set the total_winner bit in the flags_1.
+ *       these are things that can and should be fixed.
+ * another note: it does not write your preferences (options) because these
+ *               are not stored in kMoriaSaveDB.pdb.  can't fix.
+ * third note: kMoriaSaveDB does not store the random seed, so, the
+ *             colors of potions and stuff will appear different.  can't fix.
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+#include "defs.h"
+#include "xor.h"
+#include "swap.h"
+#include "rec.h"
+extern int Noisy; // make xor.c be noisy
+
+void get_player_leftovers(FILE *fin);
+
+
+// We will write:
+// version info; recall info; some flags; ...
+void write_version_info(FILE *fout)
+{
+  // We are writing for (major.minor.patchlevel) 5.5.2.
+  unsigned char uc;
+  uc = 5;  fwrite(&uc, 1, 1, fout);
+  uc = 5;  fwrite(&uc, 1, 1, fout);
+  uc = 2;  fwrite(&uc, 1, 1, fout);
+  // now we write a byte with which umoria expects all else to be xor'ed:
+  // it will make debugging o-so-much easier if this remains "0" for a while.
+  uc = 0;
+  set_xor_byte(uc);
+  fwrite(&uc, 1, 1, fout);  
+  // Ok done with the version header!
+}
+#define MAX_CREATURES 279
+void write_recall(FILE *fout, FILE *fin)
+{
+  int j;
+  unsigned short i, stop_here = 0xffff;
+  // for each creature in MAX_CREATURES,
+  // if we have any info about them,
+  // (if anything OTHER than wake/ignore is non-zero)
+  // write the uint of its index in this for-loop,
+  // then write:  (cmove, spells), (kills, deaths, cdefense),
+  // (wake, ignore), (rattacks[]).
+  // finally, write a uint with all bits on, to signal the end.
+  // ...
+  fseek(fin, offsets[O_RECALL], SEEK_SET);
+/*  #ifdef NOISY */
+/*    printf("offset %ld\n", offsets[O_RECALL]); */
+/*  #endif */
+  for (i = 0 ; i < MAX_CREATURES ; i++) {
+    unsigned long ul[2];
+    unsigned short us[3];
+    unsigned char uc[6];
+    // What we are reading from:
+    // An array of recall_type:  2ulong, 3ushort, 2uchar, 4uchar.
+    // Except for those 2uchar, we care about the others being nonzero.
+    for (j=0 ; j<2 ; j++)  ul[j] = in_long(fin);
+    for (j=0 ; j<3 ; j++)  us[j] = in_word(fin);
+    fread(uc, 1, 6, fin); // hm hope that works.
+    // Ok now decide whether to write
+    if (ul[0] || ul[1] || us[0] || us[1] || us[2] || /*uc0,uc1 uninteresting*/
+	uc[2] || uc[3] || uc[4] || uc[5]) {
+#ifdef VERYNOISY
+      printf("printing monster %d\n", i);
+#endif
+      xwrite_sh(fout, &i, 1);
+      xwrite_lo(fout, ul, 2);
+      xwrite_sh(fout, us, 3);
+      xwrite_by(fout, uc, 6);
+    } else {
+#ifdef VERYNOISY
+      printf("SKIPPING monster %d\n", i);
+#endif
+    }
+  }
+  xwrite_sh(fout, &stop_here, 1);
+}
+
+void write_flags_1(FILE *fout, FILE *fin)
+{
+  // Write the following flags:
+  // find_cut, find_examine, find_prself, find_bound,
+  // prompt_carry_flag, rogue_like_commands, show_weight_flag,
+  // highlight_seams, find_ignore_doors, sound_beep_flag, display_counts.
+  // in fact for all these flags, we can say nothing useful, because they
+  // are all stored in kMoria's Preferences!
+  // The sign bit is 'death' - but kMoria does not write saves for dead guys.
+  // The next-to-sign bit is total_winner - this, we DO have in save file.
+  long flags_1 = 0;
+  // I think I will turn on rogue-like commands:
+  flags_1 |= 0x20;
+  // we can find total_winner in my_save_struct.
+  // which is buried in REC_PY.
+  // skip misc, stats, flags, player_hp, spell_order; then
+  // skip 8dword + 6word, and read an unsigned char (== a Boolean).
+  if (0) {
+    flags_1 |= 0x40000000L;
+#ifdef NOISY
+    printf("(congratulations, winner)\n");
+#endif
+  }
+  xwrite_lo(fout, &flags_1, 1);
+}
+#define PLAYER_NAME_SIZE 27
+// Called by write_py_etc:
+void write_player_misc(FILE *fout, FILE *fin)
+{
+  unsigned char name[PLAYER_NAME_SIZE];
+  // we are seeked within a record, thanks to caller.  at pymisc.
+  // need to write: everything, in the same order as our inputfile.
+  fread(name, 1, PLAYER_NAME_SIZE, fin);
+  name[PLAYER_NAME_SIZE-1] = '\0';
+#ifdef NOISY
+  printf("name of character is: '%s'\n", name);
+#endif
+  xwrite_str(fout, name, PLAYER_NAME_SIZE);
+  // write one boolean (unsigned char)
+/*    Noisy = 1; */
+  xcopy_by(fout, fin, 1);
+/*    Noisy = 0; */
+  // write 3 (signed) longs
+  xcopy_lo(fout, fin, 3);
+  // write 24 shorts (first 6 are unsigned)
+  xcopy_sh(fout, fin, 24);
+  // write 4 unsigned chars, and then 4 shorts.
+  xcopy_by(fout, fin, 4);
+  xcopy_sh(fout, fin, 4);
+  // whew, we are done.
+}
+// Called by write_py_etc:
+void write_player_hist(FILE *fout, FILE *fin)
+{
+  // we need to seek to history in fin.
+  // then, write four 60-character strings to fout.
+  char history[4][60];
+  int i;
+  sprintf(history[0], "deadbeef");
+  sprintf(history[1], "deadbeef");
+  sprintf(history[2], "deadbeef");
+  sprintf(history[3], "deadbeef");
+  for (i = 0 ; i < 4 ; i++)
+    xwrite_str(fout, history[i], 60);
+}
+// Called by write_py_etc:
+void write_player_stats(FILE *fout, FILE *fin)
+{
+  // we are seeked within a record, thanks to caller.  at pystats.
+  // need to write: everything, in the same order as our inputfile.
+  xcopy_by(fout, fin, 12);
+  xcopy_sh(fout, fin, 6);
+  xcopy_by(fout, fin, 6);
+}
+
+// Called by write_py_etc:
+void write_player_flags(FILE *fout, FILE *fin)
+{
+  xcopy_lo(fout, fin, 1);
+  xcopy_sh(fout, fin, 24);
+  xcopy_by(fout, fin, 19);
+}
+
+static long player_hp_position; // we'll return to this point in REC_PY later!
+
+/*
+struct flags {
+  long a;
+  short b[24];
+  unsigned char c[18];
+  char d;
+};
+*/
+void write_py_etc(FILE *fout, FILE *fin)
+{
+  long position;
+  char trash;
+  fseek(fin, offsets[O_PY], SEEK_SET);
+  write_player_misc(fout, fin);
+  position = ftell(fin);
+  write_player_hist(fout, fin);
+  fseek(fin, position, SEEK_SET);
+  write_player_stats(fout, fin);
+  write_player_flags(fout, fin);
+  // now we must make up for its 'odd' size:
+  fread(&trash, 1, 1, fin);
+  //
+  // ok... now we are at player_hp (in kMoriaSaveDB).
+  // but what we need to write (in moria.save) is different random cruft.
+  //
+  // Let's save our file position so we can jump back later!!!
+  player_hp_position = ftell(fin);
+  get_player_leftovers(fin);
+}
+
+// where do these live in the DB:
+// missile_ctr, turn, inven_ctr
+// They are all higgledy-piggledy in my_save_struct ...
+// I should read whole struct in, then worry about endianness AFTER.
+
+
+
+#define MAX_PLAYER_LEVEL 40
+void write_player_hp(FILE *fout, FILE *fin)
+{
+  // We saved this position in REC_PY while we were in write_py_etc()
+  fseek(fin, player_hp_position, SEEK_SET);
+  // write MAX_PL_LEV shorts.
+  xcopy_sh(fout, fin, MAX_PLAYER_LEVEL);
+}
+#define MAX_SPELLS 31
+void write_spell_order(FILE *fout, FILE *fin)
+{
+  // We saved this position in REC_PY while we were in write_py_etc()
+  long position = player_hp_position;
+  position += sizeof(short) * MAX_PLAYER_LEVEL; // skip over player_hp.
+  fseek(fin, position, SEEK_SET);
+  // write MAX_SPELLS+1 uchars.
+/*    Noisy = 1; */
+  xcopy_by(fout, fin, MAX_SPELLS+1);
+/*    Noisy = 0; */
+}
+typedef struct {
+  unsigned long ul[8];
+  unsigned short us[6];
+  unsigned char uc[2];
+  char died_from[25];
+} m_save;
+typedef struct {
+  short us[8];
+} f_save;
+m_save my_save;
+f_save floor_save;
+void get_player_leftovers(FILE *fin)
+{
+  int i;
+  long position = player_hp_position;
+  short stmp;
+  unsigned long ltmp;
+  position += sizeof(short) * MAX_PLAYER_LEVEL; // skip over player_hp.
+  position += sizeof(char) * (MAX_SPELLS+1); // skip over spell_order
+  fseek(fin, position, SEEK_SET);
+  for (i=0 ; i<8 ; i++) {
+    ltmp = in_long(fin);
+    my_save.ul[i] = ltmp;
+  }
+  printf("\n");
+  for (i=0 ; i<6 ; i++) {
+    stmp = in_word(fin);
+    my_save.us[i] = stmp;
+  }
+  for (i=0 ; i<2 ; i++)
+    fread(&my_save.uc[i], 1, 1, fin);
+  fread(my_save.died_from, 1, 25, fin);
+  position = player_hp_position;
+  position += sizeof(short) * MAX_PLAYER_LEVEL; // skip over player_hp.
+  position += sizeof(char) * (MAX_SPELLS+1); // skip over spell_order
+  position += sizeof(my_save);
+  fseek(fin, position, SEEK_SET);
+  for (i=0 ; i<8 ; i++)
+    floor_save.us[i] = in_word(fin);
+}
+
+
+#define INVEN_ARRAY_SIZE 34
+#define INVEN_WIELD 22
+#define INVEN_TYPE__SIZE 40
+// used by write_inventory and write_store:
+void write_invy_item(FILE *fout, FILE *fin)
+{
+  int j;
+  short tmp;
+  char inscript[13];
+  // write out the inventory item
+  xcopy_sh(fout, fin, 1); // index
+  xcopy_by(fout, fin, 1); // name2
+  fread(inscript, 1, 13, fin);
+  xwrite_str(fout, inscript, 13);
+  xcopy_lo(fout, fin, 1); // flags
+  xcopy_by(fout, fin, 2); // t..
+  xcopy_sh(fout, fin, 1);
+  xcopy_lo(fout, fin, 1); // cost
+  xcopy_by(fout, fin, 2); // sv,#
+  xcopy_sh(fout, fin, 1); // w
+  fread(inscript, 1, 4, fin);
+  // note: tohit, todam, ac, toac must be expanded back into shorts.
+  for (j=0 ; j<4 ; j++) {
+    tmp = inscript[j];
+    xwrite_sh(fout, &tmp, 1);
+  }
+  xcopy_by(fout, fin, 4); // dmg(2),lv,id
+}
+void skip_invy_item(FILE *fin)
+{
+  long position = ftell(fin);
+  position += INVEN_TYPE__SIZE;
+  fseek(fin, position, SEEK_SET);
+}
+void write_inventory(FILE *fout, FILE *fin, int inven_ctr)
+{
+  int i;
+  long position;
+  fseek(fin, offsets[O_INVENTORY], SEEK_SET);
+  position = ftell(fin);
+/*  #ifdef NOISY */
+/*    printf("inv: inven_ctr is %d\n", inven_ctr); */
+/*  #endif */
+  for (i = 0 ; i < INVEN_ARRAY_SIZE ; i++) {
+    if ((i >= inven_ctr) && (i < INVEN_WIELD)) {
+      i = INVEN_WIELD; // skip blanks in the middle.
+      fseek(fin, position + INVEN_WIELD * INVEN_TYPE__SIZE, SEEK_SET);
+    }
+    write_invy_item(fout, fin);
+  }
+}
+#define OBJECT_IDENT_SIZE 448
+void write_objident(FILE *fout, FILE *fin)
+{
+  fseek(fin, offsets[O_OBJIDENT], SEEK_SET);
+  xcopy_by(fout, fin, OBJECT_IDENT_SIZE);
+}
+#define MAX_SAVE_MSG 22
+void write_old_msgs(FILE *fout, FILE *fin)
+{
+  char buf[80];
+  int i;
+  short lastm = 0;
+  sprintf(buf, "deadbeef");
+  xwrite_sh(fout, &lastm, 1);
+  for (i=0 ; i<MAX_SAVE_MSG ; i++)
+    xwrite_str(fout, buf, 80);
+}
+void write_inventory_thru_php(FILE *fout, FILE *fin)
+{
+  short inven_ctr = my_save.us[1];
+  unsigned short us = 0;
+  // pick up where py_etc left off.  after reading my_save and floor_save.
+  xwrite_sh(fout, &my_save.us[0], 1); // missile ctr
+  xwrite_lo(fout, &my_save.ul[6], 1); // turn
+  xwrite_sh(fout, &inven_ctr, 1);
+/*  #ifdef NOISY */
+/*    printf("inv: .save position is %ld\n", ftell(fout)); */
+/*  #endif */
+  write_inventory(fout, fin, inven_ctr);
+/*  #ifdef NOISY */
+/*    printf("post inv: .save position is %ld\n", ftell(fout)); */
+/*  #endif */
+  xwrite_sh(fout, &my_save.us[2], 2); // inven_weight, equip_ctr
+  xwrite_lo(fout, &my_save.ul[0], 3); // spell{_learned, _worked, _forgotten}
+  write_spell_order(fout, fin);
+  write_objident(fout, fin);
+  // there's a bit of a problem here: I always skip randes_seed.
+  xwrite_lo(fout, &my_save.ul[3], 1); // copy town_seed into randes_seed.
+  xwrite_lo(fout, &my_save.ul[3], 1); // town_seed proper.
+  write_old_msgs(fout, fin);
+  // panic save, total winner, noscore...
+  us = 0; // panic save == false
+  xwrite_sh(fout, &us, 1);
+  us = my_save.uc[0]; // total winner
+  xwrite_sh(fout, &us, 1);
+  us = 0; // noscore == false  
+  xwrite_sh(fout, &us, 1);
+  write_player_hp(fout, fin);
+}
+
+#define MAX_STORES 6
+#define STORE_TYPE__SIZE 12
+void write_stores(FILE *fout, FILE *fin)
+{
+  // For each store,
+  //   print the store struct,
+  //   and then print its items
+  int i, j;
+  unsigned char inv_ctr;
+  for (i=0 ; i<MAX_STORES ; i++) {
+    // goto store
+    fseek(fin, offsets[O_STORES] + i * STORE_TYPE__SIZE, SEEK_SET);
+    xcopy_lo(fout, fin, 1);
+    xcopy_sh(fout, fin, 1);
+    xcopy_by(fout, fin, 1);
+    fread(&inv_ctr, 1, 1, fin);
+    xwrite_by(fout, &inv_ctr, 1);
+/*  #ifdef NOISY */
+/*      printf("store %d at %ld has %d (%x) inv\n",  */
+/*  	   i, offsets[O_STORES] + i * STORE_TYPE__SIZE, */
+/*  	   inv_ctr, inv_ctr); */
+/*  #endif */
+    xcopy_sh(fout, fin, 2);
+    // goto store inventory
+    fseek(fin, offsets[O_STOREINV_1 + i], SEEK_SET);
+    for (j=0 ; j<inv_ctr ; j++) {
+      xcopy_lo(fout, fin, 1); // scost
+      write_invy_item(fout, fin); // will this work?  too tired to think.
+    }
+  }
+}
+
+void write_character_tail(FILE *fout, FILE *fin)
+{
+  xwrite_lo(fout, &my_save.ul[4], 1); // save timestamp
+  xwrite_str(fout, my_save.died_from, 25);
+  xwrite_lo(fout, &my_save.ul[7], 1); // max points
+  xwrite_lo(fout, &my_save.ul[5], 1); // birth timestamp
+  // Then we are done with CHARACTER but still need DUNGEON
+}
+
+void write_character(FILE *fout, FILE *fin)
+{
+  write_recall(fout, fin);
+  write_flags_1(fout, fin);
+  write_py_etc(fout, fin);
+  // now it gets a bit more scrambled
+  write_inventory_thru_php(fout, fin);
+  write_stores(fout, fin);
+  write_character_tail(fout, fin);
+  // DONE with character.... still need dungeon ....
+}
+
+void write_floor(FILE *fout, FILE *fin)
+{
+  xwrite_sh(fout, floor_save.us, 8); // the whole thing
+}
+#define MAX_HEIGHT 66
+#define MAX_WIDTH 198
+// Hmmmm I see a potential for problems here if these are not #defined
+// the same in your target umoria.  fortunately these seem to be default still.
+// Actually, perhaps max_panel_rows and max_panel_cols will be unhappy?
+void write_packed_cptr_tptr(FILE *fout, FILE *fin)
+{
+  unsigned char i, j, o_index, xptr;
+  for (o_index = O_CPTR ; o_index <= O_TPTR ; o_index++) {
+    fseek(fin, offsets[o_index], SEEK_SET);
+    for (i=0 ; i<MAX_HEIGHT ; i++) {
+      for (j=0 ; j<MAX_WIDTH ; j++) {
+	fread(&xptr, 1, 1, fin); // k == i * MAX_WIDTH + j
+	if (xptr!=0) {
+	  xwrite_by(fout, &i, 1);
+	  xwrite_by(fout, &j, 1);
+	  xwrite_by(fout, &xptr, 1);
+	}
+      }
+    }
+    xptr = 0xff; // mark end
+    xwrite_by(fout, &xptr, 1);
+  }
+}
+void write_packed_flval(FILE *fout, FILE *fin)
+{
+  // This one is run-length encoded.
+  unsigned char lightfval, old_lightfval=0, fval, light, run=0;
+  long position_f, position_l;
+  int k;
+
+  // what do we do here:
+  // walk through the dungeon, writing fval | light stuff.
+  // Fortunately, my 'light' byte has the bits in the same order as the
+  // save file's light byte (tl, pl, fm, lr).
+  // Light gets to be the high four and fval the low four.
+  position_f = offsets[O_FVAL];
+  position_l = offsets[O_LIGHT];
+  for (k=0 ; k<MAX_HEIGHT*MAX_WIDTH ; k++) {
+    // get fval
+    fseek(fin, position_f, SEEK_SET);
+    fread(&fval, 1, 1, fin);
+    position_f = ftell(fin);
+    // get light
+    fseek(fin, position_l, SEEK_SET);
+    fread(&light, 1, 1, fin);
+    position_l = ftell(fin);
+    // combine
+    lightfval = (((light << 4) & 0xf0) | (fval & 0x0f));
+#ifdef VERYNOISY
+    {
+      if (light > 1)
+	printf("light %x fval %x lightfval %x\n", light, fval, lightfval);
+    }
+#endif
+    // if same as previous, skip
+    if ((lightfval == old_lightfval) && (run < 255)) {
+      run++;
+      continue;
+    }
+    // On the first pass, run==0 and old_lf==0 and we will write both out
+    // (since the read-in lf will be nonzero).  After that, all is normal.
+    xwrite_by(fout, &run, 1);
+    run = 1; // we've read one 'lightfval' just now, so 'run' so far is 1
+    xwrite_by(fout, &old_lightfval, 1);
+    old_lightfval = lightfval;
+  }
+  // we must output the last one at the end
+  xwrite_by(fout, &run, 1);
+  xwrite_by(fout, &old_lightfval, 1);
+  // done!  I think.
+}
+void write_tlist(FILE *fout, FILE *fin)
+{
+  int i;
+  short tcptr = my_save.us[4];
+  // write tcptr
+/*  #ifdef NOISY */
+/*    printf("tcptr = %d\n", tcptr); */
+/*  #endif */
+  xwrite_sh(fout, &tcptr, 1);
+  fseek(fin, offsets[O_TLIST], SEEK_SET);
+  // write each item in t_list ... this is yet-another inven type.
+  // SKIP the first one, though: it's just 0
+  skip_invy_item(fin);
+  for (i=1 ; i<tcptr ; i++) {
+    write_invy_item(fout, fin);
+  }
+}
+void write_mlist(FILE *fout, FILE *fin)
+{
+  int i;
+  short mfptr = my_save.us[5];
+  long monsize = sizeof(short)*4 + sizeof(unsigned char)*6;
+  // write mfptr
+/*  #ifdef NOISY */
+/*    printf("mfptr = %d\n", mfptr); */
+/*  #endif */
+  xwrite_sh(fout, &mfptr, 1);
+  fseek(fin, offsets[O_MLIST] + 2*monsize, SEEK_SET);
+  // write each monster in m_list  (skip the first two!!)
+  for (i=2 ; i<mfptr ; i++) {
+    xcopy_sh(fout, fin, 4);
+    xcopy_by(fout, fin, 6);
+  }
+}
+
+void write_dungeon(FILE *fout, FILE *fin)
+{
+  write_floor(fout, fin);
+  write_packed_cptr_tptr(fout, fin);
+#ifdef NOISY
+  printf("pre flval: .save position is %ld\n", ftell(fout));
+#endif
+  write_packed_flval(fout, fin);
+#ifdef NOISY
+  printf("post flval: .save position is %ld\n", ftell(fout));
+#endif
+  // skip the msdos thing
+  write_tlist(fout, fin);
+#ifdef NOISY
+  printf("post tlist: .save position is %ld\n", ftell(fout));
+#endif
+  write_mlist(fout, fin);
+#ifdef NOISY
+  printf("post mlist: .save position is %ld\n", ftell(fout));
+#endif
+  // and then we are DONE!
+}
+
+
+@

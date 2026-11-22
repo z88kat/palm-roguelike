@@ -1,0 +1,84 @@
+head	1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.07.02.06.08.41;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@in the middle of release/update
+@
+text
+@iRogue-RGB
+
++ cc9933
+: ffff99
+? cc9933
+* cc9933
+! Ff33ff
+/ 33ffff
+) 3399ff
+] 3300ff
+= ff0000
+^ cc0000
+a 6666cc
+A 66cc99
+B 6699cc
+b 6699cc
+c 996633
+C cc9933
+D 00ff00
+d 996600
+e FF0000
+E ffcc00
+F 00ff00
+f 6666cc
+g cc9933
+G ffcc33
+H 006633
+h 996600
+i 99ffff
+J 009933
+j cc6633
+K 339933
+k 3399cc
+l 00ff33
+L 336633
+M 999966
+m cc9966
+n 996633
+N ffcc99
+O 669933
+o ff9900
+p 66cc00
+q bbbbbb
+Q cc6633
+r 993333
+R 99ff33
+S 00ff33
+s 33cccc
+t 66cc00
+T 66cc33
+U 777777
+u ff9900
+v 66ff66
+V FF0000
+x 555555
+y ffff00
+Z 777777
+z ff9933
+: 00FF00
+. 0000FF
+@

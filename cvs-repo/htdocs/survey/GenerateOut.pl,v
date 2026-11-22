@@ -1,0 +1,79 @@
+head	1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2006.08.08.03.59.52;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@commit everything before massive style change
+@
+text
+@#!/usr/local/bin/perl
+use strict 'subs'; # disallow barewords, in the compilation phase
+
+# Generate (to stdout) the 'table' section of <num>_out.html
+# from a text file on stdin that looks like 
+#   TITLE: The question title
+#   abbrev question
+#   second abbrev question
+#   TITLE: The next question title
+# ...
+
+print "<table>\n";
+
+$letter = 'a';
+$number = 0;
+$colornum = 0;
+@@colors = ("red", "orange", "yellow", "green", "blue", "purple", "black");
+while (<>) {
+    chomp;
+    $line = $_;
+    $is_title = ($line =~ /^TITLE: (.*)$/);
+    $title = $1;
+    if ($is_title) {
+	if ($number == 0) {
+	    $letter = 'a';
+	} else {
+	    $letter++;
+	}
+	$number = 0;
+        print "<!-- -->\n";
+        print "<tr>\n  <td colspan=\"3\"><b>" . $title . "</b></td>\n</tr>\n";
+    } else {
+	print "<tr>\n";
+	print "  <td><font>" . $line . "</font></td>\n";
+	print "  <td><img src=\"http://roguelike-palm.sourceforge.net/survey/";
+	#print $colors[$number];
+	print $colors[$colornum];
+	$number++;
+	$colornum++;
+	if ($colornum > $#colors) {
+	    $colornum = 0;
+	}
+	print ".gif\"\n            height=10 width=\$%" . $letter . $number;
+	print ";>&nbsp;\$%" . $letter . $number;
+	print ";%</td>\n";
+	print "  <td>\$" . $letter . $number;
+	print ";</td>\n";
+	print "</tr>\n";
+    }
+}
+print "<!-- -->\n";
+print "<tr>\n";
+print "  <td colspan=\"2\" align=\"CENTER\">Total:&nbsp;\$tot;</td>\n";
+print "</tr>\n";
+print "</table>\n";
+@

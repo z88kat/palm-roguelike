@@ -1,0 +1,233 @@
+head	1.4;
+access;
+symbols
+	Release-2002_03_29:1.4
+	Release-2002_01_12:1.4
+	Release-2002_01_02:1.4
+	Release-2002_01_01:1.4
+	Release-2001_12_19:1.4
+	Release-2001_08_04:1.4
+	Release-2001_07_02:1.4
+	Release-2001_06_16:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.4
+date	2001.06.22.05.43.26;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.06.22.00.13.19;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.06.20.01.56.43;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.46.15;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.46.15;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@added ui-pick-thingie, but it does not check for older prisms and could crash
+@
+text
+@#include "kMoriaBuildRsc.h"
+
+VERSION ID 1 "0.01"
+
+ICON "kMoria.bmp"
+SMALLICON "kMoriaSmall.bmp"
+
+FORM ID LuserForm AT (2 2 156 156)
+USABLE
+MODAL
+BEGIN
+	TITLE "You Can't Use This"
+	LABEL "This application requires color!" AUTOID AT (2 15) 
+END
+
+FORM ID MainForm AT (2 2 156 156)
+USABLE
+MODAL
+HELPID MainHelpStr
+BEGIN
+  TITLE "Define kMoria Colors"
+  BUTTON "Things" ID btn_things AT (Center 50 AUTO AUTO) USABLE
+  BUTTON "Things->Creatures" ID btn_ttom AT (Center PrevBottom+5 AUTO AUTO) USABLE
+  BUTTON "Colors->Creatures" ID btn_ctom AT (Center PrevBottom+5 AUTO AUTO) USABLE
+  BUTTON "Creatures" ID btn_mons AT (Center PrevBottom+5 AUTO AUTO) USABLE
+  LABEL "press the Down hardware button" AUTOID AT (1 156-22)
+  LABEL "to return here." AUTOID AT (1 156-11)
+END
+//	TITLE "Build kMoria Database"
+//	BUTTON "Rebuild Database" ID btn_ok AT (50 50 AUTO AUTO) USABLE
+
+STRING MainHelpStr "First, press Things and define things.  Then, come back "\
+	"here and press Creatures to define creatures.\n\n" \
+	"The buttons will take you to a form with a bunch of letters.  "\
+	"Tap on a letter to set its color (tap on numbers, press ok).  "\
+	"When you are done with the bunch of letters, to get back here, "\
+	"press the Down hardware button.  "\
+	"Note while you are there, you can press the Up hard button too, " \
+	"this will not take you anywhere but it will change the background "\
+	"of the display to black or white."
+
+
+FORM ID CritterForm AT (0 0 160 160)
+USABLE
+NOFRAME
+BEGIN
+END
+
+FORM ID ThingForm AT (0 0 160 160)
+USABLE
+NOFRAME
+BEGIN
+  LABEL "press the Down hardware button" AUTOID AT (1 160-22)
+  LABEL "to exit from here." AUTOID AT (1 160-11)
+END
+// Things:  ascii 32 to 126 inclusive.
+// for our purposes, 32-64,91-96,123-126.  that's 95 chars - (26+26) = 43.
+// oh!  and 's'!!!
+//  @@   . % #
+// object_list: !"#$%&'()*+,-./123456:;<=>?@@[\]^_s{|}~
+//             ................*.....*...........**...
+// UNUSED: "0789`"
+
+ALERT ID ConvertP
+WARNING
+DEFAULTBUTTON 2
+BEGIN
+	TITLE "Override?"
+	MESSAGE "Should monsters in Things override all of Creatures, or just the undefined (black/white) creatures?"
+	BUTTON "All" "Undef." "Cancel"
+END
+
+ALERT ID Convert2P
+WARNING
+DEFAULTBUTTON 2
+BEGIN
+	TITLE "Override?"
+	MESSAGE "Should these colors override all of Creatures, or just the undefined (black/white) creatures?"
+	BUTTON "All" "Undef." "Cancel"
+END
+
+FORM ID ColorForm AT (2 2 156 156)
+USABLE
+MODAL
+BEGIN
+       TITLE "abcdefghijklmnopqrstuvwxyz "
+	LABEL "Red / Green / Blue" AUTOID AT (2 15)
+	LIST "ff" "cc" "99" "66" "33" "00" ID list_col_1 AT (PrevLeft PrevBottom+12 15 66) VISIBLEITEMS 6
+	LIST "ff" "cc" "99" "66" "33" "00" ID list_col_2 AT (PrevRight+3 PrevTop 15 66) VISIBLEITEMS 6
+	LIST "ff" "cc" "99" "66" "33" "00" ID list_col_3 AT (PrevRight+3 PrevTop 15 66) VISIBLEITEMS 6
+	
+  BUTTON "Ok" ID btn_col_ok AT (5 141 35 AUTO) USABLE
+  BUTTON "Cancel" ID btn_col_cancel AT (PrevRight+10 141 AUTO AUTO) USABLE
+END
+//	BUTTON "Show" ID btn_col_show AT (5 141 AUTO AUTO) USABLE
+
+
+
+// Really these lists should start out nonusable or something.
+FORM ID DefaultsForm AT (2 2 156 156)
+USABLE
+MODAL
+BEGIN
+	LABEL "Red / Green / Blue" AUTOID AT (70 15)
+	LIST "ff" "cc" "99" "66" "33" "00" ID list_def_1 AT (PrevLeft+5 PrevBottom+12 15 66) VISIBLEITEMS 6
+	LIST "ff" "cc" "99" "66" "33" "00" ID list_def_2 AT (PrevRight+3 PrevTop 15 66) VISIBLEITEMS 6
+	LIST "ff" "cc" "99" "66" "33" "00" ID list_def_3 AT (PrevRight+3 PrevTop 15 66) VISIBLEITEMS 6
+  BUTTON "Palette!" ID btn_def_uipick AT (70 PrevBottom+4 AUTO AUTO) USABLE
+	
+  BUTTON "Ok" ID btn_def_ok AT (5 141 35 AUTO) USABLE
+  BUTTON "Cancel" ID btn_def_cancel AT (PrevRight+10 141 AUTO AUTO) USABLE
+END
+// Colors in text!!
+// Black Blue Brown Clear
+// Green Grey Purple Red
+// Silver White Yellow
+
+
+STRING HelpStr "This will rebuild your constants database."\
+		"It wipes out what was already there!"
+
+ALERT ID NukeP
+WARNING
+BEGIN
+	TITLE "Are you sure?"
+	MESSAGE "Rebuilding the database will wipe out stuff."
+	BUTTON "I'm sure" "No, don't do it!"
+END
+@
+
+
+1.3
+log
+@cobbled together a simple color-chooser
+@
+text
+@d8 8
+d108 1
+@
+
+
+1.2
+log
+@hauled a bunch of code from one section to another, and moved some consts to DB
+@
+text
+@d8 1
+a8 1
+FORM ID MainForm AT (0 0 160 160)
+d10 2
+a11 1
+NOFRAME
+d13 7
+d24 49
+d88 20
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d5 2
+a6 2
+ICON "iLarn2.bmp"
+SMALLICON "iLarnSmall.bmp"
+a11 2
+	TITLE "Build kMoria Database"
+	BUTTON "Rebuild Database" ID btn_ok AT (50 50 AUTO AUTO) USABLE
+d13 19
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

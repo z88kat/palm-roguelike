@@ -1,0 +1,405 @@
+head	1.12;
+access;
+symbols
+	Release-2002_03_29:1.12
+	Release-2002_01_12:1.12
+	Release-2002_01_02:1.11
+	Release-2002_01_01:1.11
+	Release-2001_12_19:1.11
+	Release-2001_08_04:1.7
+	Release-2001_07_02:1.6
+	Release-2001_06_16:1.4;
+locks; strict;
+comment	@ * @;
+
+
+1.12
+date	2002.01.05.18.46.50;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2001.12.08.18.45.25;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2001.11.30.23.44.42;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2001.11.30.03.46.18;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2001.11.08.00.11.39;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.07.25.06.16.45;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.06.29.04.08.44;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2001.06.16.21.57.33;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2001.03.27.06.30.43;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2001.02.28.06.37.24;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.11.04.02.13.39;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.10.28.22.28.54;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.12
+log
+@adding handera form resizing (UNTESTED)
+@
+text
+@/*********************************************************************
+ * kMoria - Moria adapted for the PalmPilot.                         *
+ * This file is copyright (C) 2000 Bridget Spitznagel                *
+ *                                                                   *
+ * Other portions of this program are derived from Moria.            *
+ * Moria is copyright 1985-94 James E. Wilson, Robert A. Koeneke,    *
+ * Jimmey Wayne Todd, et al. (see main.c for full credits)           *
+ *                                                                   *
+ * This program is freeware.  You can redistribute it and/or modify  *
+ * it (provided that this notice and the full credits are retained), *
+ * but it CANNOT be distributed for profit.                          *
+ *********************************************************************/
+#include "kMoria.h"
+
+
+/***********************************************************************
+ * This form allows player to view the last N message that went by..
+ * useful if he/she acted too fast and missed one.
+ * Note that the old_messages array is probably going to be combined with
+ * the splash array and a position-in-array int to enable "--more--"
+ ***********************************************************************/
+
+extern Char *old_messages[SAVED_MSGS];
+VoidHand msglog_TextHandle = NULL;
+static void init_messagelog_view(FormPtr frm) SEC_5;
+Boolean MsgLog_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  FieldPtr fld;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    init_messagelog_view(frm);
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_ml));
+#ifndef I_AM_OS_2
+    if (IsVGA) PrvMoveForm(false);
+#endif
+    FrmDrawForm(frm);
+    while (FldScrollable(fld, winDown)) {
+      page_scroll_field(frm, fld, winDown);
+    }
+    update_field_scrollers(frm, fld, repeat_ml_up, repeat_ml_down);
+    handled = true;
+    break;
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) PrvMoveForm(true);
+    return true;
+#endif
+
+  case ctlSelectEvent:
+    switch(e->data.ctlSelect.controlID) {
+    case btn_ml_ok:
+      LeaveForm(); // LeaveForm(true);
+      handled = true;
+      break;
+    }
+    break;
+
+  case ctlRepeatEvent:
+    /*     "Repeating controls don't repeat if handled is set true." */
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_ml));
+    switch(e->data.ctlRepeat.controlID) {
+    case repeat_ml_up:
+      FldScrollField(fld, 1, winUp);
+      update_field_scrollers(frm, fld, repeat_ml_up, repeat_ml_down);
+      break;
+    case repeat_ml_down:
+      FldScrollField(fld, 1, winDown);
+      update_field_scrollers(frm, fld, repeat_ml_up, repeat_ml_down);
+      break;
+    }
+    break;
+
+  case keyDownEvent:
+    /* hardware button -- or else graffiti. */
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_ml));
+    switch(e->data.keyDown.chr) {
+    case pageUpChr:
+      page_scroll_field(frm, fld, winUp);
+      update_field_scrollers(frm, fld, repeat_ml_up, repeat_ml_down);
+      handled = true;
+      break;
+    case pageDownChr: case ' ':
+      page_scroll_field(frm, fld, winDown);
+      update_field_scrollers(frm, fld, repeat_ml_up, repeat_ml_down);
+      handled = true;
+      break;
+    case '\n': // Keyboard support.  Woo hoo.
+      LeaveForm();
+      handled = true;
+      break;
+    }
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+
+
+/**********************************************************************
+                       INIT_MESSAGELOG_VIEW
+ IN: frm = a form that has a text-view widget
+ PURPOSE:
+ Initializes the displayed form 'frm' with a list of the last
+ SAVED_MSGS messages.  Called when frm is being initialized.
+ **********************************************************************/
+static void init_messagelog_view(FormPtr frm)
+{
+  FieldPtr fld;
+  CharPtr txtP;
+  Short i, len = 10; // some extra space to be sure
+  // Get the text field
+  fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_ml));
+  // Create a mem. handle and lock it
+  for (i = 0 ; i < SAVED_MSGS ; i++) len += StrLen(old_messages[i]);
+  msglog_TextHandle = MemHandleNew(len);
+  txtP = MemHandleLock(msglog_TextHandle);
+  // Use MemMove and/or MemSet to copy text to the mem. handle
+  for (i = 0, len = 0 ; i < SAVED_MSGS ; i++) {
+    MemMove(txtP+len, old_messages[i], StrLen(old_messages[i])+1);
+    len += StrLen(old_messages[i]);
+  }
+  // this is to get rid of the last newline:
+  if ((len > 0) && (txtP[len-1] == '\n')) MemSet(txtP+len-1, 1, '\0');
+
+  // Unlock the handle.  Set the field to display the handle's text.
+  MemHandleUnlock(msglog_TextHandle);
+  FldSetTextHandle(fld, (Handle) msglog_TextHandle);
+}
+
+@
+
+
+1.11
+log
+@moving function decls
+@
+text
+@d38 3
+d48 6
+@
+
+
+1.10
+log
+@better msgs on floor-change; sped up repeated delay; fewer keypress in spellbk
+@
+text
+@d25 1
+a25 1
+static void init_messagelog_view(FormPtr frm);// SEC_5;
+@
+
+
+1.9
+log
+@increased size of message log; message log starts out scrolled to bottom
+@
+text
+@d25 1
+a25 1
+static void init_messagelog_view(FormPtr frm) SEC_5;
+d39 1
+a39 1
+    if (FldScrollable(fld, winDown)) {
+a40 2
+      if (FldScrollable(fld, winDown))
+	page_scroll_field(frm, fld, winDown);
+d113 1
+a113 1
+  Short i;
+d117 2
+a118 1
+  msglog_TextHandle = MemHandleNew(BIG_NUMBER);
+d121 3
+a123 3
+  for (i = 0 ; i < SAVED_MSGS ; i++) {
+    MemMove(txtP, old_messages[i], StrLen(old_messages[i])+1);
+    txtP += StrLen(old_messages[i]);
+d125 2
+a126 2
+  txtP--; // this is to get rid of the last newline:
+  if (txtP[0] == '\n') MemSet(txtP, 1, '\0');
+@
+
+
+1.8
+log
+@moving all includes (except itself) into kMoria.h
+@
+text
+@d38 6
+a44 1
+    FrmDrawForm(frm);
+d126 3
+@
+
+
+1.7
+log
+@Improved the 'rest' form: can be aborted, can use hardware buttons.
+@
+text
+@a12 1
+#include "palm.h"
+a13 2
+#include "lock-externs.h"
+#include "kMoriaRsc.h"
+@
+
+
+1.6
+log
+@fixed some of the stats-now-too-lazy ?
+@
+text
+@d128 1
+@
+
+
+1.5
+log
+@compiles with sdk 3.5!  (keep an eye out for new and exciting fatal errors)
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000,2001 Bridget Spitznagel                        *
+d5 3
+a7 2
+ * This program is derived from Umoria 5.5.2.  Umoria is             *
+ *   Copyright (c) 1989-94 James E. Wilson, Robert A. Koeneke        *
+d9 3
+a11 15
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+@
+
+
+1.4
+log
+@fixed sell-unknown-item-to-store bug.  most forms navigable via keyboard now.
+@
+text
+@d3 1
+a3 1
+ * Copyright (C) 2000 Bridget Spitznagel                             *
+d24 1
+a24 1
+#include <Pilot.h>
+d72 1
+a72 1
+      FldScrollField(fld, 1, up);
+d76 1
+a76 1
+      FldScrollField(fld, 1, down);
+d88 1
+a88 1
+      page_scroll_field(frm, fld, up);
+d93 1
+a93 1
+      page_scroll_field(frm, fld, down);
+@
+
+
+1.3
+log
+@tweaked notice
+@
+text
+@d92 1
+a92 1
+    case pageDownChr:
+d95 4
+@
+
+
+1.2
+log
+@adding GPL comment
+@
+text
+@d5 1
+a5 1
+ * This program is derived from Umoria 5.5.2.  Moria is              *
+@
+
+
+1.1
+log
+@just another random checkpoint
+@
+text
+@d1 23
+@
+

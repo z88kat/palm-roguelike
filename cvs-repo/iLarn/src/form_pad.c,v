@@ -1,0 +1,153 @@
+head	1.5;
+access;
+symbols
+	Release-2001_08_06:1.5
+	Release-2001_06_15:1.5;
+locks; strict;
+comment	@ * @;
+
+
+1.5
+date	2001.05.01.04.41.33;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.10.15.22.03.22;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.14.23.16.50;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.10.14.04.19.22;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.10.14.01.59.20;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@get iLarn to compile with sdk 3.5 so's I can add color...
+@
+text
+@#include "palm.h"
+#include "iLarnRsc.h"
+#include "Globals.h"
+/***********************************************************************
+ * This is the form for Dealer McDope's pad, a store where you can buy
+ * four kinds of drugs.  Hey I don't make this stuff up, I just port it.
+ ***********************************************************************/
+
+
+Boolean Pad_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  ListPtr lst;
+  //  CharPtr label;
+  Short store_item;
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* ...init form... */
+    FrmDrawForm(frm);
+    pad_gold();
+    handled = true;
+    break;
+
+  case lstSelectEvent:
+    handled = true;
+    break;
+
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    switch(e->data.ctlSelect.controlID) {
+    case btn_pad_buy:
+      lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_pad));
+      store_item = LstGetSelection(lst);
+      if (store_item >= 0 && store_item <= 4)
+	pad_buy(frm, store_item);
+      handled = true;
+      break;
+    case btn_pad_split:
+      LeaveForm(); // LeaveForm(true);
+      //      message_clear(); // do I need this?
+      print_stats(); // in case you spent money
+      handled = true;
+      break;
+    }
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+@
+
+
+1.4
+log
+@eliminated (fossilized) global argument
+@
+text
+@d1 1
+a1 1
+#include <Pilot.h>
+@
+
+
+1.3
+log
+@revising messages to have --more--.  sort of half working.
+@
+text
+@d8 1
+a8 1
+extern struct everything *env;
+d24 1
+a24 1
+    pad_gold(env);
+d39 1
+a39 1
+	pad_buy(frm, store_item, env);
+d45 1
+a45 1
+      print_stats(env); // in case you spent money
+@
+
+
+1.2
+log
+@can eat drugs from inventory now.  also some bug fixes
+@
+text
+@d44 1
+a44 1
+      //      message(0); // do I need this?
+@
+
+
+1.1
+log
+@reorganization of existing code
+@
+text
+@d44 2
+@
+

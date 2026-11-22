@@ -1,0 +1,749 @@
+head	1.21;
+access;
+symbols
+	Release-2001_06_16:1.20
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.21
+date	2001.07.02.05.09.55;	author i0lanthe;	state dead;
+branches;
+next	1.20;
+
+1.20
+date	2000.11.13.05.15.03;	author i0lanthe;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2000.11.13.02.56.10;	author i0lanthe;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2000.11.12.06.05.31;	author i0lanthe;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2000.11.12.05.36.38;	author i0lanthe;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2000.11.11.18.20.39;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2000.11.11.03.00.33;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2000.11.09.06.18.42;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2000.11.06.05.25.22;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2000.11.05.20.24.47;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2000.10.28.22.28.54;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2000.10.26.04.25.25;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2000.10.25.04.29.06;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2000.10.21.03.31.07;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2000.10.20.04.45.36;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2000.10.20.03.38.35;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.10.10.04.53.43;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.10.06.06.32.35;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.10.01.18.31.37;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.09.30.04.45.36;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.43.45;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.43.45;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.21
+log
+@since I haven't bothered keeping these up to date: less misleading to delete.
+@
+text
+@Status and provenance of various files in here.
+
+
+copyright.txt - waiting til I decide on a name to include this in places.
+
+dbrecords.c - this is a file that will need to be split up
+	one half is for a little application to write the "read only" db
+	the other half is for reading all dbs and writing some parts of save db
+	the two half are totally intermingled
+not currently used
+
+dbrecords.h - this documents which routines actually belong to the game
+	as opposed to the little db-writing application
+not currently used
+
+globals.h - The type definition of the 'everything' struct
+	Some things here could be SaveDB records instead!
+
+gzip.txt - some vague notes on packing of data (to keep databases small)
+
+records.h - where to define the constants that are record unique ID's.
+	dbrecords.c should #include this
+not currently used
+
+These have had indenting (and ansitude of args) cleaned up but that's about it.
+	i.e. they need to be databaseified
+store1.c
+moria4.c  * needs highlight_seams and many functions
+let's look at cleaning up: moria3.c
+
+ * the compiler is happy except for missing functions & undeclared globals
+
+
+things that are used as of july 9...
+
+kMoria.h: what the app id is, etc, and what header files to include
+
+sections.h: for multigen
+kMoria.def: for multigen
+
+constant.h - These are #define's of numbers.  (not #define macros)
+	I made a first pass on this.
+	A few things still need to change or to be removed!!
+
+types.h - type definitions.
+	I have been through this once, but it will need more work.
+	Especially since I am not exactly going to have "char *"'s
+	and therefore all the careful record packing needs fixed.
+
+prototypes.h - function prototypes
+
+records.h - what unique-ids are of the various records
+
+main.c - event handlers etc. are here
+
+display.c - drawing dungeon, stats, messages to the screen
+
+lock.c - create/lock/unlock the database records and _some_ write/read stuff
+
+section1:
+misc1.c - has everything original misc1.c did?
+	needs a REAL randnor, compact_monsters, compact_objects ...
+	'panel' foo needs to be REWORKED and moved to display.c
+generate.c - generate level; has everything original generate.c did?
+misc2.c - has everything original misc2.c did?
+	set_options NEEDS TO BE IMPLEMENTED and should be a popup form
+sets.c - 'is-a' functions that could practically be macros.
+	all there, I think
+
+misc3.c - SOME MISSING.  some of what's missing belongs in display.c
+moria3.c - no functions missing now
+recall.c - working! (with form_recall.c)
+	I haven't DESIGNED how you would get to this form UI-wise, though.
+
+eat.c - ok, I think
+potions.c - ditto
+moria2.c - there except for COMMENTED-OUT LINES.  actually, all there?
+spells.c - all there except for (many) COMMENTED-OUT LINES.  yep still.
+misc4.c - here too there are COMMENTED-OUT LINES.  yep still.
+staffs.c - sorta all there but needs direction foo
+wands.c - sorta all there but needs direction foo
+magic.c - all there except for several COMMENTED-OUT LINES.  yep still.
+prayer.c - all there except for several COMMENTED-OUT LINES (same as magic.c)
+moria4.c - all there except for several COMMENTED-OUT LINES (different)
+
+what shall I work on?...................................................
+
+things that MUST be changed for DmWrite:  enchant() --- Done, 10/5
+also vaguely working on getting eat.c to compile.  OK
+Character Generation!  It is (for the most part) WORKING.
+  Check later and see if I have forgotten anything though.
+  I need py.* save and restore (for ungenerated)
+  I need magic_init (for both!?)
+inventory/equipment are viewable.
+wear/wield, take off, drop basically work
+
+To do: add mushrooms, etc., in lock.c and in the MoriaDB.
+
+regressive testing:
+have I tested unsample?  I suspect it is buggy.
+
+to steal from iLarn:  '--more--' ability
+
+** End of september: **
+Worked on store2.c.  it's all there now, just a tad buggy in places.
+I have processed creature.c and it compiles.  untested of course.
+
+things that are not implemented yet:  move_char (moria3),
+would be used in spells.c - prt_map, put_qio, damage-subroutines in breath(),
+prt_level, prt_title.
+
+to do: check out misc3
+       count_message isn't implemented
+
+Priest and mage type characters can gain and cast now.  People can browse.
+Note: it might be a real good idea to move gain_spells into form_spell.c,
+      or otherwise to scope down the globals that those two share.
+I am adding examine_book from (missing) dungeon.c to random .c location
+
+.c files that are currently missing in Makefile:
+# Missing:  [just-data] (impl-elsewhere) |n/a|
+* death dungeon files help (|io|) [monsters] [player] |rnd|
+# save scrolls |signals| [tables] [treasure] [variable] |wizard|
+
+** november**
+
+added save/restore.  more or less.  to work on next: death/scorelist
+(note I need a function to reinitialize stuff.)
+made it so you can quit... no scorelist yet, just reinitialization.
+made it so you can attack instead of running.  yay ui.
+disallowed blank character names (it's nicer if you whatsit yourself).
+  to work on next: death/scorelist
+  or to work on next: db records for names of scrolls, potions, etc, dammit.
+     Done, debugged, seems to work. potions, scrolls, etc randomly named.
+	fixed the recall-invisible-monster bug
+	fixed the "you have a foo (" pickup message bug
+	fixed the lack of attack info in recall-monster
+  ok now really work on: death/scorelist
+* I should add a note in the iLarn documentation that rings, etc, do NOT
+need to be worn (in fact, can't be) in order to have an effect.
+  trying to fix inventory/equip so that it takes time
+
+@
+
+
+1.20
+log
+@made inventory/equip actions take time (buggy); made AC display update
+@
+text
+@@
+
+
+1.19
+log
+@inc. version number
+@
+text
+@d141 2
+@
+
+
+1.18
+log
+@fixed recall-monster-attack bug
+@
+text
+@d139 2
+@
+
+
+1.17
+log
+@fixed minor bugs (whatsit invisible, pickup message)
+@
+text
+@d137 1
+a137 1
+	to do: recall needs information on monster's attack types
+@
+
+
+1.16
+log
+@fixed a store bug
+@
+text
+@d134 4
+a137 1
+	Done, debugged, seems to work. potions, scrolls, etc randomly named.
+@
+
+
+1.15
+log
+@fixed scroll title creation bug, I think
+@
+text
+@d134 2
+a135 11
+	ok, I'm working on those now.  need to DEBUG.
+	I created the REC_MAGICS record ok (I think) but magic_init dies.
+(DELETE kMoriaSaveDB before proceeding)
+To test - I altered paladin's and ranger's equipment list in create.c
+  and made it so that initial objects are NOT identified.
+  Also I altered the About menu option.
+Ok, this is all cool, except that scroll name creation CRASHES, so
+I have commented it out until I can get around to debugging it.
+it seems to create a few before it crashes though.
+  to work on: debugging create_scroll_title
+  after that: death/scorelist
+@
+
+
+1.14
+log
+@added scrambling of magic-item names (except scrolls), only partly tested
+@
+text
+@d136 1
+a136 1
+(Delete kMoriaSaveDB before proceeding)
+d140 1
+a140 1
+Ok, this is all cool, except that scroll name creation crashes, so
+d142 3
+@
+
+
+1.13
+log
+@you can now: quit; attack instead of running; be given a default name
+@
+text
+@d132 10
+@
+
+
+1.12
+log
+@added saving
+@
+text
+@d127 5
+a131 83
+hey, let's try working on save/restore.
+
+What's already saved "automatically" due to being a db record:
+cave:  cave_cptr
+       cave_tptr
+       cave_fval
+       cave_light
+tlist: t_list		* need to record: tcptr
+mlist: m_list		* need to record: mfptr
+inventory: inventory	* need to record: inven_ctr
+objident: object_ident
+recall: c_recall
+store: store
+       store_inven
+
+What's not saved and should be:
+tcptr, mfptr, inven_ctr - how much of t_list/m_list/inventory is being used.
+equip_ctr - like inven_ctr
+turn - current turn of the game
+char_row, char_col - location of you
+dun_level - current floor
+town_seed - to make the town look the same
+... <foo>panel<foo> could be recalculated
+... inven_weight, weapon_heavy, pack_heavy could be recalculated? check this
+
+********** What's saved in save.c ***********
+// pseudocode
+Boolean save_char()
+{
+  while (_save_char() fails) {
+    if the file exists, prompt to delete it,
+    or prompt to change filename or something
+  }
+}
+
+Boolean _save_char(filename)
+{
+  if character_saved return true;  // (seems like I can skip that.)
+
+  disturb (1, 0);		/* Turn off resting and searching. */
+  change_speed(-pack_heavy);	/* Fix the speed */
+  pack_heavy = 0;
+
+  write 4 bytes:  major version, minor version, patchlevel, and a random char.
+  xor_byte = the random char.  (I guess this is to "encrypt" the file?)
+  then call sv_write
+  and if it succeeds, set character_saved true and return true.
+  
+}
+
+/* I comment out: stuff that's already saved by its database-record nature */
+Boolean sv_write()
+{
+  Save the following boolean flags, using |= to compose into a ULong:
+    /* find_cut, find_examine, find_prself, find_bound, prompt_carry_flag,
+    rogue_like_commands, show_weight_flag, highlight_seams, find_ignore_doors,
+    sound_beep_flag, display_counts, */ total_winner, death (as the sign bit).
+  // Of those, all I need are:
+  //   total_winner, death.  The others are all "options" i.e. Preferences.
+
+  /* Save the c_recall array of structures. */
+  Save the ULong built up of boolean options.
+  Save everything in pymisc.  Including history[4] (where'd I put that?)
+  Save everything in pystats.
+  Save everything in pyflags.
+  Save the following:
+    missile_ctr, turn, inven_ctr, /* inventory[] */ inven_weight, equip_ctr,
+    spell_learned, spell_worked, spell_forgotten, spell_order[],
+    /* object_ident[] */ randes_seed, town_seed, last_msg, the saved messages,
+    panic_save, total_winner, noscore, player_hp[]
+  /* Save the store array of structs. */
+  /* Save the store inventories. */
+  Save the current time.
+  Save the died_from string.
+  Save total_points.
+  Save birth_date.
+
+  Save floor information:
+    dun_level, char_row, char_col, mon_tot_mult, cur_height, cur_width,
+    max_panel_rows, max_panel_cows,
+    /* cave_cptr, cave_tptr, cave_fval, cave_light, t_list, m_list */
+    
+}@
+
+
+1.11
+log
+@just another random checkpoint
+@
+text
+@d125 85
+@
+
+
+1.10
+log
+@trying to fix the panel thing, still a problem.  but you can see yourself.
+@
+text
+@a124 13
+ok let's work on scrolls.c.
+Where is new player's location set?
+(-1 in generate.c. random if teleport[_to](). cur+dir if move_char().
+aha, by new_spot in generate.c?)
+	I should change those back to &char_{col,row}
+I added, after generate_cave() in main.c,
+    enter_new_level();
+    start_of_turn();
+Now I get a fatal exception,  wheee.  wrote a byte to database RAM address.
+	probably something is messing with a record.
+	in creatures(), called by enter_new_level in dungeon.c.
+now working on Panel foo.
+e.g.: misc4.c check_view@
+
+
+1.9
+log
+@working on dungeon.c / command loop foo
+@
+text
+@d135 3
+a137 1
+	in creatures(), called by enter_new_level in dungeon.c.@
+
+
+1.8
+log
+@continuing slow accretion (scrolls.c, du partial dungeon.c)
+@
+text
+@d125 11
+a135 1
+ok let's work on scrolls.c.@
+
+
+1.7
+log
+@spellbooks / holy books can be browsed
+@
+text
+@d71 1
+a71 2
+moria3.c - some function bodies are MISSING
+   i.e. currently I'm using "moria3a.c" which is missing them.
+d102 1
+a102 1
+what I really need:  '--more--' ability
+d110 1
+a110 1
+calc_hitpoints, calc_spells, calc_mana, prt_level, prt_title.
+d112 2
+a113 4
+to do: move stuff from moria3a to moria3, I guess, if any.
+	cast_spell
+	move_char
+also check out misc3
+d115 1
+a115 1
+Priest and mage type characters can gain and cast now.
+d118 8
+a125 1
+I am adding examine_book from (missing) dungeon.c to form_spell.@
+
+
+1.6
+log
+@mages can gain spells now
+(note: there is a tiny memory leak in learn_the_spell, form_spell.c)
+@
+text
+@d118 1
+a118 5
+
+Working on mage gaining a spell.
+It is not too bad except that:
+it has a fatal error when you try to actually learn a spell
+Details details.  'done' works ok.  That is something at least.
+d120 2
+a121 1
+      or otherwise to scope down the globals that those two share.@
+
+
+1.5
+log
+@adding spell/prayer selection forms
+@
+text
+@a117 2
+(Items a-a, 0-9, * for inventory list, ESC to exit) Use which Holy Book?
+(Spells a-a, *=List, <ESCAPE>=exit) Recite which prayer?
+d119 6
+a124 72
+item_val is the book selected
+choice, chance get set
+i is the number of known spells, their thingies are
+	spell[0 thru i-1] + 'a' - first_spell
+
+Longest prayer name: cure medium wounds?
+(do books always have the same content?  yes, i think.)
+
+
+Magic Missile
+Detect Monsters
+Phase Door
+Light Area
+Cure Light Wounds
+Find Hidden Traps/Doors
+Stinking Cloud
+Confusion
+Lightning Bolt
+Trap/Door Destruction
+Sleep I
+Cure Poison
+Teleport Self
+Remove Curse
+Frost Bolt
+Turn Stone to Mud
+Create Food
+Recharge Item I
+Sleep II
+Polymorph Other
+Identify
+Sleep III
+Fire Bolt
+Slow Monster
+Frost Ball
+Recharge Item II
+Teleport Other
+Haste Self
+Fire Ball
+Word of Destruction
+Genocide
+  /* Priest Spells, start at index 31 */
+Detect Evil
+Cure Light Wounds
+Bless
+Remove Fear
+Call Light
+Find Traps
+Detect Doors/Stairs
+Slow Poison
+Blind Creature
+Portal
+Cure Medium Wounds
+Chant
+Sanctuary
+Create Food
+Remove Curse
+Resist Heat and Cold
+Neutralize Poison
+Orb of Draining
+Cure Serious Wounds
+Sense Invisible
+Protection from Evil
+Earthquake
+Sense Surroundings
+Cure Critical Wounds
+Turn Undead
+Prayer
+Dispel Undead
+Heal
+Dispel Evil
+Glyph of Warding
+Holy Word
+@
+
+
+1.4
+log
+@cleaned up creature.c and stuff
+@
+text
+@d113 80
+a192 1
+to do: move stuff from moria3a to moria3, I guess, if any.@
+
+
+1.3
+log
+@Haggling in the purchase direction is mostly working (don't try sell though)
+@
+text
+@a56 1
+	default section
+a58 1
+	default section
+a64 1
+	still MISSING A CALL to store_maint
+d66 1
+a66 1
+	set_options SHOULD BE IMPLEMENTED and should be a popup form
+d72 1
+d74 1
+a74 1
+	I haven't designed how you would get to this form, though.
+d76 1
+a76 1
+eat.c - ok but needs to be revised for form input not getchar input
+d78 3
+a80 3
+moria2.c - there except for COMMENTED-OUT LINES
+spells.c - all there except for (many) COMMENTED-OUT LINES
+misc4.c - here too there are COMMENTED-OUT LINES
+d83 1
+a83 1
+magic.c - all there except for several COMMENTED-OUT LINES
+d87 1
+a87 3
+what shall I work on?
+	can functions in all code segments access globals?  'info' implies YES
+	therefore I DON'T need to pass around a mega-global struct so let's not
+d89 3
+a91 6
+things that MUST be changed to deal with DmWrite:  enchant()
+To do: add mushrooms, etc., in lock.c and in the MoriaDB.
+also vaguely working on getting eat.c to compile.
+
+What I was doing most recently: working on creature.c.
+And on Character Generation!  It is (for the most part) WORKING.
+a92 2
+  I am not printing the various abilities... should do that... no room...
+  I need to initialize the inventory (for generated chars)
+d95 1
+a95 3
+
+what I'm doing most recently: working on inventory/equipment
+they are viewable.
+d98 1
+a98 2
+working on stores...  store_init doesn't work yet
+
+a100 1
+cave_gen generates some pretty wacky dungeon levels.
+d106 6
+a111 8
+Resuming work on the game.  Damn good thing I have this file for exomemory.
+I fixed a bug in fill_cave.  Wackiness of cave_gen is in acceptable limits.
+Ok, so what WAS I working on anyway?  store_init?
+	apparently I'm testing the stores via the Recall menu option...!
+	(each time it increments in_store so you see a different store.)
+	hm, well, it seems I got part way through haggling and stopped.
+and probably need to decrease the number of commented out lines (see above)
+and see if there are any .c files that I'm still not incorporating.
+d113 1
+a113 1
+Working on store2.c
+@
+
+
+1.2
+log
+@fixed store scrolling, minor bugs
+@
+text
+@d128 1
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d118 10
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

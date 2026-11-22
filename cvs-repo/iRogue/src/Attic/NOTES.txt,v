@@ -1,0 +1,192 @@
+head	1.7;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.7
+date	2001.02.24.05.53.58;	author i0lanthe;	state dead;
+branches;
+next	1.6;
+
+1.6
+date	2000.08.23.01.57.10;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.08.21.04.32.35;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.08.19.02.00.20;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.08.17.00.10.41;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.08.16.01.38.39;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.15.23.35.07;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@housecleaning
+@
+text
+@--- Aug 15 2000 ---
+
+I have a list of changes to make.
+
+I have run a small survey (19 responses) which suggests that people do
+not want multiple, named backups of games but would be content with a
+single backup, and with some degree of autosave.  There are also
+enough people interested in a smaller font and in rogue-relative
+navigation that I feel justified in implementing them.
+
+Here are the things to do, in order of attack
+
+- Small font
+  same basic issues as iLarn, except no town level
+  remember the preferred font and switch to it when the app is launched
+  make conditional compilation
+  ...Ok, small font appears to be working.
+- Rogue-relative movement
+  remember or calculate the position on the screen of the rogue
+  some tweaky testing will be needed to get it right
+  run/walk will still be donutlike (if search is set to 10, it's ok.)
+  ...Ok, ready to roll out (except as noted below in "minor bugs".)
+  ...in random-letter==b, I also fixed the "hw scroll lists" request.
+- Saving
+  add a 'date of birth' to all save "files" to uniquely id the game
+  add a timestamp to all save "files"
+  have at least 1 slot for a snapshot, and allow an n-character comment
+  have 1 slot for an autosave, and autosave when you go up/down stairs
+  when you enter the app, check DoB and timestamp on autosave file, do popup
+  at any time, allow (penalized) restore from snapshot or autosave, any DoB
+  ... Ok autosave works, save and restore seem to work also
+  ... oh yea vampirism works but hunger needs fine-tuning
+  ... in random-letter==c, I also disabled 'drop' button when impossible.
+  ... Should I include support for "multiuser" usage?
+      I think I should just comment it out and ask if anyone actually
+      uses it that way (it doesn't seem likely.)
+
+minor bugs:
+This was true before I tinkered with small font:
+if you have 'centered' on, and walk e.g. one step north, then one step south
+(also works with east/west) the screen slides the OTHER direction at first.
+There must be something wacky in calculating where the center tile is?
+
+--- June 26 2000 ---
+
+0.40 has some bugs
+
+- Fix it so that healing potions work better
+  Ok - I revised the calculation (multiply by reasonable number, avoid Floats)
+- Score is screwed up
+  Ok - I revised the calculation (again, avoid Floats)
+- Fix the top ten list to allow multiple entries per player
+  Ok - done
+- Don't record wizard scores (and warn each time a new character wizardizes)
+  Ok - done
+
+I might as well update some info strings also.
+@
+
+
+1.6
+log
+@Saving and restoring might work now... testing them...
+@
+text
+@@
+
+
+1.5
+log
+@still working on save/restore
+@
+text
+@d31 1
+a31 8
+  ... Ok I have added forms and vampirism
+  ... working on 'autosave', next add a separate checkpoint foo
+  ... Ok, autosave works, and you can reviv. from the topten,
+      and when you enter the app it will not restore a dead saved character.
+      also have checkpoint menu-item, restore menu-item (to reviv dialog)
+      I need to add: 
+      In reviv dialog: choice of which; display some info about cur.selected
+      (dunlevel, exp+level+$, hp+str, undeadp/wizp, timestamp, birthdate.)
+d34 3
+a36 3
+  ... Ok - autosave works, next I should try saving in a Snapshot Slot.
+      There is a bit of trouble with this still.  eit.
+      if you write OVER an existing slot, subsequent slots get fucked.
+@
+
+
+1.4
+log
+@working on save: autosave works, revivify from top-ten works, still need menu items for restoring 'live' checkpoints, still need info-display in revivify form
+@
+text
+@d35 2
+a36 1
+      I need to add: checkpoint menu-item, restore menu-item (to reviv dialog)
+d39 1
+d41 3
+@
+
+
+1.3
+log
+@bugfix: hw buttons now scroll the inventory and object-creation lists
+@
+text
+@d22 2
+a23 1
+  ...Ok, except as noted below in "minor bugs".
+d31 8
+@
+
+
+1.2
+log
+@added: Small font option (like iLarn)
+@
+text
+@d22 1
+@
+
+
+1.1
+log
+@notes on future/ongoing modifications
+@
+text
+@d8 1
+a8 1
+enough people interested in a smaller font and in rogue-centered
+d11 2
+d17 2
+a18 1
+- Rogue-centered movement
+d29 6
+@
+

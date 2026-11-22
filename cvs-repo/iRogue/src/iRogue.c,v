@@ -1,0 +1,4537 @@
+head	1.20;
+access;
+symbols
+	pre-internationalization_20040113:1.20.2.17
+	Release-2002_05_10-on-Handera-branch:1.20.2.8
+	Release-2001_07_01-on-Handera-branch:1.20.2.6
+	Release-2001_04_26-Handera-branch:1.20.0.2
+	Release-2001_04_26:1.20
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.20
+date	2001.04.25.04.11.16;	author i0lanthe;	state Exp;
+branches
+	1.20.2.1;
+next	1.19;
+
+1.19
+date	2001.04.25.03.48.32;	author i0lanthe;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2001.03.08.02.39.03;	author i0lanthe;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2001.03.06.02.59.43;	author i0lanthe;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2001.02.26.05.18.39;	author i0lanthe;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2001.02.26.04.35.12;	author i0lanthe;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2001.02.25.00.37.11;	author i0lanthe;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2001.02.24.05.53.58;	author i0lanthe;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2001.02.24.05.28.19;	author i0lanthe;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2001.02.24.03.25.02;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2000.08.24.03.26.17;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2000.08.23.01.57.11;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2000.08.21.04.32.35;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2000.08.19.02.00.20;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2000.08.17.00.10.41;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.08.16.04.52.02;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.08.16.01.56.53;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.08.16.01.38.39;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.06.26.04.11.44;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.06.15.21.16.41;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.06.15.21.16.41;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+1.20.2.1
+date	2001.05.28.02.39.20;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.2;
+
+1.20.2.2
+date	2001.05.30.15.06.34;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.3;
+
+1.20.2.3
+date	2001.06.19.01.04.11;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.4;
+
+1.20.2.4
+date	2001.06.29.01.37.30;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.5;
+
+1.20.2.5
+date	2001.07.02.02.19.30;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.6;
+
+1.20.2.6
+date	2001.07.02.03.14.01;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.7;
+
+1.20.2.7
+date	2002.05.10.22.33.14;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.8;
+
+1.20.2.8
+date	2002.05.11.01.00.32;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.9;
+
+1.20.2.9
+date	2003.11.03.19.16.22;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.10;
+
+1.20.2.10
+date	2003.11.03.19.30.29;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.11;
+
+1.20.2.11
+date	2003.11.04.14.32.53;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.12;
+
+1.20.2.12
+date	2003.11.04.16.02.06;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.13;
+
+1.20.2.13
+date	2003.11.04.16.13.15;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.14;
+
+1.20.2.14
+date	2003.11.04.17.02.49;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.15;
+
+1.20.2.15
+date	2004.01.12.03.46.36;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.16;
+
+1.20.2.16
+date	2004.01.12.06.32.34;	author i0lanthe;	state Exp;
+branches;
+next	1.20.2.17;
+
+1.20.2.17
+date	2004.01.13.07.47.21;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.20
+log
+@mask bound hardware buttons in non-main forms
+@
+text
+@/*********************************************************************
+ * iRogue - Rogue adapted for the PalmPilot.                         *
+ * Copyright (C) 1999 Bridget Spitznagel                             *
+ * Note: This program is derived from rogue 5.3-clone for Linux.     *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+
+#include "palm.h"
+#include "Graffiti.h" /* just for GrfGetState */
+#include <CharAttr.h> /* to keep 3.1 happy about ChrIsHardKey */
+#ifndef I_AM_COLOR
+#include <System/Globals.h> // for font munging
+#else /* I_AM_COLOR */
+// hm, do I need something?
+#endif /* I_AM_COLOR */
+#include "iRogueRsc.h"
+#include "Globals.h"
+//extern DmOpenRef       RogueDB;
+DmOpenRef RogueDB = NULL;
+
+#include "rogue.h"
+
+
+// declarations
+Boolean buttonsHandleEvent(EventPtr e); // now in main.c
+void           do_feep(Long frq, UInt dur);
+//static void    start_of_Play_Level_loop(); // now in main.c
+//static Boolean main_help_handle_cmd(Char c); // now in main.c
+Boolean        Main_Form_HandleEvent(EventPtr e); // now in main.c
+extern void    LeaveForm ();
+//static void    init_direction_select_list(FormPtr frm, Boolean zap); //main.c
+//static void    init_direction_select(FormPtr frm, Short task); //main.c
+Boolean        Direction_Form_HandleEvent(EventPtr e); // now in main.c
+Boolean        MsgLog_Form_HandleEvent(EventPtr e);
+Boolean        InvSelect_Form_HandleEvent(EventPtr e); // now inventory.c
+Boolean        Wiz_Form_HandleEvent(EventPtr e);
+Boolean        Prefs_Form_HandleEvent(EventPtr e);
+Boolean        About_Form_HandleEvent(EventPtr e);
+Boolean        Map_Form_HandleEvent(EventPtr e);
+Boolean        HwButtons_Form_HandleEvent(EventPtr e);
+Boolean        TopTen_Form_HandleEvent(EventPtr e);
+static Boolean OpenDatabase(void);
+static Boolean ApplicationHandleEvent(EventPtr e);
+static void    readRoguePrefs();
+static void    writeRoguePrefs();
+static Word    StartApplication(void);
+static void    free_everything();
+static void    StopApplication(void);
+static void    EventLoop(void);
+DWord          PilotMain(Word cmd, Ptr cmdPBP, Word launchFlags);
+// end
+
+extern struct state_of_the_union * sotu;
+Short x, y;
+extern Short inventory_item; // main.c; used here lots
+
+RoguePreferenceType my_prefs = {
+  true, // run_on
+  true, // formerly save_on_exit, now autosave - in 0.42
+  4, // run_walk_border
+  1, // walk_search_border
+  false, // dave_mode
+  false, // scroll_mode
+  true, // sound_on
+  false, // use hardware
+  {0, 0, 0, 0, // the hardware buttons
+   0, 0, 0, 0},
+  false, // stay centered
+  false, // use large (normal) font - new in 0.42
+  false, // use rogue-relative movement - new in 0.42
+  //
+  0, // color on - new in 0.45 - changed to UChar in 0.47
+  false, // crosshairs on - ditto
+  false  // sort pack - new in 0.46
+};
+/*
+Boolean run_on = true;
+Boolean save_on_exit = true;
+Short run_walk_border = 4;
+Short walk_search_border = 1;
+Boolean dave_mode = false;
+Boolean scroll_mode = false;
+*/
+
+
+Boolean inventory_not_messages = true;
+
+Boolean do_make_new_level = false;
+Boolean save_me = true;
+Boolean i_am_dead = false;
+extern UChar revivify_p; // main.c
+extern Short revivify_which; // main.c
+
+
+/* define INV_foo MOVED to rogue_defines.h */
+
+/**********************************************************************
+                       DO_FEEP
+ IN:
+ frq = frequency
+ dur = duration
+ OUT:
+ nothing
+ PURPOSE:
+ This will produce a beep of the requested frequency and duration,
+ if the pilot owner has "game sound" turned on in the Preferences app.
+ (Try to keep it down to chirps...)
+ **********************************************************************/
+/* SoundLevelType: slOn, slOff
+   gameSoundLevel found in SystemPreferencesType
+ */
+void do_feep(Long frq, UInt dur) {
+  SystemPreferencesChoice allgamesound;
+
+  if (!my_prefs.sound_on)
+    return;
+
+#ifdef I_AM_OS_2
+  allgamesound = prefGameSoundLevel;
+#else
+  allgamesound = prefGameSoundLevelV20;
+#endif
+
+  if (PrefGetPreference(allgamesound) != slOff) {
+    /* click: 200, 9
+       confirmation: 500, 70  */
+    SndCommandType sndCmd;
+    sndCmd.cmd = sndCmdFreqDurationAmp; /* "play a sound" */
+    sndCmd.param1 = frq; /* frequency in Hz */
+    sndCmd.param2 = dur; /* duration in milliseconds */
+    sndCmd.param3 = sndDefaultAmp; /* amplitude (0 to sndMaxAmp) */
+    SndDoCmd(0, &sndCmd, true);
+  }
+}
+
+
+/* how to exit a popup form that you can enter from more than one place */
+extern void LeaveForm()
+{
+   FormPtr frm;
+   frm = FrmGetActiveForm();
+   FrmEraseForm (frm);
+   FrmDeleteForm (frm);
+   FrmSetActiveForm (FrmGetFirstForm ());
+}
+
+
+static void init_msglog_view(FormPtr frm,
+		      struct state_of_the_union *sotu) SEC_1;
+
+Boolean MsgLog_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  FieldPtr fld;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* mine */
+    /** place any form-initialization stuff here **/
+    init_msglog_view(frm, /*inventory_not_messages,*/ sotu);
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_iv));
+    update_field_scrollers(frm, fld, repeat_iv_up, repeat_iv_down);
+    /*if (!inventory_not_messages)
+      FrmCopyTitle(frm, "Message Log");*/
+    /* end mine */	
+    FrmDrawForm(frm);
+    handled = true;
+    break;
+
+  case ctlSelectEvent:
+    switch(e->data.ctlSelect.controlID) {
+    case btn_iv_ok:
+      LeaveForm();
+      handled = true;
+      break;
+    }
+    break;
+
+  case ctlRepeatEvent:
+    /*     "Repeating controls don't repeat if handled is set true." */
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_iv));
+    switch(e->data.ctlRepeat.controlID) {
+    case repeat_iv_up:
+      FldScrollField(fld, 1, winUp);
+      update_field_scrollers(frm, fld, repeat_iv_up, repeat_iv_down);
+      break;
+    case repeat_iv_down:
+      FldScrollField(fld, 1, winDown);
+      update_field_scrollers(frm, fld, repeat_iv_up, repeat_iv_down);
+      break;
+    }
+    break;
+
+  case keyDownEvent:
+    /* hardware button -- or else graffiti. */
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_iv));
+    switch(e->data.keyDown.chr) {
+    case pageUpChr:
+      page_scroll_field(frm, fld, winUp);
+      update_field_scrollers(frm, fld, repeat_iv_up, repeat_iv_down);
+      handled = true;
+      break;
+    case pageDownChr:
+      page_scroll_field(frm, fld, winDown);
+      update_field_scrollers(frm, fld, repeat_iv_up, repeat_iv_down);
+      handled = true;
+      break;
+    }
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+/**********************************************************************
+                       INIT_msglog_VIEW
+ IN:
+ frm = a form that has a text-view widget
+ various globals
+ OUT:
+ nothing
+ PURPOSE:
+ Initializes the displayed form 'frm' with
+ a list of the last SAVED_MSGS messages.
+ Called when frm is being initialized.
+ **********************************************************************/
+extern VoidHand view_TextHandle; // in inventory.c
+/* possibly not large enough */
+#define BIG_NUMBER 2048
+static void init_msglog_view(FormPtr frm, struct state_of_the_union *sotu)
+{
+  FieldPtr fld;
+  CharPtr txtP;
+  Short i;
+
+  /* Get the text field 'field_iv' */
+  fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_iv));
+
+  /* not sure whether to try to free old handles */
+  if (view_TextHandle != NULL) {
+    /* MemHandleFree(view_TextHandle); // bus error.. erk.  leak? */
+  }
+
+  /* Create a mem. handle and lock it */
+  view_TextHandle = MemHandleNew(BIG_NUMBER);
+  txtP = MemHandleLock(view_TextHandle);
+
+  /* Use MemMove and/or MemSet to copy text to the mem. handle */
+  for (i = 0 ; i < SAVED_MSGS ; i++) {
+    MemMove(txtP, sotu->old_messages[i], StrLen(sotu->old_messages[i])+1);
+    txtP += StrLen(sotu->old_messages[i]);
+  }
+
+  /* Unlock the handle.  Set the field to display the handle's text. */
+  MemHandleUnlock(view_TextHandle);
+  FldSetTextHandle(fld, (Handle) view_TextHandle);
+
+  /* update scrollers... oo er. */
+}
+#undef BIG_NUMBER
+
+
+// in my_object.c
+Short wiz_form_object_type = -1;
+Boolean Wiz_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  Short whatkind = -1;
+  ListPtr lst;
+  ControlPtr btn;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    init_wiz_list(frm, list_wiza, -1);
+    wiz_form_object_type = -1;
+    FrmDrawForm(frm);
+    handled = true;
+    break;
+
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    switch(e->data.ctlSelect.controlID) {
+    case btn_wiz_ok:
+      if (wiz_form_object_type != -1) {
+	lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_wiza));
+	whatkind = LstGetSelection(lst);
+      }
+      LeaveForm();
+      /* It is important to do this after LeaveForm for msg to display */
+      if (wiz_form_object_type != -1 && whatkind != -1) {
+	if (wiz_form_object_type > 7) {
+	  whatkind += (wiz_form_object_type > 8 ? 1 : 27);
+	  create_monster(whatkind);
+	} else {
+	  new_object_for_wizard(wiz_form_object_type, whatkind, sotu);
+	}
+      }
+      handled = true;
+      break;
+    case btn_wiz_cancel:
+      LeaveForm();
+      handled = true;
+      break;
+    }
+    break;
+
+  case keyDownEvent:
+    // hardware button -- or else graffiti.
+    frm = FrmGetActiveForm();
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_wiza));
+    switch(e->data.keyDown.chr) {
+    case pageUpChr:
+      if (LstScrollList(lst, winUp, 10)) //there're 11 items visible at a time
+	LstSetSelection(lst, -1);
+      //	wiz_form_object_type = -1;
+      handled = true;
+      break;
+    case pageDownChr:
+      if (LstScrollList(lst, winDown, 10))
+	LstSetSelection(lst, -1);
+      //	wiz_form_object_type = -1;
+      handled = true;
+      break;
+    }
+    break;
+
+  case lstSelectEvent:
+    if (e->data.lstSelect.listID == list_wiza) {
+      if (wiz_form_object_type == -1) {
+	wiz_form_object_type = e->data.lstSelect.selection;
+	if (wiz_form_object_type != -1) {
+	  frm = FrmGetActiveForm();
+	  init_wiz_list(frm, list_wiza, wiz_form_object_type);
+	  FrmDrawForm(frm);
+	  btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_wiz_ok));
+	  CtlShowControl(btn);    
+	  handled = true;
+	}
+      }
+    }
+    break;
+
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+void sort_pack(object *pack);
+extern Boolean have_read_memo; // in color.c
+Boolean Prefs_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  ListPtr lst;
+  ControlPtr checkbox;
+  static Short rw = 0;
+  static Short ws = 0;
+  Boolean redraw = false;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    rw = max(1, my_prefs.run_walk_border - my_prefs.walk_search_border);
+    ws = max(1, my_prefs.walk_search_border);
+    /* and checkboxes */
+    checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_1));
+    CtlSetValue(checkbox, (my_prefs.run_on ? 1 : 0));
+    checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_2));
+    CtlSetValue(checkbox, (my_prefs.autosave_on ? 1 : 0));
+    checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_3));
+    CtlSetValue(checkbox, (my_prefs.dave_mode ? 1 : 0));
+    checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_4));
+    CtlSetValue(checkbox, (my_prefs.scroll_mode ? 1 : 0));
+    checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_5));
+    CtlSetValue(checkbox, (my_prefs.sound_on ? 1 : 0));
+    checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_6));
+    CtlSetValue(checkbox, (my_prefs.stay_centered ? 1 : 0));
+    checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_7));
+    CtlSetValue(checkbox, (my_prefs.font_small ? 1 : 0));
+    checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_8));
+    CtlSetValue(checkbox, (my_prefs.rogue_relative ? 1 : 0));
+    checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_9));
+    CtlSetValue(checkbox, (my_prefs.crosshairs_on ? 1 : 0));
+    checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_11));
+    CtlSetValue(checkbox, (my_prefs.sort_pack ? 1 : 0));
+    checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_12));
+    CtlSetValue(checkbox, (my_prefs.black_bg) ? 1 : 0);
+    /* set player name */
+    usr_form_init(frm, sotu);
+    FrmDrawForm(frm);
+#ifdef I_AM_COLOR
+    {
+      DWord version;
+      FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
+      if (version >= 0x03503000L) {
+	checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_10));
+	CtlSetValue(checkbox, (my_prefs.color_on) ? 1 : 0);
+	CtlShowControl(checkbox);
+      }
+    }
+#endif // COLOR
+    /* set initial settings for lists */
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_bul_1));
+    LstSetSelection(lst, ws-1);
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_bul_2));
+    LstSetSelection(lst, rw-1);
+    handled = true;
+    break;
+
+  case lstSelectEvent:
+    switch (e->data.lstSelect.listID) {
+    case list_bul_1:
+      ws = max(1, 1 + e->data.lstSelect.selection);      /* "hole" */
+      break;
+    case list_bul_2:
+      rw = max(1, 1 + e->data.lstSelect.selection);      /* "donut" */
+      break;
+    }
+    handled = true;
+    break;
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    switch(e->data.ctlSelect.controlID) {
+      /*     case btn_bul_save: */
+      /*       handled = true; */
+      /*       break; */
+    case btn_bul_ok:
+      my_prefs.run_walk_border = rw+ws;
+      my_prefs.walk_search_border = ws;
+      /* read run/walk checkbox... */
+      checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_1));
+      my_prefs.run_on = (CtlGetValue(checkbox) != 0);	
+      /* read save/don't checkbox... */
+      checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_2));
+      my_prefs.autosave_on = (CtlGetValue(checkbox) != 0);	
+      /* read dave-mode checkbox... */
+      checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_3));
+      my_prefs.dave_mode = (CtlGetValue(checkbox) != 0);	
+      /* read scroll-mode checkbox... */
+      checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_4));
+      my_prefs.scroll_mode = (CtlGetValue(checkbox) != 0);	
+      /* read sound checkbox... */
+      checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_5));
+      my_prefs.sound_on = (CtlGetValue(checkbox) != 0);	
+      /* read centered checkbox... */
+      checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_6));
+      my_prefs.stay_centered = (CtlGetValue(checkbox) != 0);	
+      /* read font checkbox... */
+      checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_7));
+      my_prefs.font_small = (CtlGetValue(checkbox) != 0);	
+      /* read rogue-relative checkbox... */
+      checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_8));
+      my_prefs.rogue_relative = (CtlGetValue(checkbox) != 0);	
+      /* read crosshairs checkbox... */
+      checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_9));
+      my_prefs.crosshairs_on = (CtlGetValue(checkbox) != 0);	
+      checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_11));
+      if (!my_prefs.sort_pack && CtlGetValue(checkbox))
+	sort_pack(&(sotu->roguep->pack));
+      my_prefs.sort_pack = (CtlGetValue(checkbox) != 0);	
+      checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm,check_bul_12));
+      if ((CtlGetValue(checkbox) != 0) != my_prefs.black_bg)
+	redraw = true;
+      my_prefs.black_bg = (CtlGetValue(checkbox) != 0);
+#ifdef I_AM_COLOR
+      {
+	/* read color checkbox... */
+	DWord version;
+	FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
+	if (version >= 0x03503000L) {
+	  checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm,check_bul_10));
+	  if ((CtlGetValue(checkbox) != 0) != my_prefs.color_on)
+	    redraw = true;
+	  my_prefs.color_on = (CtlGetValue(checkbox) != 0);
+	  if (!have_read_color && my_prefs.color_on)
+	    // we'll need to read the memo.
+	    // I used to check that the old mp.color_on was false.. need to????
+	    look_for_memo(); // will set have_read_color true if found
+	}
+      }
+#endif // COLOR
+
+      /* read player name... */
+      usr_form_update(frm, sotu);
+      /* write bools and shorts to a PREFERENCES data thingy. */
+      writeRoguePrefs();
+      LeaveForm();
+      if (redraw) { // Basically same as the MainForm re-center menu item...
+	move_visible_window(sotu->roguep->col, sotu->roguep->row, true);
+	print_stats(STAT_ALL, sotu); 
+	check_message();  // clear the old message
+      }
+      /* It is important to do this after LeaveForm for msg to display */
+      /* <anything with message> */
+      handled = true;
+      break;
+    case btn_bul_cancel:
+      LeaveForm();
+      handled = true;
+      break;
+      /*
+    case btn_bul_hw:
+      FrmPopupForm(HwButtonsForm);
+      handled = true;
+      break;
+      */
+    case btn_bul_draw:
+      draw_circle(80, 80, (rw+ws)*10, true);
+      draw_circle(80, 80, ws*10, false);
+      handled = true;
+      break;
+    case btn_bul_clear:
+      draw_circle(80, 80, 160, false);
+      FrmDrawForm(frm);
+      handled = true;
+      break;
+    }
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+Boolean About_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    FrmDrawForm(frm);
+    handled = true;
+    break;
+
+  case ctlSelectEvent:
+    switch(e->data.ctlSelect.controlID) {
+    case btn_about_ok:
+      LeaveForm();
+      handled = true;
+      break;
+    case btn_about_more:
+      FrmHelp(AboutStr);
+      handled = true;
+      break;
+    case btn_about_credits:
+      FrmHelp(CreditStr);
+      handled = true;
+      break;
+    }
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+Boolean Map_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* ...init form... */
+    FrmDrawForm(frm);
+    /* this must be AFTER draw form */
+    show_dungeon(sotu);
+    handled = true;
+    break;
+
+  case penDownEvent:
+    LeaveForm();
+    handled = true;
+    break;
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+
+Boolean HwButtons_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  ListPtr lst;    // popup list
+  ControlPtr ctl; // popup trigger
+  CharPtr label;
+  Short i;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    // my stuff
+    ctl = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_hwb));
+    CtlSetValue(ctl, (my_prefs.use_hardware ? 1 : 0));
+    for (i = 0 ; i < 8 ; i++) {
+      lst = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, list_hwb_1 + i));
+      ctl = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, popup_hwb_1 + i));
+      LstSetSelection(lst, my_prefs.hardware[i]);
+      label = LstGetSelectionText(lst, my_prefs.hardware[i]);
+      CtlSetLabel(ctl, label);
+    }
+    // end my stuff
+    FrmDrawForm(frm);
+    handled = true;
+    break;
+
+  case ctlSelectEvent:
+    switch(e->data.ctlSelect.controlID) {
+    case btn_hwb_ok:
+      frm = FrmGetActiveForm();
+      ctl = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_hwb));
+      my_prefs.use_hardware = (CtlGetValue(ctl) != 0);	
+      for (i = 0 ; i < 8 ; i++) {
+	lst = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, list_hwb_1 + i));
+	my_prefs.hardware[i] = LstGetSelection(lst);
+      }
+      writeRoguePrefs();
+      LeaveForm();
+      handled = true;
+      break;
+    case btn_hwb_cancel:
+      LeaveForm();
+      handled = true;
+      break;
+    }
+    break;
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+Boolean topten_just_browsing = false; // quickfix to allow browsing while alive
+Boolean TopTen_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  FieldPtr fld;
+  ControlPtr btn;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_topten));
+    if (!topten_just_browsing)
+      save_me = false;
+    init_topten_view(frm);
+    update_field_scrollers(frm, fld, repeat_topten_up, repeat_topten_down);
+    if (!topten_just_browsing) {
+      kill_saved_rogue(STATUS_ISDEAD, 0); // make sure you are DEAD
+      if (sotu->score_status & STATUS_WINNER)
+	topten_frob_btns(frm);
+    }
+    /* end mine */
+    FrmDrawForm(frm);
+    if (topten_just_browsing) {
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_dead_ok));
+      CtlHideControl(btn);
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_dead_reviv));
+      CtlHideControl(btn);
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_dead_done));
+      CtlShowControl(btn);
+      topten_just_browsing = false; // the view-scores menu item sets it True.
+    }
+    handled = true;
+    break;
+
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    switch(e->data.ctlSelect.controlID) {
+    case btn_dead_done: // we're still alive, just browsing the score list..
+      LeaveForm();
+      handled = true;
+      break;
+    case btn_dead_reviv:
+      FrmPopupForm(RevivifyForm);
+      handled = true;
+      break;
+    case btn_dead_ok:
+      free_old_level(sotu);
+      init_sotu();
+      clear_identifications();
+      // that will:
+      // init_id_potions to get rid of ids and 'call' titles
+      // init_id_scrolls to get rid of ids and 'call' titles
+      // also, might need wands and rings...
+      mix_colors();
+      get_wand_and_ring_materials();
+      /* (does anything else need to be cleared???) */
+      do_make_new_level = true; // don't try to load a saved character..
+      save_me = true;
+      i_am_dead = false;
+      LeaveForm();
+      FrmGotoForm(MainForm);
+      check_message();
+      /* Well.... it seems to work... */
+      handled = true;
+      break;
+    }
+    break;
+
+  case ctlRepeatEvent:
+    /*     "Repeating controls don't repeat if handled is set true." */
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_topten));
+    switch(e->data.ctlRepeat.controlID) {
+    case repeat_topten_up:
+      FldScrollField(fld, 1, winUp);
+      update_field_scrollers(frm, fld, repeat_topten_up, repeat_topten_down);
+      break;
+    case repeat_topten_down:
+      FldScrollField(fld, 1, winDown);
+      update_field_scrollers(frm, fld, repeat_topten_up, repeat_topten_down);
+      break;
+    }
+    break;
+
+  case keyDownEvent:
+    /* hardware button -- or else graffiti. */
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_topten));
+    switch(e->data.keyDown.chr) {
+    case pageUpChr:
+      page_scroll_field(frm, fld, winUp);
+      update_field_scrollers(frm, fld, repeat_topten_up, repeat_topten_down);
+      handled = true;
+      break;
+    case pageDownChr:
+      page_scroll_field(frm, fld, winDown);
+      update_field_scrollers(frm, fld, repeat_topten_up, repeat_topten_down);
+      handled = true;
+      break;
+    }
+    break;
+
+
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+// usr_form_* moved to chuvmey_nolib
+
+
+/* Revivify 
+   If you cancel, exit this form back to top-ten (dead) or dungeon (live).
+   If you do not cancel, need to know which form you came from!!! argh.
+   Well actually that should be apparent because if topten, sotu is DEAD. */
+/* Undead or alive:
+   50% The orange smoke slowly disappears.
+   50% The cloud of orange smoke dissipates.
+   make a nice piercing beep at this point.
+   Undead:
+   You feel.. strangely hungry.
+   Alive:
+   40% Someone has rifled your pockets!
+   30% You don't recall how you got here.
+   20% You feel shaky, weak in the knees.
+   10% You feel distressingly light-headed.  */
+Boolean Revivify_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  Short filenum, new_i;
+  ListPtr lst;
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* end mine */
+    FrmDrawForm(frm);
+    // Hey! Disable the "alive" button if the guy being restored already undead
+    // If you can get to this form from not-top-ten-list, also,
+    // disable the "undead" button if the guy being restored is alive.
+    // I will do this LATER because I will have to READ THE DATABASE RECORD
+    // 
+    // Initialize the popup list with the available save files
+    // (when deleting them: please PACK so there are no empty files.)
+    // display "autosave", "<timestamp>" ...  have autosave slot selected.
+    // initially and when a new one is chosen on list, print info on screen.
+    // do this in a reusable function because snapshot_form needs it too
+    //
+    // Also do not allow more than MAX_SAVE_FILES.
+    lst = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, list_reviv));
+    snapshot_update_list(lst, false); // bool == whether to include 'new'
+    display_saved_rogue(0);
+    reviv_frob_btns(frm, 0);
+    handled = true;
+    break;
+
+  case popSelectEvent:
+    filenum = e->data.popSelect.selection; // you also know priorSelection
+    new_i = get_file_count();
+    undisplay_saved_rogue();
+    if (filenum < new_i) {
+      display_saved_rogue(filenum);
+      reviv_frob_btns(FrmGetActiveForm(), filenum);
+    }
+    break;
+
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    lst = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, list_reviv));
+    switch(e->data.ctlSelect.controlID) {
+    case btn_reviv_cancel:
+      LstSetListChoices(lst, NULL, 0);
+      LeaveForm(); // just go back to the topten form
+      handled = true;
+      break;
+    case btn_reviv_undead:
+    case btn_reviv_alive:
+      revivify_which = LstGetSelection(lst);
+      LstSetListChoices(lst, NULL, 0);
+      LeaveForm();
+      if (!save_me) LeaveForm(); // we came from top_ten, get rid of it too.
+      FrmGotoForm(MainForm); // leave main form and goto main form
+      check_message();
+      /* \end{dangerous half-assed implementation} */
+      /* Well.... it seems to work... */
+      if (e->data.ctlSelect.controlID == btn_reviv_undead)
+	revivify_p = STATUS_UNDEAD;
+      else 
+	revivify_p = STATUS_ISDEAD;
+      do_make_new_level = false; // so that we load the saved character!
+      save_me = true;
+      i_am_dead = false;
+      handled = true;
+      break;
+    }
+    break;
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+
+Boolean Snapshot_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  Short filenum, new_i;
+  ListPtr lst;
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* end mine */
+    FrmDrawForm(frm);
+    // Hey! Disable the "delete" button if there is only autosave.
+    // (even though the button handler is smart enough to not do it).
+    lst = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, list_snap));
+    snapshot_update_list(lst, true); // true == whether to include 'new'
+    display_saved_rogue(0);
+    snapshot_frob_btns(frm, false);
+    handled = true;
+    break;
+
+  case popSelectEvent:
+    filenum = e->data.popSelect.selection; // you also know priorSelection
+    new_i = get_file_count();
+    undisplay_saved_rogue();
+    if (filenum < new_i) {
+      display_saved_rogue(filenum);
+      // if filenum == 0, disable 'delete' button..
+      snapshot_frob_btns(FrmGetActiveForm(), (filenum!=0));      
+    }
+    ////    handled = true; // ?
+    break;
+
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    lst = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, list_snap));
+    filenum = LstGetSelection(lst);
+    new_i = get_file_count();
+    switch(e->data.ctlSelect.controlID) {
+    case btn_snap_cancel:
+      LstSetListChoices(lst, NULL, 0);
+      LeaveForm();
+      handled = true;
+      break;
+    case btn_snap_delete:
+      // figure out which is selected, if NEW or autosave then feep & ignore
+      // ..or else have the got-selected code disable/enable delete..
+      // Popup an "deleting foo, are you SURE?"
+      // Do not leave the form.
+      handled = true;
+      if (filenum <= 0 || filenum >= new_i) break; // o.o.b.
+      if (0 == FrmAlert(SaveDeleteP)) {
+	delete_saved_rogue(filenum);
+	snapshot_delete_listi(frm, filenum);
+	snapshot_frob_btns(frm, false);
+      }
+      // then REDRAW the list!!
+      // actually, just free the ith string and pack the array,
+      // then tell it to redraw itself.
+      break;
+    case btn_snap_save:
+      // if something other than autosave or NEW is selected,
+      // Popup an "overwriting foo, are you SURE?"
+      handled = true;
+      if (filenum < 0 || filenum > new_i) break; // out of bounds
+      if (filenum == 0 || filenum == new_i || 0 == FrmAlert(SaveOverP)) {
+	save_character(sotu, filenum);
+	LstSetListChoices(lst, NULL, 0);
+	LeaveForm();
+	message("saved.", sotu);
+      }
+      break;
+    }
+    break;
+  default:
+    break;
+  }
+
+  return handled;
+}
+
+
+/*****************************************************************************
+ *                                                                           *
+ *   The following stufff actually belongs in this file.                     *
+ *                                                                           *
+ *****************************************************************************/
+/*****************************************************************************
+ *                                                                           *
+ *                      OpenDatabase                                         *
+ *                                                                           *
+ *****************************************************************************/
+static Boolean OpenDatabase(void)
+{
+  do_make_new_level = false; // so that we will load the saved character
+  /* Try to open the Rogue database.
+     If it does not exist, create one. */
+
+  RogueDB =  DmOpenDatabaseByTypeCreator(RogueDBType,
+					 RogueAppID,
+					 dmModeReadWrite);
+  if (!RogueDB) {
+    if (DmCreateDatabase(0, // card number 0
+			 RogueDBName,
+			 RogueAppID,
+			 RogueDBType,
+			 false))
+      return 1;
+    RogueDB = DmOpenDatabaseByTypeCreator(RogueDBType,
+					   RogueAppID,
+					   dmModeReadWrite);
+    /* Success has crowned my efforts!  and I may consider myself
+       engaged to Phyllis!  ok, maybe not. */
+    do_make_new_level = true;    
+    create_top_ten_record();
+    create_filecount_record();
+    return 0;
+  }
+
+  if (DmNumRecords(RogueDB) <= 11)
+    do_make_new_level = true; /* the database doesn't really have stuff */    
+  else if (get_saved_rogue_status(0) & STATUS_ISDEAD)
+    do_make_new_level = true; /* the saved character is DEAD, ignore it */
+
+  /* there was a Rogue DB and we opened it */
+  return 0;
+}
+
+
+/*****************************************************************************
+ *                      ApplicationHandleEvent                               *
+ *****************************************************************************/
+static Boolean ApplicationHandleEvent(EventPtr e)
+{
+    FormPtr frm;
+    Word    formId;
+    Boolean handled = false;
+
+    if (e->eType == frmLoadEvent) {
+	formId = e->data.frmLoad.formID;
+	frm = FrmInitForm(formId);
+	FrmSetActiveForm(frm);
+
+	switch(formId) {
+	case MainForm:
+	    FrmSetEventHandler(frm, Main_Form_HandleEvent);
+	    break;
+	case DirectionForm:
+	    FrmSetEventHandler(frm, Direction_Form_HandleEvent);
+	    break;
+	case MsgLogForm:
+	    FrmSetEventHandler(frm, MsgLog_Form_HandleEvent);
+	    break;
+	case InvSelectForm:
+	    FrmSetEventHandler(frm, InvSelect_Form_HandleEvent);
+	    break;
+	case WizForm:
+	    FrmSetEventHandler(frm, Wiz_Form_HandleEvent);
+	    break;
+	case PrefsForm:
+	    FrmSetEventHandler(frm, Prefs_Form_HandleEvent);
+	    break;
+	case AboutForm:
+	    FrmSetEventHandler(frm, About_Form_HandleEvent);
+	    break;
+	case MapForm:
+	    FrmSetEventHandler(frm, Map_Form_HandleEvent);
+	    break;
+	case TopTenForm:
+	    FrmSetEventHandler(frm, TopTen_Form_HandleEvent);
+	    break;
+	case RevivifyForm:
+	    FrmSetEventHandler(frm, Revivify_Form_HandleEvent);
+	    break;
+	case SnapshotForm:
+	    FrmSetEventHandler(frm, Snapshot_Form_HandleEvent);
+	    break;
+	case HwButtonsForm:
+	    FrmSetEventHandler(frm, HwButtons_Form_HandleEvent);
+	    break;
+	}
+	handled = true;
+    }
+
+    return handled;
+}
+
+// dude - the 3.5ez (Vx) rom hassled me about this (I think it was about this).
+// ...the III rom did not, and the color rom did not, and the 3.3's did not.
+// wacky.
+static void readRoguePrefs() {
+  Word prefsSize;
+  SWord prefsVersion;
+  //  Short i;
+  //  RoguePreferenceType prefs;
+  prefsSize = sizeof(RoguePreferenceType);
+  prefsVersion = PrefGetAppPreferences(RogueAppID, RogueAppPrefID, &my_prefs,
+				       &prefsSize, true);
+  if (prefsVersion > noPreferenceFound) {
+    // just to be sure.
+    my_prefs.run_walk_border = max(my_prefs.run_walk_border, 1);
+    my_prefs.walk_search_border = max(my_prefs.walk_search_border, 1);
+    // also, check that it's not an old version; if it is,
+    // fix the new stuff.
+    if (prefsVersion < RogueAppPrefVersion) {
+      my_prefs.color_on = false;
+      my_prefs.crosshairs_on = false;
+    }
+    if (prefsVersion < 0x02) {
+      my_prefs.autosave_on = false; // new in 0.42 // nah, change to multiuser
+      my_prefs.font_small = false; // new in 0.42
+      my_prefs.rogue_relative = false; // new in 0.42
+    }
+    //    if (ancient) {
+    //      my_prefs.sound_on = true;
+    //      my_prefs.use_hardware = false;
+    //      for (i = 0 ; i < 8 ; i++)
+    //      my_prefs.hardware[i] = HWB_NOOP;
+    //      my_prefs.stay_centered = false; // new in 0.40
+    //    }
+  }
+}
+static void writeRoguePrefs() {
+  Word prefsSize;
+  //  RoguePreferenceType prefs;
+  prefsSize = sizeof(RoguePreferenceType);
+
+  PrefSetAppPreferences(RogueAppID, RogueAppPrefID, RogueAppPrefVersion,
+			&my_prefs, prefsSize, true);
+}
+
+/*****************************************************************************
+ *                      StartApplication                                     *
+ *****************************************************************************/
+/* moved to the head of the class */
+#ifdef I_AM_OS_2
+FontPtr oldFontSix = 0;
+#endif
+Boolean evil = false;
+static Word StartApplication(void)
+{
+  Word error;
+#ifdef I_AM_OS_2
+  DWord version;
+  void *font128 = 0;
+#else
+  DWord version;
+  VoidHand fontHandle;
+  FontType *fontPtr;
+#endif
+
+  error = OpenDatabase();
+  if (error) { evil = true; return error; }
+/*   error = checkAppInfo(); */
+/*   if (error) return error; */
+
+  /* DO NOT START if there is no rogue library loaded.  so there. */
+  //  if (! DmFindDatabase(0, RogueLibraryName))
+  //    return 1;
+
+  /* load game and/or do all the ONE-TIME initialization */
+  init_game();
+
+  readRoguePrefs();
+
+#ifdef I_AM_OS_2
+  FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
+  // evil font kludges!
+  font128 = MemHandleLock(DmGetResource('NFNT', ItsyFont));
+  if (version < 0x03000000L) {
+    oldFontSix = ((UIGlobalsPtr)GUIGlobalsP)->uiFontTable[6];
+    ((UIGlobalsPtr)GUIGlobalsP)->uiFontTable[6] = font128;
+  }
+#else
+  FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
+  if (version >= 0x03000000L) {
+    fontHandle = DmGetResource('NFNT',ItsyFont);
+    fontPtr = MemHandleLock(fontHandle);
+    // "user defined fonts start from 129"
+    FntDefineFont(129,fontPtr);
+    // the custom font is uninstalled automatically when we leave iRogue;
+    // however, fontHandle MUST remain locked until then.
+  }
+  // set HasColor boolean to false
+#ifdef I_AM_COLOR
+  if ((version >= 0x03503000L) && (my_prefs.color_on & PREF_COLOR))
+    // call a routine to find and grok 'iRogue-RGB' memo, if it exists;
+    look_for_memo();
+  // set IsColor boolean to whether it exists.
+#endif // COLOR
+#endif // OS 2
+
+  if (my_prefs.font_small) // user likes the small font.
+    toggle_itsy(); // might return false, if OS is wrong version; ignore.
+
+  FrmGotoForm(MainForm);
+  return 0;
+}
+
+/*****************************************************************************
+ *                      StopApplication                                      *
+ *****************************************************************************/
+/* Save preferences, close forms, close app database */
+extern Char * hit_message;
+extern Boolean *rooms_visited;
+#define Free_me(a)  h = MemPtrRecoverHandle((a)); if (h) MemHandleFree(h);
+static void free_everything() {
+  VoidHand h;
+  Short i;
+
+  free_old_level(sotu);
+  Free_me(sotu->level_objects);
+  Free_me(sotu->level_monsters);
+
+  Free_me(hit_message);
+  Free_me(rooms_visited);
+
+  //  Free_me(sotu->fruit);
+  Free_me(sotu->level_points);
+  //  for (i = 0 ; i < TRAPS*2 ; i++) {
+  //    Free_me(sotu->trap_strings[i]);
+  //  }
+  for (i = 0 ; i < DROWS ; i++) {
+    Free_me(sotu->dungeon[i]);
+  }
+  Free_me(sotu->dungeon);
+  Free_me(sotu->rooms);
+  Free_me(sotu->traps);
+  Free_me(sotu->id_potions);
+  Free_me(sotu->id_scrolls);
+  Free_me(sotu->id_weapons);
+  Free_me(sotu->id_armors);
+  Free_me(sotu->id_rings);
+  Free_me(sotu->id_wands);
+  Free_me(sotu->is_wood);
+
+  Free_me(sotu->roguep);
+  Free_me(sotu);
+
+}
+
+static void StopApplication(void)
+{
+#ifdef I_AM_OS_2
+  DWord version;
+  //void *font128 = 0;
+#else
+  DWord version;
+  VoidHand fontHandle;
+#endif
+  if (evil) return;
+
+#ifdef I_AM_OS_2
+  FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
+  if (version < 0x03000000L) {
+    if (oldFontSix) {
+      ((UIGlobalsPtr)GUIGlobalsP)->uiFontTable[6] = oldFontSix;
+      oldFontSix = 0;
+      //      if ((font128 = ((UIGlobalsPtr)GUIGlobalsP)->uiFontTable[6]))
+      //	MemHandleUnlock(font128);
+    }
+  }
+#else
+  FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
+  if (version >= 0x03000000L) {
+    fontHandle = DmGetResource('NFNT',ItsyFont);
+    MemHandleUnlock(fontHandle);
+  }  
+#endif // OS 2
+
+  //  if (save_me && my_prefs.save_on_exit)
+  if (save_me) { // XXX DEBUGGING
+    check_message(); // force clear
+    sotu->last_old_message_shown = SAVED_MSGS-1; // no "--more--"
+    message("Saving...", sotu);
+    save_character(sotu, 0); /* save if not DEAD. */
+  }
+  
+  FrmSaveAllForms();
+  FrmCloseAllForms();
+
+  /* it might be nice to CLOSE the DATABASE.  not necessary? */
+  if (RogueDB!=NULL) {
+    DmCloseDatabase(RogueDB);
+    RogueDB = NULL;
+  }
+  free_everything();
+  /* it might be nice to free some crap, too */
+}
+
+
+/*****************************************************************************
+ *                      EventLoop                                            *
+ *****************************************************************************/
+
+/* The main event loop */
+
+
+static void EventLoop(void)
+{
+    Word err;
+    EventType e;
+     
+    do {
+	EvtGetEvent(&e, evtWaitForever);
+	// first see if it's a hardware button thing!!!
+	// don't ask me what the poweredOnKeyMask is, though; cargo cult.
+	// Do special hardware button things only if:
+	// it's a hardware button event, [you're alive,] and in the main form.
+	if ( (e.eType != keyDownEvent)
+	     || !my_prefs.use_hardware 
+	     || (e.data.keyDown.modifiers & poweredOnKeyMask)
+	     /*	     || (FrmGetActiveFormID() != MainForm) */
+	     || !buttonsHandleEvent(&e) )
+	  // now proceed with usual handling
+	  if (! SysHandleEvent (&e))
+	    if (! MenuHandleEvent (NULL, &e, &err))
+	      if (! ApplicationHandleEvent (&e))
+		FrmDispatchEvent (&e);
+    } while (e.eType != appStopEvent);
+}
+
+/* Main entry point; it is unlikely you will need to change this except to
+   handle other launch command codes */
+/*****************************************************************************
+ *                      PilotMain                                            *
+ *****************************************************************************/
+//#define ERROR_CHECK_LEVEL ERROR_CHECK_FULL
+DWord PilotMain(Word cmd, Ptr cmdPBP, Word launchFlags)
+{
+    Word err;
+
+    /*
+#if ERROR_CHECK_LEVEL == ERROR_CHECK_FULL
+    Word crc = Crc16CalcBlock(NULL, 256, 0);
+#endif
+*/
+/* #if ERROR_CHECK_LEVEL == ERROR_CHECK_FULL */
+/*     DWord startFreeDynamicMemory, endFreeDynamicMemory, junk; */
+/*     MemHeapFreeBytes(0, &startFreeDynamicMemory, &junk); */
+/* #endif */
+
+    if (cmd == sysAppLaunchCmdNormalLaunch) {
+
+      err = StartApplication();
+      if (err) return err;
+
+      EventLoop();
+      StopApplication();
+
+    } else {
+      return sysErrParamErr;
+    }
+    /*
+#if ERROR_CHECK_LEVEL == ERROR_CHECK_FULL
+    ErrNonFatalDisplayIf (crc != Crc16CalcBlock(NULL, 256, 0), 
+			  "low Memory Trashed)");
+#endif
+*/
+/* #if ERROR_CHECK_LEVEL == ERROR_CHECK_FULL */
+/*     MemHeapFreeBytes(0, &endFreeDynamicMemory, &junk); */
+/*     ErrNonFatalDisplayIf (startFreeDynamicMemory != endFreeDynamicMemory, */
+/* 			  "Memory Leak Occurred"); */
+/* #endif */
+
+    return 0;
+}
+
+/*******************************************************************
+                    add new stuff below
+*******************************************************************/
+
+ 
+@
+
+
+1.20.2.1
+log
+@attempting to make iRogue less dependent on display size
+@
+text
+@a36 1
+#include "handera.h"
+a183 2
+    if (IsVGA)
+      VgaFormModify(frm, vgaFormModify160To240);
+a301 2
+    if (IsVGA)
+      VgaFormModify(frm, vgaFormModify160To240);
+a419 2
+    if (IsVGA)
+      VgaFormModify(frm, vgaFormModify160To240);
+a565 2
+    if (IsVGA)
+      VgaFormModify(frm, vgaFormModify160To240);
+a603 2
+    if (IsVGA)
+      VgaFormModify(frm, vgaFormModify160To240);
+a646 2
+    if (IsVGA)
+      VgaFormModify(frm, vgaFormModify160To240);
+a700 2
+    if (IsVGA)
+      VgaFormModify(frm, vgaFormModify160To240);
+a819 2
+    if (IsVGA)
+      VgaFormModify(frm, vgaFormModify160To240);
+a899 2
+    if (IsVGA)
+      VgaFormModify(frm, vgaFormModify160To240);
+a1122 6
+Boolean IsVGA = false; // like IsColor.  tells you if you're on a Handera 330.
+#ifndef I_AM_OS_2
+FontID SmallFont;
+FontID BigFont;
+#endif
+
+d1165 6
+a1170 23
+    UInt32 version2;
+    UInt32 defaultFont;
+    IsVGA = _TRGVGAFeaturePresent(&version2); // Are we on a Handera 330.
+    FtrGet(sysFtrCreator, sysFtrDefaultFont, &defaultFont);
+    if (IsVGA) {
+      if (VgaIsVgaFont(defaultFont)) { // vga fonts are LARGER
+	SmallFont = VgaVgaToBaseFont(defaultFont);
+	BigFont = defaultFont;
+      } else {
+	SmallFont = defaultFont;
+	BigFont = VgaBaseToVgaFont(defaultFont);
+      }
+      FntSetFont(SmallFont);// So the forms OTHER than Main have non-VGA font!!
+    } else {
+      BigFont = defaultFont;
+      fontHandle = DmGetResource('NFNT',ItsyFont);
+      fontPtr = MemHandleLock(fontHandle);
+      // "user defined fonts start from 129"
+      FntDefineFont(129, fontPtr);
+      SmallFont = 129;
+      // the custom font is uninstalled automatically when we leave iRogue;
+      // however, fontHandle MUST remain locked until then.
+    }
+a1183 5
+  if (IsVGA) {// If Handera, go to hi res mode
+    VgaSetScreenMode(screenMode1To1, rotateModeNone);
+    update_display_size();
+  }
+
+d1254 2
+a1255 4
+    if (!IsVGA) {
+      fontHandle = DmGetResource('NFNT',ItsyFont);
+      MemHandleUnlock(fontHandle);
+    }
+@
+
+
+1.20.2.2
+log
+@maybe get handera to use the right font and dungeon-terminal size
+@
+text
+@a37 2
+extern Short ScrWidth; // display.c
+extern Short ScrHeight;
+d545 2
+a546 2
+      draw_circle(ScrWidth/2, ScrHeight/2, (rw+ws)*10, true);
+      draw_circle(ScrWidth/2, ScrHeight/2, ws*10, false);
+d550 1
+a550 1
+      draw_circle(ScrWidth/2, ScrHeight/2, 160, false); // why?
+d1228 1
+a1228 1
+    init_display_size();
+@
+
+
+1.20.2.3
+log
+@attempting to fix: walk/search/run donut factor; crosshairs
+@
+text
+@a39 1
+extern Short WalkMagic;
+d547 2
+a548 2
+      draw_circle(ScrWidth/2, ScrHeight/2, (rw+ws)*WalkMagic, true);
+      draw_circle(ScrWidth/2, ScrHeight/2, ws*WalkMagic, false);
+d552 1
+a552 2
+      //draw_circle(ScrWidth/2, ScrHeight/2, 160, false); // why?
+      // let's try it without
+@
+
+
+1.20.2.4
+log
+@blah
+@
+text
+@a165 50
+/***********************************************************************
+ * swiped from HandEra example...
+ *
+ * FUNCTION:    PrvMoveObject
+ *
+ * DESCRIPTION: This routine moves an object vertically within a form.
+ *
+ * PARAMETERS:  
+ *
+ * RETURNED:    nothing
+ *
+ ***********************************************************************/
+void PrvMoveObject(FormPtr frmP, UInt objIndex, Coord y_diff, Boolean draw)
+{
+    RectangleType r;
+    
+    FrmGetObjectBounds(frmP, objIndex, &r);
+    if (draw)
+    {
+        RctInsetRectangle(&r, -2);   //need to erase the frame as well
+        WinEraseRectangle(&r, 0);
+        RctInsetRectangle(&r, 2);
+    }    
+    r.topLeft.y += y_diff;
+    FrmSetObjectBounds(frmP, objIndex, &r);
+}
+void PrvResizeList(FormPtr frm, UInt objIndex, Coord y_diff)
+{
+  // Wonder if I need to erase the old space.
+  Short vis_items;
+  ListPtr lst;
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, objIndex));
+  vis_items = LstGetVisibleItems(lst);
+  vis_items = vis_items + (y_diff / FntLineHeight());
+  LstSetHeight(lst, vis_items);
+}
+void PrvResizeField(FormPtr frm, UInt objIndex, Coord y_diff)
+{
+  // Wonder if I need to erase the old space.  Probably I DO.
+  RectangleType r;
+  Short h;
+  FieldPtr fld;
+  fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, objIndex));
+  FldGetBounds(fld, &r);
+  h = FntLineHeight();
+  r.extent.y = r.extent.y + h * (y_diff / h); // could just add y_diff...
+  FldSetBounds(fld, &r);
+  // Hmmm.  It says "don't change the WIDTH of the object while it's visible"
+}
+
+d188 1
+a188 2
+    if (IsVGA) {
+      Short y_diff;
+a189 8
+      y_diff = frob_display_size(false);
+      // move buttons
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_iv_ok), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, repeat_iv_up), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, repeat_iv_down), y_diff, true);
+      // should resize field too: add y_diff / 11 lines to it
+      PrvResizeField(frm, field_iv, y_diff);
+    }
+a193 20
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) {
+      Short y_diff;
+      update_display_size();
+      y_diff = frob_display_size(true);
+      // redraw the "new" screen too...  don't ask me whether this will work
+      frm = FrmGetActiveForm();
+      // move buttons
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_iv_ok), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, repeat_iv_up), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, repeat_iv_down), y_diff, true);
+      // should resize field too: add y_diff / 11 lines to it
+      PrvResizeField(frm, field_iv, y_diff);
+      FrmDrawForm(frm);
+    }
+    break;
+#endif
+
+d308 1
+a308 2
+    if (IsVGA) {
+      Short y_diff;
+a309 7
+      y_diff = frob_display_size(false);
+      // move buttons
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_wiz_ok), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_wiz_cancel), y_diff, true);
+      // should resize list too: add y_diff / 11 lines to it
+      PrvResizeList(frm, list_wiza, y_diff);
+    }
+a313 19
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) {
+      Short y_diff;
+      update_display_size();
+      y_diff = frob_display_size(true);
+      // redraw the "new" screen too...  don't ask me whether this will work
+      frm = FrmGetActiveForm();
+      // move buttons
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_wiz_ok), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_wiz_cancel), y_diff, true);
+      // should resize list too: add y_diff / 11 lines to it
+      PrvResizeList(frm, list_wiza, y_diff);
+      FrmDrawForm(frm);
+    }
+    break;
+#endif
+
+d428 1
+a428 2
+    if (IsVGA) {
+      Short y_diff;
+a429 5
+      y_diff = frob_display_size(false);
+      // move buttons
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_bul_ok), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_bul_cancel), y_diff, true);
+    }
+a449 17
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) {
+      Short y_diff;
+      update_display_size();
+      y_diff = frob_display_size(true);
+      // redraw the "new" screen too...  don't ask me whether this will work
+      frm = FrmGetActiveForm();
+      // move buttons
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_bul_ok), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_bul_cancel), y_diff, true);
+      FrmDrawForm(frm);
+    }
+    break;
+#endif
+
+a458 10
+
+      // This piece is for debugging only!!!
+      {
+	Char buf[40];
+	Coord         x, y;
+	WinGetDisplayExtent(&x, &y);
+	StrPrintF(buf, "%d %d", x, y);
+	WinDrawChars(buf, StrLen(buf), 20, 20);
+      }
+
+d577 1
+a577 2
+    if (IsVGA) {
+      Short y_diff;
+a578 6
+      y_diff = frob_display_size(true);
+      // move buttons
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_about_ok), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_about_more), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_about_credits), y_diff, true);
+    }
+a582 18
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) {
+      Short y_diff;
+      update_display_size();
+      y_diff = frob_display_size(true);
+      // redraw the "new" screen too...  don't ask me whether this will work
+      frm = FrmGetActiveForm();
+      // move buttons
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_about_ok), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_about_more), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_about_credits), y_diff, true);
+      FrmDrawForm(frm);
+    }
+    break;
+#endif
+
+d617 1
+a617 1
+    if (IsVGA) {
+a618 2
+      frob_display_size(false);
+    }
+a624 14
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) {
+      update_display_size();
+      frob_display_size(true);
+      // redraw the "new" screen too...  don't ask me whether this will work
+      frm = FrmGetActiveForm();
+      FrmDrawForm(frm);
+      show_dungeon(sotu);
+    }
+    break;
+#endif
+
+d662 1
+a662 2
+    if (IsVGA) {
+      Short y_diff;
+a663 5
+      y_diff = frob_display_size(false);
+      // move buttons
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_hwb_ok), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_hwb_cancel), y_diff, true);
+    }
+a667 17
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) {
+      Short y_diff;
+      update_display_size();
+      y_diff = frob_display_size(true);
+      // redraw the "new" screen too...  don't ask me whether this will work
+      frm = FrmGetActiveForm();
+      // move buttons
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_hwb_ok), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_hwb_cancel), y_diff, true);
+      FrmDrawForm(frm);
+    }
+    break;
+#endif
+
+d718 1
+a718 2
+    if (IsVGA) {
+      Short y_diff;
+a719 10
+      y_diff = frob_display_size(false);
+      // move buttons
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_dead_ok), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_dead_reviv), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_dead_done), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, repeat_topten_up), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, repeat_topten_down), y_diff, true);
+      // should resize field too: add y_diff / 11 lines to it
+      PrvResizeField(frm, field_topten, y_diff);
+    }
+a732 22
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) {
+      Short y_diff;
+      update_display_size();
+      y_diff = frob_display_size(true);
+      // redraw the "new" screen too...  don't ask me whether this will work
+      frm = FrmGetActiveForm();
+      // move buttons
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_dead_ok), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_dead_reviv), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_dead_done), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, repeat_topten_up), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, repeat_topten_down), y_diff, true);
+      // should resize field too: add y_diff / 11 lines to it
+      PrvResizeField(frm, field_topten, y_diff);
+      FrmDrawForm(frm);
+    }
+    break;
+#endif
+
+d839 1
+a839 2
+    if (IsVGA) {
+      Short y_diff;
+a840 5
+      y_diff = frob_display_size(false);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_reviv_alive), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_reviv_undead), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_reviv_cancel), y_diff, true);
+    }
+a860 21
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) {
+      Short y_diff;
+      update_display_size();
+      y_diff = frob_display_size(true);
+      // redraw the "new" screen too...  don't ask me whether this will work
+      frm = FrmGetActiveForm();
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_reviv_alive), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_reviv_undead), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_reviv_cancel), y_diff, true);
+      FrmDrawForm(frm);
+      // also redraw this part of form
+      lst = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, list_reviv));
+      filenum = LstGetSelection(lst);
+      display_saved_rogue(filenum);
+    }
+    break;
+#endif
+
+d921 1
+a921 2
+    if (IsVGA) {
+      Short y_diff;
+a922 5
+      y_diff = frob_display_size(false);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_snap_delete), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_snap_save), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_snap_cancel), y_diff, true);
+    }
+a931 20
+
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) {
+      Short y_diff;
+      update_display_size();
+      y_diff = frob_display_size(true);
+      frm = FrmGetActiveForm();
+      // redraw the "new" screen too...  don't ask me whether this will work
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_snap_delete), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_snap_save), y_diff, true);
+      PrvMoveObject(frm, FrmGetObjectIndex(frm, btn_snap_cancel), y_diff, true);
+      FrmDrawForm(frm);
+      lst = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, list_snap));
+      filenum = LstGetSelection(lst);
+      display_saved_rogue(filenum);
+    }
+    break;
+#endif
+@
+
+
+1.20.2.5
+log
+@mostly working for handera
+@
+text
+@d178 1
+a178 1
+void PrvMoveObject(FormPtr frmP, UInt objid, Coord y_diff, Boolean draw)
+d181 1
+a181 3
+    UInt objIndex = FrmGetObjectIndex(frmP, objid);
+    if (y_diff == 0) return;    
+
+d192 1
+a192 1
+void PrvResizeList(FormPtr frm, UInt objid, UInt bot_objid, Coord y_diff)
+d195 1
+a195 1
+  Short lines, x, y, y_bot;
+d197 3
+a199 21
+  UInt objIndex = FrmGetObjectIndex(frm, objid);
+  lst = FrmGetObjectPtr(frm, objIndex);
+  // Ok, the lists I'm calling this on all are positioned just below the
+  // title bar, and end just above a single row of buttons, one of which
+  // is supplied in bot_objid.  Make the list as big as possible!
+  //
+  // In 160x160 these (x, y)'s start out at (0, 15) and (5, 141).
+  // We really only care about the y's.
+  FrmGetObjectPosition(frm, objIndex, &x, &y);
+  FrmGetObjectPosition(frm, FrmGetObjectIndex(frm, bot_objid), &x, &y_bot);
+  // Ok.  y_bot - y is the absolute max space available to the list.
+  // Figure out how many lines we can put into that space (yay int division).
+  lines = (y_bot - y) / FntLineHeight();
+  LstSetHeight(lst, lines);
+  /*
+    // This did not work:  ... maybe because I had objid instead of objIndex!
+  FrmGetObjectBounds(frm, objIndex, &r);
+  h = FntLineHeight();
+  vis_items = r.extent.y / h; // calculate height INCLUDING blank slots thanks!
+  vis_items = vis_items + y_diff / h; // add (or subtract) change
+  // Hey - if subtracting - will int division work right, or fencepost?
+a200 1
+  */
+d202 1
+a202 1
+void PrvResizeField(FormPtr frm, UInt objid, Coord y_diff)
+d208 2
+a209 4
+  UInt objIndex = FrmGetObjectIndex(frm, objid);
+  if (y_diff == 0) return;
+  fld = FrmGetObjectPtr(frm, objIndex);
+  FldGetBounds(fld, &r); // same as using FrmGetObjectBounds, I b'lieve
+d241 1
+a241 1
+      y_diff = adjust_form_size(false);
+d243 4
+a246 3
+      PrvMoveObject(frm, btn_iv_ok, y_diff, false);
+      PrvMoveObject(frm, repeat_iv_up, y_diff, false);
+      PrvMoveObject(frm, repeat_iv_down, y_diff,false);
+a247 1
+      update_field_scrollers(frm, fld, repeat_iv_up, repeat_iv_down);
+d259 1
+a259 1
+      y_diff = adjust_form_size(true);
+d263 4
+a266 3
+      PrvMoveObject(frm, btn_iv_ok, y_diff, true);
+      PrvMoveObject(frm, repeat_iv_up, y_diff, true);
+      PrvMoveObject(frm, repeat_iv_down, y_diff, true);
+a267 2
+      fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_iv));
+      update_field_scrollers(frm, fld, repeat_iv_up, repeat_iv_down);
+d377 1
+a377 1
+  Short whatkind = -1, lvis;
+d390 1
+a390 1
+      y_diff = adjust_form_size(false);
+d392 4
+a395 3
+      PrvMoveObject(frm, btn_wiz_ok, y_diff, false);
+      PrvMoveObject(frm, btn_wiz_cancel, y_diff,false);
+      PrvResizeList(frm, list_wiza, btn_wiz_ok, y_diff);
+d407 1
+a407 1
+      y_diff = adjust_form_size(true);
+d411 4
+a414 3
+      PrvMoveObject(frm, btn_wiz_ok, y_diff, true);
+      PrvMoveObject(frm, btn_wiz_cancel, y_diff, true);
+      PrvResizeList(frm, list_wiza, btn_wiz_ok, y_diff);
+a450 2
+    lvis = LstGetVisibleItems(lst) - 1;
+    if (lvis < 10) lvis = 10; // minimum of 11 items visible at a time
+d453 1
+a453 1
+      if (LstScrollList(lst, winUp, lvis))
+d459 1
+a459 1
+      if (LstScrollList(lst, winDown, lvis))
+a473 2
+	  if (IsVGA) // because number of items have changed...
+	    PrvResizeList(frm, list_wiza, btn_wiz_ok, 0);
+d537 1
+a537 1
+      y_diff = adjust_form_size(false);
+d539 2
+a540 2
+      PrvMoveObject(frm, btn_bul_ok, y_diff, false);
+      PrvMoveObject(frm, btn_bul_cancel, y_diff,false);
+d568 1
+a568 1
+      y_diff = adjust_form_size(true);
+d572 2
+a573 2
+      PrvMoveObject(frm, btn_bul_ok, y_diff, true);
+      PrvMoveObject(frm, btn_bul_cancel, y_diff, true);
+d719 1
+a719 1
+      y_diff = adjust_form_size(true);
+d721 3
+a723 3
+      PrvMoveObject(frm, btn_about_ok, y_diff, false);
+      PrvMoveObject(frm, btn_about_more, y_diff, false);
+      PrvMoveObject(frm, btn_about_credits, y_diff, false);
+d735 1
+a735 1
+      y_diff = adjust_form_size(true);
+d739 3
+a741 3
+      PrvMoveObject(frm, btn_about_ok, y_diff, true);
+      PrvMoveObject(frm, btn_about_more, y_diff, true);
+      PrvMoveObject(frm, btn_about_credits, y_diff, true);
+d783 1
+a783 1
+      adjust_form_size(false);
+d796 1
+a796 1
+      adjust_form_size(true);
+d845 1
+a845 1
+      y_diff = adjust_form_size(false);
+d847 2
+a848 2
+      PrvMoveObject(frm, btn_hwb_ok, y_diff, false);
+      PrvMoveObject(frm, btn_hwb_cancel, y_diff,false);
+d860 1
+a860 1
+      y_diff = adjust_form_size(true);
+d864 2
+a865 2
+      PrvMoveObject(frm, btn_hwb_ok, y_diff, true);
+      PrvMoveObject(frm, btn_hwb_cancel, y_diff, true);
+d924 1
+a924 1
+      y_diff = adjust_form_size(false);
+d926 6
+a931 5
+      PrvMoveObject(frm, btn_dead_ok, y_diff, false);
+      PrvMoveObject(frm, btn_dead_reviv, y_diff,false);
+      PrvMoveObject(frm, btn_dead_done, y_diff, false);
+      PrvMoveObject(frm, repeat_topten_up, y_diff, false);
+      PrvMoveObject(frm, repeat_topten_down, y_diff, false);
+a932 1
+      update_field_scrollers(frm, fld, repeat_topten_up, repeat_topten_down);
+d953 1
+a953 1
+      y_diff = adjust_form_size(true);
+d957 6
+a962 5
+      PrvMoveObject(frm, btn_dead_ok, y_diff, true);
+      PrvMoveObject(frm, btn_dead_reviv, y_diff, true);
+      PrvMoveObject(frm, btn_dead_done, y_diff, true);
+      PrvMoveObject(frm, repeat_topten_up, y_diff, true);
+      PrvMoveObject(frm, repeat_topten_down, y_diff, true);
+a963 2
+      fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_topten));
+      update_field_scrollers(frm, fld, repeat_topten_up, repeat_topten_down);
+d1078 4
+a1081 4
+      y_diff = adjust_form_size(false);
+      PrvMoveObject(frm, btn_reviv_alive, y_diff, false);
+      PrvMoveObject(frm, btn_reviv_undead, y_diff, false);
+      PrvMoveObject(frm, btn_reviv_cancel, y_diff, false);
+d1109 1
+a1109 1
+      y_diff = adjust_form_size(true);
+d1112 3
+a1114 3
+      PrvMoveObject(frm, btn_reviv_alive, y_diff, true);
+      PrvMoveObject(frm, btn_reviv_undead, y_diff, true);
+      PrvMoveObject(frm, btn_reviv_cancel, y_diff, true);
+d1187 4
+a1190 4
+      y_diff = adjust_form_size(false);
+      PrvMoveObject(frm, btn_snap_delete, y_diff, false);
+      PrvMoveObject(frm, btn_snap_save, y_diff, false);
+      PrvMoveObject(frm, btn_snap_cancel, y_diff, false);
+d1208 1
+a1208 1
+      y_diff = adjust_form_size(true);
+d1211 3
+a1213 3
+      PrvMoveObject(frm, btn_snap_delete, y_diff, true);
+      PrvMoveObject(frm, btn_snap_save, y_diff, true);
+      PrvMoveObject(frm, btn_snap_cancel, y_diff, true);
+@
+
+
+1.20.2.6
+log
+@fixup to make sure still compiles for OS2 (compiles, yes, tested, no)
+@
+text
+@a36 1
+#ifndef I_AM_OS_2
+a37 1
+#endif
+a177 1
+#ifndef I_AM_OS_2
+d238 1
+a238 1
+#endif
+a260 1
+#ifndef I_AM_OS_2
+a271 1
+#endif
+a410 1
+#ifndef I_AM_OS_2
+a419 1
+#endif
+a497 1
+#ifndef I_AM_OS_2
+a499 1
+#endif
+a559 1
+#ifndef I_AM_OS_2
+a567 1
+#endif
+d615 8
+a741 1
+#ifndef I_AM_OS_2
+a750 1
+#endif
+a806 1
+#ifndef I_AM_OS_2
+a810 1
+#endif
+a867 1
+#ifndef I_AM_OS_2
+a875 1
+#endif
+a946 1
+#ifndef I_AM_OS_2
+a959 1
+#endif
+a1101 1
+#ifndef I_AM_OS_2
+a1109 1
+#endif
+a1210 1
+#ifndef I_AM_OS_2
+a1218 1
+#endif
+a1545 1
+#ifndef I_AM_OS_2
+a1549 1
+#endif
+@
+
+
+1.20.2.7
+log
+@Danger!  I combined a UChar and a Boolean in sotu into a UInt called 'conduct'!
+@
+text
+@d952 1
+a952 1
+      if (sotu->conduct & STATUS_WINNER) //if (sotu->score_status & STATUS_WINNER)
+d1448 2
+a1449 5
+      my_prefs.use_icons = false; // new in 1.1.1
+    }
+    if (prefsVersion < 0x03) {
+      my_prefs.color_on = false; // new in 0.46
+      my_prefs.crosshairs_on = false; // new in 0.46
+@
+
+
+1.20.2.8
+log
+@rock on!  COLORED TILES.
+@
+text
+@a34 1
+DmOpenRef RogueTileDB = NULL;
+a587 3
+	checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_13));
+	CtlSetValue(checkbox, (my_prefs.tiles_on) ? 1 : 0);
+	CtlShowControl(checkbox);
+a686 13
+
+	  checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm,check_bul_13));
+	  if ((CtlGetValue(checkbox) != 0) != my_prefs.tiles_on)
+	    redraw = true;
+	  my_prefs.tiles_on = (CtlGetValue(checkbox) != 0);
+	  if (!have_read_tiles && my_prefs.tiles_on) {
+	    look_for_tiles();
+	    if (!have_read_tiles) {
+	      FrmAlert(NoTiles);
+	      my_prefs.tiles_on = false;
+	    }
+
+	  }
+d952 1
+a952 1
+      if (sotu->conduct & CONDUCT_WINNER) //if (sotu->score_status & STATUS_WINNER)
+d1448 1
+a1448 1
+      my_prefs.tiles_on = false; // new in 1.1.1
+d1554 4
+a1557 8
+  if (version >= 0x03503000L) {
+    if (my_prefs.color_on & PREF_COLOR) {
+      look_for_memo(); // find and grok 'iRogue-RGB' memo
+    }
+    if (my_prefs.tiles_on) {
+      look_for_tiles(); // look for a database of 9x10 color icons.
+    }
+  }
+a1662 4
+  }
+  if (RogueTileDB!=NULL) {
+    DmCloseDatabase(RogueTileDB);
+    RogueTileDB = NULL;
+@
+
+
+1.20.2.9
+log
+@take ancient lingering 'sotu' arguments out, everywhere (relic of library code)
+@
+text
+@d244 2
+a245 1
+static void init_msglog_view(FormPtr frm) SEC_1;
+d259 1
+a259 1
+    init_msglog_view(frm /*, inventory_not_messages*/);
+d368 1
+a368 1
+static void init_msglog_view(FormPtr frm)
+d465 1
+a465 1
+	  new_object_for_wizard(wiz_form_object_type, whatkind);
+d569 1
+a569 1
+    usr_form_init(frm);
+d709 1
+a709 1
+      usr_form_update(frm);
+d715 1
+a715 1
+	print_stats(STAT_ALL); 
+d837 1
+a837 1
+    show_dungeon();
+d850 1
+a850 1
+      show_dungeon();
+d1036 1
+a1036 1
+      free_old_level();
+d1326 1
+a1326 1
+	save_character(filenum);
+d1329 1
+a1329 1
+	message("saved.");
+d1607 1
+a1607 1
+  free_old_level();
+d1634 1
+a1634 1
+  Free_me();
+d1673 2
+a1674 2
+    message("Saving...");
+    save_character(0); /* save if not DEAD. */
+@
+
+
+1.20.2.10
+log
+@moved files around
+@
+text
+@d1633 1
+a1633 1
+  Free_me(sotu);
+@
+
+
+1.20.2.11
+log
+@reorganizing header files
+@
+text
+@d23 1
+a23 1
+#include "iRogue.h"
+d31 2
+d37 1
+@
+
+
+1.20.2.12
+log
+@reorganization continues...
+@
+text
+@a522 32
+/* written late at night, needs sanity check */
+void usr_form_init(FormPtr frm)
+{
+  FieldPtr fld;
+  CharPtr p;
+  VoidHand vh;
+  fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_usr));
+  vh = (VoidHand) FldGetTextHandle(fld);
+  if (!vh) {
+    vh = MemHandleNew(32 * sizeof(Char));
+  }
+  FldSetTextHandle(fld, (Handle) 0);
+  p = MemHandleLock(vh);
+  StrNCopy(p, sotu->username, 30);
+  MemHandleUnlock(vh);
+  FldSetTextHandle(fld, (Handle) vh);
+}
+/* written late at night, needs sanity check */
+void usr_form_update(FormPtr frm)
+{
+  FieldPtr fld;
+  CharPtr p;
+  VoidHand vh;
+  fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_usr));
+  vh = (VoidHand) FldGetTextHandle(fld);
+  if (vh) {
+    p = MemHandleLock(vh);
+    StrNCopy(sotu->username, p, 30);
+    MemHandleUnlock(vh);
+  }
+}
+
+a861 163
+
+/*
+enum patterns { blackPattern, whitePattern, grayPattern, customPattern };
+typedef enum patterns PatternType;
+typedef Word CustomPatternType [4];
+*/
+/*static CustomPatternType bombPattern = { 0x8855, 0x2255, 0x8855, 0x2255 };*/
+/*static CustomPatternType graePattern = { 0xaa55, 0xaa55, 0xaa55, 0xaa55 };*/
+/*static CustomPatternType diagPattern = { 0x8844, 0x2211, 0x8844, 0x2211 };*/
+
+/**********************************************************************
+                       SHOW_DUNGEON
+ IN:
+ sotu = various globals (dungeon, rooms, wizard, cur_level, rogue)
+ OUT:
+ nothing
+ PURPOSE:
+ The "real" dungeon is 24 wide x 80 high, and doesn't all fit on the
+ (156^2 pixel) screen at once when it's "full size".  So I have a
+ form to display a tiny version of the map (just rooms/mazes/tunnels,
+ the rogue, and the stairs), where each square is 2 x 3 pixels.
+ Maybe I could put flyspecks for monsters/objects too.  Maybe.
+ **********************************************************************/
+//static CustomPatternType yourPattern = { 0xaaaa, 0x5555, 0xaaaa, 0x5555 };
+// The passage pattern got messed up so I moved it inside.
+extern Short ScrWidth;
+extern Short ScrHeight;
+extern Short LineHeight;
+extern Short WalkMagic;
+static const Char* map_foo[6] = {
+  "You Can't Get There From Here",
+  "(Tap  Anywhere  When  Done)",
+  "Strange, This Doesn't Look Like ...",
+  "Oops, I Was Holding It Upside Down.",
+  "Here There Be Dragons",
+  "(Nothing You Can't Handle, Eh?)",
+};
+void show_dungeon()
+{
+  RectangleType r;
+  Word col, row, i, w, h, len;
+  UShort mask;
+  Short unit, hunit, map_top;
+  Char c;
+  /*
+#ifndef I_AM_COLOR
+  CustomPatternType origPattern;
+  CustomPatternType yourPattern = { 0xaaaa, 0x5555, 0xaaaa, 0x5555 };
+#else // I_AM_COLOR
+  // XXXXX
+  // const CustomPatternType yourPattern = { 0xaa, 0xaa, 0x55, 0x55,
+  //					  0xaa, 0xaa, 0x55, 0x55 };
+#endif // I_AM_COLOR
+  */
+  UShort ** dungeon = sotu->dungeon;
+  room * rooms = sotu->rooms;
+
+  RctSetRectangle(&r, 0,0, ScrWidth, ScrHeight);
+  WinDrawRectangle(&r, 6);
+  unit = ScrWidth/DCOLS;
+  hunit = unit+1;
+  // width of map will be DCOLS units.  height of map will be DROWS hunits.
+  // that's 80 cols, 24 rows
+
+  /* This is just some fluff to put in the extra space above and below. 
+     I could probably think of some more-useful fluff to put there. */
+  if (!IS_WIZARD)
+    i = (sotu->cur_level % 2 == 1) ? 0 : 1; // alternate the fluff
+  else
+    i = 2;
+  len = StrLen(map_foo[i]);
+  w = (ScrWidth - FntCharsWidth(map_foo[i],len) )/2;
+  WinDrawInvertedChars(map_foo[i], len, w, 1);
+  len = StrLen(map_foo[i+1]);
+  w = (ScrWidth - FntCharsWidth(map_foo[i+1],len) )/2;
+  WinDrawInvertedChars(map_foo[i+1], len, w, ScrHeight-(LineHeight+2));
+
+  /* Each tile gets UNIT pixels/col and HUNIT pixels/row. 
+     for 160x16,      =2                   =3              */
+  map_top = (ScrHeight-DROWS*hunit)/2;
+
+  /* This is just some decoration. three white horizontal lines above map. */
+  for (i = 2 ; i <= 4 ; i++)
+    WinEraseLine(i*unit, map_top-i*unit, ScrWidth-(i+2)*unit, map_top-i*unit);
+  
+  RctSetRectangle(&r, 0, map_top, ScrWidth, DROWS*hunit);
+  WinEraseRectangle(&r, 0);
+  WinDrawRectangleFrame(simpleFrame, &r); /* simple,round,popup,boldRound */
+
+  /* Draw the rooms of the dungeon as rectangles */
+  for (i = 0 ; i < MAXROOMS ; i++) {
+    if (rooms[i].is_room & R_ROOM) {
+      col = rooms[i].left_col;
+      row = rooms[i].top_row;
+      c = peek_me(row, col); /* this is a gross hack */
+      if ( IS_WIZARD || (c && c != ' ') ) {
+	w = rooms[i].right_col - col;
+	h = rooms[i].bottom_row - row;
+	/* col * 2, row * 3 + 42, w * 2, h * 3... -1 all round. */
+	RctSetRectangle(&r, col * unit + 2, row * hunit + map_top + 2, 
+			    w * unit - 2,   h * hunit - 1);
+	WinDrawRectangleFrame(simpleFrame, &r);
+      }
+    }
+  }
+  /* Draw the rest of the dungeon square by square */
+  for (col = 0 ; col < DCOLS ; col++) {
+    for (row = 0 ; row < DROWS ; row++) {
+      RctSetRectangle(&r, col*unit, row*hunit + map_top, unit,hunit);
+      c = peek_me(row, col); /* this is a gross hack */
+      if ( IS_WIZARD || (c && c != ' ') ) {
+	mask = dungeon[row][col];
+	if ( (mask & STAIRS) || (mask & TUNNEL) ) {
+	  /*
+#ifndef I_AM_COLOR
+	  WinGetPattern(origPattern);
+	  WinSetPattern(yourPattern);
+	  WinFillRectangle(&r, 0);
+	  WinSetPattern(origPattern);
+#else // I_AM_COLOR //
+	  //	  WinPushDrawState();
+	  //	  WinSetPattern(&yourPattern);
+	  WinFillRectangle(&r, 0);
+	  //	  WinPopDrawState();
+#endif // I_AM_COLOR
+	  */
+	  // Forget it!!, just do this:
+	  /*
+	  WinDrawLine(col*unit + 1, row*hunit + map_top + 1,
+		      col*unit + 2, row*hunit + map_top + 2);
+	  WinDrawLine(col*unit + 2, row*hunit + map_top + 2,
+		      col*unit + 1, row*hunit + map_top + 3);
+	  */
+	  WinDrawLine(col*unit, row*hunit + map_top,
+		      col*unit + unit, row*hunit + map_top + hunit);
+	} else if (mask & FLOOR) {
+	  /* 	WinDrawRectangle(&r, 0); */
+	} else if (0 && (mask & HORWALL) ) {
+	  WinDrawLine(col*unit + 1, row*hunit + map_top + 1,
+		      col*unit + unit+1, row*hunit + map_top + 1);
+	} else if (0 && (mask & VERTWALL) ) {
+	  WinDrawLine(col*unit + 1, row*hunit + map_top + 1,
+		      col*unit + 1, row*hunit + map_top + hunit+1);
+	} else if (mask & DOOR) {
+	  if (! (mask & HIDDEN)) {
+	    WinInvertRectangle(&r, 0);
+	  }
+	}
+      }
+      /* used to have "else" (peekme==' ') "erase rectangle" */
+    } /* end for row */
+  } /* end for col */
+
+  /* don't forget to put the rogue somewhere */
+  col = sotu->roguep->col * unit - 1;
+  if (col < 0) col = 0;
+  row = sotu->roguep->row * hunit + map_top - 1;
+  RctSetRectangle(&r, col, row, 
+		      unit+1, hunit+1);
+  WinDrawRectangle(&r, 0);
+  return;
+}
+
+@
+
+
+1.20.2.13
+log
+@merge lib_monster back into monster
+@
+text
+@d45 1
+d49 1
+d116 124
+@
+
+
+1.20.2.14
+log
+@splitting iRogue.c into form_[blah].c
+@
+text
+@d35 3
+a58 2
+Boolean Revivify_Form_HandleEvent(EventPtr e);
+Boolean Snapshot_Form_HandleEvent(EventPtr e);
+d62 1
+a62 1
+//static void    writeRoguePrefs();
+d108 2
+d115 950
+d1067 89
+d1158 248
+d1550 1
+a1550 2
+void writeRoguePrefs()
+{
+@
+
+
+1.20.2.15
+log
+@tidying up globally
+@
+text
+@d69 1
+@
+
+
+1.20.2.16
+log
+@added 'c' calling (via inventory)
+@
+text
+@a49 1
+Boolean        Call_Form_HandleEvent(EventPtr e); // it's around somewhere
+a188 3
+	    break;
+	case CallForm:
+	    FrmSetEventHandler(frm, Call_Form_HandleEvent);
+@
+
+
+1.20.2.17
+log
+@added on-board color frobbing.  la la la.
+@
+text
+@a58 4
+#ifdef I_AM_COLOR
+Boolean Color_Form_HandleEvent(EventPtr e);
+Boolean Thing_Form_HandleEvent(EventPtr e);
+#endif
+a217 8
+#ifdef I_AM_COLOR
+	case ThingForm:
+	    FrmSetEventHandler(frm, Thing_Form_HandleEvent);
+	    break;
+	case ColorForm:
+	    FrmSetEventHandler(frm, Color_Form_HandleEvent);
+	    break;
+#endif
+@
+
+
+1.19
+log
+@Revised color *again*, maybe black-backgroudn will work for color folks now?
+@
+text
+@d1301 1
+a1301 1
+	     || (FrmGetActiveFormID() != MainForm)
+@
+
+
+1.18
+log
+@can set background color with _ in memo now
+@
+text
+@d85 5
+a89 1
+  false // use rogue-relative movement - new in 0.42
+d416 2
+d427 1
+a427 1
+	CtlSetValue(checkbox, (my_prefs.color_on ? 1 : 0));
+d491 4
+d502 1
+a502 1
+	  if (my_prefs.color_on != (CtlGetValue(checkbox) != 0))
+a503 3
+	  if (!my_prefs.color_on && !have_read_color)
+	    if (CtlGetValue(checkbox) != 0) // we'll need to read the memo..
+	      look_for_memo(); // will set have_read_color true if found
+d505 4
+a521 1
+	message(0, sotu); // show the next buffered message
+d1174 1
+a1174 1
+  if ((version >= 0x03503000L) && my_prefs.color_on)
+@
+
+
+1.17
+log
+@fixed centered-screen crosshairs redraw problem; added inventory-sort option
+@
+text
+@d374 1
+d383 1
+d492 6
+a497 4
+	  if (!my_prefs.color_on && !IsColor) // if IsColor, already read memo
+	    if (CtlGetValue(checkbox) != 0)
+	      look_for_memo(); // will set IsColor if we find memo
+	  my_prefs.color_on = (CtlGetValue(checkbox) != 0);	
+d507 6
+@
+
+
+1.16
+log
+@add pref to turn color 'on' or 'off'
+@
+text
+@d373 1
+d408 2
+d479 4
+d558 4
+@
+
+
+1.15
+log
+@add pref to draw pie slices, and make screen scroll 'sooner' based on donut
+@
+text
+@a406 3
+    checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_10));
+    // XXXXX CtlShowControl(frm, checkbox) IFF the OS version is OK.
+    CtlSetValue(checkbox, (my_prefs.color_on ? 1 : 0));
+d410 11
+d476 15
+a490 3
+      /* read color checkbox... */
+      checkbox = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, check_bul_10));
+      my_prefs.color_on = (CtlGetValue(checkbox) != 0);	
+d1143 1
+a1143 1
+  if (version >= 0x03503000L)
+@
+
+
+1.14
+log
+@bug fixes, hw-scrolling in object creation, can view top score list anytime
+@
+text
+@d405 5
+d465 6
+d484 1
+d489 1
+d610 1
+d1043 4
+a1046 5
+      //      my_prefs.sound_on = true;
+      //      my_prefs.use_hardware = false;
+      //      for (i = 0 ; i < 8 ; i++)
+      //	my_prefs.hardware[i] = HWB_NOOP;
+      // my_prefs.stay_centered = false; // new in 0.40
+d1051 7
+@
+
+
+1.13
+log
+@housecleaning
+@
+text
+@d290 1
+d312 1
+a312 1
+      if (wiz_form_object_type != -1) {
+d316 2
+a318 2
+	else
+	  new_object_for_wizard(wiz_form_object_type, whatkind, sotu);
+d335 1
+a335 1
+      if (LstScrollList(lst, winUp, 10)) {//there're 11 items visible at a time
+d337 1
+a337 2
+	wiz_form_object_type = -1;
+      }
+d341 1
+a341 1
+      if (LstScrollList(lst, winDown, 10)) {
+d343 1
+a343 2
+	wiz_form_object_type = -1;
+      }
+d353 8
+a360 3
+	frm = FrmGetActiveForm();
+	init_wiz_list(frm, list_wiza, wiz_form_object_type);
+	FrmDrawForm(frm);
+a362 1
+    handled = true;
+d613 1
+a613 1
+
+d619 1
+d626 2
+a627 2
+    save_me = false;
+    /* foo */
+d630 5
+a634 3
+    kill_saved_rogue(STATUS_ISDEAD, 0); // make sure you are DEAD
+    if (sotu->score_status & STATUS_WINNER)
+      topten_frob_btns(frm);
+d637 9
+d652 4
+d661 2
+a662 2
+      free_old_level(sotu); /* please, no V's and M's on L1. */
+      init_sotu(); /* no alloc here, now. */
+d668 2
+a669 3
+      mix_colors(); /* no alloc here */
+      /* um. should there be a blue potion? i forget */
+      get_wand_and_ring_materials(); /* no alloc here */
+a670 5
+      /* so, er, something's not right with level_monsters
+	 (and possibly level_objects, I can't tell.)
+	 You go down 20 levels, get killed, hit "play again",
+	 and the V's and so on are stuck where you_1 left 'em,
+	 in the concrete or maybe where they can stomp you_2. */
+d1011 3
+d1021 1
+a1021 1
+			    &prefsSize, true);
+@
+
+
+1.12
+log
+@moving code around.. tweaking..
+@
+text
+@d1084 1
+a1084 1
+  }  
+d1087 4
+a1090 3
+  // call a routine to find and grok 'iRogue-RGB' memo, if it exists;
+  look_for_memo();
+  // set HasColor boolean to whether it exists.
+@
+
+
+1.11
+log
+@compiles with sdk3.5; user-configurable color
+@
+text
+@d40 1
+a40 1
+static Boolean buttonsHandleEvent(EventPtr e);
+d42 3
+a44 3
+static void    start_of_Play_Level_loop();
+static Boolean main_help_handle_cmd(Char c);
+Boolean        Main_Form_HandleEvent(EventPtr e);
+d46 5
+a50 5
+static void    init_direction_select_list(FormPtr frm, Boolean zap);
+static void    init_direction_select(FormPtr frm, Short task);
+Boolean        Direction_Form_HandleEvent(EventPtr e);
+Boolean        InvView_Form_HandleEvent(EventPtr e);
+Boolean        InvSelect_Form_HandleEvent(EventPtr e);
+d52 1
+a52 1
+Boolean        Bullseye_Form_HandleEvent(EventPtr e);
+a67 1
+Short direction;
+d70 1
+a70 2
+Short inventory_item;
+Short task;
+a95 1
+Boolean to_the_biteme = false;
+d102 2
+a103 2
+UChar revivify_p = STATUS_NORMAL; // == 0, do not revivify
+Short revivify_which = 0;
+a104 2
+Short count = 0;
+Boolean whatsit_p = false;
+a107 129
+#define abs(a)                                  (((a) >= 0) ? (a) : (-(a)))
+#define sgn(x) ( (x) >= 0 ? 1 : -1 )
+
+/* needed these from lib_curses */
+/* The screen can have 15 rows, but I took 4 for messages and stats */
+#define visible_h 11
+/* You can put about 19.9 m's on a memo line.. so.. we'll have 20 cols */
+#define visible_w 20
+
+/* This should only be called for:
+   e->eType is keyDownEvent,
+   keyDown.modifiers does not include poweredOnKeyMask
+*/
+/*
+Short hardware_dudes[8] = {
+  HWB_THROW, // up ... why are throw/zap not working, I wonder.
+  HWB_ZAP, // down
+  HWB_NOOP, // calc
+  HWB_MAP, // find
+  HWB_W, // date
+  HWB_N, // addr
+  HWB_S, // todo
+  HWB_E // memo
+};
+*/
+static Boolean buttonsHandleEvent(EventPtr e) {
+  Boolean handled = false;
+  Boolean took_time = true;
+  Short dispatch_type = 0;
+
+  if (!(ChrIsHardKey(e->data.keyDown.chr))
+      && (e->data.keyDown.chr != findChr)
+      && (e->data.keyDown.chr != pageUpChr)
+      && (e->data.keyDown.chr != pageDownChr))
+    return false; // it's NOT a hardware button.. probably graffiti.
+
+  // <incs>/UI/Chars.h is useful....   ChrIsHardKey(c)
+  // hard[1-4]Chr, calcChr, findChr.
+  check_message();
+  switch (e->data.keyDown.chr) {
+  case hard1Chr:      // datebook
+    dispatch_type = my_prefs.hardware[0];
+    break;
+  case hard2Chr:      // address
+    dispatch_type = my_prefs.hardware[1];
+    break;
+  case hard3Chr:      // todo
+    dispatch_type = my_prefs.hardware[2];
+    break;
+  case hard4Chr:      // memos
+    dispatch_type = my_prefs.hardware[3];
+    break;
+  case pageUpChr:
+    dispatch_type = my_prefs.hardware[4];
+    break;
+  case pageDownChr:
+    dispatch_type = my_prefs.hardware[5];
+    break;
+  case calcChr:
+    dispatch_type = my_prefs.hardware[6];
+    break;
+  case findChr:
+    dispatch_type = my_prefs.hardware[7];
+    break;
+  default:
+    return false;
+  }
+  switch (dispatch_type) {
+  case HWB_NOOP:
+    return false;
+    // n = 1 e = 3 s = 5 w = 7
+    // x = {1 2 3 4} -> x * 2 - 1
+  case HWB_N:
+  case HWB_S:
+  case HWB_E:
+  case HWB_W:
+    one_move_rogue(dispatch_type * 2 - 1, true, my_prefs.stay_centered);
+    //    do_feep(200,9); // maybe take this out
+    handled = true;
+    break;
+  case HWB_UP:
+    handled = main_help_handle_cmd('<');
+    break;
+  case HWB_DOWN:
+    handled = main_help_handle_cmd('>');
+    break;
+  case HWB_SEARCH:
+    do_feep(200,9);
+    search(10, false); // handled = main_help_handle_cmd('s');
+    handled = true;
+    break;
+  case HWB_REST:
+    //    do_feep(200,9);
+    rest(10); // handled = main_help_handle_cmd('.');
+    handled = true;
+    break;
+  case HWB_THROW:
+    handled = main_help_handle_cmd('t');
+    break;
+  case HWB_ZAP:
+    handled = main_help_handle_cmd('z');
+    break;
+  case HWB_INV:
+    handled = main_help_handle_cmd('i');
+    break;
+  case HWB_MAP:
+    FrmPopupForm(MapForm);
+    handled = true;
+    took_time = false;
+    break;
+  case HWB_SCROLL:
+    count = 5;
+    direction = NO_DIRECTION;
+    task = SCROLL_WINDOW;
+    FrmPopupForm(DirectionForm);
+    handled = true;
+    took_time = false;
+    break;
+  }
+  // do that loop thing too.  yeah.
+  if (handled && took_time) {
+    count = 0;
+    start_of_Play_Level_loop();
+    check_hit_message();
+  }
+  return handled;
+}
+
+
+a147 503
+/*****************************************************************************
+ *                                                                           *
+ *                      Being Tested                                         *
+ *                                                                           *
+ *****************************************************************************/
+static void start_of_Play_Level_loop() {
+
+  sotu->interrupted = false;
+  /*
+  if (hit_message[0]) {
+    message(hit_message, 1);
+    hit_message[0] = 0;
+  }
+  */
+
+  if (sotu->trap_door) {
+    /* not sure about this - from use of '>' */
+    free_old_level(sotu);
+    do_feep(300, 9);
+    make_new_level();
+    move_visible_window(sotu->roguep->col, sotu->roguep->row, true);
+    /* end not sure */
+    sotu->trap_door = 0;
+    return;
+  }
+/*    move(rogue->row, rogue->col); */
+  refresh();
+
+}
+
+/*******************************************************************
+ * Caller had darn well better check 'c' is a reasonable character *
+ * c = e->data.keyDown.chr    OR    c = e->data.menu.itemID - 4000 *
+ *                  Returns:  "handled"                            */
+static Boolean main_help_handle_cmd(Char c) {
+  FormPtr frm;
+  to_the_biteme = false;
+  frm = FrmGetActiveForm();
+
+  check_message();
+
+  /* Implemented:    m   d s i f F e q r z w t P R T W < >
+     Not impl.:    .   ,   (requires rest(), kick_into_pack())
+           also,   c
+   */
+  /* Removed:        d         e q r   w   P R
+   */
+
+  switch(c) {
+  case '>':
+  case pageDownChr:
+    if (drop_check(sotu)) {
+      free_old_level(sotu);
+      do_feep(300, 9);
+      make_new_level();
+      move_visible_window(sotu->roguep->col, sotu->roguep->row, true);
+    }
+    return true;
+  case '<':
+  case pageUpChr:
+    if (check_up()) {
+      free_old_level(sotu);
+      do_feep(400, 9);
+      make_new_level();
+      move_visible_window(sotu->roguep->col, sotu->roguep->row, true);
+    }
+    return true;
+  case 'm':
+    direction = NO_DIRECTION;
+    task = INV_MOVE;
+    FrmPopupForm(DirectionForm);
+    return true;
+  case 'F':
+    to_the_biteme = true;
+    /* FALL THROUGH to 'f' !!! */
+  case 'f':
+    direction = NO_DIRECTION;
+    task = INV_FIGHT;
+    FrmPopupForm(DirectionForm);
+    return true;
+  case 'i':
+    /* Inventory */
+    if (sotu->roguep->pack.next_object != NULL) {
+      inventory_item = -1;
+      task = INV_DROP;
+      FrmPopupForm(InvSelectForm);
+    } else {
+      message("your pack is empty\n", sotu);
+    }
+    return true;
+    /*
+      case 'c':
+      inventory_item = -1;
+      task = INV_CALL;
+      FrmPopupForm(InvSelectForm);
+      return true;
+      */
+  case 's':
+    search( ((count > 0) ? count : 1), false);
+    count = 0;
+    /*    search(1, false); */
+    return true;
+  case '.':
+    rest( (count > 0) ? count : 1 );
+    count = 0;
+    /*    rest(1); */
+    return true;
+  case ',':
+    kick_into_pack();
+    return true;
+  case 'Q':
+    /* do an Alert-thingy to Confirm, then:
+    killed_by((object *) 0, QUIT);
+    */
+    if (0 == FrmAlert(QuitP)) {
+      killed_by((object *) 0, QUIT, sotu);
+      FrmPopupForm(TopTenForm);
+    }
+    return true;
+  case '^':
+    direction = NO_DIRECTION;
+    task = INV_IDTRAP;
+    FrmPopupForm(DirectionForm);
+    return true;
+  case 't':
+    inventory_item = -1;
+    direction = NO_DIRECTION;
+    task = INV_THROW;
+    FrmPopupForm(DirectionForm);
+    return true; // hello, why was this false?
+  case 'z':
+    inventory_item = -1;
+    direction = NO_DIRECTION;
+    task = INV_ZAP;
+    FrmPopupForm(DirectionForm);
+    return true; // hello, why was this false?
+  // re-added the following so that people can use palm keyboards :-)
+  case 'h':
+    one_move_rogue(WEST, true, my_prefs.stay_centered);
+    return true;
+  case 'j':
+    one_move_rogue(SOUTH, true, my_prefs.stay_centered);
+    return true;
+  case 'k':
+    one_move_rogue(NORTH, true, my_prefs.stay_centered);
+    return true;
+  case 'l':
+    one_move_rogue(EAST, true, my_prefs.stay_centered);
+    return true;
+  case 'y':
+    one_move_rogue(NORTHWEST, true, my_prefs.stay_centered);
+    return true;
+  case 'u':
+    one_move_rogue(NORTHEAST, true, my_prefs.stay_centered);
+    return true;
+  case 'b':
+    one_move_rogue(SOUTHWEST, true, my_prefs.stay_centered);
+    return true;
+  case 'n':
+    one_move_rogue(SOUTHEAST, true, my_prefs.stay_centered);
+    return true;
+  case 'H':
+    multiple_move_rogue_Ctrl(WEST, my_prefs.dave_mode);
+    return true;
+  case 'J':
+    multiple_move_rogue_Ctrl(SOUTH, my_prefs.dave_mode);
+    return true;
+  case 'K':
+    multiple_move_rogue_Ctrl(NORTH, my_prefs.dave_mode);
+    return true;
+  case 'L':
+    multiple_move_rogue_Ctrl(EAST, my_prefs.dave_mode);
+    return true;
+  case 'Y':
+    multiple_move_rogue_Ctrl(NORTHWEST, my_prefs.dave_mode);
+    return true;
+  case 'U':
+    multiple_move_rogue_Ctrl(NORTHEAST, my_prefs.dave_mode);
+    return true;
+  case 'B':
+    multiple_move_rogue_Ctrl(SOUTHWEST, my_prefs.dave_mode);
+    return true;
+  case 'N':
+    multiple_move_rogue_Ctrl(SOUTHEAST, my_prefs.dave_mode);
+    return true;
+  }
+  return false;
+}
+
+
+static Boolean maybe_scroll_screen(Short x, Short y, Short count);
+static void rogue_relativize(Short *x, Short *y);
+Boolean Main_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+/*   Boolean last_was_digit; */
+  Short tmp_x, tmp_y, click_dir;
+  Boolean do_run = true;
+  Char buf[40];
+
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* mine */
+    /** place any form-initialization stuff here **/
+    /** init_game(); should go somewhere ELSE. */
+    /* b/c this stuff will be called when we return from a popup. ? */
+    /* end mine */	
+    FrmDrawForm(frm);
+
+    if (do_make_new_level) {
+      // (startup) We did not find an autosave image in the database, or
+      //     the rogue that it represents is dead, or,
+      // (during play) we went up or down a dungeon level
+      do_make_new_level = false;
+      make_new_level();
+      message("Welcome to iRogue", sotu);
+    } else {
+      // (startup) We found a 'live' autosave image, or
+      // (during play) we were requested to load a saved rogue.
+      clear_level(sotu);
+      load_character(sotu, revivify_which);
+      revivify_which = 0;
+      if (revivify_p != STATUS_NORMAL)
+	do_revivify(sotu); // inflict a penalty, maybe.
+      ring_stats(true, sotu); // recalculate some calculated parts of sotu
+      /* let's see if this will fly..  not bad. */
+      move_visible_window(sotu->roguep->col, sotu->roguep->row, true);
+      if (sotu->cur_room != PASSAGE)
+	light_up_room(sotu->cur_room, sotu);
+      else {
+	light_passage(sotu->roguep->row, sotu->roguep->col, sotu);
+	mvaddch(sotu->roguep->row, sotu->roguep->col, sotu->roguep->fchar);
+      }
+      print_stats(STAT_ALL, sotu);
+      /* ok, done loading character! */
+    }
+
+    //    StrPrintF(buf, "Welcome to iRogue");
+    // 171 = << 187 = >>
+    // 249 is a pretty nice character.  also 165 and 167 (amuletish?)
+    /*
+    for (tmp_x = 165, tmp_y = 0 ; tmp_y < 32 ; ) {
+      buf[tmp_y++] = tmp_x++;
+      buf[tmp_y++] = ' ';
+    }
+    buf[tmp_y] = 0;
+    message(buf, sotu);
+    */
+    //    message("Welcome to iRogue", sotu);
+    start_of_Play_Level_loop();
+
+    handled = true;
+    goto SKIP_THE_REST;
+    break;
+
+  case menuEvent:
+    MenuEraseStatus(NULL); /* clear menu status from display */
+    // if there's a --more-- we need to show the next message
+    whatsit_p = false;
+    if (sotu->last_old_message_shown < SAVED_MSGS-1) {
+      check_message();  // clear the old message
+      message(0, sotu); // show the next buffered message
+      //      message(0, sotu); // try to show a second one, but maybe fail
+      handled = true;
+      count = 0;
+      goto SKIP_THE_REST;
+    }
+    switch(e->data.menu.itemID) {
+
+    case menu_mainAbout:
+      FrmPopupForm(AboutForm);
+      handled = true;
+      goto SKIP_THE_REST;
+      //      break; // unnecessary
+    case menu_mainMoveInstruct:
+      FrmHelp(MoveStr);
+      handled = true;
+      goto SKIP_THE_REST;
+      //      break;
+    case menu_mainWiztog:
+      handled = true;
+      // IF character hasn't been a wizard before, warn / ask for confirmation.
+      if (!(sotu->score_status & STATUS_WASWIZ) && !sotu->wizard)
+	if (0 == FrmAlert(WizardP))
+	  goto SKIP_THE_REST; // player said "oops, cancel"
+      sotu->wizard = !sotu->wizard;
+      sotu->score_status |= STATUS_WASWIZ;
+      check_message(); 
+      if (sotu->wizard)
+	message("wizard on", sotu);
+      else
+	message("wizard off", sotu);
+      goto SKIP_THE_REST;
+      //      break;
+    case menu_mainWiz:
+      check_message();
+      if (sotu->wizard)
+	FrmPopupForm(WizForm);
+      else
+	message("nice try", sotu);
+      handled = true;
+      goto SKIP_THE_REST;
+      //      break;
+    case menu_mainAutosave:
+      save_character(sotu, 0);
+      message("autosaved.", sotu);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainSave:
+      //      check_message();
+      FrmPopupForm(SnapshotForm);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainRestore:
+      //      check_message();
+      FrmPopupForm(RevivifyForm);
+      handled = true;
+      goto SKIP_THE_REST;
+    case menu_mainSettings:
+      FrmPopupForm(BullseyeForm);
+      handled = true;
+      goto SKIP_THE_REST;
+      //      break;
+    case menu_mainGraffiti:
+      SysGraffitiReferenceDialog(referenceDefault);
+      handled = true;
+      goto SKIP_THE_REST;
+      //      break;
+    case menu_mainWhatsit:
+      check_message();
+      message("tap on a character for clarification", sotu);
+      whatsit_p = true;
+      handled = true;
+      goto SKIP_THE_REST;
+      //      break;
+    case menu_mainFont:
+      if (toggle_itsy()) {
+	// Redraw the screen!!  (does this do the right thing?  not quite..)
+	move_visible_window(sotu->roguep->col, sotu->roguep->row, true);
+      } else {
+	FrmAlert(FontAlert);
+      }
+      handled = true;
+      goto SKIP_THE_REST;
+      // break;
+    case menu_mainMap:
+      FrmPopupForm(MapForm);
+      handled = true;
+      goto SKIP_THE_REST;
+      //      break;
+    case menu_mainMsgs:
+      inventory_not_messages = false;
+      FrmPopupForm(InvViewForm);
+      handled = true;
+      goto SKIP_THE_REST;
+      //      break;
+    case menu_mainScroll:
+      direction = NO_DIRECTION;
+      task = SCROLL_WINDOW;
+      FrmPopupForm(DirectionForm);
+      handled = true;
+      goto SKIP_THE_REST;
+      //      break;
+    default:
+      /* this is a Monstrous Hack. */
+      tmp_x = e->data.menu.itemID - MAGIC_MENU_NUMBER;
+      if (tmp_x > 0 && tmp_x < 128)
+	handled = main_help_handle_cmd((Char) tmp_x);
+      /*      StrPrintF(buf, "you typed %c", e->data.menu.itemID - 4000);
+	      message(buf, sotu); */
+      count = 0;
+    }
+    handled = true;
+    break;
+
+  case keyDownEvent:
+    // if there's a --more-- we need to show the next message
+    whatsit_p = false;
+    if (sotu->last_old_message_shown < SAVED_MSGS-1) {
+      check_message();  // clear the old message
+      message(0, sotu); // show the next buffered message
+      //      message(0, sotu); // try to show a second one, but maybe fail
+      handled = true;
+      count = 0;
+      goto SKIP_THE_REST;
+    }
+    /* graffiti or up/down hardware button. */
+    /* I farmed this out so that the Monstrous Hack menu can use it too. */    
+    handled = main_help_handle_cmd(e->data.keyDown.chr);
+    if (handled)
+      count = 0;
+    else if ('0' <= e->data.keyDown.chr
+	     && e->data.keyDown.chr <= '9') {
+      if (count <= 0) {
+	count = e->data.keyDown.chr - '0';
+      } else if (count <= 9) {
+	count = count * 10 + e->data.keyDown.chr - '0';
+      } else {
+	count = 99; /* maxed-out */
+      } // xxx Hey, I need to make "backspace" work too.
+      check_message();
+      StrPrintF(buf, "count: %d", count);
+      message(buf, sotu);
+      handled = true;
+      goto SKIP_THE_REST;
+    }
+    break;
+
+  case penDownEvent:
+    // if there's a --more-- we need to show the next message
+    if (sotu->last_old_message_shown < SAVED_MSGS-1) {
+      check_message();  // clear the old message
+      message(0, sotu); // show the next buffered message
+      //      message(0, sotu); // try to show a second one, but maybe fail
+      handled = true;
+      count = 0;
+      goto SKIP_THE_REST;
+    }
+    if (whatsit_p) {
+      explain_it(e->screenX, e->screenY, sotu);
+      whatsit_p = false;
+      goto SKIP_THE_REST;
+    }
+    check_message();
+    /* xxxx Rogue-relative:  need to change some stuff around here.  */
+    tmp_x = e->screenX - 80;
+    tmp_y = e->screenY - 80;
+    // First, if scroll mode is on, AND the tap is on the edge of screen,
+    // calculate the screen-relative direction,
+    // and iff we can scroll any further in that direction,
+    // scroll and consider yourself done (goto not-wasting-a-turn.)
+    // (Let's just pull all that out into a "maybe_scroll_screen"
+    // and have it return a boolean.)
+    if (my_prefs.scroll_mode &&	(abs(tmp_x) > 70 || abs(tmp_y) > 70))
+      if (maybe_scroll_screen(tmp_x, tmp_y, count)) {
+	handled = true;
+	count = 0;
+	goto SKIP_THE_REST;
+      }
+    // Next, decide whether to be screen-relative or rogue-relative.
+    if (my_prefs.rogue_relative)
+      rogue_relativize(&tmp_x, &tmp_y);
+    // (rogue relative tmp_x and tmp_y may range from -160 to 160 !!!
+    // but this should not matter since we got rid of scroll-mode already!)
+    // Calculate the direction.
+    // Decide whether to search, walk, or run.
+    if ((abs(tmp_x) < my_prefs.walk_search_border*10) && 
+	(abs(tmp_y) < my_prefs.walk_search_border*10)) {
+      /*       message("searching", sotu);  */
+      do_feep(200,9);
+      search( ((count > 0) ? count : 1), false);
+      handled = true;
+      count = 0;
+      break;
+    } else if ((abs(tmp_x) < my_prefs.run_walk_border*10) &&
+	       (abs(tmp_y) < my_prefs.run_walk_border*10)) {
+      do_run = false;
+    }
+    if ((abs(tmp_x)) > 2 * (abs(tmp_y))) {
+      /* mostly x, move in the x direction */
+      click_dir = tmp_x > 0 ? EAST : WEST;
+    } else if ((abs(tmp_y)) > 2 * (abs(tmp_x))) {
+      /* mostly y */
+      click_dir = tmp_y > 0 ? SOUTH : NORTH;
+    } else {
+      /* closer to diagonal */
+      if (tmp_y > 0) {
+	/* southish */
+	click_dir = tmp_x > 0 ? SOUTHEAST : SOUTHWEST;
+      } else {
+	/* northish */
+	click_dir = tmp_x > 0 ? NORTHEAST : NORTHWEST;	
+      }
+    }
+    // we have already handled the scroll-mode case.
+    if (my_prefs.run_on && do_run) {
+      multiple_move_rogue_Ctrl(click_dir, my_prefs.dave_mode); /*stop when interesting*/
+      do_feep(200,9);
+    } else {
+      one_move_rogue(click_dir, true, my_prefs.stay_centered); /* tap tap tap tap */
+      do_feep(200,9);
+    }
+    handled = true;
+    count = 0;
+    break;
+
+  default:
+    break;
+  }
+/*   last_was_digit = false; */
+
+  start_of_Play_Level_loop();
+  check_hit_message();
+
+  /* don't do anything after this point! */
+SKIP_THE_REST:
+
+  return handled;
+}
+
+d149 1
+a149 1
+extern void LeaveForm ()
+d159 2
+a160 25
+// x, y range from 70 to 80 in absolute value (but may be positive or neg.)
+// they are screen-relative, and represent where you tapped.
+static Boolean maybe_scroll_screen(Short tmp_x, Short tmp_y, Short count)
+{
+  Short scroll_dir;
+  // Calculate the direction of the tap.
+  if ((abs(tmp_x)) > 2 * (abs(tmp_y))) { // mostly x
+    scroll_dir = tmp_x > 0 ? EAST : WEST;
+  } else if ((abs(tmp_y)) > 2 * (abs(tmp_x))) { // mostly y
+    scroll_dir = tmp_y > 0 ? SOUTH : NORTH;
+  } else { // mostly diagonal
+    if (tmp_y > 0) { // south-something
+      scroll_dir = tmp_x > 0 ? SOUTHEAST : SOUTHWEST;
+    } else { // north-something
+      scroll_dir = tmp_x > 0 ? NORTHEAST : NORTHWEST;	
+    }
+  }
+  // If we can scroll in that direction, then do so and return true.
+  // Else return false.
+  if (scroll_window(scroll_dir, max(1, count))) {
+    refresh();
+    return true;
+  } else
+    return false;
+}
+d162 1
+a162 257
+// Convert x,y from screen relative coordinates (ranging -80 to 80)
+// to rogue-relative coordinates (ranging -160 to 160)
+static void rogue_relativize(Short *x, Short *y)
+{
+  Short rx, ry;
+  Short tap_x = *x + 80;
+  Short tap_y = *y + 80;
+  // first, where the heck is the rogue?
+  what_x_y(sotu->roguep->row, sotu->roguep->col, &rx, &ry);
+  // HOWEVER, that is one corner of the cell, and we want the "center",
+  // whatever that means.  I should fix what_x_y to do that.
+  *x = tap_x - rx;
+  *y = tap_y - ry;
+}
+
+
+/**********************************************************************
+                       INIT_DIRECTION_SELECT_LIST
+ IN:
+ frm = the direction select form
+ zap = whether to initialize a list for 'throw' or for 'zap'
+ various globals
+ OUT:
+ nothing
+ PURPOSE:
+ This is called when the direction select form is initialized.
+ It initializes the popup list with inventory items that are
+ appropriate for "zapping" or "throwing".
+ **********************************************************************/
+Char ** direction_select_items;
+Short direction_select_numItems;
+static void init_direction_select_list(FormPtr frm, Boolean zap) {
+  ListPtr lst; // popup list: list_d
+  ControlPtr ctl; // popup trigger: popup_d
+  CharPtr label;
+  Char buf[80];
+  object *obj;
+  Word i, numItems = 0;
+  Char cur_ichar = 'a';
+
+  for (obj = sotu->roguep->pack.next_object ; obj != NULL ; obj = obj->next_object) {
+    obj->ichar = cur_ichar++; /* re-order the inventory letters */
+    if (cur_ichar > 'z')
+      cur_ichar = 'A';
+    if ( (zap && ((obj->what_is & WAND)
+		  || ((obj->what_is & WEAPON)
+		      && (obj->o_flags & O_ZAPPED))))
+	 || ((!zap && (obj->what_is & WEAPON)
+	      && (obj->o_flags & O_MISSILE)))  ) {
+      numItems++;
+    }
+  }
+  /* Hey!  Who's freeing this puppy? */
+  direction_select_items = (Char **) md_malloc(sizeof(Char *) * numItems);
+  for (obj = sotu->roguep->pack.next_object, i = 0 ;
+       (obj != NULL && i < numItems) ;
+       obj = obj->next_object) {
+    if (   (zap  && ((obj->what_is & WAND)
+		  || ((obj->what_is & WEAPON)
+		      && (obj->o_flags & O_ZAPPED))))
+	   || ((!zap && (obj->what_is & WEAPON)
+		 && (obj->o_flags & O_MISSILE)))  ) {
+      buf[0] = obj->ichar; 
+      buf[1] = ')';
+      buf[2] = ' ';
+      get_desc_brief(obj, buf+3, sotu); /* er.  will it overflow 80 chars? */
+      /* Insert inventory code to truncate it to a reasonable length? */
+      make_it_fit(buf, 140, 80);
+      direction_select_items[i] = md_malloc(sizeof(Char)*(StrLen(buf)+1));
+      // malloc failed
+      ErrNonFatalDisplayIf ( (direction_select_items[i] == NULL),
+			     "XXXXXX SERIOUS EVIL");
+      StrCopy(direction_select_items[i], buf);
+
+      i++;
+    }
+  }
+
+  lst = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, list_d));
+  LstSetListChoices(lst, direction_select_items, numItems);
+  if (numItems > 0) {
+    if (numItems > 10) numItems = 10;
+    LstSetHeight(lst, numItems);
+  }
+  LstSetSelection (lst, 0);
+  ctl = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, popup_d));
+  label = LstGetSelectionText (lst, 0);
+  if (label) {
+    if (label[0] > 'Z')
+      inventory_item = label[0] - 'a';
+    else
+      inventory_item = label[0] - 'A';
+  }
+  CtlSetLabel(ctl, label);
+  LstSetSelection(lst, 0);
+}
+static void init_direction_select(FormPtr frm, Short task) {
+/*   ControlPtr btn; */
+  ControlPtr ctl; // popup trigger: popup_d.  Hide it by default.
+  ctl = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, popup_d));
+  CtlHideControl(ctl);
+  switch(task) {
+  case INV_ZAP:
+    FrmCopyTitle(frm, "zap:  direction?");
+    /* example of changing a label: */
+    /*     btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_d_cancel)); */
+    /*     CtlSetLabel(btn, "NO ZAP"); */
+    if (inventory_item == -1)
+      init_direction_select_list(frm, true);
+    break;
+  case INV_THROW:
+    FrmCopyTitle(frm, "throw:  direction?");
+    if (inventory_item == -1)
+      init_direction_select_list(frm, false);
+    break;
+  case INV_MOVE:
+    FrmCopyTitle(frm, "move:  direction?");
+    break;
+  case INV_FIGHT:
+    FrmCopyTitle(frm, "fight:  direction?");
+    break;
+  case INV_IDTRAP:
+    FrmCopyTitle(frm, "i.d. trap:  direction?");
+    break;
+  case SCROLL_WINDOW:
+    FrmCopyTitle(frm, "scroll view:  direction?");
+    break;
+  }
+}
+Boolean Direction_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  ListPtr lst;
+  ControlPtr ctl;
+  CharPtr txt;
+  static Boolean pick_item = false;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* mine */
+    /** place any form-initialization stuff here **/
+    pick_item = (inventory_item == -1) ? true : false;
+    init_direction_select(frm, task);
+    /* end mine */	
+    FrmDrawForm(frm);
+    if ((task == INV_ZAP || task == INV_THROW) && pick_item) {
+      ctl = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, popup_d));
+      CtlShowControl(ctl);
+    }
+    handled = true;
+    break;
+
+  case popSelectEvent:
+    frm = FrmGetActiveForm();
+    if (e->data.popSelect.listID == list_d) {
+      if (pick_item && (task == INV_ZAP || task == INV_THROW)) {
+	lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_d));
+	txt = LstGetSelectionText (lst, e->data.popSelect.selection);
+	if (txt[0]) {
+	  inventory_item = txt[0] - 'a'; // dangerous
+	} else {
+	  inventory_item = -1;
+	}
+      }
+    }
+    /*      handled = true; */
+    break;
+
+  case ctlSelectEvent:
+    direction = -1;
+    switch(e->data.ctlSelect.controlID) {
+    case btn_d_n:
+      direction = NORTH;
+      break;
+    case btn_d_ne:
+      direction = NORTHEAST;
+      break;
+    case btn_d_e:
+      direction = EAST;
+      break;
+    case btn_d_se:
+      direction = SOUTHEAST;
+      break;
+    case btn_d_s:
+      direction = SOUTH;
+      break;
+    case btn_d_sw:
+      direction = SOUTHWEST;
+      break;
+    case btn_d_w:
+      direction = WEST;
+      break;
+    case btn_d_nw:
+      direction = NORTHWEST;
+      break;
+    case btn_d_cancel:
+      direction = NO_DIRECTION;
+      break;
+    default:
+      break;
+    }
+    if (direction != -1) {
+      LeaveForm();
+      if (direction != NO_DIRECTION) {
+	switch(task) {
+	  /*
+	    case INV_ZAP:
+	    case INV_THROW:
+	    inventory_item = -1;
+	    FrmPopupForm(InvSelectForm);
+	    break;
+	  */
+	case INV_ZAP:
+	  /* inventory_item should be set already */
+	  if (inventory_item != -1) {
+	    if (zapp(direction, inventory_item, sotu))
+	      reg_move();
+	  }
+	  break;
+	case INV_THROW:
+	  /* inventory_item should be set already */
+	  if (inventory_item != -1) {
+	    if (throw(direction, inventory_item, sotu))
+	      reg_move();
+	  }
+	  break;
+	case INV_MOVE:
+	  /* replacing move_onto() */
+	  one_move_rogue(direction, false, my_prefs.stay_centered);
+	  break;
+	case INV_FIGHT:
+	  fight(direction, to_the_biteme); /* true = to-the-death */
+	  break;
+	case INV_IDTRAP:
+	  id_trap(direction, sotu);
+	  break;
+	case SCROLL_WINDOW:
+	  scroll_window(direction, max(1, count));
+	  count = 0;
+	  break;
+	}
+      }
+      handled = true;
+    }
+    break;
+
+  default:
+    break;
+  }
+    
+  return handled;
+}
+
+Boolean InvView_Form_HandleEvent(EventPtr e)
+d174 1
+a174 1
+    init_inventory_view(frm, inventory_not_messages, sotu);
+d177 2
+a178 2
+    if (!inventory_not_messages)
+      FrmCopyTitle(frm, "Message Log");
+d234 16
+a249 3
+
+
+Boolean InvSelect_Form_HandleEvent(EventPtr e)
+d251 3
+a253 9
+  Boolean handled = false;
+  Boolean more;
+  FormPtr frm;
+  ControlPtr pushbtn;
+  ListPtr lst;
+  Short i, selected_btn;
+  Short finger;
+    
+  switch (e->eType) {
+d255 2
+a256 10
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    /* mine */
+    /** place any form-initialization stuff here **/
+    init_inventory_select(frm, task, sotu);
+    /* end mine */	
+    FrmDrawForm(frm);
+    toggle_ring_buttons(frm, true, sotu); // must be _after_ form is drawn
+    handled = true;
+    break;
+d258 4
+a261 8
+  case lstSelectEvent:
+    frm = FrmGetActiveForm();
+    //    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_i));
+    inventory_item = e->data.lstSelect.selection;
+    if (task != INV_IDENTIFY)
+      specialize_labels(frm, inventory_item, sotu);
+    handled = true;
+    break;
+d263 3
+a265 25
+  case keyDownEvent:
+    // hardware button -- or else graffiti.
+    frm = FrmGetActiveForm();
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_i));
+    switch(e->data.keyDown.chr) {
+    case pageUpChr:
+      if (LstScrollList(lst, winUp, 11)) {// there are 11 items visible at a time
+	LstSetSelection(lst, -1);
+	inventory_item = -1;
+	if (task != INV_IDENTIFY)
+	  specialize_labels(frm, inventory_item, sotu);
+      }
+      handled = true;
+      break;
+    case pageDownChr:
+      if (LstScrollList(lst, winDown, 11)) {
+	LstSetSelection(lst, -1);
+	inventory_item = -1;
+	if (task != INV_IDENTIFY)
+	  specialize_labels(frm, inventory_item, sotu);
+      }
+      handled = true;
+      break;
+    }
+    break;
+d267 5
+a271 123
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    switch(e->data.ctlSelect.controlID) {
+    case btn_i_ok:
+      free_inventory_select(frm); // hm, POSE does not like this?
+      LeaveForm();
+      /* It is important to do 'switch' AFTER LeaveForm for msg to display */
+      if (inventory_item != -1) {
+	if (task == INV_IDENTIFY) {
+	  /* a total hack - will only be prompted by INV_READ */
+	  idntfy(inventory_item, sotu);
+	  task = 0;
+	  // "return;"
+	} else {
+	  for (i = pbtn_if_frob, selected_btn = 0 ; i <= pbtn_if_wield ; i++) {
+	    pushbtn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, i));
+	    if (CtlGetValue(pushbtn))
+	      selected_btn = i;
+	  }
+	  task = do_what_i_mean(inventory_item, selected_btn, sotu);
+	  switch (task) {
+	  case INV_DROP:
+	    if (check_drop_item())
+	      drop(inventory_item); // make sure it's not cursed + there's room
+	    break;
+	  case INV_THROW:
+	  case INV_ZAP:
+	    /* leave 'inventory_item' set, go on to set 'direction'
+	       and have that form "do the right thing" */
+	    direction = NO_DIRECTION;
+	    FrmPopupForm(DirectionForm);
+	    break;
+	  case INV_WIELD:
+	    if (sotu->roguep->weapon && sotu->roguep->weapon->is_cursed)
+	      message("already wielding a cursed weapon", sotu);
+	    else
+	      wield(inventory_item);
+	    break;
+	  case INV_UNWIELD:
+	    if (sotu->roguep->weapon) {
+	      if (sotu->roguep->weapon->is_cursed)
+		message("you can't, it's cursed", sotu);
+	      else
+		unwield(sotu->roguep->weapon, sotu->roguep);
+	    }
+	    break;
+	  case INV_EAT:
+	    if (eat(inventory_item, sotu))
+	      reg_move();
+	    break;
+	  case INV_QUAFF:
+	    if (quaff(inventory_item, sotu))
+	      reg_move();
+	    break;
+	  case INV_READ:
+	    if (read_scroll(inventory_item, sotu, &more))
+	      reg_move();
+	    if (more) {
+	      task = INV_IDENTIFY; // here we go again
+	      FrmPopupForm(InvSelectForm);
+	    }
+	    break;
+	  case INV_REMOVE:
+	    remove_ring(inventory_item, sotu);  // rewritten...
+	    reg_move();
+	    break;
+	  case INV_PUTON:
+	    // this may require consulting the other set of pushbuttons
+	    // I need to rewrite "put_on_ring" !!!
+	    finger = get_ring_finger(frm, sotu);
+	    if (finger != -1) {
+	      if (put_on_ring(inventory_item, finger, sotu))
+		reg_move();
+	    }
+	    //	    else if (sotu->r_rings > 0) {
+	    //	      message("already wearing eight rings", sotu);	      
+	    //	    } else {
+	    //	      message("you must select a finger", sotu);
+	    //	    }
+	    break;
+	  case INV_TAKEOFF:
+	    take_off();
+	    break;
+	  case INV_WEAR:
+	    if (sotu->roguep->armor) {
+	      take_off(); // see whether this works at all!!!....
+	    }
+	    wear(inventory_item);
+	    break;
+	  default:
+	    // default is to Do Nothing.
+	    message("doing nothing", sotu);
+	    break;
+	  } // end switch(task)
+	} // end else(not identify)
+      } // end make-sure-there's-an-item-selected
+      handled = true;
+      break; // end of btn_i_ok !!!!
+    case btn_i_cancel:
+      free_inventory_select(frm);
+      LeaveForm();
+      handled = true;
+      break;
+    case pbtn_if_frob:
+      handled = true;
+      break;
+    case pbtn_if_drop:
+      //      task = INV_DROP;
+      //      toggle_ring_buttons(frm, true, false, rogue);
+      handled = true;
+      break;
+    case pbtn_if_throw:
+      //      task = INV_THROW;
+      //      toggle_ring_buttons(frm, true, false, rogue);
+      handled = true;
+      break;
+    case pbtn_if_wield:
+      //      task = INV_WIELD;
+      //      toggle_ring_buttons(frm, true, false, rogue);
+      handled = true;
+      break;
+    }
+    break;
+d273 3
+a275 3
+  default:
+    break;
+  }
+d277 1
+a277 1
+  return handled;
+d279 2
+d370 1
+a370 1
+Boolean Bullseye_Form_HandleEvent(EventPtr e)
+d961 2
+a962 2
+	case InvViewForm:
+	    FrmSetEventHandler(frm, InvView_Form_HandleEvent);
+d970 2
+a971 2
+	case BullseyeForm:
+	    FrmSetEventHandler(frm, Bullseye_Form_HandleEvent);
+@
+
+
+1.10
+log
+@minor vampire tweaks
+@
+text
+@d23 1
+a23 1
+#include "Pilot.h"
+d26 5
+a30 2
+#include <System/Globals.h> // for font f*cking
+#include "callback.h" // actually callback.h is no longer needed
+a37 1
+#define ERROR_CHECK_LEVEL ERROR_CHECK_FULL
+d1115 1
+a1115 1
+      FldScrollField(fld, 1, up);
+d1119 1
+a1119 1
+      FldScrollField(fld, 1, down);
+d1131 1
+a1131 1
+      page_scroll_field(frm, fld, up);
+d1136 1
+a1136 1
+      page_scroll_field(frm, fld, down);
+d1190 1
+a1190 1
+      if (LstScrollList(lst, up, 11)) {// there are 11 items visible at a time
+d1199 1
+a1199 1
+      if (LstScrollList(lst, down, 11)) {
+d1214 1
+a1214 1
+      free_inventory_select(frm);
+d1393 1
+a1393 1
+      if (LstScrollList(lst, up, 10)) {// there are 11 items visible at a time
+d1400 1
+a1400 1
+      if (LstScrollList(lst, down, 10)) {
+d1735 1
+a1735 1
+      FldScrollField(fld, 1, up);
+d1739 1
+a1739 1
+      FldScrollField(fld, 1, down);
+d1751 1
+a1751 1
+      page_scroll_field(frm, fld, up);
+d1756 1
+a1756 1
+      page_scroll_field(frm, fld, down);
+d2144 7
+a2150 1
+#endif
+d2228 1
+a2228 1
+#endif
+d2287 1
+@
+
+
+1.9
+log
+@Saving and restoring might work now... testing them...
+@
+text
+@d1684 2
+@
+
+
+1.8
+log
+@still working on save/restore
+@
+text
+@d104 1
+a468 50
+// Call AFTER loading autosave image
+// This should work for reviving dead OR alive save-images,
+// as long as you don't screw up revivify_p.
+static void do_revivify() {
+  fighter *rogue;
+  if (revivify_p == STATUS_NORMAL)
+    return; // in case caller screws up
+  // First we need some orange smoke!
+  if (rand_percent(50)) message("The orange smoke slowly clears.", sotu);
+  else            message("The cloud of orange smoke dissipates.", sotu);
+  // Figure out whether we are "alive" and penalized, or "undead".
+  // ("Undead" will not have been a choice if the save-image is alive,
+  // and alive will not have been a choice if the save-image is undead.)
+  rogue = sotu->roguep;
+  if (revivify_p & STATUS_UNDEAD) {
+    sotu->score_status |= STATUS_UNDEAD;
+    message("You feel.. strangely hungry", sotu);
+  } else { // survey results were 5:3:2:2, gold/xp/str/maxhp.
+    if (rand_percent(42)) {
+      message("Someone has rifled your pockets!", sotu);
+      rogue->gold %= 100;
+      // leave 'em some pocket change
+      if (rand_percent(10))
+	rogue->gold /= 2;
+    } else if (rand_percent(43)) {
+      message("You don't recall how you got here.", sotu);
+      rogue->exp_points = sotu->level_points[rogue->exp-2] + 1;
+      // just short of dropping a level
+      // maybe have 10% chance of dropping a level instead
+    } else if (rand_percent(50)) {
+      message("You feel shaky, weak in the knees.", sotu);
+      // decrease str
+      rogue->str_current = max(3, rogue->str_current-1);
+      if (rand_percent(10))
+	rogue->str_max = rogue->str_current; // this might be real cruel
+    } else {
+      message("You feel distressingly light-headed.", sotu);
+      // decrease max hp
+      if (rand_percent(10)) rogue->hp_max--;
+      rogue->hp_max = max(5, rogue->hp_max-1);
+      rogue->hp_current = min(rogue->hp_max, rogue->hp_current);
+    }
+  }
+  if (sotu->score_status & STATUS_ISDEAD) {
+    sotu->score_status &= ~STATUS_ISDEAD; // make sure we are alive :)
+    rogue->hp_current = rogue->hp_max; // heal yourself
+  }
+  revivify_p = STATUS_NORMAL;
+}
+
+d503 2
+a504 1
+      load_character(sotu, 0);
+d506 1
+a506 1
+	do_revivify(); // inflict a penalty, maybe.
+d1789 1
+d1813 1
+d1817 10
+d1829 1
+d1832 1
+a1836 1
+      // make sure to set the status to undead, after loading it
+d1838 2
+a1839 15
+      // make sure to set the status to not-dead, after loading it
+      // and if you were dead, then remember to set hp to hpmax.
+
+      //      free_old_level(sotu); /* please, no V's and M's on L1. */
+      //      init_sotu(); /* no alloc here, now. */
+      //      clear_identifications();
+      // that will:
+      // init_id_potions to get rid of ids and 'call' titles
+      // init_id_scrolls to get rid of ids and 'call' titles
+      // also, might need wands and rings...
+      //      mix_colors(); /* no alloc here */
+      //      get_wand_and_ring_materials(); /* no alloc here */
+
+      /* Basically we just want to restore from a save file
+	 Instead right now we get Memory Manager invalid handle.  bah. */
+a1852 1
+      //      SysTaskDelay(5*SysTicksPerSecond()); // for testing
+a1879 3
+    // Initialize the popup list with the available save files
+    // (when deleting them: please PACK so there are no empty files.)
+    // display "autosave", "<timestamp>" ... "NEW"
+d1883 1
+d1891 1
+a1891 1
+    if (filenum < new_i)
+d1893 3
+a1895 2
+    // if filenum == 0, disable 'delete' button..
+    // if prior filenum == 0, enable 'delete' button.
+d1906 1
+d1917 1
+a1917 1
+      if (0 == FrmAlert(SaveDeleteP))
+d1919 3
+d1933 1
+d1987 1
+a1987 1
+  else if (deadp_saved_rogue(0))
+d2073 1
+a2073 1
+      my_prefs.autosave_on = true; // new in 0.42
+@
+
+
+1.7
+log
+@working on save: autosave works, revivify from top-ten works, still need menu items for restoring 'live' checkpoints, still need info-display in revivify form
+@
+text
+@d473 2
+a474 1
+  if (revivify_p == STATUS_NORMAL) return; // in case caller screws up
+d485 2
+a486 2
+  } else { // survey results were 4:3:2:1, gold/xp/str/maxhp.
+    if (rand_percent(40)) {
+d490 3
+a492 1
+    } else if (rand_percent(50)) {
+d496 2
+a497 1
+    } else if (rand_percent(66)) {
+d506 3
+a508 2
+      rogue->hp_max--;
+      rogue->hp_current--;
+d542 3
+d549 2
+a550 2
+      //      message ("Hey!  I found a database.", sotu);
+      // I wonder if this revivify thing will work.
+d552 1
+a552 1
+      load_character(sotu); // XXX problem child.
+d634 15
+d1223 1
+a1223 1
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_i));
+d1731 1
+a1731 1
+    kill_saved_rogue(STATUS_ISDEAD); // make sure you are DEAD
+d1837 1
+d1849 11
+d1913 80
+d2026 1
+d2030 1
+a2030 1
+  if (DmNumRecords(RogueDB) <= 10)
+d2032 1
+a2032 1
+  else if (deadp_saved_rogue())
+d2085 3
+d2266 1
+a2266 1
+  if (save_me) {
+d2270 1
+a2270 1
+    save_character(sotu); /* save if not DEAD. */
+@
+
+
+1.6
+log
+@bugfix: hw buttons now scroll the inventory and object-creation lists
+@
+text
+@d103 1
+d468 45
+d539 1
+d542 1
+d545 2
+d571 1
+a571 1
+    message("Welcome to iRogue", sotu);
+d605 1
+a605 1
+      if (!sotu->score_only && !sotu->wizard)
+d609 1
+a609 1
+      sotu->score_only = true;
+d1708 1
+d1717 4
+a1721 1
+      /* \begin{dangerous half-assed implementation} */
+d1738 1
+a1738 1
+      do_make_new_level = true;
+d1742 1
+a1742 1
+      FrmGotoForm(MainForm); /* but all the forms will pile up... */
+a1743 1
+      /* \end{dangerous half-assed implementation} */
+d1795 83
+d1890 1
+a1890 1
+  do_make_new_level = false;
+d1916 2
+d1966 3
+d1982 1
+a1982 1
+  Short i;
+d1998 4
+a2001 1
+      my_prefs.stay_centered = false;
+@
+
+
+1.5
+log
+@added: rogue-relative navigation (untested)
+@
+text
+@d1156 27
+d1360 22
+d1421 1
+a1421 1
+    CtlSetValue(checkbox, (my_prefs.save_on_exit ? 1 : 0));
+d1470 1
+a1470 1
+      my_prefs.save_on_exit = (CtlGetValue(checkbox) != 0);	
+d2002 2
+a2003 1
+  if (save_me && my_prefs.save_on_exit) {
+@
+
+
+1.4
+log
+@fixed OS conditional compilation
+@
+text
+@d467 3
+d682 1
+d685 19
+d732 2
+a733 8
+    if (my_prefs.scroll_mode && (abs(tmp_x) > 70 || abs(tmp_y) > 70)) {
+      /* instead of moving, scroll the screen. */
+      scroll_window(click_dir, max(1, count));
+      refresh();
+      handled = true;
+      count = 0;
+      goto SKIP_THE_REST;
+    } else if (my_prefs.run_on && do_run) {
+d766 42
+@
+
+
+1.3
+log
+@added: Small font option (like iLarn)
+@
+text
+@d25 1
+d84 1
+a84 1
+  true, // use large (normal) font - new in 0.42
+d254 12
+a265 3
+  /* prefGameSoundLevelV20? */
+  if (my_prefs.sound_on
+      && (PrefGetPreference(prefGameSoundLevel) != slOff)) {
+a484 2
+    if (!my_prefs.font_large) // user likes the small font.
+      toggle_itsy(); // might return false, if OS is wrong version; ignore.
+d1323 1
+a1323 1
+    CtlSetValue(checkbox, (my_prefs.font_large ? 0 : 1));
+d1377 1
+a1377 1
+      my_prefs.font_large = (CtlGetValue(checkbox) == 0);	
+d1816 2
+@
+
+
+1.2
+log
+@Fixed some minor bugs that users reported in 0.4:
+1. healing potions did not heal enough (division roundoff problem)
+2. all non-quit scores were zero (division roundoff problem)
+Made some suggested changes:
+3. top ten score list now allows multiple entries per player
+4. "Dave mode" has been renamed arbitrarily, possibly more meaningfully
+5. wizard scores are no longer recorded in score list
+6. characters that are wizardizing for the first time are asked to confirm
+@
+text
+@d25 2
+a26 1
+#include "callback.h"
+d73 1
+a73 1
+  true, // save_on_exit
+d82 3
+a84 1
+  false // stay centered
+d475 2
+d582 10
+d1314 4
+d1367 6
+d1758 4
+d1765 9
+d1775 1
+a1775 1
+  if (error) return error;
+d1788 21
+d1857 27
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d537 5
+d543 1
+a548 1
+      handled = true;
+@
+
+
+1.1.1.1
+log
+@iRogue import
+@
+text
+@@

@@ -1,0 +1,149 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.05.31.00.22.58;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.58;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>iRogue Movement Survey</title>
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+  </head>
+
+  <body>
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3>iRogue Movement Survey</h3>
+<P> <i>This <a href="index.php">survey</a> is about the PalmOS game 
+<a href="../iRogue/index.php">iRogue</a>,
+part of the <a href="../index.php">Roguelikes for PalmOS</a> project
+hosted at <a href="http://sourceforge.net">SourceForge</a>.</i>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<form action="http://roguelike-palm.sourceforge.net/cgi-bin/vote.pl" method=get>
+<!-- 'value' must be the name of a section in the config file -->
+<input type="hidden" name="name" value="movement">
+
+<P> Your author would like to know what style of movement is preferred
+<P>
+<b>To move around, I prefer</b><br>
+<input type="Radio" name="a" value="1">
+ tapping on the screen <br>
+<input type="Radio" name="a" value="2">
+ using hardware buttons <br>
+<input type="Radio" name="a" value="3">
+ both <br>
+<input type="Radio" name="a" value="4">
+ using keyboard (!)
+<P>
+<b>When moving around I prefer</b><br>
+<input type="Radio" name="b" value="1">
+ the rogue <i>always</i> stays in the center of the screen, even when exploring
+ the edges of the dungeon (then half the screen might be blank space) <br>
+<input type="Radio" name="b" value="2">
+ the rogue stays in the center of the screen as much as possible... but
+ <i>not</i> when exploring the dungeon edges <br>
+<input type="Radio" name="b" value="3">
+ the screen stays still (with the rogue moving around in it) until the rogue
+ is soon going to move out of sight. <br>
+<input type="Radio" name="b" value="4">
+ huh?
+<P>
+<b>In preferences I usually have turned on</b><br>
+<input type="Radio" name="c" value="1">
+ running, and following turns (also known as dave-mode) <br>
+<input type="Radio" name="c" value="2">
+ just running <br>
+<input type="Radio" name="c" value="3">
+ neither <br>
+<input type="Radio" name="c" value="4">
+ huh?
+
+<P> The font used to display the dungeon could be smaller.  If a
+smaller font is offered, more of the dungeon is visible, but of course
+it takes longer to redraw the screen.  So maybe the "rogue stays in
+center" preference (which requires more frequent total redrawing) will
+be ignored when a small font is used.
+<P>
+<b>My preferred font size is</b><br>
+<input type="Radio" name="d" value="1">
+ The normal font that is currently used<br>
+<input type="Radio" name="d" value="2">
+ A smaller font, such as the one used in iLarn.
+
+<P> For movement by tapping: Some people have expressed that the
+"donut" movement system is difficult.  (In this system the direction
+of movement is determined by where you tap, relative to the center of
+the screen.  It is independent of the position of the rogue.)  Another
+movement system that could be offered as a preference is
+rogue-relative (the direction is determined by where you tap, relative
+to the location of your rogue '@@').
+<P>
+<b>My preferred movement system would be</b><br>
+<input type="Radio" name="e" value="1">
+ Relative to center of screen (the current donut system)<br>
+<input type="Radio" name="e" value="2">
+ Relative to location of rogue
+
+<P>
+
+<br>
+<input type=submit value="Submit">
+<input type=reset value="Reset">
+<a href="http://roguelike-palm.sourceforge.net/cgi-bin/vote.pl?name=movement&action=view">
+Result</a>
+
+
+</form>
+
+    <hr>
+    <address><a href="mailto:i0lanthe@@users.sourceforge.net">email</a></address>
+<!-- Created: Wed Aug  2 17:13:41 EDT 2000 -->
+<!-- hhmts start -->
+Last modified: Thu Aug 10 16:23:40 EDT 2000
+<!-- hhmts end -->
+  </body>
+</html>
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

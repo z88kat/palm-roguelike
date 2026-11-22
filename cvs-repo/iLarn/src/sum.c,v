@@ -1,0 +1,80 @@
+head	1.2;
+access;
+symbols
+	Release-2001_08_06:1.2
+	Release-2001_06_15:1.2
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.2
+date	2001.05.01.04.41.33;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.08.27.17.35.16;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.35.16;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@get iLarn to compile with sdk 3.5 so's I can add color...
+@
+text
+@#include "palm.h"
+
+/* 
+   This routine was derived from "the software known as checksum",
+   a highly portable c program which illustrates five kinds of hash
+   "(c) Copyright, N.M. Maclaren, 1993
+    (c) Copyright, University of Cambridge, 1993"
+   
+   This hash is described as System V sum ("fails to detect the common
+   problems of byte swapping or the removal of nulls.")
+*/
+
+Short do_sum(Char *hotsync_name)
+{
+  Short bufflen, i;
+  Long checksum = 0;
+
+  bufflen = StrLen(hotsync_name);
+  for (i = 0; i < bufflen; ++i)
+    if ((checksum += hotsync_name[i]) > 0xffff)
+      checksum -= 0xffff;
+  return (Short) checksum;
+}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 1
+a1 1
+#include "Pilot.h"
+@
+
+
+1.1.1.1
+log
+@iLarn - Ularn port for PalmOS - initial code checkin
+@
+text
+@@

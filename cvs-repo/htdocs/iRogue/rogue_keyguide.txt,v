@@ -1,0 +1,386 @@
+head	1.1;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2006.08.08.03.45.50;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@commit everything before massive style change
+@
+text
+@Rogue Keyguide for Palm. author: Sterling Babcock. Based on 1.0.0 source code.
+NOTE: (Not xxx) means not if you have that. ^xxx improves your odds. !xxx worse
+
+Symbols:
+@@ You    % Stairs  # Tunnel  + Door  | Wall  _ Wall   ^ Trap     * Gold
+] Armor  : Food    ! Potion  = Ring  / Wand  ? Scroll  ) Weapon  , Amulet
+
+MONSTERS:
+HP to kill, Experience you gain for kill, Levels inhabits, % chance hit you,
+% chance hold you (flame type), % chance drop item, Flags (see below)
+_ Monster         HP   Exp   Level Damage  %Hit Hold Drop Move Flag2
+A Aquatar         25    20   9-18  0        100    0    0 AWD  rusts
+B Bat             10     2   1-8   1d3       60    0    0 A D  flits
+C Centaur         32    15   7-16  3d3,2d5   85    0   10 A D|fleeing _
+D Dragon         145  5000  21-126 4d6,4d9  100    0   90 AW   flames
+E Emu             11     2   1-7   1d3       65    0    0 AW   _
+F Fly-trap        73    91  12-126 5d5       80    0    0 stationary holds
+G Griffin        115  2000  20-126 5d5,5d5   85    0   10 AWD  flies
+H Hobgoblin       15     3   1-10  1d3,1d2   67    0    0 AWD  _
+I Invisible dude  15  1000  17-126 4d4       68    0    0 A    invisible
+J Jabberwock     132  3000  21-126 3d10,4d5 100    0    0 A D  _
+K Kestrel         10     2   1-6   1d4       60    0    0 AWD  flies
+L Leprechaun      25    21   6-16  0         75    0    0 A    steals_gold
+M Medusa          97   250  18-126 4d4,3d7   85    0   25 AWD  confuses
+N Nymph           25    39  10-19  0         75    0  100 A    steals_item
+O Orc             25     5   4-13  1d6       70    1   10 AWD|tasty seeks_gold
+P Phantom         76   120  15-24  5d4       80    0   50 A D  invisible|flits
+Q Questing beast  30    20   8-17  3d5       78    0   20 AWD  _
+R Rattlesnake     19    10   3-12  2d5       70    2    0 AWD|tasty stings
+S Snake            8     2   1-9   1d3       50    0    0 AWD  _
+T Troll           75   125  13-22  4d6,1d4   75    0   33 AWD  _
+U black Unicorn   90   200  17-26  4d10      85    0   33 AWD  _
+V Vampire         55   350  19-126 1d14,1d4  85    0   18 AWD  drains_life|sucker
+W Wraith          45    55  14-23  2d8       75    0    0 A D  drops_level
+X Xeroc           42   110  16-25  4d6       75    0    0 A    imitates
+Y Yeti            35    50  11-20  3d6       80    0   20 A D  _
+Z Zombie          21     8   5-14  1d7       69    0    0 AWD  _
+a great-ant       10     2   1-8   1d4       60    0    0 AWD  _
+b beetle          10     2   1-8   1d4       60    0    0 AWD  _
+c chimera         35    60  11-20  3d6       80 flame   0 A    flames|stings
+d dingo           10     2   1-8   1d4       60    0    0 AWD  _
+e floating eye    10     3   1-8   1d1       90    3    0 stationary|tasty paralyzes
+f felis silvestris10     2   1-8   1d4       60    0    0 AWD  _
+g gwyllion        20     5   2-11  0         60    0   90 A    confuses
+h hannya          70   120  13-22  4d5,1d4   75    0   33 AWD  _
+i ice monster     15     5   3-12  0         68    4    0 A  |tasty freezes
+j jaguarundi      45    25   4-13  2d6       70    0    0 AWD  _
+k vermicious knid  5     1  98-99  1d4       10    0    0 AWD  _
+l leech           19    10   3-12  2d5       70    0    0 AWD  sucker
+m manticore       35    60  11-20  3d6       80    0   10 AWD  stings
+n narcolep        50   100  30-126 1d4       90 sleep   0 AWD  flames
+o orange mold     10     5  16-126 1d6       70    0    0 stationary shrieks
+p python          19    10   3-12  2d5       70    2    0 AWD|tasty hugs
+q 64-bit int      25    20  12-126 1d4       90    0    0 AWD  drops_level
+r rust monster   100    40  16-126 0         20    0    0 AWD  rusts
+s giant spider    19    10   3-12  2d5       70    0    0 AWD  stings
+t todal = dragon 145  1000  21-125 0d0      100    0   90 AWD  paralyzes|confuses
+                                                        |flits|shrieks|seeks_gold
+u upier = vampire 55   300  19-126 1d14,1d4  85    0   40   D  sucker
+v viper          150  2000  19-126 3d6       60    2    0 AWD|tasty stings
+w killer wail     80   200  25-126 4d4      100    0    0 AW   shrieks
+x xavier         100  2500  21-126 4d6       75 lghtn  90 A    flames
+y yellow light    20     1   3-7   1d2       10 slow    0 A    flames
+z zoomer          15     3   3-10  1d4       10    0    0   D|hasted _
+
+Monster Flags 2: Movement?
+asleep (A)  = Starts asleep
+wakens (W)  = Wakes up when you are close ((45%, 75% party room), /3 if stealthy)
+              Removes Imitation, asleep (Not if napping), can wander in.
+wanders (D) = Can wander in as a new monster (Occurs every 120 turns)
+fleeing     = Runs away (won't hit you)
+napping     = Sleeping (does not move or attack while napping)
+flies       = Flies (cannot hit you while flying)
+freezes     = 12% fail, Freezes you for 4-8 turns plus possibly 50 turns
+              of time. (Not CrystalArmor, RingProtCold,^STR,^Lev,^AC,^HP)
+hasted      = Moves twice per turn
+holds       = Holds you (Not Levetate RingLev RingFreeAction)
+imitates    = Looks like something
+invisible   = Cannot see (Not RingSeeInvis ^RingDelus ^RingESP)
+stationary  = Does not move, becomes more dangerous
+tasty       = Is edible 15% of time
+
+Monster Flags 1: Special Hits (Number is % chance will occur)
+confuses    30% = Confuses you 12-22 turns (45% Never confuses, 25% not this time)
+drains_life 40% = Loose strength/HP (Not RingSustStr HPmax<30, HPcur<10)
+drops_level 20% = Loose experience (For 'q': 92% chance, 75% chance this 'q'
+                  no longer drops level)
+flames          = Performs Breath attack if cannot direct attack (See below)
+flits           = Moves randomly 33% of time, 10% no move
+hugs        19% = Loose 2d8 HP (Not CrystalArmor), 50% chance no longer hugs.
+paralyzes e:19% = Paralyzes you (Not RingFreeActn), 25% chance no longer paralze
+          t:100%  100% chance if not 'e'
+rusts      100% = Rusts Armor (Not NonmetalArmor, RingMainArmor)
+                  All rust monsters move when you remove or drop armor.
+seeks_gold 100% = Runs to gold and then sleeps there.
+shrieks         = Wakes up dungeon, 2% destroy CrystalArmor
+steals_gold 90% = Steals your gold (10-30x level) and disappears
+steals_item 85% = Steals an unused item and disappears
+                  (Seems to steal first item, if weapon, steals all duplicates)
+stings          = Loose 1 strength (Not RingSustStr ^RingDex ^Lev ^AC)
+                  (50% chance monster no longer stings.)
+sucker      15% = Loose 10-HPcur HP, once only
+
+* There are initally 4-6 monsters per level
+* Monsters will not move 15% of time
+* All monsters are hasted above level (AMULET_LEVEL + 10)
+* Confused monsters will not special hit 66% of the time
+* Monster Party Room: Occurs roughly every 3 levels, has twice as many
+  monsters as items, Monster can appear up to 2 levels earlier than normal.
+  They wake up 75% of the time when you enter.
+  If level with MPR there is 1% chance of a single Big Room.
+* Monsters will sometimes leave treasure behind when they die. A steals_gold
+  guy drops gold, a tasty has 15% chance to leave carcase, otherwise monster
+  drop % to drop an item. (Not when you are leaving dungeon)
+* Chance Monster hit you: Reduced by Experience, RingDex, increased by # rings worn
+  Damage Monster hit you:
+* Chance You hit monster:
+  Damage You hit monster: Higher strength will increase monster damage.
+* Wizards are half as likely to be hit and damage is divided by 3.
+  Wizards are twice as likely to hit, and triple the damage done.
+
+Monster Breath Attacks (8): Monster must see you. Only happens 50% of time.
+* Up to 7 away. You won't see if blind. Hit chance reduced for ^EXP ^RingDex !Rings
+Flame         : (Not RingProtFire)
+Lightning Bolt: (Not CrystalArmor, RingProtShock (Charges weapon 10-25 max 50 zaps))
+                Makes your weapon a zappable wand of lightning for that many charges
+Sleeping Gas  : Should sleep you, but commented out (Not RingAlertness)
+Slow Gas      : Slows you down for 4 turns (Not RingFreeAction)
+Not in use by any monster:
+Acid          : (Not CrystalArmor)
+Chlorine Gas  : No Effect in code (Not 15%|RingBreathing)
+Ice           : (Not RingProtCold)
+Nerve Gas     : Should paralyze you, but commented out (Not RingFreeAction)
+Random        : Choose a random breath attack
+
+SCROLLS (13)   Chance Val Action (scrolls weigh 4. Cannot read if blind)
+Protect_Armor   6.8%  505 Worn armor: uncursed, protected from rust
+Hold_Monster    6.8%  200 Holds all monsters within 2 ASLEEP, won't wake on its own
+Ench_Weapon     5.7%  235 Weld weapon: Uncursed, gives either damage+1 or hit+1
+Ench_Armor      5.7%  235 Worn armor: uncursed, d_enchant+1
+Identify       17.1%  175 Identify an object
+Teleport        9.1%  190 Teleports you
+Sleep           8.0%   25 Puts you to sleep 2-5 turns
+Scare_Monster   5.7%  610 Monster cannot move onto it. CrumblesToDust if pick it up
+                          No effect if read except "maniacal laughter"
+Remove_Curse   10.2%  210 Uncurses ALL the objects you are carrying
+Create_Monster 10.2%  100 Creates a monster
+Aggravate_Mons  6.8%   25 Wakes all monsters on level, removes imitation
+Magic_Mapping   5.7%  180 Shows the whole level, including hidden areas
+Create_Obj      2.3%  400 Create an object
+
+POTIONS(14) Chance Val Effect (Potions weigh 10 & are not cursed)
+Increase Str   10% 100 Current STR +1, Increase max STR if at max "bulging muscles"
+Restore Str    10% 250 Reset STR to max STR - "warm all over"
+Healing        10% 100 Heal your HP, cure blind, 1/2 confusion, 1/2 halluc "feel better"
+Extra Healing  10% 200 Heal your HP, cure blind, confusion, halluc "feel much better"
+                       HP+=Exp. 0%dmg->HPmax+2/1, 10%dmg->HPmax+=1/0, else just heal
+(Add Experience to HP. If 0% damage, increase to max HP +2 (extra) +1 (reg), etc.)
+Poison         10%  10 Decrease 1-3 STR (not RingSustStr), cure halluc - "feel sick"
+Raise Level     4%  25 Jump to next experience level (barely)
+Blindness      10% 100 Blinds you for 250-400 turns
+Hallucination  10% 100 Hallucinate for 500-800 turns - "cosmic"
+Detect Monster 10% 100 Show all monster on level (not ifBlind) - "strange feeling"
+Detect Objects 10% 100 Show all objects on level (not ifBlind) - "strange feeling"
+Confusion      10%  10 Random moves for 12-22 turns - "trippy"
+Levitation      4%  80 Avoids traps,stairs,objects for 15-30, cures hold,beartrap
+Haste Self      3% 150 Move 2x turn for even 11-21 - "moving faster"
+See Invisible   3% 145 Cures Blind, see invis monst - "tastes slime-mold"
+
+WEAPONS (45)               Damage
+Weapon        Weight Val  Hit Hurl  Launch   Metal,Collect,mIssile
+bow               40  7   1d1  1d1  No       _
+dart               5  1   1d1  1d3  No       _CI
+arrow              5  1   1d1  1d6  bow      _CI
+dagger            10  2   1d4  1d6  No       MCI
+shuriken           4  3   1d2  2d5  No       _CI
+mace             100  8   2d4  1d3  No       M
+long sword        60 15   3d4  1d2  No       M
+two handed sword 250 20   3d6  1d2  No       M
+rock               5  1   1d2  1d4  sling    _CI
+sling              5  1   0d1  0d1  No       _
+crossbow         100 15   1d1  1d1  No       _
+crossbow bolt      7  1   1d2 1d12  crossbow _CI
+-- End of common weapons -- (Above 5.28% Below 1.11% probability)
+spear             50  2   1d6  1d8  No       M_I
+trident           50 25   3d4  1d4  No       M
+spetum            50 12   2d6  1d3  No       M
+bardiche         125  6   3d4  1d2  No       M
+short pike        80 18  1d12  1d8  No       M
+bastard sword    100 20   2d8  1d2  No       M
+halberd          175 21   2d6  1d3  No       M
+battle axe        80 21   1d8  1d3  No       M
+hand axe          50  8   1d6  1d2  No       M
+club              30  2   1d4  1d2  No       _
+flail            150 10   1d7  1d4  No       M
+glaive            80  8  1d10  1d3  No       M
+guisarme          80  6   2d4  1d3  No       M
+hammer            50  4   1d3  1d5  No       M_I
+javelin           10  3   1d4  1d6  No       __I
+morning star     125  8   2d4  1d3  No       M
+partisan          80  4   1d6  1d2  No       M
+pick              60  4   2d4  1d2  No       M
+long pike         80  6   2d8  2d6  No       M
+scimitar          40  8   1d8  1d2  No       M
+sling bullet       3  1   1d1  1d8  No       MCI
+quarterstaff      50  8   1d6  1d2  No       _
+broadsword        75 15   2d4  1d3  No       M
+short sword       35  8   1d6  1d2  No       M
+claymore         300 27   3d7  1d2  No       M
+footbow           90 10   1d1  1d1  No       _
+footbow bolt       5  1   1d2 1d10  No       _CI
+katana           350 10  4d12  2d6  No       M
+leuku             40  3   1d6  1d5  No       M
+tomahawk          45  7   1d6  1d6  No       _
+pertuska         160 10   2d5  1d3  No       M
+sabre            120 20   2d6  1d3  No       M
+cutlass           55 12  1d10  1d2  No       M
+silver arrow      10  3   1d2  2d8  left_out _CI
+boomerang         10  0   1d1  1d8  left_out _CI
+burning oil       20  0   0d0 2d10  left_out _CI
+crysknife        120  0   3d3  1d3  left_out _Poison
+* Weapon probability: 50% of time get first 12 weapons only else any weapon.
+  Collection weapons created get 3-15 items, Quiver is 0-126?
+  Weapon can be +1 (16.7%) or -1 cursed (16.7%). If so, it gets
+  1-3 blessings of hit_enchant or dice_enchant (coin toss as to which)
+* Increased hit chance for ^Str, ^Exp, ^RingDex, !#rings.
+  Hit chance starts with 50% + first digit of damage? (2d6 -=> 52?) strange.
+* Better hit chance: NonThrown NonMissile. Thrown Missile.
+  Thrown NonMissile has less damage.
+  If a missile has a launcher, better if you weld the launcher.
+  If a missile has no launcher, better if you weld the missile.
+* Weapon value is +d_enchant*85 +hit_enchant*85
+
+THROWING:
+* Max throw distance is 24 (8 in tunnel). Stops at walls and traps.
+  Thrown wands will go off 75% of time. You cannot throw cursed item.
+  Throwing weapon does normal %Hit Damage, but weapon is damaged
+* A hit monster will wake up, not seek gold, and shriek if able
+  Imitating monsters will not be hit
+
+WANDS (12)      Val Class Effect
+Tele_Away        25  3-6  Teleports monster
+Slow_Monster     50  3-6  Slows monster, long
+Confuse_Monster  45  3-6  Confuses monster 12-22 turns, long
+Invisibility      8  3-6  Makes monster invisible
+Polymorph        55  3-6  Changes monster randomly (Monster no longer holds you)
+Haste_Monster     2  3-6  Hastes monster, long
+Put_To_Sleep     25  3-6  Monster naps for 3-6 turns, then is asleep
+Magic_Missile    20  6-12 Like hitting with your weapon
+Cancellation     20  5-9  Monster no longer holds, will no longer drop items when
+                          dies, cancels flags1: FLIES FLITS SPECIAL_HIT INVISIBLE
+                          FLAMES IMITATES CONFUSES SEEKS_GOLD SHRIEKS HOLDS
+Do_Nothing        0  3-6  Does nothing
+Lightning        42  3-6  Like hitting with your weapon, long
+Scare_Monster    42  3-6  Makes monster flee
+* All wands have equal probability, wands weigh 20, staffs weigh 50
+* A wand is metal 49% of time, or wood (a staff) 51% of time
+* Class is number of shots, and random within given range.
+* It does not matter if you weld a wand.
+
+ARMOR (12)   Chance Class Weight Val  Metal?
+leather         10%   2    100    70  No
+ring_mail       10%   3    250    50  Yes
+studded_leather 11%   3    200    50  Yes
+scale_mail      12%   4    250    70  Yes
+padded_armor    12%   4    150   150  No
+chain_mail      12%   5    300   100  Yes
+splint_mail     10%   6    350   150  Yes
+banded_mail     10%   6    350   150  Yes
+plate_mail       6%   7    400   400  Yes
+plate_armor      4%   8    450   650  Yes
+mithril          2%   9    100  2000  No, Protected
+crystal_armor    1%  10    300  3500  No
+* Armor weight is +/- 10 of weight.
+* Armor value is + d_enchant*75 + 200 if protected
+* (20% & !mithril)                  Item is cursed and dice_enchant-rand(1-3)
+  ( 8% & !mithril)or(28% & mithril) Item is dice_enchant+rand(1-3)
+
+RINGS (26)    Curse Val Food Action
+R_sustain_str     0  250 1  Protects: MonsterSting,MonsterDrainLife,DartTrap,PoisonPotion
+R_see_invisible   0  100 1  See invisible monsters
+R_maintain_armor  0  255 1  Armor will not rust due to monster
+R_levitate        0  295 1  You float:No traps, no pickup items, no stairs, No hold
+R_free_action     0  200 1  Cannot be MonsterHeld,paralyzed,BearTrap, Nerve or Slow Breath
+R_breathing       0  250 1  Protects from all breath attacks, sleeping gas trap
+R_alertness       0  250 1  Protects from sleep breath attack, SleepGasTrap, SleepScroll
+R_protect_fire    0   25 1  Protects from fire breath attack
+R_protect_cold    0  300 1  Protects from ice breath, monster freeze, die of cold
+R_protect_shock   0  290 1  Protects from lightning breath attack
+R_lifesaving      0  270 1  Saves your life when you die, Max HP, vanishes, "chill"
+R_ESP             0   0  1  Nullifies hallucination, RingDelusion
+R_warning         0   0  1  Lets you know how dangerous within 10 squares
+                            Glows: (Good) white pink red ruby purple black (Bad)
+R_mood          50%   0  0  1% of time glows a random color
+R_teleport        1   0  1  Teleports you 8% of the time
+R_aggravate       1   0  1  When put on, go up/down level aggravates all monsters
+R_delusion        1   0  1  Makes you hallucinate
+R_Burden          1   0  1  Weighs 300
+R_adornment     50%   0  0  Nothing. Free for food, but still hurts hit/defend!
+R_stealth         0   0  1  Increases stealth by 1
+R_regeneration    0   0  2  Increases regeneration by 1, counts as 2 rings
+R_slow_digest     0   0 -2  Cancels wearing 2 other rings, Can halve food use
+R_add_strength -2-2   0  1  Increases strength by ring class
+R_dexterity    -2-2   0  1  Increases dexterity by ring class, improves hit/defend!
+R_searching       0   0  1  Increases auto_search by 2
+R_protection   -2-2   0  1  Increases AC by ring class
+* Rings: All equal probability, all weigh 3, except for the R_Burden (300)
+* Worn rings make you easier to hit, harder for you to hit, and you digest faster
+  The sum of worn ring food cost is divided by 2 to determine extra food turns
+* Ring Class: -2-2 Means random -2,-1,1,2 class (not 0). Cursed if -2 or -1.
+* Ring Curse: 1 = cursed, 50% = 50% chance cursed, negative class means cursed
+* If (RING_WARNING|RING_ESP)&90% or (RING_MOOD|RING_DELUSION))&40% and party room,
+  then "you hear something". Also when RING_DELUSION & 20% and no party room
+* RingESP: Says "sense hostility" when you go up/down level with RingAggr
+* SlowDigestRing: If sum of food < 0, you use food at 1/2 rate! (If 8 SDR, no food)
+
+TRAPS (6):
+trap door        : Drops you to next level of dungeon
+bear trap        : Stuck 4-7 Move turns (Not RingFreeAction)
+teleport trap    : Teleports you on this level
+poison dart trap : HP damage 1d6. 40% chance STR-1 min 2 (Not RingSustStr)
+sleeping gas trap: "fall asleep" sleep for 2-5 turns (Not RingAlert RingBreath)
+rust trap        : "gush water" rust
+* Traps will fail (Exp+RingDex)% of time
+* Traps on level: level 0-3 has 0 traps, 3-7 has 0-2, 8-11 has 1-2,
+                  12-16 has 2-3, 17-21 has 2-4, 22-AMUL+2 has 3-5, else 5-10
+                  First trap placed in Monster Party room.
+* Avoid traps by levitating with a ring or scroll
+
+MISC:
+* Initial Armor Ring Mail Class 3, Weapon Mace 2d3, Bow 1d2, 25-35 arrows 1d2
+* Gold: 46% of rooms have gold. Mazes always have gold and 50% more.
+  Maze rooms are currently commented out due to a bug.
+* Object Creation: On random 1-91, create Scroll (1-30), Potion (31-60),
+  Wand (61-64), Weapon (65-74), Armor (75-83), Food (84-88), or Ring (89-91).
+* Amulet appears on level 27 and greater. You can only go up with Amulet.
+  You loose experience level as you go up, and you don't get hungrier
+* Weight is shown. You can carry 1500+50*(Str-8), unless weak(90%) or faint(50%)
+* Searching: (17+Exp+RingDex)% find hidden item (Not Blind)
+* End of game: Sum up value of items carried. Amulet is worth 5000.
+* Pack order is FOOD, WEAPON, ARMOR, SCROLL, POTION, WAND, RING, AMULET
+
+Food: Ration weighs 400, fruit weighs 300
+* You are guarenteed a food every 2 levels.
+* Get ration 80% of time, fruit 20% of time.
+* I don't think food spoils.
+* Hungry at 300, Weak at 150, Faint at 20, Starve at 0.
+* When you eat, your old moves_left is /3. (i.e. only eat when hungry!)
+* Alive: 40% Ration,Carcase: worth 700-900 "yuk", Adds experience
+  60% Ration,Carcase, 100% Fruit: worth 900-1100 "Yum","not too bad","Yummy"
+* Undead: Carcase worth 900-1100 "enjoy"
+  Ration worth 100-200 "unsatisfying", Fruit worth 50-150 "gnaw on vile"
+  Drink blood 25% of time you kill a monster. Old moves /3. Adds 500-700 moves.
+
+Load Character:
+* Undead: food = (hungry+weak)/2. If "strangely hungry", food += f(HP)
+* Normal:
+   42% "rifled pockets": Gold = gold mod 100 (times 1/2 10% of time)
+   25% "don't recall"  : Drop Exp just short of dropping level
+   17% "shaky, weak"   : Drop STR by 1 minimum 3, 10% chance STRmax = STRcur.
+   17% "distressingly" : Drop HPmax by 1 (10% chance of 2) minimum 5.
+
+@

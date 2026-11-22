@@ -1,0 +1,516 @@
+head	1.12;
+access;
+symbols
+	Release-2002_05_10-on-Handera-branch:1.12.2.1
+	Release-2001_07_01-on-Handera-branch:1.12
+	Release-2001_04_26-Handera-branch:1.12.0.2
+	Release-2001_04_26:1.12
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.12
+date	2001.04.25.03.48.32;	author i0lanthe;	state Exp;
+branches
+	1.12.2.1;
+next	1.11;
+
+1.11
+date	2001.03.06.02.59.43;	author i0lanthe;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2001.02.27.06.08.43;	author i0lanthe;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2001.02.26.04.35.12;	author i0lanthe;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2001.02.25.00.37.11;	author i0lanthe;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2001.02.24.05.28.19;	author i0lanthe;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2001.02.24.03.25.02;	author i0lanthe;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2000.08.24.03.26.17;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2000.08.23.01.57.11;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2000.08.21.04.32.35;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2000.08.19.02.00.20;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.06.15.21.16.50;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.06.15.21.16.50;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+1.12.2.1
+date	2002.05.11.01.00.32;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.2;
+
+1.12.2.2
+date	2003.11.03.07.51.54;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.3;
+
+1.12.2.3
+date	2003.11.03.19.16.22;	author i0lanthe;	state Exp;
+branches;
+next	1.12.2.4;
+
+1.12.2.4
+date	2003.11.03.19.30.29;	author i0lanthe;	state dead;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.12
+log
+@Revised color *again*, maybe black-backgroudn will work for color folks now?
+@
+text
+@/*********************************************************************
+ * iRogue - Rogue adapted for the PalmPilot.                         *
+ * Copyright (C) 1999 Bridget Spitznagel                             *
+ * Note: This program is derived from rogue 5.3-clone for Linux.     *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+
+// multisection code
+#include "sections.h"
+
+#ifndef __ROGUEPROTO_H__
+#define __ROGUEPROTO_H__
+//#include "Lib/librogue.h"
+#include "librogue.h"
+
+/* main.c */
+void init_game();
+void make_new_level();
+//void free_old_level();
+//void start_rogue();
+
+/* level.c  ok */
+void make_level() SEC_2;
+Boolean check_up() SEC_2;
+
+
+/* object.c  ok */
+void put_objects() SEC_1;
+void put_amulet() SEC_1;
+
+/* pack.c  ok */
+object * pick_up(Short row, Short col, Short *status) SEC_1;
+Boolean check_drop_item() SEC_1;
+void drop(Short index) SEC_1;
+void take_off() SEC_1;
+void wear(Short index) SEC_1;
+void wield(Short index) SEC_1;
+void kick_into_pack() SEC_1;
+void sort_pack(object *pack) SEC_2;
+
+/* monster.c  ok */
+void mv_mons() SEC_1;
+void party_monsters(Short rn, Short n) SEC_1;
+object * gr_monster(object * monster, Short mn) SEC_1;
+void mv_aquatars() SEC_1;
+void mv_monster(object *monster, Short row, Short col) SEC_1;
+void wanderer() SEC_1;
+void create_monster(Short mn) SEC_1;
+void put_mons() SEC_1;
+
+/* my_object.c - for initializing id_foo arrays  ok */
+void alloc_id_arrays() SEC_1;
+void clear_identifications() SEC_1;
+void init_wiz_list(FormPtr frm, Short some_list_id, Short object_type) SEC_1;
+
+/* Globals.c  ok */
+void alloc_and_init_sotu() SEC_1;
+void init_sotu() SEC_1;
+
+
+/* trap.c  ok */
+void trap_player(Short row, Short col) SEC_1;
+void search(Short n, Boolean is_auto) SEC_1;
+void id_trap(Short dir, struct state_of_the_union *sotu) SEC_1;
+
+
+/* move.c  ok */
+Short one_move_rogue(Short dirch, Boolean pickup, Boolean stay_ctr) SEC_1;
+void multiple_move_rogue_Shift(Short dirch) SEC_1;
+void multiple_move_rogue_Ctrl(Short dirch, Boolean go_speed_racer) SEC_1;
+Boolean reg_move() SEC_1;
+void rest(Short count) SEC_1;
+
+/* throw.c  ok */
+Boolean throw(Short dir, Short index,
+	      struct state_of_the_union * sotu) SEC_2;
+
+/* spec_hit.c  ok */
+void special_hit(object * monster) SEC_1;
+void rust(object *monster) SEC_1;
+Boolean seek_gold(object *monster) SEC_1;
+Boolean m_confuse(object *monster) SEC_1;
+Boolean breath_attack(object *monster) SEC_1;
+void do_breath(Short i, Short *damage) SEC_1;
+
+/* hit.c  ok */
+void check_hit_message() SEC_2;
+void mon_hit(object * monster, Char * other, Short breath) SEC_2;
+void rogue_hit(object *monster, Boolean force_hit) SEC_2;
+void check_shrieker(object *monster) SEC_2;
+void rogue_damage(Short d, object *monster) SEC_2;
+Boolean mon_damage(object *monster, Short damage) SEC_2;
+void fight(Short dir, Boolean to_the_death) SEC_2;
+
+/* inventory.c  ok */
+void mix_colors() SEC_1;
+void make_scroll_titles() SEC_1;
+void get_wand_and_ring_materials() SEC_1;
+
+/* use.c  ok */
+Boolean read_scroll(Short index, struct state_of_the_union *sotu,
+		    Boolean * identify) SEC_2;
+void idntfy(Short index, struct state_of_the_union *sotu) SEC_2;
+void take_a_nap() SEC_2;
+
+/* zap.c  ok */
+Boolean zapp(Short dir, Short index, struct state_of_the_union * sotu) SEC_2;
+void zap_monster(object *monster, UShort kind) SEC_2;
+object * get_thrown_at_monster(object *obj, Short dir, Short *row, Short *col,
+			       struct state_of_the_union *sotu) SEC_2;
+
+/* chuvmey.c  ok */
+void killed_by(object *monster, Short other, 
+	       struct state_of_the_union * sotu) SEC_2;
+void init_topten_view(FormPtr frm) SEC_2;
+void create_top_ten_record() SEC_2;
+void win(struct state_of_the_union *sotu) SEC_2;
+
+/* save.c  ok */
+void create_filecount_record();
+Short get_file_count();
+void delete_saved_rogue(Short filenum) SEC_1;
+Short get_next_saverec() SEC_1;
+void undisplay_saved_rogue() SEC_1;
+void display_saved_rogue(Short filenum) SEC_1;
+void kill_saved_rogue(UChar status, Short filenum) SEC_1;
+UChar get_saved_rogue_status(Short filenum) SEC_1;
+void save_character(struct state_of_the_union * sotu, Short filenum); // no sec
+void load_character(struct state_of_the_union * sotu, Short filenum); // no sec
+void snapshot_update_list(ListPtr lst, Boolean include_new);
+void snapshot_delete_listi(FormPtr frm, Short i);
+void reviv_frob_btns(FormPtr frm, Short filenum);
+void snapshot_frob_btns(FormPtr frm, Boolean del_ok);
+void topten_frob_btns(FormPtr frm);
+void do_revivify(struct state_of_the_union * sotu);
+
+/* chuvmey_nolib.c  ok */
+Short turns_p(Short row, Short col, Short dir, UShort ** dungeon) SEC_1;
+void sell_pack(struct state_of_the_union *sotu) SEC_1;
+void make_room(Short rn, Short r1, Short r2, Short r3,
+	       struct state_of_the_union *sotu) SEC_1;
+void usr_form_init(FormPtr frm, struct state_of_the_union *sotu) SEC_1;
+void usr_form_update(FormPtr frm, struct state_of_the_union *sotu) SEC_1;
+void explain_it(Short x, Short y, struct state_of_the_union *sotu) SEC_1;
+void calculate_warning(struct state_of_the_union *sotu) SEC_1;
+void update_field_scrollers(FormPtr frm, FieldPtr fld,
+			    Word up_scroller, Word down_scroller) SEC_1;
+#ifndef I_AM_COLOR
+void page_scroll_field(FormPtr frm, FieldPtr fld, DirectionType dir) SEC_1;
+#else /* I_AM_COLOR */
+void page_scroll_field(FormPtr frm, FieldPtr fld, WinDirectionType dir) SEC_1;
+#endif /* I_AM_COLOR */
+void get_username(struct state_of_the_union *sotu) SEC_1;
+void show_dungeon(struct state_of_the_union * sotu) SEC_1;
+void make_it_fit(CharPtr buf, Short avail_space, Short maxbuflen) SEC_1;
+void draw_circle(Short x, Short y, Short radius, Boolean b) SEC_1;
+void draw_crosshairs() SEC_2;
+void invert_crosshairs() SEC_2;
+
+/* iRogue.c */
+void do_feep(Long frq, UInt dur);
+
+/* color.c */
+#ifdef I_AM_COLOR
+void look_for_memo();
+//IndexedColorType get_color(Short c);
+#endif // I_AM_COLOR
+
+
+
+
+
+#endif
+
+@
+
+
+1.12.2.1
+log
+@rock on!  COLORED TILES.
+@
+text
+@a180 1
+void look_for_tiles();
+@
+
+
+1.12.2.2
+log
+@tweak tweak
+@
+text
+@a52 1
+void call_it(Short index) SEC_1;
+@
+
+
+1.12.2.3
+log
+@take ancient lingering 'sotu' arguments out, everywhere (relic of library code)
+@
+text
+@d80 1
+a80 1
+void id_trap(Short dir) SEC_1;
+d91 2
+a92 1
+Boolean throw(Short dir, Short index) SEC_2;
+d117 1
+a117 1
+Boolean read_scroll(Short index,
+d119 1
+a119 1
+void idntfy(Short index) SEC_2;
+d123 1
+a123 1
+Boolean zapp(Short dir, Short index) SEC_2;
+d125 2
+a126 1
+object * get_thrown_at_monster(object *obj, Short dir, Short *row, Short *col) SEC_2;
+d129 2
+a130 1
+void killed_by(object *monster, Short other) SEC_2;
+d133 1
+a133 1
+void win() SEC_2;
+d144 2
+a145 2
+void save_character(Short filenum); // no sec
+void load_character(Short filenum); // no sec
+d151 1
+a151 1
+void do_revivify();
+d155 7
+a161 6
+void sell_pack() SEC_1;
+void make_room(Short rn, Short r1, Short r2, Short r3) SEC_1;
+void usr_form_init(FormPtr frm) SEC_1;
+void usr_form_update(FormPtr frm) SEC_1;
+void explain_it(Short x, Short y) SEC_1;
+void calculate_warning() SEC_1;
+d169 2
+a170 2
+void get_username() SEC_1;
+void show_dungeon() SEC_1;
+@
+
+
+1.12.2.4
+log
+@moved files around
+@
+text
+@@
+
+
+1.11
+log
+@fixed centered-screen crosshairs redraw problem; added inventory-sort option
+@
+text
+@d186 2
+@
+
+
+1.10
+log
+@fixed SOME of the pie-slices-not-redrawing-properly issues
+@
+text
+@d54 1
+@
+
+
+1.9
+log
+@add pref to draw pie slices, and make screen scroll 'sooner' based on donut
+@
+text
+@d172 1
+a172 1
+
+@
+
+
+1.8
+log
+@bug fixes, hw-scrolling in object creation, can view top score list anytime
+@
+text
+@d171 1
+d182 2
+@
+
+
+1.7
+log
+@moving code around.. tweaking..
+@
+text
+@a109 3
+void init_inventory_select(FormPtr frm, Short task,
+			   struct state_of_the_union *sotu) SEC_1;
+void free_inventory_select(FormPtr frm) SEC_1;
+d171 1
+a171 8
+void toggle_ring_buttons(FormPtr frm, Boolean hide,
+			 struct state_of_the_union *sotu) SEC_1;
+Short get_ring_finger(FormPtr frm, struct state_of_the_union *sotu) SEC_1;
+
+void specialize_labels(FormPtr frm, Short index,
+		       struct state_of_the_union *sotu) SEC_1;
+Short do_what_i_mean(Short index, Short button,
+		     struct state_of_the_union *sotu) SEC_1;
+@
+
+
+1.6
+log
+@compiles with sdk3.5; user-configurable color
+@
+text
+@a109 2
+void init_inventory_view(FormPtr frm, Boolean inv_not_msgs,
+			 struct state_of_the_union *sotu) SEC_1;
+@
+
+
+1.5
+log
+@minor vampire tweaks
+@
+text
+@d167 1
+d169 3
+d188 6
+d195 1
+@
+
+
+1.4
+log
+@Saving and restoring might work now... testing them...
+@
+text
+@d153 1
+@
+
+
+1.3
+log
+@still working on save/restore
+@
+text
+@d146 1
+a146 1
+Boolean deadp_saved_rogue(Short filenum) SEC_1;
+d150 4
+@
+
+
+1.2
+log
+@working on save: autosave works, revivify from top-ten works, still need menu items for restoring 'live' checkpoints, still need info-display in revivify form
+@
+text
+@d138 13
+a151 2
+void kill_saved_rogue(UChar status) SEC_1;
+Boolean deadp_saved_rogue() SEC_1;
+a159 2
+void save_character(struct state_of_the_union * sotu); // no sec
+void load_character(struct state_of_the_union * sotu); // no sec
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d139 2
+@
+
+
+1.1.1.1
+log
+@iRogue import
+@
+text
+@@

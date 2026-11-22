@@ -1,0 +1,112 @@
+head	1.3;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.3
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2002.05.10.01.46.11;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2001.10.20.17.06.29;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.31;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.31;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@fixed stale external links
+@
+text
+@      <tr><td class="sidehead">
+	<a href="http://www.win.tue.nl/~kroisos/roguelike.html">
+	Roguelike Games</a> </td>
+      </tr>
+      <tr><td class="side">
+	<a href="http://www.win.tue.nl/~kroisos/rogue/index.html">
+	Rogue</a> </td>
+      </tr>
+      <tr><td class="side">
+        <a href="http://math.la.asu.edu/~grabiner/moria.html">
+	Moria</a>, <a href="http://www.phial.com/angband/">
+	Angband</a> </td>
+      </tr>
+      <tr><td class="side">
+	<a href="http://www.hut.fi/~eye/roguelike/nethack.html">
+	Hack</a>, <a href="http://www.nethack.org/">
+	NetHack</a> </td>
+      </tr>
+      <tr><td class="side">
+	<a href="http://www.win.tue.nl/~kroisos/larn/index.html">
+	Larn</a>, 
+        <a href="http://www.ularn.org/">Ularn</a> </td>
+      </tr>
+      <tr><td class="side">
+	<a href="http://www.alcyone.com/max/projects/omega/">
+	Omega</a> </td>
+      </tr>
+      <tr><td class="side">
+	&amp; <a href="http://www.mega-tokyo.com/rlnews/news.php">
+	Roguelike News</a> </td>
+      </tr>
+      <tr><td class="side">
+      &amp; <a href="http://groups.google.com/groups?group=rec.games.roguelike">
+        Usenet</a> </td>
+      </tr>
+
+@
+
+
+1.2
+log
+@foo
+@
+text
+@d10 1
+a10 1
+	<a href="http://www-math.bgsu.edu/~grabine/moria.html">
+d29 1
+a29 1
+	&amp; <a href="http://arns.freeservers.com/">
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d29 1
+a29 1
+	... &amp; <a href="http://www.skoardy.demon.co.uk/rlnews/">
+d32 5
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

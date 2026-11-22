@@ -1,0 +1,83 @@
+head	1.1;
+branch	1.1.1;
+access;
+symbols
+	Release-2002_03_29:1.1.1.1
+	Release-2002_01_12:1.1.1.1
+	Release-2002_01_02:1.1.1.1
+	Release-2002_01_01:1.1.1.1
+	Release-2001_12_19:1.1.1.1
+	Release-2001_08_04:1.1.1.1
+	Release-2001_07_02:1.1.1.1
+	Release-2001_06_16:1.1.1.1
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2000.08.27.17.45.50;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.08.27.17.45.50;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+
+1.1
+log
+@Initial revision
+@
+text
+@Notes on Umaps:
+
+There are 20 level maps, to be chosen from at random.
+These are the 7 characters in the maps: could use an octal number
+' '   (empty space)
+-     an object
+.     potentially, a monster
+#     a wall       OWALL
+D     a door       OCLOSEDOOR
+~     potentially, DEMONPRINCE + OLARNEYE
+!     potentially, LUCIFER  + OPOTION (object of your quest)
+
+
+"LEVELSNAME" is the filename Umaps.
+"larnlevels" is the full pathname of Umaps.
+create.c calls lopen on larnlevels
+
+// the levels are 0-19, they are 18 lines in length (17 + blank)
+// go to the start of a random level
+for (i = 18 * rund(20) ; i > 0 ; i--) 
+  lgetl();   /* advance to desired maze */
+
+
+There are 15 useful rows (of 17), and 65 useful columns (of 67).
+(Since the first & last row & col are all '#' I can leave them out.)
+Each cell can have 7 values.  I could use octal numbers 3 bits per cell.
+
+65 x 3 bits = 195 per row, call it 200 bits, which is 25 bytes.
+15 x 25 chars = 375 bytes per record
+7500 bytes for the canned levels altogether; 8k not too bad.
+
+For now, I will be lazy and use a 'char' for each cell
+65 * 15 * 20 = 19500 bytes  20 k sigh.
+
+@
+
+
+1.1.1.1
+log
+@kMoria - UMoria for PalmOS - initial code checkin - pre-alpha, buggy, untidy
+@
+text
+@@

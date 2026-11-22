@@ -1,0 +1,226 @@
+head	1.5;
+access;
+symbols
+	pre-css-layout-except-irogue-oops:1.3
+	start:1.1.1.1
+	vendor:1.1.1;
+locks; strict;
+comment	@# @;
+
+
+1.5
+date	2006.08.13.05.47.22;	author i0lanthe;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2006.08.13.04.47.25;	author i0lanthe;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2006.08.08.03.49.45;	author i0lanthe;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2002.03.30.00.18.21;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2001.05.31.00.22.49;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2001.05.31.00.22.49;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@tweaked for valid HTML
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>Download kMoria</title>
+
+<style type="text/css" media="screen">@@import "../3col.css";</style>
+
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>Download kMoria</h1>
+</div>
+
+<div class="content">
+
+      <p> Go to the <a href="http://sourceforge.net/projects/roguelike-palm/">
+	Roguelikes for PalmOS</a> project summary page on SourceForge.
+	Download the "kMoria module" (it should be listed in the
+	File Releases section).  You will want the .zip file.  The
+	.tar.gz file is the source code.</p>
+
+      <p> Unzip it and follow the installation instructions.  You
+might also like to read about how to <a href="play.php">play</a>. </p>
+
+</div>      
+
+<!-- System requirements?  OS?  Memory?  snort -->
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+</body>
+</html>
+@
+
+
+1.4
+log
+@converting from tables to CSS
+@
+text
+@d6 1
+@
+
+
+1.3
+log
+@commit everything before massive style change
+@
+text
+@d1 3
+a3 1
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+d7 4
+a10 4
+<link rel="stylesheet" type="text/css" name="greenstyle"
+      href="../green.css" media="screen">
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ic
+o">
+d14 3
+a16 40
+<!-- header table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="header">
+    <h3 class="header">kMoria: where to download</h3>
+    </td>
+  </tr>
+</table>
+<!-- end header table -->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td class="sidebar" width="20%" valign=top>
+    
+    <!-- left column table -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="2">
+      
+      <!-- -->
+      <tr><td class="sidehead">
+	kMoria Stuff </td></tr>
+      <tr><td class="side"> <a href="index.php">
+	  What is kMoria?</a> </td></tr>
+      <tr><td class="side"> <a href="whatsnew.php">
+	  What's new</a> </td></tr>
+      <tr><td class="side">
+	  <b>Download kMoria</b> </td></tr>
+      <tr><td class="side"> <a href="play.php">
+	How to play</a></td></tr>
+      <tr><td class="side"> <a href="source.php">
+	  How to get source</a> </td></tr>
+      <?php include ("../hostedby.txt") ?>
+      <?php include ("../activesurveys.txt") ?>
+      <?php include ("../roguelikegames.txt") ?>
+</table>
+</td>
+
+<!-- main area table -->
+<td valign=top>
+      <!-- ----- this is the interesting part of the page ----- -->
+      <h3>Where can I download kMoria?</h3>
+d18 3
+a20 1
+      <P> Go to the <a href="http://sourceforge.net/projects/roguelike-palm/">
+d24 4
+a27 1
+	.tar.gz file is the source code.
+d29 1
+a29 3
+      <P> Unzip and follow the installation instructions.  You might
+	also like to read the <a href="play.php">instructions</a> for
+	how to play.
+d31 1
+a31 1
+      <!-- ----- end of the interesting part of the page ----- -->
+d33 4
+a36 3
+</td>
+</tr>
+</table>
+d38 3
+a40 3
+<!-- footer table -->
+<?php include ("../footer.txt") ?>
+<!-- end footer table -->
+a41 1
+<address>i0lanthe@@users.sourceforge.net</address>
+a42 1
+Last modified: Sat Dec  2 19:26:23 EST 2000
+d44 1
+a44 1
+<?php $hitsfile = "download.hits"; include ("../counter.php")?>
+@
+
+
+1.2
+log
+@checkpointing web before kMoria 0.15 update
+@
+text
+@d7 2
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d14 1
+a14 1
+    <h3>kMoria: where to download</h3>
+@
+
+
+1.1.1.1
+log
+@Let's keep web pages in cvs.
+@
+text
+@@

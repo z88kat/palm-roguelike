@@ -1,0 +1,420 @@
+head	1.3;
+access;
+symbols
+	start:1.1.1.1 vendor:1.1.1;
+locks; strict;
+comment	@ * @;
+
+
+1.3
+date	2001.02.24.04.27.00;	author i0lanthe;	state dead;
+branches;
+next	1.2;
+
+1.2
+date	2001.02.24.03.25.02;	author i0lanthe;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2000.06.15.21.16.44;	author i0lanthe;	state Exp;
+branches
+	1.1.1.1;
+next	;
+
+1.1.1.1
+date	2000.06.15.21.16.44;	author i0lanthe;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@mv lib_message.c message.c
+@
+text
+@/*********************************************************************
+ * iRogue - Rogue adapted for the PalmPilot.                         *
+ * Copyright (C) 1999 Bridget Spitznagel                             *
+ * Note: This program is derived from rogue 5.3-clone for Linux.     *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+
+#include "palm.h"
+#include "librogue.h"
+
+
+Boolean msg_cleared = true;
+Boolean msg2_cleared = true;
+
+/***************************************************************
+                   CLEAR_MSG
+ IN:
+ nothing
+ OUT:
+ nothing
+ PURPOSE:
+ Clear the message portion of the screen.
+****************************************************************/
+static void clear_msg() SEC_L;
+static void clear_msg() {
+  RectangleType r;
+  RctSetRectangle(&r,0,0,160,23); /* top-left, width and height */
+  WinEraseRectangle(&r, 0); /* 0 for square corners */
+}
+/***************************************************************
+                   CHECK_MESSAGE
+ IN:
+ nothing (msg_cleared)
+ OUT:
+ nothing
+ PURPOSE:
+ If the message isn't cleared, clear it.
+****************************************************************/
+void check_message() {
+  if (msg_cleared) {
+    return;
+  }
+  clear_msg();
+  WinDrawLine(0,22,160,22);
+  msg_cleared = true;
+  msg2_cleared = true;
+}
+
+/***************************************************************
+                   RECORD_MSG
+ IN:
+ msg = the message to display
+ sotu = various globals (old_messages)
+ OUT:
+ nothing
+ PURPOSE:
+ Record the new message (there is sort of a circular array
+ of the Last N messages to display in the message log.) 
+****************************************************************/
+static void record_msg(Char * msg, struct state_of_the_union * sotu) SEC_L;
+static void record_msg(Char * msg, struct state_of_the_union * sotu) {
+  Short i;
+  Char * tmp;
+  tmp = sotu->old_messages[0];
+  for (i = 0 ; i < SAVED_MSGS-1 ; i++)
+    sotu->old_messages[i] = sotu->old_messages[i+1];
+  StrNCopy(tmp, msg, SAVED_MSG_LEN-2); /* leave room for \n.. */
+  tmp[SAVED_MSG_LEN-2] = '\0'; /* making sure it's terminated.. */
+  StrCat(tmp, "\n");
+  sotu->old_messages[SAVED_MSGS-1] = tmp;
+
+  sotu->last_old_message_shown--;
+  if (sotu->last_old_message_shown < 0)
+    sotu->last_old_message_shown = -1; // "none of the buffered msgs have been shown"
+}
+
+/***************************************************************
+                   MESSAGE
+ IN:
+ msg = the message to display
+ sotu = various globals...
+ OUT:
+ nothingn
+ PURPOSE:
+ Display (and record for the message log) the given message.
+ (Note: If msg_cleared is false, (and I should probably make it a
+ counter instead of a boolean), at least one other message has
+ occurred since the start of the turn.  I have not thought of
+ a good way to do "--more--", so after the first message, a
+ message will be displayed on the second line (probably
+ overwriting each other.)
+    // Revised:
+    // Figure out whether the message is 'clear'
+    // If so, print it and advance the sotu->last_old_msg counter.
+    // If not, print "--more--" in the lower right of msg window and return.
+****************************************************************/
+void message(Char * msg, struct state_of_the_union * sotu) {
+
+  FontID fntid;
+  Boolean fits, tiny;
+  Int msgwidth, msglength;
+  RectangleType r;
+  Char buf[SAVED_MSG_LEN];
+
+  //  StrPrintF(buf, "--more--");
+  fntid = FntSetFont(stdFont);
+  tiny = false;
+
+  if (msg) {
+    // it's a new message; add it to the old-messages buffer
+    record_msg(msg, sotu);
+  } else {
+    // find an unseen buffered message to show
+    if (sotu->last_old_message_shown >= SAVED_MSGS-1)
+      return; // all of the buffered messages have been shown
+    if (sotu->last_old_message_shown < 0)
+      sotu->last_old_message_shown = -1;
+    msg = sotu->old_messages[sotu->last_old_message_shown + 1];
+    msglength = StrLen(msg)-1;
+    StrNCopy(buf, msg, msglength); // get rid of the \n !!!
+    buf[msglength] = '\0';
+    msg = buf;
+  }
+
+  if (!msg_cleared) {
+    // maybe the second line is still clear
+    if (msg2_cleared) {
+      // maybe the message will fit entirely on the second line
+      msgwidth = 120; // leave room for the "--more--" !!
+      msglength = StrLen(msg);
+      FntCharsInWidth(msg, &msgwidth, &msglength, &tiny);
+      if (tiny) {
+	// yes, it will fit...
+	RctSetRectangle(&r,0,11,160,11); // top-left, width and height
+	WinEraseRectangle(&r, 0); // 0 for square corners
+	WinDrawChars(msg, msglength, 1, 11); // left, top
+	msg2_cleared = false;	  // (leave msg_cleared false.)
+	sotu->last_old_message_shown++;
+      }
+    }
+    // If there are unseen messages in the buffer, (re)print --more--
+    if (sotu->last_old_message_shown < SAVED_MSGS-1)
+      WinDrawChars("--more--", 8, 120, 11);
+    FntSetFont(fntid);
+    return;
+  } // end if !msg_cleared
+
+  // Ok, if we haven't returned yet, we're going to print the darn thing.
+  sotu->last_old_message_shown++;
+
+  msgwidth = 160;
+  msglength = StrLen(msg);
+  fits = false;
+  FntCharsInWidth(msg, &msgwidth, &msglength, &fits);
+
+  if (fits) {
+    WinDrawChars(msg, StrLen(msg), 1, 0); /* left, top */
+    WinDrawLine(0,22,160,22); // do I need this?
+    // if there are still unseen messages, try to fit another one on the second line!
+    if (sotu->last_old_message_shown < SAVED_MSGS-1) {
+      msg = sotu->old_messages[sotu->last_old_message_shown + 1];
+      msglength = StrLen(msg)-1;
+      StrNCopy(buf, msg, msglength); // get rid of the \n
+      buf[msglength] = '\0';
+      msg = buf;
+      msgwidth = 120; // leave room for the "--more--" !!
+      //      msglength = StrLen(msg);
+      FntCharsInWidth(msg, &msgwidth, &msglength, &tiny);
+      if (tiny) {
+	// yes, it will fit...
+	WinDrawChars(msg, msglength, 1, 11); // left, top
+	msg2_cleared = false;	  // (leave msg_cleared false.)
+	sotu->last_old_message_shown++;
+      }
+    }
+  } else {
+    //    StrPrintF(buf, "%d %d", StrLen(msg), fits);
+    WinDrawChars(msg, msglength, 1, 0); /* left, top */    
+    msg += msglength;
+    msglength = StrLen(msg);
+    FntCharsInWidth(msg, &msgwidth, &msglength, &fits);
+    WinDrawChars(msg, msglength, 1, 11);
+    WinDrawLine(0,22,160,22);
+    msg2_cleared = false;
+    /* And if it doesn't fit in two lines, that's just too bad. */
+  }
+
+  // If there are (still) unseen messages in the buffer, (re)print --more--
+  if (sotu->last_old_message_shown < SAVED_MSGS-1) {
+    //    WinDrawChars(buf, 8, 120, 11);
+    WinDrawChars("--more--", 8, 120, 11);
+  }
+  
+  FntSetFont(fntid);
+  msg_cleared = false;
+}
+
+/***************************************************************
+                   PRINT_STATS
+ IN:
+ stat_mask = which stats to update
+ sotu = various globals (rogue, cur_level, add_strength, hunger_string)
+ OUT:
+ nothing
+ PURPOSE:
+ Update the stats display on the lower part of the screen.
+ (Hm. Maybe it would be cool to make the hit points go reverse-video
+ when they get Too Low.)
+****************************************************************/
+void print_stats(UInt stat_mask, struct state_of_the_union * sotu) {
+  RectangleType r;
+  Char buf[20];
+  Short w, hi;
+  fighter * rogue = sotu->roguep;
+  
+  if (stat_mask & STAT_LABEL) {
+    RctSetRectangle(&r,0,138,160,160-138); /* left,top, width and height */
+    WinEraseRectangle(&r, 0); /* 0 for square corners */
+
+    WinDrawLine(0,137,160,137);
+    hi = 138;
+    StrCopy(buf, "L");
+    WinDrawChars(buf, 1, 1, hi);
+    StrCopy(buf, "HP");
+    WinDrawChars(buf, 2, 20, hi);
+    StrCopy(buf, "Str");
+    WinDrawChars(buf, 3, 73, hi);
+    hi = 149;
+    StrCopy(buf, "Arm:");
+    WinDrawChars(buf, 4, 1, hi);
+    StrCopy(buf, "$");
+    WinDrawChars(buf, 1, 34, hi);
+    StrCopy(buf, "Exp:");
+    WinDrawChars(buf, 4, 74, hi);
+  }
+
+  hi = 138;
+  if (stat_mask & STAT_LEVEL) {
+    /* LEVEL */
+    /* "L" takes 5; each digit takes 5; right-justify the number. */
+    /* "  " takes 4. */
+    w = 6;
+    RctSetRectangle(&r,w,hi,10,10);
+    WinEraseRectangle(&r, 0);
+    StrPrintF(buf, "%d", sotu->cur_level);
+    WinDrawChars(buf, StrLen(buf), w, hi);
+    /* add 19 */
+  }
+  if (stat_mask & STAT_HP) {
+    /* enforce uppper bound */
+    if (rogue->hp_max > MAX_HP) {
+      rogue->hp_current -= (rogue->hp_max - MAX_HP);
+      rogue->hp_max = MAX_HP;
+    }
+    /* HIT POINTS */
+    /* "HP " takes 13; each digit takes 5; "(" or ")" takes 4. */
+    w = 33;
+    RctSetRectangle(&r,w,hi,38,10);
+    WinEraseRectangle(&r, 0);
+    StrPrintF(buf, "%d(%d)", rogue->hp_current, rogue->hp_max);
+    WinDrawChars(buf, StrLen(buf), w, hi);  
+    /* add 55 */
+  }
+
+  if (stat_mask & STAT_STRENGTH) {
+    /* enforce upper bound */
+    if (rogue->str_max > MAX_STRENGTH) {
+      rogue->str_current -= (rogue->str_max - MAX_STRENGTH);
+      rogue->str_max = MAX_STRENGTH;
+    }
+    /* STRENGTH */
+    /* "Str " takes 15; each digit takes 5; "()" takes 8. */
+    w = 88;
+    RctSetRectangle(&r,w,hi,28,10);
+    WinEraseRectangle(&r, 0);
+    StrPrintF(buf, "%d(%d)", (rogue->str_current + sotu->add_strength),
+	      rogue->str_max);
+    WinDrawChars(buf, StrLen(buf), w, hi);  
+    /* add 47 */
+  }
+
+  if (stat_mask & STAT_HUNGER) {
+    /* FOOD-P */
+    /* note: "Hungry" takes 31 pixels. */
+    w = 124;
+    RctSetRectangle(&r,w,hi,31,11); /* 10 wasn't enough */
+    WinEraseRectangle(&r, 0);
+    StrPrintF(buf, "      ");
+    StrPrintF(buf, sotu->hunger_str);
+/*     StrPrintF(buf, "hungry"); */
+    WinDrawChars(buf, StrLen(buf), w, hi);
+  }
+
+  /* LINE TWO */
+  hi = 149;
+  if (stat_mask & STAT_ARMOR) {
+    /* enforce upper bound */
+    if (rogue->armor && (rogue->armor->d_enchant > MAX_ARMOR)) {
+      rogue->armor->d_enchant = MAX_ARMOR;
+    }
+    /* ARMOR */
+    /* "Arm: " takes 21; digits take 5+5; " " takes 2 */
+    w = 22;
+    RctSetRectangle(&r,w,hi,10,10);
+    WinEraseRectangle(&r, 0);
+    StrPrintF(buf, "%d", get_armor_class(sotu));
+    WinDrawChars(buf, StrLen(buf), w, hi);
+    /* add 33 (35) */
+  }  
+  if (stat_mask & STAT_GOLD) {
+    /* enforce upper bound */
+    if (rogue->gold > MAX_GOLD) {
+      rogue->gold = MAX_GOLD;
+    }
+    /* GOLD */
+    /* "$" takes 6; each of 6 digits takes 5. */
+    w = 40;
+    RctSetRectangle(&r,w,hi,30,10);
+    WinEraseRectangle(&r, 0);
+    StrPrintF(buf, "%ld", rogue->gold);
+/*     StrPrintF(buf, "999999"); */
+    WinDrawChars(buf, StrLen(buf), w, hi);
+    /* add 40 */
+  }
+  if (stat_mask & STAT_EXP) {
+    /* EXPERIENCE */
+    /* "Exp: " takes 19; 10 digits take 50;"/" takes 5. */
+    w = 93;
+    RctSetRectangle(&r,w,hi,55,10);
+    WinEraseRectangle(&r, 0);
+    StrPrintF(buf, "%d/%ld", rogue->exp, rogue->exp_points);
+/*     StrPrintF(buf, "21/10000000"); */
+    WinDrawChars(buf, StrLen(buf), w, hi);
+    /* add 78 */
+  }
+  return;
+}
+
+@
+
+
+1.2
+log
+@compiles with sdk3.5; user-configurable color
+@
+text
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d23 1
+a23 1
+#include "Pilot.h"
+@
+
+
+1.1.1.1
+log
+@iRogue import
+@
+text
+@@

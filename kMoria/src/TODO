@@ -1,0 +1,87 @@
+Items will be pulled from this list in the order implementers feel like.
+
+Make all databases hotsynced by default.  Requested by >1 windows users.
+  - Backup bit is set when a database is created, as of a recent checkin.
+    (Probably ought to add this to kMoriaUtil.prc too.)
+  - Bump the preferences version number in kMoria.h.
+  - At startup, where there is a preferences version check,
+    if prefsVersion < 0x04,
+    find each kMoriaSave-type database and set its backup bit,
+    and if kMoriaColorDB exists, set its bit.
+  - Don't set kMoriaDB.pdb on the fly since people may expect it to be
+    read-only; set the backup bit on the copy included in the zip file
+    instead.
+
+Option for "scroll combat messages to the end".  Requested >1.
+    "A toggle for "more/scroll right to the end" would be nice,
+    rendering fighting against a lot of "<insertcolorhere> worm mass"
+    easier, as I have to tap the display just once to attack and not
+    once to attack and once to more."
+
+Increased keyboard support.  Requested >1.
+  - List the forms that still don't have full keyboard support
+  - Compare implementation to documentation.. some weren't documented
+  - Add missing keyboard shortcuts to implementation
+  - Update documentation
+
+Sony Clie (320x320 screen) support.  Requested >1.
+  - Prerequisite: getting Sony Clie ROMs, and emulator, to debug/test.
+    Downloading and reading their own funky little API.
+  - Theoretically, wouldn't be too much implementation work now that
+    Handera support is in.  Practically, the pain in Handera support
+    was not in the implementation but in the testing, because these
+    licensees' emulators do not run on Linux.  Handera needed support
+    because 160x160 looks pretty stinky on 240xWhatever.  320x320 can
+    do reasonable 160x160 emulation, thus there's less incentive.
+
+"Look" mode extensions.  Requested once.
+   "Perhaps the end of the list could include things that are visible
+   in other directions to avoid needing to do several 'look'
+   commands. It would also be useful to optionally ignore 'common'
+   objects such as doors/walls/minerals etc."
+
+Transferring a character to the desktop.  Requested >1.
+  - There is a start at this in the ConvertSave directory.
+    (It works on my linux machine, is untested anywhere else, and
+    takes some shortcuts that it shouldn't.  It should be rewritten.)
+
+Save the current screen state.  Requested once.
+  - Font size (?? Isn't there already a Preference for font size.)
+  - Stats screen (That's what he said, but is that what he meant?)
+
+Moria emulation.  Requested once.
+  - "For example, t for tunnel rather than d for dig."
+  - Moria itself has two key binding modes, moria-like and rogue-like.
+    kMoria does not adhere to either.  The request is to add an option
+    that will make kMoria commands the same as Moria's (rogue-like
+    Moria, I guess, since PalmOSish keyboards have no number pad).
+  - He also requested an option to turn off the lines used in
+    opening doors, spells, etc.
+
+Verb first, then inventory list.  Requested once.
+  - Add the option of capital letter commands:
+    eat, read scroll, quaff = E, R, Q.  Etc.
+    These should pop up an inventory screen that is filtered to the objects
+    that this verb is legal for.  Hit letter to select item, hit return.
+
+Hardware button masking for Alert forms.  Requested once.
+  - Some forms don't have their own event handler, and just use a
+    default handler provided by PalmOS to get a quick "yes/no" back.
+    For these forms I do not currently filter out hardware button
+    presses (for folks who have bound their hardware buttons).
+  - I don't know if I can, without providing handlers for them and
+    then having to do something silly to get the same control flow.
+
+Jog dial support.  Requested.
+  - For Handera, at least, the jog dial just puts out "normal"
+    keypress events (enter, escape, prev field, next field;
+    something like that) so this is morally equivalent to
+    adding some keyboard shortcuts.  The question is chiefly, what
+    forms could be made jogdial-navigable.
+  - Document the results, or no one will ever realize it exists.
+  - Antenna support (make something happen when you move antenna)
+    is also requested for Palm VII :)
+      It's like a hardware button: hardAntennaChr.
+
+Improved crash recovery.
+  - Save file should now be checkpointed (much) more often.
