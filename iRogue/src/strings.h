@@ -1,0 +1,478 @@
+// tag before modifications: pre-internationalization_20040113
+//
+// Globals.c - no strings
+//
+// color.c - none
+//
+// dead.c 
+#define DIED_OF_HYPOTHERMIA_STRING "died of hypothermia"
+#define DIED_OF_STARVATION_STRING "died of starvation"
+#define KILLED_BY_A_DART_STRING "killed by a dart"
+#define QUIT_STRING "quit"
+#define KILLED_BY__STRING "killed by "
+/* xxxx need to fix some "a/an" article stuff there.
+   I should really have a language-specific routine for
+   "adding an indefinite article to the front of <monster>/<item>". */
+#define WITH_ld_GOLD_STRING " with %ld gold"
+#define RANK_SCORE_NAME_STRING "rank  score  name\n"
+#define ON_DUNGEON_LEVEL_d_STRING " on L%d."
+#define WON_STRING "won"
+#define YOU_CRUMBLE_TO_DUST_STRING "You crumble to dust in the sunlight!"
+#define YOU_WIN_STRING "You win!!"
+//
+// display.c - no strings
+//
+// ok, now for the form_*.c files.
+// 
+// form_call.c
+/* NO_SUCH_ITEM_STRING CANT_CALL_THAT_STRING again */
+#define CALL_THIS_STRING "Call this "
+/* reuse a few object strings too. */
+//
+// form_map.c
+/* I will leave the decorative map strings out of it for now. */
+#define TAP_ANYWHERE_STRING "(Tap  Anywhere  When  Done)"
+//
+// form_save.c
+#define SAVED_STRING "saved."
+//
+// hit.c
+#define THE_s_MISSES_STRING "the %s misses"
+#define THE_s_HIT_STRING "the %s hit"
+/* again, going to need a lang-specific routine for definite articles. */
+#define YOU_MISS_STRING "you miss  "
+#define YOU_HIT_STRING "you hit  "
+#define THE_s_SHRIEKS_STRING "the %s emits a piercing shriek"
+#define YOUR_ARMOR_SHATTERS_STRING "your armor shatters!"
+#define YOU_FEEL_A_CHILL_STRING "you feel a chill"
+#define DEFEATED_THE_s_STRING "defeated the %s"
+#define I_SEE_NO_MON_STRING "I see no monster there"
+//
+// iRogue.c
+#define SAVING_STRING "Saving..."
+//
+// inventory.c
+#define IDENTIFY_WHAT_STRING "...identify what?"
+#define WIELDING_CURSED_STRING "already wielding a cursed weapon"
+#define YOU_CANT_ITS_CURSED_STRING "you can't, it's cursed"
+#define DOING_NOTHING_STRING "doing nothing"
+/* watch out - these guys need to be _no longer_ than 8 chars. */
+#define NO_OP_STRING  "NO-OP"
+#define DROP_STRING  "drop"
+#define EAT_STRING  "eat"
+#define READ_STRING  "read"
+#define PUT_ON_STRING  "put on"
+#define WIELD_STRING  "wield"
+#define ZAP_STRING  "zap"
+#define QUAFF_STRING  "quaff"
+#define WEAR_STRING  "wear"
+#define REMOVE_STRING  "remove"
+#define THROW_STRING  "throw"
+#define UNWIELD_STRING  "unwield"
+#define UNWEAR_STRING  "unwear"
+/* end of those max-8-char strings. */
+/* I am not going to bother internationalizing the wand materials. */
+/* I am not going to bother internationalizing the gems. */
+#define CALLED__STRING "called " 
+#define THE_AMULET_STRING "the amulet of Yendor "
+#define d_PIECES_OF_GOLD_STRING "%d pieces of gold"
+/* again need to do something about indefinite articles */
+/* need to do something about constructing plurals too */
+#define d_RATIONS_OF_STRING "%d rations of "
+#define SOME__STRING "some "
+#define ENTITLED_STRING "entitled: "
+#define IN_HAND_STRING "in hand"
+#define WORN_STRING "worn"
+#define BEING_WORN_STRING "being worn"
+#define LEFT_STRING "left"
+#define RIGHT_STRING "right"
+#define ON_LEFT_HAND_STRING "on left hand"
+#define ON_RIGHT_HAND_STRING "on right hand"
+//
+// level.c
+#define NO_WAY_UP_STRING "I see no way up"
+#define MAGICALLY_BLOCKED_STRING "your way is magically blocked"
+#define HELLO_AGAIN_STRING "Hello again..."
+#define WRENCHING_SENSATION_STRING "you feel a wrenching sensation in your gut"
+#define GONE_FAR_ENOUGH_STRING "don't you think you've gone down far  enough?"
+#define YOURE_FLOATING_STRING "you're floating in the air!"
+#define NO_WAY_DOWN_STRING "I see no way down"
+#define WELCOME_TO_LEVEL_d_STRING "welcome to level %d"
+//
+// main.c
+#define YOU_SENSE_HOSTILITY_STRING "you sense hostility"
+#define YOUR_PACK_IS_EMPTY_STRING "your pack is empty"
+#define NO_PROJECTILES_STRING "you have no projectile weapons"
+#define NOTHING_TO_ZAP_STRING "you have nothing to zap"
+#define WELCOME_STRING "Welcome to iRogue"
+#define WIZ_ON_STRING "wizard on"
+#define WIZ_OFF_STRING "wizard off"
+#define NICE_TRY_STRING "nice try"
+#define AUTOSAVED_STRING "autosaved."
+#define TAP_FOR_INFO_STRING "tap on a character for clarification"
+#define COUNT_d_STRING "count: %d"
+#define NOTHING_VISIBLE_STRING "nothing is visible there"
+/* need the trailing space when we use these in object.c */
+#define SCROLL_STRING "scroll "
+#define POTION_STRING "potion "
+#define SOME_GOLD_STRING "some gold"
+#define SOME_FOOD_STRING "some food"
+#define WAND_STRING "wand "
+#define ARMOR_STRING "armor "
+#define WEAPON_STRING "weapon"
+#define RING_STRING "ring "
+#define AMULET_STRING "amulet "
+#define THE_FLOOR_STRING "the floor"
+#define DOOR_STRING "door"
+#define TUNNEL_STRING "tunnel"
+#define WALL_STRING "wall"
+#define TRAP_STRING "trap"
+#define STAIRS_STRING "stairs"
+#define THATS_YOU_STRING "that's you"
+#define BEATS_ME_STRING "...beats me"
+#define MESSAGE_WINDOW_STRING "message window"
+#define YOUR_STATS_STRING "vital statistics of your rogue"
+/* i could probably make the following less lame. */
+#define ZAP_STRING "zap"
+#define THROW_STRING "throw"
+#define MOVE_STRING "move"
+#define FIGHT_STRING "fight"
+#define IDTRAP_STRING "i.d. trap"
+#define SCROLLVIEW_STRING "scroll view"
+#define DIRECTION_STRING "direction"
+//
+// message.c
+/* MORE__STRING must be 9 characters wide, or else fix the assumption. */
+#define MORE__STRING " --more--"
+/* There are some abbrevs I should translate in [init_]print_stats ... */
+//
+// monster.c
+/* I am not going to translate monster names, for now. */
+#define SOMETHING_STRING "something"
+#define ANGUISH_STRING "you hear a faint cry of anguish in the distance"
+//
+// move.c
+#define YOURE_BEING_HELD_STRING "you are being held"
+#define STUCK_IN_TRAP_STRING "you are still stuck in the bear trap"
+#define MOVED_ONTO__STRING "moved onto "
+#define HUNGRY_STRING "hungry"
+#define WEAK_STRING "weak"
+#define FAINT_STRING "faint"
+#define YOU_FAINT_STRING "you faint"
+#define YOU_CAN_MOVE_STRING "you can move again"
+#define UNLEVITATE_STRING "you float gently to the ground"
+#define UNHASTE_STRING "you feel yourself slowing down"
+#define UNSLOW_STRING "you feel yourself speeding up"
+/* need indefinite articles for my list of colors?  or just for "glow"? */
+#define RING_ss_GLOW_STRING "your ring shines with %s %sglow"
+#define AN_s_GLOW "an"
+#define A_s_GLOW "a" 
+#define WHITE_STRING  "white"
+#define PINK_STRING  "pink"
+#define RED_STRING  "red"
+#define RUBY_STRING  "ruby"
+#define PURPLE_STRING  "purple"
+#define BLACK_STRING  "black"
+#define YOUR_RING_GLOWS_s_STRING "your ring glows %s"
+#define RESTING_STRING "resting"
+//
+// my_object.c
+/* not going to mess with potion colors, for now. */
+/* potion actions */
+#define OF_INC_STR_STRING "of increase strength "
+#define OF_RES_STR_STRING "of restore strength "
+#define OF_HEAL_STRING "of healing "
+#define OF_XHEAL_STRING "of extra healing "
+#define OF_POIS_STRING "of poison "
+#define OF_INC_LEV_STRING "of raise level "
+#define OF_BLIND_STRING "of blindness "
+#define OF_HALLU_STRING "of hallucination "
+#define OF_DET_MON_STRING "of detect monster "
+#define OF_DET_THI_STRING "of detect things "
+#define OF_CONFU_STRING "of confusion "
+#define OF_LEVIT_STRING "of levitation "
+#define OF_HASTE_STRING "of haste self "
+#define OF_SEE_INV_STRING "of see invisible "
+/* scroll actions */
+#define OF_PRO_ARM_STRING "of protect armor "
+#define OF_HOL_MON_STRING "of hold monster "
+#define OF_ENC_WEA_STRING "of enchant weapon "
+#define OF_ENC_ARM_STRING "of enchant armor "
+#define OF_ID_STRING "of identify "
+#define OF_TELE_STRING "of teleportation "
+#define OF_SLEEP_STRING "of sleep "
+#define OF_SCARE_STRING "of scare monster "
+#define OF_REM_CUR_STRING "of remove curse "
+#define OF_CRE_MON_STRING "of create monster "
+#define OF_AGGR_MON_STRING "of aggravate monster "
+#define OF_MAG_MAP_STRING "of magic mapping "
+#define OF_CRE_OBJ_STRING "of create object "
+/* weapon names ......... maybe I should do those, but I'm tired..... */
+/* armor names ......... maybe I should do those, but I'm tired..... */
+/* wand actions */
+#define OF_TEL_AWAY_STRING "of teleport away "
+#define OF_SLOW_MON_STRING "of slow monster "
+#define OF_CONF_MON_STRING "of confuse monster "
+#define OF_INVIS_STRING "of invisibility "
+#define OF_POLY_STRING "of polymorph "
+#define OF_HASTE_MON_STRING "of haste monster "
+#define OF_SLEEP_STRING "of sleep "
+#define OF_MAG_MIS_STRING "of magic missile "
+#define OF_CANCEL_STRING "of cancellation "
+#define OF_DO_NOTH_STRING "of do nothing "
+#define OF_LIGHTN_STRING "of lightning "
+#define OF_TERROR_STRING "of terror "
+/* ring actions */ /* XXXXXXXXXXX this is where I called it a night */
+/* line 392 of my_object.c (there's not too much more in this file.) */
+#define OF_SUS_STR_STRING "of sustain strength "
+/* we can reuse OF_SEE_INV_STRING */
+#define OF_MAINT_ARM_STRING "of maintain armor "
+/* we can reuse OF_LEVIT_STRING */
+#define OF_FREE_ACT_STRING "of free action "
+#define OF_BREATHING_STRING "of breathing "
+#define OF_ALERTNESS_STRING "of alertness "
+#define OF_RES_FIRE_STRING "of resist fire "
+#define OF_RES_COLD_STRING "of resist cold "
+#define OF_RES_SHOCK_STRING "of resist shock "
+#define OF_LIFESAVING_STRING "of lifesaving "
+#define OF_ESP_STRING "of esp "
+#define OF_WARNING_STRING "of warning "
+#define OF_MOOD_STRING "of mood "
+/* we can reuse OF_TELE_STRING */
+#define OF_AGGR_STRING "of aggravate "
+#define OF_DELUSION_STRING "of delusion "
+#define OF_BURDEN_STRING "of burden "
+#define OF_ADORN_STRING "of adornment "
+#define OF_STEALTH_STRING "of stealth "
+#define OF_REGEN_STRING "of regeneration "
+#define OF_SLOW_DIGEST_STRING "of slow digestion "
+#define OF_ADD_STR_STRING "of add strength "
+#define OF_DEX_STRING "of dexterity "
+#define OF_SEARCH_STRING "of searching "
+#define OF_PROTECTION_STRING "of protection "
+#define MONSTER_STRING "monster"
+#define OBJECT_STRING "object"
+//
+// object.c
+#define YOU_HEAR_STRING "you hear something..."
+/* reuse SCROLL_STRING, POTION_STRING */
+#define SCROLLS_STRING "scrolls "
+#define POTIONS_STRING "potions "
+#define STAFF_STRING "staff "
+/* xxxx a few singular weapons.. do these when I do weapons. */
+#define UNKNOWN_STRING "unknown "
+/* ok that's it for trailing-space strings */
+#define PACK_FULL_STRING "pack full"
+#define PACK_TOO_HEAVY_STRING "pack too heavy"
+//
+// pack.c
+#define APPEARS_CURSED_STRING "you can't, it appears to be cursed"
+#define TURNS_TO_DUST_STRING "the scroll turns to dust as you pick it up"
+#define PACK_TOO_FULL_STRING "pack too full"
+#define ALREADY_SOMETHING_STRING "there's already something there"
+#define NOTHING_TO_DROP_STRING "you have nothing to drop"
+#define NO_SUCH_ITEM_STRING "no such item."
+#define DROPPED_STRING "dropped "
+#define WAS_WEARING_STRING "was wearing "
+#define NOT_WEARING_ANY_STRING "not wearing any"
+#define CANT_WEAR_THAT_STRING "you can't wear that"
+#define WEARING_STRING "wearing "
+#define CANT_WIELD_ARMOR_STRING "you can't wield armor"
+#define CANT_WIELD_RINGS_STRING "you can't wield rings"
+#define IN_USE_STRING "in use"
+#define WIELDING_STRING "wielding "
+#define CANT_CALL_THAT_STRING "surely you already know what that's called"
+#define SORRY_STRING "sorry"
+//
+// random.c - none
+//
+// ring.c
+#define NO_RING_ON_HAND_STRING "there's no ring on that hand"
+#define NOT_WEARING_RINGS_STRING "not wearing any rings"
+#define REMOVED_STRING "removed "
+#define EIGHT_RINGS_STRING "wearing eight rings already"
+/* also reused two or three strings. yay. (appears, no such, hostility.)*/
+//
+// room.c - none
+//
+// save.c
+#define NAME_STRING "Name"
+#define BIRTHDATE_STRING "Birthdate"
+#define TIMESTAMP_STRING "Timestamp"
+/* xxx more abbrevs - use the ones from message.c if I translate those. */
+#define STATUS_STRING "Status: "
+#define LIVE_STRING "live "
+#define DEAD_STRING "dead "
+#define UNDEAD_STRING "undead "
+#define WIZARD_STRING "wizard "
+#define FORMER_WIZARD_STRING "former wizard "
+#define MULTI_WELCOME_STRING "Welcome to multi-user rogue"
+#define AUTOSAVE_STRING "Autosave"
+#define NEW_SLOT_STRING "New Slot"
+#define ORANGE_SMOKE_STRING "The orange smoke slowly clears."
+#define ORANGE_CLOUD_STRING "The cloud of orange smoke dissipates."
+#define DARK_HUNGER_STRING "You are consumed by a dark hunger"
+#define FEEL_HUNGRY_STRING "You feel.. strangely hungry"
+#define RIFLED_POCKETS_STRING "Someone has rifled your pockets!"
+#define DONT_RECALL_STRING "You don't recall how you got here."
+#define FEEL_SHAKY_STRING "You feel shaky, weak in the knees."
+#define FEEL_LIGHTHEADED_STRING "You feel distressingly light-headed."
+//
+// spec_hit.c
+/* argh, breath things.  um.  fix it so it doesn't say "[15]"? xxxx */
+#define FLAME_STRING     "flame"
+#define ACID_STRING      "acid"
+#define LIGH_BOLT_STRING "lightning bolt"
+#define CL_GAS_STRING    "chlorine gas"
+#define ICE_STRING       "ice"
+#define NERVE_GAS_STRING "nerve gas"
+#define SLEEP_GAS_STRING "sleeping gas"
+#define SLOW_GAS_STRING  "slow gas"
+#define RUST_VANISHES_STRING "the rust vanishes instantly"
+#define ARMOR_WEAK_STRING "your armor weakens"
+#define YOURE_FROZEN_STRING "you are frozen"
+/* reuse "you can move again" */
+#define PURSE_LIGHTER_STRING "your purse feels lighter"
+#define SHE_STOLE_STRING "she stole "
+/* xxx another definite article... */
+#define BITE_s_WEAKENED_STRING "the %s bite has weakened you"
+#define YOU_OVERFLOW_STRING "you overflow!"
+#define WEAKER_STRING "you feel weaker"
+/* xxx another definite article... */
+#define GAZE_s_CONFUSED_STRING "the gaze of the %s has confused you"
+#define SQUEEZE_s_STRING "the %s squeeeezes you"
+#define PARALYZE_s_STRING "the %s's gaze paralyzed you"
+#define DRANK_s_STRING "the %s drank your blood"
+/* reuse UNHASTE_STRING */
+#define FLAME_FLICKERS_STRING "the flame flickers and fades"
+#define ICE_MELTS_STRING "the ice cracks and melts"
+#define ACID_HARMLESS_STRING "the acid splashes harmlessly against your armor"
+#define DANCING_ARMOR_STRING "your armor is covered with dancing blue light"
+#define DANCING_s_STRING "your armor and %sare covered with dancing blue light"
+#define NERVE_PARAL_STRING "the nerve gas paralyzed you"
+#define FELL_ASLEEP_STRING "you fell asleep"
+/* another indefinite article */
+#define WAIT_THATS_A_s_STRING "wait, that's a %s!"
+//
+// throw.c
+/* XXXX there's a "the" (for thrown object) */
+#define THE_STRING "the "
+#define MISSES_STRING "misses  "
+#define HIT_STRING "hit  "
+/* reuse NO_SUCH_ITEM_STRING, APPEARS_CURSED_STRING */
+/* another definite article */
+#define THE_s_VANISHED_STRING "the %s vanished as it hit the ground"
+//
+// trap.c
+#define TRAP_DOOR_STRING  "trap door"
+#define BEAR_TRAP_STRING  "bear trap"
+#define TELEPORT_TRAP_STRING  "teleport trap"
+#define POISON_DART_STRING  "poison dart trap"
+#define SLEEPING_GAS_STRING   "sleeping gas trap"
+#define RUST_TRAP_STRING  "rust trap" 
+#define YOU_FELL_DOWN_STRING "you fell down a trap"
+#define TRAP_FAILED_STRING "the trap failed"
+#define CAUGHT_IN_BEAR_STRING "you are caught in a bear trap"
+#define SMALL_DART_HIT_STRING "a small dart hit you in the shoulder"
+#define MIST_STRING "a strange white mist envelops you and you fall asleep"
+#define GUSH_OF_WATER_STRING "a gush of water hits you on the head"
+#define SEARCHING_STRING "searching"
+#define NO_TRAP_STRING "no trap there"
+//
+// use.c
+/* argh, fruit names... come back and do later.  */
+#define MEAT_STRING      "mystery meat "
+#define ORCMEAT_STRING   "orc chop "
+#define SNAKEMEAT_STRING "snake steak "
+#define EYEMEAT_STRING   "eye surprise "
+#define POPSICLE_STRING  "popsicle "
+#define FOOD_STRING "food "
+#define CANT_SEE_SCROLL_STRING "you can't see to read the scroll"
+/* NO_SUCH_ITEM_STRING again */
+#define CANT_READ_THAT_STRING "you can't read that"
+#define MANIACAL_LAUGH_STRING "you hear a maniacal laughter in the distance"
+/* xxxx need subject/verb agreement (singular/plural) - gah */
+#define YOUR_s_GLOWS_s_STRING "your %sglows %sfor a moment"
+#define YOUR_ss_GLOW_s_STRING "your %sglow %sfor a moment"
+#define YOUR_HANDS_TINGLE_STRING "your hands tingle"
+#define YOUR_ARMOR_GLOWS_STRING "your armor glows %sfor a moment"
+#define YOUR_SKIN_CRAWLS_STRING "your skin crawls"
+#define THIS_IS_IDENTIFY_STRING "this is a scroll of identify"
+#define FALL_ASLEEP_STRING "you fall asleep"
+#define ARMORSHIMMER_STRING "your armor is covered by a shimmering gold shield"
+#define NO_ACNE_STRING "your acne seems to have disappeared"
+#define WATCHING_OVER_STRING "you feel as though someone is watching over you"
+#define UNIVERSAL_ONENESS_STRING "you feel in touch with the universal oneness"
+#define HIGH_HUMMING_STRING "you hear a high pitched humming noise"
+#define MAP_ON_IT_STRING "this scroll seems to have a map on it"
+#define YOU_CAN_CREATE_STRING "you have the power to create:"
+#define UNSATISFYING_STRING "hm, that was strangely unsatisfying"
+/* more definite articles */
+#define GNAW_VILE_s_STRING "you gnaw on the vile %s"
+#define ENJOY_s_STRING "you enjoy the %s"
+#define YUM_STRING "yum, that tasted good"
+/* indefinite and an adjective (doomed) */
+#define YUMMY_s_STRING "my, that was a yummy %s"
+#define THAT_s_WASNT_BAD_STRING "that %s wasn't too bad"
+#define YUK_AWFUL_STRING "yuk, that food tasted awful"
+/* reuse HUNGRY_STRING WEAK_STRING FAINT_STRING */
+/* another definite article */
+#define YOU_DRINK_s_BLOOD_STRING "you drink the %s's blood"
+/* reuse "you can move again" */
+#define PASSES_STRING "you have a strange feeling for a moment, then it passes"
+#define FEEL_LOSS_STRING "you feel a strange sense of loss"
+#define MON_FREEZES_STRING "the monster freezes"
+#define MONS_FREEZE_STRING "the monsters around you freeze"
+#define SO_BORING_STRING "everything looks SO boring now"
+#define VEIL_LIFTS_STRING "the veil of darkness lifts"
+#define DARKNESS_FALLS_STRING "a cloak of darkness falls around you"
+#define LESS_TRIPPY_STRING "you feel less trippy now"
+#define LESS_CONFUSED_STRING "you feel less confused now"
+#define BLUE_STRING "blue "
+#define STRONGER_STRING "you feel stronger now, what bulging muscles!"
+#define FEEL_WARM_STRING "this tastes great, you feel warm all over"
+#define FEEL_BETTER_STRING "you begin to feel better"
+#define FEEL_MUCH_BETTER_STRING "you begin to feel much better"
+#define FEEL_SICK_STRING "you feel very sick now"
+#define COSMIC_STRING "oh wow, everything seems so cosmic"
+#define FEEL_TRIPPY_STRING "what a trippy feeling"
+#define FEEL_CONFUSED_STRING "you feel confused"
+#define YOU_FLOAT_STRING "you start to float in the air"
+#define YOU_MOVE_FASTER_STRING "you feel yourself moving much faster"
+#define TASTES_LIKE_STRING "hmm, this potion tastes like slime-mold juice"
+//
+// util.c
+#define CHARGING_BATTERY_STRING "charging"
+/* I'm leaving "rogue" the way it is (for default username) */
+//
+// win.c - nothing
+//
+// zap.c
+/* NO_SUCH_ITEM_STRING again */
+#define CANT_ZAP_STRING "you can't zap with that"
+#define BLUE_FADES_STRING "the dancing blue light fades away!"
+#define NOTHING_HAPPENS_STRING "nothing happens"
+/* I'm leaving ZOT as is. */
+//
+// Ok.  don't forget about iRogue.rcp too.
+
+
+/*
+  1. Need definite articles for:
+     a. every monster, subject ("the %s hit")
+     b. every monster, object ("defeated the %s")
+     c. every monster, possessive ("the %s's gaze" "the gaze of the %s")
+     d. every throwable item, subject ("the %s vanished")
+     d. every food item, object ("you <gnaw on, enjoy> the %s")
+  2. Need indefinite articles for:
+     a. every monster, 'by a' ("killed by a %s")
+     b. every monster, subject ("wait, that's a %s")
+  3. Need gender for "your" 
+     a. "your armor and %s are"
+     b. "your %s glows <color>" / "your <plural %s> glow <color>"
+  4. Need gender for "that" 
+     a. "my that was a yummy %s" food item
+     b. "wait, that's a %s" monster
+     c. "that %s wasn't too bad"
+  5. Do adjectives need endings?  hate hate.
+ */

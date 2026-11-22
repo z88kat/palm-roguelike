@@ -1,0 +1,75 @@
+/*********************************************************************
+ * iRogue - Rogue adapted for the PalmPilot.                         *
+ * Copyright (C) 1999 Bridget Spitznagel                             *
+ * Note: This program is derived from rogue 5.3-clone for Linux.     *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+#ifndef __GLOBALS_H__
+#define __GLOBALS_H__
+
+extern struct state_of_the_union * sotu;
+/* extern fighter rogue; */
+//extern fighter *rogue;
+/* extern room * rooms; */
+extern trap * traps;
+extern UShort ** dungeon;
+extern object * level_objects;
+/* extern object level_objects; */
+
+/* extern struct id id_scrolls[]; */
+/* extern struct id id_potions[]; */
+/* extern struct id id_wands[]; */
+/* extern struct id id_rings[]; */
+/* extern struct id id_weapons[]; */
+/* extern struct id id_armors[]; */
+extern struct id * id_scrolls;
+extern struct id * id_potions;
+extern struct id * id_wands;
+extern struct id * id_rings;
+extern struct id * id_weapons;
+extern struct id * id_armors;
+
+extern object mon_tab[];
+extern object * level_monsters;
+/* extern object level_monsters; */
+
+
+extern RoguePreferenceType my_prefs;
+
+extern Boolean have_read_color;
+extern Boolean have_read_tiles;
+#define IsColor (have_read_color && my_prefs.color_on)
+#define IsTiles (have_read_tiles && my_prefs.tiles_on)
+extern Boolean IsVGA; // are we on a handera 330.
+#ifndef I_AM_OS_2
+extern FontID SmallFont;
+extern FontID BigFont;
+#endif
+
+#ifdef I_AM_COLOR
+extern IndexedColorType symbol_colors[];
+
+#define START_TILE 32 /* ' ' */
+#define END_TILE 126  /* '~' */
+
+#endif // I_AM_COLOR
+
+
+
+
+#endif

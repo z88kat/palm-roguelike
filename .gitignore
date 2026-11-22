@@ -69,8 +69,30 @@ kMoria/src/kMoria-sections.ld
 kMoria/src/kMoria.prc
 kMoria/src/compat/
 
+# iRogue build outputs
+iRogue/src/*.o
+iRogue/src/*.bin
+iRogue/src/*.grc
+iRogue/src/bin.stamp
+iRogue/src/iRogue
+iRogue/src/iRogue-sections.s
+iRogue/src/iRogue-sections.ld
+iRogue/src/iRogue.prc
+iRogue/src/compat/
+
+# iLarn build outputs
+iLarn/src/*.o
+iLarn/src/*.bin
+iLarn/src/*.grc
+iLarn/src/bin.stamp
+iLarn/src/iLarn
+iLarn/src/iLarn-sections.s
+iLarn/src/iLarn-sections.ld
+iLarn/src/iLarn.prc
+
 .DS_Store
 
 # Palm databases and other CVS-era files are source assets here, not build junk
 !kMoria/**/*.pdb
+!iLarn/**/*.pdb
 !kMoria/src/BuildDB/foo.out

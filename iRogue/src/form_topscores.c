@@ -1,0 +1,178 @@
+/*********************************************************************
+ * iRogue - Rogue adapted for the PalmPilot.                         *
+ * Copyright (C) 1999 Bridget Spitznagel                             *
+ * Note: This program is derived from rogue 5.3-clone for Linux.     *
+ *                                                                   *
+ * This program is free software; you can redistribute it and/or     *
+ * modify it under the terms of the GNU General Public License       *
+ * as published by the Free Software Foundation; either version 2    *
+ * of the License, or (at your option) any later version.            *
+ *                                                                   *
+ * This program is distributed in the hope that it will be useful,   *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of    *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     *
+ * GNU General Public License for more details.                      *
+ *                                                                   *
+ * You should have received a copy of the GNU General Public License *
+ * along with this program; if not, write to                         *
+ * The Free Software Foundation, Inc.,                               *
+ * 59 Temple Place - Suite 330,                                      *
+ * Boston, MA  02111-1307, USA.                                      *
+ *********************************************************************/
+
+#include "iRogue.h"
+
+extern Boolean do_make_new_level;
+extern Boolean save_me;
+extern Boolean i_am_dead;
+
+
+Boolean topten_just_browsing = false; // quickfix to allow browsing while alive
+Boolean TopTen_Form_HandleEvent(EventPtr e)
+{
+  Boolean handled = false;
+  FormPtr frm;
+  FieldPtr fld;
+  ControlPtr btn;
+    
+  switch (e->eType) {
+
+  case frmOpenEvent:
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_topten));
+    if (!topten_just_browsing)
+      save_me = false;
+    init_topten_view(frm);
+    update_field_scrollers(frm, fld, repeat_topten_up, repeat_topten_down);
+    if (!topten_just_browsing) {
+      kill_saved_rogue(STATUS_ISDEAD, 0); // make sure you are DEAD
+      if (sotu->conduct & CONDUCT_WINNER) //if (sotu->score_status & STATUS_WINNER)
+	topten_frob_btns(frm);
+    }
+    /* end mine */
+#ifndef I_AM_OS_2
+    if (IsVGA) {
+      Short y_diff;
+      VgaFormModify(frm, vgaFormModify160To240);
+      y_diff = adjust_form_size(false);
+      // move buttons
+      PrvMoveObject(frm, btn_dead_ok, y_diff, false);
+      PrvMoveObject(frm, btn_dead_reviv, y_diff,false);
+      PrvMoveObject(frm, btn_dead_done, y_diff, false);
+      PrvMoveObject(frm, repeat_topten_up, y_diff, false);
+      PrvMoveObject(frm, repeat_topten_down, y_diff, false);
+      PrvResizeField(frm, field_topten, y_diff);
+      update_field_scrollers(frm, fld, repeat_topten_up, repeat_topten_down);
+    }
+#endif
+    FrmDrawForm(frm);
+    if (topten_just_browsing) {
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_dead_ok));
+      CtlHideControl(btn);
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_dead_reviv));
+      CtlHideControl(btn);
+      btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_dead_done));
+      CtlShowControl(btn);
+      topten_just_browsing = false; // the view-scores menu item sets it True.
+    }
+    handled = true;
+    break;
+
+
+#ifndef I_AM_OS_2
+  case displayExtentChangedEvent:
+    if (IsVGA) {
+      Short y_diff;
+      update_display_size();
+      y_diff = adjust_form_size(true);
+      // redraw the "new" screen too...  don't ask me whether this will work
+      frm = FrmGetActiveForm();
+      // move buttons
+      PrvMoveObject(frm, btn_dead_ok, y_diff, true);
+      PrvMoveObject(frm, btn_dead_reviv, y_diff, true);
+      PrvMoveObject(frm, btn_dead_done, y_diff, true);
+      PrvMoveObject(frm, repeat_topten_up, y_diff, true);
+      PrvMoveObject(frm, repeat_topten_down, y_diff, true);
+      PrvResizeField(frm, field_topten, y_diff);
+      fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_topten));
+      update_field_scrollers(frm, fld, repeat_topten_up, repeat_topten_down);
+      FrmDrawForm(frm);
+    }
+    break;
+#endif
+
+  case ctlSelectEvent:
+    frm = FrmGetActiveForm();
+    switch(e->data.ctlSelect.controlID) {
+    case btn_dead_done: // we're still alive, just browsing the score list..
+      LeaveForm();
+      handled = true;
+      break;
+    case btn_dead_reviv:
+      FrmPopupForm(RevivifyForm);
+      handled = true;
+      break;
+    case btn_dead_ok:
+      free_old_level();
+      init_sotu();
+      clear_identifications();
+      // that will:
+      // init_id_potions to get rid of ids and 'call' titles
+      // init_id_scrolls to get rid of ids and 'call' titles
+      // also, might need wands and rings...
+      mix_colors();
+      get_wand_and_ring_materials();
+      /* (does anything else need to be cleared???) */
+      do_make_new_level = true; // don't try to load a saved character..
+      save_me = true;
+      i_am_dead = false;
+      LeaveForm();
+      FrmGotoForm(MainForm);
+      check_message();
+      /* Well.... it seems to work... */
+      handled = true;
+      break;
+    }
+    break;
+
+  case ctlRepeatEvent:
+    /*     "Repeating controls don't repeat if handled is set true." */
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_topten));
+    switch(e->data.ctlRepeat.controlID) {
+    case repeat_topten_up:
+      FldScrollField(fld, 1, winUp);
+      update_field_scrollers(frm, fld, repeat_topten_up, repeat_topten_down);
+      break;
+    case repeat_topten_down:
+      FldScrollField(fld, 1, winDown);
+      update_field_scrollers(frm, fld, repeat_topten_up, repeat_topten_down);
+      break;
+    }
+    break;
+
+  case keyDownEvent:
+    /* hardware button -- or else graffiti. */
+    frm = FrmGetActiveForm();
+    fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_topten));
+    switch(e->data.keyDown.chr) {
+    case pageUpChr:
+      page_scroll_field(frm, fld, winUp);
+      update_field_scrollers(frm, fld, repeat_topten_up, repeat_topten_down);
+      handled = true;
+      break;
+    case pageDownChr:
+      page_scroll_field(frm, fld, winDown);
+      update_field_scrollers(frm, fld, repeat_topten_up, repeat_topten_down);
+      handled = true;
+      break;
+    }
+    break;
+
+
+  default:
+    break;
+  }
+
+  return handled;
+}
