@@ -2,6 +2,8 @@
 ----
 Added "Here > Stay in place" menu item for the "." command.
 "." is now countable, e.g. "20." waits 20 turns.
+The 5-way navigator (Tungsten C etc.) walks north/south/west/east;
+  plain Up/Down buttons walk north/south unless rebound.
 About box, Instructions and the "can't run" screens now point to
   github.com/z88kat/palm-roguelike instead of the old email/SourceForge.
 

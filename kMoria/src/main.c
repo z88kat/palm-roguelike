@@ -123,6 +123,7 @@ static void un_more();
 static void handle_main_menu(EventPtr e);
 static Boolean rest_btnsHandleEvent(Short btn_num);
 static Boolean buttonsHandleEvent(EventPtr e);
+static Boolean fivewayToMoveKey(EventPtr e);
 static Boolean OpenDatabase(void);
 static LocalID most_recent_savedb();
 static Boolean ApplicationHandleEvent(EventPtr e);
@@ -845,6 +846,93 @@ static Boolean buttonsHandleEvent(EventPtr e)
 
 /*****************************************************************************
  *                                                                           *
+ *                      5-way navigator                                      *
+ *                                                                           *
+ *****************************************************************************/
+// Palm OS 5 devices (Tungsten C, T, E...) have a 5-way navigator that this
+// 2002-era code predates. palmOne devices send Up/Down as vchrPageUp/Down
+// and Left/Right/Select as vchrNavChange, with navBit*/navChange* flags in
+// keyCode; others send vchrRocker*. Values are from the PalmOne SDK
+// (palmOneChars.h, palmOneNavigator.h); the 3.5 SDK we build with lacks them.
+#ifndef vchrNavChange
+#define vchrNavChange    0x0503
+#endif
+#ifndef navBitUp
+#define navBitUp         0x0001
+#define navBitDown       0x0002
+#define navBitLeft       0x0004
+#define navBitRight      0x0008
+#define navBitSelect     0x0010
+#define navBitsAll       0x001F
+#define navChangeBitsAll 0x1F00
+#endif
+#ifndef vchrRockerUp
+#define vchrRockerUp     0x0132
+#define vchrRockerDown   0x0133
+#define vchrRockerLeft   0x0134
+#define vchrRockerRight  0x0135
+#define vchrRockerCenter 0x0136
+#endif
+
+// On the main form, turn a 5-way press into the walk key for that
+// direction ('k' north, 'j' south, 'h' west, 'l' east), uppercased (= run)
+// if the RUN button / caps lock is on, like buttonsHandleEvent does.
+// Plain Up/Down hardware buttons on older devices walk north/south too.
+// Returns true if the event should be swallowed (button releases, select).
+// Select is left to the OS, which opens the launcher when it is held.
+static Boolean fivewayToMoveKey(EventPtr e)
+{
+  WChar chr = e->data.keyDown.chr;
+  UInt16 nav = e->data.keyDown.keyCode & (navBitsAll | navChangeBitsAll);
+  UInt16 held = nav & navBitsAll;
+  Char c = 0;
+
+  if (chr == vchrNavChange) {
+    if (held == 0) return true;              // release
+    if (held == navBitSelect) return false;  // select: OS behaviour
+  } else if (chr == vchrPageUp || chr == vchrPageDown) {
+    if (nav == 0)                            // plain Up/Down button
+      held = (chr == vchrPageUp) ? navBitUp : navBitDown;
+    else if (held == 0) return true;         // release
+  } else if (chr >= vchrRockerUp && chr <= vchrRockerCenter
+	     && (e->data.keyDown.modifiers & commandKeyMask)) {
+    switch (chr) {
+    case vchrRockerUp:    held = navBitUp;    break;
+    case vchrRockerDown:  held = navBitDown;  break;
+    case vchrRockerLeft:  held = navBitLeft;  break;
+    case vchrRockerRight: held = navBitRight; break;
+    default: return true; // center: would be truncated to the digit '6'
+    }
+  } else
+    return false; // not a navigator event
+
+  switch (held) {
+  case navBitUp:    c = 'k'; break;
+  case navBitDown:  c = 'j'; break;
+  case navBitLeft:  c = 'h'; break;
+  case navBitRight: c = 'l'; break;
+  default: return true; // several buttons at once: ignore
+  }
+
+  {
+    Boolean capslock_on, numlock_on, autoshifted;
+    Short tmp_shift;
+    GrfGetState(&capslock_on, &numlock_on, &tmp_shift, &autoshifted);
+    if ((tmp_shift == grfTempShiftUpper) || capslock_on) {
+      c -= 'a' - 'A';
+      GrfSetState(capslock_on, numlock_on, false);
+    }
+  }
+  e->data.keyDown.chr = c;
+  e->data.keyDown.keyCode = 0;
+  // without commandKeyMask the OS treats it as typed text, not a command
+  e->data.keyDown.modifiers &= ~commandKeyMask;
+  return false;
+}
+
+
+/*****************************************************************************
+ *                                                                           *
  *                      OpenDatabase                                         *
  *                                                                           *
  *****************************************************************************/
@@ -1331,14 +1419,18 @@ static void EventLoop(void)
     EventType e;
      
     do {
+	Boolean done = false;
 	EvtGetEvent(&e, evtWaitForever);
 	// Do special hardware button things if it's a hardware button event.
 	// don't ask me what the poweredOnKeyMask is, though; cargo cult.
-	if ( (e.eType != keyDownEvent)
-	     || !my_prefs.use_hardware 
-	     || (e.data.keyDown.modifiers & poweredOnKeyMask)
-	     // || (FrmGetActiveFormID() != MainForm)
-	     || !buttonsHandleEvent(&e) )
+	if ( (e.eType == keyDownEvent)
+	     && !(e.data.keyDown.modifiers & poweredOnKeyMask) ) {
+	  if (my_prefs.use_hardware && buttonsHandleEvent(&e))
+	    done = true; // a rebound button wins
+	  else if (FrmGetActiveFormID() == MainForm)
+	    done = fivewayToMoveKey(&e); // may rewrite e into 'hjkl'
+	}
+	if (!done)
 	  // now proceed with usual handling
 	  if (! SysHandleEvent (&e))
 	    if (! MenuHandleEvent (NULL, &e, &err))

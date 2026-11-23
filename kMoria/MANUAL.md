@@ -125,6 +125,10 @@ h - . - l
   B N`) runs.
 - `.` stays in place for one turn.
 - On a keyboard, the arrow keys also work. Shift + arrow runs.
+- On a device with a **5-way navigator** (Tungsten C, T, E and others),
+  up / down / left / right walk north / south / west / east. Hold it to keep
+  walking. The centre button is left to Palm OS. On older devices the Up and
+  Down buttons walk north and south.
 - To repeat a command, write a **number first**, for example `5` then `s`
   to search 5 times. A repeated command stops early if something happens.
 
@@ -298,8 +302,10 @@ once.
 
 ## Hardware buttons
 
-By default, the hardware buttons do what they normally do on the Palm. The
-app buttons start other programs, which leaves kMoria (your game is saved).
+By default, the app buttons do what they normally do on the Palm: they
+start other programs, which leaves kMoria (your game is saved). In the
+dungeon view, the 5-way navigator (or the Up and Down buttons) moves you; see
+[Moving](#moving).
 
 Use **Set ▸ Buttons** to change this. Tick **Rebind these buttons**, then
 give each button (Date, Addr, To Do, Memo, Up, Down, Calc, Find) a command:
