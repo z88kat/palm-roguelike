@@ -53,25 +53,16 @@ static void explain_error()
     StrPrintF(buf, "You need a different PRC:", snowcrash+1);
     WinDrawChars(buf, StrLen(buf), 0, y);
     y += dy;
-    StrPrintF(buf, "Download kMoria ZIP file from");
+    // The OS 2 build is a CFLAGS switch in the Makefile; it is still
+    // named kMoria.prc (there is no kMoriaOS2.prc target any more).
+    StrPrintF(buf, "Build %s\"kMoria.prc\" from",
+	      ((snowcrash==2)?"an OS 2 ":""));
     WinDrawChars(buf, StrLen(buf), 0, y);
     y += dy;
-    StrPrintF(buf, "http://roguelike-palm.sourceforge.net");
-    WinDrawChars(buf, StrLen(buf), 0, y);
-    y += dy+3;
-    StrPrintF(buf, "Unzip, then install \"kMoria%sprc\"",
-	      ((snowcrash==2)?"OS2.":"."));
+    StrPrintF(buf, "github.com/z88kat/palm-roguelike");
     WinDrawChars(buf, StrLen(buf), 0, y);
     y += dy;
-    StrPrintF(buf, "and \"kMoriaDB.pdb\" only.");
-    WinDrawChars(buf, StrLen(buf), 0, y);
-    y += dy;
-    y += dy;
-    StrPrintF(buf, "yes, I know, it is a pain.  sorry.");
-    WinDrawChars(buf, StrLen(buf), 0, y);
-    y += dy;
-    y += dy;
-    StrPrintF(buf, " -- i0lanthe@yahoo.com");
+    StrPrintF(buf, "and install it with \"kMoriaDB.pdb\".");
     WinDrawChars(buf, StrLen(buf), 0, y);
     break;
   case 3:  // missing database
@@ -81,20 +72,13 @@ static void explain_error()
     StrPrintF(buf, "Please install \"kMoriaDB.pdb\"");
     WinDrawChars(buf, StrLen(buf), 0, y);
     y += dy+3;
-    StrPrintF(buf, "If you don't have this file,");
+    StrPrintF(buf, "If you don't have this file, get it");
     WinDrawChars(buf, StrLen(buf), 0, y);
     y += dy;
-    StrPrintF(buf, "download kMoria ZIP file from");
+    StrPrintF(buf, "from kMoria/src at");
     WinDrawChars(buf, StrLen(buf), 0, y);
     y += dy;
-    StrPrintF(buf, "http://roguelike-palm.sourceforge.net");
-    WinDrawChars(buf, StrLen(buf), 0, y);
-    y += dy+3;
-    StrPrintF(buf, "Unzip, and install the .pdb file.");
-    WinDrawChars(buf, StrLen(buf), 0, y);
-    y += dy;
-    y += dy;
-    StrPrintF(buf, " -- i0lanthe@yahoo.com");
+    StrPrintF(buf, "github.com/z88kat/palm-roguelike");
     WinDrawChars(buf, StrLen(buf), 0, y);
     break;
   }

@@ -811,7 +811,7 @@ static ULong valid_command(Char c)
     attributes |= C_COUNTABLE;
     // fall through
 
-  case '<': case '>': case 'x': case '.':
+  case '<': case '>': case 'x':
 
   case 'G': case '{': // these two pop up a form..
   case '!': case '#': case '"': // hey, these should take no time
@@ -826,7 +826,7 @@ static ULong valid_command(Char c)
   case 'z':
     attributes |= C_VALID | C_USEITEM;
     break;
-  case 'r': case 's':
+  case 'r': case 's': case '.': // '.' rests for count-1 more turns
     attributes |= C_COUNTABLE | C_VALID;
     break;
   case ' ': case 'f': case '^': case 'S': case 'o': case 'd':

@@ -1,3 +1,10 @@
+0.16
+----
+Added "Here > Stay in place" menu item for the "." command.
+"." is now countable, e.g. "20." waits 20 turns.
+About box, Instructions and the "can't run" screens now point to
+  github.com/z88kat/palm-roguelike instead of the old email/SourceForge.
+
 0.15 - for the next release
 ---------------------------
 Fixed the 'recall' bug, you now remember multiple attack types properly.

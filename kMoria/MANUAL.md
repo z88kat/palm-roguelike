@@ -1,7 +1,8 @@
 # kMoria Player's Manual
 
 kMoria is Moria (Umoria 5.5.2) for Palm OS, ported by Bridget Spitznagel.
-This guide covers version 0.15 as built from this repository.
+This guide covers version 0.16, an update of the original 0.15 built from
+this repository.
 
 Your goal is to go down through the Mines of Moria and kill the Balrog, who
 lives on the deepest levels. You start in town, buy supplies, and then take
@@ -190,6 +191,7 @@ important thing in that block.
 | --- | --- | --- |
 | `x` | Exchange | Swap your main and spare weapons. |
 | `r` | Rest | Choose **10**, **20** or **Max!**. Resting stops if you're disturbed. |
+| `.` | Stay in place | Wait one turn, e.g. to let a monster come to you. Like stepping onto your own square, it picks up anything there and can set off a trap you're standing on. |
 | `s` | Search | Look for hidden traps and doors next to you. |
 | `#` | Search mode | Turns constant searching on or off. It slows you down. `"` works too, because `#` is hard to write in Graffiti. |
 | `<` | Ascend | You must be standing on `<`. |

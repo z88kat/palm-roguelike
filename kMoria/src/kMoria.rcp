@@ -13,7 +13,7 @@
 
 #include "kMoriaRsc.h"
 
-VERSION ID 1 "0.15"
+VERSION ID 1 "0.16"
 
 // For Handera, to tell it this is allegedly a hi-res application
 HEX "sKst" ID 1000 0x00 0x00 0x00 0x00
@@ -97,6 +97,7 @@ BEGIN
     BEGIN
 	MENUITEM "(x)    Exchange" ID  menu_cmd_x
 	MENUITEM "(r)    Rest" ID  menu_cmd_r
+	MENUITEM "(.)    Stay in place" ID  menu_cmd_dot
 	MENUITEM SEPARATOR
 	MENUITEM "(s)    Search" ID  menu_cmd_s
 	MENUITEM "(#)  ... mode" ID  menu_cmd_pound
@@ -157,13 +158,13 @@ BEGIN
 	TITLE "About kMoria"
 	FORMBITMAP AT (8 19) BITMAP bitmap_cat
 	FORMBITMAP AT (98 15) BITMAP bitmap_moria
-	LABEL "kMoria v0.15" AUTOID AT (90 40)
+	LABEL "kMoria v0.16" AUTOID AT (90 40)
 	LABEL "Based on" AUTOID AT (PrevLeft-6 PrevTop+11)
 	LABEL "Moria 5.5.2" AUTOID AT (PrevLeft PrevTop+11)
 
-	LABEL "Bugs?  Contact:" AUTOID AT (Center 95)
-	LABEL "Bridget Spitznagel" AUTOID AT (Center PrevTop+11)
-        LABEL "i0lanthe@yahoo.com" AUTOID AT (Center PrevTop+11)
+	LABEL "Bugs?  Report them at:" AUTOID AT (Center 95)
+	LABEL "github.com/z88kat/" AUTOID AT (Center PrevTop+11)
+	LABEL "palm-roguelike" AUTOID AT (Center PrevTop+11)
 	BUTTON "Done" ID btn_about_ok AT (5 141 35 AUTO)
 	BUTTON "License" ID btn_about_more AT (50 141 AUTO AUTO)
 	BUTTON "History" ID btn_about_credits AT (PrevRight+10 141 AUTO AUTO)
@@ -824,7 +825,7 @@ END
 
 
 
-STRING AboutStr "kMoria version 0.15\n"\
+STRING AboutStr "kMoria version 0.16\n"\
                 "© 2000 Bridget Spitznagel, James Wilson, Robert Koeneke.\n"\
                 "This program was derived "\
                 "from UMoria 5.5.2.\n\n"\
@@ -832,7 +833,11 @@ STRING AboutStr "kMoria version 0.15\n"\
                 "kMoria is freeware.  You can redistribute it "\
                 "and/or modify it (provided that "\
                 "this notice and the full credits are retained), but "\
-                "it CANNOT be distributed for profit."
+                "it CANNOT be distributed for profit."\
+                "\n\nVersion 0.16 (2026) updates 0.15 for "\
+                "current Palm OS devices and build tools.  "\
+                "Source and bug reports: "\
+                "github.com/z88kat/palm-roguelike"
 
 STRING CreditStr "Moria has been around since 1983.  "\
 		"(The Mines of Moria, and the Balrog dwelling therein, come "\
@@ -875,7 +880,7 @@ STRING InstructStr "You are an adventurer seeking to defeat the Balrog "\
 	"You may acquire supplies on the town level.  Move by tapping "\
 	"on the screen.  Other commands are listed in the menus; for "\
 	"example, write i to access your inventory.\nFor more "\
-	"help, consult <http://roguelike-palm.sourceforge.net/kMoria>."
+	"help, see <github.com/z88kat/palm-roguelike>."
 
 STRING InvHelpStr "Tap any inventory item to select it.  "\
 	"A set of buttons will appear.  "\

@@ -314,6 +314,7 @@
 #define menu_cmd_pound   4035
 #define menu_cmd_dollar  4036
 #define menu_cmd_minus   4045
+#define menu_cmd_dot     4046
 #define menu_mainRecall  4047
 #define menu_cmd_lt      4060
 #define menu_cmd_gt      4062
