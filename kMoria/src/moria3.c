@@ -709,18 +709,23 @@ void move_char(Short dir, Boolean do_pickup)
 	}
       } else {
 	/*Can't move onto floor space*/
+	Boolean bumped_door = false;
 	if ((find_flag == 0) && (thing != 0)) {
 	  if (t_list[thing].tval == TV_RUBBLE) {
 	    do_feep(400, 9);
 	    message("There is rubble blocking your way.");
 	  }
 	  else if (t_list[thing].tval == TV_CLOSED_DOOR) {
-	    do_feep(400, 9);
-	    message("There is a closed door blocking your way.");
+	    // Walking into a closed door opens it, like NetHack's autoopen
+	    // (the original just said "There is a closed door blocking your
+	    // way").  It takes a turn, as the open command does; locked doors
+	    // get a lock-picking attempt and stuck ones still need forcing.
+	    openobject(dir);
+	    bumped_door = true;
 	  }
 	} else
 	  end_find();
-	free_turn_flag = true;
+	free_turn_flag = !bumped_door;
       }
     } else {
       /* Attacking a creature! */

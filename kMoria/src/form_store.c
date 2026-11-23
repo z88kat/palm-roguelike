@@ -15,61 +15,91 @@
 
 
 extern owner_type owners[MAX_OWNERS]; // lock.c
+extern Short brief_comment_y; // display.c; the store's message line
 
-Short STORE_LINES = 10;
+// The store is drawn as a table: a header row ("Item | Gold"), one list row
+// per item (names cut short with an ellipsis), and below it a details panel
+// with the selected item's full name and weight.  The panel's last line is
+// brief_comment_y, so store messages ("You cannot carry that.") land there.
+Short STORE_LINES = 7;
 #define MAX_STORE_LINES 14 /* xxx If screen height increases, check on this */
-// for multiplication of current-tens:
-#define Five_Or_Ten (my_prefs.store_is_compacted ? STORE_LINES : STORE_LINES/2)
-// for division of list row index:
-#define Two_Or_One  (my_prefs.store_is_compacted ? 1 : 2)
+#define Five_Or_Ten STORE_LINES /* items per page (was halved for 2-row mode) */
+#define Two_Or_One  1           /* list rows per item */
+#define STORE_PANEL_W 152       /* width of the details panel text */
+#define chrStoreEllipsis ((Char) 0x85) /* '...' glyph in the Palm charset */
 
 static void store_draw() SEC_6;
+static void store_show_details() SEC_6;
 
 Short in_store; // Need to know which store we are in!
 Short store_item; // so that Haggle knows what we're bidding on
 Short store_current_tens;
 Boolean store_youbuying; // so Haggle knows why we're bidding
 Short test = -1;
-static Boolean isgold = false;
-static void store_gold_owner(Boolean forcegold)
+// Details panel under the list: the selected item's full name (up to two
+// lines) and weight, or the shopkeeper's name when nothing is selected; the
+// last line (brief_comment_y) always ends with your gold.
+// (Weight display originally by dan_van 19 Jul 2001.)
+static void store_show_details()
 {
-  Char buf[40];
-
-  if (forcegold || isgold) {
-    StrPrintF(buf, "(You have: %ld gold pieces)", pymisc.au);
-    isgold = false;
-  } else {
-    StrPrintF(buf, "%s", owners[store[in_store].owner].owner_name);
-    isgold = true;
-  }
-  show_brief_comment(buf);
-}
-// show weight of cur. selected store item (if in range) -- dan_van 19 Jul 2001
-static void show_store_item_weight()
-{
-  FormPtr frm;
+  FormPtr frm = FrmGetActiveForm();
   ListPtr lst;
-  Short store_item, total_weight;
-  inven_record *storeinv;
+  RectangleType r;
+  Short item, top, y, i, total_weight, len;
   inven_type sold_obj;
-  Char buf[40];
-  //get the selected item:
-  frm = FrmGetActiveForm();
-  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_st));
-  store_item = LstGetSelection(lst) / Two_Or_One;
-  // make sure it's in range
-  if (store_item >= 0 && store_item < STORE_LINES) {
-    storeinv = store_inven[in_store];
-    store_item += Five_Or_Ten * store_current_tens;
-    take_one_item(&sold_obj, &storeinv[store_item].sitem); // 1-count item
-    total_weight = sold_obj.weight * sold_obj.number;
+  Char desc[160], buf[40], *p;
 
-    StrPrintF(buf, "Weight: %d.%d lb", total_weight / 10, total_weight % 10);
-    show_brief_comment(buf);
+  lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_st));
+  FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, list_st), &r);
+  top = r.topLeft.y + r.extent.y + 1;
+  RctSetRectangle(&r, 0, top + 1, STORE_PANEL_W + 4,
+		  brief_comment_y + LINE_HEIGHT - top - 1);
+  WinEraseRectangle(&r, 0);
+  WinDrawLine(0, top, STORE_PANEL_W + 3, top);
+
+  item = LstGetSelection(lst);
+  if (item >= 0 && item < STORE_LINES)
+    item += Five_Or_Ten * store_current_tens;
+  else
+    item = -1;
+  if (item >= store[in_store].store_ctr) item = -1;
+
+  if (item < 0) {
+    StrPrintF(desc, "%s", owners[store[in_store].owner].owner_name);
+    buf[0] = '\0';
   } else {
-    isgold = !isgold; // kludge; don't toggle this time.
-    store_gold_owner(false);
+    objdes(desc, &store_inven[in_store][item].sitem, true);
+    take_one_item(&sold_obj, &store_inven[in_store][item].sitem);
+    total_weight = sold_obj.weight * sold_obj.number;
+    StrPrintF(buf, "Weight %d.%d lb", total_weight / 10, total_weight % 10);
   }
+
+  // two lines of word-wrapped name above the message line
+  p = desc;
+  for (i = 0, y = brief_comment_y - 2*LINE_HEIGHT; i < 2 && *p; i++) {
+    len = FntWordWrap(p, STORE_PANEL_W);
+    if (i == 1 && p[len] != '\0') {
+      // still more: cut this line short and end it with an ellipsis
+      Int w = STORE_PANEL_W - FntCharWidth(chrStoreEllipsis);
+      Int n = StrLen(p);
+      Boolean fits;
+      Char dots = chrStoreEllipsis;
+      FntCharsInWidth(p, &w, &n, &fits);
+      WinDrawChars(p, n, 2, y);
+      WinDrawChars(&dots, 1, 2 + w, y);
+    } else
+      WinDrawChars(p, len, 2, y);
+    p += len;
+    while (*p == ' ') p++;
+    y += LINE_HEIGHT;
+  }
+
+  // message line: weight on the left, gold on the right
+  show_brief_comment(buf);
+  StrPrintF(desc, "You have %ld gp", pymisc.au);
+  WinDrawChars(desc, StrLen(desc),
+	       STORE_PANEL_W + 2 - FntCharsWidth(desc, StrLen(desc)),
+	       brief_comment_y);
 }
 
 
@@ -98,12 +128,10 @@ Boolean Store_Form_HandleEvent(EventPtr e)
     FrmDrawForm(frm);
     /* this must be AFTER draw form */
     // [draw stuff]
-    isgold = true;//false;
     store_current_tens = 0; // first screen
     store_display[0] = NULL; // to let store_list_tens know not to free it
-    store_list_tens(0);
+    store_list_tens(0); // also draws the details panel
     FrmCopyTitle(frm, owners[store[in_store].owner].store_name);
-    store_gold_owner(false); // this is done by store_list_tens now!
     //    store_btns(frm);
     // if there are <= 1 screen full of items in the store, DISABLE BUTTONS
     handled = true;
@@ -119,8 +147,6 @@ Boolean Store_Form_HandleEvent(EventPtr e)
   case menuCmdBarOpenEvent:
     // this will only work if we are on an OS3.5 or greater device.
     if (Version_GE_OS35) {
-      MenuCmdBarAddButton(2, bmp_cmd_compact, menuCmdBarResultMenuItem,
-			  menu_stoCompact, NULL);
       MenuCmdBarAddButton(1, (my_prefs.store_is_haggling ? bmp_cmd_hglOff :
 			                                   bmp_cmd_hgl),
 			  menuCmdBarResultMenuItem,
@@ -132,32 +158,16 @@ Boolean Store_Form_HandleEvent(EventPtr e)
   case menuEvent:
     MenuEraseStatus(NULL); /* clear menu status from display */
     switch(e->data.menu.itemID) {
-    case menu_stoCompact:
-      if (my_prefs.store_is_compacted)
-	store_current_tens *= 2; // the item on ith page moves to 2*ith page
-      else
-	store_current_tens /= 2; // the item on ith page moves to i/2th page
-      my_prefs.store_is_compacted = !my_prefs.store_is_compacted;
-      writeMoriaPrefs();
-      // need to redraw! ....
-      store_list_tens(0);
-      break;
     case menu_stoHaggle:
       my_prefs.store_is_haggling = !my_prefs.store_is_haggling;
       writeMoriaPrefs();
       break;
     }
-
-  case penDownEvent:
-    if (in_brief_comment(e->screenX, e->screenY)) {
-      store_gold_owner(false);
-      handled = true;
-      break;
-    }
-    break;
+    handled = true;
+    break; // (used to fall through into penDownEvent)
 
   case lstSelectEvent:
-    show_store_item_weight();
+    store_show_details();
     handled = true;
     break;
 
@@ -184,7 +194,7 @@ Boolean Store_Form_HandleEvent(EventPtr e)
 	i = i % STORE_LINES;
       }
       LstSetSelection(lst, i);
-      show_store_item_weight(); // hm.. this duplicates the getselection work..
+      store_show_details();
       handled = true;
       break;
     case 'b': case 'B': objid = btn_st_buy;  break;
@@ -279,13 +289,28 @@ static void store_draw() // call this after drawing the store list.
   FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, btn_st_next), &r);
   WinDrawChars_ctr(buf, 1, (x + r.topLeft.x)/2, r.topLeft.y);
 
-  // figure out where the right edge of the list is
+  // figure out where the list is; the price column sits to its right
   FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, list_st), &r);
   list_edge = r.topLeft.x + r.extent.x + 1; // = 126;
+  y = r.topLeft.y;
 
-  // erase the rectangle (126,15) to (156,15+110) // 126, 15, 30, 110.
-  RctSetRectangle(&r, list_edge, ROW_1, 6*five, STORE_LINES*LINE_HEIGHT);
+  // erase the price column
+  RctSetRectangle(&r, list_edge, y, 6*five, STORE_LINES*LINE_HEIGHT);
   WinEraseRectangle(&r, 0);
+
+  // header row: "Item | Gold", ruled off from the rows below
+  {
+    FontID old = FntSetFont(boldFont);
+    RctSetRectangle(&r, 0, y - LINE_HEIGHT - 1, STORE_PANEL_W + 4, LINE_HEIGHT);
+    WinEraseRectangle(&r, 0);
+    WinDrawChars("Item", 4, 2, y - LINE_HEIGHT - 1);
+    WinDrawChars("Gold", 4, list_edge + 6*five - FntCharsWidth("Gold", 4),
+		 y - LINE_HEIGHT - 1);
+    FntSetFont(old);
+    WinDrawLine(0, y - 1, STORE_PANEL_W + 3, y - 1);
+    WinDrawLine(list_edge - 1, y - LINE_HEIGHT - 1,
+		list_edge - 1, y + STORE_LINES*LINE_HEIGHT - 1);
+  }
 
   storeinv = store_inven[in_store];
   for (i = 0, j = 0 ; i < Five_Or_Ten ; i++, j++) {
@@ -308,15 +333,7 @@ static void store_draw() // call this after drawing the store list.
       }
     }
     y += LINE_HEIGHT;
-    if (!my_prefs.store_is_compacted)
-      y += LINE_HEIGHT; // don't print a price on next line.
   }
-
-  // There is no selection in the list now, so make sure no Weight is shown.
-  /*
-  isgold = !isgold; // (kludge; don't toggle this time.)
-  store_gold_owner(false);
-  */
 
   // Also, let the user know when the store is full, if on the last page.
   if (store[in_store].store_ctr >= STORE_INVEN_MAX)
@@ -324,12 +341,13 @@ static void store_draw() // call this after drawing the store list.
     if (store_current_tens == (store[in_store].store_ctr - 1) / Five_Or_Ten)
       // We are on the last page!
       WinDrawChars("*** store is full ***", 21, 2,
-		   ROW_1 + (STORE_LINES-1)*LINE_HEIGHT);
+		   y - LINE_HEIGHT);
+  store_show_details();
 }
 void store_list_tens(Short plus)
 {
   Short i, j, iitem, uncut_len;
-  Char tmp_val[160], ctmp=' ';
+  Char tmp_val[160];
   // length_str gets set to the # of chars that will fit in 124 pixels
   // width_str gets set to the # of pixels that those chars will use
   Int width_str, length_str;
@@ -376,31 +394,22 @@ void store_list_tens(Short plus)
     } else {
       objdes(tmp_val, i_ptr, true); // was tmpval+3
       uncut_len = length_str = StrLen(tmp_val); // max chars to allow
-      // Truncate if too wide for the screen..... we only have 124 pixels...
+      // Truncate if too wide for the column, ending with an ellipsis;
+      // the details panel shows the full name when the row is selected.
       width_str = list_width-2; //124-2;
       FntCharsInWidth(tmp_val, &width_str, &length_str, &fits);
-      ctmp = tmp_val[length_str];
+      if (length_str < uncut_len) {
+	width_str = list_width-2 - FntCharWidth(chrStoreEllipsis);
+	length_str = uncut_len;
+	FntCharsInWidth(tmp_val, &width_str, &length_str, &fits);
+	tmp_val[length_str++] = chrStoreEllipsis;
+      }
       tmp_val[length_str] = '\0';
     }
     // ok, now like put it somewhere.
     // XXXX  MEMORY LEAK  MEMORY LEAK  MEMORY LEAK  MEMORY LEAK:
     store_display[j] = (Char *) md_malloc(1 + length_str);
     StrCopy(store_display[j], tmp_val);
-    // ok, and if we're not compact, print the leftovers
-    if (!my_prefs.store_is_compacted) {
-      j++;
-      if (uncut_len > length_str) {
-	Char *p;
-	tmp_val[length_str] = ctmp;
-	p = &tmp_val[length_str];
-	store_display[j] = (Char *) md_malloc(1 + StrLen(p));
-	StrCopy(store_display[j], p);	
-      } else {
-	store_display[j] = (Char *) md_malloc(2);
-	StrPrintF(store_display[j], " ");
-      }
-    }
-    // ok, all done (compacted or otherwise).
   }
 
   lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_st));
@@ -734,7 +743,6 @@ Boolean Haggle_Form_HandleEvent(EventPtr e)
 #endif
 	// also reprint items!  only needed if you succeed in buying something.
 	store_list_tens(0);
-      store_gold_owner(true); // reprint what gold you have
       reset_haggle_foo(); // clear globals
       handled = true;
       break;

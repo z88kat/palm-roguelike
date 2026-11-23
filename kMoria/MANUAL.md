@@ -100,6 +100,9 @@ directions.
   time passes.
 - **Tap a medium distance from the centre:** walk one step. If a monster is
   in the way, you attack it.
+  If a closed door is in the way, you open it. A locked door gets an attempt
+  to pick the lock. A stuck door has to be forced (`f`). Next to a monster
+  or a door, a far tap also counts as a single step.
 - **Tap far from the centre** (outside the "donut"): **run** in that
   direction until something interesting happens. Run is on by default, and
   the game walks instead of running when it isn't safe to run.
@@ -206,7 +209,7 @@ important thing in that block.
 | Key | Command | Notes |
 | --- | --- | --- |
 | `c` | Close | Close a door. |
-| `o` | Open | Open a door or chest. |
+| `o` | Open | Open a door or chest. You can also just walk into a closed door to open it. |
 | `f` | Force | Bash a stuck door, a chest or a monster. |
 | `S` | Spike | Jam a door shut with an iron spike. |
 | `d` | Dig | Tunnel through rubble or rock. A digging tool helps a lot. |
@@ -266,6 +269,9 @@ and **Weights?**, which shows each item's weight.
 
 Walk onto a shop's number to go in.
 
+- The shop's stock is a table of **Item** and **Gold**, one row per item.
+  Long names are cut short with "…". Tap a row to see the item's full name
+  and weight below the table. Your gold is always shown there too.
 - **Buy:** select an item in the shop's list, then tap **Buy**.
 - **Sell:** tap **Sell**, then choose an item from your pack. The shop only
   offers **sell** for kinds of item it buys.
@@ -337,7 +343,8 @@ Some buttons always do the same thing on certain screens:
 
 **Display**
 
-- **Big font.** Use the big map font when the game starts.
+- **Big font.** Use the big map font when the game starts. Off by default,
+  so the game starts with the small font, which shows more of the map.
 - **Sound.**
 - **Invert.** White text on a black background.
 - **Color.** Only on colour devices.

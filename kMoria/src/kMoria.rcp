@@ -489,7 +489,7 @@ DEFAULTBTNID btn_st_exit
 MENUID StoreFormMenu
 BEGIN
    TITLE "              "
-   LIST " " " " " " " " " " " " " " " " " " " " ID list_st AT (0 15 124 110)
+   LIST " " " " " " " " " " " " " " " " " " " " ID list_st AT (0 27 124 77)
 
    BUTTON "Buy" ID btn_st_buy AT (5 141 25 AUTO)
    BUTTON "Sell" ID btn_st_sell AT (PrevRight+3 PrevTop 25 AUTO)
@@ -502,7 +502,6 @@ MENU ID StoreFormMenu
 BEGIN
     PULLDOWN "Options"
     BEGIN
-        MENUITEM "Compact?" ID menu_stoCompact "C"
         MENUITEM "Haggle?" ID menu_stoHaggle "H"
     END
 END

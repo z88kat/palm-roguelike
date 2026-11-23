@@ -70,7 +70,7 @@ MoriaPreferenceType my_prefs = {
   6, // run_walk_border
   2, // walk_center_border
   // I may eliminate some of these.
-  true,  // big font
+  false, // big font (off: start with the small map font)
   false, // rel move
   false, // circles
   true,  // sound

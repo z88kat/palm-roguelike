@@ -318,15 +318,17 @@ void old_find_run()
 Boolean hit_dont_run(Short dir)
 {
   Short y, x;
-  UChar critter, floor;
+  UChar critter, floor, thing;
   y = char_row;
   x = char_col;
   if (mmove(dir, &y, &x))    /* Legal move?	      */ {
     critter = cave_cptr[y*MAX_WIDTH+x];
     floor = cave_fval[y*MAX_WIDTH+x];
+    thing = cave_tptr[y*MAX_WIDTH+x];
     if ((critter < 2) || (!m_list[critter].ml && floor >= MIN_CLOSED_SPACE))
       /* if there is no creature, or an unlit creature in the walls then... */
-      return false;
+      // ...walk rather than run into a closed door, so the step opens it.
+      return (thing != 0 && t_list[thing].tval == TV_CLOSED_DOOR);
     else
       return true; // a creature you can hit!
   } else

@@ -4,6 +4,14 @@ Added "Here > Stay in place" menu item for the "." command.
 "." is now countable, e.g. "20." waits 20 turns.
 The 5-way navigator (Tungsten C etc.) walks north/south/west/east;
   plain Up/Down buttons walk north/south unless rebound.
+Stores show their stock as an Item | Gold table, one row per item; the
+  selected item's full name and weight appear below it. The store's
+  Options > Compact? item is gone (it is always one row now). Fixed the
+  store menu falling through into the pen-tap handler.
+Walking into a closed door opens it (like NetHack's autoopen) instead of
+  just saying it's in the way; locked doors get a lock-pick attempt.
+The "Big font" preference now defaults to off, so a new install starts
+  with the small map font.
 About box, Instructions and the "can't run" screens now point to
   github.com/z88kat/palm-roguelike instead of the old email/SourceForge.
 
