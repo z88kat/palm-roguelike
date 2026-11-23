@@ -8,6 +8,11 @@
 # This script downloads the same tarball Homebrew uses, verifies it,
 # changes those fields to `int` (4 bytes, as the BMP format requires)
 # and builds it locally.
+#
+# It also fixes FONT resources: font.c keeps the NFNT header in an
+# `int header[]`, but CbEmitStruct reads it as `p_int` (= long, 8 bytes, on
+# 64-bit). Every other header field is emitted and the rest is junk, so
+# custom fonts render as garbage on the device. The header becomes `p_int`.
 set -eu
 
 VERSION=3.2
@@ -30,6 +35,16 @@ echo "Patching BMP header struct for 64-bit hosts..."
 sed -i '' -E 's/^  long (bi(Width|Height|XPelsPerMeter|YPelsPerMeter));/  int \1;/' "$SRC/bitmap.c"
 if grep -qE '^  long bi' "$SRC/bitmap.c"; then
   echo "error: patch did not apply" >&2
+  exit 1
+fi
+
+echo "Patching font header arrays for 64-bit hosts..."
+sed -i '' -E \
+  -e 's/^CloseGlyph\(int \*header,/CloseGlyph(p_int *header,/' \
+  -e 's/^  int token, value, header\[(1[45])\];/  int token, value; p_int header[\1];/' \
+  "$SRC/font.c"
+if grep -qE '^CloseGlyph\(int|int token, value, header\[' "$SRC/font.c"; then
+  echo "error: font patch did not apply" >&2
   exit 1
 fi
 

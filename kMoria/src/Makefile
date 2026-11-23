@@ -73,11 +73,15 @@ HANDERA_STAMP = compat/Handera/.stamp
 ##CFLAGS = -Wall -g -O2 -I. -Icompat -palmos3.1 -DNON_INTERNATIONAL
 CFLAGS = -Wall -g -O2 -I. -Icompat -palmos3.5 -DNON_INTERNATIONAL -DI_AM_COLOR
 
-all: kMoria.prc
+all: kMoria.prc kMoriaColorDB.pdb
 
-# Installs the app plus its required game-data database.
-install: kMoria.prc
-	$(PILOT_XFER) -p $(PILOT_PORT) -i kMoria.prc kMoriaDB.pdb
+# Installs the app plus its required game-data database and colour scheme.
+install: kMoria.prc kMoriaColorDB.pdb
+	$(PILOT_XFER) -p $(PILOT_PORT) -i kMoria.prc kMoriaDB.pdb kMoriaColorDB.pdb
+
+# Optional colour scheme; enables Set > Preferences > Display > Color.
+kMoriaColorDB.pdb: ../../tools/make-kmoria-colors.py BuildDB/creaturenames.dat BuildDB/creature.dat
+	python3 -I ../../tools/make-kmoria-colors.py BuildDB $@
 
 $(HANDERA_STAMP): $(wildcard $(HANDERA_SDK_INC)/*.h)
 	@mkdir -p compat/Handera
