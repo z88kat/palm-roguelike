@@ -93,6 +93,7 @@ Boolean read_scroll(Short index, Boolean * identfy)
   Char msg[DCOLS];
   fighter *rogue = sotu->roguep;
   Char buf[20];
+  Boolean nap = false;
 
   *identfy = false;
   if (sotu->blind) {
@@ -158,10 +159,9 @@ Boolean read_scroll(Short index, Boolean * identfy)
     tele();
     break;
   case SLEEP:
-    if (!(sotu->ring_flags & RING_ALERTNESS)) {
-      message("you fall asleep");
-      take_a_nap();
-    }
+    // The nap comes after the scroll is used up (below): monsters move
+    // while you sleep, and a nymph could steal (and free) the scroll.
+    nap = !(sotu->ring_flags & RING_ALERTNESS);
     break;
   case PROTECT_ARMOR:
     if (rogue->armor) {
@@ -196,10 +196,14 @@ Boolean read_scroll(Short index, Boolean * identfy)
   if (sotu->id_scrolls[obj->which_kind].id_status != CALLED) {
     sotu->id_scrolls[obj->which_kind].id_status = IDENTIFIED;
   }
-  vanish(obj, &rogue->pack);
+  vanish(obj, &rogue->pack); // (may free obj)
+  if (nap) {
+    message("you fall asleep");
+    take_a_nap();
+  }
   /* This determines whether the caller should call reg_move...
-     basically, the caller should except when it was a SLEEP scroll */
-  return (obj->which_kind != SLEEP);
+     basically, the caller should except when you fell asleep */
+  return !nap;
 }
 
 /*************************************************
@@ -397,8 +401,10 @@ void take_a_nap()
 
   while (i--) {
     mv_mons();
-    if (i_am_dead)
+    if (i_am_dead) {
+      napping = false; // or no later game could ever fall asleep
       return; // if dead, return
+    }
   }
   SysTaskDelay(delay); // there should be some "visible delay", again
   message("you can move again");

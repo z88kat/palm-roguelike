@@ -188,11 +188,22 @@ object mon_tab[MONSTERS] = {
  This is called at each "clock tick" to move the monsters on the
  current dungeon level.
  **********************************************************************/
+extern UInt16 objects_freed; // object.c
+static Boolean monster_on_level(object *monster)
+{
+  object *m;
+  for (m = level_monsters->next_monster ; m ; m = m->next_monster)
+    if (m == monster)
+      return true;
+  return false;
+}
+
 void mv_mons()
  {
   fighter *rogue = sotu->roguep;
   object *monster, *next_monster;
   Boolean flew;
+  UInt16 freed;
 
   if (i_am_dead)
     return;
@@ -207,8 +218,18 @@ void mv_mons()
 
   /* Move each monster in the list of monsters.... */
   monster = level_monsters->next_monster;
+  freed = objects_freed;
 
   while (monster && !i_am_dead) {
+    // A monster's move can re-enter mv_mons (an ice monster's freeze
+    // does), and a thief there may steal and vanish -- freeing what we
+    // saved as next_monster.  If anything was freed, make sure it's
+    // still there; if not, the rest of the monsters lose this turn.
+    if (freed != objects_freed) {
+      if (!monster_on_level(monster))
+	break;
+      freed = objects_freed;
+    }
     next_monster = monster->next_monster;
     if (monster->m_flags2 & HASTED) {
       /* If the monster is hasted, it will move twice for each tick. */
@@ -806,10 +827,11 @@ Boolean mon_can_go(object *monster, Short row, Short col)
 
   /* If the monster is goal-oriented and its goal is to move rogueward,
      don't allow it to move in a strictly antirogueward direction. */
-  if (!(monster->m_flags1 & (FLITS | CAN_FLIT))
-      && (!(monster->m_flags2 & CONFUSED))
-      && (monster->trow != NO_ROOM)) {
-    // XXXX or should it be == NO_ROOM ?
+  // (trow == NO_ROOM means its goal is the rogue, as in Rogue Clone.
+  // CAN_FLIT and CONFUSED live in m_flags2.)
+  if (!(monster->m_flags1 & FLITS)
+      && (!(monster->m_flags2 & (CONFUSED | CAN_FLIT)))
+      && (monster->trow == NO_ROOM)) {
     if ((monster->row < rogue->row) && (row < monster->row)) return false;
     if ((monster->row > rogue->row) && (row > monster->row)) return false;
     if ((monster->col < rogue->col) && (col < monster->col)) return false;
@@ -1069,7 +1091,7 @@ void create_monster(Short mn)
   /* Try to find a good adjacent place to put the monster. */
   for (i = 0; i < 9; i++) {
     rand_around(i, &row, &col);
-    if (((row == rogue->row) && (col = rogue->col)) ||
+    if (((row == rogue->row) && (col == rogue->col)) ||
 	(row < MIN_ROW) || (row > (DROWS-2)) ||
 	(col < 0) || (col > (DCOLS-1))) {
       continue;
@@ -1133,6 +1155,7 @@ void aim_monster(object *monster, room * rooms)
   Short i, rn, d, r;
 
   rn = get_room_number(monster->row, monster->col, rooms);
+  if (rn == NO_ROOM) return; // e.g. created in a passage: no doors to aim at
   r = get_rand(0, 12);
 
   for (i = 0; i < 4; i++) {

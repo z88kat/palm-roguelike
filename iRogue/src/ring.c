@@ -268,7 +268,7 @@ Boolean put_on_ring(Short inv_index, Short finger_index)
   //  check_message();
   get_desc(ring, desc);
   message(desc);
-  if (ring->which_kind & RING_AGGRAVATE) {
+  if (ring->which_kind == R_AGGRAVATE) {
     message("you sense hostility");
     aggravate();
   }

@@ -296,8 +296,9 @@ void make_level() {
   }
 
   /* Standard dungeon geography requires that there be at least three
-     rooms in a straight (north-south or east-west) line. */
-  switch(must_exist1) {
+     rooms in a straight (north-south or east-west) line.
+     (Pick which line at random, as Rogue Clone does.) */
+  switch(get_rand(0, 5)) {
   case 0:
     must_exist1 = 0;
     must_exist2 = 1;

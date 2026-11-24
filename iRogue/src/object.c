@@ -977,9 +977,11 @@ object * alloc_object()
  please don't crash
 ****************************************************************/
 /* I hope the free_list is reasonably bounded... */
+UInt16 objects_freed = 0; // see mv_mons()
 void free_object(object *obj)
 {
   VoidHand h = MemPtrRecoverHandle(obj);
+  objects_freed++;
   if (h) 
     MemHandleFree(h);
   else

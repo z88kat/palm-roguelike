@@ -491,7 +491,7 @@ Boolean Main_Form_HandleEvent(EventPtr e)
     case menu_mainWiztog:
       handled = true;
       // IF character hasn't been a wizard before, warn / ask for confirmation.
-      if (!(sotu->conduct & STATUS_WASWIZ) && !IS_WIZARD)  // if (!(sotu->score_status & STATUS_WASWIZ) && !sotu->wizard)
+      if (!(sotu->conduct & CONDUCT_WASWIZ) && !IS_WIZARD)  // if (!(sotu->score_status & STATUS_WASWIZ) && !sotu->wizard)
 	if (0 == FrmAlert(WizardP))
 	  goto SKIP_THE_REST; // player said "oops, cancel"
       // sotu->wizard = !sotu->wizard; sotu->score_status |= STATUS_WASWIZ;
@@ -524,6 +524,12 @@ Boolean Main_Form_HandleEvent(EventPtr e)
       goto SKIP_THE_REST;
     case menu_mainRestore:
       //      check_message();
+      if (get_file_count() == 0) {
+	check_message();
+	message("there are no saved games yet");
+	handled = true;
+	goto SKIP_THE_REST;
+      }
       FrmPopupForm(RevivifyForm);
       handled = true;
       goto SKIP_THE_REST;
@@ -1067,6 +1073,12 @@ static Short projectable_exists(Boolean zap, Boolean stop_at_one)
  appropriate for "zapping" or "throwing".
  **********************************************************************/
 Char ** direction_select_items;
+// Inventory letters run a-z and then A-Z; turn one back into the item's
+// position in the pack, as get_nth_object wants.
+static Short ichar_to_index(Char c)
+{
+  return (c >= 'a') ? (c - 'a') : (c - 'A' + 26);
+}
 Short direction_select_numItems;
 static void init_direction_select_list(FormPtr frm, Boolean zap)
 {
@@ -1079,7 +1091,9 @@ static void init_direction_select_list(FormPtr frm, Boolean zap)
 
   numItems = projectable_exists(zap, false);
 
-  /* Hey!  Who's freeing this puppy? */
+  // Free the list from the last throw or zap (that form is long gone).
+  md_free_list(direction_select_items, direction_select_numItems);
+  direction_select_numItems = numItems;
   direction_select_items = (Char **) md_malloc(sizeof(Char *) * numItems);
   for (obj = sotu->roguep->pack.next_object, i = 0 ;
        (obj != NULL && i < numItems) ;
@@ -1116,12 +1130,8 @@ static void init_direction_select_list(FormPtr frm, Boolean zap)
   LstSetSelection (lst, 0);
   ctl = FrmGetObjectPtr (frm, FrmGetObjectIndex(frm, popup_d));
   label = LstGetSelectionText (lst, 0);
-  if (label) {
-    if (label[0] > 'Z')
-      inventory_item = label[0] - 'a';
-    else
-      inventory_item = label[0] - 'A';
-  }
+  if (label)
+    inventory_item = ichar_to_index(label[0]);
   CtlSetLabel(ctl, label);
   LstSetSelection(lst, 0);
 }
@@ -1227,13 +1237,38 @@ Boolean Direction_Form_HandleEvent(EventPtr e)
 	lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_d));
 	txt = LstGetSelectionText (lst, e->data.popSelect.selection);
 	if (txt[0]) {
-	  inventory_item = txt[0] - 'a'; // dangerous
+	  inventory_item = ichar_to_index(txt[0]);
 	} else {
 	  inventory_item = -1;
 	}
       }
     }
     /*      handled = true; */
+    break;
+
+  case keyDownEvent:
+    // Keyboard and 5-way: the 'hjklyubn' keys press the matching compass
+    // button ('.' or backspace cancels), so the picker works without
+    // the stylus.  (The 5-way is turned into 'hjkl' in iRogue.c.)
+    {
+      UInt16 btn = 0;
+      switch (e->data.keyDown.chr) {
+      case 'k': case 'K': btn = btn_d_n;  break;
+      case 'u': case 'U': btn = btn_d_ne; break;
+      case 'l': case 'L': btn = btn_d_e;  break;
+      case 'n': case 'N': btn = btn_d_se; break;
+      case 'j': case 'J': btn = btn_d_s;  break;
+      case 'b': case 'B': btn = btn_d_sw; break;
+      case 'h': case 'H': btn = btn_d_w;  break;
+      case 'y': case 'Y': btn = btn_d_nw; break;
+      case '.': case chrBackspace: btn = btn_d_cancel; break;
+      }
+      if (btn) {
+	frm = FrmGetActiveForm();
+	CtlHitControl(FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn)));
+	handled = true;
+      }
+    }
     break;
 
   case ctlSelectEvent:

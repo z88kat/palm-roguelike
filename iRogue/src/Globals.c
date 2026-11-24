@@ -178,7 +178,7 @@ static void player_init() {
   object *obj;
   //  Short i;
 
-  rogue->pack.next_object = 0;
+  free_stuff(&rogue->pack); // the last game's pack (Play Again)
 
   obj = alloc_object();
   get_food(obj, 1);

@@ -253,7 +253,7 @@ void message(const Char * msg)
   // If there are (still) unseen messages in the buffer, (re)print --more--
   if (sotu->last_old_message_shown < SAVED_MSGS-1) {
     //    WinDrawChars(buf, 8, 120, 11);
-    qWinDrawChars("--more--",  9, ScrWidth - moreWidth, LineHeight);
+    qWinDrawChars("--more--",  8, ScrWidth - moreWidth, LineHeight);
   }
   
 #ifndef I_AM_OS_2
@@ -296,7 +296,7 @@ static void init_print_stats()
   stats_w[4] = FntCharsWidth("000(000)  ", 10); // STAT_HP
   stats_w[5] = FntCharsWidth("Str ", 4);
   stats_w[6] = FntCharsWidth("00(00)  ", 8); // STAT_STRENGTH
-  stats_w[7] = FntCharsWidth("hungry", 8); // {"" hungry weak faint}
+  stats_w[7] = FntCharsWidth("hungry  ", 8); // {"" hungry weak faint}
   stats_w[8] = FntCharsWidth("Arm: ", 5);
   stats_w[9] = FntCharsWidth("00 ", 3); // STAT_ARMOR
   stats_w[10] = FntCharsWidth("$", 1);

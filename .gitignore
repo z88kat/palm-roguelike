@@ -76,7 +76,7 @@ iRogue/src/bin.stamp
 iRogue/src/iRogue
 iRogue/src/iRogue-sections.s
 iRogue/src/iRogue-sections.ld
-iRogue/src/iRogue.prc
+iRogue/src/*.prc
 iRogue/src/compat/
 
 # iLarn build outputs
@@ -94,4 +94,5 @@ iLarn/src/iLarn.prc
 # Palm databases and other CVS-era files are source assets here, not build junk
 !kMoria/**/*.pdb
 !iLarn/**/*.pdb
+!iRogue/**/*.pdb
 !kMoria/src/BuildDB/foo.out

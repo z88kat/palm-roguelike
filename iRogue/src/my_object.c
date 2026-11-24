@@ -408,8 +408,8 @@ static const Char * ring_actions[RINGS] = {
   "of teleportation ",
   "of aggravate ",
   "of delusion ",
-  "of burden ",
-  "of adornment ",
+  "of adornment ", // ADORNMENT is 17
+  "of burden ",    // R_BURDEN is 18
   // the following have class or are otherwise cumulative
   "of stealth ",
   "of regeneration ",

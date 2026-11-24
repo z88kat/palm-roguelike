@@ -57,6 +57,10 @@ Boolean Call_Form_HandleEvent(EventPtr e)
       usr_form_init(frm, field_call, call_id_table[call_which_kind].title,
 		    MAX_TITLE_LENGTH);
       // XXXX need to strip the space from the end
+    } else if (FrmGetActiveForm() != frm) {
+      // init_call_form closed the form (the item can't be called)
+      handled = true;
+      break;
     }
     FrmDrawForm(frm);
     handled = true;

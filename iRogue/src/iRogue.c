@@ -62,7 +62,7 @@ Boolean Thing_Form_HandleEvent(EventPtr e);
 #endif
 static Boolean OpenDatabase(void);
 static Boolean ApplicationHandleEvent(EventPtr e);
-static void    readRoguePrefs();
+static Boolean readRoguePrefs();
 //static void    writeRoguePrefs();
 static Word    StartApplication(void);
 static void    free_everything();
@@ -237,7 +237,8 @@ static Boolean ApplicationHandleEvent(EventPtr e)
 // dude - the 3.5ez (Vx) rom hassled me about this (I think it was about this).
 // ...the III rom did not, and the color rom did not, and the 3.3's did not.
 // wacky.
-static void readRoguePrefs() {
+// Returns false if there were no saved preferences (a new install).
+static Boolean readRoguePrefs() {
   Word prefsSize;
   SWord prefsVersion;
   //  Short i;
@@ -271,6 +272,7 @@ static void readRoguePrefs() {
     //      my_prefs.stay_centered = false; // new in 0.40
     //    }
   }
+  return (prefsVersion > noPreferenceFound);
 }
 void writeRoguePrefs()
 {
@@ -299,6 +301,7 @@ Boolean evil = false;
 static Word StartApplication(void)
 {
   Word error;
+  Boolean had_prefs;
 #ifdef I_AM_OS_2
   DWord version;
   void *font128 = 0;
@@ -320,7 +323,7 @@ static Word StartApplication(void)
   /* load game and/or do all the ONE-TIME initialization */
   init_game();
 
-  readRoguePrefs();
+  had_prefs = readRoguePrefs();
 
 #ifdef I_AM_OS_2
   FtrGet(sysFtrCreator, sysFtrNumROMVersion, &version);
@@ -360,6 +363,14 @@ static Word StartApplication(void)
   // set HasColor boolean to false
 #ifdef I_AM_COLOR
   if (version >= 0x03503000L) {
+    if (!had_prefs) {
+      // New install: colour (the built-in neon scheme) is on by default
+      // if the screen can show it.
+      Boolean color_screen = false;
+      WinScreenMode(winScreenModeGet, NULL, NULL, NULL, &color_screen);
+      if (color_screen)
+	my_prefs.color_on = true;
+    }
     if (my_prefs.color_on & PREF_COLOR) {
       look_for_memo(); // find and grok 'iRogue-RGB' memo
     }
@@ -489,22 +500,93 @@ static void StopApplication(void)
 /* The main event loop */
 
 
+/*****************************************************************************
+ *                      5-way navigator                                      *
+ *****************************************************************************/
+// (The navigator's key codes are defined in iRogue.h.)
+
+// Turn a 5-way press into a command key, for the main form and the
+// direction picker: up/down/left/right walk north/south/west/east
+// ('k' 'j' 'h' 'l'), uppercased (= run) if caps lock or shift is on.
+// On the main form the centre button takes the stairs if you are on
+// them, and otherwise searches once.
+// The plain Up/Down buttons of older devices (no nav flags) are left
+// alone, so they still take the stairs as they always have.
+// Returns true if the event should be swallowed (releases and the like).
+static Boolean fivewayToKey(EventPtr e, Boolean on_main)
+{
+  WChar chr = e->data.keyDown.chr;
+  UInt16 nav = e->data.keyDown.keyCode & (navBitsAll | navChangeBitsAll);
+  UInt16 held = nav & navBitsAll;
+  Char c = 0;
+
+  if (chr == vchrNavChange) {
+    if (held == 0) return true;              // release
+  } else if (chr == pageUpChr || chr == pageDownChr) {
+    if (nav == 0) return false;              // plain Up/Down button
+    if (held == 0) return true;              // release
+  } else if (chr >= vchrRockerUp && chr <= vchrRockerCenter
+	     && (e->data.keyDown.modifiers & commandKeyMask)) {
+    switch (chr) {
+    case vchrRockerUp:    held = navBitUp;     break;
+    case vchrRockerDown:  held = navBitDown;   break;
+    case vchrRockerLeft:  held = navBitLeft;   break;
+    case vchrRockerRight: held = navBitRight;  break;
+    default:              held = navBitSelect; break;
+    }
+  } else
+    return false; // not a navigator event
+
+  switch (held) {
+  case navBitUp:    c = 'k'; break;
+  case navBitDown:  c = 'j'; break;
+  case navBitLeft:  c = 'h'; break;
+  case navBitRight: c = 'l'; break;
+  case navBitSelect:
+    if (!on_main) return true;
+    if (sotu->dungeon[sotu->roguep->row][sotu->roguep->col] & STAIRS)
+      c = mask_pack(&sotu->roguep->pack, AMULET) ? '<' : '>';
+    else
+      c = 's';
+    break;
+  default: return true; // several buttons at once: ignore
+  }
+
+  if (held != navBitSelect) {
+    Boolean capslock_on, numlock_on, autoshifted;
+    UInt16 tmp_shift;
+    GrfGetState(&capslock_on, &numlock_on, &tmp_shift, &autoshifted);
+    if ((tmp_shift == grfTempShiftUpper) || capslock_on) {
+      c -= 'a' - 'A';
+      GrfSetState(capslock_on, numlock_on, false);
+    }
+  }
+  e->data.keyDown.chr = c;
+  e->data.keyDown.keyCode = 0;
+  // without commandKeyMask the OS treats it as typed text, not a command
+  e->data.keyDown.modifiers &= ~commandKeyMask;
+  return false;
+}
+
 static void EventLoop(void)
 {
     Word err;
     EventType e;
      
     do {
+	Boolean done = false;
 	EvtGetEvent(&e, evtWaitForever);
-	// first see if it's a hardware button thing!!!
+	// Do special hardware button things if it's a hardware button event.
 	// don't ask me what the poweredOnKeyMask is, though; cargo cult.
-	// Do special hardware button things only if:
-	// it's a hardware button event, [you're alive,] and in the main form.
-	if ( (e.eType != keyDownEvent)
-	     || !my_prefs.use_hardware 
-	     || (e.data.keyDown.modifiers & poweredOnKeyMask)
-	     /*	     || (FrmGetActiveFormID() != MainForm) */
-	     || !buttonsHandleEvent(&e) )
+	if ( (e.eType == keyDownEvent)
+	     && !(e.data.keyDown.modifiers & poweredOnKeyMask) ) {
+	  Word form = FrmGetActiveFormID();
+	  if (my_prefs.use_hardware && buttonsHandleEvent(&e))
+	    done = true; // a rebound button wins
+	  else if (form == MainForm || form == DirectionForm)
+	    done = fivewayToKey(&e, form == MainForm); // may rewrite e
+	}
+	if (!done)
 	  // now proceed with usual handling
 	  if (! SysHandleEvent (&e))
 	    if (! MenuHandleEvent (NULL, &e, &err))

@@ -296,7 +296,10 @@ static void clear_visible()
   // hm - in future (for large screens) may need to check v_h & v_w size.
   screen_dirty = true;
   for (i = 0 ; i < v_h; i++) {
-    lines_dirty[i+visible_y] = true;
+    // (v_h is the small font's height, so in the big font this runs
+    // past the bottom of the map)
+    if (i + visible_y < DROWS)
+      lines_dirty[i+visible_y] = true;
     for (j = 0; j < v_w; j++) {
       /*       terminal[i][j] = buffer[i+visible_y][j+visible_x]; */
       terminal[i][j] = ' ';

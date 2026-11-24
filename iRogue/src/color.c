@@ -31,14 +31,64 @@ typedef MemoDBRecordType * MemoDBRecordPtr;
 IndexedColorType symbol_colors[NUM_SYMBOLS];
 IndexedColorType black, white;
 static Short grok_hex(Char *buf, Short len);
+
+// The built-in "neon" colour scheme, used for every symbol that the
+// iRogue-RGB memo (if any) doesn't set.  All are from the 216-colour
+// web-safe part of the system palette, and vivid but readable on both the
+// white and the Invert (black) background.  Walls, '@' and anything not
+// listed are drawn in the plain text colour.  Walls are '-' and food ':'
+// here, as in the memo.
+typedef struct { Char sym; UInt8 r, g, b; } DefaultColorType;
+static const DefaultColorType default_colors[] = {
+  // things
+  {'!', 0xFF,0x00,0x99}, {'?', 0x00,0x99,0x99}, {'/', 0xCC,0x00,0xFF},
+  {'=', 0xFF,0x00,0xCC}, {']', 0x66,0x66,0xFF}, {')', 0x00,0x66,0xFF},
+  {',', 0xFF,0x66,0x00}, {'*', 0xCC,0x99,0x00}, {':', 0x00,0x99,0x00},
+  {'^', 0xFF,0x00,0x00}, {'%', 0x00,0x99,0xFF}, {'+', 0xCC,0x66,0x00},
+  {'#', 0x66,0x66,0x99}, {'.', 0x99,0x99,0xCC},
+  // monsters (U, the black unicorn, stays plain)
+  {'A', 0x00,0x99,0x99}, {'B', 0x99,0x33,0xFF}, {'C', 0xCC,0x66,0x00},
+  {'D', 0xFF,0x00,0x00}, {'E', 0xCC,0x99,0x00}, {'F', 0x00,0x99,0x00},
+  {'G', 0xCC,0x99,0x00}, {'H', 0xFF,0x66,0x00}, {'I', 0x66,0x66,0x99},
+  {'J', 0xFF,0x00,0x99}, {'K', 0x00,0x99,0xCC}, {'L', 0x00,0x99,0x00},
+  {'M', 0xCC,0x00,0xFF}, {'N', 0xFF,0x00,0xCC}, {'O', 0x33,0x99,0x00},
+  {'P', 0x66,0x66,0x99}, {'Q', 0xFF,0x33,0x66}, {'R', 0xCC,0x66,0x00},
+  {'S', 0x00,0x99,0x00}, {'T', 0x66,0x99,0x00}, {'V', 0xFF,0x00,0x66},
+  {'W', 0x99,0x66,0xFF}, {'X', 0xCC,0x66,0x33}, {'Y', 0x00,0x99,0xCC},
+  {'Z', 0x66,0x99,0x66},
+  {'a', 0xFF,0x33,0x00}, {'b', 0x00,0x66,0xFF}, {'c', 0xFF,0x66,0x00},
+  {'d', 0xCC,0x99,0x00}, {'e', 0xFF,0x00,0xCC}, {'f', 0xCC,0x66,0x00},
+  {'g', 0x99,0x66,0xFF}, {'h', 0xFF,0x33,0x66}, {'i', 0x00,0x99,0xFF},
+  {'j', 0xCC,0x66,0x33}, {'k', 0x00,0x99,0x66}, {'l', 0xFF,0x00,0x66},
+  {'m', 0xFF,0x33,0x00}, {'n', 0x66,0x66,0xFF}, {'o', 0xFF,0x66,0x00},
+  {'p', 0x00,0x99,0x00}, {'q', 0x00,0x99,0x99}, {'r', 0xCC,0x66,0x33},
+  {'s', 0x99,0x33,0xFF}, {'t', 0x33,0x99,0x99}, {'u', 0xFF,0x00,0x00},
+  {'v', 0x33,0x99,0x00}, {'w', 0x33,0x66,0xFF}, {'x', 0xCC,0x00,0xFF},
+  {'y', 0xCC,0x99,0x00}, {'z', 0xFF,0x00,0x99}
+};
+#define NUM_DEFAULT_COLORS (sizeof(default_colors) / sizeof(default_colors[0]))
+
+static void set_default_colors()
+{
+  RGBColorType rgb;
+  Short i;
+  rgb.index = 0;
+  for (i = 0 ; i < NUM_DEFAULT_COLORS ; i++) {
+    rgb.r = default_colors[i].r;
+    rgb.g = default_colors[i].g;
+    rgb.b = default_colors[i].b;
+    symbol_colors[default_colors[i].sym - 33] = WinRGBToIndex(&rgb);
+  }
+}
 #endif // I_AM_COLOR
 
 
 /* 
  * This is ONLY called if the OS version is at least 3.5.
- * If a memo entitled "iRogue-RGB" exists, read from it into symbol_colors
- * and set IsColor = true.  (Any symbol missing from the memo will be black.)
- * Otherwise IsColor is false (and symbol_colors remains black).
+ * Loads the built-in colour scheme into symbol_colors; then, if a memo
+ * entitled "iRogue-RGB" exists, the colours it lists replace those.
+ * Either way have_read_color becomes true, so IsColor follows the
+ * Color preference.
  */
 #ifdef I_AM_COLOR
 void look_for_memo()
@@ -51,6 +101,7 @@ void look_for_memo()
   Char *memo, c;
   RGBColorType rgbcolor;
   IndexedColorType icolor;
+  Boolean found_memo = false;
   //  Boolean no_foreground = true;
   //  Boolean symbol_set[NUM_SYMBOLS];
 
@@ -66,6 +117,8 @@ void look_for_memo()
   }
   //  symbol_colors[BG_COL_IX] = white;
   //  symbol_set[BG_COL_IX] = true;
+  set_default_colors();
+  have_read_color = true; // the defaults will do if there's no memo
 
   // FIND KITTEN^H^H^H^H^H^HMEMO
   // first, what is our magic title:
@@ -73,18 +126,17 @@ void look_for_memo()
   title_len = StrLen(magic_title);
   // try to open the memo database
   if (!(MemoDB = DmOpenDatabaseByTypeCreator(memoDBType, sysFileCMemo, mode))){
-    have_read_color = false;
     return;
   }
   recordNum = 0;
   // get a record (stop if we run out)
-  while (!have_read_color &&
+  while (!found_memo &&
 	 (recH = DmQueryNextInCategory(MemoDB, &recordNum, dmAllCategories))) {
     MemoDBRecordPtr memoRecP = MemHandleLock (recH);
     memo = &(memoRecP->note);
     // Does the title match our magic title?
     if (0 == StrNCompare(memo, magic_title, title_len)) {
-      have_read_color = true;
+      found_memo = true;
       memo_len = StrLen(memo);
       i = title_len; // skip past the title!
       while (i < memo_len - 1) {
@@ -196,6 +248,10 @@ IndexedColorType get_color(Char c)
   // Let's have some bounds checking here.
   if (i >= 0 && i < NUM_SYMBOLS)
     ict = symbol_colors[i];
+  // Indexes 230-255 of the 8-bit system palette are all black; treat any
+  // of them as black, whichever one WinRGBToIndex or the picker chose.
+  if (ict >= 230)
+    ict = black;
   if (my_prefs.black_bg && ict == black)
     return white;
   else if (!my_prefs.black_bg && ict == white)
@@ -285,11 +341,14 @@ Boolean supportUIPickColor = true; /* this should be set at startup, to check
                                       for cranky prisms, but it's not, yet. */
 
 Short symbol_index;
-// you can rearrange the chars in this string in any order you like:
-UChar *colored_symbols = "!#%)*+\x97/\xb0=?]^|abcdefghijklmnopqrstuvxyzABCDEFGHJKLMNOQRSTUVZ@.";
+// you can rearrange the chars in this string in any order you like
+// (the Edit Colors screen has room for 70: 7 rows of COLOR_COLS):
+UChar colored_symbols[] = "!?/=])*,\xb0^%+#\x97|@."
+  "abcdefghijklmnopqrstuvwxyz"
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 //IndexedColorType *c_colors = NULL;
-// same length as colored_symbols, please:
-IndexedColorType c_colors[61];
+// one per colored_symbol:
+IndexedColorType c_colors[sizeof(colored_symbols) - 1];
 
 
 #define X_0 1
@@ -492,133 +551,93 @@ Boolean Color_Form_HandleEvent(EventPtr e)
 
 
 
-//
-// Opens database by name. If it doesn't exist: error
-//
-// returns 0 in case of error
-// returns DmOpenRef > 0 in case of success
-//
-static DmOpenRef NPOpenDB(Char *name)
+// Two lowercase hex digits and a terminating null.
+static void hex2(Char *p, UInt8 v)
 {
-  LocalID lid;
-  //  Err err;
-  DmOpenRef db;
+  const Char *digits = "0123456789abcdef";
+  p[0] = digits[v >> 4];
+  p[1] = digits[v & 0xF];
+  p[2] = '\0';
+}
 
-  lid = DmFindDatabase(0, name);
-  if (lid == 0) {
-    // not found - so create it
-    //    err = DmCreateDatabase(0, name, CREATOR, TYPE, 0);
-    //    if (err) return 0;
-    //    lid = DmFindDatabase(0, name);
-    return 0;
-  }
-  db = DmOpenDatabase(0, lid, dmModeReadWrite);
-  return db;
-} /* NPOpenDB */
-
-static void do_write_color_memo(UInt index, Char *magic_title)
+// Write the current colours as a new memo at index in the open memo DB.
+static Boolean do_write_color_memo(DmOpenRef mdb, UInt index,
+				   Char *magic_title)
 {
-  DmOpenRef mdb;
-  Char buf[20], r[10], g[10], b[10];
+  Char buf[20], r[3], g[3], b[3];
   UInt memosize;
   VoidHand vh;
   Char *p;
   Short i, offset = 0, len = StrLen(colored_symbols);
 
-  //  len = NUM_SYMBOLS; // XXXXX remove this (debugging)
-
-  memosize = StrLen(magic_title) + 1 + 9 * len; // warning: an exact fit.
+  // title, then one "c rrggbb\n" (9 chars) per symbol, then a null
+  memosize = StrLen(magic_title) + 1 + 9 * len;
   memosize *= sizeof(Char);
 
-  if (0 != (mdb = NPOpenDB("MemoDB"))) {
-    if (0 != (vh = DmNewRecord(mdb, &index, memosize))) {
-      if (0 != (p = MemHandleLock(vh))) {
-	StrPrintF(buf, "%s", magic_title);
-	DmStrCopy(p, offset, buf);
-	offset += StrLen(buf);
-	for (i = 0 ; i < len ; i++) {
-
-	  UChar c = colored_symbols[i];
-	  RGBColorType rgbcolor;
-	  if (c == EMDASH) c = DASH_COL_SYM;
-	  else if (c == FOODCHAR) c = FOOD_COL_SYM;
-	  WinIndexToRGB(c_colors[i], &rgbcolor);
-
-	  //	  // XXX remove these (debugging)
-	  //	  c = i + 33;
-	  //	  WinIndexToRGB(symbol_colors[i], &rgbcolor);
-	  //	  // XXX end of remove-these
-
-	  // I wish I could just say "%2x" or something and have it work.
-	  StrPrintF(r, "%x", rgbcolor.r);
-	  StrPrintF(g, "%x", rgbcolor.g);
-	  StrPrintF(b, "%x", rgbcolor.b);
-	  StrPrintF(buf, "%c %s%s%s\n",
-		    c,
-		    r+(StrLen(r)-2),
-		    g+(StrLen(g)-2),
-		    b+(StrLen(b)-2));
-	  DmStrCopy(p, offset, buf);
-	  offset += StrLen(buf);
-	}
-	MemPtrUnlock(p);
-	DmReleaseRecord(mdb, index, true);
-	DmCloseDatabase(mdb);
-	return;
-      }
-    }
-    DmCloseDatabase(mdb);    
+  if (0 == (vh = DmNewRecord(mdb, &index, memosize)))
+    return false;
+  if (0 == (p = MemHandleLock(vh))) {
+    DmReleaseRecord(mdb, index, false);
+    DmRemoveRecord(mdb, index);
+    return false;
   }
-  // Report the failure... make the button go away and do a popup alert?
-
+  DmStrCopy(p, offset, magic_title);
+  offset += StrLen(magic_title);
+  for (i = 0 ; i < len ; i++) {
+    UChar c = colored_symbols[i];
+    RGBColorType rgbcolor;
+    if (c == EMDASH) c = DASH_COL_SYM;
+    else if (c == FOODCHAR) c = FOOD_COL_SYM;
+    WinIndexToRGB(c_colors[i], &rgbcolor);
+    hex2(r, rgbcolor.r);
+    hex2(g, rgbcolor.g);
+    hex2(b, rgbcolor.b);
+    StrPrintF(buf, "%c %s%s%s\n", c, r, g, b);
+    DmStrCopy(p, offset, buf);
+    offset += StrLen(buf);
+  }
+  MemPtrUnlock(p);
+  DmReleaseRecord(mdb, index, true);
+  return true;
 }
 
+// Save the colours to the "iRogue-RGB" memo, replacing the old one.
 Boolean write_color_memo()
 {
-  Boolean found = false;
-  UInt recordNum;
+  DmOpenRef mdb;
+  UInt recordNum = 0, index = dmMaxRecordIndex; // default: append
   VoidHand recH;
-  UInt mode = dmModeReadOnly;
   Char magic_title[20];
-  Short title_len;//, memo_len, i, j, symbol;
-  Char *memo;//, c;
-  //  RGBColorType rgbcolor;
-  //  IndexedColorType icolor;
-  //  Boolean no_foreground = true;
-  //  Boolean symbol_set[NUM_SYMBOLS];
+  Short title_len;
+  Boolean ok;
 
   // first, what is our magic title:
   StrPrintF(magic_title, "iRogue-RGB%c", linefeedChr);
   title_len = StrLen(magic_title);
-  // try to open the memo database
-  if (!(MemoDB = DmOpenDatabaseByTypeCreator(memoDBType, sysFileCMemo, mode))){
+  if (!(mdb = DmOpenDatabaseByTypeCreator(memoDBType, sysFileCMemo,
+					  dmModeReadWrite)))
     return false;
-  }
-  recordNum = 0;
-  // get a record (stop if we run out)
-  while (!found &&
-	 (recH = DmQueryNextInCategory(MemoDB, &recordNum, dmAllCategories))) {
-    MemoDBRecordPtr memoRecP = MemHandleLock (recH);
-    memo = &(memoRecP->note);
-    // Does the title match our magic title?
-    if (0 == StrNCompare(memo, magic_title, title_len)) {
-      found = true;
-      // delete this memo and create a new one.  yeah.  at this index.
-      MemHandleUnlock(recH);
-      DmRemoveRecord(MemoDB, recordNum); // <--- hey, why doesn't this work?
-      do_write_color_memo(recordNum, magic_title);
-      DmCloseDatabase(MemoDB);
-      return true;
-    } // else memo does not match, try the next memo
+  // Find the old memo, delete it, and put the new one in its place.
+  while ((recH = DmQueryNextInCategory(mdb, &recordNum, dmAllCategories))) {
+    MemoDBRecordPtr memoRecP = MemHandleLock(recH);
+    Boolean match = (0 == StrNCompare(&(memoRecP->note), magic_title,
+				      title_len));
     MemHandleUnlock(recH);
+    if (match) {
+      // DmDeleteRecord, not Remove, so HotSync deletes the desktop copy
+      DmDeleteRecord(mdb, recordNum);
+      index = recordNum;
+      break;
+    }
     recordNum++;
-  } // end while(records)
-  if (!found) {
-    // create a new memo record at the end.
-    do_write_color_memo(DmNumRecords(MemoDB), magic_title);
   }
-  DmCloseDatabase(MemoDB);
-  return true;
+  ok = do_write_color_memo(mdb, index, magic_title);
+  if (ok && index != dmMaxRecordIndex) {
+    // tidy up: deleted records belong at the end of the database
+    DmMoveRecord(mdb, index + 1, DmNumRecords(mdb));
+  }
+  DmCloseDatabase(mdb);
+  return ok;
 }
 
 
@@ -635,6 +654,8 @@ Boolean Thing_Form_HandleEvent(EventPtr e)
     frm = FrmGetActiveForm();
     FrmDrawForm(frm);
 
+    if (!have_read_color) // colour was off at startup: load the colours
+      look_for_memo();
     read_color();
     draw_ascii();
 

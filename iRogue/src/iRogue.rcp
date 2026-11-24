@@ -23,7 +23,7 @@
 #include "iRogueRsc.h"
 
 
-VERSION ID 1 "1.1.1"
+VERSION ID 1 "1.2"
 
 // For Handera, to tell it this is allegedly a hi-res application
 HEX "sKst" ID 1000 0x00 0x00 0x00 0x00
@@ -274,8 +274,7 @@ END
 //         FORMBITMAP AT (35 19) BITMAP Bitmap_About
 // but it has to be a FORM
 
-BITMAP ID bitmap_rogue "iRogue.bmp"
-BITMAP ID bitmap_cat "dead-spider2.bmp"
+BITMAPFAMILY ID bitmap_rogue "iRogue.bmp" "" "" "iRogueC.bmp" TRANSPARENT 255 255 255
 //HELPID MoveStr
 FORM ID AboutForm AT (2 2 156 156)
 USABLE
@@ -284,18 +283,16 @@ HELPID AboutStr
 DEFAULTBTNID btn_about_ok
 BEGIN
 	TITLE "About iRogue"
-	FORMBITMAP AT (8 19) BITMAP bitmap_cat
-	FORMBITMAP AT (98 15) BITMAP bitmap_rogue
-	LABEL "iRogue v1.1.1" AUTOID AT (90 40)
-	LABEL "Based on" AUTOID AT (PrevLeft-2 PrevTop+22)
-	LABEL "rogue 5.3-clone" AUTOID AT (PrevLeft-3 PrevTop+11)
+	FORMBITMAP AT (62 20) BITMAP bitmap_rogue
+	LABEL "iRogue v1.2  (24 Nov 2026)" AUTOID AT (Center 57) FONT 1
+	LABEL "Based on Rogue 5.3-clone" AUTOID AT (Center PrevTop+12)
 
-	LABEL "Bugs?  Contact:" AUTOID AT (Center 95)
-	LABEL "Bridget Spitznagel" AUTOID AT (Center PrevTop+11)
-        LABEL "i0lanthe@yahoo.com" AUTOID AT (Center PrevTop+11)
-	BUTTON "Done" ID btn_about_ok AT (5 141 35 AUTO)
-	BUTTON "License" ID btn_about_more AT (50 141 AUTO AUTO)
-	BUTTON "Credits" ID btn_about_credits AT (PrevRight+10 141 AUTO AUTO)
+	LABEL "Bugs?  Report them at:" AUTOID AT (Center 92)
+	LABEL "github.com/z88kat/" AUTOID AT (Center PrevTop+11)
+	LABEL "palm-roguelike" AUTOID AT (Center PrevTop+11)
+	BUTTON "Done" ID btn_about_ok AT (6 139 44 AUTO)
+	BUTTON "License" ID btn_about_more AT (PrevRight+6 PrevTop 44 AUTO)
+	BUTTON "History" ID btn_about_credits AT (PrevRight+6 PrevTop 44 AUTO)
 END
 
 ALERT ID QuitP
@@ -340,22 +337,34 @@ BEGIN
 END
 
 
-STRING AboutStr "iRogue version 1.1.1\n"\
-                "© 1999-2002 Bridget Spitznagel.\n\n"\
-                "This program was derived "\
-                "from rogue 5.3-clone (© Tim Stoehr) and urogue.\n\n"\
-                "iRogue comes with Absolutely No Warranty.\n"\
-                "This is free software, and "\
-                "you are welcome to "\
-                "redistribute it under certain "\
-                "conditions (for details see: GNU "\
-                "General Public License,\n"\
-                "http://www.gnu.org/ copyleft/gpl.html)"
+STRING AboutStr "iRogue version 1.2 (24 Nov 2026)\n"\
+		"© 1999-2004 Bridget Spitznagel.\n\n"\
+		"CREDITS\n"\
+		"Rogue: Michael Toy, Glenn Wichman, Ken Arnold\n"\
+		"Rogue Clone: Tim Stoehr\n"\
+		"Linux Rogue: Steve Wilson, Alan Cox\n"\
+		"Extra weapons: the urogue spoiler files\n"\
+		"PalmOS port: Bridget Spitznagel\n"\
+		"v1.2 update (2026): z88kat\n\n"\
+		"LICENSE\n"\
+		"iRogue is free software; you can redistribute it "\
+		"and/or modify it under the terms of the GNU General "\
+		"Public License as published by the Free Software "\
+		"Foundation; either version 2 of the License, or (at "\
+		"your option) any later version.\n\n"\
+		"iRogue comes with Absolutely No Warranty; without even "\
+		"the implied warranty of merchantability or fitness for "\
+		"a particular purpose.  See the GNU General Public "\
+		"License for details: www.gnu.org/licenses/gpl-2.0.html\n\n"\
+		"The Rogue Clone source that iRogue is derived from "\
+		"asks that: no portion of its notice be removed; credit "\
+		"not be taken for the creation of the source; and the "\
+		"code not be traded, sold, or used for personal gain or "\
+		"profit."
 
-STRING CreditStr "Rogue has been around for 20 years or so.  "\
-		"The original Rogue was created by "\
-		"Michael Toy, Glenn Wichman, and Ken Arnold.  "\
-		"There are many descendants of that game.\n"\
+STRING CreditStr "Rogue was written around 1980 by Michael Toy and "\
+		"Glenn Wichman, later joined by Ken Arnold, and gave its "\
+		"name to a whole family of 'roguelike' games.\n"\
 		"iRogue is a child of Linux Rogue (which is Tim Stoehr's "\
                 "Rogue Clone fixed up by Steve Wilson to run on Linux and "\
 		"then updated more by Alan Cox, thus says the README; "\
@@ -363,32 +372,51 @@ STRING CreditStr "Rogue has been around for 20 years or so.  "\
 		"5.3 of Rogue), with many additional weapons from the "\
 		"urogue_spoiler files (author unknown).\n  Thanks also to "\
 		"intrepid testers and reporters of bugs.\n"\
-		"- Bridget Spitznagel"
+		"- Bridget Spitznagel\n\n"\
+		"Later:\n"\
+		"iRogue 1.1.1 came out in May 2002.  Work went on until "\
+		"2004 (HandEra 330 support, colour editing, naming "\
+		"items) but was never released.\n\n"\
+		"In 2026 iRogue was revived as version 1.2 for current "\
+		"Palm OS devices and build tools: a built-in neon colour "\
+		"scheme, the 5-way navigator of the Tungsten C and other "\
+		"Palm OS 5 devices, bug fixes and a manual e-book.  "\
+		"Source and bug reports: "\
+		"github.com/z88kat/palm-roguelike"
 
 // http://www.mo.himolde.no/~knan/roguelike/
 
-STRING MoveStr 	"-Find the amulet of yendor ,\n"\
-		"and return home with it.\n"\
-		"\n-To move, imagine the screen\n" \
-		"is an eight-point compass,\n" \
-		"and tap in the direction you\n" \
-		"want to move, regardless of\n" \
-		"the Rogue's screen position.\n" \
-		"Tap in the center to search.\n" \
-		"\n-When you are on stairs %\n" \
-		"press a hardware scroll\n"\
-		"button to ascend or descend.\n"\
-		"\n-See the Cmds menu for\n"\
-		"commands.  Write the first character in Graffiti if you\n"\
-		"prefer.  The inventory command is most useful.\n"\
-  		"\n-Items- read ? scrolls,\n"\
-		"eat o food, quaff ! potions,\n"\
-		"wield or throw ) weapons,\n"\
-		"put on and remove = rings,\n"\
-		"wear and take off ] armor,\n"\
-		"zap / wands and staffs.\n"\
-		"\n-Monsters are letters A-Z.\n"\
-		"Gold * is good, traps ^ bad."
+STRING MoveStr 	"Find the Amulet of Yendor ( , ) on level 27 or deeper, "\
+		"and bring it back up the stairs to the surface.\n\n"\
+		"MOVING\n"\
+		"Imagine the screen is an eight-point compass, and tap "\
+		"in the direction you want to go, wherever your @ is.  "\
+		"Tap near the centre to search; a bit further out to "\
+		"walk one step; near the edge to run.  "\
+		"(Options > Preferences sets the sizes.)  "\
+		"Walk into a monster to attack it.\n"\
+		"Keys: h j k l y u b n walk, H J K L Y U B N run.\n"\
+		"5-way navigator (Tungsten C etc.): up / down / left / "\
+		"right walk; centre takes the stairs if you are on them, "\
+		"otherwise searches.\n\n"\
+		"STAIRS\n"\
+		"Stairs are %.  Stand on them and use Commands > Down "\
+		"( > ), or press the Down button (Up with the Amulet).\n\n"\
+		"COMMANDS\n"\
+		"See the Commands menu, or write the letter in brackets.  "\
+		"Inventory ( i ) is the most useful.  Write a number "\
+		"before s (search) or . (rest) to repeat it: 5 s "\
+		"searches five times.\n\n"\
+		"THINGS\n"\
+		"? scroll   ! potion   / wand or staff\n"\
+		"= ring   ] armour   ) weapon\n"\
+		"* gold   , the Amulet   ^ trap\n"\
+		"+ door   # passage   % stairs\n"\
+		"Food is a small circle.  Monsters are letters.  "\
+		"Use Options > whatsit? and tap a symbol to find out "\
+		"what it is.\n\n"\
+		"The full manual is the iRogue Manual e-book "\
+		"(iRogue-manual.pdb), for any Palm DOC reader."
 
 STRING WizStr	"And you call yourself a wizard."
 
@@ -467,12 +495,14 @@ STRING PrefStr	"The top half of this dialog will set how a 'tap' makes "\
 		"the setting of 'Rogue-relative'), when you are moving by "\
 		"screen taps.  For greater speed it will not be drawn when "\
 		"you are moving by keyboard or hardware buttons.  "\
-		"'Color' will turn color on or off [to perceive the "\
-		"benefits of this feature you must have a color-definition "\
-		"Memo entitled 'iRogue-RGB', whose lines are each a symbol "\
-		"followed by a 6-digit hexadecimal number (rrggbb), e.g.\n"\
+		"'Color!' turns color on or off (Palm OS 3.5 or later).  "\
+		"iRogue has a built-in neon color scheme; change it with "\
+		"?? > Edit Colors, which saves your colors in a memo "\
+		"entitled 'iRogue-RGB'.  You can also edit that memo: "\
+		"each line is a symbol and a 6-digit hexadecimal color "\
+		"(rrggbb), e.g.\n"\
 		"@ 00ff00 makes you green\n"\
-		"A sample memo is included in the zipped distribution.]"\
+		"Symbols the memo leaves out keep their built-in color.  "\
 		"  'Tiles' will show colored tiles in place of ascii "\
 		"characters.  (You need iRogueTileDB for tiles.)"\
 		"\n\nThese preferences will be saved "\
@@ -620,7 +650,7 @@ ALERT ID FontAlert
 WARNING
 BEGIN
 	TITLE "Wrong Version"
-	MESSAGE "Your version of iRogue does not match your OS version, so you can't change font.  If this makes you sad, you can download the right version at http://roguelike-palm.sourceforge.net"
+	MESSAGE "Your version of iRogue does not match your OS version, so you can't change font.  If this makes you sad, you can build the right version from github.com/z88kat/palm-roguelike"
 	BUTTON "Ok"
 END
 

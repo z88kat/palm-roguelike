@@ -51,10 +51,22 @@ HANDERA_STAMP = compat/Handera/.stamp
 CFLAGS = -Wall -g -O2 -Icompat -palmos3.5 -DNON_INTERNATIONAL -DI_AM_COLOR
 ##CFLAGS = -Wall -g -O2 -Icompat -palmos3.1 -DNON_INTERNATIONAL
 
-all: iRogue.prc
+# Everything to install on the device goes to ../build: the app and the
+# generated manual e-book.  Intermediate files (.o, .bin, ...) stay here.
+BUILD = ../build
+PRODUCTS = $(BUILD)/$(TARGET).prc $(BUILD)/iRogue-manual.pdb
 
-install: $(TARGET).prc
-	$(PILOTXFER) -p $(PILOT_PORT) -i $(TARGET).prc
+all: $(PRODUCTS)
+
+install: $(PRODUCTS)
+	$(PILOTXFER) -p $(PILOT_PORT) -i $(PRODUCTS)
+
+$(BUILD):
+	mkdir -p $@
+
+# Optional e-book (Palm DOC) of ../MANUAL.md.
+$(BUILD)/iRogue-manual.pdb: ../../tools/make-irogue-manual.py ../../tools/make-kmoria-manual.py ../MANUAL.md | $(BUILD)
+	python3 -I ../../tools/make-irogue-manual.py ../MANUAL.md $@
 
 $(HANDERA_STAMP): $(wildcard $(HANDERA_SDK_INC)/*.h)
 	@mkdir -p compat/Handera
@@ -71,14 +83,14 @@ $(OBJS): $(HANDERA_STAMP)
 .c.s:
 	$(CC) $(CSFLAGS) $<
 
-$(TARGET).prc: $(TARGET) bin.stamp
-#	$(BUILDPRC) $(TARGET).prc $(APPNAME) $(APPID) $(TARGET) *.bin
-	$(BUILDPRC) $(TARGET).def $(TARGET) *.bin
+$(BUILD)/$(TARGET).prc: $(TARGET) bin.stamp | $(BUILD)
+	$(BUILDPRC) -o $@ $(TARGET).def $(TARGET) *.bin
 
 $(TARGET): $(OBJS) $(TARGET)-sections.ld
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(TARGET)-sections.ld
 
-bin.stamp: $(TARGET).rcp $(TARGET).pbm Font56.txt
+bin.stamp: $(TARGET).rcp $(TARGET)Rsc.h $(TARGET).pbm Font56.txt
+	-rm -f *.bin  # so resources removed from the .rcp leave the .prc too
 	$(PILRC) $(TARGET).rcp .
 	touch bin.stamp
 
@@ -102,7 +114,8 @@ clean:
 	-rm -rf compat
 
 veryclean: clean
-	-rm -f $(TARGET).prc pilot.ram pilot.scratch
+	-rm -rf $(BUILD)
+	-rm -f pilot.ram pilot.scratch
 
 # DO NOT DELETE
 

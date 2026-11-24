@@ -109,6 +109,11 @@ Boolean TopTen_Form_HandleEvent(EventPtr e)
       handled = true;
       break;
     case btn_dead_reviv:
+      if (get_file_count() == 0) {
+	SndPlaySystemSound(sndError); // nothing to restore
+	handled = true;
+	break;
+      }
       FrmPopupForm(RevivifyForm);
       handled = true;
       break;

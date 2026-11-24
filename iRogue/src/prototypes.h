@@ -316,6 +316,7 @@ void win() SEC_2;
 /* save.c  ok */
 void create_filecount_record();
 Short get_file_count();
+void md_free_list(Char **items, Short n);
 void delete_saved_rogue(Short filenum) SEC_1;
 Short get_next_saverec() SEC_1;
 void undisplay_saved_rogue() SEC_1;

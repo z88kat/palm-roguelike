@@ -98,11 +98,15 @@ void special_hit(object * monster)
   if (monster->m_flags1 & DROPS_LEVEL) {
     drop_level(monster);
   }
+  // A thief that steals disappears (and is freed), so stop there.
+  // (No thief has any of the attacks below.)
   if (monster->m_flags1 & STEALS_GOLD) {
     steal_gold(monster);
+    return;
   } else if (monster->m_flags1 & STEALS_ITEM) {
     /* Not sure this is working sufficiently "randomly"! */
     steal_item(monster);
+    return;
   }
   if (monster->m_flags1 & HUGS) {
     hug(monster);
@@ -1054,7 +1058,7 @@ void check_gold_seeker(object *monster)
 Boolean check_imitator(object *monster)
 {
   Char msg[80];
-  Char mn[16];
+  Char mn[18]; // the longest monster names are 16 chars
 
   if (monster && monster->m_flags1 & IMITATES) {
     wake_up(monster);

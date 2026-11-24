@@ -63,6 +63,19 @@ Boolean Map_Form_HandleEvent(EventPtr e)
     break;
 #endif
 
+  case keyDownEvent:
+    // Any key or 5-way press closes the map too, but not a 5-way release
+    // or the other virtual characters the system sends.
+    if ((e->data.keyDown.modifiers & commandKeyMask)
+	&& !((e->data.keyDown.chr == vchrNavChange
+	      || e->data.keyDown.chr == pageUpChr
+	      || e->data.keyDown.chr == pageDownChr)
+	     && (e->data.keyDown.keyCode & navBitsAll)))
+      break;
+    LeaveForm();
+    handled = true;
+    break;
+
   case penDownEvent:
     LeaveForm();
     handled = true;

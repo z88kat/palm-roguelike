@@ -422,7 +422,7 @@ static Boolean check_hunger(Boolean messages_only)
     rogue->moves_left -= (rogue->moves_left % 2);
   } else if (sotu->e_rings == 0) {
     rogue->moves_left--;
-  } else if (sotu->e_rings > 1) {
+  } else if (sotu->e_rings == 1) {
     /* a few rings: subtract 1.5 */
     rogue->moves_left--;
     (void) check_hunger(1); /* do all the message stuff again! */

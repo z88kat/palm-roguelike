@@ -50,4 +50,29 @@
 #include "prototypes.h"
 #include "globals.h"
 
+// Palm OS 5 devices (Tungsten C, T, E...) have a 5-way navigator that this
+// code predates. palmOne devices send Up/Down as vchrPageUp/Down with
+// navBit*/navChange* flags in keyCode, and Left/Right/Select (and every
+// release) as vchrNavChange; others send vchrRocker*. Values are from the
+// PalmOne SDK (palmOneChars.h, palmOneNavigator.h), which the 3.5 SDK lacks.
+#ifndef vchrNavChange
+#define vchrNavChange    0x0503
+#endif
+#ifndef navBitUp
+#define navBitUp         0x0001
+#define navBitDown       0x0002
+#define navBitLeft       0x0004
+#define navBitRight      0x0008
+#define navBitSelect     0x0010
+#define navBitsAll       0x001F
+#define navChangeBitsAll 0x1F00
+#endif
+#ifndef vchrRockerUp
+#define vchrRockerUp     0x0132
+#define vchrRockerDown   0x0133
+#define vchrRockerLeft   0x0134
+#define vchrRockerRight  0x0135
+#define vchrRockerCenter 0x0136
+#endif
+
 #endif

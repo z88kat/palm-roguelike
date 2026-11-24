@@ -196,10 +196,12 @@ void display_saved_rogue(Short filenum)
   index = (UInt) get_file_start(filenum, &ignore);
   index2 = index + 1;
   vh = DmQueryRecord(RogueDB, index);
+  if (!vh) return; // no such file
   p = MemHandleLock(vh);
   if (!p) return;
   load_sotu = (struct state_of_the_union *) p;
   vh2 = DmQueryRecord(RogueDB, index2);
+  if (!vh2) { MemHandleUnlock(vh); return; }
   p2 = MemHandleLock(vh2);
   if (!p2) { MemHandleUnlock(vh); return; }
   load_rogue = (fighter *) p2;
@@ -295,8 +297,9 @@ void kill_saved_rogue(UChar status, Short filenum)
   struct state_of_the_union *load_sotu;
   index = get_file_start(filenum, &ignore);
   vh = DmGetRecord(RogueDB, index);
+  if (!vh) return; // no such file
   p = MemHandleLock(vh);
-  if (!p) return; // error
+  if (!p) { DmReleaseRecord(RogueDB, index, false); return; } // error
   load_sotu = (struct state_of_the_union *) p;
   //status |= load_sotu->score_status;
   status |= (load_sotu->conduct & CONDUCT_FILESTATUS) >> 8;
@@ -322,6 +325,7 @@ UChar get_saved_rogue_status(Short filenum)
   UChar val = STATUS_ISDEAD;
   index = get_file_start(filenum, &ignore);
   vh = DmQueryRecord(RogueDB, index);
+  if (!vh) return val; // no such file, so may as well be dead
   p = MemHandleLock(vh);
   if (!p) return val; // error, so may as well be dead
   load_sotu = (struct state_of_the_union *) p;
@@ -502,6 +506,10 @@ static void load_character_objs(object * start, UInt *indexp, Short num)
   Short i;
   object *obj, *prev_obj;
 
+  // Throw away what's in the list now (the new game's starting pack, or
+  // the level being left), or it would stay, or leak, under the loaded
+  // objects.
+  free_stuff(start);
   prev_obj = start;
   for (i = 0 ; i < num ; i++) {
     vh = DmQueryRecord(RogueDB, (*indexp)); /* read-only, promise */
@@ -538,6 +546,10 @@ static void fix_verbed_objs(object *pack, fighter *rogue)
   object *obj;
   ULong ring_flag;
   Short i;
+  // forget what was in use before loading (those objects are gone)
+  rogue->armor = rogue->weapon = NULL;
+  for (i = 0 ; i < 8 ; i++)
+    rogue->rings[i] = NULL;
   obj = pack->next_object;
   while (obj) {
     switch(obj->what_is) {
@@ -783,6 +795,7 @@ void save_character(Short filenum)
     offset += sizeof(Boolean);
   }
   MemPtrUnlock(p);
+  DmReleaseRecord(RogueDB, index, true); // or it stays busy
 
   /* THAT IS ALL.  I think. */
 
@@ -1054,7 +1067,8 @@ void load_character(Short filenum)
 
 /****************************************************************************/
 
-Char ** snapshot_select_items;
+Char ** snapshot_select_items = NULL;
+static Short snapshot_select_count = 0;
 void snapshot_update_list(ListPtr lst, Boolean include_new)
 {
   // set the list stuff.
@@ -1071,9 +1085,13 @@ void snapshot_update_list(ListPtr lst, Boolean include_new)
 
   s = get_file_count();
   if (s >= MAX_SAVE_FILES) include_new = false; // Limit number of save files!
+  if (s == 0) include_new = false; // just "Autosave", which is new anyway
   s_items = (include_new) ? s + 1 : s;
+  if (s_items == 0) s_items = 1; // (callers don't restore with no files)
 
-  /* Hey!  Who's freeing this puppy? */
+  // Free the list from the last time (that form is long gone).
+  md_free_list(snapshot_select_items, snapshot_select_count);
+  snapshot_select_count = s_items;
   snapshot_select_items = (Char **) md_malloc(sizeof(Char *) * s_items);
   len = dateStringLength + 1 + timeStringLength + 1 + 10;
   if (len < 9) len = 9; // make sure to fit "autosave\0"
@@ -1129,6 +1147,7 @@ void snapshot_delete_listi(FormPtr frm, Short i)
   for (j = i+1 ; j < numitems ; j++)
     snapshot_select_items[j-1] = snapshot_select_items[j];
   numitems--;
+  snapshot_select_count = numitems;
 
   LstSetListChoices(lst, snapshot_select_items, numitems);  
   LstSetHeight(lst, (numitems > 10) ? 10 : numitems);

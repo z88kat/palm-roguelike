@@ -102,9 +102,10 @@ void usr_form_init(FormPtr frm, Word field_id, Char *source, Short max_size)
   FldSetTextHandle(fld, (Handle) 0);
   p = MemHandleLock(vh);
   //  StrNCopy(p, sotu->username, 30);
-  if (source)
+  if (source) {
     StrNCopy(p, source, max_size);
-  else
+    p[max_size] = '\0'; // StrNCopy doesn't, if source is that long
+  } else
     p[0] = '\0';
   MemHandleUnlock(vh);
   FldSetTextHandle(fld, (Handle) vh);
@@ -141,6 +142,20 @@ void usr_form_update(FormPtr frm, Word field_id, Char *target, Short max_size)
  PURPOSE:
  Allocate and lock a moveable chunk of memory.
 ****************************************************************/
+// Free a list of n strings made with md_malloc, and the list itself.
+void md_free_list(Char **items, Short n)
+{
+  Short i;
+  VoidHand h;
+  if (!items) return;
+  for (i = 0 ; i < n ; i++) {
+    if (items[i] && (h = MemPtrRecoverHandle(items[i])))
+      MemHandleFree(h);
+  }
+  if ((h = MemPtrRecoverHandle(items)))
+    MemHandleFree(h);
+}
+
 Char * md_malloc(Int n) {
   VoidHand h;
   VoidPtr p;

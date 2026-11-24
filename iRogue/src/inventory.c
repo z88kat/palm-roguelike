@@ -278,7 +278,7 @@ static void do_what_i_mean(FormPtr frm)
   case INV_READ:
     if (read_scroll(inventory_item, &more))
       reg_move();
-    if (more) {
+    if (more && sotu->roguep->pack.next_object) { // (anything left?)
       task = INV_IDENTIFY; // here we go again
       FrmPopupForm(InvSelectForm);
     }
@@ -568,6 +568,13 @@ static void specialize_labels(FormPtr frm, Short index)
   }
   deduce_task(index, &first, &fourth, &call);
   toggle_ring_buttons(frm, (first != INV_PUTON)); // wheeee!
+  // Deselect all the action buttons: CtlSetValue doesn't clear the rest
+  // of a group, and a hidden button left on (e.g. "call", from the item
+  // selected before) would still be the action Ok carries out.
+  for (i = pbtn_if_frob ; i <= pbtn_if_call ; i++) {
+    btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, i));
+    CtlSetValue(btn, 0);
+  }
   // set or hide the first button
   btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, pbtn_if_frob));
   CtlSetLabel(btn, specialized_labels[first]);
