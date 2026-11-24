@@ -73,19 +73,34 @@ HANDERA_STAMP = compat/Handera/.stamp
 ##CFLAGS = -Wall -g -O2 -I. -Icompat -palmos3.1 -DNON_INTERNATIONAL
 CFLAGS = -Wall -g -O2 -I. -Icompat -palmos3.5 -DNON_INTERNATIONAL -DI_AM_COLOR
 
-all: kMoria.prc kMoriaColorDB.pdb kMoria-manual.pdb
+# Everything to install on the device goes to ../build: the app, the
+# game-data database (a source file, copied) and the generated colour
+# scheme and manual.  Intermediate files (.o, .bin, ...) stay here.
+BUILD = ../build
+PRODUCTS = $(BUILD)/$(TARGET).prc $(BUILD)/kMoriaDB.pdb \
+           $(BUILD)/kMoriaColorDB.pdb $(BUILD)/kMoria-manual.pdb
 
-# Installs the app plus its required game-data database and colour scheme.
-install: kMoria.prc kMoriaColorDB.pdb kMoria-manual.pdb
-	$(PILOT_XFER) -p $(PILOT_PORT) -i kMoria.prc kMoriaDB.pdb kMoriaColorDB.pdb kMoria-manual.pdb
+all: $(PRODUCTS)
+
+# Installs the app plus its required game-data database, colour scheme
+# and manual.
+install: $(PRODUCTS)
+	$(PILOT_XFER) -p $(PILOT_PORT) -i $(PRODUCTS)
+
+$(BUILD):
+	mkdir -p $@
+
+# Required game data; made on a Palm by BuildDB/, so it is kept in src.
+$(BUILD)/kMoriaDB.pdb: kMoriaDB.pdb | $(BUILD)
+	cp $< $@
 
 # Optional colour scheme; enables Set > Preferences > Display > Color.
-kMoriaColorDB.pdb: ../../tools/make-kmoria-colors.py BuildDB/creaturenames.dat BuildDB/creature.dat
+$(BUILD)/kMoriaColorDB.pdb: ../../tools/make-kmoria-colors.py BuildDB/creaturenames.dat BuildDB/creature.dat | $(BUILD)
 	python3 -I ../../tools/make-kmoria-colors.py BuildDB $@
 
 # Optional e-book (Palm DOC): ../MANUAL.md plus the rules chapters of the
 # original Moria manual.
-kMoria-manual.pdb: ../../tools/make-kmoria-manual.py ../MANUAL.md MoriaManual/moria.txt
+$(BUILD)/kMoria-manual.pdb: ../../tools/make-kmoria-manual.py ../MANUAL.md MoriaManual/moria.txt | $(BUILD)
 	python3 -I ../../tools/make-kmoria-manual.py ../MANUAL.md MoriaManual/moria.txt $@
 
 $(HANDERA_STAMP): $(wildcard $(HANDERA_SDK_INC)/*.h)
@@ -104,13 +119,14 @@ $(OBJS): $(HANDERA_STAMP)
 	$(CC) $(CSFLAGS) $<
 
 
-$(TARGET).prc: $(TARGET) bin.stamp
-	$(BUILDPRC) $(TARGET).def $(TARGET) *.bin
+$(BUILD)/$(TARGET).prc: $(TARGET) bin.stamp | $(BUILD)
+	$(BUILDPRC) -o $@ $(TARGET).def $(TARGET) *.bin
 
 $(TARGET): $(OBJS) $(TARGET)-sections.ld
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(TARGET)-sections.ld
 
-bin.stamp: $(TARGET).rcp $(TARGET).pbm Font56.txt
+bin.stamp: $(TARGET).rcp $(TARGET)Rsc.h $(TARGET).pbm Font56.txt
+	-rm -f *.bin  # so resources removed from the .rcp leave the .prc too
 	$(PILRC) $(TARGET).rcp .
 	touch bin.stamp
 
@@ -131,7 +147,8 @@ clean:
 	-rm -rf compat
 
 veryclean: clean
-	-rm -f $(TARGET).prc pilot.ram pilot.scratch *.ld *.s
+	-rm -rf $(BUILD)
+	-rm -f pilot.ram pilot.scratch *.ld *.s
 
 # DO NOT DELETE
 

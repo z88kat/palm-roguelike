@@ -16,6 +16,11 @@ About box, Instructions and the "can't run" screens now point to
   github.com/z88kat/palm-roguelike instead of the old email/SourceForge.
 Tidied the About box: dropped the old Half-Dead Spider logo, centred the
   layout and added the release date after the version.
+License screen credits the v0.16 update; History now covers Moria's 2008
+  move to the GNU GPL, today's Umoria, and the 2026 revival.
+License now opens a scrolling text in the normal font instead of a screen
+  drawn in the tiny map font; the same text greets a new player.
+`make` now puts the .prc and .pdb files to install in kMoria/build/.
 New kMoria-manual.pdb: a Palm DOC e-book of MANUAL.md plus the rules
   chapters of the Moria manual, built by make.
 New, brighter colour scheme in kMoriaColorDB.pdb that reads on both the

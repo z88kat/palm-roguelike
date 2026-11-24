@@ -1036,9 +1036,6 @@ static Boolean ApplicationHandleEvent(EventPtr e)
 	case AboutForm:
 	    FrmSetEventHandler(frm, About_Form_HandleEvent);
 	    break;
-	case IntroForm:
-	    FrmSetEventHandler(frm, Intro_Form_HandleEvent);
-	    break;
 	case MapForm:
 	    FrmSetEventHandler(frm, Map_Form_HandleEvent);
 	    break;
@@ -1230,7 +1227,7 @@ void StartApp_helper()
   } else {
     re_init(); // we could be called by form_user.
     FrmGotoForm(CharRaceForm);
-    FrmPopupForm(IntroForm); // let's try this puppy out
+    FrmHelp(LicenseStr); // credits and license, on first run
   }
   return;
 }

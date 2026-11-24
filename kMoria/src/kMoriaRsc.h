@@ -243,7 +243,7 @@
 #define check_user_1     1475
 #define list_user        1477
 
-#define IntroForm            3019
+#define LicenseStr           3019
 #define AboutForm            3020
 #define btn_about_ok         3021
 #define bitmap_moria         3022

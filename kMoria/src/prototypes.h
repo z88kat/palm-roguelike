@@ -14,7 +14,6 @@
 // default section
 // forms
 Boolean About_Form_HandleEvent(EventPtr e) SEC_3;
-Boolean Intro_Form_HandleEvent(EventPtr e) SEC_3;
 Boolean Inv_Form_HandleEvent(EventPtr e) SEC_7;
 void invOrEqu_drop(Short item) SEC_7;
 void refill_lamp() SEC_7;

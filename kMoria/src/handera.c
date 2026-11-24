@@ -493,8 +493,6 @@ void PrvMoveForm(Boolean draw)
     PrvResizeList(frm, list_hwb_1, btn_hwb_ok, 0, 0);
     // (no need to remember the new size of the list) (no need to widen either)
     break;
-  case IntroForm:
-    break;
   case InvForm:
     PrvMoveObject(frm, btn_if_frob, 0, y_diff, draw);
     PrvMoveObject(frm, btn_if_drop, 0, y_diff, draw);

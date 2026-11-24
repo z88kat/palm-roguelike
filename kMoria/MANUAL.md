@@ -22,7 +22,7 @@ it is [`src/MoriaManual/moria.txt`](src/MoriaManual/moria.txt).
 
 ## Installing
 
-Install the first two files to the device or emulator. The others are
+Install the first two files to the device or emulator (`make` puts them all in `kMoria/build/`). The others are
 optional:
 
 | File | Purpose |

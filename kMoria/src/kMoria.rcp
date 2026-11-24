@@ -167,11 +167,6 @@ BEGIN
 	BUTTON "History" ID btn_about_credits AT (PrevRight+6 PrevTop 44 AUTO)
 END
 
-FORM ID IntroForm AT (0 0 160 160)
-USABLE
-BEGIN
-END
-
 
 FORM ID DeathForm AT (2 2 156 156)
 USABLE
@@ -840,16 +835,54 @@ STRING CreditStr "Moria has been around since 1983.  "\
 		"from _The Lord of the Rings_ by J.R.R. Tolkien.)  "\
 		"The game of Moria was created by Robert Alan Koeneke "\
 		"with assistants Jimmey Wayne Todd and Gary D. McAdoo.  "\
-		"It has many descendants.  "\
+		"It has many descendants, Angband among them.  "\
 		"kMoria is a port of Umoria 5.5.2 which is itself "\
 		"descended in varying degree from:\n"\
 		"UNIX Port a.k.a. Umoria 4.x (James E. Wilson),\n"\
 		"MSDOS Port (Don Kneller),\n"\
 		"BRUCE Moria (Christopher Stuart),\n"\
 		"Amiga Port (Corey Gehman).\n"\
-		"Umoria 5.5.x is maintained by David Grabiner.\n\n"\
+		"Umoria 5.5.x was maintained by David Grabiner.\n\n"\
 		"I, Bridget Spitznagel, ported it to PalmOS.\n"\
-		"Celebrimbor of Hollin drew these signs (no, not really)."
+		"Celebrimbor of Hollin drew these signs (no, not really).\n\n"\
+		"Later:\n"\
+		"In 2008 the free-moria project got the Moria authors "\
+		"to release their work as free software, and Umoria 5.6 "\
+		"came out under the GNU General Public License.  "\
+		"Umoria is still maintained (umoria.org).  kMoria is "\
+		"based on the earlier 5.5.2 and keeps its original "\
+		"terms; see License.\n\n"\
+		"In 2026 kMoria was revived as version 0.16 for current "\
+		"Palm OS devices and build tools: colour on the "\
+		"Tungsten C, the 5-way navigator, bump-to-open doors, "\
+		"tidier stores and a manual e-book.  "\
+		"Source and bug reports: "\
+		"github.com/z88kat/palm-roguelike"
+
+STRING LicenseStr "kMoria © 2000-02 Bridget Spitznagel.\n"\
+		"Moria © 1985-94 Robert Alan Koeneke, Jimmey Wayne Todd, "\
+		"James E. Wilson and others.\n\n"\
+		"CREDITS\n"\
+		"Designer and programmer of Moria: Robert Alan Koeneke\n"\
+		"Assistant programmers: Jimmey Wayne Todd, Gary D. McAdoo\n"\
+		"UNIX Port: James E. Wilson\n"\
+		"MSDOS Port: Don Kneller\n"\
+		"BRUCE Moria: Christopher Stuart\n"\
+		"Amiga Port: Corey Gehman\n"\
+		"Version 5.5: David J. Grabiner\n"\
+		"PalmOS Port: Bridget Spitznagel\n"\
+		"v0.16 update (2026): z88kat\n\n"\
+		"LICENSE\n"\
+		"Moria may be copied and modified freely as long as the "\
+		"above credits are retained.  No one who-so-ever may sell "\
+		"or market this software without the express written "\
+		"consent of the author Robert Alan Koeneke.\n\n"\
+		"kMoria comes with Absolutely No Warranty.  kMoria is "\
+		"freeware.  You can redistribute it and/or modify it "\
+		"(provided that this notice and the full credits are "\
+		"retained), but it CANNOT be distributed for profit.\n\n"\
+		"(Since 2008, Umoria 5.6 and later are free software "\
+		"under the GNU GPL; see History.)"
 
 STRING DeathStr "If you do not want to create a memo just press the "\
 		"Next Page button to go on.\n\n"\
