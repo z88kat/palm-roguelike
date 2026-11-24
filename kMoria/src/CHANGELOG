@@ -14,6 +14,12 @@ The "Big font" preference now defaults to off, so a new install starts
   with the small map font.
 About box, Instructions and the "can't run" screens now point to
   github.com/z88kat/palm-roguelike instead of the old email/SourceForge.
+Tidied the About box: dropped the old Half-Dead Spider logo, centred the
+  layout and added the release date after the version.
+New kMoria-manual.pdb: a Palm DOC e-book of MANUAL.md plus the rules
+  chapters of the Moria manual, built by make.
+New, brighter colour scheme in kMoriaColorDB.pdb that reads on both the
+  white and the Invert (black) background. Walls and @ stay plain.
 
 0.15 - for the next release
 ---------------------------

@@ -10,25 +10,27 @@ the stairs down. Death is permanent.
 
 This guide covers the Palm controls. For the rules of the game (stats,
 races, classes, combat, armour class, objects and the town), read the
-original Moria manual, which is included at
-[`src/MoriaManual/moria.txt`](src/MoriaManual/moria.txt). There is also a
-Palm DOC copy, `src/MoriaManual/moria-manual.pdb`, that you can read in a
-document reader on the device.
+original Moria manual. On the device, it is Part 2 of the **kMoria Manual**
+e-book (`kMoria-manual.pdb`, which also contains this guide). In the source,
+it is [`src/MoriaManual/moria.txt`](src/MoriaManual/moria.txt).
 
-> **Note:** The command tables in `moria.txt` are for the Unix game. kMoria
-> uses its own set of keys, listed below.
+> **Note:** The original manual's chapter on commands is for the Unix game,
+> and is left out of the e-book. kMoria uses its own set of keys, listed
+> below.
 
 ---
 
 ## Installing
 
-Install **both** files to the device or emulator:
+Install the first two files to the device or emulator. The others are
+optional:
 
 | File | Purpose |
 | --- | --- |
 | `kMoria.prc` | The game |
 | `kMoriaDB.pdb` | Game data: monsters, items, stores and so on. Without it the game won't start. |
 | `kMoriaColorDB.pdb` | *Optional.* Colour scheme. With it installed, turn on **Set ▸ Preferences ▸ Display ▸ Color**. |
+| `kMoria-manual.pdb` | *Optional.* This manual plus the Moria rules, as an e-book for a Palm DOC reader (AportisDoc, Palm Reader, CSpotRun, ...). |
 
 The game needs Palm OS 3.5 or later for colour. The Makefile can also build
 OS 2 and OS 3.1 versions. For building and running it in the emulator, see
@@ -48,7 +50,7 @@ OS 2 and OS 3.1 versions. For building and running it in the emulator, see
 5. Check the character summary, then tap **Done** to enter the town.
 
 Mages cast spells using Intelligence. Priests (and Paladins) pray using
-Wisdom. Rangers use mage spells. Section 2 of `moria.txt` explains what
+Wisdom. Rangers use mage spells. Chapter 2 of the Moria manual explains what
 each race and class is good at.
 
 ---
@@ -79,8 +81,8 @@ yourself with **Next sector** (`-`) or open the whole-level **Map** (`M`).
 | `-` / `_` | Wand / staff | `[ ( ] )` | Armour / shield |
 | `\| \ /` | Weapons | `} {` | Bows / ammo |
 
-Letters are monsters. For example, `B` is the Balrog. Section 4 of
-`moria.txt` has the full list. To check what something is in the game, use
+Letters are monsters. For example, `B` is the Balrog. Chapter 4 of the
+Moria manual has the full list. To check what something is in the game, use
 **What's that?** (`/`) and then tap the symbol.
 
 The town shops are: **1** General Store, **2** Armoury, **3** Weaponsmith,
@@ -347,7 +349,7 @@ Some buttons always do the same thing on certain screens:
   so the game starts with the small font, which shows more of the map.
 - **Sound.**
 - **Invert.** White text on a black background.
-- **Color.** Only on colour devices.
+- **Color.** Only on colour devices with `kMoriaColorDB.pdb` installed. The colours read on both the white and the Invert (black) background; walls and you (`@`) are drawn in the plain text colour.
 - **Stats at top of screen.**
 - **Highlight/notice mineral seams.** Shows soft rock as `%` and hard rock
   as `#`.

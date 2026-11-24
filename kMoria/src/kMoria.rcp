@@ -30,7 +30,6 @@ ICON ID 2002 "kMoriaLargeInv.bmp"
 //largeInvertedIconBW
 
 BITMAP ID bitmap_moria "kMoria.bmp"
-BITMAP ID bitmap_cat   "hdse.bmp"
 
 // used in Main menu
 BITMAP ID bmp_cmd_map "cmd_map.bmp"
@@ -156,18 +155,16 @@ HELPID AboutStr
 DEFAULTBTNID btn_about_ok
 BEGIN
 	TITLE "About kMoria"
-	FORMBITMAP AT (8 19) BITMAP bitmap_cat
-	FORMBITMAP AT (98 15) BITMAP bitmap_moria
-	LABEL "kMoria v0.16" AUTOID AT (90 40)
-	LABEL "Based on" AUTOID AT (PrevLeft-6 PrevTop+11)
-	LABEL "Moria 5.5.2" AUTOID AT (PrevLeft PrevTop+11)
+	FORMBITMAP AT (62 20) BITMAP bitmap_moria
+	LABEL "kMoria v0.16  (24 Nov 2026)" AUTOID AT (Center 57) FONT 1
+	LABEL "Based on Moria 5.5.2" AUTOID AT (Center PrevTop+12)
 
-	LABEL "Bugs?  Report them at:" AUTOID AT (Center 95)
+	LABEL "Bugs?  Report them at:" AUTOID AT (Center 92)
 	LABEL "github.com/z88kat/" AUTOID AT (Center PrevTop+11)
 	LABEL "palm-roguelike" AUTOID AT (Center PrevTop+11)
-	BUTTON "Done" ID btn_about_ok AT (5 141 35 AUTO)
-	BUTTON "License" ID btn_about_more AT (50 141 AUTO AUTO)
-	BUTTON "History" ID btn_about_credits AT (PrevRight+10 141 AUTO AUTO)
+	BUTTON "Done" ID btn_about_ok AT (6 139 44 AUTO)
+	BUTTON "License" ID btn_about_more AT (PrevRight+6 PrevTop 44 AUTO)
+	BUTTON "History" ID btn_about_credits AT (PrevRight+6 PrevTop 44 AUTO)
 END
 
 FORM ID IntroForm AT (0 0 160 160)
@@ -824,7 +821,7 @@ END
 
 
 
-STRING AboutStr "kMoria version 0.16\n"\
+STRING AboutStr "kMoria version 0.16 (24 Nov 2026)\n"\
                 "© 2000 Bridget Spitznagel, James Wilson, Robert Koeneke.\n"\
                 "This program was derived "\
                 "from UMoria 5.5.2.\n\n"\

@@ -18,9 +18,9 @@ Monsters get the colour of their map letter, then a colour word in their
 name ("Red", "Grape", ...) overrides it, the same rules as kMoriaUtil's
 "Things->Creatures" and "Colors->Creatures" buttons.
 
-The scheme is tuned for the default white background. Pure black and white
-are never used, so kMoria's black/white swap for the "Invert" background
-never applies; it stays readable there, if a little dark.
+The colours are vivid but dark enough to read on the default white
+background, and light enough for the black one (Preferences > Invert).
+Black and white swap with the background.
 
 Usage: make-kmoria-colors.py <kMoria/src/BuildDB> <output.pdb>
 """
@@ -45,55 +45,72 @@ def palm_index(rgb):
     of 33), split in two halves by blue: entries 0-107 have blue FF/CC/99 and
     108-215 have blue 66/33/00. Within a half, red is the outer loop, then
     blue, then green. (Read from the Tungsten C ROM's palette table; entry 215
-    is 111111 rather than black, which lives at 230+.)
+    is 111111 rather than black, which lives at 230-255.)
     """
     r, g, b = ((rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF)
     for c in (r, g, b):
         if c % 0x33:
             raise ValueError(f"{rgb:06X} is not a palette-cube colour")
     if rgb == 0:
-        raise ValueError("use 333333; pure black is not in the cube")
+        return 255  # black: 230-255 are all black; kMoria swaps it to white
+                    # on the black background
     ri, gi, bi = ((0xFF - c) // 0x33 for c in (r, g, b))
     return (bi // 3) * 108 + ri * 18 + (bi % 3) * 6 + gi
 
 
-# Named colours, readable on a white background.
+# Vivid colours that read on both backgrounds: every one has about 3:1 or
+# better contrast against white and against black (Preferences > Invert),
+# so there are no yellows, limes or pastels, which vanish on white.
+# Pink, violet and hot pink come from the "Cyber Vibes" palette
+# (colormagic.app); its yellow and turquoise are darkened to gold and teal.
+RED, BRIGHT_RED, ORANGE, RED_ORANGE = 0xFF3333, 0xFF0000, 0xFF6600, 0xFF3300
+AMBER, GOLD, BROWN, COPPER = 0xCC6600, 0xCC9900, 0x996633, 0xCC6633
+OLIVE, LEAF, GREEN, SEA = 0x669900, 0x339900, 0x009900, 0x009966
+TEAL, CERULEAN, SKY, BLUE = 0x009999, 0x0099CC, 0x0099FF, 0x0066FF
+PERIWINKLE, LAVENDER, PURPLE, VIOLET = 0x6666FF, 0x9966FF, 0x9933FF, 0xCC00FF
+PINK, HOT_PINK, ROSE = 0xFF00CC, 0xFF0099, 0xFF3366
+GREY, SLATE = 0x999999, 0x666699
+WHITE = 0xFFFFFF  # kMoria shows white as black on a white background
+BLACK = 0x000000  # ... and black as white on a black background
+
+# Named colours, used for monsters with a colour word in their name.
 NAMED = {
-    "Black": 0x333333, "Blue": 0x0000FF, "Brown": 0x996633,
-    "Clear": 0x66CCCC, "Green": 0x009900, "Grey": 0x666666,
-    "Purple": 0x9900CC, "Red": 0xFF0000, "Silver": 0x999999,
-    "White": 0x999999, "Yellow": 0xCC9900,
+    "Black": BLACK, "Blue": BLUE, "Brown": BROWN,
+    "Clear": CERULEAN, "Green": GREEN, "Grey": GREY,
+    "Purple": VIOLET, "Red": BRIGHT_RED, "Silver": 0x9999CC,
+    "White": WHITE, "Yellow": GOLD,
 }
 
-DEFAULT = 0x333333  # anything not listed below
+DEFAULT = BLACK  # anything not listed below
 
 SYMBOLS = {
-    # dungeon features
-    '#': 0x666666, '%': 0x996633, ':': 0x999999, ';': 0x666666,
-    '.': 0x999999, "'": 0x993300, '+': 0x993300, '^': 0xFF0000,
-    '<': 0x0000FF, '>': 0x0000FF, '@': 0x333333,
-    '1': 0x006699, '2': 0x006699, '3': 0x006699,
-    '4': 0x006699, '5': 0x006699, '6': 0x006699,
+    # dungeon features: plain walls (black, or white when inverted),
+    # a dim floor
+    '#': BLACK, '%': 0x6633CC, ':': 0x9966CC, ';': 0x6666CC,
+    '.': 0x9999CC, "'": BROWN, '+': BROWN, '^': BRIGHT_RED,
+    '<': BLUE, '>': BLUE, '@': BLACK,
+    '1': TEAL, '2': TEAL, '3': TEAL,
+    '4': TEAL, '5': TEAL, '6': TEAL,
     # objects
-    '!': 0xCC00CC, '?': 0x996600, '=': 0xCC9900, '"': 0xCC9900,
-    '$': 0xCC9900, '*': 0x00CCCC, '-': 0x6633CC, '_': 0x996633,
-    '|': 0x666699, '\\': 0x666699, '/': 0x666699, '}': 0x996633,
-    '{': 0x666699, '[': 0x666666, '(': 0x996633, ']': 0x666666,
-    ')': 0x666666, ',': 0x009900, '&': 0x996633, '~': 0xFF9900,
+    '!': PINK, '?': SEA, '=': GOLD, '"': GOLD,
+    '$': GOLD, '*': SKY, '-': VIOLET, '_': PURPLE,
+    '|': PERIWINKLE, '\\': PERIWINKLE, '/': PERIWINKLE, '}': PERIWINKLE,
+    '{': PERIWINKLE, '[': SLATE, '(': COPPER, ']': SLATE,
+    ')': SLATE, ',': GREEN, '&': AMBER, '~': ORANGE,
     # monsters, by letter
-    'a': 0x993300, 'A': 0x996633, 'b': 0x663300, 'B': 0xFF0000,
-    'c': 0x996600, 'C': 0x00CCCC, 'd': 0x009900, 'D': 0xCC0000,
-    'e': 0x9900CC, 'E': 0xFF6600, 'f': 0x009900, 'F': 0x669900,
-    'g': 0x996633, 'G': 0x6666CC, 'h': 0xCC6600, 'H': 0x993300,
-    'i': 0x669966, 'I': 0x666600, 'j': 0x9933CC, 'J': 0x9933CC,
-    'k': 0x009966, 'K': 0x663300, 'l': 0x999966, 'L': 0xCC00CC,
-    'm': 0x669900, 'M': 0x999966, 'n': 0x339966, 'o': 0x996633,
-    'O': 0x669933, 'p': 0x0033CC, 'P': 0x993300, 'q': 0x990099,
-    'Q': 0xCC0066, 'r': 0x996633, 'R': 0x339933, 's': 0x999999,
-    'S': 0x660066, 't': 0x666633, 'T': 0x336633, 'U': 0x663300,
-    'v': 0x6666CC, 'V': 0x990000, 'w': 0x996666, 'W': 0x666699,
-    'X': 0x666666, 'y': 0x996600, 'Y': 0x6699CC, 'z': 0x669966,
-    'Z': 0x996633,
+    'a': ORANGE, 'A': RED_ORANGE, 'b': PURPLE, 'B': SKY,
+    'c': OLIVE, 'C': AMBER, 'd': GREEN, 'D': RED,
+    'e': PINK, 'E': CERULEAN, 'f': GOLD, 'F': OLIVE,
+    'g': PERIWINKLE, 'G': LAVENDER, 'h': COPPER, 'H': ROSE,
+    'i': 0x339933, 'I': OLIVE, 'j': TEAL, 'J': GREEN,
+    'k': LEAF, 'K': ORANGE, 'l': BROWN, 'L': VIOLET,
+    'm': OLIVE, 'M': GREY, 'n': SEA, 'o': GOLD,
+    'O': AMBER, 'p': SKY, 'P': RED_ORANGE, 'q': ROSE,
+    'Q': PINK, 'r': BROWN, 'R': GREEN, 's': GREY,
+    'S': VIOLET, 't': CERULEAN, 'T': 0x339966, 'U': RED,
+    'v': CERULEAN, 'V': HOT_PINK, 'w': 0xFF3399, 'W': LAVENDER,
+    'X': 0x999966, 'y': GOLD, 'Y': 0x6699CC, 'z': 0x669933,
+    'Z': TEAL,
 }
 
 
@@ -125,9 +142,9 @@ def build_colors(monsters):
                     col = named[COLOR_NAMES.index(base)]
                     break
         if name == "Creeping Copper Coins":
-            col = palm_index(0xCC6633)
+            col = palm_index(COPPER)
         if name == "Creeping Gold Coins":
-            col = palm_index(0xCC9900)
+            col = palm_index(GOLD)
         mon.append(col)
     return bytes(mon + sym + named)
 

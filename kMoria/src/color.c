@@ -64,6 +64,10 @@ IndexedColorType get_color(Char c, Short x, Short y)
   }
 
   // be helpful...
+  // Indexes 230-255 of the 8-bit system palette are all black; treat any
+  // of them as black, whichever one WinRGBToIndex picked.
+  if (mycol >= 230)
+    mycol = black;
   if (mycol == black && my_prefs.black_bg)
     mycol = white;
   else if (mycol == white && !my_prefs.black_bg)
