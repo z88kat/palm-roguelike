@@ -1,0 +1,371 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>What's new in kMoria</title>
+
+<style type="text/css" media="screen">@import "../3col.css";</style>
+
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>kMoria status</h1>
+</div>
+
+
+<div class="content">
+  <h2>What's new in the current version?</h2>
+
+      <p> The current version of kMoria is: <b>0.16</b> (November 2026),
+the first new version since 0.15 in March 2002.  Its source is on
+<a href="https://github.com/z88kat/palm-roguelike">GitHub</a>, together
+with the <a href="https://github.com/z88kat/palm-roguelike/blob/main/kMoria/MANUAL.md">player's
+manual</a> and the
+<a href="https://github.com/z88kat/palm-roguelike/blob/main/kMoria/src/CHANGELOG">full
+change log</a>.  <a href="download.php">Download kMoria 0.16 here</a>.
+Found a bug?  Please
+<a href="https://github.com/z88kat/palm-roguelike/issues">report it on
+GitHub</a>.</p>
+
+<p><i>(What this page said in 2002, about 0.15: "This page will be a
+little better written when the game is a little more stable.  (If you
+believe that, I have a bridge to sell you)  The current version is
+essentially complete but may still have <b>serious bugs</b>.")</i></p>
+
+<h2>Changes</h2>
+<p> what's new in 0.16 since 0.15: </p>
+<ul>
+<li> <b>Colour out of the box.</b>  A new, brighter colour scheme,
+  kMoriaColorDB.pdb, that reads on both the white and the Invert (black)
+  background; walls and the @ stay plain.  Install it with the game, turn
+  on Color in Preferences, and change any colour you like with
+  <a href="color.php">kMoriaUtil</a> as before.
+<li> Walking into a closed door opens it, instead of just telling you it's
+  in the way.  A locked door gets an attempt to pick the lock.
+<li> Stores list their stock as an Item | Gold table, one row per item, with
+  the selected item's full name and weight below it.  (The store's
+  Options &gt; Compact? item is gone: it is always one row now.)
+<li> New "Here &gt; Stay in place" menu item for the "." command (wait a
+  turn), and "." is countable: "20." waits 20 turns.
+<li> The 5-way navigator on Palm OS 5 devices (Tungsten C and others)
+  walks north, south, west and east; the plain Up/Down buttons of older
+  Palms walk north and south unless you rebind them.
+<li> The "Big font" preference starts off, so a new install shows more of
+  the map in the small font.
+<li> Tidier About box, a License screen in the normal font (it also greets
+  a new player), a History screen that covers Moria's 2008 move to the GNU
+  GPL and today's Umoria, and Instructions that point to GitHub instead
+  of the old email address and SourceForge site.
+<li> A player's manual, kMoria-manual.pdb: a Palm DOC e-book of the
+  manual plus the rules chapters of the Moria manual.
+<li> Fixed bug: the store's menu fell through into the pen-tap handler.
+</ul>
+
+<p> what's new in 0.15 since 0.14: </p>
+<ul>
+<li> Fixed the 'recall' bug, you now remember multiple attack types properly.
+<li> Added hardware button bindings
+<ul>
+  <li> in 'look' form: up/down for next, datebook/address to recall (when
+    applicable), todo/memopad to exit
+  <li> in 'recall' form: down for next (also up/down to scroll),
+    datebook/address/todo/memopad to exit
+</ul>
+<li> Fixed map bug that could crash non-color devices in an inverted map
+ screen.
+<br>  ...However this causes a new problem: on some Sony device the code in
+  display.c to print inverted characters in the dungeon doesn't invert now
+  (the stats area still inverts ok)
+<li> You can exchange ('x') really-long-name weapons without crashing now.
+<li> Increased max count to 999 (default for auto-repeat commands is still 99)
+  and reduced the delay.
+<li> hjklyubnHJLKYUBN is "countable", so you should be able to say "20h" now;
+  "20h" is just like "H", except that it will run for at most 20 paces.
+<li> You can write the first letter of inventory buttons (e=eat, ..., D=Done)
+  after an item has been selected.  It is case-sensitive.
+<li> New save databases will be hotsynced by default.
+<li> New hardware button binding, "RUN", will toggle caps-lock.
+<li> "Shift" will make hjkl-bound buttons into HJKL-bound (i.e. you run).
+  You can write a shift or capslock using graffiti, or use a RUN button.
+<li> kMoria will now checkpoint the save file every 200 turns (if you are
+  not resting; 2000 turns if you are resting a whole lot).
+<br>  If any repeated action is ongoing, it will be interrupted for the
+  save and then restarted where it left off; this seems to be working
+  but if you notice any odd behavior, please report it.
+<li> Monsters/objects should compact properly now when there are too many.
+  (This _may_ fix the crashes experienced when farming.  Let me know.)
+</ul>
+
+<p> what's new in 0.14 since 0.13: </p>
+<ul>
+  <li> Handera users can now experience an entirely new set of bugs!
+  (The Handera support has been tested only on the POSE emulator, not on
+  the real thing.  Be wary and please report any problems.)
+      <ul>
+    <li> kMoria uses Handera's small font for the small font.
+    <li> The virtual Graffiti area can be frobbed to expand the screen.
+    <li> Write 'R' to rotate the display...
+	<ul>
+      <li> The Rotation command is available in the main screen only.
+      <li> The character generation screen reverts to 0-degree rotation.
+	  </ul></ul>
+<li> Preferences screen is rearranged into 2 parts, "display" and "moving",
+  with three new preferences (initially set to "maintain status quo").
+          <ul>
+    <li> new preference to turn off animations for missiles/spells
+      (Doesn't affect animation of breath attacks; should it?)
+    <li> new preference to prompt for user when kMoria starts up
+      (for multi-user Palms; like tapping Menu->Set->User immediately)
+    <li> new preference to select most recent user when kMoria starts up,
+      or just highlight the most recent one if prompt-for-user is on
+      </ul>
+<li> Keyboard users: in the Map screen, type '@' to tap on the @ button.
+<li> Added/removed a couple of main-menu shortcuts.  Added 'g' to menu.
+<li> Some more of the bugs introduced with the 'g' command are cleaned up:
+          <ul>
+    <li> hardware buttons should work for directional commands
+      (e.g. opening/closing doors)
+    <li> detect-{monsters,invisible,evil} message should clear properly.
+    <li> what's-that command (/) should work.
+    <li> move-by-tapping and nondirectional spells can be "again"ed.
+	          </ul>
+ <li> When you die you now get "--more--" before the tombstone screen,
+so that it comes as less of a shock.
+</ul>
+
+<p> what's new in 0.13 since 0.12: </p>
+<ul>
+<li> Arrow keys (on keyboard) will work for directional commands such as
+  opening doors; this was a new bug in 0.12.
+<li> Repeated commands (e.g. tunnelling into granite) can be interrupted
+  by keyboard now, no need to tap screen.  The keypress is discarded.
+<li> In the Learn Spell form, keyboard users can select spells by letter,
+  similar to the spell casting form.
+<li> Donut-circles (that third Preference to draw targeting circles on
+  the dungeon, which has been mostly broken since 0.09 or earlier)
+  should be less dysfunctional now, even with relative-move turned on.
+</ul>
+
+<p> what's new in 0.12 since 0.11: </p>
+<ul>
+<li> I have changed the application icon.  Is it cooler or lamer?
+<li> Winning should work now.  Let me know if you get that far, eh.
+<br>  Caveat #1: if a winner is killed before retiring, he is no longer a winner.
+<br>  Caveat #2: if you exit between retiring and top-ten, score is not recorded.
+<li> There's a new command 'g' for "again".  It can be bound to a button.
+<br>  This command will repeat whatever you just did, for example,
+  casting a magic missile to the southeast, or forcing a door to the west.
+<li> The spell book does not wait for you to press Return after you
+  write a letter to select a book or a spell.  This is for the benefit
+  of keyboard users.  (I hope graffiti users do not mind.  There is
+  some danger of typos if you select a spell by graffiting a letter.)
+<li> In color, the /M map foreground and background colors now match the
+  colors that you've assigned for the regular dungeon screen.
+<li> The message log is somewhat longer.
+<li> Level-changing messages print _during_ the dungeon level creation,
+  in the middle of the screen, as opposed to when you land.
+<li> The delay for repeated commands is reduced.
+<li> You can set the Backup bit for the save-database(s).  Go to the
+  User selection screen (in the Set menu).  Select a database.
+  Tick the checkbox that says "Hotsync?" and the database should be
+  backed up whenever you hotsync.
+<li> The Haggle form is now keyboard friendly, I hope.  You can start
+  typing numbers and the field will grab focus.  "Enter" and + or -
+  should do reasonable things too.
+<li> You might be able to beam cash - I haven't tested it yet, so probably NOT.
+<li> I know, I was going to add Handera 330 support, but I haven't yet.
+<br>  (I have to finish fixing all the things I broke for the above first.)
+<li> The "Known bugs still in 0.11" below are still here too.
+</ul>
+
+<p> what's new in 0.11 since 0.10: </p>
+<ul>
+<li> Fixed bugs
+<ul>
+<li> fixed the (oops) Chunk-Overlocked bug from the previous version.
+</ul>
+<li> Known bugs still in 0.11
+<ul>
+<li> Repeated commands are not interrupted by keyboard keypresses
+  (polling for system events doesn't work.)  You have to tap the screen.
+<li> Haven't tried to fix the donut-circles preference yet.
+<li> Keyboard shortcuts: not well documented; some forms still don't have them.
+</ul>
+<li> Two new options in the 'Set' menu (on the far right): "Beam", "User"
+  <ul>
+  <li> "Beam" will give you several choices:
+      <ul>
+     <li> kMoria can beam itself (including kMoriaDB.pdb).  how viral!
+     <li> kMoria can beam your top score to another Palm!
+        (the top-scores list has been moved into its own database
+        and 'rank' is reverse-video if that score was beamed to you.)
+     <li> kMoria can beam an object from your inventory to another Palm!
+     <li> If you are going to beam an object (or score) to a friend, he/she
+       <b>must</b> be "in" kMoria at that time (and it would be a really good
+       idea for you to both have the <i>same version</i> of kMoria).
+       Otherwise the object will just get lost in hyperspace..
+      </ul>
+  <li> "User": you can have several concurrent save databases, for friends.
+     kMoria will always start out on "your" save database; before you hand
+     it to a friend, go to "User", and either tap "New" to start a new
+     database, or else select the friend's database and tap "Ok".
+     (Warning: kMoria currently has no facility for deleting the databases.)
+</ul>
+<li> other New Features
+<ul>
+<li> 'rest' form buttons are bound to the 4 app buttons (datebk = 0,
+... memo = Max)
+<li> Item weight is displayed in stores (thanks to dan_van)
+<li> 'Show time' menu item will show current date/time and battery voltage
+	(so you never need to leave)
+<li> arrow keys act like 'hjkl' for stowaway keyboard users
+<li> the button bound to 'map' will also exit from 'map'.
+</ul>
+</ul>
+
+<p> what's new in 0.10 since 0.09: </p>
+<ul>
+<li> This is primarily a bug-fix release.  Fixes the "doesn't recognize
+ that you don't <b>have</b> a saved character" <i>eek-eek-eek</i>-fatal-error
+ bug introduced in kMoria 0.09.
+<li> Really minor feature: the Your Stats screen should now highlight
+any stat (Str, Int, etc) that needs a restoring potion.
+<li>Source code for [unsupported] pdb&lt;--&gt;umoria save file converter
+    (in the source distribution)
+<li>[Forgot to update version in the 0.10 About screen: still says 0.09]
+</ul>
+<p> what's new in 0.09 since 0.08: </p>
+<ul>
+  <li> You <b>must</b> install the new kMoriaDB.pdb when upgrading to
+      0.09 (I shuffled some const data around).
+  <li> Fixed bugs
+      <ul>
+	<li>The stone-to-mud monster-killing crash.
+	<li>Directional prayers are fixed (used to take 2 turns, now take 1).
+	<li>Command-bar bug (for OS 3.5) fixed; icons added.
+	<li>Fixed the message for wielding something when already
+wielding cursed weapon.  (It was garbled, and on top of that, said you
+were wearing the weapon.)
+	<li>The Repeat count is cleared when you interrupt the command
+that is repeating (like if you are searching 99 times and decide to
+abort).
+	<li>Stats update should be a little smarter (maybe now it is
+too lazy though?)  When in large print, it should update only the items
+that have changed; small print is not smarter yet and may be flickery
+in combat.
+	<li>Kyocera users have reported problems with small font in
+the three games.  Font ID is increased in this version, maybe this
+will magically fix it (or maybe green monkeys will fly out of my
+serial cradle).  If you have a Kyocera, let me know if this helps.
+	    
+      </ul>
+  <li> New features
+      <ul>
+	<li> Color.  Install and <a href="color.php">use
+kMoriaUtil</a> to set the colors - then turn on the Color checkbox
+which should then appear in Prefs.
+<li> Invert (more or less working, not completely beautiful)
+<li> "Open door", "font", etc. can now be bound to hardware buttons too
+    (via the existing menu item)
+<li> When casting a spell you can hit one of the 4 app buttons to
+select one of your (up to 4) spellbooks, in that order.
+<li> You can assign hardware buttons to any of the spells (via a new menu item)
+<li> You can set some of the repeatable commands to autorepeat (via a new menu item)
+      </ul>
+</ul>
+
+<p> what's new in 0.08 since 0.07:  Not much </p>
+<ul>
+<li>
+  As you know, kMoria crashes sometimes, leaving the save file in an inconsistent
+  state.  kMoria is now able to detect this, and if you crashed, it will
+  ask whether you want to delete the character or try to recover it;
+  recovering will send you back to the town.  This fix has been tested
+  on a live Palm IIIc this morning (with "crashes" provoked by the
+  reset button) so hopefully it will actually work in general.
+<br>
+  This is a quick-fix; a recovered character may still be screwy.
+  If you encounter an unknown problem, let me know (while you are
+  telling me what happened before kMoria crashed in the first place :)
+    <br>
+     Known problem: If you added n items to your inventory since the
+     last save before you crash and recover, the last n items (which
+     are probably not the same items!) in inventory are lost.
+
+
+<li> Fixed 'enchant armor' bug that could cause first item in inventory
+  to be corrupted (or uncursed, depending on the item type).
+
+<li> When you are selecting a spell/prayer to cast, current mana is
+  shown at bottom right of screen.
+</ul>
+
+
+<p> what was new in 0.07 (since 0.06): </p>
+
+<ul>
+<li><b>Fixed Bugs</b>
+<ul>
+  <li>   Fixed the export-dead-character-to-memo bug; should be safe to export now.
+  <li>   Fixed crosshairs for directional spells - they were appearing "too late".
+  <li>   Made hit points 'usually' not get overwritten by graffiti state indicator.
+  <li>   Made directional acts print the verb that you're targeting, e.g. "Throwing"
+  <li>   Plugged some memory leaks in store, inventory, equipment, and invselect.
+  <li>   Twiddled the store form in a few ways:
+      <ol>
+	<li> When the store is "full", the last screen says so.
+	<li> Made the "You have" "You've sold" (in haggling form) word-wrapped.
+	<li> Tweaked the truncation of item names in store list.
+      </ol>
+  <li>   Fixed look-at so the dungeon is always drawn up at the top.
+</ul>
+<li><b>New Features</b>
+<ul>
+  <li>   Tap the [@] button in the Map to make your position flash briefly.
+  <li>   Write a letter after '/' command, to recall ALL monsters that look like it.
+      <br>e.g. write the two characters '/' 'J' to see all known kinds of Jelly.
+  <li>   When recalling monsters, there's a new menu item to clear your "memory".
+      <br>(recall any monster; tap Menu and Amnesia to start with a blank slate.)
+</ul>
+</ul>
+
+<a name="05"></a>
+<p> what was new in 0.06 (since 0.05): </p>
+<ul>
+  <li>Counted commands (like rest) can be interrupted now, tap the screen.
+  <li>Directional commands with pie slices should now redraw properly always.
+  <br> (except they're now screwed up for spells and get drawn too late.)
+  <li>Fixed bug that sometimes didn't draw a new dungeon level.
+  <li>When you ascend/descend, the event queue is flushed on general principle.
+  <li>Going back from screen 0 in a shop should not produce empty screen now.
+  <li>Hardware buttons that are bound stay disabled in all Forms.
+  <li>Running will stop before hitting a stationary creature (but it can hit you).
+  <li>Made "HJKLYUBJN" run instead of walk, and other keyboard-friendly things.
+  <li>Fixed bug so that selling an unknown thing to store makes it known.
+  <li>[Checked what the amulet of resist acid is supposed to do.  it's not a bug.]
+</ul>
+
+
+
+
+
+</div>
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+</body>
+</html>

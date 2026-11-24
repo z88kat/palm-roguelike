@@ -20,15 +20,51 @@
 <div class="content">
   <h2>What's new in the current version?</h2>
 
-      <p> The current version of kMoria is: 0.15 </p>
+      <p> The current version of kMoria is: <b>0.16</b> (November 2026),
+the first new version since 0.15 in March 2002.  Its source is on
+<a href="https://github.com/z88kat/palm-roguelike">GitHub</a>, together
+with the <a href="https://github.com/z88kat/palm-roguelike/blob/main/kMoria/MANUAL.md">player's
+manual</a> and the
+<a href="https://github.com/z88kat/palm-roguelike/blob/main/kMoria/src/CHANGELOG">full
+change log</a>.  <a href="download.html">Download kMoria 0.16 here</a>.
+Found a bug?  Please
+<a href="https://github.com/z88kat/palm-roguelike/issues">report it on
+GitHub</a>.</p>
 
-<p> This page will be a little better written when the game is a
-little more stable.  (If you believe that, I have a bridge to sell you) </p>
-
-<p> The current version is essentially complete but may still have
-<b>serious bugs</b>. </p>
+<p><i>(What this page said in 2002, about 0.15: "This page will be a
+little better written when the game is a little more stable.  (If you
+believe that, I have a bridge to sell you)  The current version is
+essentially complete but may still have <b>serious bugs</b>.")</i></p>
 
 <h2>Changes</h2>
+<p> what's new in 0.16 since 0.15: </p>
+<ul>
+<li> <b>Colour out of the box.</b>  A new, brighter colour scheme,
+  kMoriaColorDB.pdb, that reads on both the white and the Invert (black)
+  background; walls and the @ stay plain.  Install it with the game, turn
+  on Color in Preferences, and change any colour you like with
+  <a href="color.html">kMoriaUtil</a> as before.
+<li> Walking into a closed door opens it, instead of just telling you it's
+  in the way.  A locked door gets an attempt to pick the lock.
+<li> Stores list their stock as an Item | Gold table, one row per item, with
+  the selected item's full name and weight below it.  (The store's
+  Options &gt; Compact? item is gone: it is always one row now.)
+<li> New "Here &gt; Stay in place" menu item for the "." command (wait a
+  turn), and "." is countable: "20." waits 20 turns.
+<li> The 5-way navigator on Palm OS 5 devices (Tungsten C and others)
+  walks north, south, west and east; the plain Up/Down buttons of older
+  Palms walk north and south unless you rebind them.
+<li> The "Big font" preference starts off, so a new install shows more of
+  the map in the small font.
+<li> Tidier About box, a License screen in the normal font (it also greets
+  a new player), a History screen that covers Moria's 2008 move to the GNU
+  GPL and today's Umoria, and Instructions that point to GitHub instead
+  of the old email address and SourceForge site.
+<li> A player's manual, kMoria-manual.pdb: a Palm DOC e-book of the
+  manual plus the rules chapters of the Moria manual.
+<li> Fixed bug: the store's menu fell through into the pen-tap handler.
+</ul>
+
 <p> what's new in 0.15 since 0.14: </p>
 <ul>
 <li> Fixed the 'recall' bug, you now remember multiple attack types properly.

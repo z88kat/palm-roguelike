@@ -17,10 +17,10 @@ is rendered by:
     file there (3col.css, kMoria/kMoriaColorDB.pdb, also never in CVS) is
     copied as-is;
   * using tools/website/<page>.php instead of the CVS page when it exists
-    (updated copies of pages that had gone out of date: downloads, source,
-    iRogue's what's new), and adding tools/website/news.txt (news since the
-    revival) to the top of the home page's News box, so cvs-repo/ itself
-    stays untouched;
+    (updated copies of each game's download, source and what's-new pages,
+    which had gone out of date), and adding tools/website/news.txt (news
+    since the revival) to the top of the home page's News box, so cvs-repo/
+    itself stays untouched;
   * REPLACEMENTS below: site-wide fixes for SourceForge-era links (bug
     reports now go to GitHub issues);
   * replacing the random-quote include (quotes.php + quotes.dat) with a tiny

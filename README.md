@@ -102,8 +102,8 @@ The site was written in PHP and lives in `cvs-repo/htdocs/`.
 static pages to `docs/`. Some included files were never committed to CVS;
 they were recovered from the live SourceForge site into `tools/website/`.
 News since the revival is in `tools/website/news.txt`, which the build adds
-to the top of the home page's News box. Pages that had gone out of date (the
-download and source pages, iRogue's what's new) have updated copies in
+to the top of the home page's News box. Pages that had gone out of date (each
+game's download, source and what's-new pages) have updated copies in
 `tools/website/<game>/`, which the build uses instead of the CVS versions;
 SourceForge-era links on the other pages are fixed by `REPLACEMENTS` in the
 script. `docs/` is wiped on every build, so

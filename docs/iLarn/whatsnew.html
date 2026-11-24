@@ -18,8 +18,58 @@
 
 
 <div class="content">
-      <h2>What's new in the alpha/beta version?</h2>
-<p> The current alpha version is 0.25. </p>
+      <h2>What's new in the current version?</h2>
+<p> The current version of iLarn is <b>0.40</b> (November 2026), the
+first new release since 2001.  Its source is on
+<a href="https://github.com/z88kat/palm-roguelike">GitHub</a>, together
+with the <a href="https://github.com/z88kat/palm-roguelike/blob/main/iLarn/MANUAL.md">player's
+manual</a> and the
+<a href="https://github.com/z88kat/palm-roguelike/blob/main/iLarn/README.md#changes-in-v040">full
+list of changes</a>.  <a href="download.html">Download iLarn 0.40
+here</a>.</p>
+<ul>
+  <li> Features
+  <ul>
+  <li> <b>Colour out of the box.</b>  A built-in "neon" colour scheme
+      gives every kind of item, every town building and every monster
+      (dragons and demons included) its own colour, readable on both the
+      white and the Invert (black) background.  It is on by default on a
+      colour screen.  An iLarn-RGB memo (see
+      <a href="../color.html">Color</a>) still works, and now only
+      overrides the symbols it lists.
+  <li> <b>No stylus needed</b> on Palm OS 5 devices with a 5-way navigator
+      (Tungsten C and others).  Up, down, left and right walk, holding keeps
+      walking, and with caps lock on you run.  The centre button rests a
+      turn (and offers again whatever you are standing on) and clears
+      --more--.  The 5-way also aims spells and Fight, and works in
+      character design, the action popup, inventory, the spell list, the
+      stores, college and bank, the menus, the message log, the high
+      scores and the map.
+  <li> New About, License and History screens, rewritten Instructions,
+      and a player's manual that also comes as a Palm DOC e-book
+      (iLarn-manual.pdb).
+  </ul>
+<li> Bug fixes
+    <ul>
+   <li> Hangs and crashes: a sphere of annihilation near the edge of the
+     map looped forever; monster pathfinding and the screen refresh could
+     run off the map.
+   <li> Saves: a save that failed half-way could leave the save database
+     unusable.
+   <li> Tapping the screen while aiming Fight left Fight armed forever;
+     unknown keys used up a turn.
+   <li> Rules: the orb of dragon slaying took away 5 DEX like the
+     sunsword; the amulet of invisibility didn't stop see-invisible
+     wearing off; the talisman of the sphere protected monsters too; the
+     altar's enchantment was applied twice; dropping more than 32,767
+     gold went wrong; a new game kept the Eye of Larn's effects.
+   <li> Memory leaks, and a handful of smaller things such as the altar
+     asking "Drop how much?".
+    </ul>
+</ul>
+
+      <h2>What was new in 0.25 (alpha, 2001)?</h2>
+<p> 0.25 was the last alpha version of the original iLarn. </p>
 <ul>
   <li> Features
   <ul>
@@ -36,8 +86,7 @@
    This fixes: you getting pushed onto a monster, when you fail to open door;
    monster on the other side of door attacks you, when you fail to open door.
    <li> The Chest actions (open, take, ignore) have been reordered.
-  See <a href="../survey/5.html">survey</a>
-       on another reordering question.
+  (There was also a survey on another reordering question.)
    <li> Structures that are destroyed by fireball don't turn into "," now.
    <li> Stats are updated promptly when you pick up items that affect Ac or Wc.
    <li> Demonlords are now actually invisible without Eye of Larn (like they're
@@ -81,8 +130,9 @@ These features were added in beta 0.21:
   <li> High score list can be viewed any time.
 </ul>
 
-      <h2>What's new in the stable version?</h2>
-<p> The "stable" (== found on PalmGear) version of iLarn is: 0.20. </p>
+      <h2>What was new in the old stable version?</h2>
+<p> The "stable" (== found on PalmGear) version of the original iLarn
+was: 0.20. </p>
 <p> 0.20 included these bug fixes: </p>
 <ul>
 <li> Decreased frequency of bottomless trap doors, for difficulty = 0.
