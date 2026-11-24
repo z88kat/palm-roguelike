@@ -29,12 +29,16 @@ each has had a round of bug fixes and new features (see below) for 2026.
 
 ## Installing
 
-There are no prebuilt releases yet, so build the games first (below). Each
-game's `make` puts everything to install in its `build/` directory:
+Ready-built files are committed in each game's `build/` directory, and the
+website's download pages
+([iRogue](https://z88kat.github.io/palm-roguelike/iRogue/download.html),
+[iLarn](https://z88kat.github.io/palm-roguelike/iLarn/download.html),
+[kMoria](https://z88kat.github.io/palm-roguelike/kMoria/download.html))
+link to them. `make` (below) rebuilds them:
 
 | Game | Install | Optional |
 | --- | --- | --- |
-| iRogue | `iRogue.prc` | `iRogue-manual.pdb` |
+| iRogue | `iRogue.prc` | `iRogueTileDB.prc`, `iRogue-manual.pdb` |
 | iLarn | `iLarn.prc` **and** `iLarnDB.pdb` | `iLarn-manual.pdb` |
 | kMoria | `kMoria.prc` **and** `kMoriaDB.pdb` | `kMoriaColorDB.pdb`, `kMoria-manual.pdb` |
 
@@ -98,7 +102,11 @@ The site was written in PHP and lives in `cvs-repo/htdocs/`.
 static pages to `docs/`. Some included files were never committed to CVS;
 they were recovered from the live SourceForge site into `tools/website/`.
 News since the revival is in `tools/website/news.txt`, which the build adds
-to the top of the home page's News box. `docs/` is wiped on every build, so
+to the top of the home page's News box. Pages that had gone out of date (the
+download and source pages, iRogue's what's new) have updated copies in
+`tools/website/<game>/`, which the build uses instead of the CVS versions;
+SourceForge-era links on the other pages are fixed by `REPLACEMENTS` in the
+script. `docs/` is wiped on every build, so
 edit `cvs-repo/htdocs/` or `tools/website/` instead:
 
 ```sh

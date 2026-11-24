@@ -351,7 +351,8 @@ void invert_crosshairs() SEC_2;
 /* color.c */
 #ifdef I_AM_COLOR
 void look_for_memo();
-void look_for_tiles();
+void look_for_tiles() SEC_2;
+void restore_screen_depth() SEC_2;
 //IndexedColorType get_color(Short c);
 void FrmCopyTitle_helper(const Char *new_title) SEC_L;
 #endif // I_AM_COLOR

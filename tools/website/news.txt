@@ -10,7 +10,9 @@
    Tungsten C.</p>
   <p><b><a href="iRogue/index.php">iRogue</a> 1.2</b> - Colour is built in
    now (an iRogue-RGB memo only overrides the symbols it lists), the 5-way
-   walks and runs, and Edit Colors covers every monster.  Fixes for crashes,
+   walks and runs, Edit Colors covers every monster, and the Tiles option
+   finally has a tile set: colour pictures for the map, every item and all
+   52 monsters (iRogueTileDB.prc).  Fixes for crashes,
    memory errors, save and restore bugs, and several rules mistakes.
    <a href="https://github.com/z88kat/palm-roguelike/blob/main/iRogue/MANUAL.md">Manual</a></p>
   <p><b><a href="iLarn/index.php">iLarn</a> 0.40</b> - Built-in colours for
@@ -24,6 +26,10 @@
    their stock in an Item | Gold table, the 5-way walks, and "." (rest) has
    a menu item and takes a count, e.g. "20." rests for 20 turns.
    <a href="https://github.com/z88kat/palm-roguelike/blob/main/kMoria/MANUAL.md">Manual</a></p>
-  <p>There are no prebuilt downloads of the new versions yet; build them from
-   the GitHub source for now.  Each game's download page still offers the
-   original releases.</p>
+  <p>The new versions can be downloaded, ready to install, from each game's
+   download page (<a href="iRogue/download.php">iRogue</a>,
+   <a href="iLarn/download.php">iLarn</a>,
+   <a href="kMoria/download.php">kMoria</a>), which also links to the
+   original releases.  Found a bug?  Please
+   <a href="https://github.com/z88kat/palm-roguelike/issues">report it on
+   GitHub</a>.</p>

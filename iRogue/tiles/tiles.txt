@@ -1,0 +1,822 @@
+# iRogue tile set: the source of iRogueTileDB.prc
+#
+# tools/make-irogue-tiles.py turns this file into iRogueTileDB.prc (run by
+# `make`). With Options > Preferences > Tiles checked, iRogue draws the map
+# with these 10x9 pictures instead of letters.
+#
+# Each tile is a "tile" line followed by 9 rows of 10 pixels:
+#
+#   tile <symbol> <name> [rrggbb]
+#
+# <symbol> is the map character the tile replaces. Food is ':', walls are
+# '-' and '|', and the dragon's flame is '~'. In the rows, every character
+# is a colour from the table below. Two characters depend on the optional
+# rrggbb at the end of the tile line: '#' is that colour and '=' is a darker
+# shade of it. Monster colours match the built-in text colours.
+#
+#   copy <symbol> <other symbol>
+#
+# reuses another tile's picture.
+#
+# Symbols with no tile here (digits, other punctuation) show the letter
+# itself in grey, taken from the 2002 starter set (iRogueTileDB-2002.prc).
+#
+# Use web-safe colours only (each of rr, gg, bb is 00, 33, 66, 99, CC or
+# FF): those are the colours a 256-colour Palm can show exactly. Every tile
+# has to read on both the white background and the black (Invert) one, so
+# avoid large areas of white, black or yellow.
+
+# "." is transparent: the background shows through.
+color k 000000
+color w FFFFFF
+color W CCCCCC
+color g 999999
+color G 666666
+color r FF0000
+color R 990000
+color o FF6600
+color y FFFF00
+color Y CC9900
+color t FFCC99
+color n CC6600
+color N 663300
+color L 009900
+color C 009999
+color c 00FFFF
+color 2 99FFFF
+color s 0099FF
+color b 0066FF
+color B 0000CC
+color i 6666FF
+color h 666699
+color e 9999CC
+color m FF0099
+color p FF00CC
+color P CC00FF
+
+# ---------------------------------------------------------------- the map
+
+tile @ you
+...NNNN...
+..NNNNNN..
+..tkttkt..
+...tttt...
+.bbbbbbbb.
+t.bbyybb.t
+..bbnnbb..
+..BB..BB..
+..NN..NN..
+
+tile . floor
+..........
+..........
+..........
+..........
+....ee....
+..........
+..........
+..........
+..........
+
+tile - wall
+eeee.eeee.
+hhhh.hhhh.
+..........
+e.eeee.eee
+h.hhhh.hhh
+..........
+eeee.eeee.
+hhhh.hhhh.
+..........
+
+copy | -
+
+tile # passage
+....gg....
+.gg.gGg.g.
+gGGg.g.gGg
+.gg..gg.g.
+....gGGg..
+.gg..gg...
+gGGg...gg.
+.gg.g.gGGg
+...gGg.gg.
+
+tile + door
+.NNNNNNNN.
+.NnnnnnnN.
+.NnNnnNnN.
+.NnnnnnnN.
+.NnnnnnyN.
+.NnnnnnnN.
+.NnNnnNnN.
+.NnnnnnnN.
+.NNNNNNNN.
+
+tile % stairs
+sss.......
+bbb.......
+bbb.......
+bbbsss....
+bbbbbb....
+bbbbbb....
+bbbbbbsss.
+bbbbbbbbb.
+bbbbbbbbb.
+
+tile ^ trap
+..........
+..........
+....rr....
+....rr....
+..r.rr.r..
+.rr.rr.rr.
+.rrrrrrrr.
+RRRRRRRRRR
+..........
+
+tile ~ dragon fire
+....y.....
+...yo.....
+...oo..y..
+..ooyo.o..
+.oryyoo...
+.oryyyro..
+rroyyyorr.
+.rroooorr.
+..rrrrrr..
+
+# ---------------------------------------------------------------- things
+
+tile ! potion
+....nn....
+....gg....
+....gg....
+...gmmg...
+..gmmmmg..
+.gmwmmmmg.
+.gmmmmmmg.
+..gmmmmg..
+...gggg...
+
+tile ? scroll
+..........
+.nnnnnnnn.
+..nttttn..
+..nCCCtn..
+..nttttn..
+..ntCCCn..
+..nttttn..
+.nnnnnnnn.
+..........
+
+tile / wand
+........Y.
+.......YwY
+......P.Y.
+.....PP...
+....PP....
+...PP.....
+..PP......
+.PP.......
+.P........
+
+tile = ring
+..........
+....pp....
+...YppY...
+..Y....Y..
+.Y......Y.
+.Y......Y.
+..Y....Y..
+...YYYY...
+..........
+
+tile ] armour
+..........
+.ii....ii.
+iiiiBBiiii
+.iiiiiiii.
+..iiiiii..
+..iiBBii..
+..iiiiii..
+..iiiiii..
+..........
+
+tile ) weapon
+........bb
+.......bb.
+......bb..
+.....bb...
+..Y.bb....
+...Yb.....
+..n.Y.....
+.n........
+n.........
+
+tile , the Amulet of Yendor
+..Y....Y..
+..Y....Y..
+...Y..Y...
+....YY....
+...YooY...
+..YoooyY..
+..YooooY..
+...YooY...
+....YY....
+
+tile * gold
+..........
+..........
+..........
+....yY....
+...yYYY...
+..yYYyYY..
+.yYYYYYYY.
+.NNNNNNNN.
+..........
+
+tile : food
+..........
+..........
+...nnnn...
+..nttttn..
+.ntnttntn.
+.nnnnnnnn.
+.nnnnnnnn.
+..NNNNNN..
+..........
+
+# ---------------------------------------------------------------- monsters
+
+tile A aquator 009999
+...####...
+..######..
+.##w##w##.
+.##k##k##.
+##########
+=========.
+.=.=..=.=.
+=..=.=..=.
+.=..=..=..
+
+tile B bat 9933FF
+..........
+#...##...#
+##.####.##
+###r##r###
+.########.
+..#.##.#..
+....##....
+..........
+..........
+
+tile C centaur CC6600
+..NN......
+..tk......
+.tttt.....
+..tt......
+..#######.
+..#######=
+..#.#.#.#.
+..#.#.#.#.
+..=.=.=.=.
+
+tile D dragon FF0000
+.##....#..
+#y##..##..
+####.###..
+..######..
+..#######.
+...######.
+...#..#.##
+...#..#..#
+..==.==...
+
+tile E emu CC9900
+..##......
+N#k#......
+..##......
+..#.......
+..##......
+..######..
+...######.
+....#.#...
+...==.==..
+
+tile F venus fly-trap 009900
+..######..
+.#w#w#w##.
+.rrrrrrrr.
+.##w#w#w#.
+..######..
+....##....
+.==.##.==.
+..=.##.=..
+....==....
+
+tile G griffin CC9900
+..##....#.
+.#k#...##.
+o###..###.
+..#######.
+..########
+...######.
+...#.#.#.#
+...#.#.#.#
+..==.=.=.=
+
+tile H hobgoblin FF6600
+#..####..#
+.########.
+..#k##k#..
+..#WWWW#..
+...####...
+.=######=.
+.=.####.=.
+...#..#...
+..==..==..
+
+tile I invisible dude 666699
+....##....
+...#..#...
+....##....
+..#....#..
+.#.#..#.#.
+...#..#...
+...#..#...
+...#..#...
+..#....#..
+
+tile J jabberwock FF0099
+.#.#......
+..##......
+.#y#....#.
+..#....##.
+..##..###.
+...######.
+...######.
+...#.##.#.
+..==.==.==
+
+tile K kestrel 0099CC
+....##....
+...#k#o...
+#...##...#
+##.####.##
+.########.
+..######..
+....##....
+...####...
+...=..=...
+
+tile L leprechaun 009900
+...####...
+...####...
+.########.
+..tkttkt..
+...oooo...
+..######..
+..##yy##..
+...#..#...
+..NN..NN..
+
+tile M medusa CC00FF
+.L.L..L.L.
+L.LLLLLL.L
+.L######L.
+..#y##y#..
+..######..
+...#rr#...
+....##....
+..######..
+.########.
+
+tile N nymph FF00CC
+...####...
+..#tttt#..
+..#kttk#..
+..#tttt#..
+.##.tt.##.
+..######..
+.########.
+##########
+...t..t...
+
+tile O orc 339900
+..######..
+.#r####r#.
+.########.
+.#W####W#.
+..######..
+=########=
+=.######.=
+..##..##..
+.===..===.
+
+tile P phantom 666699
+...####...
+..######..
+.##k##k##.
+.########.
+.###kk###.
+.########.
+.########.
+.##.##.##.
+.#..#..#..
+
+tile Q questing beast FF3366
+.##.......
+#k##......
+..##......
+..#######.
+..#=##=###
+..##=##=#.
+..#.#.#.#.
+..#.#.#.#.
+.==.=.=.=.
+
+tile R rattlesnake CC6600
+...###....
+..#k###...
+rr....##..
+......##..
+..######..
+.##=##=##.
+.#......#Y
+.########Y
+..######..
+
+tile S snake 009900
+......##..
+.....##k#.
+.....####r
+......##..
+..#####...
+.##.......
+.##.......
+..######..
+......###.
+
+tile T troll 669900
+...####...
+..#y##y#..
+..######..
+..#WWWW#..
+##########
+#.######.#
+N.######..
+N..#..#...
+N.==..==..
+
+tile U black unicorn 666666
+Y.........
+.Y........
+.###......
+#k##......
+..##......
+..#######.
+..########
+..#.#..#.#
+..=.=..=.=
+
+tile V vampire FF0066
+...kkkk...
+..kWWWWk..
+..WrWWrW..
+...WWWW...
+#.GGGGGG.#
+##GGGGGG##
+##GGGGGG##
+#..GGGG..#
+...G..G...
+
+tile W wraith 9966FF
+...####...
+..######..
+.##kkkk##.
+.#ky##yk#.
+.##kkkk##.
+.########.
+.########.
+..#.##.#..
+..........
+
+tile X xeroc CC6633
+..........
+.########.
+##y####y##
+##########
+WkWkWkWkWk
+kWkWkWkWkW
+##########
+#===YY===#
+##########
+
+tile Y yeti 0099CC
+..######..
+.##k##k##.
+.##kkkk##.
+##########
+#.######.#
+#.######.#
+..######..
+..##..##..
+.===..===.
+
+tile Z zombie 669966
+..####....
+..##k#....
+..####....
+..########
+..NNNN....
+..NNNN....
+..#..#....
+..#..#....
+.==.==....
+
+tile a great ant FF3300
+.#.#......
+..##......
+.###......
+#k####.###
+.###.#####
+...#.#####
+..#.#.#.#.
+.#..#..#..
+..........
+
+tile b beetle 0066FF
+.#......#.
+..#.##.#..
+...####...
+#.##==##.#
+.###==###.
+####==####
+.###==###.
+#.######.#
+...####...
+
+tile c chimera FF6600
+.===......
+=#k#=..#..
+=###=.##..
+.===####..
+..######.L
+..######L.
+..#.#..#..
+..#.#..#..
+.==.=..=..
+
+tile d dingo CC9900
+.#.#......
+.###......
+k#k#.....#
+.####...#.
+..#######.
+..#######.
+..#.#..#.#
+..#.#..#.#
+..........
+
+tile e floating eye FF00CC
+...####...
+..#wwww#..
+.#wwwwww#.
+.#w#kk#w#.
+.#w#kk#w#.
+.#wwwwww#.
+..#wwww#..
+...####...
+..........
+
+tile f wild cat CC6600
+.#......#.
+.##....##.
+.########.
+.#L####L#.
+.##=##=##.
+.###kk###.
+..######..
+...####...
+..........
+
+tile g gwyllion 9966FF
+.....#....
+....##....
+...####...
+.########.
+..tkttkt..
+...tttN...
+..######..
+.########.
+##########
+
+tile h hannya FF3366
+W........W
+.W......W.
+..######..
+.#y####y#.
+.########.
+.#kkkkkk#.
+.#WkWWkW#.
+..######..
+...####...
+
+tile i ice monster 0099FF
+....##....
+.#.#22#.#.
+..######..
+.##k##k##.
+##2####2##
+.########.
+..##22##..
+.#.#..#.#.
+....##....
+
+tile j jaguarundi CC6633
+..........
+.#.#......
+.###.....#
+k#k#.....#
+.########.
+..#######.
+..#.#..#..
+..#.#..#..
+..........
+
+tile k vermicious knid 009966
+...####...
+..######..
+.##wk####.
+##########
+.########.
+..######..
+.#.#..#.#.
+#..#..#..#
+..#....#..
+
+tile l leech FF0066
+..........
+..........
+..........
+..........
+...######.
+..########
+.=k#######
+..######=.
+..........
+
+tile m manticore FF3300
+.==....yy.
+=##=....#.
+#k#k=...#.
+=###=..#..
+.=#######.
+..#######.
+..#.#..#..
+..#.#..#..
+.==.=..=..
+
+tile n narcolep 6666FF
+......GGG.
+.......G..
+......GGG.
+..#####...
+.#######..
+#kk##kk##.
+#########.
+.#######..
+..#...#...
+
+tile o orange mold FF6600
+..#..#....
+.#.##.#.#.
+..######..
+.##=##=##.
+##########
+.##=##=##.
+##########
+.#.#.#.#.#
+..........
+
+tile p python 009900
+..####....
+.#k##k#...
+.######...
+...r.##...
+..#####...
+.##=##=##.
+#=######=#
+.########.
+..######..
+
+tile q 64-bit int 009999
+.g.g..g.g.
+##########
+#www#w#w##
+#w###w#w##
+#www#www##
+#w#w###w##
+#www###w##
+##########
+.g.g..g.g.
+
+tile r rust monster CC6633
+#......#..
+.#....#...
+..####....
+.#k##k#...
+.######.##
+..#######.
+..#######.
+.#.#.#.#..
+..........
+
+tile s giant spider 9933FF
+#..#..#..#
+.#.####.#.
+..######..
+###r##r###
+..######..
+.#.####.#.
+#..####..#
+...#..#...
+..#....#..
+
+tile t todal 339999
+....###...
+..######..
+.##k##k##.
+##########
+###kkkk###
+##########
+.########.
+.#.#..#.#.
+.#......#.
+
+tile u upier FF0000
+#...##...#
+##.####.##
+###k##k###
+####WW####
+.########.
+..#.##.#..
+....##....
+...#..#...
+..........
+
+tile v vindshield viper 339900
+...#####..
+..#cc#cc#.
+..#######.
+...####.r.
+.....##...
+..#####...
+.##.......
+.########.
+......###.
+
+tile w killer wail 3366FF
+..2.2.....
+...2......
+..#####...
+.#######.#
+#k########
+#WWWW####.
+.#######..
+..........
+..........
+
+tile x xavier CC00FF
+..........
+..tttttt..
+..tkttkt..
+...tttt...
+..######..
+.##w##w##.
+.###ww###.
+.##w##w##.
+.########.
+
+tile y yellow light CC9900
+....##....
+.#..##..#.
+...####...
+..#yyyy#..
+###yyyy###
+..#yyyy#..
+...####...
+.#..##..#.
+....##....
+
+tile z zoomer FF0099
+..........
+.....####.
+GGG.######
+...###k###
+GG.#######
+...#######
+GGG.######
+.....####.
+......#.#.

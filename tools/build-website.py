@@ -16,8 +16,13 @@ is rendered by:
     fragment becomes the relative path back to the site root.  Every non-.txt
     file there (3col.css, kMoria/kMoriaColorDB.pdb, also never in CVS) is
     copied as-is;
-  * adding tools/website/news.txt (news since the revival) to the top of
-    the home page's News box, so cvs-repo/ itself stays untouched;
+  * using tools/website/<page>.php instead of the CVS page when it exists
+    (updated copies of pages that had gone out of date: downloads, source,
+    iRogue's what's new), and adding tools/website/news.txt (news since the
+    revival) to the top of the home page's News box, so cvs-repo/ itself
+    stays untouched;
+  * REPLACEMENTS below: site-wide fixes for SourceForge-era links (bug
+    reports now go to GitHub issues);
   * replacing the random-quote include (quotes.php + quotes.dat) with a tiny
     script that picks a line from the same quotes.dat in the browser;
   * renaming *.php -> *.html and rewriting internal links to match, and
@@ -53,6 +58,17 @@ SKIP = {
 DEAD_ON_ORIGINAL = ("baby.html", "wiki/", "survey/", "../survey/",
                     "iLarn/alpha.html")
 DEAD_ON_ORIGINAL_PAGES = {("kMoria/play.html", "town.html")}
+GITHUB = "https://github.com/z88kat/palm-roguelike"
+# Site-wide (regex, replacement) edits for links that went stale when the
+# project left SourceForge; applied to every page after include expansion.
+REPLACEMENTS = [
+    (re.compile(r'<a href="mailto:i0lanthe@users\.sourceforge\.net">'
+                r"(report any bugs\s+you find)</a>"),
+     rf'<a href="{GITHUB}/issues">\1</a> on GitHub'),
+    (re.compile(r"http://nosleepsoftware\.sourceforge\.net/index\.php"
+                r"\?page=download"),
+     "https://nosleepsoftware.sourceforge.net/"),
+]
 SITE_URL = re.compile(r"https?://roguelike-palm\.(?:sourceforge|sf)\.net/")
 INCLUDE = re.compile(r'<\?php\s+include\s*\(\s*"([^"]+)"\s*\)\s*;?\s*\?>')
 ATTR = re.compile(r'\b(href|src)\s*=\s*"([^"]*)"', re.I)
@@ -110,7 +126,12 @@ def add_news(text):
 def render(page, files):
     pdir = os.path.dirname(page)
     root = "../" * page.count("/")
-    text = checkout(page).decode("utf-8")
+    override = os.path.join(FRAGMENTS, page)
+    if os.path.exists(override):  # an updated copy of the CVS page
+        with open(override, encoding="utf-8") as f:
+            text = f.read()
+    else:
+        text = checkout(page).decode("utf-8")
 
     def include(m):
         target = os.path.normpath(os.path.join(pdir, m.group(1)))
@@ -133,6 +154,8 @@ def render(page, files):
         text = add_news(text)
     if "<?" in text:
         sys.exit(f"{page}: unhandled PHP left after include expansion")
+    for pattern, new in REPLACEMENTS:
+        text = pattern.sub(new, text)
     return ATTR.sub(lambda m: f'{m.group(1)}="{fix_url(m.group(2), root)}"',
                     text)
 
@@ -192,7 +215,7 @@ def main():
                 f.write(checkout(path))
     for dirpath, _, names in os.walk(FRAGMENTS):
         for name in names:
-            if name.endswith(".txt") or name.startswith("."):
+            if name.endswith((".txt", ".php")) or name.startswith("."):
                 continue
             rel = os.path.relpath(os.path.join(dirpath, name), FRAGMENTS)
             os.makedirs(os.path.dirname(os.path.join(out, rel)), exist_ok=True)

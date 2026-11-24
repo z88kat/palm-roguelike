@@ -54,7 +54,7 @@ CFLAGS = -Wall -g -O2 -Icompat -palmos3.5 -DNON_INTERNATIONAL -DI_AM_COLOR
 # Everything to install on the device goes to ../build: the app and the
 # generated manual e-book.  Intermediate files (.o, .bin, ...) stay here.
 BUILD = ../build
-PRODUCTS = $(BUILD)/$(TARGET).prc $(BUILD)/iRogue-manual.pdb
+PRODUCTS = $(BUILD)/$(TARGET).prc $(BUILD)/iRogue-manual.pdb $(BUILD)/iRogueTileDB.prc
 
 all: $(PRODUCTS)
 
@@ -63,6 +63,11 @@ install: $(PRODUCTS)
 
 $(BUILD):
 	mkdir -p $@
+
+# Optional tile set (Options > Preferences > Tiles), drawn in ../tiles/tiles.txt;
+# tiles-preview.png shows every tile on both backgrounds
+$(BUILD)/iRogueTileDB.prc: ../../tools/make-irogue-tiles.py ../tiles/tiles.txt ../tiles/iRogueTileDB-2002.prc | $(BUILD)
+	python3 -I ../../tools/make-irogue-tiles.py ../tiles/tiles.txt ../tiles/iRogueTileDB-2002.prc $@ $(BUILD)/tiles-preview.png
 
 # Optional e-book (Palm DOC) of ../MANUAL.md.
 $(BUILD)/iRogue-manual.pdb: ../../tools/make-irogue-manual.py ../../tools/make-kmoria-manual.py ../MANUAL.md | $(BUILD)

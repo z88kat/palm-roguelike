@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>What's new in iRogue</title>
+
+<style type="text/css" media="screen">@import "../3col.css";</style>
+<link rel="SHORTCUT ICON" href="http://roguelike-palm.sourceforge.net/favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>iRogue status</h1>
+</div>
+
+<div class="content">
+      <h2>What's new in the current version?</h2>
+<p> The current version of iRogue is <b>1.2</b> (November 2026), the
+first new version since 2002.  Its source is on
+<a href="https://github.com/z88kat/palm-roguelike">GitHub</a>, together
+with the <a href="https://github.com/z88kat/palm-roguelike/blob/main/iRogue/MANUAL.md">player's
+manual</a> and the
+<a href="https://github.com/z88kat/palm-roguelike/blob/main/iRogue/README.md#changes-in-v12">full
+list of changes</a>.  <a href="download.php">Download iRogue 1.2
+here</a>.</p>
+
+<p><i>(From 1.0.0 to 1.1.1 iRogue used <i>major.minor.patchlevel</i>
+numbering, with even minor versions stable and odd ones for development:
+1.1.1 was the last development version and 1.0.0 the last stable one.)</i></p>
+
+      <h2>What's new in 1.2</h2>
+<ul>
+<li> <b>Colour out of the box.</b>  A built-in "neon" colour scheme gives
+  every kind of item and every monster its own colour, readable on both the
+  white and the Invert (black) background.  It is on by default on a colour
+  screen.  An iRogue-RGB memo (see <a href="../color.php">Color</a>) still
+  works, and now only overrides the symbols it lists.
+<li> <b>A tile set at last.</b>  Ticking Tiles in Preferences now draws
+  the map with colour pictures: walls, floors, doors, stairs, traps, every
+  kind of item, you, and all 52 monsters.  Install iRogueTileDB.prc
+  alongside the game (Palm OS 3.5 or later).  Version 1.1.1 only came with
+  a starter set of plain letters.
+<li> <b>5-way navigator</b> on Palm OS 5 devices such as the Tungsten C:
+  up, down, left and right walk, holding keeps walking, and with caps lock
+  on you run.  The centre button takes the stairs when you are on them and
+  searches otherwise.  The navigator also aims in the direction picker and
+  closes the map.  The Up/Down buttons of older Palms still take the stairs.
+<li> <b>Edit Colors</b> covers every monster (some were missing), and
+  saving replaces the iRogue-RGB memo instead of adding another copy.
+<li> New About, License and History screens, rewritten Instructions, and a
+  player's manual that also comes as a Palm DOC e-book (iRogue-manual.pdb).
+<li> Bug fixes
+  <br>- crashes: inventory "call" could open the naming form on a weapon;
+    the Restore list crashed when there were no saves yet.
+  <br>- memory errors, e.g. a thief stealing while you were frozen by an
+    ice monster, and reading a scroll of sleep.
+  <br>- saves: restoring a game kept the previous game's armour, weapon
+    and rings (a phantom armour class) and some of its monsters.
+  <br>- memory leaks in the throw/zap list, the save list and "Play Again".
+  <br>- throwing or zapping item 27 or later used the wrong item.
+  <br>- dying while asleep stopped you ever falling asleep again in that
+    session.
+  <br>- reading identify as your last item left you stuck in an empty list.
+  <br>- rules, as in Rogue Clone: rings of burden and adornment had swapped
+    names, a ring of aggravate monster did nothing, 2-3 rings used more food
+    than 4-8, and the three rooms every level needs were always the top row.
+</ul>
+
+      <h2>What's new in 1.1.1</h2>
+<p> Support for graphical tiles (currently restricted to OS 3.5 and higher)
+<br> This has been requested several times.  iRogue can now use 9x10 icons
+(same as DateBk5 or Action Names) in place of ASCII characters.  However,
+since my artistic ability is negligible, it is up to y'all to create a
+nice-looking set of tiles (consult the README file in this release for further
+instructions).
+</p>
+      <h2> What's new in 1.1.0</h2>
+<p> These are new features that were not in 1.0.0:</p>
+<ul>
+  <li> Added some HandEra 330 support
+  <br> + can minimize the virtual silk screen for 33% more dungeon height
+  <br> + use the much nicer OS-provided font for 'small font'
+  <br> + those wacky new icon sizes
+  <br> + probably some other thing that I forget
+  <br> - screen rotation is not supported in this release
+<li> Minor bug fixes (these will be plowed into bugfix release 1.0.1 in the "stable" branch)
+  <br>- make 'zap' check to see whether you <i>have</i> any wands.
+  <br>- make messages not clear when hardware button pressed in popup forms. heh.  (maybe you noticed this if you, e.g., scrolled the text in the top-ten list
+    using the hardware up/down buttons.)
+  <br>- increment FontID, maybe this will fix problem reported for Kyocera.
+    Or, maybe not.  Who knows.
+</ul>
+
+      <h2> What was new in 1.0.0</h2>
+<p><i>(1.0.0 is just 0.47, relabelled.  These are the changes
+since the 0.42 release.)</i></p>
+<ul>
+<li> <a href="../color.php">Color</a> defined by the user.
+<li> You can get black background (even if you do not have color) by
+  checking the "Invert" box in Preferences.
+<li> New preference to automatically sort your inventory.
+<li> New preference to show pie slices on the screen (may still be buggy).
+<li> Top score list can be viewed any time via the menu.
+<li> Menus and the Preferences screen are reorganized just to confuse you.
+<li> Fixed some bugs
+<br>  The screen scrolls sooner, before you run out of 'walk' donut in east/west.
+<br>  Fixed the "hardware scroll-buttons in object creation form" bug.
+<li> Created some bugs
+<br>  When the screen is black-background, the Graffiti shift indicator
+  leaves white behind itself (e.g. if you tap for punctuation).
+</ul>
+
+
+<!--      <h4> What was new in 0.42</h4>
+<p>
+<br> New preference: Small font, if selected, lets you see more of the
+dungeon at a time.
+
+<br> New preference: Rogue-relative navigation, if selected, centers
+the movement donut/pie around your '@'.  Try it in combination with
+the centered screen option, or not.
+
+<br> New items on Wiz menu: More flexible saving/restoring.  If you
+are frustrated because you die a lot (or get emotionally attached to a
+character) you might like this.
+
+<br> minor bug fixes including death by starvation.
+</p>
+-->
+</div>
+<div class="content">
+      <h2>Bugs</h2>
+      <p> Please <a href="mailto:i0lanthe@users.sourceforge.net">report any bugs
+you find</a> and they will be fixed as time permits.</p>
+
+<!--      <p> The game may not be "well balanced" (a number of monsters,
+weapons, and armors were added in a previous version).  If something
+seems particularly unfair, let us know and we will continue to tweak. -->
+
+      <p> iRogue comes with absolutely no warranty.  The worst case
+for a buggy application is a hard reset which means losing everything
+since your last backup.  Caveat emptor.</p>
+
+<!--
+      <h2>What's new in the next version?</h2>
+
+<p> Maybe I'll add more features in the development branch 1.1.*.
+Some gameplay suggestions have been made (ack!  Passive voice.  Shoot
+me now), and I hear that some people have this new-fangled 320x320
+Sony Clie... heh.  <p> Or maybe I'll get some yard work done.  Tough
+decision.</p>
+-->
+
+</div>
+
+<div id="navAlpha">
+      <?php include ("navAlpha.txt") ?>
+      <?php include ("../navAlpha.txt") ?>
+</div>
+
+<div id="navBeta">
+      <?php include ("../navBeta.txt") ?>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+<!-- this document tentatively valid HTML Tue Aug 8 2006 -->
+
+</body>
+</html>

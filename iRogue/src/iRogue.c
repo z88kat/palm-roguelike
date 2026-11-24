@@ -488,6 +488,9 @@ static void StopApplication(void)
     DmCloseDatabase(RogueTileDB);
     RogueTileDB = NULL;
   }
+#ifdef I_AM_COLOR
+  restore_screen_depth();
+#endif
   free_everything();
   /* it might be nice to free some crap, too */
 }

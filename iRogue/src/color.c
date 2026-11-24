@@ -281,6 +281,9 @@ void set_color(Char c, IndexedColorType ict)
 /////////////////////////////////////////////////////////////////////////
 extern DmOpenRef RogueTileDB;
 
+// Screen depth before look_for_tiles raised it (0: not changed).
+static ULong old_depth = 0;
+
 // This will set RogueTileDB and have_read_tiles,
 // if it can find a database that looks like the right thing.
 void look_for_tiles()
@@ -318,8 +321,18 @@ void look_for_tiles()
     i++;
   }
   depth = i;
+  if (!old_depth)
+    WinScreenMode(winScreenModeGet, NULL, NULL, &old_depth, NULL);
   WinScreenMode(winScreenModeSet, 0, 0, &depth, 0);
 
+}
+
+// On exit: put back the screen depth look_for_tiles changed, so that the
+// Launcher and other apps don't stay in iRogue's mode.
+void restore_screen_depth()
+{
+  if (old_depth)
+    WinScreenMode(winScreenModeSet, NULL, NULL, &old_depth, NULL);
 }
 
 

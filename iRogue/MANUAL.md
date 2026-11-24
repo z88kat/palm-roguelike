@@ -24,7 +24,7 @@ Install `iRogue.prc` to the device or emulator (`make` puts it in
 | --- | --- |
 | `iRogue.prc` | The game. On first run it creates `iRogueDB`, which holds your saved game and the high scores. |
 | `iRogue-manual.pdb` | *Optional.* This manual, as an e-book for a Palm DOC reader (AportisDoc, Palm Reader, CSpotRun, ...). |
-| `iRogueTileDB` | *Optional, not part of this repository.* Graphical tiles to show instead of letters. |
+| `iRogueTileDB.prc` | *Optional.* Colour pictures for the map, monsters and items, used when **Tiles** is on (see [Preferences](#preferences)). |
 
 Colour needs Palm OS 3.5 or later. The Makefile can also build OS 2 and
 OS 3.1 versions. For building and running it in the emulator, see
@@ -289,7 +289,11 @@ you play with one hand.
 - **Crosshairs.** Draw the tap slices and rings around the centre.
 - **Invert.** White on a black background.
 - **Color!** Colour (Palm OS 3.5 or later).
-- **Tiles.** Pictures instead of letters. Needs `iRogueTileDB`.
+- **Tiles.** Show the map with small colour pictures instead of letters:
+  bricks for walls, cobbles for passages, a picture for each kind of
+  item and for every monster. Needs `iRogueTileDB.prc` installed and
+  Palm OS 3.5 or later. Tiles are bigger than letters, so you see less of
+  the level at once (16 squares across); the **Map** shows the rest.
 - **Search (hole)** and **Walk (donut).** The size of the rings that decide
   whether a tap searches, walks or runs. **Draw** shows them on the screen
   and **Clear** removes the drawing.
