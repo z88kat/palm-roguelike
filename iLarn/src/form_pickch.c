@@ -51,6 +51,32 @@ Boolean PickCh_Form_HandleEvent(EventPtr e)
     //    handled = true; // NO.
     break;
 
+  case keyDownEvent:
+    // 5-way: up / down pick the class, left / right male / female, and
+    // the centre button is "So, what are ya?" (or "Generate").
+    i = fiveway_key(e);
+    if (i == NAV_NONE)
+      break;
+    frm = FrmGetActiveForm();
+    handled = true;
+    if (i == NAV_UP || i == NAV_DOWN) {
+      UInt16 idx = FrmGetControlGroupSelection(frm, 1);
+      selected_class = (idx == frmNoSelectedControl) ? 0 :
+	FrmGetObjectId(frm, idx) - pbtn_pickch_0;
+      selected_class = (selected_class + ((i == NAV_DOWN) ? 1 : 7)) % 8;
+      FrmSetControlGroupSelection(frm, 1, pbtn_pickch_0 + selected_class);
+    } else if (i == NAV_LEFT || i == NAV_RIGHT) {
+      FrmSetControlGroupSelection(frm, 2, (i == NAV_LEFT) ? pbtn_pickch_m
+				  : pbtn_pickch_f);
+    } else if (i == NAV_SELECT) {
+      ControlPtr btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_pickch_ok));
+      if (!btn->attr.usable)
+	btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_pickch_gen));
+      if (btn->attr.usable)
+	CtlHitControl(btn);
+    }
+    break;
+
   case ctlSelectEvent:
     switch(e->data.ctlSelect.controlID) {
     case btn_pickch_dif:
@@ -87,7 +113,9 @@ Boolean PickCh_Form_HandleEvent(EventPtr e)
       gender = (CtlGetValue(pushbtn) != 0);
       /* if (selected_class == -1) selected_class = 8; */
       if (selected_class != -1) {
-	get_default_username(); // write prefs..
+	// (only if there's no name yet: keep the one set in Preferences)
+	if (!my_prefs.name[0])
+	  get_default_username(); // write prefs..
 	writeLarnPrefs();
 	makeplayer(selected_class);
 	env->courses_taken = env->warez_taken = 0; // reset college + pad

@@ -23,7 +23,7 @@
 
 #include "iLarnRsc.h"
 
-VERSION ID 1 "0.30"
+VERSION ID 1 "0.40"
 
 //ICON "iLarn2.bmp"
 //SMALLICON "iLarnSmall.bmp"
@@ -103,26 +103,39 @@ BEGIN
 END
 
 
-STRING IntroStr "Welcome to the game of Ularn.  At this moment, you "\
-		"face a great problem.  Your daughter has contracted a "\
-		"strange disease, and none of your home remedies seem "\
-		"to have any effect.  You sense that she is in mortal "\
-		"danger, and you must try to save her.  Time ago you "\
-		"heard of a land of great danger and opportunity. "\
-		"Perhaps here is the solution you need.\n"\
-		"It has been said that there once was a great magician "\
-		"who called himself Polinneaus.  Many years ago, after "\
-		"having many miraculous successes, Polinneaus retired "\
-		"to the caverns of Ularn, where he devoted most of his "\
-		"time to the creation of magic.  Rumors have it that "\
-		"one day Polinneaus set out to dispel an attacking "\
-		"army in a forest some distance to the north.  It is "\
-		"believed that here he met his demise.\n"\
-		"The caverns of Ularn, it is thought, must be "\
-		"magnificent in design, and contain much magic and "\
-		"treasure.  One option you have is to undertake a "\
-		"journey into these caverns.\n"\
-		"Good Luck!  (You're going to need it.)"
+STRING IntroStr "Your daughter has caught dianthroritis, and only "\
+		"the rare potion of cure dianthroritis can save her.  "\
+		"It is said to lie in the caverns of Ularn, deep in the "\
+		"volcano.  Find it and bring it home before her time "\
+		"runs out.  (The doctor at Home tells you how long "\
+		"she has.)\n\n"\
+		"MOVING\n"\
+		"Imagine the screen is an eight-point compass, and tap "\
+		"in the direction you want to go.  Tap near the middle "\
+		"to walk one step, further out to run.  (Preferences "\
+		"sets the sizes, and 'Relative move' makes it relative "\
+		"to where you are.)  Walk into a monster to attack it.\n"\
+		"5-way navigator (Tungsten C etc.): up / down / left / "\
+		"right walk (with caps lock on, run); centre rests a "\
+		"turn.  In lists, up / down pick, centre chooses and "\
+		"left cancels; in the 4-button popup the 5-way moves "\
+		"the frame and centre presses.\n"\
+		"Keyboard: Bindings > Enable hjklyubn, then h j k l y u "\
+		"b n walk and H J K L Y U B N run.\n\n"\
+		"THINGS\n"\
+		"Step onto something to get a popup of what you can do "\
+		"with it: take, drink, read, go in, climb down...  To "\
+		"see the popup again, rest ( . ) on the spot.  "\
+		"Things are shown in an inverted (coloured) block; "\
+		"monsters are plain letters.\n\n"\
+		"COMMANDS\n"\
+		"See the Commands menu, or write the letter in "\
+		"brackets.  Inventory ( i ) is where you use, wield, "\
+		"wear and drop things.  To cast a spell ( c ) or Fight "\
+		"( F ), pick it and then tap a direction (or tap the "\
+		"middle to cancel).\n\n"\
+		"The full manual is the iLarn Manual e-book "\
+		"(iLarn-manual.pdb), for any Palm DOC reader."
 
 //static char copyright[]=
 //  "\nUlarn was created by Phil Cordier and is based on Larn by Noah Morgan\n";
@@ -137,8 +150,7 @@ STRING IntroStr "Welcome to the game of Ularn.  At this moment, you "\
 
 
 
-BITMAP ID bitmap_iLarn "iLarn.bmp"
-BITMAP ID bitmap_cat "hdse.bmp"
+BITMAPFAMILY ID bitmap_iLarn "iLarn.bmp" "" "" "iLarnC.bmp" TRANSPARENT 255 255 255
 
 //FORM ID QuestionForm AT (2 126 156 32)
 FORM ID QuestionForm AT (2 115 156 32)
@@ -166,17 +178,16 @@ HELPID AboutStr
 DEFAULTBTNID btn_about_ok
 BEGIN
 	TITLE "About iLarn"
-	FORMBITMAP AT (8 19) BITMAP bitmap_cat
-	FORMBITMAP AT (98 15) BITMAP bitmap_iLarn
-	LABEL "iLarn v0.30" AUTOID AT (90 40)
-	LABEL "Based on Ularn" AUTOID AT (PrevLeft-6 PrevTop+11)
+	FORMBITMAP AT (62 20) BITMAP bitmap_iLarn
+	LABEL "iLarn v0.40  (24 Nov 2026)" AUTOID AT (Center 57) FONT 1
+	LABEL "Based on Ularn" AUTOID AT (Center PrevTop+12)
 
-	LABEL "Bugs?  Contact:" AUTOID AT (Center 95)
-	LABEL "Bridget Spitznagel" AUTOID AT (Center PrevTop+11)
-        LABEL "i0lanthe@yahoo.com" AUTOID AT (Center PrevTop+11)
-	BUTTON "Done" ID btn_about_ok AT (5 141 35 AUTO)
-	BUTTON "License" ID btn_about_more AT (50 141 AUTO AUTO)
-	BUTTON "Credits" ID btn_about_credits AT (PrevRight+10 141 AUTO AUTO)
+	LABEL "Bugs?  Report them at:" AUTOID AT (Center 92)
+	LABEL "github.com/z88kat/" AUTOID AT (Center PrevTop+11)
+	LABEL "palm-roguelike" AUTOID AT (Center PrevTop+11)
+	BUTTON "Done" ID btn_about_ok AT (6 139 44 AUTO)
+	BUTTON "License" ID btn_about_more AT (PrevRight+6 PrevTop 44 AUTO)
+	BUTTON "History" ID btn_about_credits AT (PrevRight+6 PrevTop 44 AUTO)
 END
 
 ALERT ID QuitP
@@ -227,22 +238,26 @@ BEGIN
 	BUTTON "Ok"
 END
 
-//                "(as Ularn) © 1986 Noah Morgan, Phil Cordier\n\n"\
-STRING AboutStr "iLarn version 0.30\n"\
-                "© 2000 "\
-                "Noah Morgan, Phil Cordier, Bridget Spitznagel\n\n"\
-                "iLarn comes with Absolutely No Warranty.\n"\
-                "This is free software, and "\
-                "you are welcome to "\
-                "redistribute it under certain "\
-                "conditions (for details see: GNU "\
-                "General Public License,\n"\
-                "http://www.gnu.org/ copyleft/gpl.html)"
+STRING AboutStr "iLarn version 0.40 (24 Nov 2026)\n"\
+		"© 2000-2001 Bridget Spitznagel.\n\n"\
+		"CREDITS\n"\
+		"Larn: Noah Morgan (1986)\n"\
+		"Ularn: Phil Cordier\n"\
+		"PalmOS port: Bridget Spitznagel\n"\
+		"v0.40 update (2026): z88kat\n\n"\
+		"LICENSE\n"\
+		"iLarn is free software; you can redistribute it "\
+		"and/or modify it under the terms of the GNU General "\
+		"Public License as published by the Free Software "\
+		"Foundation; either version 2 of the License, or (at "\
+		"your option) any later version.\n\n"\
+		"iLarn comes with Absolutely No Warranty; without even "\
+		"the implied warranty of merchantability or fitness for "\
+		"a particular purpose.  See the GNU General Public "\
+		"License for details: www.gnu.org/licenses/gpl-2.0.html"
 
 // Note: Ularn, so I'm told, got GPL-infected, in the 1992 version?,
 //  by Phil Cordier's inclusion of "getopt" stuff.
-
-
 
 // Nikolai Ivanovitch Lobachevski is his name, hey!
 //
@@ -251,10 +266,20 @@ STRING CreditStr "Larn was written by Noah Morgan in 1986.  "\
 		"Larn and was created in 1989 or so.  "\
 		"(iLarn is a port of Ularn, so, you have these folks "\
 		"to thank or blame for its existence.)\n"\
-		"Ularn is now maintained by Josh Brandt.\n"\
+		"Ularn was later maintained by Josh Brandt.\n"\
 		"Thanks also to "\
 		"intrepid testers and reporters of bugs.\n"\
-		"- Bridget Spitznagel"
+		"- Bridget Spitznagel\n\n"\
+		"Later:\n"\
+		"iLarn 0.30 came out in August 2001, with colour, "\
+		"beaming, clones and the message log.  It was the "\
+		"last release.\n\n"\
+		"In 2026 iLarn was revived as version 0.40 for current "\
+		"Palm OS devices and build tools: a built-in neon colour "\
+		"scheme, the 5-way navigator of the Tungsten C and other "\
+		"Palm OS 5 devices, bug fixes and a manual e-book.  "\
+		"Source and bug reports: "\
+		"github.com/z88kat/palm-roguelike"
 // Note: I worked from whatever version was at ftp.win.tue.nl;
 // it may not have been the most recent that JB is now maintaining
 // from, but, that's the way the cookie bounces
@@ -429,7 +454,8 @@ BEGIN
  LABEL "Difficulty:" AUTOID AT (100 14)
  LABEL "Player name:" AUTOID AT (3 14)
  FIELD ID field_usr AT (PrevLeft PrevTop+11 146 11) EDITABLE
-	SINGLELINE UNDERLINED MAXCHARS NAMELEN
+	SINGLELINE UNDERLINED MAXCHARS 19
+//	(NAMELEN-1: leave room for the terminating null)
 
  CHECKBOX "Sound." ID check_bul_5    AT (1 PrevTop+17 AUTO AUTO)
 
@@ -471,7 +497,10 @@ STRING ButtonsStr "You can re-bind hardware buttons at whim, more or less. "\
 		"Anything set to '---' will just do what it normally would.  "\
 		"You can also check 'enable keyboard' which will allow you "\
 		"to use the hjklyubn keys to move; leave them disabled if "\
-		"you are using Graffiti, to avoid recognition mistakes."
+		"you are using Graffiti, to avoid recognition mistakes.\n\n"\
+		"The 5-way navigator (Tungsten C and other Palm OS 5 "\
+		"devices) always walks, whatever is set here, unless "\
+		"its Up or Down is rebound here."
 
 
 FORM ID HwButtonsForm AT (2 2 156 156)
@@ -566,10 +595,10 @@ USABLE
 BEGIN
    TITLE "iLarn needs database"
    LABEL "iLarn needs the iLarnDB.pdb database." AUTOID AT (2 15)
-   LABEL "If you did not receive it with iLarn.prc," AUTOID AT (2 PrevTop+11)
-   LABEL "download the iLarn zip file from" AUTOID AT (2 PrevTop+11)
-   LABEL "http://roguelike-palm." AUTOID AT (2 PrevTop+14)
-   LABEL "sourceforge.net/iLarn/" AUTOID AT (20 PrevTop+11)
+   LABEL "It comes with iLarn.prc; if you don't" AUTOID AT (2 PrevTop+11)
+   LABEL "have it, get it (or build it) from" AUTOID AT (2 PrevTop+11)
+   LABEL "github.com/z88kat/" AUTOID AT (2 PrevTop+14)
+   LABEL "palm-roguelike" AUTOID AT (20 PrevTop+11)
    LABEL "and install iLarnDB.pdb to your device." AUTOID AT (2 PrevTop+14)
    LABEL "(Sorry for the inconvenience.)" AUTOID AT (2 PrevTop+11)
 END
@@ -578,7 +607,7 @@ ALERT ID FontAlert
 WARNING
 BEGIN
 	TITLE "Wrong Version"
-	MESSAGE "Your version of iLarn does not match your OS version, so you can't change font.  If this makes you sad, you can download the right version at http://roguelike-palm.sourceforge.net"
+	MESSAGE "Your version of iLarn does not match your OS version, so you can't change font.  If this makes you sad, you can build the right version from github.com/z88kat/palm-roguelike"
 	BUTTON "Ok"
 END
 

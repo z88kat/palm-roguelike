@@ -146,7 +146,8 @@ void regen(Boolean show_stats)
 	message("You now feel better "); 
       //      beep(); 
     }
-  if ( d[SEEINVISIBLE] && has_object(OAMULET) &&
+  // (while you carry the amulet, see invisible doesn't wear off)
+  if ( d[SEEINVISIBLE] && !has_object(OAMULET) &&
        (--d[SEEINVISIBLE]<=0) ){
     unsee_invisible();
     if (show_stats)

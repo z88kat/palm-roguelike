@@ -56,6 +56,8 @@ void free_env(struct everything *env) {
   //  free_me(env->char_class);
   free_me(env->iven);
   free_me(env->spelknow);
+  free_me(env->potion_known);
+  free_me(env->scroll_known);
   free_me(env->ivenarg);
   /*
   free_me(env->hitp);
@@ -142,6 +144,9 @@ void clear_env(struct everything *env) {
   for (i = 0 ; i < MAXSCROLL ; i++)
     env->scroll_known[i] = 0;
   clear_env_globals(env);
+  // the last character's Eye of Larn / see invisible mustn't carry over
+  ungot_larneye();
+  unsee_invisible();
   env->gtime = 0;
   env->playerx = 0;
   env->playery = 0;

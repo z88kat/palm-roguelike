@@ -135,7 +135,6 @@
 #define AboutForm            3020
 #define btn_about_ok         3021
 #define bitmap_iLarn         3022
-#define bitmap_cat           3023
 #define btn_about_more       3024
 #define btn_about_credits    3025
 

@@ -13,6 +13,12 @@
  ***********************************************************************/
 
 extern Short in_store;
+// 5-way: a frame moves between these buttons; the centre presses it.
+static const UInt16 trans_btns[] = { btn_trans_alld, btn_trans_allw,
+				     btn_trans_dp, btn_trans_wd,
+				     btn_trans_cancel };
+static Short trans_focus = -1;
+
 Boolean Trans_Form_HandleEvent(EventPtr e)
 {
   Boolean handled = false;
@@ -41,13 +47,18 @@ Boolean Trans_Form_HandleEvent(EventPtr e)
     fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, fld_trans_amt));
     FldSetTextHandle(fld, (Handle) h);
     // also set title
-    if (in_store != STORE_BANK) FrmCopyTitle(frm, "Drop how much?");
+    if (in_store == STORE_ALTAR) FrmCopyTitle(frm, "Donate how much?");
+    else if (in_store != STORE_BANK) FrmCopyTitle(frm, "Drop how much?");
     FrmDrawForm(frm);
     bank_trans_init(frm, (in_store == STORE_BANK));
+    trans_focus = -1;
     handled = true;
     break;
 
   case keyDownEvent:
+    if (fiveway_buttons(FrmGetActiveForm(), trans_btns, 5, &trans_focus,
+			fiveway_key(e), btn_trans_cancel))
+      return true;
     chr = e->data.keyDown.chr;
     handled = true;
     // first, some keyboard support.
@@ -108,7 +119,7 @@ Boolean Trans_Form_HandleEvent(EventPtr e)
       gold = StrAToI(textp);
       if (in_store == STORE_BANK)
 	ok = bank_transact(gold, (e->data.ctlSelect.controlID==btn_trans_dp)); 
-      else if (in_store == STORE_NONE) // drop-gold and donate-at-altar
+      else // drop gold (STORE_NONE) and donate at an altar (STORE_ALTAR)
 	ok = (gold >= 0 && gold <= env->cdude[GOLD]);
       if (ok) {
 	// hope these do the right thing.

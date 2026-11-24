@@ -1,0 +1,732 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>How to play iRogue</title>
+
+<style type="text/css" media="screen">@import "../3col.css";</style>
+
+<link rel="SHORTCUT ICON" href="../favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>Playing iRogue</h1>
+    <p><i>not entirely updated for 1.0.0, but it doesn't matter much.</i></p>
+</div>
+
+<div class="content">
+
+      <h2>The Premise</h2>
+
+    <p> Hopefully you're familiar with rogue (or rogue-like games)
+    already.  They are text-based games which have a familiar premise
+    --- wander around in a dungeon, collect treasure,
+    beat up bad-tempered critters, try to finish a quest.</p>
+
+<div style="background-color: #cfc">
+ <a href="#see">What you see</a> &nbsp;::&nbsp;
+ <a href="#move">How to move</a> &nbsp;::&nbsp;
+ <a href="#optmenu">Options Menu</a> &nbsp;::&nbsp;
+ <a href="#cmdmenu">Commands Menu</a> &nbsp;::&nbsp;
+ <a href="#inventory">Inventory</a> &nbsp;::&nbsp;
+ <a href="#prefs">Preferences</a> &nbsp;::&nbsp;
+ <a href="#hwbs">Hardware buttons</a>
+</div>
+
+</div>
+<div class="content">
+
+<a name="see"></a>
+
+<h2>What You See</h2>
+
+<p> <img src="../images/iRogue/1welcome.gif" alt="[welcome screen]">
+<img src="../images/iRogue/1welcome_c.gif" alt="[welcome screen in color]"></p>
+
+<p> When you start the application you will see a screen split into
+three parts.  The top part will display messages (e.g. "you hit", "the
+ice monster misses").  The middle part represents a part of the level
+you're on.  The bottom part contains your status line.</p>
+
+<h2> ...top part </h2>
+
+<p> (Fairly self-explanatory.  The message window is cleared when you
+move; if there are multiple messages in one turn, they will "scroll"
+upward and off the screen.  There is a menu item to show the last ten
+messages in case you miss something.)</p>
+
+<h2> ...middle part </h2>
+
+<p> The idea is that you're wandering around in a dungeon.  You are
+represented by an at-sign "@".  You are probably going to start out in
+a room.  Whichever room you are in at the moment is lighted, and other
+rooms are dark; you can see what's in your current room, but not in
+the other rooms.  The lighted tiles appear as ".".  The walls of the
+room are made of dashes "-" and "|".  There is, hopefully, at least
+one doorway "+" which leads into a passage "#" which leads to some
+other room.</p>
+
+<p> (Are you with me so far?)  You may see some other things in the
+room you're in, such as "%" stairs.  You can go down the stairs; you
+can't go up until you have achieved your goal.</p>
+
+<p> Other things you might see include scrolls "?" you can read,
+potions "!" you can quaff, food "o" you can eat, weapons ")" you can
+wield or throw, rings "=" you can put on or remove, armor "]" you can
+wear or take off, and staffs "/" you can zap.  These are all objects
+you can pick up and put in your pack (this will be done automatically
+when you walk over them, so long as your pack is not full.)</p>
+
+<p> Your goal is to find the Amulet of Yendor, which is represented by
+a comma ",".  You will not encounter it until you go down at least
+twenty-odd levels.</p>
+
+<p> From time to time you may run into a trap "^".  There are various
+kinds of traps, but I'll let you find out about them on your own.  You
+can find traps (and hidden doors) by searching and generally being
+lucky, or unlucky as the case may be.</p>
+
+<p> <img src="../images/iRogue/2snake.gif" alt="[screenshot with a monster]">
+<img src="../images/iRogue/2beetle_c.gif" alt="[color with a monster]"></p>
+
+<p> There are also monsters, represented by the letters A to Z and a
+to z.  Some may be asleep or unaware of your presence.  When awake and
+aware of you, they are mostly pretty crabby and will probably try to
+kill you.</p>
+
+<p> Your secondary goals are to get experience by killing monsters
+(which will make you tougher to kill), and get money "*" (which will
+give you a higher score when you die or win.)</p>
+
+<h2> ...bottom part </h2>
+
+<p> <strong>L1</strong>: This is the level of the dungeon you're
+currently on - how far you are from the surface.  You start on 1 and
+can go down as far as 99 (obviously you don't need to go that far,
+since the Amulet starts appearing much earlier.)</p>
+
+<p> <strong>HP 12(12)</strong>: Your current and maximum hit points -
+how far you are from being dead.  Your maximum hit points will go up
+as you advance in experience.  Your current hit points will, you hope,
+stay above 0.</p>
+
+<p> <strong>Str 16(16)</strong>: Your current and maximum strength -
+how hard you hit.  You may find a way to raise your maximum strength.
+You may find things that reduce your current strength, and things that
+restore it.</p>
+
+<p> To the right of the Strength display, you may sometimes see a word
+such as "<strong>hungry</strong>".  This should suggest to you that it
+is time to eat some food.  If you ignore this for too long, you will
+start fainting, and that is uncool when there are monsters around to
+stomp on you.</p>
+
+<p> <strong>Arm: 4</strong>: This is your armor rating - how hard you
+are to hit.  Higher is better, as you will see if you take off your
+currently worn armor (you do that via the <a
+href="#inventory">inventory</a> screen.)</p>
+
+<p> <strong>$0</strong>: This is how much money you have.  (It's not
+good for anything except the top-ten list of dead rogues, unlike some
+other rogue-like games in which you can use it to purchase items in
+stores.)</p>
+
+<p> <strong>Exp: 1/0</strong>: This is your current experience.  The
+first number is your experience level (I blame D&amp;D for overloading
+the word "level".)  The second number is your experience points
+(somehow that seems grammatically wrong.)</p>
+
+<div style="background-color: #cfc">
+ <a href="#see">What you see</a> &nbsp;::&nbsp;
+ <a href="#move">How to move</a> &nbsp;::&nbsp;
+ <a href="#optmenu">Options Menu</a> &nbsp;::&nbsp;
+ <a href="#cmdmenu">Commands Menu</a> &nbsp;::&nbsp;
+ <a href="#inventory">Inventory</a> &nbsp;::&nbsp;
+ <a href="#prefs">Preferences</a> &nbsp;::&nbsp;
+ <a href="#hwbs">Hardware buttons</a>
+</div>
+</div>
+<div class="content">
+
+<a name="move"></a>
+<h2> Moving Around </h2>
+
+<p> First, imagine that the screen is a compass.  At the top of the screen
+is north.  Imagine that this compass is divided like a pie into eight
+slices: N, NE, E, SE, S, SW, W, NW.  The slices meet in the center of
+the screen.  Tap within a slice, and that is the direction you will
+move in.</p>
+
+<p> If the rogue-relative <a href="#prefs">preference</a> is on, the pie is
+always centered around your @.  If this preference is off, the pie
+stays in a fixed position -- regardless of where you (@) are located
+on the screen.  The rest of this section assumes a fixed-position pie.</p>
+
+<p> <img src="../images/iRogue/pie.gif" alt="[pie-sliced screen]"></p>
+
+<p> Ok.  You got the pie?  I am going to complicate it now.  If you
+tap very close to the center of the screen, instead of moving you will
+"search" at your current location.  (Every time you search, you have
+some probability of finding hidden traps and secret doors in the eight
+tiles immediately adjacent to you.)  Moving outward... If you tap
+moderately close to the center of the screen, you will move one square
+at a time.  If you tap far from the center of the screen (near the
+edge of the screen), you will move several squares -- you move until
+you are adjacent to something "interesting" (such as an object, door,
+wall, stairs, or monster.)</p>
+
+<p> <img src="../images/iRogue/pie2.gif" alt="[concentric-sliced screen]"></p>
+
+<p> So there's a pie of what-direction-you-move, and there are some
+concentric circles of what-happens-when-you-tap.  You can adjust the
+size of these circles via the <a href="#prefs">Preferences</a> menu
+item on the Options menu, depending on what you think is deserving of
+more screen real-estate.</p>
+
+<p> Oh, yeah: to attack a monster "hand-to-hand", with whatever weapon
+you're currently wielding, you just try to move onto its square.  If
+it is immediately to your west, tap on the west side of the screen,
+etc., and you should see a message such as "you hit".</p>
+
+<p> If you have a keyboard, you can also use the classic "hjklyubn"
+keys for movement.  To move several squares at a time (as when you tap
+near the edge of the screen) use the shift key.. "HJKLYUBN".</p>
+
+
+<div style="background-color: #cfc">
+ <a href="#see">What you see</a> &nbsp;::&nbsp;
+ <a href="#move">How to move</a> &nbsp;::&nbsp;
+ <a href="#optmenu">Options Menu</a> &nbsp;::&nbsp;
+ <a href="#cmdmenu">Commands Menu</a> &nbsp;::&nbsp;
+ <a href="#inventory">Inventory</a> &nbsp;::&nbsp;
+ <a href="#prefs">Preferences</a> &nbsp;::&nbsp;
+ <a href="#hwbs">Hardware buttons</a>
+</div>
+</div>
+<div class="content">
+
+<a name="menus"></a>
+<a name="optmenu"></a>
+
+<h2> Options menu </h2>
+
+<p> <img src="../images/iRogue/options.gif" alt="[options menu]"></p>
+
+<dl>
+<dt> <b>Map</b> /M
+<dd> In the middle part of the screen, you can only see a part of the level
+that you're currently exploring.  The "Map" menu item will display a
+map of the entire level.  
+<br>
+<a name="optmenumap"></a>
+<img src="../images/iRogue/font3.gif" alt="[map]">
+<br>
+(Tap anywhere to make it go away again.)  It
+will show you, the rooms and passages you've explored so far, and the
+stairs if you've found them.
+
+<dt> <b>Message Log</b> /L
+
+<dd> This will display the last 10 messages, which may be useful if you
+were tapping away those "--more--"'s too fast or something.  (Tap
+"Done" to make it go away.)
+
+<dt> <b>Scroll View</b> /V
+
+<dd> In the middle part of the screen, you can only see a part of the level
+that you're currently exploring.  The "Scroll View" menu item will
+allow you to move your view north / south / east / west.  It will move
+1 step by default.  If you write a graffiti number (1-99) before using
+this menu item, it will move that many steps instead.
+
+<dt> <b>Preferences</b> /R
+
+<dd> The Preferences dialog allows you to customize your iRogue experience
+(heh.)  I'll go over that <a href="#prefs">below</a>.
+
+<dt> <b>Instructions</b>
+
+<dd> Very basic instructions, for people who skip the web page.
+
+<dt> <b>About iRogue</b>
+
+<dd> This is the "About" screen that you find in all normal applications.
+
+<dt> <b>Graffiti Help</b> /G
+
+<dd> (Probably no one needs this, but it doesn't really cost anything to
+put in.)
+
+<dt> <b>whatsit?</b> /W
+
+<dd> If you see an unfamiliar character on the middle part of the screen,
+and you would rather not identify it the hard way (by walking on or
+attacking it), you can use the "whatsit?" menu item instead.  Select
+this menu item.  
+<br>
+<img src="../images/iRogue/7whatis.gif" alt="[whatsit]">
+    <img src="../images/iRogue/7whatis_c.gif" alt="[whatsit color]">
+<br>
+Then tap on the unknown character (and decide whether to attack it
+or slink away.)
+
+<dt> <b>Change Font</b> /F
+
+<dd> This command allows you to toggle the font size used to draw the
+dungeon.  (Compare the area visible here and in the <a
+href="#optmenumap">map</a>.)
+<br>
+<img src="../images/iRogue/font1.gif" alt="[regular font]">
+<img src="../images/iRogue/font1_c.gif" alt="[regular font color]">
+<br> <img src="../images/iRogue/font2.gif" alt="[small font]">
+<img src="../images/iRogue/font2_c.gif" alt="[small font color]">
+<br>
+
+<dt> (Q) <b>Quit</b>
+
+<dd> This will kill your current rogue (after the obligatory "are you
+SURE?") and allow you to start over.  This dialog can also be accessed
+by writing a graffiti "Q".
+
+</dl>
+
+
+<h2> Wiz menu </h2>
+
+<p> <img src="../images/iRogue/wiz.gif" alt="[wiz menu]"></p>
+<p> If you are a purist, you will not want to use this menu.
+If you find the game frustratingly hard, this menu is for you.</p>
+
+<dl>
+<dt> <b>Wizard</b> /I
+<dd>
+Use this to switch from normal mode to wizard mode, and vice versa.
+The latter will make you more buff, reveal the map of the level, and
+allow you to create objects at whim.  (Very helpful for, uh,
+debugging.)
+<br> Wizard characters will not appear on the score list, so you will
+     be asked for confirmation the first time that any character is
+     wizardized.
+
+<dt> <b>Create Obj...</b>
+
+<dd> Enables creation of arbitrary objects for debugging purposes.
+
+<dt> <b>Autosave</b> /S
+
+<dd> This saves your game in the "autosave" slot, just as if you
+exited iRogue.  You might like to do this before you do something that
+seems dangerous or stupid.
+
+<dt> <b>Save...</b>
+
+<dd> This allows you to save your game in the slot of your choice,
+allowing you to have multiple extant snapshots if you like.  It also
+allows you to delete old unwanted memory-hogging snapshots (each one
+is about 10 K).
+
+<dt> <b>Restore...</b>
+
+<dd> This allows you to restore from a saved snapshot.  Note that your
+character will experience a penalty each time it is restored, due to
+the expense of orange smoke.
+
+</dl>
+    
+<div style="background-color: #cfc">
+ <a href="#see">What you see</a> &nbsp;::&nbsp;
+ <a href="#move">How to move</a> &nbsp;::&nbsp;
+ <a href="#optmenu">Options Menu</a> &nbsp;::&nbsp;
+ <a href="#cmdmenu">Commands Menu</a> &nbsp;::&nbsp;
+ <a href="#inventory">Inventory</a> &nbsp;::&nbsp;
+ <a href="#prefs">Preferences</a> &nbsp;::&nbsp;
+ <a href="#hwbs">Hardware buttons</a>
+</div>
+</div>
+<div class="content">
+
+<a name="cmdmenu"></a>
+<h2> Commands menu </h2>
+<p> <img src="../images/iRogue/5menu3.gif" alt="[commands menu]"></p>
+
+<p> The following menu items can be accessed faster by writing the graffiti
+character that appears in parentheses.</p>
+
+<dl>
+<dt> (i) <b>Inventory</b>
+
+<dd> This will take you to the inventory dialog.  I will describe that more
+<a href="#inventory">below</a>.
+
+<dt> (.) <b>Rest</b>
+
+<dd> Rest (do nothing) for one move.  This also takes a numeric argument,
+so you can write a graffiti number from 1 to 99 before selecting this
+menu item, to rest for 1 to 99 moves (or until your nap is interrupted
+by a monster wandering over and hitting you.)
+
+<dt> (m) <b>Move</b>
+
+<dd> Normally, when you move, you pick up any items that you happen to walk
+over.  Occasionally you may want to move onto something without
+picking it up.  To do that, use this menu item and then select the
+direction in which you want to move.
+
+<dt> (,) <b>Pick up</b>
+
+<dd> You can use this command to pick up something that you're standing on.
+(Either you moved onto it with the above command, or your pack was
+full when you walked onto it but now you've used up some item to make
+room.)
+
+<dt> (s) <b>Search</b>
+
+<dd> Searching will find hidden traps and doors.  Each time you search,
+there is some chance of finding whatever (if anything) is there.  This
+command also takes a numeric argument, so you can write a graffiti
+number from 1 to 99, then write "s" (or select this menu item) to
+search for that many turns.
+
+<dt> (f) <b>Fight</b>
+
+<dd> If you are tired of blow-by-blow combat, the "fight" command will
+quietly run the fight between you and the monster in the direction you
+select.  The fight will end when the monster moves away or is killed,
+or another monster joins in, or you are gravely wounded (and should
+consider escape.)
+
+<dt> (F) <b>til death</b>
+
+<dd> If the "fight" command is not macho enough for you, you can use the
+capital-F "Fight" instead.  It's just like the other one, except that
+you don't stop when severely wounded (only when dead.)
+
+<dt> (&lt;) <b>Up</b>
+
+<dd> Use this command to ascend stairs.  To go up, you must be standing on
+stairs and in possession of the object of your quest, the Amulet of
+Yendor.
+
+<dt> (&gt;) <b>Down</b>
+
+<dd> Use this command to descend stairs.  To go down, you must be standing
+on stairs.
+
+<dt> (^) <b>ID trap</b>
+
+<dd> If you're lucky enough to reveal a trap by some means other than
+setting it off, you may be wondering what kind of trap it is.  Use
+this command to find out (select the direction of the trap you're
+standing next to.)
+
+<dt> (t) <b>Throw</b>
+
+<dd> There are some monsters that you don't want to get too close to.
+(I'll let you figure out which those are.)  Use the "Throw" command if
+you are in possession of some distance weapon(s).  It will pop up a
+dialog which allows you to select the distance weapon and the
+direction to propel it in.  <br> Note that some are meant to be
+"launched" by another weapon and will work better if you are wielding
+something appropriate: arrow/bow, stone/sling, etc.  (The non-launched
+types of distance weapons, if I recall correctly, instead work better
+if you first "wield" and then "throw" them.)
+
+<dt> (z) <b>Zap</b>
+
+<dd> If you have a staff or wand, you can zap it in the direction of a
+monster and hope it does something useful.  The "zap" dialog is very
+similar to the "throw" dialog (no animation though.)  You do not need
+to be wielding the item.
+</dl>
+
+<div style="background-color: #cfc">
+ <a href="#see">What you see</a> &nbsp;::&nbsp;
+ <a href="#move">How to move</a> &nbsp;::&nbsp;
+ <a href="#optmenu">Options Menu</a> &nbsp;::&nbsp;
+ <a href="#cmdmenu">Commands Menu</a> &nbsp;::&nbsp;
+ <a href="#inventory">Inventory</a> &nbsp;::&nbsp;
+ <a href="#prefs">Preferences</a> &nbsp;::&nbsp;
+ <a href="#hwbs">Hardware buttons</a>
+</div>
+</div>
+<div class="content">
+
+<a name="inventory"></a>
+
+<h2> Inventory </h2>
+
+<p> When you move around, you tend to pick up things (by walking on them.)
+Where do they go?  Your pack.  How do you do something with them?</p>
+
+<p> <img src="../images/iRogue/8invent.gif" alt="[inventory screen]"></p>
+
+<p> To do something to an item in your inventory, select "Inventory"
+from the Commands menu (or write "<strong>i</strong>", lower-case I.)
+A window will pop up with a list of your inventory.  Select any item.
+This should cause three or four buttons to appear on the right.  The
+top one is what iRogue guesses you're most likely to want to do to
+that item, and it is selected by default.  If you'd rather do
+something else to the item, select another button.  Then tap "OK" to
+perform the action, or "Cancel" if you've changed your mind.</p>
+
+<div style="background-color: #cfc">
+ <a href="#see">What you see</a> &nbsp;::&nbsp;
+ <a href="#move">How to move</a> &nbsp;::&nbsp;
+ <a href="#optmenu">Options Menu</a> &nbsp;::&nbsp;
+ <a href="#cmdmenu">Commands Menu</a> &nbsp;::&nbsp;
+ <a href="#inventory">Inventory</a> &nbsp;::&nbsp;
+ <a href="#prefs">Preferences</a> &nbsp;::&nbsp;
+ <a href="#hwbs">Hardware buttons</a>
+</div>
+</div>
+<div class="content">
+
+<a name="prefs"></a>
+
+<h2> Preferences </h2>
+
+<p> As I mentioned above, there is a Preferences item on the Options
+menu which will allow you to set various things, including the size of
+those "what am I doing when I tap somewhere" circles.</p>
+
+<p> <!-- <img src="../images/iRogue/pref1.gif" alt="[preferences screen]"> -->
+<img src="../images/iRogue/9prefs100.gif" alt="[preferences screen]">
+<img src="../images/iRogue/9prefs_c.gif" alt="[preferences screen color]"></p>
+
+<p> When you have changed the numbers, you can hit the "Draw" button
+to display the three areas.  It will draw the middle region in black.
+(The "Clear" button will redraw the preferences screen without the
+big black donut.)</p>
+
+<p> The preferences screen also allows you to:</p>
+
+<ul>
+<li>
+Turn off "running" altogether, so that you move only one square at a
+time no matter how far from the center you tap.
+<li>
+Change the name of your rogue.  It defaults to (up to 30 characters of)
+your hotsync id.  This is the name that will appear in the top-ten score
+list.
+
+<li> 
+Turn on/off "follow turns".  This means that when "running" you will
+follow corridors to the end, or until they branch (or you run into
+something interesting.)  That is, it will make right-angle turns on
+its own.  This feature can be a little disconcerting in long twisty
+corridors, so it is "off" by default.  (The check box is labelled Dave
+Mode because Dave requested the feature and it was impossible for me to
+describe meaningfully in so little space.)
+
+<li>
+Turn on/off "scroll mode".  If scroll mode is on, when you tap at the
+extreme perimeter of the display (in the top line of the message
+window, bottom line of the status window, or equivalently along the
+left/right edge of the screen), the dungeon view will scroll as though
+you had used the "Scroll View" menu item.  You can specify a numeric
+argument by writing a graffiti number from 1 to 99, then tapping at
+the perimeter.  This is off by default, because (like Dave mode) it
+can be disconcerting.
+<li>
+Turn on/off "autosave".  If you have autosave turned off, your game
+will only be autosaved when you leave the iRogue application and enter
+another application.  If you have autosave turned on, iRogue will also
+save your game each time that a new dungeon level is generated.  (This
+saved image is persistent; i.e. if the game crashed, when you returned
+to iRogue you would be back on the most recently visited level.)
+
+<li>
+Turn on/off sound.  There are two places to turn it off.  One is "Game
+Sound" under "General" in the PalmPilot "Prefs" application.  (That
+will turn off sound for all games that bother to pay attention.)  The
+other is the "Sound" checkbox you see here.  If either one of these is
+'off', iRogue will be silent; if you want sound, therefore, they must
+both be 'on'.
+
+<li>
+Turn on/off "centered" scrolling.  If on, the rogue will tend to stay
+in the center of the screen; if off, the screen will only scroll when
+the rogue is about to walk off the visible portion.
+
+<li>
+Turn on/off "rogue-relative" navigation.  If on, the "pie" (that
+calculates what direction to move the rogue when you tap on the
+screen) will always be centered around your rogue: tap east of the
+rogue to move east, etc.  If off, the pie will always be centered on
+the center of the screen: tap the left side of the screen to move
+west, etc.
+
+<li>
+Turn on/off "small font".  If on, whenever you enter iRogue, it will
+start out with the small font on.  Otherwise it will start out with
+the normal font.  There is a menu option (and shortcut /F) to change
+the font size during game play,
+
+<li>
+Rebind the hardware buttons.  Tap that "Buttons..." button and see
+below.
+
+</ul>
+
+<p> Your preferences will be remembered "forever", with the exception
+of the name, which belongs to a particular rogue and will revert to
+the default when that rogue dies (or, if you have "save" turned off,
+when you leave iRogue and that rogue isn't saved.) </p>
+
+<div style="background-color: #cfc">
+ <a href="#see">What you see</a> &nbsp;::&nbsp;
+ <a href="#move">How to move</a> &nbsp;::&nbsp;
+ <a href="#optmenu">Options Menu</a> &nbsp;::&nbsp;
+ <a href="#cmdmenu">Commands Menu</a> &nbsp;::&nbsp;
+ <a href="#inventory">Inventory</a> &nbsp;::&nbsp;
+ <a href="#prefs">Preferences</a> &nbsp;::&nbsp;
+ <a href="#hwbs">Hardware buttons</a>
+</div>
+</div>
+<div class="content">
+
+<a name="hwbs"></a>
+
+<h2> Hardware Buttons </h2>
+
+<p> This is where you can rebind the hardware buttons, if you so desire.
+By default, they are not rebound:</p>
+
+<p> <img src="../images/iRogue/Bhw-off.gif" alt="[hardware buttons screen, before]"></p>
+
+<p> To get here, go to the Preferences screen and tap the "Buttons..."
+button.  When you tap "ok" here, you will go back to the Preferences
+screen (you must tap "ok" there too, assuming that you haven't
+suddenly changed your mind.)</p>
+
+<p> <img src="../images/iRogue/Chw-on.gif" alt="[hardware buttons screen, after]"></p>
+
+<p> You have the option of rebinding the four application buttons, the
+up/down scroll buttons, and the silkscreened calculator and find
+buttons.  You can rebind some, all, or none.  Once you have made some
+choices, check the "use these settings" box to turn it on.  (If you
+ever want to turn the rebinding off temporarily, all you have to do is
+uncheck the box.  iRogue will remember your settings but won't use
+them.)  There's an example above in case you're not feeling very
+creative.</p>
+
+<p> <img src="../images/iRogue/Dhw-opts.gif" alt="[hardware buttons screen, after]"></p>
+
+<p> You have a fixed set of choices for each button: n/e/s/w movement,
+up/down movement, resting for 10 turns, searching for 10 turns,
+bringing up the map of the level, scrolling the screen by 5 squares,
+and bringing up the 'throw', 'zap', or 'inventory' dialogs.  (The
+dashed choice you see at the top is "don't rebind this button",
+i.e. let the button do whatever it ordinarily would.)  Let me know if
+there is some function you desperately want that does not appear as a
+choice.</p>
+
+</div>
+<div class="content">
+
+<h2>Argh!  My favorite character just died</h2>
+
+<p> <img src="../images/iRogue/reviv1.gif" alt="[top-ten screen]"></p>
+
+<p> When you reach the top-ten screen, non-purists have the option of
+"revivifying" a dead character.  The character can take a penalty for
+restoring and come back as a living rogue (who will again appear on
+the top-ten list next time you die)... or the character can return as
+undead (and, like a wizard, will not appear on the top-ten list
+again).  I like hunting leeches while undead.</p>
+
+<p> <img src="../images/iRogue/reviv2.gif" alt="[top-ten screen]"></p>
+
+</div>
+<div class="content">
+
+<h2>Help!</h2>
+
+<p> Want "spoilers" for iRogue? 
+<br> Consult <a href="rogue_keyguide.txt">Sterling Babcock's iRogue Keyguide</a>.
+<!--<blockquote>-->
+<i><span class="quote">what a trippy feeling</span><script>
+(function (el) {
+  fetch("quotes.dat").then(function (r) { return r.text(); }).then(function (t) {
+    var q = t.split("\n").filter(function (l) { return l.trim(); });
+    if (q.length) el.textContent = q[Math.floor(Math.random() * q.length)];
+  }).catch(function () {});
+})(document.currentScript.previousElementSibling);
+</script></i>
+<!--</blockquote>-->
+</p>
+
+
+</div>      
+
+
+<div id="navAlpha">
+            	<h2>iRogue Info</h2>
+<p>
+<a href="index.html">What is iRogue?</a> <br>
+<a href="whatsnew.html">Current status</a> <br>
+<a href="download.html">Download iRogue</a> <br>
+<a href="play.html">How to play</a> <br>
+<a href="../color.html">Configuring color</a> <br>
+<a href="source.html">How to get source</a>
+</p>
+                <h2>General Info</h2>
+     <p>
+      <a href="../index.html">What's New Here</a><br>
+
+      <a href="mailto:i0lanthe@users.sourceforge.net?subject=roguelike-palm" title="Email Bridget about roguelike-palm">Contact me</a>
+
+     </p>
+
+     <h2>Hosted by</h2>
+     <p>
+      <A href="http://sourceforge.net">
+	<IMG src="../images/sflogo.png"
+	width="88" height="31" alt="SourceForge Logo"></A>
+	<br>
+      
+	<a href="http://sourceforge.net/project/?group_id=6932" title="roguelike-palm project page at SourceForge">
+	Project page</a>
+	<br>
+     </p>
+</div>
+
+<div id="navBeta">
+                  <h2>External Links</h2>
+<p>
+	<a href="http://roguelikes.sauceforge.net/pub/index.html">
+	Roguelike Games:</a>
+</p>      
+<p>
+	<a href="http://roguelikes.sauceforge.net/pub/rogue/index.html">
+	Rogue</a> <br>
+      
+        <a href="http://remarque.org/~grabiner/moria.html">
+	Moria</a> and <a href="http://www.phial.com/angband/">
+	Angband</a> <br>
+      
+	<a href="http://www.hut.fi/~eye/roguelike/nethack.html">
+	Hack</a> and <a href="http://www.nethack.org/">
+	NetHack</a> <br>
+      
+        <a href="http://www.ularn.org/">Ularn</a> <br>
+      
+	<a href="http://www.alcyone.com/max/projects/omega/">
+	Omega</a>
+</p>      
+<p>      
+        <a href="http://groups.google.com/groups?group=rec.games.roguelike">
+        Usenet discussion</a>
+</p>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+<!-- this document tentatively valid HTML Tue Aug 8 2006 -->
+
+</body>
+</html>

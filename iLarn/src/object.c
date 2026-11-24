@@ -581,6 +581,7 @@ Boolean lookforobject(Short auto_pray)
   case OANNIHILATION:
     if ( has_object(OSPHTALISMAN) ) {
       message("The Talisman of the Sphere protects you from annihilation!");
+      return false; // (as in Ularn; it used to kill you anyway)
     }
     //    message("annihilated! (DEATH NOT IMPL.)");
     env->cdude[HP] = -1; // just to be sure

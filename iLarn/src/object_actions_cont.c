@@ -188,7 +188,8 @@ Boolean omoney(ULong amnt)
   Short py = env->playery;
   Boolean uh_oh = false;
 
-  if ( (amnt==0 || (amnt< ( ((Int)(env->cdude[GOLD])) /10)) ) && rnd(60)<30) {
+  // (gold is a Long: a cast to Int here broke these tests above 32767gp)
+  if ( (amnt==0 || (amnt< ( ((ULong)(env->cdude[GOLD])) /10)) ) && rnd(60)<30) {
     // message("Cheapskate! The Gods are insulted at such a meager offering!");
     message("Cheapskate! The deity is insulted!");
     forget();
@@ -198,7 +199,7 @@ Boolean omoney(ULong amnt)
     uh_oh = true;
   } else {
     env->cdude[GOLD] -= amnt;
-    if (amnt < ((Int)(env->cdude[GOLD]))/10 || amnt<rnd(50)) { 
+    if (amnt < ((ULong)(env->cdude[GOLD]))/10 || amnt<rnd(50)) { 
       createmonster(makemonst(env->level+2)); 
       env->cdude[AGGRAVATE] += 500; 
       o_draws();
@@ -206,11 +207,10 @@ Boolean omoney(ULong amnt)
     } else if (rnd(101) > 50)	{ 
       ohear();
     } else if (rnd(43) >= 33) {
-      enchantarmor();
+      // (once: it used to be called twice, +2 instead of +1)
       if (enchantarmor() && env->cdude[WEAR]) 
 	message("You feel your armor vibrate briefly");
     } else if (rnd(43) >= 33) {
-      enchweapon(); 
       if (enchweapon() && env->cdude[WIELD]) 
 	message("You feel your weapon vibrate briefly");
     } else {
@@ -299,21 +299,23 @@ void odeadthrone()
 
   k = rnd(101);
   if (k < 15) {
-    if (env->iarg[px][py] <= rund(env->cdude[HARDGAME])) {
+    // Tick the throne's abuse counter now: a chute takes you to another
+    // level, where [px][py] is something else.
+    Long abuse = env->iarg[px][py]--;
+    if (abuse <= rund(env->cdude[HARDGAME])) {
       // abused too many times...
       message("A chute opens!  You are transported...");
       if (env->level >= MAXLEVEL - 1) // cave bottom / volcano? just teleport
 	oteleport(0); 
       else // if very abused, send them down, else send them up
-	oelevator(env->iarg[px][py] >= 0); // express elevator up|down
+	oelevator(abuse >= 0); // express elevator up|down
     } else {
-      if (env->iarg[px][py] == env->cdude[HARDGAME])
+      if (abuse == env->cdude[HARDGAME])
 	message("The floor shudders!");
       else if (rund(2))
 	message("You hear a faint creaking.");
       raiselevel();
     }
-    env->iarg[px][py]--; // tick the abuse counter
   }
   else if (k<35) {
     message("Zaaaappp!  You've been teleported!"); 

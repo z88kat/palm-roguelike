@@ -59,7 +59,7 @@ Short packweight()
 {
   Short i,k;
   Long m = env->cdude[GOLD] / 1000; // env->cdude[GOLD] / 1024;
-  k = (Short) m;
+  k = (Short) min(m, 30000L); // (don't wrap to negative with 30M+ gold)
   for (i = 0; i < NINVT; i++)
     switch(env->iven[i]) {
     case OSSPLATE:   
@@ -330,7 +330,7 @@ void drop_dough(Long amt)
     // 1024's were 1000's
     env->item[x][y] = OKGOLD;
     k = amt / 1000;
-    amt = 1000 * k;
+    amt = 1000L * k; // (Long: 1000 * a Short overflows 16 bits)
   } else {
     env->item[x][y] = OKGOLD;
     k = 32767; 
@@ -643,9 +643,9 @@ void bank_sell(FormPtr frm, Char inv_i, Short list_j)
   if (newg > 0) env->cdude[GOLD] = newg;   // fear of overflow
   else if (env->cdude[GOLD]) env->cdude[GOLD] = MAXGOLD;
   // now destroy the inventory item
-  env->iven[i] = 0;
-  if (env->iven[i] == OLARNEYE)
+  if (env->iven[i] == OLARNEYE) // (test it before it's gone)
     ungot_larneye(); // make demons invisible again
+  env->iven[i] = 0;
   gemvalue[list_j] = 0;
   lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_st));
   LstSetListChoices(lst, NULL, 0);
@@ -659,6 +659,7 @@ void bank_sell(FormPtr frm, Char inv_i, Short list_j)
 }
 
 // if 'bank' print bank account info also
+extern Short in_store;
 void bank_trans_init(FormPtr frm, Boolean bank)
 {
   ControlPtr btn;
@@ -688,7 +689,7 @@ void bank_trans_init(FormPtr frm, Boolean bank)
     StrPrintF(buf, "You have: %ld", env->cdude[GOLD]);
     WinDrawChars(buf, StrLen(buf), 2, 13);
     btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_trans_dp));
-    CtlSetLabel(btn, "Drop");
+    CtlSetLabel(btn, (in_store == STORE_ALTAR) ? "Give" : "Drop");
     if (env->cdude[GOLD] > 0)
       CtlShowControl(btn);
     else 

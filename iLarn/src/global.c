@@ -601,7 +601,10 @@ void adjustcvalues(Short itm, Short arg, Boolean draw)
   case OORB:	
     env->cdude[ORB] -= 1;
     env->cdude[AWARENESS] -= 1;
-    // fall through
+    // (Larn fell through to the sword here, so dropping the orb cost
+    // 5 DEX that picking it up never gave)
+    flag=1;
+    break;
   case OSWORDofSLASHING:		
     env->cdude[DEXTERITY] -= 5;
     flag=1; 

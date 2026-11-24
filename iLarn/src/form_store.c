@@ -64,6 +64,33 @@ Boolean Store_Form_HandleEvent(EventPtr e)
   case keyDownEvent:
     // hardware button -- or else graffiti.
     frm = FrmGetActiveForm();
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_st));
+    switch (objid = fiveway_key(e)) { // 5-way
+    case NAV_UP: case NAV_DOWN:
+      if (!fiveway_list(lst, objid) && in_store == STORE_DND) {
+	// off the end of the page: turn to the next / previous one
+	dndstore_list_tens(frm, (objid == NAV_DOWN) ? 1 : -1);
+	store_item = LstGetNumberOfItems(lst);
+	if (store_item > 0) {
+	  LstSetSelection(lst, (objid == NAV_DOWN) ? 0 : store_item - 1);
+	  LstDrawList(lst);
+	}
+      }
+      return true;
+    case NAV_SELECT:
+      fiveway_hit(frm, btn_st_sell);
+      return true;
+    case NAV_LEFT:
+      fiveway_hit(frm, btn_st_exit);
+      return true;
+    case NAV_RIGHT:
+      fiveway_hit(frm, (in_store == STORE_DND) ? btn_st_next : btn_st_trans);
+      return true;
+    case NAV_NONE:
+      break;
+    default:
+      return true;
+    }
     c = e->data.keyDown.chr;
     // Rearranged for keyboard support.
     //
@@ -130,6 +157,10 @@ Boolean Store_Form_HandleEvent(EventPtr e)
 	if (store_item >= 0 && store_item <= 7)
 	  college_enroll(frm, store_item);
       } else if (in_store == STORE_BANK) {
+	if (store_item < 0 || store_item >= store_itmlst_len) {
+	  handled = true; // nothing selected
+	  break;
+	}
 	label = LstGetSelectionText(lst, store_item);
 	// check store_item and label[0] are within bounds?  maybe?
 	bank_sell(frm, label[0], store_item);

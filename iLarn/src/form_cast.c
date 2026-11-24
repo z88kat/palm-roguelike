@@ -27,6 +27,24 @@
 extern Short cast_form_use;
 Short cast_item; // (a to z) - 'a' .. index into env->iven, etc.
 extern Short cast_qty;
+
+// Row 'selection' of the list has been picked (tapped, or the 5-way).
+static void cast_list_selected(ListPtr lst, Short selection)
+{
+  CharPtr label;
+  if (cast_form_use == CAST_SPELL || cast_form_use == CAST_GENIE) {
+    label = LstGetSelectionText(lst, selection);
+    if (label) {
+      if (label[0] >= 'a')   cast_item = label[0] - 'a';
+      else                  cast_item = 26 + label[0] - 'A';
+    } else cast_item = -1; // bug if this happens
+  } else if (cast_form_use == CAST_GENOCIDE) {
+    // hm, how do I figure out what monster to nuke?
+    // list them all in order with blank spots for missing ones
+    // then just go by the index of the selection.
+    cast_item = 1 + selection; // will this DTRT?
+  }
+}
 Boolean Cast_Form_HandleEvent(EventPtr e)
 {
   Boolean handled = false;
@@ -51,20 +69,9 @@ Boolean Cast_Form_HandleEvent(EventPtr e)
     break;
 
   case lstSelectEvent:
-    if (cast_form_use == CAST_SPELL || cast_form_use == CAST_GENIE) {
-      frm = FrmGetActiveForm();
-      lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_ca));
-      label = LstGetSelectionText(lst, e->data.lstSelect.selection);
-      if (label) {
-	if (label[0] >= 'a')   cast_item = label[0] - 'a';
-	else                  cast_item = 26 + label[0] - 'A';
-      } else cast_item = -1; // bug if this happens
-    } else if (cast_form_use == CAST_GENOCIDE) {
-      // hm, how do I figure out what monster to nuke?
-      // list them all in order with blank spots for missing ones
-      // then just go by the index of the selection.
-      cast_item = 1 + e->data.lstSelect.selection; // will this DTRT?
-    }
+    frm = FrmGetActiveForm();
+    lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_ca));
+    cast_list_selected(lst, e->data.lstSelect.selection);
     handled = true;
     break;
 
@@ -72,6 +79,23 @@ Boolean Cast_Form_HandleEvent(EventPtr e)
     // hardware button -- or else graffiti.
     frm = FrmGetActiveForm();
     lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_ca));
+    // 5-way: up/down pick a row, centre is Ok, left is Cancel.
+    {
+      Short nav = fiveway_key(e);
+      if (nav != NAV_NONE) {
+	Word objid = 0;
+	if (fiveway_list(lst, nav))
+	  cast_list_selected(lst, LstGetSelection(lst));
+	else if (nav == NAV_SELECT)
+	  objid = btn_ca_ok;
+	else if (nav == NAV_LEFT)
+	  objid = btn_ca_cancel;
+	if (objid)
+	  CtlHitControl(FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, objid)));
+	handled = true;
+	break;
+      }
+    }
     switch(e->data.keyDown.chr) {
     case pageUpChr:
       if (LstScrollList(lst, winUp, 11))//there are 11 spells visible at a time

@@ -1,0 +1,35 @@
+Things you will certainly want to know:
+
+  You can download and play kMoria at no charge.
+
+  You can also redistribute kMoria for free (e.g. beam to your
+  friends, add to your software download site) -- but you are not
+  allowed to sell it.
+
+Things you might also want to know:
+
+  You can download and read the source code at no charge, too.
+  You can distribute the source code - but you can't sell it.
+
+  You can modify kMoria (source and/or executable) and use the modified
+  version yourself.
+  You can distribute your modified version (executable and/or source)
+  but you cannot sell it -- no one is allowed to make money from
+  selling any software that is descended from Moria, so, you would not
+  be allowed to make money from selling your modified version of kMoria.
+
+Further notes for those interested in modifying:
+
+  You must also leave the credits intact (you can add yourself if you
+  think it reasonable, naturally, but please do not remove anyone).
+
+  It would be sensible and polite (but you are not required to)
+  to indicate the extent of the changes you have made, and to rename
+  your version if you make extensive changes, so that people can tell
+  the games apart.
+
+  I would appreciate (but this is not a requirement either) receiving
+  a copy of the changes in your version, so that good ideas have a
+  chance to wind up in my version too.
+
+-Bridget Spitznagel

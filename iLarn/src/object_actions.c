@@ -412,8 +412,10 @@ void free_cast_select(FormPtr frm)
   for (i = 0 ; i < cast_qty ; i++) {
     free_me(cast_select_items[i]);
   }
-  if (cast_qty > 0) {
+  // (always allocated, even if there was nothing to list)
+  if (cast_select_items) {
     free_me(cast_select_items);
+    cast_select_items = NULL;
   }
 }
 #undef free_me
@@ -440,7 +442,8 @@ void init_known_items(FormPtr frm)
   for (i = 0 ; i < MAXPOTION ; i++) {
     if (env->potion_known[i]) {
       objname = get_Of_potion(i, true);
-      cast_select_items[k] = md_malloc(sizeof(Char) * (StrLen(objname)));
+      if (StrLen(objname) <= 4) continue; // unused slot: no name
+      cast_select_items[k] = md_malloc(sizeof(Char) * (StrLen(objname)-3));
       StrCopy(cast_select_items[k], objname+4); // skip " of "
       k++;
     }
@@ -451,7 +454,8 @@ void init_known_items(FormPtr frm)
   for (i = 0 ; i < MAXSCROLL ; i++) {
     if (env->scroll_known[i]) {
       objname = get_Of_scroll(i, true);
-      cast_select_items[k] = md_malloc(sizeof(Char) * (StrLen(objname)));
+      if (StrLen(objname) <= 4) continue; // unused slot: no name
+      cast_select_items[k] = md_malloc(sizeof(Char) * (StrLen(objname)-3));
       StrCopy(cast_select_items[k], objname+4); // skip " of "
       k++;
     }

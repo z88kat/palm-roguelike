@@ -1,0 +1,9 @@
+      	<h2>iRogue Info</h2>
+<p>
+<a href="index.php">What is iRogue?</a> <br>
+<a href="whatsnew.php">Current status</a> <br>
+<a href="download.php">Download iRogue</a> <br>
+<a href="play.php">How to play</a> <br>
+<a href="../color.php">Configuring color</a> <br>
+<a href="source.php">How to get source</a>
+</p>

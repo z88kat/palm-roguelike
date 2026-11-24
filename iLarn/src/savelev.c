@@ -24,6 +24,32 @@
 #include "Globals.h"
 #include "bit.h"
 
+// A new record of 'size' bytes at *index in the save database, locked
+// for writing; or NULL (and no record) if storage memory is full.
+static VoidPtr new_record(UInt *index, ULong size)
+{
+  VoidHand vh = DmNewRecord(iLarnSaveDB, index, size);
+  return vh ? MemHandleLock(vh) : NULL;
+}
+
+// Finish a record from new_record: unlock it, give it its unique ID, and
+// move *index on to the next one.
+static void done_record(VoidPtr p, UInt *index, ULong uniqueID)
+{
+  MemPtrUnlock(p);
+  DmReleaseRecord(iLarnSaveDB, *index, true);
+  DmSetRecordInfo(iLarnSaveDB, *index, NULL, &uniqueID);
+  (*index)++;
+}
+
+// Throw away a record from new_record.
+static void discard_record(VoidPtr p, UInt index)
+{
+  MemPtrUnlock(p);
+  DmReleaseRecord(iLarnSaveDB, index, false);
+  DmRemoveRecord(iLarnSaveDB, index);
+}
+
 // the 'deepest' floor at which it is 'ok' for me to assume "OWALL-->!monster"
 // (this is used in saving and restoring monsters, obviously both must match)
 #define WTWMON_LEV 10
@@ -52,7 +78,6 @@ void save_all(struct everything *env)
 {
   Short index;
   UInt obsolete;
-  VoidHand vh;
   VoidPtr p;
   ULong uniqueID;
   Short x, i;
@@ -69,38 +94,28 @@ void save_all(struct everything *env)
   // save cdude
   index = DmNumRecords(iLarnSaveDB);
   uniqueID = REC_CDUDE;
-  vh = DmNewRecord(iLarnSaveDB, &index, sizeof(Long) * 100);
-  p = MemHandleLock(vh);
+  p = new_record(&index, sizeof(Long) * 100);
   if (p)
     DmWrite(p, 0, env->cdude, sizeof(Long) * 100);
-  MemPtrUnlock(p);
-  DmReleaseRecord(iLarnSaveDB, index, true);
-  DmSetRecordInfo(iLarnSaveDB, index, NULL, &uniqueID);
-  index++;
+  if (p)
+    done_record(p, &index, uniqueID);
   // save ivenarg
   uniqueID = REC_IVENARG;
-  vh = DmNewRecord(iLarnSaveDB, &index, sizeof(Short) * NINVT);
-  p = MemHandleLock(vh);
+  p = new_record(&index, sizeof(Short) * NINVT);
   if (p)
     DmWrite(p, 0, env->ivenarg, sizeof(Short) * NINVT);
-  MemPtrUnlock(p);
-  DmReleaseRecord(iLarnSaveDB, index, true);
-  DmSetRecordInfo(iLarnSaveDB, index, NULL, &uniqueID);
-  index++;
+  if (p)
+    done_record(p, &index, uniqueID);
   // save iven
   uniqueID = REC_IVEN;
-  vh = DmNewRecord(iLarnSaveDB, &index, sizeof(Char) * NINVT);
-  p = MemHandleLock(vh);
+  p = new_record(&index, sizeof(Char) * NINVT);
   if (p)
     DmWrite(p, 0, env->iven, sizeof(Char) * NINVT);
-  MemPtrUnlock(p);
-  DmReleaseRecord(iLarnSaveDB, index, true);
-  DmSetRecordInfo(iLarnSaveDB, index, NULL, &uniqueID);
-  index++;
+  if (p)
+    done_record(p, &index, uniqueID);
   // save spelknow
   uniqueID = REC_SPELKNOW;
-  vh = DmNewRecord(iLarnSaveDB,&index,sizeof(Boolean)*(SPNUM+MAXPOTION+MAXSCROLL));
-  p = MemHandleLock(vh);
+  p = new_record(&index, sizeof(Boolean)*(SPNUM+MAXPOTION+MAXSCROLL));
   if (p) {
     i = 0;
     DmWrite(p, i, env->spelknow, sizeof(Boolean) * SPNUM);
@@ -109,54 +124,40 @@ void save_all(struct everything *env)
     i += sizeof(Boolean) * MAXPOTION;
     DmWrite(p, i, env->scroll_known, sizeof(Boolean) * MAXSCROLL);
   }
-  MemPtrUnlock(p);
-  DmReleaseRecord(iLarnSaveDB, index, true);
-  DmSetRecordInfo(iLarnSaveDB, index, NULL, &uniqueID);
-  index++;
+  if (p)
+    done_record(p, &index, uniqueID);
   // save beenhere
   uniqueID = REC_BEENHERE;
-  vh = DmNewRecord(iLarnSaveDB, &index, sizeof(Boolean)*(MAXLEVEL+MAXVLEVEL));
-  p = MemHandleLock(vh);
+  p = new_record(&index, sizeof(Boolean)*(MAXLEVEL+MAXVLEVEL));
   if (p)
     DmWrite(p, 0, env->beenhere, sizeof(Boolean) * (MAXLEVEL+MAXVLEVEL));
-  MemPtrUnlock(p);
-  DmReleaseRecord(iLarnSaveDB, index, true);
-  DmSetRecordInfo(iLarnSaveDB, index, NULL, &uniqueID);
-  index++;
+  if (p)
+    done_record(p, &index, uniqueID);
   // save genocided
   uniqueID = REC_GENOCIDED;
-  vh = DmNewRecord(iLarnSaveDB, &index, sizeof(Boolean) * 66);
-  p = MemHandleLock(vh);
+  p = new_record(&index, sizeof(Boolean) * 66);
   if (p)
     DmWrite(p, 0, env->genocided, sizeof(Boolean) * 66);
-  MemPtrUnlock(p);
-  DmReleaseRecord(iLarnSaveDB, index, true);
-  DmSetRecordInfo(iLarnSaveDB, index, NULL, &uniqueID);
-  index++;
+  if (p)
+    done_record(p, &index, uniqueID);
   // save stealth
   uniqueID = REC_STEALTH;
-  vh = DmNewRecord(iLarnSaveDB, &index, sizeof(Boolean) * MAXX * MAXY);
-  p = MemHandleLock(vh);
+  p = new_record(&index, sizeof(Boolean) * MAXX * MAXY);
   if (p) {
     for (x = 0, i = 0 ; x < MAXX ; x++) {
       DmWrite(p, i, env->stealth[x], MAXY * sizeof(Boolean));
       i += MAXY * sizeof(Boolean);
     }
   }
-  MemPtrUnlock(p);
-  DmReleaseRecord(iLarnSaveDB, index, true);
-  DmSetRecordInfo(iLarnSaveDB, index, NULL, &uniqueID);
-  index++;
+  if (p)
+    done_record(p, &index, uniqueID);
   // save env
   uniqueID = REC_ENV;
-  vh = DmNewRecord(iLarnSaveDB, &index, sizeof(struct everything));
-  p = MemHandleLock(vh);
+  p = new_record(&index, sizeof(struct everything));
   if (p)
     DmWrite(p, 0, env, sizeof(struct everything)); // careful when you read it
-  MemPtrUnlock(p);
-  DmReleaseRecord(iLarnSaveDB, index, true);
-  DmSetRecordInfo(iLarnSaveDB, index, NULL, &uniqueID);
-  index++;
+  if (p)
+    done_record(p, &index, uniqueID);
 }
 
 
@@ -313,7 +314,6 @@ Boolean savelevel(struct everything *env)
   Short this_lev = env->level;
   Short index, index2;
   UInt obsolete;
-  VoidHand vh, vh2;
   VoidPtr p, p2;
   ULong uniqueID;
   Short x,y,i,i2, nowall_ctr, obj_ctr, mon_ctr;
@@ -347,8 +347,7 @@ Boolean savelevel(struct everything *env)
   } // ok, there is one bit for every tile in the dungeon..
   //  vh = DmNewRecord(iLarnSaveDB, &index, ROW_BYTES * 17);
   if (i > 0) { // should always be true
-    vh = DmNewRecord(iLarnSaveDB, &index, (i+7)/8);
-    p = MemHandleLock(vh);
+    p = new_record(&index, (i+7)/8);
     if (!p) return false;
     DmWrite(p, 0, bit_array, (i+7)/8);
     //  DmWrite(p, i, nowall_ctr, sizeof(Short)); // write the # of non-walls
@@ -377,8 +376,7 @@ Boolean savelevel(struct everything *env)
     }
   }
   if (i > 0) { // should always be true
-    vh = DmNewRecord(iLarnSaveDB, &index, (i+7)/8);
-    p = MemHandleLock(vh);
+    p = new_record(&index, (i+7)/8);
     if (!p) return false;
     DmWrite(p, 0, bit_array, (i+7)/8);
     MemPtrUnlock(p);
@@ -407,8 +405,7 @@ Boolean savelevel(struct everything *env)
     }
   }
   if (i > 0) { // should always be true
-    vh = DmNewRecord(iLarnSaveDB, &index, (i+7)/8);
-    p = MemHandleLock(vh);
+    p = new_record(&index, (i+7)/8);
     if (!p) return false;
     DmWrite(p, 0, bit_array, (i+7)/8);
     MemPtrUnlock(p);
@@ -422,11 +419,12 @@ Boolean savelevel(struct everything *env)
   // RECORD n+3,n+4: Compact the object arrays: remove OWALLs and NO_OBJs.
   index2 = index + 1;
   if (obj_ctr > 0) { // might not be true!
-    vh = DmNewRecord(iLarnSaveDB, &index, obj_ctr * sizeof(Char));
-    vh2 = DmNewRecord(iLarnSaveDB, &index2, obj_ctr * sizeof(Long));
-    p = MemHandleLock(vh);
-    p2 = MemHandleLock(vh2);
-    if (!p || !p2) return false;
+    p = new_record(&index, obj_ctr * sizeof(Char));
+    p2 = p ? new_record(&index2, obj_ctr * sizeof(Long)) : NULL;
+    if (!p2) {
+      if (p) discard_record(p, index);
+      return false;
+    }
     for (y = 0, i = 0, i2 = 0 ; y < MAXY ; y++)  // for each row
       for (x = 0 ; x < MAXX ; x++)  // for each tile
 	if (env->item[x][y] != OWALL && env->item[x][y] != NO_OBJ) {
@@ -438,6 +436,7 @@ Boolean savelevel(struct everything *env)
 	  i2 += sizeof(Long);
 	}  // else it's a wall or nothing, and we ignore it!
     MemPtrUnlock(p);
+    MemPtrUnlock(p2);
     DmReleaseRecord(iLarnSaveDB, index, true);
     DmReleaseRecord(iLarnSaveDB, index2, true);
     uniqueID = 100 + this_lev * 10 + RECOFF_ITEM;
@@ -452,15 +451,18 @@ Boolean savelevel(struct everything *env)
   // RECORD n+5,n+6: Compact the monster arrays: remove OWALLs and NO_MONs.
   index2 = index + 1;
   if (mon_ctr > 0) { // might not be true!
-    vh = DmNewRecord(iLarnSaveDB, &index, mon_ctr * sizeof(Char));
-    vh2 = DmNewRecord(iLarnSaveDB, &index2, mon_ctr * sizeof(Short));
-    p = MemHandleLock(vh);
-    p2 = MemHandleLock(vh2);
-    if (!p || !p2) return false;
+    p = new_record(&index, mon_ctr * sizeof(Char));
+    p2 = p ? new_record(&index2, mon_ctr * sizeof(Short)) : NULL;
+    if (!p2) {
+      if (p) discard_record(p, index);
+      return false;
+    }
     for (y = 0, i = 0, i2 = 0 ; y < MAXY ; y++)  // for each row
       for (x = 0 ; x < MAXX ; x++)  // for each tile
-	if (env->item[x][y] != OWALL && env->mitem[x][y] != NO_MON) {
-	  // *item* is not wall and *mitem* is not no-monster
+	// (the same tiles as the monster bitfield above: on the deep
+	// levels, where demons walk through rock, walls count too)
+	if ((this_lev > WTWMON_LEV || env->item[x][y] != OWALL)
+	    && env->mitem[x][y] != NO_MON) {
 	  tmp_ch = env->mitem[x][y];
 	  DmWrite(p, i, &tmp_ch, sizeof(Char));
 	  tmp_sh = env->hitp[x][y];
@@ -469,6 +471,7 @@ Boolean savelevel(struct everything *env)
 	  i2 += sizeof(Short);
 	}  // else it's a wall or nothing, and we ignore it!
     MemPtrUnlock(p);
+    MemPtrUnlock(p2);
     DmReleaseRecord(iLarnSaveDB, index, true);
     DmReleaseRecord(iLarnSaveDB, index2, true);
     uniqueID = 100 + this_lev * 10 + RECOFF_MITEM;
@@ -492,8 +495,7 @@ Boolean savelevel(struct everything *env)
       }
     }
   }
-  vh = DmNewRecord(iLarnSaveDB, &index, (i+7)/8);
-  p = MemHandleLock(vh);
+  p = new_record(&index, (i+7)/8);
   if (!p) return false;
   DmWrite(p, 0, bit_array, (i+7)/8);
   MemPtrUnlock(p);
@@ -513,8 +515,7 @@ Boolean savelevel(struct everything *env)
       }
     }
   }
-  vh = DmNewRecord(iLarnSaveDB, &index, (i+7)/8);
-  p = MemHandleLock(vh);
+  p = new_record(&index, (i+7)/8);
   if (!p) return false;
   DmWrite(p, 0, bit_array, (i+7)/8);
   MemPtrUnlock(p);
@@ -720,7 +721,6 @@ extern LarnPreferenceType my_prefs; // must save character name too!
 Boolean save_sketch()
 {
   UInt obsolete;
-  VoidHand vh;
   VoidPtr p;
   ULong uniqueID = REC_SKETCH;
   Int size;
@@ -746,13 +746,9 @@ Boolean save_sketch()
 	  + sizeof(sketch_misc)); // tax, dmg, gtime, class, courses, warez
   
   index = DmNumRecords(iLarnSaveDB);
-  vh = DmNewRecord(iLarnSaveDB, &index, size);
-  p = MemHandleLock(vh);
-  if (!p) {
-    MemPtrUnlock(p);
-    DmReleaseRecord(iLarnSaveDB, index, true);
+  p = new_record(&index, size);
+  if (!p)
     return false;
-  }
 
   offset = 0;
   // Write Longs     cdude

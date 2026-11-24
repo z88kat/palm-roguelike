@@ -1,0 +1,244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>Keyboard support in iLarn</title>
+
+<style type="text/css" media="screen">@import "../3col.css";</style>
+
+<link rel="SHORTCUT ICON" href="../favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>iLarn keyboard support</h1>
+  <p><i>as of version 0.25; email me if you notice forms without support</i></p>
+</div>
+
+<div class="content">
+
+<h2>Main form</h2>
+
+<p> <img src="../images/iLarn/4level1.gif" alt="[dungeon screen]"> </p>
+
+<p> This is the form you are in most of the time.  There is not much
+to say about it.  Any one-letter command that works for graffiti
+should work when typed on the keyboard.  You should also enable
+"<b>hjklyubn</b>" movement in the Bindings menu option; it's disabled by
+default since I had a sad tendency to accidentally write '<b>l</b>' during
+combat instead of '<b>c</b>' (and die; oh, the embarrassment). </p>
+
+</div>
+<div class="content">
+
+<h2>Four-button popup</h2>
+<p> <img src="../images/iLarn/6potion2.gif" alt="[a scroll]">
+<img src="../images/iLarn/3townE.gif" alt="[entering dungeon]"> </p>
+<p> (This form has four buttons, but 1 or 2 of them may be disabled.) </p>
+<p> It pops up when you step on an item and offers you a choice
+of actions.  (The original author made sure that each action starts
+with a different letter.)  Instead of tapping the button,
+just type the first letter of the action: type <b>d</b> to drink the
+potion, or <b>g</b> to go inside the dungeon, etc. </p>
+
+</div>
+<div class="content">
+
+<h2>Cast form</h2>
+<p> When you type <b>c</b> to cast a spell, you enter a form with a
+list of spells:
+<br> <b>a</b>) protection
+<br> <b>b</b>) magic missile
+<br> etc.
+<br> To select a spell, just type its index letter: type <b>b</b> to
+cast magic missile, etc.  Hm, it looks like I don't have a keyboard
+shortcut for the buttons, though - you will still have to tap them
+in this version. </p>
+<p> <i>a side note: the same form is used for genocide and for the genie,
+but keyboard support is not enabled there in this version (they are
+rare cases).</i> </p>
+
+</div>
+<div class="content">
+
+<h2>Store form</h2>
+<p> There are three "stores" that all use the same form.
+<br> Let's go back to the town for a bit... </p>
+<p> <img src="../images/iLarn/2town.gif" alt="[town screen]"> </p>
+<h2>DND Store</h2>
+<p> This is the store where you can buy stuff.  There are pages and pages
+of stuff (with some gaps). </p>
+<p> Type <b>Space</b> (a space, " ") to select the first item in the list.  If you keep
+hitting <b>Space</b> you will cycle through all the items on that page.
+<br> To get to a different page, <b>&lt;</b> will go back a page and
+<b>&gt;</b> will go forward a page.
+<br> To buy the item that is currently selected, type <b>B</b>.
+<br> To exit the store, type <b>X</b>. </p>
+<h2>College</h2>
+<p> Enrolling in courses takes time, but raises your ability scores. </p>
+<p> Type <b>Space</b> to select the first course in the catalog, and you can keep
+typing <b>Space</b> to cycle through all the courses.
+<br> To enroll in the course that is currently selected, type <b>E</b>.
+<br> To exit the college, type <b>X</b>. </p>
+<h2>Bank</h2>
+<p> Here you can sell gems from your inventory, or, make a cash transaction. </p>
+<p> If there are gems listed, you can type <b>Space</b> to select/cycle just like
+in the previous two stores.  (You can't type the index letter to select,
+it would be relatively easy to transplant the code to do that, but not sure
+if it's particularly worthwhile.)
+<br> To sell the gem that is currently selected, type <b>S</b>.
+<br> To initiate a transaction (deposit or withdrawal), type <b>T</b>.
+<br> To exit the bank, type <b>X</b>. </p>
+
+</div>
+<div class="content">
+
+<h2>Transaction form</h2>
+<p> This is the form used for deposit/withdrawal at the bank, and it
+is also the form used for dropping gold in any old location or donating to
+an altar.  (When you are not in the bank, your account is not
+displayed, and the second "[=]" button to copy your balance into
+the text field is disabled.) </p>
+<p> If you are in the bank,
+<br> type <b>=</b> or <b>Y</b> to copy your wallet contents (displayed)
+to the text field,
+<br> or type <b>B</b> to copy your bank balance (displayed)
+to the text field,
+<br> or if you want to type some other number into the text field, I am
+afraid you will have to tap on the text field to activate it (I'm not sure
+how I can automatically activate it).  Then you
+can type numbers.
+<br> Type <b>D</b> to deposit the amount shown in the field,
+<br> or type <b>W</b> to withdraw the amount shown in the field.
+<br> To exit/cancel, you can type <b>C</b>, <b>N</b>, or <b>X</b>. </p>
+<p> If you are not in the bank, everything is the same, except that B (balance) and W (withdraw) are not an option.  To drop "none", type <b>N</b>. </p>
+
+</div>
+<div class="content">
+
+<h2>LRS form</h2>
+<p> Ahhh the Larn Revenue Service.  (Ever wonder whether a fireball could
+just take them out?  Better not to try it.) </p>
+<p> If you don't owe any taxes, there's only one option.  Type
+<b>X</b> to exit. </p>
+<p> If you do owe taxes, there are two options for paying them.
+For those with cash on hand, tap on the field, type in an amount,
+and type <b>P</b> to Pay Cash.  If, on the other hand, you have frozen
+assets in the bank, you can type <b>R</b> to Request a Transfer,
+whereupon the game will give you a little simulated bureaucratic hassle,
+so you may have to hit R a few times. </p>
+<h2>Tax Evader form</h2>
+<p> Some stores refuse to deal with people who owe taxes.
+Type <b>X</b> to exit. </p>
+<h2>Home</h2>
+<p> Under the covers, this is the same as the tax evader form.
+Type <b>X</b> to exit. </p>
+
+</div>
+<div class="content">
+
+<h2>Inventory form; or, Trading Post</h2>
+<p> Inventory and trading post are the same form. </p>
+<p> Write the index letter (<b>a</b> to <b>z</b> of an item to select it.
+This will activate some buttons. </p>
+<p> If you are in the trading post, these buttons will be Sell and Exit.
+<br> Type <b>S</b> (or just hit <b>Enter</b>) to sell the selected item
+<br> Type <b>X</b> to exit. </p>
+<p> If you are in the inventory, there may be up to four buttons.
+<br> <img src="../images/iLarn/8inv2.gif" alt="[inventory]">
+<br> The first button is "do the obvious thing".  The second button is
+"drop" (disabled if you can't drop items at your current location).
+The third button is "wield" (disabled if wielding is already the
+obvious thing or if this item really can't be wielded).  The last
+button is "cancel".
+<br> To "do the obvious thing", just hit <b>Enter</b> (or
+<b>Return</b> or however it's marked on your keyboard).
+<br> To drop, type <b>D</b> - yes, capital letter, I know the buttons
+here are lower case (makes them skinnier and able to fit), but <b>d</b>
+is already an inventory item so we'll just have to get over it.
+<br> To wield, if non-obvious, type <b>W</b>.
+<br> Type <b>C</b> (or <b>X</b>) to exit. </p>
+<p> If you prefer you can instead type 1, 2, 3 for the first, second (drop),
+and third (wield) buttons. </p>
+</div>
+
+
+<div class="content">
+  <h2>Missing?</h2>
+<p>
+If you find that something is missing or not working or stupid,
+send me email.
+</p>
+</div>
+
+
+
+<div id="navAlpha">
+            	<h2>iLarn Info</h2>
+<p>
+<a href="index.html">What is iLarn?</a> <br>
+<a href="whatsnew.html">Current status</a> <br>
+<a href="download.html">Download iLarn</a> <br>
+<a href="play.html">How to play</a>;
+<a href="town.html">town</a>; <br>
+<a href="keyboard.html">keyboard shortcuts</a> <br>
+<a href="../color.html">Configuring color</a> <br>
+<a href="source.html">How to get source</a>
+</p>
+                <h2>General Info</h2>
+     <p>
+      <a href="../index.html">What's New Here</a><br>
+
+      <a href="mailto:i0lanthe@users.sourceforge.net?subject=roguelike-palm" title="Email Bridget about roguelike-palm">Contact me</a>
+
+     </p>
+
+     <h2>Hosted by</h2>
+     <p>
+      <A href="http://sourceforge.net">
+	<IMG src="../images/sflogo.png"
+	width="88" height="31" alt="SourceForge Logo"></A>
+	<br>
+      
+	<a href="http://sourceforge.net/project/?group_id=6932" title="roguelike-palm project page at SourceForge">
+	Project page</a>
+	<br>
+     </p>
+</div>
+
+<div id="navBeta">
+                  <h2>External Links</h2>
+<p>
+	<a href="http://roguelikes.sauceforge.net/pub/index.html">
+	Roguelike Games:</a>
+</p>      
+<p>
+	<a href="http://roguelikes.sauceforge.net/pub/rogue/index.html">
+	Rogue</a> <br>
+      
+        <a href="http://remarque.org/~grabiner/moria.html">
+	Moria</a> and <a href="http://www.phial.com/angband/">
+	Angband</a> <br>
+      
+	<a href="http://www.hut.fi/~eye/roguelike/nethack.html">
+	Hack</a> and <a href="http://www.nethack.org/">
+	NetHack</a> <br>
+      
+        <a href="http://www.ularn.org/">Ularn</a> <br>
+      
+	<a href="http://www.alcyone.com/max/projects/omega/">
+	Omega</a>
+</p>      
+<p>      
+        <a href="http://groups.google.com/groups?group=rec.games.roguelike">
+        Usenet discussion</a>
+</p>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+</body>
+</html>

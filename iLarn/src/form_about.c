@@ -20,6 +20,21 @@ Boolean About_Form_HandleEvent(EventPtr e)
     handled = true;
     break;
 
+  case keyDownEvent:
+    // 5-way: the centre (or left) is Done
+    switch (fiveway_key(e)) {
+    case NAV_SELECT: case NAV_LEFT:
+      fiveway_hit(FrmGetActiveForm(), btn_about_ok);
+      handled = true;
+      break;
+    case NAV_NONE:
+      break;
+    default:
+      handled = true;
+      break;
+    }
+    break;
+
   case ctlSelectEvent:
     switch(e->data.ctlSelect.controlID) {
     case btn_about_ok:

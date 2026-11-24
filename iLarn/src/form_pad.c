@@ -29,6 +29,31 @@ Boolean Pad_Form_HandleEvent(EventPtr e)
     handled = true;
     break;
 
+  case keyDownEvent:
+    // 5-way: up / down pick a drug, the centre buys it, left leaves.
+    frm = FrmGetActiveForm();
+    switch (fiveway_key(e)) {
+    case NAV_UP: case NAV_DOWN:
+      fiveway_list(FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_pad)),
+		   fiveway_key(e));
+      handled = true;
+      break;
+    case NAV_SELECT:
+      fiveway_hit(frm, btn_pad_buy);
+      handled = true;
+      break;
+    case NAV_LEFT:
+      fiveway_hit(frm, btn_pad_split);
+      handled = true;
+      break;
+    case NAV_NONE:
+      break;
+    default:
+      handled = true;
+      break;
+    }
+    break;
+
   case ctlSelectEvent:
     frm = FrmGetActiveForm();
     switch(e->data.ctlSelect.controlID) {

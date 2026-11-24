@@ -279,13 +279,13 @@ void genmonst(Short j)
     env->genocided[j] = true;
     switch(j) {
     case ELF:
-      StrPrintF(buf, no_more, "elves");
+      StrPrintF(buf, no_more, "elves", "");
       break;
     case VORTEX:
-      StrPrintF(buf, no_more, "vortices");
+      StrPrintF(buf, no_more, "vortices", "");
       break;
     case VIOLETFUNGI:
-      StrPrintF(buf, no_more, m_name(j));
+      StrPrintF(buf, no_more, m_name(j), "");
       break;
     case DISENCHANTRESS:
       StrPrintF(buf, no_more, m_name(j), "es");
@@ -1131,6 +1131,10 @@ void speldamage(Short x)
       /* pointer to item save structure */
       Short sc = 0;  /* # items saved */
       save = (struct isave *) md_malloc(sizeof(struct isave)*MAXX*MAXY*2);
+      if (!save) {
+	message("nothing happens"); // no memory to do it with
+	break;
+      }
 
       for (j = 0 ; j < MAXY ; j++) // save all items and monsters
 	for (i = 0 ; i < MAXX ; i++) {
@@ -1157,8 +1161,8 @@ void speldamage(Short x)
       j = rnd(MAXY-2); // make straight the way
       for (i = 1 ; i < MAXX-1 ; i++)
 	env->item[i][j] = 0;
-      // now put the items and monsters back
-      for ( ; sc>0 ; sc--) {
+      // now put the items and monsters back (save[sc-1] down to save[0])
+      while (sc-- > 0) {
 	if (!save[sc].is_mon) {  // it's an object
 	  Short trys;
 	  // this for statement looks for env->item[i][j]==0
@@ -1183,9 +1187,8 @@ void speldamage(Short x)
       } // done replacing items and monsters
       c[INTELLIGENCE] = max(3,c[INTELLIGENCE]-1);
       env->spelknow[37] = false; // you forget this spell
-      // xxxxx need to free 'save', need to position the player.
-      //      free_me(save);
-      //      positionplayer(); // hm need to pick random px, py
+      MemPtrFree(save);
+      positionplayer(); // not inside the new rock, please
     }
     message("yow!");
     // so, like, redraw the screen too.

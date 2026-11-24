@@ -1,0 +1,11 @@
+              <h2>kMoria Info</h2>
+<p>
+<a href="index.php">What is kMoria?</a> <br>
+<a href="whatsnew.php">Current status</a> <br>
+<a href="download.php">Download kMoria</a> <br>
+<a href="play.php">How to play</a>;
+<a href="play_chargen.php">character creation</a>;<br>
+<a href="play_intro.php">brief intro</a><br>
+<a href="color.php">Configuring color</a> <br>
+<a href="source.php">How to get source</a>
+</p>

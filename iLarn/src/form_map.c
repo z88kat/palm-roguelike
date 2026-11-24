@@ -9,7 +9,8 @@ IndexedColorType peek_color(Short x, Short y); // in display.c!!!
 #endif
 /***********************************************************************
  * This form is the "display entire dungeon level, really tiny" form.
- * You tap anywhere on the map form to return to the main form.
+ * You tap anywhere on the map form (or press any key) to return to the
+ * main form.
  ***********************************************************************/
 
 static void show_dungeon() SEC_4;
@@ -31,6 +32,13 @@ Boolean Map_Form_HandleEvent(EventPtr e)
   case penDownEvent:
     LeaveForm(); // LeaveForm(true);
     //    i_used_too_much_heap();
+    handled = true;
+    break;
+
+  case keyDownEvent:
+    // any key or 5-way press closes the map too (but not a 5-way release)
+    if (fiveway_key(e) != NAV_IGNORE)
+      LeaveForm();
     handled = true;
     break;
 

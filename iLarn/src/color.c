@@ -43,32 +43,156 @@ typedef MemoDBRecordType * MemoDBRecordPtr;
  * so, sorry, all dragons are the same dam' color For Now.
  */
 
-// have not iLarnified, from here down.
 
 
-// These are color symbols that get special cased in some way:
-//#define NUM_SYMBOLS 145
-#define NUM_SYMBOLS 150
+// symbol_colors[] layout (see symbol_index):
+//   0..93     plain characters '!'..'~' (monsters, and map things that
+//             aren't objects: '#' walls, ',' unexplored, '@' you)
+//   94..145   "bold" letters A-Z then a-z: objects, drawn as an inverted
+//             block (a memo writes these as e.g. "T_")
+//   146..150  one each for the five kinds of dragon 'D' (memo "Db" etc.)
+// (Before 0.40 the bold and dragon slots overlapped, so the urn's colour
+// changed bronze dragons, and bold 'z' had no slot at all.)
+#define NUM_PLAIN 94
+#define NUM_BOLD 52
+#define SKIP_TO_BOLD NUM_PLAIN
+#define SKIP_TO_DRAGONS (NUM_PLAIN + NUM_BOLD)
+#define NUM_DRAGONS 5
+#define NUM_SYMBOLS (SKIP_TO_DRAGONS + NUM_DRAGONS)
 #define BOLD_SYM '_'
 #define SUBTRACT_BANG 33
-#define SKIP_TO_BOLD 28
-#define SKIP_TO_DRAGONS 145
 IndexedColorType symbol_colors[NUM_SYMBOLS];
 IndexedColorType black, white;
 static Short grok_hex(Char *buf, Short len) SEC_4;
-#define NUM_DRAGONS 5
 const Char dragon_color_syms[NUM_DRAGONS] = { 'b', 'g', 's', 'p', 'r' };
 /* Need to fix it so that I accept "d " (default for dragon), "dw", "db", "dg",
    "ds", "dp", "dr" */
 Boolean dragon_colors[NUM_DRAGONS];
+
+// Index into symbol_colors for character c, or -1 if it has none.
+static Short symbol_index(Char c, Boolean bold)
+{
+  if (bold && c >= 'A' && c <= 'Z') return SKIP_TO_BOLD + (c - 'A');
+  if (bold && c >= 'a' && c <= 'z') return SKIP_TO_BOLD + 26 + (c - 'a');
+  if (c >= '!' && c <= '~') return c - SUBTRACT_BANG;
+  return -1;
+}
+
+// The built-in "neon" colour scheme, used for every symbol that the
+// iLarn-RGB memo (if any) doesn't set.  All are from the 216-colour
+// web-safe part of the system palette, and vivid but readable on both the
+// white and the Invert (black) background.  Objects are drawn as a block
+// of their colour with the letter cut out, so theirs are mid-tones that
+// show white (or black) text well.  Walls, '@' and anything not listed are
+// drawn in the plain text colour.
+typedef struct { Char sym; Boolean bold; UInt8 r, g, b; } DefaultColorType;
+static const DefaultColorType default_colors[] = {
+  // things that aren't letters (objects and traps)
+  {'!',0, 0xFF,0x00,0x99}, // potion
+  {'?',0, 0x00,0x99,0x99}, // scroll
+  {'/',0, 0xCC,0x00,0xFF}, // wand of wonder, staff of power
+  {'|',0, 0xFF,0x00,0xCC}, // ring
+  {'{',0, 0xCC,0x66,0x00}, // belt
+  {'[',0, 0x66,0x66,0xFF}, // light armour, shield
+  {']',0, 0x33,0x33,0xCC}, // heavy armour
+  {')',0, 0x00,0x66,0xFF}, // sword, axe...
+  {'(',0, 0x00,0x99,0xCC}, // dagger, spear...
+  {'*',0, 0xCC,0x99,0x00}, // gold
+  {'<',0, 0x00,0x99,0x66}, // gem
+  {'.',0, 0x99,0x33,0xFF}, // amulet, scarab, lamp, talisman...
+  {'~',0, 0xFF,0x33,0x00}, // Eye of Larn
+  {':',0, 0x33,0x99,0x00}, // drugs
+  {'^',0, 0xFF,0x00,0x00}, // trap, teleporter, elevator
+  {'%',0, 0x00,0xCC,0x00}, // stairs
+  {'$',0, 0xCC,0x99,0x00}, // bank
+  {'=',0, 0xFF,0x66,0x00}, // DND store
+  {'+',0, 0xFF,0x66,0x00}, // college
+  {'&',0, 0x99,0x99,0x99}, // statue
+  {',',0, 0x99,0x99,0xCC}, // not yet explored
+  // things that are letters (drawn bold)
+  {'A',1, 0xCC,0x99,0x00}, // altar
+  {'B',1, 0x00,0x99,0x99}, // book
+  {'C',1, 0xCC,0x66,0x00}, // chest
+  {'D',1, 0x99,0x66,0x33}, // closed door
+  {'O',1, 0x99,0x66,0x33}, // open door
+  {'E',1, 0x00,0xCC,0x00}, // dungeon entrance
+  {'V',1, 0x00,0x99,0x00}, // volcano shaft
+  {'F',1, 0x00,0x99,0xFF}, // fountain
+  {'f',1, 0x66,0x66,0x99}, // dried-up fountain
+  {'H',1, 0x33,0x99,0x33}, // home
+  {'L',1, 0xCC,0x00,0x66}, // Larn Revenue Service
+  {'M',1, 0x66,0x99,0xCC}, // mirror
+  {'P',1, 0x66,0x33,0x99}, // pit
+  {'S',1, 0xFF,0x66,0x00}, // trading post
+  {'T',1, 0xCC,0x99,0x00}, // throne
+  {'t',1, 0x99,0x66,0x33}, // throne without its gems
+  {'c',1, 0xCC,0x66,0x33}, // fortune cookie
+  {'o',1, 0x99,0x00,0xFF}, // orb
+  {'s',1, 0x33,0x00,0x66}, // sphere of annihilation
+  {'u',1, 0xCC,0x99,0x00}, // golden urn
+  // monsters (shallow ones first)
+  {'l',0, 0x99,0x66,0x33}, {'G',0, 0x99,0x66,0x00}, {'H',0, 0xCC,0x66,0x00},
+  {'J',0, 0xCC,0x99,0x00}, {'K',0, 0x66,0x99,0x00}, {'O',0, 0x33,0x99,0x00},
+  {'S',0, 0x00,0x99,0x00}, {'c',0, 0xCC,0x66,0x33}, {'j',0, 0x00,0x99,0x99},
+  {'t',0, 0x66,0x66,0x99}, {'A',0, 0xCC,0x33,0x00}, {'E',0, 0x00,0x99,0xFF},
+  {'L',0, 0x00,0x99,0x00}, {'N',0, 0xFF,0x33,0x99}, {'Q',0, 0xCC,0x00,0x66},
+  {'R',0, 0xCC,0x66,0x33}, {'Z',0, 0x66,0x99,0x66}, {'a',0, 0xFF,0x33,0x00},
+  {'b',0, 0x99,0x66,0x33}, {'h',0, 0xFF,0x00,0x00}, {'i',0, 0x00,0x99,0xCC},
+  {'C',0, 0x99,0x66,0x00}, {'T',0, 0x33,0x99,0x33}, {'Y',0, 0x66,0x99,0xCC},
+  {'d',0, 0x66,0x99,0xFF}, {'e',0, 0x33,0x99,0x99}, {'g',0, 0xFF,0x66,0x00},
+  {'m',0, 0x99,0x33,0xFF}, {'v',0, 0x66,0x66,0xFF}, {'z',0, 0xCC,0x99,0x00},
+  {'F',0, 0x99,0x00,0xFF}, {'W',0, 0x66,0x66,0x99}, {'f',0, 0xCC,0x00,0xCC},
+  {'o',0, 0x99,0x33,0xCC}, {'r',0, 0xFF,0x66,0x00}, {'X',0, 0x99,0x66,0x33},
+  {'V',0, 0xCC,0x00,0x33}, {'I',0, 0x99,0x99,0xCC}, {'p',0, 0x66,0x99,0x00},
+  {'q',0, 0xFF,0x00,0x66}, {'s',0, 0x99,0x99,0x00}, {'y',0, 0xCC,0x99,0x00},
+  {'U',0, 0x99,0x66,0x66}, {'k',0, 0xCC,0x00,0xFF}, {'M',0, 0x99,0x99,0x99},
+  {'w',0, 0x00,0x66,0xFF}, {'P',0, 0xFF,0x00,0xCC}, {'x',0, 0x99,0x33,0x99},
+  {'n',0, 0x00,0x99,0x66}, {'u',0, 0x66,0x99,0x33},
+  // dragons: the white dragon is a 'd'; this is for any other 'D' (each
+  // kind has its own colour too, below)
+  {'D',0, 0xFF,0x00,0x00},
+  // demon lords, demon prince, Lucifer (seen with the Eye of Larn)
+  {'1',0, 0xFF,0x00,0x33}, {'2',0, 0xFF,0x00,0x33}, {'3',0, 0xFF,0x00,0x33},
+  {'4',0, 0xFF,0x00,0x33}, {'5',0, 0xFF,0x00,0x33}, {'6',0, 0xFF,0x00,0x33},
+  {'7',0, 0xFF,0x00,0x33}, {'9',0, 0xCC,0x00,0xFF}, {'0',0, 0xFF,0x00,0xFF}
+};
+#define NUM_DEFAULT_COLORS (sizeof(default_colors) / sizeof(default_colors[0]))
+// bronze, green, silver, platinum and red dragons (dragon_color_syms)
+static const UInt8 default_dragon_colors[NUM_DRAGONS][3] = {
+  {0xCC,0x66,0x00}, {0x00,0x99,0x00}, {0x99,0x99,0xCC}, {0x66,0x99,0xCC},
+  {0xFF,0x00,0x00}
+};
+
+static void set_default_colors()
+{
+  RGBColorType rgb;
+  Short i, j;
+  rgb.index = 0;
+  for (i = 0 ; i < NUM_DEFAULT_COLORS ; i++) {
+    j = symbol_index(default_colors[i].sym, default_colors[i].bold);
+    if (j < 0) continue;
+    rgb.r = default_colors[i].r;
+    rgb.g = default_colors[i].g;
+    rgb.b = default_colors[i].b;
+    symbol_colors[j] = WinRGBToIndex(&rgb);
+  }
+  for (i = 0 ; i < NUM_DRAGONS ; i++) {
+    rgb.r = default_dragon_colors[i][0];
+    rgb.g = default_dragon_colors[i][1];
+    rgb.b = default_dragon_colors[i][2];
+    symbol_colors[SKIP_TO_DRAGONS + i] = WinRGBToIndex(&rgb);
+    dragon_colors[i] = true;
+  }
+}
 #endif // I_AM_COLOR
 
 
 /* 
  * This is ONLY called if the OS version is at least 3.5.
- * If a memo entitled "iLarn-RGB" exists, read from it into symbol_colors
- * and set IsColor = true.  (Any symbol missing from the memo will be black.)
- * Otherwise IsColor is false (and symbol_colors remains black).
+ * Loads the built-in colour scheme into symbol_colors; then, if a memo
+ * entitled "iLarn-RGB" exists, the colours it lists replace those.
+ * Either way have_read_color becomes true, so IsColor follows the
+ * Color preference.
  */
 #ifdef I_AM_COLOR
 void look_for_memo()
@@ -78,9 +202,11 @@ void look_for_memo()
   UInt mode = dmModeReadOnly;
   Char magic_title[20];
   Short title_len, memo_len, i, j, symbol;
-  Char *memo, c;
+  Char *memo;
   RGBColorType rgbcolor;
   IndexedColorType icolor;
+  Boolean found_memo = false;
+  Boolean memo_dragon[NUM_DRAGONS]; // dragon colours the memo has set
   //  Boolean no_foreground = true;
   //  Boolean symbol_set[NUM_SYMBOLS];
 
@@ -95,7 +221,10 @@ void look_for_memo()
   }
   for (i = 0 ; i < NUM_DRAGONS ; i++) {
     dragon_colors[i] = false;
+    memo_dragon[i] = false;
   }
+  set_default_colors();
+  have_read_color = true; // the defaults will do if there's no memo
   //  symbol_colors[BG_COL_IX] = white;
   //  symbol_set[BG_COL_IX] = true;
 
@@ -104,32 +233,27 @@ void look_for_memo()
   StrPrintF(magic_title, "iLarn-RGB%c", linefeedChr);
   title_len = StrLen(magic_title);
   // try to open the memo database
-  if (!(MemoDB = DmOpenDatabaseByTypeCreator(memoDBType, sysFileCMemo, mode))){
-    have_read_color = false;
+  if (!(MemoDB = DmOpenDatabaseByTypeCreator(memoDBType, sysFileCMemo, mode)))
     return;
-  }
   recordNum = 0;
   // get a record (stop if we run out)
-  while (!have_read_color &&
+  while (!found_memo &&
 	 (recH = DmQueryNextInCategory(MemoDB, &recordNum, dmAllCategories))) {
     MemoDBRecordPtr memoRecP = MemHandleLock (recH);
     memo = &(memoRecP->note);
     // Does the title match our magic title?
     if (0 == StrNCompare(memo, magic_title, title_len)) {
-      have_read_color = true;
+      found_memo = true;
       memo_len = StrLen(memo);
       i = title_len; // skip past the title!
       while (i < memo_len - 1) {
-	symbol = memo[i]; // this is the symbol whose color we'll define
+	// this is the symbol whose color we'll define
 	if (memo[i+1] == BOLD_SYM) {
+	  // "bold" letters are objects (non-letters only mean one thing)
+	  symbol = symbol_index(memo[i], true);
 	  i++;
-	  if ((symbol >= 'a' && symbol <= 'z') ||
-	      (symbol >= 'A' && symbol <= 'Z'))
-	    symbol += SKIP_TO_BOLD; // distinguish "bold" letters
-	  else
-	    symbol -= SUBTRACT_BANG; // non-letters only represent one thing
 	} else {
-	  symbol -= SUBTRACT_BANG;
+	  symbol = symbol_index(memo[i], false);
 	  // Sneakily allow multiple colors for different kinds of dragons.
 	  if (memo[i] == DRAGON_CHAR) {
 	    Char dchar = memo[i+1];
@@ -148,7 +272,6 @@ void look_for_memo()
 	  // ok now skip some (probably) whitespace to get to the rrggbb
 	  Boolean found = false;
 	  for ( i = i+1 ; i < memo_len - 1 ; i++) {
-	    c = memo[i];
 	    if (Is_Hex(memo[i])) { found = true; break; }
 	    if (memo[i] == linefeedChr) { i++; break; }
 	  }
@@ -167,8 +290,15 @@ void look_for_memo()
 	    icolor = WinRGBToIndex(&rgbcolor);
 	    symbol_colors[symbol] = icolor;  // HOORAY!
 
-	    if (symbol >= SKIP_TO_DRAGONS)
+	    if (symbol >= SKIP_TO_DRAGONS) {
 	      dragon_colors[symbol-SKIP_TO_DRAGONS] = true; // remember it.
+	      memo_dragon[symbol-SKIP_TO_DRAGONS] = true;
+	    } else if (symbol == DRAGON_CHAR - SUBTRACT_BANG) {
+	      // a plain "D" colours every dragon the memo doesn't colour
+	      for (j = 0 ; j < NUM_DRAGONS ; j++)
+		if (!memo_dragon[j])
+		  dragon_colors[j] = false;
+	    }
 
 	    i += 6;
 	  } // else the rrggbb is garbage and we skip to "Skip to the newline".
@@ -183,12 +313,6 @@ void look_for_memo()
     recordNum++;
   } // end while(records)
   DmCloseDatabase(MemoDB);
-  /*
-   * DONE READING MEMO
-   * At this point either IsColor is true, meaning we found the memo and,
-   * unless user is taunting us, set some entries of symbol_colors[];
-   * or it is false, meaning we did not find a color definition memo.
-   */
 
 }
 #endif // I_AM_COLOR
@@ -225,13 +349,14 @@ static Short grok_hex(Char *buf, Short len)
 IndexedColorType get_color(Char c, Boolean bold)
 {
   IndexedColorType ict = black;
-  Short i;
-  if (bold &&  ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))  )
-    i = c + SKIP_TO_BOLD;
-  else i = c - SUBTRACT_BANG;
+  Short i = symbol_index(c, bold);
   // Let's have some bounds checking here.
   if (i >= 0 && i < NUM_SYMBOLS)
     ict = symbol_colors[i];
+  // Indexes 230-255 of the 8-bit system palette are all black; treat any
+  // of them as black, whichever one WinRGBToIndex chose.
+  if (ict >= 230)
+    ict = black;
   if (my_prefs.black_bg && ict == black)
     return white;
   else
@@ -260,6 +385,8 @@ IndexedColorType get_dragon_color(Short mon)
       i = SKIP_TO_DRAGONS + j; // else i remains index of default 'D' color.
 
   ict = symbol_colors[i];
+  if (ict >= 230)
+    ict = black;
   if (my_prefs.black_bg && ict == black)
     return white;
   else

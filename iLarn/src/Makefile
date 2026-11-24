@@ -11,7 +11,7 @@ FORMO = form_about.o form_cast.o form_evader.o form_hwbuttons.o \
 OBJS1 = alloc_env.o cast.o create.o dead.o display.o global.o inv.o main.o \
         md_malloc.o monster.o movem.o moveplayer.o obj.o object.o \
         object_actions.o object_actions_cont.o pickchar.o random.o regen.o \
-        savelev.o sphere.c stats.o store.o sum.o util.o \
+        savelev.o sphere.o stats.o store.o sum.o util.o \
 	color.o win.o beam.o
 OBJS = $(FORMO) $(OBJS1) $(TARGET)-sections.o
 
@@ -47,7 +47,24 @@ CFLAGS = -Wall -g -O2 -palmos3.5 -DNON_INTERNATIONAL -DI_AM_COLOR
 
 #SHRINC = /usr/local/pilot/sdk/sdk/include/Core/
 
-all: iLarn.prc
+# Everything to install on the device goes to ../build: the app, its
+# game-data database and the generated manual e-book.  Intermediate files
+# (.o, .bin, ...) stay here.
+BUILD = ../build
+PRODUCTS = $(BUILD)/$(TARGET).prc $(BUILD)/iLarnDB.pdb $(BUILD)/iLarn-manual.pdb
+
+all: $(PRODUCTS)
+
+$(BUILD):
+	mkdir -p $@
+
+# Required game data; made on a Palm by FixDB/, so it is kept in src.
+$(BUILD)/iLarnDB.pdb: iLarnDB.pdb | $(BUILD)
+	cp $< $@
+
+# Optional e-book (Palm DOC) of ../MANUAL.md.
+$(BUILD)/iLarn-manual.pdb: ../../tools/make-ilarn-manual.py ../../tools/make-kmoria-manual.py ../MANUAL.md | $(BUILD)
+	python3 -I ../../tools/make-ilarn-manual.py ../MANUAL.md $@
 
 .S.o:
 	$(CC) $(TARGETFLAGS) -c $<
@@ -55,13 +72,14 @@ all: iLarn.prc
 .c.s:
 	$(CC) $(CSFLAGS) $<
 
-$(TARGET).prc: $(TARGET) bin.stamp
-	$(BUILDPRC) $(TARGET).def $(TARGET) *.bin
+$(BUILD)/$(TARGET).prc: $(TARGET) bin.stamp | $(BUILD)
+	$(BUILDPRC) -o $@ $(TARGET).def $(TARGET) *.bin
 
 $(TARGET): $(OBJS) $(TARGET)-sections.ld
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(TARGET)-sections.ld
 
-bin.stamp: $(TARGET).rcp $(TARGET).pbm Font56.txt
+bin.stamp: $(TARGET).rcp $(TARGET)Rsc.h $(TARGET).pbm Font56.txt
+	-rm -f *.bin  # so resources removed from the .rcp leave the .prc too
 	$(PILRC) $(TARGET).rcp .
 	touch bin.stamp
 
@@ -72,9 +90,9 @@ $(TARGET)-sections.s $(TARGET)-sections.ld: $(TARGET).def
 	$(MULTIGEN) $(TARGET).def
 
 
-# Installs the app plus its required game-data database.
-send install: $(TARGET).prc
-	$(PILOTXFER) -p $(PILOT_PORT) -i $(TARGET).prc iLarnDB.pdb
+# Installs the app, its required game-data database and the manual.
+send install: $(PRODUCTS)
+	$(PILOTXFER) -p $(PILOT_PORT) -i $(PRODUCTS)
 
 depend:
 	makedepend -Y  *.c
@@ -87,6 +105,7 @@ clean:
 	-rm -f *.[oa] $(TARGET) *.bin bin.stamp *.grc Makefile.bak
 
 veryclean: clean
+	-rm -rf $(BUILD)
 	-rm -f $(TARGET).prc pilot.ram pilot.scratch *.ld *.s
 
 # DO NOT DELETE

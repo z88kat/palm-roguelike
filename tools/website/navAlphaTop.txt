@@ -1,0 +1,7 @@
+          <h2>The Games</h2>
+      <p>
+      <img src="{ROOT}images/iRogue/iRogue-logo.gif" alt="[ @ ]"> <a href="{ROOT}iRogue/index.php">iRogue</a> <br>
+      <img src="{ROOT}images/iLarn/iLarn-logo.gif" alt="[ i ]"> <a href="{ROOT}iLarn/index.php">iLarn</a> <br>
+
+      <img src="{ROOT}images/kMoria/kMoria-logo2.gif" alt="[ @ B ]"> <a href="{ROOT}kMoria/index.php">kMoria</a>
+      </p>

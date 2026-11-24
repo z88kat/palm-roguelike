@@ -133,7 +133,9 @@ void pick_char(Short i)
 	j = rund( j & Rms );
       env->ivenarg[inx] = j;
     }
-  for ( ; (inx = pi[0]) != S_NON ; pi++) {
+  // (skip the NO_OBJ that ended the objects: it is 0, which is also
+  // S_PRO, so every class used to start knowing protection)
+  for (pi++ ; (inx = pi[0]) != S_NON ; pi++) {
     env->spelknow[inx] = 1;
   }; 
   // Ok.  Perhaps that worked.

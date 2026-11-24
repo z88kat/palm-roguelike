@@ -12,6 +12,44 @@
 Boolean dspchQuestionForm(Short button) SEC_2;
 extern Char question_hotkeys[4];
 extern Short in_store;
+
+// 5-way support: the navigator moves a frame between the buttons (in the
+// order One, Two, Three, Ignore) and the centre button presses the framed
+// one.  Nothing is framed until the navigator is first used; then the
+// centre button presses the first choice.
+static Short qst_focus = -1; // 0..3 = btn_qst_1 + qst_focus, -1 = none
+
+static Boolean qst_usable(FormPtr frm, Short i)
+{
+  ControlPtr btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_qst_1+i));
+  return btn->attr.usable;
+}
+
+static void qst_toggle_frame(FormPtr frm)
+{
+  RectangleType r;
+  if (qst_focus < 0) return;
+  FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, btn_qst_1 + qst_focus), &r);
+  r.topLeft.x -= 1;  r.topLeft.y -= 1;
+  r.extent.x += 2;   r.extent.y += 2;
+  WinInvertRectangleFrame(simpleFrame, &r); // inverting twice erases it
+}
+
+// Move the frame to the next (step 1) or previous (step -1) usable button.
+static void qst_move_focus(FormPtr frm, Short step)
+{
+  Short i, f = qst_focus;
+  if (f < 0) f = (step > 0) ? -1 : 4;
+  for (i = 0 ; i < 4 ; i++) {
+    f += step;
+    if (f < 0 || f > 3) return; // no more buttons that way
+    if (qst_usable(frm, f)) break;
+  }
+  if (i == 4) return;
+  qst_toggle_frame(frm);
+  qst_focus = f;
+  qst_toggle_frame(frm);
+}
 Boolean Question_Form_HandleEvent(EventPtr e)
 {
   Boolean handled = false;
@@ -26,6 +64,8 @@ Boolean Question_Form_HandleEvent(EventPtr e)
     frm = FrmGetActiveForm();
     FrmDrawForm(frm);
     setupQuestionForm(frm);
+    qst_focus = -1;
+    qst_move_focus(frm, 1); // frame the default button for the 5-way
     /* // for testing interesting api calls, when I was experimenting
        // with HandEra support in iRogue.
     {
@@ -44,6 +84,24 @@ Boolean Question_Form_HandleEvent(EventPtr e)
   case keyDownEvent:
     // Act like we pressed a button.  For keyboard support.
     frm = FrmGetActiveForm();
+    switch (fiveway_key(e)) {
+    case NAV_NONE:
+      break;
+    case NAV_UP: case NAV_LEFT:
+      qst_move_focus(frm, -1);
+      return true;
+    case NAV_DOWN: case NAV_RIGHT:
+      qst_move_focus(frm, 1);
+      return true;
+    case NAV_SELECT:
+      if (qst_focus < 0)
+	qst_move_focus(frm, 1);
+      if (qst_focus >= 0)
+	CtlHitControl(FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, btn_qst_1 + qst_focus)));
+      return true;
+    default:
+      return true;
+    }
     i = -1;
     for (j = 0 ; j < 4 ; j++) {
       if ((e->data.keyDown.chr == '1' + j) ||

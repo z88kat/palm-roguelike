@@ -143,7 +143,10 @@ void clear_visible()
   screen_dirty = true;
   //  spell_dirty = true;
   for (i = 0 ; i < v_h; i++) {
-    lines_dirty[i+visible_y] = true;
+    // (just after a font change visible_y is still the old font's, so
+    // the rows can run past the bottom of the dungeon)
+    if (i + visible_y < DROWS)
+      lines_dirty[i+visible_y] = true;
     for (j = 0; j < v_w; j++) {
       terminal[i][j] = ' ';
     }
@@ -358,6 +361,7 @@ void refresh()
       //    for (line = v_h - 1; line >= 0; line--) {
       /* line is RELATIVE, line+visible_y is ABSOLUTE. */
       absline = line + visible_y;
+      if (absline >= DROWS) break; // see clear_visible
       if (lines_dirty[absline]) {
 	for (col = 0; col < v_w; col++) {
 	  /* col is RELATIVE, col+visible_x is ABSOLUTE. */
@@ -478,7 +482,7 @@ void update_screen_cell(Short j, Short i)
     draw_me = ',';
   } else if (env->know[j][i] == 2) {
     k = env->mitem[j][i];
-    draw_me = objnamelist[k]; // if not 0 or OWALL, draw in 'bold'?
+    draw_me = objnamelist[0]; // if not 0 or OWALL, draw in 'bold'?
     if (k != 0 && k != OWALL)
       buffer_bold[i][j] = true;
   } else {

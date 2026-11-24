@@ -96,3 +96,5 @@ iLarn/src/iLarn.prc
 !iLarn/**/*.pdb
 !iRogue/**/*.pdb
 !kMoria/src/BuildDB/foo.out
+!docs/**/*.pdb
+!tools/website/**/*.pdb

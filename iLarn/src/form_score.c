@@ -41,6 +41,26 @@ Boolean Score_Form_HandleEvent(EventPtr e)
   case keyDownEvent:
     // hardware button -- or else graffiti.
     frm = FrmGetActiveForm();
+    switch (fiveway_key(e)) { // 5-way
+    case NAV_UP:
+      scroll_scores(true, frm);
+      return true;
+    case NAV_DOWN:
+      scroll_scores(false, frm);
+      return true;
+    case NAV_LEFT: case NAV_RIGHT:
+      FrmSetControlGroupSelection(frm, 1, (fiveway_key(e) == NAV_LEFT) ?
+				  pbtn_score_all : pbtn_score_win);
+      which_scores(fiveway_key(e) == NAV_RIGHT, frm);
+      return true;
+    case NAV_SELECT:
+      fiveway_hit(frm, btn_score_done);
+      return true;
+    case NAV_NONE:
+      break;
+    default:
+      return true;
+    }
     switch(e->data.keyDown.chr) {
     case pageUpChr:
       scroll_scores(true, frm);

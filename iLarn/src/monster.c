@@ -333,34 +333,37 @@ void createitem(Short it, Long arg)
       }
     } else {
       // 'it' is omaxgold or ogoldpile; can combine if gold present
+      if (x < 0 || x >= MAXX || y < 0 || y >= MAXY)
+	continue; // off the map (you can be on its edge with walk-thru-walls)
       switch (env->item[x][y]) {
       case OGOLDPILE :
-	if ( (env->iarg[x][y] + arg) < 32767) {
-	  env->iarg[x][y] += arg;
-	  return;
-	}
       case ODGOLD :
-	if ( (10L * env->iarg[x][y] + arg) < 327670L) {
-	  i = env->iarg[x][y] ;
-	  env->iarg[x][y] = (10L * i + arg) / 10;
-	  env->item[x][y] = ODGOLD;
-	  return;
-	}
       case OMAXGOLD :
-	if ( (100L * env->iarg[x][y] + arg) < 3276700L) {
-	  i = ((100L * env->iarg[x][y]) + arg)/100;
-	  env->iarg[x][y] = i;
-	  env->item[x][y] = OMAXGOLD;
-	  return;
-	}
       case OKGOLD :
-	if ( (1000L * env->iarg[x][y] + arg) < 32767000L) { 
-	  i = env->iarg[x][y];
-	  env->iarg[x][y] = (1000L * i + arg) / 1000;
-	  env->item[x][y] = OKGOLD;
-	  return;
+	// Add 'arg' gold to the pile.  A pile's count is a Short, in units
+	// of 1, 10, 100 or 1000 gold (see ogold); use the smallest unit the
+	// new total fits in.  (This used to fall from case to case, reading
+	// the count in the wrong unit: a full pile could become worth up to
+	// a thousand times more.)
+	{
+	  Long unit = 1, total;
+	  switch (env->item[x][y]) {
+	  case ODGOLD:   unit = 10;   break;
+	  case OMAXGOLD: unit = 100;  break;
+	  case OKGOLD:   unit = 1000; break;
+	  }
+	  total = unit * env->iarg[x][y] + arg;
+	  if (total < 32767L) {
+	    env->item[x][y] = OGOLDPILE;  env->iarg[x][y] = total;
+	  } else if (total < 327670L) {
+	    env->item[x][y] = ODGOLD;     env->iarg[x][y] = total / 10;
+	  } else if (total < 3276700L) {
+	    env->item[x][y] = OMAXGOLD;   env->iarg[x][y] = total / 100;
+	  } else {
+	    env->item[x][y] = OKGOLD;
+	    env->iarg[x][y] = (total < 32767000L) ? total / 1000 : 32767;
+	  }
 	}
-	else env->iarg[x][y] = 32767000L;   // XXX danger will robinson
 	return;
       default :
 	// no gold present yet, behave normally
@@ -485,7 +488,7 @@ void hitmonster(Short x, Short y, Boolean silent)
 
   wield = env->cdude[WIELD];
   if (flag)
-    if (wield > 0)
+    if (wield >= 0) // (slot 'a' is 0: Larn's '> 0' spared it)
       if (env->iven[wield] != OSWORDofSLASHING) // and it could be dulled
 	if ((monst==RUSTMONSTER) || (monst==DISENCHANTRESS) || (monst==CUBE))
 	  if (env->ivenarg[wield] > -10) {

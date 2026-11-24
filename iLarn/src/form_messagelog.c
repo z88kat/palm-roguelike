@@ -58,6 +58,23 @@ Boolean MsgLog_Form_HandleEvent(EventPtr e)
     /* hardware button -- or else graffiti. */
     frm = FrmGetActiveForm();
     fld = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, field_ml));
+    switch (fiveway_key(e)) { // 5-way
+    case NAV_UP:
+      page_scroll_field(frm, fld, winUp);
+      update_field_scrollers(frm, fld, repeat_ml_up, repeat_ml_down);
+      return true;
+    case NAV_DOWN:
+      page_scroll_field(frm, fld, winDown);
+      update_field_scrollers(frm, fld, repeat_ml_up, repeat_ml_down);
+      return true;
+    case NAV_SELECT: case NAV_LEFT:
+      fiveway_hit(frm, btn_ml_ok);
+      return true;
+    case NAV_NONE:
+      break;
+    default:
+      return true;
+    }
     switch(e->data.keyDown.chr) {
     case pageUpChr:
       page_scroll_field(frm, fld, winUp);

@@ -10,6 +10,10 @@
  * to pay off some or all of your taxes.
  ***********************************************************************/
 
+// 5-way: a frame moves between these buttons; the centre presses it.
+static const UInt16 lrs_btns[] = { btn_lrs_dp, btn_lrs_wd, btn_lrs_cancel };
+static Short lrs_focus = -1;
+
 Boolean Lrs_Form_HandleEvent(EventPtr e)
 {
   Boolean handled = false;
@@ -41,10 +45,14 @@ Boolean Lrs_Form_HandleEvent(EventPtr e)
     FrmDrawForm(frm);
     //    bank_lrs_init(frm, (in_store == STORE_BANK), env);
     lrs_init_or_refresh(frm);
+    lrs_focus = -1;
     handled = true;
     break;
 
   case keyDownEvent:
+    if (fiveway_buttons(FrmGetActiveForm(), lrs_btns, 3, &lrs_focus,
+			fiveway_key(e), btn_lrs_cancel))
+      return true;
     chr = e->data.keyDown.chr;
     handled = true;
     // first, some keyboard support.

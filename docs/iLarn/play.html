@@ -1,0 +1,612 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>How to play iLarn</title>
+
+<style type="text/css" media="screen">@import "../3col.css";</style>
+
+<link rel="SHORTCUT ICON" href="../favicon.ico">
+</head>
+<body>
+
+<div class="content">
+  <h1>Playing iLarn</h1>
+  <p><i>note - screenshots are from an older version</i></p>
+</div>
+
+
+<div class="content">
+  <h2>The Premise</h2>
+<p>
+    Hopefully you're familiar with rogue-like games
+    already.  They are text-based games which have a familiar premise
+    --- wander around in a dungeon, collect treasure,
+    beat up bad-tempered critters, try to finish a quest.
+</p>
+
+<p> For hard-core keyboard users, there is now documentation on
+<a href="keyboard.html">keyboard shortcuts</a> so you do not have to
+reach up and tap the screen so often.  All keyboard shortcuts can
+also be used as graffiti if the fancy takes you.</p>
+</div>
+
+<div class="content">
+<h2>What You See</h2>
+
+<p> <img src="../images/iLarn/1pick.gif" alt="[start screen]"> </p>
+
+<p> When you start the application you will be asked to select a
+character class.  Some are stronger or more nimble, others are better
+at casting spells, etc. </p>
+
+<p> <img src="../images/iLarn/2town.gif" alt="[town screen]"> </p>
+
+<p> Then you will see a screen split into three parts.  The top part
+will display brief messages (e.g. "you hit", "the kobold misses");
+longer messages will "pop up" over the bottom part of the screen, and
+tapping anywhere will disperse them.  The middle part represents a
+part of the level you're on.  The bottom part contains your status
+information. </p>
+
+<h2> ...top part </h2>
+
+<p> (Fairly self-explanatory.  The message window is cleared when you
+move.) </p>
+
+<h2> ...middle part </h2>
+
+<p> The idea is that you're wandering around looking for a specific
+potion which will cure your sick daughter.  You are represented by an
+at-sign "<b>@</b>".  You start out in the town, which has <a
+href="town.html">various buildings</a> (<b>$</b>, <b>S</b>, <b>+</b>, <b>=</b>, <b>H</b>, <b>L</b>) and a
+dungeon entrance (<b>E</b>); there is also a second and nastier dungeon (<b>V</b>)
+that you should avoid until you have completed the first.  To enter
+one of these locations, just move on top of it.  (I will explain <a
+href="#move">how to move</a> in the next section.) </p>
+
+<p> <img src="../images/iLarn/3townE.gif" alt="[entering dungeon]"> </p>
+
+<p> When you are in the dungeon, tiles you haven't mapped yet are
+represented as "<b>,</b>".  Walls are "<b>#</b>".  You will start out at the
+southern end of the first dungeon level and can return to the town
+through the passage to your south. </p>
+
+<p> <img src="../images/iLarn/4level1.gif" alt="[dungeon screen]"> </p>
+
+<p> Things that you might see include scrolls "<b>?</b>" you can read,
+potions "<b>!</b>" you can quaff, weapons "<b>(</b>" you can wield, rings "<b>|</b>" which
+confer useful benefits when carried, and armor "<b>[</b>" you can wear or take
+off.  These are all objects you can pick up and carry around. </p>
+
+<p> Note that rings, amulets, and similar beneficial trinkets will
+bestow their effects just by being carried in your inventory.  There
+is no command (and no need!) to wear them. </p>
+
+<p> <img src="../images/iLarn/5gold1.gif" alt="[a scroll]">
+<img src="../images/iLarn/5gold2.gif" alt="[a scroll]"> </p>
+<p> <img src="../images/iLarn/6potion1.gif" alt="[a scroll]">
+<img src="../images/iLarn/6potion2.gif" alt="[a scroll]">
+<img src="../images/iLarn/6potion3.gif" alt="[a scroll]"> </p>
+
+<p> Some objects that you will encounter cannot be picked up, such as
+mirrors, thrones, fountains, and statues. </p>
+
+<p> To descend to the next level, you will have to find a staircase
+"<b>%</b>".  When you return to this level, everything will be just as you
+have left it. </p>
+
+<p> From time to time you may run into a trap "<b>^</b>".  There are various
+kinds of traps, but I'll let you find out about them on your own. </p>
+
+<p> There are also monsters, represented by letters of the alphabet.
+Some may be asleep or unaware of your presence.  When awake and aware
+of you, they are mostly pretty crabby and will probably try to kill
+you. </p>
+
+<p> Your goal is to find the potion of cure dianthroritis, which looks
+the same as any other potion but is rather better guarded.  You must
+return to your home with it in order to cure your daughter. </p>
+
+<p> Your secondary goals are to get experience by killing monsters
+(which will make you tougher to kill), and get money "<b>*</b>" (which will
+give you a higher score when you die or win.) </p>
+
+<h2> ...bottom part </h2>
+
+<p> <b>Hp 12(12)</b>: Your current and maximum hit points -
+how far you are from being dead.  Your maximum hit points will go up
+as you advance in experience.  Your current hit points will, you hope,
+stay above 0. </p>
+
+<p> <b>Ac 3</b>: This is your armor class - how hard you
+are to hit.  Higher is better, as you will see if you take off your
+currently worn armor (you do that via a Commands menu item.) </p>
+
+<p> <b>Wc 3</b>: This is your weapon class - how much
+monsters hurt when you hit 'em.  Higher is better, as you will see if
+you drop or unwield your currently wielded weapon (you do that via the
+Inventory screen.) </p>
+
+<p> <b>Floor 1</b>: This is the floor of the dungeon you're
+currently on - how far you are from the surface.  The town is H
+(zero), you enter the dungeon on 1, descend via stairs to 2, etc. </p>
+
+<p> <b>Spells 1/1</b>: Casting spells uses up your current
+spell points (on the left), which are recovered slowly up to the
+maximum (on the right). </p>
+
+<p> <b>s 8 i 12 w 8 c 10 d 14 ch 6</b>: Your ability scores
+(strength, intelligence, wisdom, constitution, dexterity, charisma).
+There are things that will raise these, and things that will lower them.
+Higher is better. </p>
+
+<p> <b>Level 1 Exp 0</b>: This is your current experience.
+The first number is your experience level.  The second number
+represents your experience points, which you get more of when you kill
+nasty things. </p>
+
+<p> <b>$0</b>: This is how much money you have.  It is
+useful for buying things and services, and if you have more of it when
+you die, you are ranked higher on the top-ten list. </p>
+
+<div style="background-color: #cfc">
+ <a href="#see">What you see</a> &nbsp;::&nbsp;
+ <a href="#move">How to move</a> &nbsp;::&nbsp;
+ <a href="#optmenu">Options Menu</a> &nbsp;::&nbsp;
+ <a href="#cmdmenu">Commands Menu</a> &nbsp;::&nbsp;
+ <a href="#inventory">Inventory</a> &nbsp;::&nbsp;
+ <a href="#prefs">Preferences</a> &nbsp;::&nbsp;
+ <a href="#hwbs">Hardware buttons</a>
+</div>
+</div>
+
+<div class="content">
+<a name="move"></a>
+<h2> Moving Around </h2>
+
+<p> (If you have played <a href="../iRogue/index.html">iRogue</a>, you can skip
+this section, since movement in iLarn is similar.) </p>
+
+<p>
+First, imagine that the screen is a compass.  At the top of the screen
+is north.  Imagine that this compass is divided like a pie into eight
+slices: N, NE, E, SE, S, SW, W, NW.  The slices meet in the center of
+the screen.  Tap within a slice, and that is the direction you will
+move in.  (If you have the "relative move" preference enabled, the
+center of the pie is at your "<b>@</b>"; otherwise the pie is centered on the
+screen regardless of where the "<b>@</b>" is located.  The rest of these
+instructions will assume the latter.) </p>
+
+<p> [insert image here]
+<!-- <p> <img src="../images/iLarn/pie.gif" alt="[pie-sliced screen]"> --> </p>
+
+<p> Ok.  You got the pie?  I am going to complicate it now.  If you
+tap too close to the center of the screen, nothing will happen.
+Moving outward... If you tap moderately close to the center of the
+screen, you will move one square at a time.  If you tap far from the
+center of the screen (near the edge of the screen), you will move
+several squares -- you keep moving until you are adjacent to something
+"interesting". </p>
+
+<!-- <p> <img src="../images/iLarn/pie2.gif" alt="[concentric-sliced screen]"> -->
+<p> [insert image here] </p>
+
+<p> So there's a pie of what-direction-you-move, and there are some
+concentric circles of what-happens-when-you-tap.  You will be able to
+adjust the size of these circles via the Preferences menu item,
+eventually, depending on what you think is deserving of more screen
+real-estate. </p>
+
+<p> Oh, yeah: to attack a monster "hand-to-hand", with whatever weapon
+you're currently wielding, you just try to move onto its square.  If
+it is immediately to your west, tap on the west side of the screen,
+etc., and you should see a message such as "you hit". </p>
+
+<div style="background-color: #cfc">
+ <a href="#see">What you see</a> &nbsp;::&nbsp;
+ <a href="#move">How to move</a> &nbsp;::&nbsp;
+ <a href="#optmenu">Options Menu</a> &nbsp;::&nbsp;
+ <a href="#cmdmenu">Commands Menu</a> &nbsp;::&nbsp;
+ <a href="#inventory">Inventory</a> &nbsp;::&nbsp;
+ <a href="#prefs">Preferences</a> &nbsp;::&nbsp;
+ <a href="#hwbs">Hardware buttons</a>
+</div>
+</div>
+
+<div class="content">
+<a name="menus"></a>
+<a name="optmenu"></a>
+<h2> Options menu </h2>
+
+<p> <img src="../images/iLarn/8options.gif" alt="[options menu]"> </p>
+
+<dl>
+<dt> <b>Map</b> /M
+
+In the middle part of the screen, you can only see a part of the level
+that you're currently exploring.  The "Map" menu item will display a
+map of the entire level.  
+
+<br> <img src="../images/iLarn/7map1.gif" alt="[map]">
+<br>
+(Tap anywhere to make it go away again.)  It will show you the area
+you have explored so far.  A squiggle is either you, or a staircase.
+There should also be a large arrow pointing to you.
+
+<dt> <b>Message Log</b> /L
+
+<dd> The message log shows the last n messages that appeared on the
+screen, in case you missed one.
+
+<dt> <b>Preferences</b> /R
+
+<dd> The Preferences dialog allows you to customize your gaming experience
+(heh.)  I'll go over that <a href="#prefs">below</a>.
+
+<dt> <b>Buttons</b> /B
+
+<dd> The Buttons dialog allows you to customize the hardware buttons.
+I'll go over that <a href="#hwb">below</a>.
+
+<dt> <b>Font</b> /F
+
+<dd> This will toggle between the two available font sizes: normal,
+and flyspeck.  The flyspeck font will allow you to see about half of
+the dungeon level at a time and (if your eyes are good enough) is
+useful when you are trying to find your way to the stairs.  BUT in
+order to have this ability, you will have to have the right iLarn.prc
+for your operating system.  If you cannot get the small font, proceed
+to the <a href="download.html">download page</a>.
+
+<br> <img src="../images/iLarn/7map2.gif" alt="[small font]">
+
+<dt> <b>Instructions</b>
+
+<dd> Same as what you would see if you played Ularn.
+
+<dt> <b>About iLarn</b>
+
+<dd> This is the "About" screen that you find in all normal applications.
+
+<dt> (Q) <b>Quit</b>
+
+<dd> This will kill your current character (after the obligatory "are
+you SURE?") and allow you to start over.  This dialog can also be
+accessed by writing a graffiti "<b>Q</b>".
+
+</dl>
+
+<div style="background-color: #cfc">
+ <a href="#see">What you see</a> &nbsp;::&nbsp;
+ <a href="#move">How to move</a> &nbsp;::&nbsp;
+ <a href="#optmenu">Options Menu</a> &nbsp;::&nbsp;
+ <a href="#cmdmenu">Commands Menu</a> &nbsp;::&nbsp;
+ <a href="#inventory">Inventory</a> &nbsp;::&nbsp;
+ <a href="#prefs">Preferences</a> &nbsp;::&nbsp;
+ <a href="#hwbs">Hardware buttons</a>
+</div>
+</div>
+
+<div class="content">
+<a name="cmdmenu"></a>
+<h2> Commands menu </h2>
+
+<p> <img src="../images/iLarn/8commands.gif" alt="[commands menu]"> </p>
+
+<p> The following menu items can accessed faster by writing the graffiti
+character that appears in parentheses. </p>
+
+<dl>
+<dt> (i) <b>Inventory</b>
+
+<dd> This will take you to the inventory dialog.  I will describe that more
+<a href="#inventory">below</a>.
+
+<dt> (T) <b>Take off armor</b>
+
+<dd> Remove your currently-worn armor, if any.
+
+<dt> (c) <b>Cast spell</b>
+
+<dd> You can cast spells in this game.  Some spells have directional
+effects, others do not.
+
+<br> <img src="../images/iLarn/Acast.gif" alt="[cast spell]">
+ <img src="../images/iLarn/Acast2.gif" alt="[cast spell]">
+ <img src="../images/iLarn/Acast3.gif" alt="[cast spell]">
+ <img src="../images/iLarn/Acast4.gif" alt="[cast spell]"> 
+
+<br> The effect duration column (which you will see on the right)
+displays a cryptic letter for each of the following effects, in this
+order: stealth, undead protection, spirit protection, charm monster,
+time stop, hold monster, giant strength, fire resistance, dexterity,
+strength, scare monster, haste self, cancellation, invisibility, alt.
+protection, protection, and walk through walls.
+
+<dt> (D) <b>Known items</b>
+
+<dd> Show a list of the scroll and potion types that you have encountered
+so far.  (Useful if, for example, you're not sure what that potion you
+just chugged actually did.)
+
+<dt> (.) <b>Rest</b>
+
+<dd> Rest (do nothing) for one move.
+
+<dt> (^) <b>ID trap</b>
+
+<dd> If you're standing next to a trap, you may be wondering what kind of
+trap it is.  Use this command to find out.
+
+<dt> (F) <b>Fight</b>
+
+<dd> If you are tired of blow-by-blow combat, the "fight" command will
+auto-play the fight between you and the monster in the direction you
+select.  The automatic fight will end when the monster moves away or
+is killed, or another monster joins in, or if it seems that the
+monster could kill you with one blow (then the game will suggest that
+you run away).
+
+<dt> (Z) <b>teleport</b>
+
+<dd> When you are very experienced, you will learn how to teleport to a
+random location.  You might end up inside random solid rock, so you
+probably do not want to do this on a regular basis.
+
+<dt> (g) <b>Pack weight</b>
+
+<dd> Tells you how much your pack weighs.  If you encounter a pit, a heavy
+pack makes you more likely to fall in.
+
+<dt> (P) <b>Tax status</b>
+
+<dd> When you start out, you do not owe anything to the LRS (Larn
+Revenue Service), and if you behave yourself and die young, you
+probably never will.
+
+<dt> ($) <b>Drop gold</b>
+
+<dd> You can drop some or all of your gold, if you feel like it.
+<br> <img src="../images/iLarn/8dropgold.gif" alt="[drop gold]">
+</dl>
+
+<div style="background-color: #cfc">
+ <a href="#see">What you see</a> &nbsp;::&nbsp;
+ <a href="#move">How to move</a> &nbsp;::&nbsp;
+ <a href="#optmenu">Options Menu</a> &nbsp;::&nbsp;
+ <a href="#cmdmenu">Commands Menu</a> &nbsp;::&nbsp;
+ <a href="#inventory">Inventory</a> &nbsp;::&nbsp;
+ <a href="#prefs">Preferences</a> &nbsp;::&nbsp;
+ <a href="#hwbs">Hardware buttons</a>
+</div>
+</div>
+
+<div class="content">
+<a name="inventory"></a>
+<h2> Inventory </h2>
+
+<p> Adventurers tend to collect things.  Where do they go?  Your pack.
+How do you do something with them once they are there? </p>
+
+<p> To do something to an item in your inventory, select "Inventory"
+from the Commands menu (or write "<b>i</b>", lower-case I.)
+A window will pop up with a list of your inventory.  Select any item.
+This should cause some buttons to appear, labeled with relevant
+actions.  Tap the button of your choice to perform that action. </p>
+
+<p> Rings, amulets, and similar beneficial trinkets will bestow their
+effects just by being carried in your inventory. </p>
+
+<p> You can wield almost any kind of thing, even if it doesn't make a
+very good weapon.  This is what we like to call a "feature". </p>
+
+<p> <img src="../images/iLarn/8inv.gif" alt="[inventory]">
+<img src="../images/iLarn/8inv2.gif" alt="[inventory]"> </p>
+
+<div style="background-color: #cfc">
+ <a href="#see">What you see</a> &nbsp;::&nbsp;
+ <a href="#move">How to move</a> &nbsp;::&nbsp;
+ <a href="#optmenu">Options Menu</a> &nbsp;::&nbsp;
+ <a href="#cmdmenu">Commands Menu</a> &nbsp;::&nbsp;
+ <a href="#inventory">Inventory</a> &nbsp;::&nbsp;
+ <a href="#prefs">Preferences</a> &nbsp;::&nbsp;
+ <a href="#hwbs">Hardware buttons</a>
+</div>
+</div>
+
+<div class="content">
+<a name="prefs"></a>
+<h2> Preferences </h2>
+
+<p> As I mentioned above, there is a Preferences item on the Options
+menu which will allow you to set various things, including the size of
+those "what am I doing when I tap somewhere" circles. </p>
+
+<p> <img src="../images/iLarn/8prefs.gif" alt="[preferences]">
+<img src="../images/iLarn/8prefs2.gif" alt="[preferences]"> </p>
+
+<p> When you have changed the numbers, you can hit the "Draw" button
+to display the three areas.  It will draw the middle region in black.
+(The "Clear" button will redraw the preferences screen without the
+big black donut.) </p>
+
+<p> [insert image] </p>
+
+<p> The preferences screen also allows you to:</p>
+
+<ul>
+<li>
+Turn off "running" altogether, so that you move only one square at a
+time no matter how far from the center you tap.  (When you are
+running, iLarn is smart enough to cut corners in twisty passages that
+you have previously explored, if there are no intersecting passages.)
+<li>
+Turn on/off "centered" scrolling.  If on, the <b>@</b> will tend to stay
+in the center of the screen; if off, the screen will only scroll when
+the <b>@</b> is about to walk off the visible portion.  Numerous people
+requested this and I have to admit that the flickering is not as bad
+as I had expected.  It is off by default, so as not to surprise anyone
+(if you move step-by-step, it might make you a bit motion-sick.)
+<li>
+Turn on/off "relative movement".  If this is on, the pie/donut is
+centered around the @; if this is off, the pie/donut is fixed in place,
+centered on the screen.
+<li>
+Set the default font size ("big" normal font, or teeny flyspeck font.)
+You can still change it at whim with '/F', but it will tend to start out
+using the font size you select here.
+<li>
+Turn on/off sound.  There are two places to turn it off.  One is "Game
+Sound" under "General" in the PalmPilot "Prefs" application.  (That
+will turn off sound for all games that bother to pay attention.)  The
+other is the "Sound" checkbox you see here.  If either one of these is
+'off', iLarn will be silent; if you want sound, therefore, they must
+both be 'on'.
+<li>
+Turn on/off "discretion".  (Discretion is the better part of valor.)
+This affects running and is somewhat experimental.  If it is on (and
+you have "running" turned on), you will run only in territory that you
+are familiar with; when you are exploring new territory, you will
+always walk.
+</ul>
+
+<div style="background-color: #cfc">
+ <a href="#see">What you see</a> &nbsp;::&nbsp;
+ <a href="#move">How to move</a> &nbsp;::&nbsp;
+ <a href="#optmenu">Options Menu</a> &nbsp;::&nbsp;
+ <a href="#cmdmenu">Commands Menu</a> &nbsp;::&nbsp;
+ <a href="#inventory">Inventory</a> &nbsp;::&nbsp;
+ <a href="#prefs">Preferences</a> &nbsp;::&nbsp;
+ <a href="#hwbs">Hardware buttons</a>
+</div>
+</div>
+
+<div class="content">
+<a name="hwbs"></a>
+
+<h2> Hardware Buttons </h2>
+
+<p> This is where you can rebind the hardware buttons, if you so desire.
+By default, they are not rebound: </p>
+
+<p> <img src="../images/iLarn/8buttons.gif" alt="[buttons]">
+<img src="../images/iLarn/8buttons3.gif" alt="[buttons]"> </p>
+
+<p> You have the option of rebinding the four application buttons, the
+up/down scroll buttons, and the silkscreened calculator and find
+buttons.  You can rebind some, all, or none.  Once you have made some
+choices, check the "use these settings" box to turn it on.  (If you
+ever want to turn the rebinding off temporarily, all you have to do is
+uncheck the box.  iLarn will remember your settings but won't use
+them.)  There's an example above in case you're not feeling very
+creative. </p>
+
+<p> <img src="../images/iLarn/8buttons2.gif" alt="[buttons]"> </p>
+
+<p> You have a fixed set of choices for each button: n/e/s/w movement,
+up/down movement, casting a spell, resting for a turn, bringing up the
+map of the level, changing the font size, listing the 'known items',
+attempting to teleport, or bringing up the 'inventory' dialogs.  (The
+dashed choice you see at the top is "don't rebind this button",
+i.e. let the button do whatever it ordinarily would.)  Let me know if
+there is some function you desperately want that does not appear as a
+choice. </p>
+
+<p> If you have read this far and still haven't decided whether to
+download the game, you can take a whirlwind tour of
+<a href="town.html">the town</a> while you make up your mind.  There
+is a picture of each store and a brief description of how to do things
+at it. </p>
+</div>
+
+
+<div class="content">
+
+<h2>help!</h2>
+
+<p> Want "spoilers" for iLarn?  You could eat a lot of fortune cookies
+<br>
+<i><span class="quote">hammers and brains don't mix</span><script>
+(function (el) {
+  fetch("quotes.dat").then(function (r) { return r.text(); }).then(function (t) {
+    var q = t.split("\n").filter(function (l) { return l.trim(); });
+    if (q.length) el.textContent = q[Math.floor(Math.random() * q.length)];
+  }).catch(function () {});
+})(document.currentScript.previousElementSibling);
+</script></i>
+<br> or read the source. </p>
+
+
+</div>
+
+
+<div id="navAlpha">
+            	<h2>iLarn Info</h2>
+<p>
+<a href="index.html">What is iLarn?</a> <br>
+<a href="whatsnew.html">Current status</a> <br>
+<a href="download.html">Download iLarn</a> <br>
+<a href="play.html">How to play</a>;
+<a href="town.html">town</a>; <br>
+<a href="keyboard.html">keyboard shortcuts</a> <br>
+<a href="../color.html">Configuring color</a> <br>
+<a href="source.html">How to get source</a>
+</p>
+                <h2>General Info</h2>
+     <p>
+      <a href="../index.html">What's New Here</a><br>
+
+      <a href="mailto:i0lanthe@users.sourceforge.net?subject=roguelike-palm" title="Email Bridget about roguelike-palm">Contact me</a>
+
+     </p>
+
+     <h2>Hosted by</h2>
+     <p>
+      <A href="http://sourceforge.net">
+	<IMG src="../images/sflogo.png"
+	width="88" height="31" alt="SourceForge Logo"></A>
+	<br>
+      
+	<a href="http://sourceforge.net/project/?group_id=6932" title="roguelike-palm project page at SourceForge">
+	Project page</a>
+	<br>
+     </p>
+</div>
+
+<div id="navBeta">
+                  <h2>External Links</h2>
+<p>
+	<a href="http://roguelikes.sauceforge.net/pub/index.html">
+	Roguelike Games:</a>
+</p>      
+<p>
+	<a href="http://roguelikes.sauceforge.net/pub/rogue/index.html">
+	Rogue</a> <br>
+      
+        <a href="http://remarque.org/~grabiner/moria.html">
+	Moria</a> and <a href="http://www.phial.com/angband/">
+	Angband</a> <br>
+      
+	<a href="http://www.hut.fi/~eye/roguelike/nethack.html">
+	Hack</a> and <a href="http://www.nethack.org/">
+	NetHack</a> <br>
+      
+        <a href="http://www.ularn.org/">Ularn</a> <br>
+      
+	<a href="http://www.alcyone.com/max/projects/omega/">
+	Omega</a>
+</p>      
+<p>      
+        <a href="http://groups.google.com/groups?group=rec.games.roguelike">
+        Usenet discussion</a>
+</p>
+</div>
+
+<!-- hhmts start -->
+<!-- hhmts end -->
+
+</body>
+</html>

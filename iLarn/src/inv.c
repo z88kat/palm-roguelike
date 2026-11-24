@@ -140,8 +140,10 @@ void free_inventory_select(FormPtr frm)
   for (i = 0 ; i < inventory_select_numItems ; i++) {
     free_me(inventory_select_items[i]);
   }
-  if (inventory_select_numItems > 0) {
+  // (always allocated, even if selling has since emptied it)
+  if (inventory_select_items) {
     free_me(inventory_select_items);
+    inventory_select_items = NULL;
   }
 }
 #undef free_me
@@ -373,6 +375,18 @@ void specialize_labels(FormPtr frm, Short k, Boolean t)
  *
  * deduce-task returns true if the action took a turn.
  */
+// Item k has been read, eaten or drunk: it's gone.  (You can wield a
+// book or a cookie, and then the next thing to land in slot k would
+// have been wielded too.)
+static void used_up(Short k)
+{
+  env->iven[k] = 0;
+  if (env->cdude[WIELD] == k) {
+    env->cdude[WIELD] = -1;
+    recalc();
+  }
+}
+
 Boolean deduce_task(Short k, Short btn012)
 {
   Short itm;
@@ -455,7 +469,7 @@ Boolean deduce_task(Short k, Short btn012)
   case OBOOK:
     if (!env->cdude[TIMESTOP]) {
       if (readbook(env->ivenarg[k])) {
-	env->iven[k] = 0;
+	used_up(k);
 	return true;
       }
     }
@@ -464,7 +478,7 @@ Boolean deduce_task(Short k, Short btn012)
     if (!env->cdude[TIMESTOP]) {
       Boolean take_time = (env->ivenarg[k] != R_PULVR);
       if (read_scroll(env->ivenarg[k])) {
-	env->iven[k] = 0;
+	used_up(k);
 	return take_time;// are you !(the 1 scroll type that needs a direction)
       }
     }
@@ -472,49 +486,49 @@ Boolean deduce_task(Short k, Short btn012)
   case OPOTION:
     if (!env->cdude[TIMESTOP]) {
       quaffpotion(env->ivenarg[k]);
-      env->iven[k] = 0;
+      used_up(k);
       return true;
     }
     break;
   case OCOOKIE:
     if (!env->cdude[TIMESTOP]) {
       ocookie();
-      env->iven[k] = 0;
+      used_up(k);
       return true;
     }
     break;
   case OSPEED:
     if (!env->cdude[TIMESTOP]) {
       drug_speed();
-      env->iven[k] = 0;
+      used_up(k);
       return true;
     }
     break;
   case OSHROOMS:
     if (!env->cdude[TIMESTOP]) {
       drug_shrooms();
-      env->iven[k] = 0;
+      used_up(k);
       return true;
     }
     break;
   case OACID:
     if (!env->cdude[TIMESTOP]) {
       drug_acid();
-      env->iven[k] = 0;
+      used_up(k);
       return true;
     }
     break;
   case OHASH:
     if (!env->cdude[TIMESTOP]) {
       drug_hash();
-      env->iven[k] = 0;
+      used_up(k);
       return true;
     }
     break;
   case OCOKE:    
     if (!env->cdude[TIMESTOP]) {
       drug_coke();
-      env->iven[k] = 0;
+      used_up(k);
       return true;
     }
     break;

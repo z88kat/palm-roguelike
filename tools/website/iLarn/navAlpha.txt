@@ -1,0 +1,11 @@
+      	<h2>iLarn Info</h2>
+<p>
+<a href="index.php">What is iLarn?</a> <br>
+<a href="whatsnew.php">Current status</a> <br>
+<a href="download.php">Download iLarn</a> <br>
+<a href="play.php">How to play</a>;
+<a href="town.php">town</a>; <br>
+<a href="keyboard.php">keyboard shortcuts</a> <br>
+<a href="../color.php">Configuring color</a> <br>
+<a href="source.php">How to get source</a>
+</p>

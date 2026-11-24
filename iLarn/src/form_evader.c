@@ -33,6 +33,15 @@ Boolean Evader_Form_HandleEvent(EventPtr e)
     break;
 
   case keyDownEvent:
+    switch (fiveway_key(e)) {
+    case NAV_SELECT: case NAV_LEFT:
+      fiveway_hit(FrmGetActiveForm(), btn_eva_exit);
+      return true;
+    case NAV_NONE:
+      break;
+    default:
+      return true;
+    }
     if (e->data.keyDown.chr == 'X') {
       ControlPtr btn;
       frm = FrmGetActiveForm();

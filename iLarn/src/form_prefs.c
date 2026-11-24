@@ -220,7 +220,8 @@ static void usr_form_update(FormPtr frm)
   vh = (VoidHand) FldGetTextHandle(fld);
   if (vh) {
     p = MemHandleLock(vh);
-    StrNCopy(my_prefs.name, p, NAMELEN);
+    StrNCopy(my_prefs.name, p, NAMELEN-1);
+    my_prefs.name[NAMELEN-1] = '\0';
     MemHandleUnlock(vh);
   }
 }

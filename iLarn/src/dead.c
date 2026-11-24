@@ -91,8 +91,7 @@ void get_default_username()
     first_wspace = StrChr(tmp, spaceChr);
     if (first_wspace)
       *(first_wspace) = '\0';
-    else
-      tmp[NAMELEN-1] = '\0';
+    tmp[NAMELEN-1] = '\0'; // in case the first name is long too
   }
   if (StrLen(tmp))
     StrNCopy(my_prefs.name, tmp, NAMELEN);
@@ -383,6 +382,7 @@ void newscore(Short cod)
   } // done finding or creating scoreboard
   if (WINNER == cod)
     boot_loser_clones(my_sc->birthdate);
+  MemPtrFree(my_sc);
   // Hey, we're done.  How about that.
 }
 

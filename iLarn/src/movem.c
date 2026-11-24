@@ -261,6 +261,8 @@ static void movemt(Short i, Short j)
 	      // mark the 8 squares around it, if they're unmarked
 	      xtmp = m + diroffx[z];
 	      ytmp = k + diroffy[z];
+	      if (xtmp < 0 || xtmp >= MAXX || ytmp < 0 || ytmp >= MAXY)
+		continue; // (the map's edge; you can be on it with walk-thru-walls)
 	      if (screen[xtmp][ytmp] == 0)
 		screen[xtmp][ytmp] = tmp + 1;
 	      if (xtmp==i && ytmp==j) goto out;
@@ -397,6 +399,7 @@ static void mmove(Short aa, Short bb, Short cc, Short dd)
 	StrPrintF(buf, "The %s dispels the sphere!", m_name(tmp));
 	message(buf);
 	rmsphere(cc, dd);
+	env->mitem[cc][dd] = tmp; // rmsphere cleared the square: put it back
       } else {
 	i                  = 0;
 	tmp                = 0;

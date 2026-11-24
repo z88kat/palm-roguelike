@@ -42,7 +42,7 @@ void    i_used_too_much_heap();
 static Boolean main_help_handle_cmd(Char c, Boolean *took_timep) SEC_4;
 static Boolean OpenDatabase(void);
 static Boolean ApplicationHandleEvent(EventPtr event);
-static void    readLarnPrefs();
+static Boolean readLarnPrefs();
 //static void    writeLarnPrefs();
 static Word    StartApplication(void);
 static void    StopApplication(void);
@@ -93,6 +93,8 @@ Boolean init_game()
     return false;
   if (has_object(OLARNEYE))
     got_larneye(); // make demons visible!
+  if (env->cdude[SEEINVISIBLE] > 0)
+    see_invisible(); // and the invisible stalker
   // try to restore level.. if we can't.. do something funky
   // this stuff is pulled from makeplayer in create.c
   // perhaps i also need recalc();
@@ -269,6 +271,22 @@ static Boolean common_move(Short click_dir)
   }
 }
 
+static Boolean main_dir_cmd(Short click_dir, Boolean run,
+			    Boolean *took_timep);
+
+// Cancel a spell or Fight that is waiting for its direction (after the
+// caller has erased the aiming lines with draw_cast_slices).
+static void abort_direction()
+{
+  casting_a_spell = false;
+  if (!fighting_not_casting) {
+    env->cdude[SPELLS] += 1; // I'll be nice about it
+    print_stats();
+  }
+  fighting_not_casting = false; // or the next spell would be a Fight
+  message("aborted");
+}
+
 // I could be more clever.  Probably should.
 static Boolean main_keyb_handle_cmd(Char c, Boolean *took_timep)
 {
@@ -304,15 +322,22 @@ static Boolean main_keyb_handle_cmd(Char c, Boolean *took_timep)
     *took_timep = false;
     return false;
   }
+  return main_dir_cmd(click_dir, (c != lc_c), took_timep);
+}
+
+// Walk (or run) one step in click_dir, for the keyboard and the 5-way;
+// or, if a spell or Fight is waiting for a direction, aim it that way.
+static Boolean main_dir_cmd(Short click_dir, Boolean run, Boolean *took_timep)
+{
+  *took_timep = false;
   if (!casting_a_spell) {
     // Erase message, and deal with "--more--" if any
     if (message_clear()) {
 	show_messages();
-	*took_timep = false;
 	return true;
     }
     // Ok now move.
-    if (c == lc_c)
+    if (!run)
       *took_timep = common_move(click_dir);
     else {
       a_better_run(click_dir);
@@ -337,6 +362,15 @@ static Boolean main_help_handle_cmd(Char c, Boolean *took_timep)
 {
   Short i, numItems;
   *took_timep = false;
+  // While a spell or Fight is waiting for its direction, only a direction
+  // (or tapping the middle) will do: other commands would draw over the
+  // aiming lines, and 'c' or 'F' again would lose the spell point.
+  if (casting_a_spell) {
+    if (my_prefs.use_keyboard && main_keyb_handle_cmd(c, took_timep))
+      return true;
+    *took_timep = false;
+    return true; // swallow it
+  }
   // ...
   switch(c) {
     // XXXXX Debugging!!!! Remove these!!!!
@@ -407,7 +441,8 @@ static Boolean main_help_handle_cmd(Char c, Boolean *took_timep)
       //      i_used_too_much_heap();
       in_store = STORE_NONE;
       FrmPopupForm(TransForm);
-      *took_timep = true; // I think
+      // (the form takes the turn if you do drop some; not before it opens)
+      *took_timep = false;
     }
     return true;
   case '.':
@@ -542,8 +577,8 @@ static Boolean buttonsHandleEvent(EventPtr e)
   case HWB_E:
   case HWB_W:
     // because we were careful in defines.h, HWB_N == NORTH, etc.
-    took_time = common_move(dispatch_type);
-    handled = true;
+    // (or aim a waiting spell or Fight that way)
+    handled = main_dir_cmd(dispatch_type, false, &took_time);
     break;
   case HWB_CAST:
     handled = main_help_handle_cmd('c', &took_time);
@@ -563,7 +598,10 @@ static Boolean buttonsHandleEvent(EventPtr e)
     handled = main_help_handle_cmd('d', &took_time);
     break;
   case HWB_MAP:
-    FrmPopupForm(MapForm);
+    if (env->level > 0) // as the menu does
+      FrmPopupForm(MapForm);
+    else
+      message("You don't need a map for this level.");
     handled = true;
     took_time = false;
     break;
@@ -577,11 +615,175 @@ static Boolean buttonsHandleEvent(EventPtr e)
   // do that loop thing too.  yeah.
   if (handled && took_time) {
     start_of_Play_Level_loop();
-  }
+  } else if (handled && env->pending_splash)
+    show_messages(); // e.g. "You're out of spells!"
   return handled;
 }
 
 
+
+/*****************************************************************************
+ *                      5-way navigator                                      *
+ *****************************************************************************/
+// (The navigator's key codes are defined in Globals.h.)
+
+// What a keyDownEvent means if it came from the 5-way: one of NAV_UP,
+// _DOWN, _LEFT, _RIGHT or _SELECT; NAV_IGNORE for a release or several
+// buttons at once; or NAV_NONE if it isn't the navigator.  The plain
+// Up/Down buttons of older devices (no nav flags) are NAV_NONE, so they
+// keep doing what they always did.
+Short fiveway_key(EventPtr e)
+{
+  WChar chr = e->data.keyDown.chr;
+  UInt16 nav = e->data.keyDown.keyCode & (navBitsAll | navChangeBitsAll);
+  UInt16 held = nav & navBitsAll;
+
+  if (e->eType != keyDownEvent)
+    return NAV_NONE;
+  if (chr == vchrNavChange) {
+    if (held == 0) return NAV_IGNORE;          // release
+  } else if (chr == pageUpChr || chr == pageDownChr) {
+    if (nav == 0) return NAV_NONE;             // plain Up/Down button
+    if (held == 0) return NAV_IGNORE;          // release
+  } else if (chr >= vchrRockerUp && chr <= vchrRockerCenter
+	     && (e->data.keyDown.modifiers & commandKeyMask)) {
+    switch (chr) {
+    case vchrRockerUp:    return NAV_UP;
+    case vchrRockerDown:  return NAV_DOWN;
+    case vchrRockerLeft:  return NAV_LEFT;
+    case vchrRockerRight: return NAV_RIGHT;
+    default:              return NAV_SELECT;
+    }
+  } else
+    return NAV_NONE;
+
+  switch (held) {
+  case navBitUp:     return NAV_UP;
+  case navBitDown:   return NAV_DOWN;
+  case navBitLeft:   return NAV_LEFT;
+  case navBitRight:  return NAV_RIGHT;
+  case navBitSelect: return NAV_SELECT;
+  }
+  return NAV_IGNORE;
+}
+
+// For list forms: Up/Down move the list's selection one row (with nothing
+// selected, Down picks the first row and Up the last).  Returns true if
+// the selection changed, so the caller can act as if it had been tapped.
+Boolean fiveway_list(ListPtr lst, Short nav)
+{
+  Short n = LstGetNumberOfItems(lst);
+  Short s = LstGetSelection(lst);
+  if (n <= 0) return false;
+  if (nav == NAV_UP)        s = (s == noListSelection) ? n-1 : s-1;
+  else if (nav == NAV_DOWN) s = (s == noListSelection) ? 0 : s+1;
+  else return false;
+  if (s < 0 || s >= n) return false;
+  LstMakeItemVisible(lst, s);
+  LstSetSelection(lst, s);
+  LstDrawList(lst);
+  return true;
+}
+
+// Press button id on form frm, if it is showing.  Returns true if it was.
+Boolean fiveway_hit(FormPtr frm, UInt16 id)
+{
+  ControlPtr btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, id));
+  if (!btn || !btn->attr.usable)
+    return false;
+  CtlHitControl(btn);
+  return true;
+}
+
+static Boolean fiveway_usable(FormPtr frm, UInt16 id)
+{
+  ControlPtr btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, id));
+  return (btn && btn->attr.usable);
+}
+
+static void fiveway_frame(FormPtr frm, const UInt16 *ids, Short f)
+{
+  RectangleType r;
+  if (f < 0) return;
+  FrmGetObjectBounds(frm, FrmGetObjectIndex(frm, ids[f]), &r);
+  r.topLeft.x -= 1;  r.topLeft.y -= 1;
+  r.extent.x += 2;   r.extent.y += 2;
+  WinInvertRectangleFrame(simpleFrame, &r); // inverting twice erases it
+}
+
+// For forms of buttons: the 5-way moves a frame between the usable
+// buttons in ids[0..n-1] (up / left back, down / right forward) and the
+// centre presses the framed one -- or button dflt, if none is framed.
+// *focus is the framed index (-1 for none); set it to -1 when the form
+// opens.  Returns true if the event was a 5-way one.
+Boolean fiveway_buttons(FormPtr frm, const UInt16 *ids, Short n,
+			Short *focus, Short nav, UInt16 dflt)
+{
+  Short f, step;
+  if (nav == NAV_NONE)
+    return false;
+  if (nav == NAV_SELECT) {
+    UInt16 id = (*focus >= 0) ? ids[*focus] : dflt;
+    fiveway_frame(frm, ids, *focus); // erase it, the button may go away
+    *focus = -1;
+    fiveway_hit(frm, id);
+    return true;
+  }
+  if (nav == NAV_IGNORE)
+    return true;
+  step = (nav == NAV_UP || nav == NAV_LEFT) ? -1 : 1;
+  f = *focus;
+  if (f < 0) f = (step > 0) ? -1 : n;
+  for (f += step ; f >= 0 && f < n ; f += step) {
+    if (fiveway_usable(frm, ids[f])) {
+      fiveway_frame(frm, ids, *focus);
+      *focus = f;
+      fiveway_frame(frm, ids, f);
+      break;
+    }
+  }
+  return true;
+}
+
+// The 5-way on the main form: up / down / left / right walk north / south
+// / west / east (run, if caps lock or shift is on), or aim a waiting spell
+// or Fight.  The centre button rests a turn, which also offers again
+// whatever you are standing on (stairs, a potion...); while aiming, it
+// cancels.
+static Boolean main_fiveway(Short nav, Boolean *took_timep)
+{
+  Short dir;
+  Boolean run = false;
+  *took_timep = false;
+  switch (nav) {
+  case NAV_UP:    dir = NORTH; break;
+  case NAV_DOWN:  dir = SOUTH; break;
+  case NAV_LEFT:  dir = WEST;  break;
+  case NAV_RIGHT: dir = EAST;  break;
+  case NAV_SELECT:
+    if (casting_a_spell) {
+      draw_cast_slices(); // re-invert, to erase them
+      abort_direction();
+    }
+    else if (message_clear()) // "--more--"
+      show_messages();
+    else
+      return main_help_handle_cmd('.', took_timep);
+    return true;
+  default:
+    return true;
+  }
+  if (!casting_a_spell) {
+    Boolean capslock_on, numlock_on, autoshifted;
+    UInt16 tmp_shift;
+    GrfGetState(&capslock_on, &numlock_on, &tmp_shift, &autoshifted);
+    if ((tmp_shift == grfTempShiftUpper) || capslock_on) {
+      run = true;
+      GrfSetState(capslock_on, numlock_on, false);
+    }
+  }
+  return main_dir_cmd(dir, run, took_timep);
+}
 
 Boolean Main_Form_HandleEvent(EventPtr e)
 {
@@ -772,10 +974,18 @@ Boolean Main_Form_HandleEvent(EventPtr e)
     break; // end case menuEvent
 
   case keyDownEvent:
-    /* graffiti or up/down hardware button. */
-    handled = main_help_handle_cmd(e->data.keyDown.chr, &took_time);
+    /* graffiti, keyboard, 5-way, or up/down hardware button. */
+    click_dir = fiveway_key(e);
+    if (click_dir == NAV_IGNORE) {
+      handled = true;
+      goto SKIP_THE_REST;
+    } else if (click_dir != NAV_NONE)
+      handled = main_fiveway(click_dir, &took_time);
+    else
+      handled = main_help_handle_cmd(e->data.keyDown.chr, &took_time);
     // I'm not doing a numeric count (yet?) so ththththat's all folks
-    if (handled && !took_time)
+    // (A key that isn't a command mustn't let the monsters move either.)
+    if (!handled || !took_time)
       goto SKIP_THE_REST;
     break;
 
@@ -823,11 +1033,7 @@ Boolean Main_Form_HandleEvent(EventPtr e)
       tmp_y = e->screenY - 80;
       if ((abs(tmp_x) < 10) &&
 	  (abs(tmp_y) < 10)) {
-	if (!fighting_not_casting) {
-	  env->cdude[SPELLS] += 1; // I'll be nice about it
-	  print_stats();
-	}
-	message("aborted");
+	abort_direction();
       } else {
 	click_dir = get_click_dir(tmp_x, tmp_y);
 	if (fighting_not_casting) {
@@ -1060,7 +1266,8 @@ static Boolean ApplicationHandleEvent(EventPtr e)
  *                      Preferences                                          *
  *****************************************************************************/
 
-static void readLarnPrefs()
+// Returns false if there were no saved preferences (a new install).
+static Boolean readLarnPrefs()
 {
   Word prefsSize;
   SWord prefsVersion;
@@ -1087,6 +1294,7 @@ static void readLarnPrefs()
     if (prefsVersion < iLarnAppPrefVersion)
       writeLarnPrefs(); // update the version number to show that we are ok now
   }
+  return (prefsVersion != noPreferenceFound);
 }
 // not static - it is used by stuff in three forms
 void writeLarnPrefs()
@@ -1116,7 +1324,7 @@ Boolean evil = false;
 static Word StartApplication(void)
 {
   Word error;
-  Boolean found_my_character;
+  Boolean found_my_character, had_prefs;
   DWord version;
 #ifdef I_AM_OS_2
   void *font128 = 0;
@@ -1134,7 +1342,7 @@ static Word StartApplication(void)
     /* load game and/or do all the ONE-TIME initialization */
     found_my_character = init_game(); // allocates env et al
 
-    readLarnPrefs();
+    had_prefs = readLarnPrefs();
 
     
 #ifdef I_AM_OS_2
@@ -1157,9 +1365,19 @@ static Word StartApplication(void)
     }  
   // set HasColor boolean to false
 #ifdef I_AM_COLOR
-  if ((version >= 0x03503000L) && my_prefs.color)
-    // call a routine to find and grok 'iLarn-RGB' memo, if it exists.
-    look_for_memo(); // may set "have_read_color" to true
+    if (version >= 0x03503000L) {
+      if (!had_prefs) {
+	// New install: colour (the built-in neon scheme) is on by default
+	// if the screen can show it.
+	Boolean color_screen = false;
+	WinScreenMode(winScreenModeGet, NULL, NULL, NULL, &color_screen);
+	if (color_screen)
+	  my_prefs.color = true;
+      }
+      if (my_prefs.color)
+	// load the colours, and the 'iLarn-RGB' memo if there is one
+	look_for_memo();
+    }
 #endif // COLOR
 #endif // OS 2
     
@@ -1236,23 +1454,41 @@ static void StopApplication(void)
 /* The main event loop */
 
 
+// True while a menu is pulled down.
+static Boolean menu_is_showing(void)
+{
+  MenuBarPtr mb = MenuGetActiveMenu();
+  return (mb != NULL && mb->attr.visible);
+}
+
 static void EventLoop(void)
 {
     Word err;
     EventType e;
      
     do {
+	Boolean done = false;
 	EvtGetEvent(&e, evtWaitForever);
-	// first see if it's a hardware button thing!!!
+	// Do special hardware button things if it's a hardware button event.
 	// don't ask me what the poweredOnKeyMask is, though; cargo cult.
-	// Do special hardware button things only if:
-	// it's a hardware button event, [you're alive,] and in the main form.
-	if ( (e.eType != keyDownEvent)
-	     || !my_prefs.use_hardware 
-	     || (e.data.keyDown.modifiers & poweredOnKeyMask)
-	     // need to remove next line if I'm going to make popups ignore hw
-	     //	     || (FrmGetActiveFormID() != MainForm)
-	     || !buttonsHandleEvent(&e) )
+	// (Not while a menu is showing: the menu gets the 5-way then.)
+	if ( (e.eType == keyDownEvent)
+	     && !(e.data.keyDown.modifiers & poweredOnKeyMask)
+	     && !menu_is_showing() ) {
+	  Short nav;
+	  if (my_prefs.use_hardware && buttonsHandleEvent(&e))
+	    done = true; // a rebound button wins
+	  else if ((nav = fiveway_key(&e)) == NAV_IGNORE)
+	    done = true; // releases and the like
+	  else if (nav != NAV_NONE) {
+	    // The 5-way goes to the form first; whatever it doesn't use
+	    // (e.g. Select in a form that has no use for it) the OS gets.
+	    if (!FrmDispatchEvent(&e))
+	      SysHandleEvent(&e);
+	    done = true;
+	  }
+	}
+	if (!done)
 	  // now proceed with usual handling
 	  if (! SysHandleEvent (&e))
 	    if (! MenuHandleEvent (NULL, &e, &err))

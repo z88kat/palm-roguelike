@@ -51,7 +51,9 @@ void annihilate()
 
   for (i = playerx - 1 ; i <= playerx + 1 ; i++) {
     for (j = playery - 1 ; j <= playery + 1 ; j++) {
-      if (vxy(&i, &j)) continue; // out of bounds
+      // out of bounds?  (Not vxy, which would clamp i and j themselves:
+      // on the bottom or right edge that looped forever.)
+      if (i < 0 || i >= MAXX || j < 0 || j >= MAXY) continue;
       if (! env->mitem[i][j]) continue; // no monster is there
       p = &(env->mitem[i][j]);
       if (*p < DEMONLORD) {
@@ -119,10 +121,22 @@ void newsphere(Short x, Short y, Short dir, Short life, Short i)
 	min_i = j;
       }
     }
+    sp_tmp = spp[min_i]; // (copy it before unlocking the record)
     MemHandleUnlock(vh);
     if (sp_i == -1) {
+      // Kill the evicted sphere.  rmsp also clears its square, which is
+      // only right if it is on this level; otherwise put the square back.
+      Short ex = sp_tmp.x, ey = sp_tmp.y;
+      Char it = env->item[ex][ey], mit = env->mitem[ex][ey];
+      Char kn = env->know[ex][ey];
       sp_i = min_i;
-      rmsp(sp_i, spp[sp_i].x, spp[sp_i].y); // kill the evicted sphere
+      rmsp(sp_i, ex, ey);
+      if (sp_tmp.lev != env->level) {
+	env->item[ex][ey] = it;
+	env->mitem[ex][ey] = mit;
+	env->know[ex][ey] = kn;
+	update_screen_cell(ex, ey);
+      }
     }
   }
   //  StrPrintF(buf, "dir %d life %d i %d", dir, life, sp_i);
@@ -316,10 +330,11 @@ void sphboom(Short x, Short y)
     for (i = max(1, y-2) ; i < min(y+3 , MAXY-1) ; i++) {
       env->item[j][i] = env->mitem[j][i] = 0;
       //      show1cell(j,i);
-      update_screen_cell(x,y);
-      if (has_object(OSPHTALISMAN))
-	return;
-      if (env->playerx == j && env->playery == i) {
+      update_screen_cell(j,i);
+      // (the talisman only saves you; it used to stop the blast after
+      // its first square)
+      if (env->playerx == j && env->playery == i
+	  && !has_object(OSPHTALISMAN)) {
 	//	beep();
 	message("You were too close to the sphere!");
 	nap(3000);

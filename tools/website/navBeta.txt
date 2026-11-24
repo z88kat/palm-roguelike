@@ -1,0 +1,26 @@
+            <h2>External Links</h2>
+<p>
+	<a href="http://roguelikes.sauceforge.net/pub/index.html">
+	Roguelike Games:</a>
+</p>      
+<p>
+	<a href="http://roguelikes.sauceforge.net/pub/rogue/index.html">
+	Rogue</a> <br>
+      
+        <a href="http://remarque.org/~grabiner/moria.html">
+	Moria</a> and <a href="http://www.phial.com/angband/">
+	Angband</a> <br>
+      
+	<a href="http://www.hut.fi/~eye/roguelike/nethack.html">
+	Hack</a> and <a href="http://www.nethack.org/">
+	NetHack</a> <br>
+      
+        <a href="http://www.ularn.org/">Ularn</a> <br>
+      
+	<a href="http://www.alcyone.com/max/projects/omega/">
+	Omega</a>
+</p>      
+<p>      
+        <a href="http://groups.google.com/groups?group=rec.games.roguelike">
+        Usenet discussion</a>
+</p>

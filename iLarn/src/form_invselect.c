@@ -54,6 +54,27 @@ Boolean InvSelect_Form_HandleEvent(EventPtr e)
     // hardware button -- or else graffiti.
     frm = FrmGetActiveForm();
     lst = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, list_i));
+    // 5-way: up/down pick an item, centre does the first button (the
+    // item's usual action), left cancels.
+    k = fiveway_key(e);
+    if (k != NAV_NONE) {
+      Word objid = 0;
+      if (fiveway_list(lst, k)) {
+	label = LstGetSelectionText(lst, LstGetSelection(lst));
+	inventory_item = label ? (label[0] - 'a') : -1;
+	specialize_labels(frm, inventory_item, (in_store==STORE_TPOST));
+      } else if (k == NAV_SELECT)
+	objid = btn_if_frob;
+      else if (k == NAV_LEFT)
+	objid = btn_i_cancel;
+      if (objid) {
+	ControlPtr btn = FrmGetObjectPtr(frm, FrmGetObjectIndex(frm, objid));
+	if (btn->attr.usable)
+	  CtlHitControl(btn);
+      }
+      handled = true;
+      break;
+    }
     switch(e->data.keyDown.chr) {
     case pageUpChr:
       if (LstScrollList(lst, winUp, 11)) {//there're 11 items visible at a time
@@ -74,7 +95,7 @@ Boolean InvSelect_Form_HandleEvent(EventPtr e)
       c = e->data.keyDown.chr;
       if (c >= 'a' && c <= 'z') {
 	// Find the line starting with this letter. Lines in order with gaps.
-	s = inventory_select_numItems;
+	s = LstGetNumberOfItems(lst) - 1; // (the last row, not one past it)
 	inventory_item = -1;
 	while (s > -1) {
 	  label = LstGetSelectionText(lst, s);

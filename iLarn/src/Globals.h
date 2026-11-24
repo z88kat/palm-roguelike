@@ -52,5 +52,43 @@ extern DmOpenRef       iLarnSaveDB;
 
 extern struct everything *env;
 
+// Palm OS 5 devices (Tungsten C, T, E...) have a 5-way navigator that this
+// code predates. palmOne devices send Up/Down as vchrPageUp/Down with
+// navBit*/navChange* flags in keyCode, and Left/Right/Select (and every
+// release) as vchrNavChange; others send vchrRocker*. Values are from the
+// PalmOne SDK (palmOneChars.h, palmOneNavigator.h), which the 3.5 SDK lacks.
+#ifndef vchrNavChange
+#define vchrNavChange    0x0503
+#endif
+#ifndef navBitUp
+#define navBitUp         0x0001
+#define navBitDown       0x0002
+#define navBitLeft       0x0004
+#define navBitRight      0x0008
+#define navBitSelect     0x0010
+#define navBitsAll       0x001F
+#define navChangeBitsAll 0x1F00
+#endif
+#ifndef vchrRockerUp
+#define vchrRockerUp     0x0132
+#define vchrRockerDown   0x0133
+#define vchrRockerLeft   0x0134
+#define vchrRockerRight  0x0135
+#define vchrRockerCenter 0x0136
+#endif
+// What fiveway_key() makes of a keyDownEvent (main.c).
+#define NAV_NONE    0 // not the navigator: handle the key as usual
+#define NAV_IGNORE  1 // a release, or several buttons at once: swallow it
+#define NAV_UP      2
+#define NAV_DOWN    3
+#define NAV_LEFT    4
+#define NAV_RIGHT   5
+#define NAV_SELECT  6
+Short fiveway_key(EventPtr e);
+Boolean fiveway_list(ListPtr lst, Short nav);
+Boolean fiveway_hit(FormPtr frm, UInt16 id);
+Boolean fiveway_buttons(FormPtr frm, const UInt16 *ids, Short n,
+			Short *focus, Short nav, UInt16 dflt);
+
 
 #endif
