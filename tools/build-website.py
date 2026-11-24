@@ -11,10 +11,13 @@ is rendered by:
   * expanding <?php include("...") ?> -- the sidebar fragments (navAlpha.txt,
     navAlphaTop.txt, navBeta.txt, per-game navAlpha.txt) were never committed
     to CVS, so they live in tools/website/ (recovered from the still-running
-    SourceForge copy of the site, 2026-11-24).  {ROOT} in a fragment becomes
-    the relative path back to the site root.  Every non-.txt file there
-    (3col.css, kMoria/kMoriaColorDB.pdb, images/sflogo.png -- a local copy
-    of the hotlinked SourceForge badge) is copied as-is;
+    SourceForge copy of the site, 2026-11-24; the sidebar's "Contact me" and
+    "Hosted by" SourceForge sections have since been dropped).  {ROOT} in a
+    fragment becomes the relative path back to the site root.  Every non-.txt
+    file there (3col.css, kMoria/kMoriaColorDB.pdb, also never in CVS) is
+    copied as-is;
+  * adding tools/website/news.txt (news since the revival) to the top of
+    the home page's News box, so cvs-repo/ itself stays untouched;
   * replacing the random-quote include (quotes.php + quotes.dat) with a tiny
     script that picks a line from the same quotes.dat in the browser;
   * renaming *.php -> *.html and rewriting internal links to match, and
@@ -94,6 +97,16 @@ def fix_url(url, root):
     return path + sep + frag
 
 
+def add_news(text):
+    """Put tools/website/news.txt at the top of the home page's News box."""
+    with open(os.path.join(FRAGMENTS, "news.txt"), encoding="utf-8") as f:
+        news = f.read().rstrip("\n")
+    heading = "<h2>~ News ~</h2>"
+    if heading not in text:
+        sys.exit(f"index.php: no {heading!r} to add news.txt under")
+    return text.replace(heading, heading + "\n" + news, 1)
+
+
 def render(page, files):
     pdir = os.path.dirname(page)
     root = "../" * page.count("/")
@@ -116,6 +129,8 @@ def render(page, files):
         sys.exit(f"{page}: cannot resolve include {m.group(1)!r}")
 
     text = INCLUDE.sub(include, text)
+    if page == "index.php":
+        text = add_news(text)
     if "<?" in text:
         sys.exit(f"{page}: unhandled PHP left after include expansion")
     return ATTR.sub(lambda m: f'{m.group(1)}="{fix_url(m.group(2), root)}"',
